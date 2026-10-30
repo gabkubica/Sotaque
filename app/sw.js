@@ -1,7 +1,7 @@
 /* Sotaque · guarda os arquivos do app no aparelho.
    Abre na hora com o que já está guardado e, em segundo plano, busca a versão nova para a próxima vez. */
-const CACHE = 'sotaque-v2';
-const FILES = ['./', 'index.html', 'quadros.js', 'banco.js', 'banco-fr.js', 'trilhas.js', 'provas.js', 'banco-extra.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-180.png'];
+const CACHE = 'sotaque-v3';
+const FILES = ['./', 'index.html', 'quadros.js', 'banco.js', 'banco-fr.js', 'trilhas.js', 'provas.js', 'banco-extra.js', 'desenvolvimento.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-180.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {

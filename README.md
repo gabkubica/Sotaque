@@ -26,7 +26,7 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
 
 ## app/ · Sotaque
 
-**Professor ou professora** (Hoje · Agenda · Alunos · Tarefas)
+**Professor ou professora** (Hoje · Agenda · Alunos · Tarefas · Desenvolvimento)
 - Cada professor ensina um idioma (inglês ou francês) e só vê os próprios alunos, aulas, pedidos e tarefas.
 - Horários livres e chave PIX são de cada professor.
 - Agenda da semana gerada a partir do horário fixo de cada aluno (aulas de 1 h).
@@ -52,6 +52,11 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
     25 pontos cada. Escrita e fala usam critérios de 0 a 5. Sugestão de aprovação: 50/100
     e pelo menos 5/25 em cada parte. Quem decide é o professor;
   - certificado com o resultado de cada parte e linha do tempo das conquistas.
+
+- Desenvolvimento (aba só do professor): roteiro de estudo do próprio idioma, do A1 ao C2, mais a formação de
+  professor de FLE (`desenvolvimento.js`). São 351 itens de gramática, vocabulário, pronúncia, comunicação, cultura
+  e habilidades, cada um marcado como "não comecei", "estudando" ou "domino", e 38 missões grandes com passo a passo,
+  campo de entrega e critérios de sucesso. Por enquanto, só para francês.
 
 **Aluno** (Meu caderno · Trilha · Tarefas)
 - "Sua trilha no inglês/francês": perfil por habilidade, mapa dos marcos com as listas "Eu consigo", provinhas, prova de nível e certificados.
