@@ -7,6 +7,7 @@ Dois projetos de aulas de idiomas, no estilo visual **Quadros Winer**
 | --- | --- |
 | [`app/`](app/) | **Sotaque**: plataforma de aulas particulares de inglês e de francês (professor e aluno) |
 | [`site/`](site/) | **Teacher Lexi**: site de divulgação das aulas de inglês da Alexia |
+| [`frances/`](frances/) | **Prof. Gabriel**: modelo de site para as futuras aulas de francês (dados de exemplo, editáveis no bloco `CONFIG`) |
 
 Os dois são sites estáticos, sem etapa de build: basta abrir o `index.html` de cada pasta num navegador.
 
@@ -17,6 +18,7 @@ Em um ou dois minutos ficam no ar:
 - página de entrada: https://gabkubica.github.io/Sotaque/
 - Sotaque: https://gabkubica.github.io/Sotaque/app/
 - Teacher Lexi: https://gabkubica.github.io/Sotaque/site/
+- Prof. Gabriel (modelo): https://gabkubica.github.io/Sotaque/frances/
 
 O Sotaque é instalável no celular: no Chrome (Android), menu → *Instalar app*;
 no Safari (iPhone), Compartilhar → *Adicionar à Tela de Início*. Ele abre em tela cheia,
