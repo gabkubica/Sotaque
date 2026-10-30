@@ -244,6 +244,7 @@ legend{font-size:13.5px;font-weight:600;color:var(--ink-2);padding:0;margin-bott
 details.more{border-top:1px solid var(--line);padding-top:12px}
 details.more summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--ink-2)}
 details.more[open] summary{margin-bottom:14px}
+.pill-lang{display:inline-flex;align-self:flex-start;align-items:center;background:var(--surface-2);border-radius:999px;padding:9px 16px;font-weight:700;color:var(--ink);font-size:15px}
 .err{color:var(--late-fg);font-size:13.5px;font-weight:600}
 .err:empty{display:none}
 .cred{background:var(--surface-2);border-radius:14px;padding:14px 16px;font-size:14.5px;display:flex;flex-direction:column;gap:4px}
@@ -431,6 +432,7 @@ details.more[open] summary{margin-bottom:14px}
 
 <script src="quadros.js"></script>
 <script src="banco.js"></script>
+<script src="banco-fr.js"></script>
 <script>
 /* =========================================================
    Sotaque · aulas particulares de idiomas
@@ -481,7 +483,7 @@ function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('sh
 function copyText(v,label){ try { navigator.clipboard.writeText(v).then(()=>toast(label||'Copiado'),()=>toast(v)); } catch { toast(v); } }
 
 /* ---------- armazenamento (demo) ---------- */
-const KEY='sotaque:v1', ME_KEY='sotaque:me', PASS='sotaque123';
+const KEY='sotaque:v2', ME_KEY='sotaque:me', PASS='sotaque123';
 const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
@@ -491,7 +493,7 @@ function save(){ if (!lsSet(KEY,JSON.stringify(DB))) toast('Não consegui salvar
 /* ---------- dados de exemplo ---------- */
 const NOTES={
   EN:['Revisamos o past simple com verbos irregulares. Ótima pronúncia hoje!','Conversa sobre viagens. Palavras novas: luggage, boarding pass, delay.','Começamos o present perfect. Ainda confunde com o passado; vamos reforçar.','Listening com um episódio do 6 Minute English. Entendeu quase tudo!','Role-play no restaurante: pedir, reclamar, pagar a conta.','Phrasal verbs do dia a dia: get up, look for, give up.'],
-  FR:['Salutations et présentations. Très bien ! Treinar o “r” francês.','Os números de 1 a 20 e como dizer a idade.','Verbo être e as nacionalidades.'],
+  FR:['Salutations et présentations. Très bien ! Treinar o “r” francês.','Os números de 1 a 20 e como dizer a idade.','Verbo être e as nacionalidades.','Passé composé com avoir: ótimo progresso, revisar os particípios irregulares.','Conversa sobre a rotina. Vocabulário novo: se lever, se coucher, prendre le petit-déjeuner.','Role-play no café: commander, payer, remercier.'],
 };
 function seedData(){
   const T=now();
@@ -499,10 +501,12 @@ function seedData(){
   const studs=[
     mk('s1','Marina Alves','marina@sotaque.app','EN','B1 · Intermediário',2,19,'tomate','amanhecer',4182,9,8,3,480,true),
     mk('s2','Lucas Prado','lucas@sotaque.app','EN','B2 · Avançado',4,18,'ceu','londres',2210,7,8,1,480,true),
-    mk('s3','Beatriz Costa','beatriz@sotaque.app','FR','A1 · Iniciante',1,19,'ameixa','paris',1789,2,4,2,260,false),
+    mk('s3','Beatriz Costa','beatriz@sotaque.app','FR','A1 · Iniciante',1,19,'ameixa','paris',1789,2,4,2,260,false,{teacherId:'prof2'}),
     mk('s4','Theo Ramos','theo@sotaque.app','EN','A2 · Básico',3,20,'menta','mar',770,5,8,4,480,true),
     mk('s5','Júlia Nunes','julia@sotaque.app','EN','C1 · Conversação',5,10,'lavanda','conversa',9031,6,12,7,690,true),
-  ];
+    mk('s6','Rafael Lima','rafael@sotaque.app','FR','A2 · Básico',4,20,'petroleo','uvas',3141,6,8,3,440,true,{teacherId:'prof2'}),
+    mk('s7','Sofia Martins','sofia@sotaque.app','FR','B1 · Intermediário',2,18,'rosa','livro',2718,4,8,5,440,false,{teacherId:'prof2'}),
+  ].map(s=>({teacherId:'prof',...s}));
   const lessons=[], packages=[], requests=[];
   studs.forEach((s,si)=>{
     const thisWeek=atTime(addDays(weekStart(T),(s.slot.wd+6)%7),s.slot.h);
@@ -524,13 +528,15 @@ function seedData(){
     if (prev>0) packages.push({id:uid(),studentId:s.id,size:prev,price:Math.round(s.price/s.pkgSize*prev),paid:true,createdAt:s.since,paidAt:s.since});
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
-  const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher'},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:3,settings:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}}};
+  const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:4,settings:{
+    prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
+    prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
 /* aulas fixas: garante as próximas 8 semanas de cada aluno */
 function ensureLessons(){
   let changed=false;
-  for (const s of students()){
+  for (const s of allStudents()){
     if (!s.slot) continue;
     const ws=weekStart(now());
     for (let k=0;k<8;k++){
@@ -554,15 +560,26 @@ const S={me:null,route:{name:'inicio'},menu:false,week:null,modal:null,showAll:f
 const ME=()=>DB.users.find(u=>u.id===S.me)||null;
 const isT=()=>ME()?.role==='teacher';
 const user=id=>DB.users.find(u=>u.id===id);
-const teacher=()=>DB.users.find(u=>u.role==='teacher');
-const students=()=>DB.users.filter(u=>u.role==='student').sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+/* o professor da sessão (ou, para um aluno, o professor dele) */
+const teacher=()=>{ const me=ME(); return me?.role==='student'? user(me.teacherId) : me; };
+const myLang=()=>teacher()?.lang||'EN';
+const allStudents=()=>DB.users.filter(u=>u.role==='student').sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+const students=()=>allStudents().filter(u=>u.teacherId===S.me);
+const teacherOfStudent=id=>user(user(id)?.teacherId);
+const mine=x=>user(x.studentId)?.teacherId===S.me;
+const settingsOf=tid=>DB.settings[tid]||(DB.settings[tid]={pix:'',avail:{1:[8,20],2:[8,20],3:[8,20],4:[8,20],5:[8,20]}});
+/* "a professora" ou "o professor", conforme quem dá aula */
+const aProf=()=>teacher()?.fem===false? 'o professor' : 'a professora';
+const AProf=()=>{ const t=aProf(); return t[0].toUpperCase()+t.slice(1); };
+const daProf=()=>teacher()?.fem===false? 'do professor' : 'da professora';
+const suaProf=()=>teacher()?.fem===false? 'Seu professor' : 'Sua professora';
 const lessonsOf=id=>DB.lessons.filter(l=>l.studentId===id).sort((a,b)=>a.start-b.start);
 const getLesson=id=>DB.lessons.find(l=>l.id===id);
 const pendingReq=l=>DB.requests.find(r=>r.lessonId===l.id&&r.status==='pendente');
 const isPast=l=>l.start+l.dur*MIN<now();
 const isLive=l=>l.status==='agendada'&&l.start-10*MIN<=now()&&now()<=l.start+l.dur*MIN;
 const nextLesson=id=>lessonsOf(id).find(l=>l.status==='agendada'&&!isPast(l));
-const toRecord=()=>DB.lessons.filter(l=>l.status==='agendada'&&isPast(l)).sort((a,b)=>a.start-b.start);
+const toRecord=()=>DB.lessons.filter(l=>mine(l)&&l.status==='agendada'&&isPast(l)).sort((a,b)=>a.start-b.start);
 const sVars=s=>{ const p=PAL[s.palette]; return `--k-bg:${p.bg};--k-a:${p.a};--k-b:${p.b};--k-c:${p.c}`; };
 const langName=l=>l==='FR'? 'Francês' : 'Inglês';
 const slotLabel=s=>s.slot? `Toda ${WD[s.slot.wd]}${s.slot.wd===0||s.slot.wd===6?'':'-feira'} · ${hhmm(s.slot.h,s.slot.m)}`.replace('Toda sábado','Todo sábado').replace('Toda domingo','Todo domingo') : 'Sem horário fixo';
@@ -587,17 +604,18 @@ function pkgInfo(id){
 }
 /* horários livres da professora num dia (aulas de 1 h, com 24 h de antecedência) */
 function freeSlots(day,excludeId){
-  const av=DB.settings.avail[new Date(day).getDay()]; if (!av) return [];
+  const tid=user(getLesson(excludeId)?.studentId)?.teacherId;
+  const av=settingsOf(tid).avail[new Date(day).getDay()]; if (!av) return [];
   const out=[];
   for (let h=av[0];h+1<=av[1];h++){
     const ts=atTime(day,h);
     if (ts<now()+24*HOUR) continue;
-    const busy=DB.lessons.some(l=>l.id!==excludeId&&l.status==='agendada'&&l.start<ts+HOUR&&ts<l.start+l.dur*MIN);
+    const busy=DB.lessons.some(l=>l.id!==excludeId&&user(l.studentId)?.teacherId===tid&&l.status==='agendada'&&l.start<ts+HOUR&&ts<l.start+l.dur*MIN);
     if (!busy) out.push(ts);
   }
   return out;
 }
-const conflict=(ts,excludeId)=>DB.lessons.find(l=>l.id!==excludeId&&l.status==='agendada'&&l.start<ts+HOUR&&ts<l.start+l.dur*MIN);
+const conflict=(ts,excludeId)=>{ const tid=user(getLesson(excludeId)?.studentId)?.teacherId; return DB.lessons.find(l=>l.id!==excludeId&&user(l.studentId)?.teacherId===tid&&l.status==='agendada'&&l.start<ts+HOUR&&ts<l.start+l.dur*MIN); };
 
 /* ---------- rotas ---------- */
 function parseHash(){
@@ -618,7 +636,7 @@ function parseHash(){
 /* ---------- entrar ---------- */
 function viewAuth(){
   const {pk,seed}=(()=>{ const d=Math.floor((now()-new Date().getTimezoneOffset()*MIN)/DAY); return {pk:PKEYS[d%PKEYS.length],seed:d}; })();
-  const demo=[['professora@sotaque.app','Professora','agenda, alunos e pedidos de remarcação'],['marina@sotaque.app','Aluna Marina','inglês, toda terça às 19h'],['theo@sotaque.app','Aluno Theo','pediu para remarcar a próxima aula']];
+  const demo=[['professora@sotaque.app','Professora de inglês','agenda, alunos e pedidos de remarcação'],['professor@sotaque.app','Professor de francês','três alunos de francês'],['marina@sotaque.app','Aluna Marina','inglês, toda terça às 19h'],['beatriz@sotaque.app','Aluna Beatriz','francês, toda segunda às 19h'],['theo@sotaque.app','Aluno Theo','pediu para remarcar a próxima aula']];
   return `${themeBtn('auth-theme')}<div class="auth">
     <div class="auth-art">${quadro(pk,'conversa',seed,{w:800,h:1000})}</div>
     <div class="auth-box">
@@ -629,7 +647,7 @@ function viewAuth(){
         <label class="field" for="l-pass">Senha<input type="password" id="l-pass" name="pass" required autocomplete="current-password"></label>
         <p class="err" id="l-err"></p>
         <button class="btn primary big">Entrar</button>
-        <p class="meta muted">Ainda não tem acesso? Sua professora cria a sua conta e te envia o login.</p>
+        <p class="meta muted">Ainda não tem acesso? Seu professor ou professora cria a sua conta e te envia o login.</p>
       </form>
       <div class="demo"><b>Contas de teste</b><span>A senha de todas é <b>${PASS}</b>.</span>
         ${demo.map(([e,t,d])=>`<div class="demo-row"><div><b>${t}</b><small>${e} · ${d}</small></div><button class="btn small" data-act="fill" data-v="${e}">Usar</button></div>`).join('')}
@@ -641,8 +659,8 @@ function viewAuth(){
 /* ---------- barra ---------- */
 function topbar(){
   const me=ME(), r=S.route.name;
-  const reqs=DB.requests.filter(x=>x.status==='pendente').length+toRecord().length;
-  const toCorrect=DB.tasks.filter(t=>t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
+  const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
+  const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
   const nav= isT()? `<nav class="nav" aria-label="Principal"><a href="#inicio" class="${r==='inicio'?'on':''}">Hoje${reqs? `<span class="badge">${reqs}</span>` : ''}</a><a href="#agenda" class="${r==='agenda'?'on':''}">Agenda</a><a href="#alunos" class="${r==='alunos'||r==='aluno'?'on':''}">Alunos</a><a href="#tarefas" class="${['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd'].includes(r)?'on':''}">Tarefas${toCorrect? `<span class="badge">${toCorrect}</span>` : ''}</a></nav>`
     : `<nav class="nav" aria-label="Principal"><a href="#inicio" class="${r==='inicio'?'on':''}">Meu caderno</a><a href="#tarefas" class="${['tarefas','tarefa'].includes(r)?'on':''}">Tarefas${todoS? `<span class="badge">${todoS}</span>` : ''}</a></nav>`;
   return `<header class="bar"><div class="bar-in">
@@ -672,12 +690,12 @@ function reqCard(r){
 }
 function viewToday(){
   const me=ME(), h=new Date().getHours(), greet=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
-  const today=DB.lessons.filter(l=>sameDay(l.start,now())&&l.status!=='cancelada').sort((a,b)=>a.start-b.start);
-  const next=DB.lessons.filter(l=>l.status==='agendada'&&l.start>=addDays(dayStart(now()),1)&&l.start<addDays(dayStart(now()),4)).sort((a,b)=>a.start-b.start);
-  const reqs=DB.requests.filter(r=>r.status==='pendente').sort((a,b)=>a.createdAt-b.createdAt);
+  const today=DB.lessons.filter(l=>mine(l)&&sameDay(l.start,now())&&l.status!=='cancelada').sort((a,b)=>a.start-b.start);
+  const next=DB.lessons.filter(l=>mine(l)&&l.status==='agendada'&&l.start>=addDays(dayStart(now()),1)&&l.start<addDays(dayStart(now()),4)).sort((a,b)=>a.start-b.start);
+  const reqs=DB.requests.filter(r=>mine(r)&&r.status==='pendente').sort((a,b)=>a.createdAt-b.createdAt);
   const rec=toRecord();
   const pk=students().map(s=>({s,i:pkgInfo(s.id)})).filter(x=>x.i.remaining<=1||x.i.unpaid.length);
-  const corr=DB.tasks.filter(t=>t.status==='entregue');
+  const corr=DB.tasks.filter(t=>mine(t)&&t.status==='entregue');
   const att=reqs.length+rec.length+pk.length+(corr.length?1:0);
   return `<div class="hello"><p class="eyebrow">${fLongI.format(now())}</p><h1>${greet}, ${esc(me.name.split(' ')[0])}.</h1>
       <p class="meta">${today.length? `Hoje você tem ${today.length} ${today.length===1?'aula':'aulas'}.` : 'Nenhuma aula hoje.'}${att? ` E ${att} ${att===1?'coisa precisa':'coisas precisam'} da sua atenção.` : ''}</p></div>
@@ -703,7 +721,7 @@ function viewToday(){
 /* ---------- professora · Agenda ---------- */
 function viewAgenda(){
   const ws=S.week??weekStart(now()), days=[...Array(7)].map((_,k)=>addDays(ws,k)), H0=7, H1=22, RH=52;
-  const inWeek=DB.lessons.filter(l=>l.start>=ws&&l.start<addDays(ws,7)).sort((a,b)=>a.start-b.start);
+  const inWeek=DB.lessons.filter(l=>mine(l)&&l.start>=ws&&l.start<addDays(ws,7)).sort((a,b)=>a.start-b.start);
   const title=`${fShort.format(days[0])} – ${fMonth.format(days[6])}`;
   const nowTs=now(), nowY=((nowTs-dayStart(nowTs))/HOUR-H0)*RH;
   const blk=l=>{ const s=user(l.studentId), p=PAL[s.palette], d=new Date(l.start), y=(d.getHours()+d.getMinutes()/60-H0)*RH;
@@ -722,7 +740,7 @@ function viewAgenda(){
 /* ---------- professora · Alunos ---------- */
 function viewStudents(){
   const list=students();
-  return `<div class="hello"><h1>Alunos</h1><p class="meta">${list.length} ${list.length===1?'aluno':'alunos'} · cada um com o seu caderno.</p></div>
+  return `<div class="hello"><h1>Alunos</h1><p class="meta">${list.length} ${list.length===1?'aluno':'alunos'} de ${langName(myLang()).toLowerCase()} · cada um com o seu caderno.</p></div>
     <div class="cards">${list.map(s=>{ const i=pkgInfo(s.id), n=nextLesson(s.id), rq=DB.requests.some(r=>r.studentId===s.id&&r.status==='pendente');
       return `<a class="scard" href="#aluno-${s.id}" style="${sVars(s)}">${quadro(s.palette,s.scene,s.seed,{w:320,h:150,frame:false})}
         <div class="scard-b"><h3>${esc(s.name)}</h3><p class="meta">${langName(s.lang)} · ${esc(s.level)}</p><p class="meta muted">${slotLabel(s)}</p>
@@ -739,11 +757,11 @@ function nextCard(s,l){
   const deco=`<svg class="deco" viewBox="0 0 180 180" aria-hidden="true"><circle cx="110" cy="110" r="70" fill="${p.b}"/><circle cx="110" cy="110" r="44" fill="none" stroke="#fffaf2" stroke-width="5"/></svg>`;
   return `<div class="next">${deco}<p class="eyebrow" style="position:relative">${live? 'Acontecendo agora' : 'Próxima aula'}</p>
     <div style="position:relative;display:flex;flex-direction:column;gap:4px"><p class="next-when">${esc(fLong.format(l.start))}</p><p class="next-sub">${fTime.format(l.start)} às ${fTime.format(l.start+l.dur*MIN)} · ${live? 'comece agora' : rel(l.start)}${l.movedFrom? ' · remarcada' : ''}</p></div>
-    ${rq&&!isT()? `<div class="next-note" style="position:relative">Você pediu para remarcar. A professora vai escolher um destes horários: <b>${rq.options.map(ts=>fDay.format(ts)+' '+fTime.format(ts)).join(', ')}</b>. <button class="link" data-act="req-cancel" data-id="${rq.id}">Desistir do pedido</button></div>` : ''}
+    ${rq&&!isT()? `<div class="next-note" style="position:relative">Você pediu para remarcar. ${AProf()} vai escolher um destes horários: <b>${rq.options.map(ts=>fDay.format(ts)+' '+fTime.format(ts)).join(', ')}</b>. <button class="link" data-act="req-cancel" data-id="${rq.id}">Desistir do pedido</button></div>` : ''}
     ${rq&&isT()? `<div class="next-note" style="position:relative">${esc(s.name.split(' ')[0])} pediu para remarcar esta aula. Responda em <a class="link" href="#inicio">Hoje</a>.</div>` : ''}
     <div class="row-btns" style="position:relative"><a class="btn primary big" href="${esc(s.room)}" target="_blank" rel="noopener">Entrar na aula</a>
       ${isT()? `<button class="btn" data-act="lesson" data-id="${l.id}">Remarcar ou cancelar</button>` : rq? '' : `<button class="btn" data-act="cant" data-id="${l.id}" ${lead<24*HOUR? 'disabled title="Faltam menos de 24 horas"' : ''}>Não posso ir</button>`}</div>
-    ${!isT()&&!rq&&lead<24*HOUR&&!live? `<p class="next-sub" style="position:relative;font-size:13px">Faltam menos de 24 horas. Para remarcar agora, fale direto com a professora.</p>` : ''}</div>`;
+    ${!isT()&&!rq&&lead<24*HOUR&&!live? `<p class="next-sub" style="position:relative;font-size:13px">Faltam menos de 24 horas. Para remarcar agora, fale direto com ${aProf()}.</p>` : ''}</div>`;
 }
 function timeline(s){
   const all=lessonsOf(s.id), past=all.filter(l=>isPast(l)||l.status!=='agendada').reverse(), fut=all.filter(l=>!isPast(l)&&l.status==='agendada').slice(1,3);
@@ -762,9 +780,9 @@ function packagePanel(s){
     ${c? `<div class="big-num">${Math.max(0,i.remaining)}<span>${Math.max(0,i.remaining)===1?'aula restante':'aulas restantes'}</span></div>
       <div class="dots" aria-label="${c.used} de ${c.size} aulas usadas">${[...Array(c.size)].map((_,k)=>`<i class="${k<c.used?'u':''}"></i>`).join('')}</div>
       <p class="meta">Pacote de ${c.size} aulas · ${c.used} ${c.used===1?'usada':'usadas'} · ${money(c.price)}</p>
-      ${i.remaining<0? `<div class="notice"><div>${-i.remaining} ${-i.remaining===1?'aula foi dada':'aulas foram dadas'} além do pacote.</div></div>` : i.remaining<=1? `<div class="notice"><div>${i.remaining===1? 'Esta é a última aula do pacote.' : 'O pacote terminou.'} ${isT()? 'Hora de renovar.' : 'Fale com a professora para renovar.'}</div></div>` : ''}
-      ${i.unpaid.map(p=>`<div class="notice"><div>Pagamento pendente: ${money(p.price)} <small style="font-weight:500">(pacote de ${p.size} aulas)</small>${isT()? '' : `<br><span style="font-weight:500">Pague pelo PIX e a professora confirma por aqui.</span>`}</div>${isT()? `<button class="btn small" data-act="mark-paid" data-id="${p.id}">Marcar como pago</button>` : ''}</div>`).join('')}
-      ${!isT()&&i.unpaid.length? `<div class="pix"><span class="muted">PIX</span><b>${esc(DB.settings.pix)}</b><button class="btn small" data-act="copy" data-v="${esc(DB.settings.pix)}">Copiar</button></div>` : ''}
+      ${i.remaining<0? `<div class="notice"><div>${-i.remaining} ${-i.remaining===1?'aula foi dada':'aulas foram dadas'} além do pacote.</div></div>` : i.remaining<=1? `<div class="notice"><div>${i.remaining===1? 'Esta é a última aula do pacote.' : 'O pacote terminou.'} ${isT()? 'Hora de renovar.' : `Fale com ${aProf()} para renovar.`}</div></div>` : ''}
+      ${i.unpaid.map(p=>`<div class="notice"><div>Pagamento pendente: ${money(p.price)} <small style="font-weight:500">(pacote de ${p.size} aulas)</small>${isT()? '' : `<br><span style="font-weight:500">Pague pelo PIX e ${aProf()} confirma por aqui.</span>`}</div>${isT()? `<button class="btn small" data-act="mark-paid" data-id="${p.id}">Marcar como pago</button>` : ''}</div>`).join('')}
+      ${!isT()&&i.unpaid.length? `<div class="pix"><span class="muted">PIX</span><b>${esc(settingsOf(s.teacherId).pix)}</b><button class="btn small" data-act="copy" data-v="${esc(settingsOf(s.teacherId).pix)}">Copiar</button></div>` : ''}
       <details class="more"><summary>Histórico de pacotes</summary><div class="rows">${i.rows.slice().reverse().map(p=>`<div class="row"><div class="row-m"><b>${p.size} aulas · ${money(p.price)}</b><small>Comprado em ${fMonth.format(p.createdAt)} · ${p.used}/${p.size} usadas</small></div>${p.paid? '<span class="st st-done">Pago</span>' : '<span class="st st-sent">Pendente</span>'}</div>`).join('')}</div></details>`
     : `<p class="muted">Nenhum pacote ainda.</p>`}</section>`;
 }
@@ -772,7 +790,7 @@ function notices(s){
   const recent=DB.requests.filter(r=>r.studentId===s.id&&r.status!=='pendente'&&r.answeredAt>now()-5*DAY&&!r.seen);
   return recent.map(r=>{ const l=getLesson(r.lessonId); if (!l) return '';
     return r.status==='aceito'? `<div class="notice ok"><div>Sua aula foi remarcada para <b>${esc(fLong.format(l.start))}, ${fTime.format(l.start)}</b>.</div><button class="btn small ghost" data-act="seen" data-id="${r.id}">Ok</button></div>`
-      : `<div class="notice"><div>A professora manteve a aula em <b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>.${r.reply? ' “'+esc(r.reply)+'”' : ''}</div><button class="btn small ghost" data-act="seen" data-id="${r.id}">Ok</button></div>`; }).join('');
+      : `<div class="notice"><div>${AProf()} manteve a aula em <b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>.${r.reply? ' “'+esc(r.reply)+'”' : ''}</div><button class="btn small ghost" data-act="seen" data-id="${r.id}">Ok</button></div>`; }).join('');
 }
 function viewNotebook(s){
   const p=PAL[s.palette], dark=SCENES[s.scene]?.dark, first=s.name.split(' ')[0];
@@ -787,7 +805,7 @@ function viewNotebook(s){
       <aside class="stack">${tasksPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
           <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd><dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
-        : `<section class="panel"><div class="panel-h"><h2>Sua professora</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
+        : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
       </aside></div></div>`;
 }
 
@@ -1054,6 +1072,8 @@ function seedTasks(){
     mk('s4','Daily routine','Present simple: complete as frases e depois conte sua rotina.','rout',{picks:[0,1,1,2,0,1,'I wake up at 6. I take a shower and I eat bread. I go to work by car.'],status:'entregue',due:at(1),auto:false,createdAt:T-4*DAY,submittedAt:at(-1,21,0)}),
     mk('s2','Phrasal verbs do dia a dia','','phr',{due:at(-2),createdAt:T-9*DAY}),
     mk('s3','Les salutations','Revisão da primeira aula.','sal',{picks:[1,2,0,1,2],status:'entregue',due:at(2),auto:false,createdAt:T-2*DAY,submittedAt:T-3*HOUR}),
+    mk('s6','Les salutations · révision','Revisão rápida antes da próxima aula.','sal',{picks:[1,2],due:at(3),createdAt:T-DAY}),
+    mk('s7','Les salutations','','sal',{picks:[1,2,0,1,0],status:'corrigida',due:at(-3),createdAt:T-7*DAY,submittedAt:at(-4,19,0),correctedAt:at(-4,19,0),feedback:'Très bien, Sofia !'}),
     mk('s5','Conditionals · review','','cond',{picks:[1,2,2,1,0,0],status:'corrigida',auto:false,due:at(-4),createdAt:T-10*DAY,submittedAt:at(-5,9,30),correctedAt:at(-4,14,0),feedback:'Excellent! Revise só o “unless” com futuro.'}),
   ];
 }
@@ -1061,8 +1081,11 @@ function seedTasks(){
 /* ---------- banco de tarefas (inglês) ---------- */
 const LEVELS=['A1','A2','B1','B2','C1'];
 const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
+const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
+const topicsFor=L=>L==='FR'? TOPICS_FR : TOPICS;
+const langBank=()=>DB.bank.filter(b=>b.lang===myLang());
 const LV_PAL={A1:'menta',A2:'petroleo',B1:'tomate',B2:'ceu',C1:'ameixa'};
-const TOPIC_SCENE={'Gramática':'livro','Vocabulário':'uvas','Phrasal verbs':'aviao','Leitura':'londres','Escrita':'arcos','Expressões':'conversa','Pronúncia':'disco','Cultura':'globo','Trabalho':'estampa','Kids':'mar'};
+const TOPIC_SCENE={'Gramática':'livro','Vocabulário':'uvas','Phrasal verbs':'aviao','Leitura':'londres','Escrita':'arcos','Expressões':'conversa','Pronúncia':'disco','Cultura':'globo','Conjugação':'aviao','Trabalho':'estampa','Kids':'mar'};
 const levelOf=s=>{ const m=(s.level||'').match(/^(A1|A2|B1|B2|C1)/); return m? m[1] : null; };
 function launchTo(spec){
   const open=spec.questions.some(q=>q.type==='open');
@@ -1073,36 +1096,36 @@ function launchTo(spec){
   toast(`Tarefa lançada para ${names.length>2? names.slice(0,-1).join(', ')+' e '+names.slice(-1) : names.join(' e ')}`);
 }
 function tasksHeader(active){
-  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Tarefas</h1><p class="meta">${active==='banco'? 'Tarefas prontas de inglês. Escolha, confira e lance para o aluno.' : 'Monte, lance e corrija por aqui. As questões objetivas se corrigem sozinhas.'}</p></div>
+  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Tarefas</h1><p class="meta">${active==='banco'? `Tarefas prontas de ${langName(myLang()).toLowerCase()}. Escolha, confira e lance para o aluno.` : 'Monte, lance e corrija por aqui. As questões objetivas se corrigem sozinhas.'}</p></div>
     <a class="btn primary big" href="${active==='banco'? '#banco-nova' : '#nova-tarefa'}">${active==='banco'? '+ Criar no banco' : '+ Nova tarefa'}</a></div>
-    <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}">Banco de tarefas <span class="n">${DB.bank.length}</span></a></nav></div>`;
+    <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}">Banco de tarefas <span class="n">${langBank().length}</span></a></nav></div>`;
 }
 function bankCard(b){
   const open=b.questions.some(q=>q.type==='open');
-  return `<a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${quadro(LV_PAL[b.level],TOPIC_SCENE[b.topic]||'livro',hashStr(b.id)%9999,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
+  return `<a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${quadro(LV_PAL[b.level],(b.lang==='FR'&&{Leitura:'paris',Cultura:'uvas'}[b.topic])||TOPIC_SCENE[b.topic]||'livro',hashStr(b.id)%9999,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
     <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a>`;
 }
 function bankFiltered(){
   const q=(S.bq||'').trim().toLowerCase(), lv=S.blv||'todos', tp=S.btp||'todos', ty=S.bty||'todos';
-  return DB.bank.filter(b=>(lv==='todos'||b.level===lv)&&(tp==='todos'||b.topic===tp)&&(ty==='todos'||b.questions.some(x=>x.type===ty))&&(!q||(b.title+' '+b.topic+' '+b.questions.map(x=>x.prompt).join(' ')).toLowerCase().includes(q)))
+  return langBank().filter(b=>(lv==='todos'||b.level===lv)&&(tp==='todos'||b.topic===tp)&&(ty==='todos'||b.questions.some(x=>x.type===ty))&&(!q||(b.title+' '+b.topic+' '+b.questions.map(x=>x.prompt).join(' ')).toLowerCase().includes(q)))
     .sort((a,b)=>LEVELS.indexOf(a.level)-LEVELS.indexOf(b.level)||a.title.localeCompare(b.title));
 }
 function bankListHtml(){
   const all=bankFiltered(), list=all.slice(0,S.bkLimit||24);
-  return list.length? `<p class="meta muted" style="margin-bottom:12px">${all.length===DB.bank.length? `${all.length} tarefas no banco` : `${all.length} de ${DB.bank.length} tarefas`}${list.length<all.length? ` · mostrando ${list.length}` : ''}</p><div class="bgrid">${list.map(bankCard).join('')}</div>${list.length<all.length? `<div style="display:flex;justify-content:center;margin-top:22px"><button class="btn" data-act="bk-more">Mostrar mais ${Math.min(24,all.length-list.length)}</button></div>` : ''}` : `<div class="panel"><div class="empty">${quadro('lavanda','livro',4,{w:320,h:150})}<p>Nenhuma tarefa com esses filtros.</p><button class="btn" data-act="bk-clear">Limpar filtros</button></div></div>`;
+  return list.length? `<p class="meta muted" style="margin-bottom:12px">${all.length===langBank().length? `${all.length} tarefas no banco` : `${all.length} de ${langBank().length} tarefas`}${list.length<all.length? ` · mostrando ${list.length}` : ''}</p><div class="bgrid">${list.map(bankCard).join('')}</div>${list.length<all.length? `<div style="display:flex;justify-content:center;margin-top:22px"><button class="btn" data-act="bk-more">Mostrar mais ${Math.min(24,all.length-list.length)}</button></div>` : ''}` : `<div class="panel"><div class="empty">${quadro('lavanda','livro',4,{w:320,h:150})}<p>Nenhuma tarefa com esses filtros.</p><button class="btn" data-act="bk-clear">Limpar filtros</button></div></div>`;
 }
 function viewBank(){
   const pre=S.preStudent&&user(S.preStudent), lv=S.blv||'todos', tp=S.btp||'todos', ty=S.bty||'todos';
   return `${tasksHeader('banco')}
     ${pre? `<div class="notice ok" style="margin-bottom:18px"><div>Escolhendo uma tarefa para <b>${esc(pre.name)}</b>${levelOf(pre)? ` · filtrando pelo nível ${levelOf(pre)}` : ''}.</div><button class="btn small ghost" data-act="bk-nopre">Cancelar</button></div>` : ''}
-    <div class="bk-tools"><label class="sr" for="bk-q">Buscar no banco</label><input type="text" id="bk-q" data-bk="q" value="${esc(S.bq||'')}" placeholder="Buscar: past simple, travel, idioms…" autocomplete="off">
+    <div class="bk-tools"><label class="sr" for="bk-q">Buscar no banco</label><input type="text" id="bk-q" data-bk="q" value="${esc(S.bq||'')}" placeholder="${myLang()==='FR'? 'Buscar: passé composé, famille, expressions…' : 'Buscar: past simple, travel, idioms…'}" autocomplete="off">
       <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" aria-pressed="${lv===k}" data-act="bk-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div>
-      <div class="filt" role="group" aria-label="Tema">${['todos',...TOPICS].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
+      <div class="filt" role="group" aria-label="Tema">${['todos',...topicsFor(myLang())].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tipo de questão">${['todos',...Object.keys(QT)].map(k=>`<button class="${ty===k?'on':''}" aria-pressed="${ty===k}" data-act="bk-ty" data-v="${k}">${k==='todos'? 'Todos os tipos' : QT[k]}</button>`).join('')}</div></div>
     <div id="bk-list">${bankListHtml()}</div>`;
 }
 function viewBankItem(b){
-  const L=S.bl, studs=students().filter(s=>s.lang==='EN'), open=b.questions.some(q=>q.type==='open'), fake={questions:b.questions,answers:{},marks:{}};
+  const L=S.bl, studs=students(), open=b.questions.some(q=>q.type==='open'), fake={questions:b.questions,answers:{},marks:{}};
   return `<a class="link" href="#banco" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Banco de tarefas</a>
     <div class="grid2"><div class="stack" style="gap:14px">
       <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:2px solid ${PAL[LV_PAL[b.level]].a}"><p class="eyebrow"><span class="lvl inline" style="background:${PAL[LV_PAL[b.level]].a}">${b.level}</span> ${esc(b.topic)}</p><h1>${esc(b.title)}</h1>
@@ -1138,7 +1161,7 @@ const BANK_ACT={
   'bk-clear'(){ S.blv='todos'; S.btp='todos'; S.bty='todos'; S.bq=''; render(); },
   'bk-nopre'(){ S.preStudent=null; S.blv='todos'; render(); },
   'bank-for'(el){ const s=user(el.dataset.id); S.preStudent=s.id; S.blv=levelOf(s)||'todos'; S.btp='todos'; S.bq=''; location.hash='banco'; },
-  'bl-all'(){ const all=students().filter(s=>s.lang==='EN').map(s=>s.id); S.bl.students= S.bl.students.length===all.length? [] : all; render(); },
+  'bl-all'(){ const all=students().map(s=>s.id); S.bl.students= S.bl.students.length===all.length? [] : all; render(); },
   'bl-launch'(el){ const b=DB.bank.find(x=>x.id===el.dataset.id), L=S.bl;
     if (!L.students.length){ $('#bl-err').textContent='Escolha pelo menos um aluno.'; return; }
     if (L.hasDue&&!L.date){ $('#bl-err').textContent='Escolha a data do prazo.'; return; }
@@ -1150,15 +1173,15 @@ const BANK_ACT={
     const vals={title:D.title.trim(),instructions:D.instructions.trim(),questions:cleanQuestions(D.questions),level:D.level,topic:D.topic};
     let id=D.bankId;
     if (id) Object.assign(DB.bank.find(x=>x.id===id),vals);
-    else { id=uid(); DB.bank.push({id,...vals,uses:0,mine:true,createdAt:now()}); }
+    else { id=uid(); DB.bank.push({id,...vals,lang:myLang(),uses:0,mine:true,createdAt:now()}); }
     save(); S.draft=null; location.hash='banco-'+id; toast(D.bankId? 'Tarefa do banco atualizada' : 'Tarefa guardada no banco'); },
   'save-to-bank'(el){ const t=getTask(el.dataset.id), s=user(t.studentId);
     openModal(`<form data-form="tobank" data-id="${t.id}"><h2>Guardar no banco</h2><p class="meta">Uma cópia de “${esc(t.title)}”, sem as respostas de ${esc(s.name.split(' ')[0])}, fica no banco para você lançar de novo.</p>
-      <div class="two"><label class="field" for="tb-lv">Nível<select id="tb-lv" name="level">${LEVELS.map(l=>`<option ${levelOf(s)===l?'selected':''}>${l}</option>`).join('')}</select></label><label class="field" for="tb-tp">Tema<select id="tb-tp" name="topic">${TOPICS.map(x=>`<option>${x}</option>`).join('')}</select></label></div>
+      <div class="two"><label class="field" for="tb-lv">Nível<select id="tb-lv" name="level">${LEVELS.map(l=>`<option ${levelOf(s)===l?'selected':''}>${l}</option>`).join('')}</select></label><label class="field" for="tb-tp">Tema<select id="tb-tp" name="topic">${topicsFor(myLang()).map(x=>`<option>${x}</option>`).join('')}</select></label></div>
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Guardar</button></div></form>`); },
 };
 const BANK_FORMS={
-  tobank(form,fd){ const t=getTask(form.dataset.id); DB.bank.push({id:uid(),level:fd.get('level'),topic:fd.get('topic'),title:t.title,instructions:t.instructions,questions:cloneQs(t.questions),uses:0,mine:true,createdAt:now()}); save(); closeModal(); render(); toast('Guardada no banco'); },
+  tobank(form,fd){ const t=getTask(form.dataset.id); DB.bank.push({id:uid(),lang:myLang(),level:fd.get('level'),topic:fd.get('topic'),title:t.title,instructions:t.instructions,questions:cloneQs(t.questions),uses:0,mine:true,createdAt:now()}); save(); closeModal(); render(); toast('Guardada no banco'); },
 };
 function onBankInput(e){
   const el=e.target;
@@ -1186,7 +1209,7 @@ function taskRowT(t){
   return `<a class="tcard" href="#tarefa-${t.id}" style="${sVars(s)}">${avatar(s,42)}<div class="row-m"><b>${esc(t.title)}</b><small>${esc(s.name)} · ${t.questions.length} ${t.questions.length===1?'questão':'questões'} · ${info}</small></div>${pill(st)}</a>`;
 }
 function viewTasksT(){
-  const all=DB.tasks.slice().sort((a,b)=>b.createdAt-a.createdAt);
+  const all=DB.tasks.filter(mine).sort((a,b)=>b.createdAt-a.createdAt);
   const G={corrigir:all.filter(t=>t.status==='entregue').sort((a,b)=>a.submittedAt-b.submittedAt),pendentes:all.filter(t=>t.status==='pendente'),corrigidas:all.filter(t=>t.status==='corrigida'),todas:all};
   const f=S.tf||(G.corrigir.length?'corrigir':'todas');
   const L={corrigir:'Para corrigir',pendentes:'Com os alunos',corrigidas:'Corrigidas',todas:'Todas'};
@@ -1207,7 +1230,7 @@ function viewTasksS(me){
   const todo=mine.filter(t=>t.status==='pendente').sort(byDue), sent=mine.filter(t=>t.status==='entregue'), done=mine.filter(t=>t.status==='corrigida').sort((a,b)=>b.correctedAt-a.correctedAt);
   const sec=(title,arr)=>arr.length? `<h2 class="sec-t">${title}</h2><div class="tlist">${arr.map(taskCardS).join('')}</div>` : '';
   return `<div style="${sVars(me)}"><div class="hello"><h1>Tarefas</h1><p class="meta">${todo.length? `Você tem ${todo.length} ${todo.length===1?'tarefa':'tarefas'} para fazer.` : 'Tudo feito por aqui.'}</p></div>
-    ${mine.length? sec('Para fazer',todo)+sec('Esperando correção',sent)+sec('Corrigidas',done) : `<div class="panel"><div class="empty">${quadro(me.palette,'aviao',me.seed,{w:320,h:150})}<p>Quando a professora lançar uma tarefa, ela aparece aqui.</p></div></div>`}</div>`;
+    ${mine.length? sec('Para fazer',todo)+sec('Esperando correção',sent)+sec('Corrigidas',done) : `<div class="panel"><div class="empty">${quadro(me.palette,'aviao',me.seed,{w:320,h:150})}<p>Quando ${aProf()} lançar uma tarefa, ela aparece aqui.</p></div></div>`}</div>`;
 }
 
 /* ---------- uma tarefa ---------- */
@@ -1219,14 +1242,14 @@ function scoreCard(t,who){
   const sc=scoreOf(t);
   return `<div class="score"><div class="big">${fmtNum(sc.got)}<span>/${sc.total}</span></div><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1"><p><b>${sc.got===sc.total? 'Todas certas!' : `${fmtNum(sc.got)} de ${sc.total} certas`}</b> · nota ${fmtNote(sc.note)}</p>
     ${sc.waiting? `<p>${sc.waiting} ${sc.waiting===1?'questão escrita espera':'questões escritas esperam'} correção.</p>` : ''}
-    ${t.feedback&&who==='student'? `<p style="background:rgba(255,250,242,.75);border-radius:12px;padding:10px 14px;margin-top:4px"><b>Comentário da professora:</b> ${esc(t.feedback)}</p>` : ''}</div></div>`;
+    ${t.feedback&&who==='student'? `<p style="background:rgba(255,250,242,.75);border-radius:12px;padding:10px 14px;margin-top:4px"><b>Comentário ${daProf()}:</b> ${esc(t.feedback)}</p>` : ''}</div></div>`;
 }
 function viewTaskS(t){
   const me=ME();
   const back=`<a class="link" href="#tarefas" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Tarefas</a>`;
   if (t.status==='pendente'){
     const n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
-    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa da professora')}
+    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa '+daProf())}
       ${t.instructions? `<div class="prose" style="margin-top:16px">${esc(t.instructions)}</div>` : ''}
       <div class="prog-bar"><b id="prog-t" style="font-size:14px">${done} de ${n} respondidas</b><div class="progress"><i id="prog-i" style="width:${done/n*100}%"></i></div></div>
       <div class="stack" style="gap:14px">${t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}
@@ -1234,7 +1257,7 @@ function viewTaskS(t){
   }
   if (t.status==='entregue'){
     return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa entregue')}
-      <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. A professora vai corrigir e o resultado aparece aqui.</div></div>
+      <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. ${AProf()} vai corrigir e o resultado aparece aqui.</div></div>
       <div class="stack" style="gap:14px">${t.questions.map((q,i)=>qResult(t,q,i,'hidden')).join('')}</div></div>`;
   }
   return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa corrigida')}<div style="margin:18px 0">${scoreCard(t,'student')}</div>
@@ -1250,7 +1273,7 @@ function viewTaskT(t){
       <aside class="stack"><section class="panel"><h2>Esperando ${esc(first)}</h2><p class="meta">${done? `${first} já respondeu ${done} de ${t.questions.length} questões, mas ainda não entregou.` : `${first} ainda não começou.`}</p>
         ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
   }
-  const fb=S.fb[t.id]??t.feedback, next=DB.tasks.find(x=>x.status==='entregue'&&x.id!==t.id);
+  const fb=S.fb[t.id]??t.feedback, next=DB.tasks.find(x=>mine(x)&&x.status==='entregue'&&x.id!==t.id);
   return `<div style="${sVars(s)}">${back}${head}<div class="grid2">
     <div class="stack" style="gap:14px">${scoreCard(t,'teacher')}${t.questions.map((q,i)=>qResult(t,q,i,'teacher')).join('')}</div>
     <aside class="stack ed-side"><section class="panel"><h2>${t.status==='entregue'? 'Corrigir e devolver' : 'Corrigida'}</h2>
@@ -1270,7 +1293,7 @@ function viewEditor(){
   const back= bank? (D.bankId? '#banco-'+D.bankId : '#banco') : D.fromBank? '#banco-'+D.fromBank : '#tarefas';
   const title= bank? (D.bankId? 'Editar tarefa do banco' : 'Nova tarefa no banco') : D.fromBank? 'Ajustar e lançar' : 'Nova tarefa';
   const sub= bank? 'Ela fica guardada no banco para você lançar quando quiser.' : D.fromBank? 'Esta é uma cópia. Mude o que quiser: a tarefa do banco continua igual.' : 'Escreva as questões, escolha os alunos e lance.';
-  const lvTp=pre=>`<div class="two"><label class="field" for="${pre}-lv">Nível<select id="${pre}-lv" data-d="level">${LEVELS.map(l=>`<option ${D.level===l?'selected':''}>${l}</option>`).join('')}</select></label><label class="field" for="${pre}-tp">Tema<select id="${pre}-tp" data-d="topic">${TOPICS.map(x=>`<option ${D.topic===x?'selected':''}>${x}</option>`).join('')}</select></label></div>`;
+  const lvTp=pre=>`<div class="two"><label class="field" for="${pre}-lv">Nível<select id="${pre}-lv" data-d="level">${LEVELS.map(l=>`<option ${D.level===l?'selected':''}>${l}</option>`).join('')}</select></label><label class="field" for="${pre}-tp">Tema<select id="${pre}-tp" data-d="topic">${topicsFor(myLang()).map(x=>`<option ${D.topic===x?'selected':''}>${x}</option>`).join('')}</select></label></div>`;
   return `<a class="link" href="${back}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← ${bank||D.fromBank? 'Banco de tarefas' : 'Tarefas'}</a>
   <div class="ed"><div class="stack" style="gap:14px">
     <div><h1>${title}</h1><p class="meta">${sub}</p></div>
@@ -1280,7 +1303,7 @@ function viewEditor(){
     <div class="addq"><span class="meta" style="width:100%;text-align:center">Adicionar questão</span>${Object.keys(QT).map(k=>`<button class="btn" data-act="q-add" data-t="${k}">+ ${QT[k]}</button>`).join('')}<button class="btn ghost" data-act="q-paste">Colar várias questões de uma vez</button></div>
   </div>
   <aside class="stack ed-side" style="gap:16px">${bank? `
-    <section class="panel"><h2>No banco</h2>${lvTp('db')}<p class="meta muted">Por enquanto, o banco é só de inglês.</p></section>
+    <section class="panel"><h2>No banco</h2>${lvTp('db')}<p class="meta muted">Vai para o banco de ${langName(myLang()).toLowerCase()}.</p></section>
     <p class="err" id="d-err"></p><button class="btn primary big" data-act="d-bank-save">${D.bankId? 'Salvar alterações' : 'Guardar no banco'}</button><p class="meta muted" id="d-sum">${draftSummary(D)}</p>` : `
     <section class="panel"><div class="panel-h"><h2>Para quem</h2>${studs.length>1? `<button class="link" data-act="d-all">${D.students.length===studs.length? 'Limpar' : 'Todos'}</button>` : ''}</div>
       <div class="sel-list">${studs.map(s=>`<label class="sel"><input type="checkbox" data-d-st="${s.id}" ${D.students.includes(s.id)?'checked':''}>${avatar(s,28)}<span>${esc(s.name)}<br><small>${langName(s.lang)} · ${esc(s.level)}</small></span></label>`).join('')}</div></section>
@@ -1300,13 +1323,13 @@ function launchDraft(){
   const D=S.draft, err=validateDraft(D);
   if (err){ $('#d-err').textContent=err[0]; const el=err[1]&&document.getElementById(err[1]); if (el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.focus?.(); } return; }
   const questions=cleanQuestions(D.questions);
-  if (D.saveToBank&&!D.fromBank) DB.bank.push({id:uid(),level:D.level,topic:D.topic,title:D.title.trim(),instructions:D.instructions.trim(),questions:cloneQs(questions),uses:0,mine:true,createdAt:now()});
+  if (D.saveToBank&&!D.fromBank) DB.bank.push({id:uid(),lang:myLang(),level:D.level,topic:D.topic,title:D.title.trim(),instructions:D.instructions.trim(),questions:cloneQs(questions),uses:0,mine:true,createdAt:now()});
   launchTo({title:D.title.trim(),instructions:D.instructions.trim(),questions,students:D.students,due:D.hasDue? fromInputs(D.date,D.time||'23:59') : null,auto:D.auto,bankId:D.fromBank});
 }
 function submitTask(t){
   t.submittedAt=now();
   if (t.auto&&!hasOpen(t)){ t.status='corrigida'; t.correctedAt=now(); toast('Tarefa entregue. Veja seu resultado!'); }
-  else { t.status='entregue'; toast('Tarefa entregue. A professora vai corrigir.'); }
+  else { t.status='entregue'; toast(`Tarefa entregue. ${AProf()} vai corrigir.`); }
   save(); render(); window.scrollTo(0,0);
 }
 function updateProgress(t){
@@ -1382,7 +1405,7 @@ function onTaskInput(e){
 }
 function tasksPanel(s){
   const list=tasksOf(s.id).sort((a,b)=>b.createdAt-a.createdAt);
-  if (isT()) return `<section class="panel"><div class="panel-h"><h2>Tarefas</h2><span class="row-btns">${s.lang==='EN'? `<button class="btn small" data-act="bank-for" data-id="${s.id}">Do banco</button>` : ''}<a class="btn small" href="#nova-tarefa-${s.id}">+ Nova</a></span></div>
+  if (isT()) return `<section class="panel"><div class="panel-h"><h2>Tarefas</h2><span class="row-btns"><button class="btn small" data-act="bank-for" data-id="${s.id}">Do banco</button><a class="btn small" href="#nova-tarefa-${s.id}">+ Nova</a></span></div>
     ${list.length? `<div class="rows">${list.slice(0,5).map(t=>`<a class="row" href="#tarefa-${t.id}"><div class="row-m"><b>${esc(t.title)}</b><small>${t.questions.length} questões · ${fShort.format(t.createdAt)}</small></div>${pill(taskState(t))}</a>`).join('')}</div>` : '<p class="muted">Nenhuma tarefa lançada ainda.</p>'}</section>`;
   const todo=list.filter(t=>t.status==='pendente');
   return `<section class="panel"><div class="panel-h"><h2>Tarefas</h2><a class="link" href="#tarefas">Ver todas</a></div>
@@ -1397,13 +1420,13 @@ function render(){
   if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='tarefas'? viewTasksS(me) : t&&t.studentId===me.id? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='tarefas') main=viewTasksT();
-  else if (r.name==='tarefa'&&getTask(r.id)) main=viewTaskT(getTask(r.id));
+  else if (r.name==='tarefa'&&getTask(r.id)&&mine(getTask(r.id))) main=viewTaskT(getTask(r.id));
   else if (r.name==='nova'){ if (!S.draft) S.draft=newDraft(r.id); main=viewEditor(); }
   else if (r.name==='banco') main=viewBank();
-  else if (r.name==='bancoItem'&&DB.bank.find(b=>b.id===r.id)){ if (!S.bl) S.bl=newBl(); main=viewBankItem(DB.bank.find(b=>b.id===r.id)); }
+  else if (r.name==='bancoItem'&&langBank().find(b=>b.id===r.id)){ if (!S.bl) S.bl=newBl(); main=viewBankItem(DB.bank.find(b=>b.id===r.id)); }
   else if ((r.name==='bancoNova'||r.name==='bancoEd')&&S.draft) main=viewEditor();
   else if (r.name==='alunos') main=viewStudents();
-  else if (r.name==='aluno'&&user(r.id)?.role==='student') main=viewNotebook(user(r.id));
+  else if (r.name==='aluno'&&user(r.id)?.teacherId===S.me) main=viewNotebook(user(r.id));
   else main=viewToday();
   app.innerHTML=`${topbar()}<main class="page">${main}</main>`;
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
@@ -1451,14 +1474,14 @@ function cantModal(l){
 }
 function pickHtml(){
   const P=S.pick, l=getLesson(P.lessonId);
-  if (!P.days.length) return `<p class="meta">A professora não tem horários livres nos próximos dias. Fale direto com ela.</p><div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`;
+  if (!P.days.length) return `<p class="meta">${AProf()} não tem horários livres nos próximos dias. Fale direto com ela.</p><div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`;
   const hours=P.day? freeSlots(P.day,l.id) : [];
-  return `<p class="meta">Escolha <b>até 3 horários</b> em que você pode. A professora confirma um deles.</p>
+  return `<p class="meta">Escolha <b>até 3 horários</b> em que você pode. ${AProf()} confirma um deles.</p>
     <div class="daybtns" role="group" aria-label="Dia">${P.days.map(d=>`<button class="daybtn ${d===P.day?'on':''}" data-act="pick-day" data-v="${d}">${WD[new Date(d).getDay()].slice(0,3)}<b>${new Date(d).getDate()}</b>${fShort.format(d).split(' ').pop()}</button>`).join('')}</div>
     <div class="hours" role="group" aria-label="Horário">${hours.map(ts=>`<button class="hour ${P.chosen.includes(ts)?'on':''}" data-act="pick-hour" data-v="${ts}" ${!P.chosen.includes(ts)&&P.chosen.length>=3?'disabled':''}>${fTime.format(ts)}</button>`).join('')}</div>
     <div class="field">Seus horários${P.chosen.length? `<div class="picked">${P.chosen.sort((a,b)=>a-b).map(ts=>`<span>${esc(fDay.format(ts))} · ${fTime.format(ts)}<button data-act="pick-hour" data-v="${ts}" aria-label="Remover">×</button></span>`).join('')}</div>` : '<small>Nenhum escolhido ainda.</small>'}</div>
     <label class="field" for="c-reason">Quer contar o motivo? <small>(opcional)</small><input type="text" id="c-reason" value="${esc(P.reason||'')}" placeholder="ex.: vou viajar nesse dia"></label>
-    <div class="actions"><button class="btn" data-act="close">Voltar</button><button class="btn primary" data-act="cant-send" ${P.chosen.length?'':'disabled'}>Enviar para a professora</button></div>`;
+    <div class="actions"><button class="btn" data-act="close">Voltar</button><button class="btn primary" data-act="cant-send" ${P.chosen.length?'':'disabled'}>Enviar para ${aProf()}</button></div>`;
 }
 function refreshPick(){ const r=$('#c-reason'); if (r) S.pick.reason=r.value; $('#pick').innerHTML=pickHtml(); }
 
@@ -1469,7 +1492,7 @@ function studentForm(s){
   openModal(`<form data-form="student" data-id="${s?.id||''}">
     <h2>${s? 'Editar aluno' : 'Novo aluno'}</h2>
     <div class="two"><label class="field" for="n-name">Nome<input type="text" id="n-name" name="name" required value="${esc(v.name)}"></label><label class="field" for="n-email">E-mail <small>(é o login dele)</small><input type="email" id="n-email" name="email" required value="${esc(v.email)}"></label></div>
-    <div class="two"><label class="field" for="n-lang">Idioma<select id="n-lang" name="lang"><option value="EN" ${v.lang==='EN'?'selected':''}>Inglês</option><option value="FR" ${v.lang==='FR'?'selected':''}>Francês</option></select></label><label class="field" for="n-level">Nível<input type="text" id="n-level" name="level" value="${esc(v.level)}" placeholder="ex.: B1 · Intermediário"></label></div>
+    <div class="two"><div class="field">Idioma<span class="pill-lang">${langName(myLang())}</span></div><label class="field" for="n-level">Nível<input type="text" id="n-level" name="level" value="${esc(v.level)}" placeholder="ex.: B1 · Intermediário"></label></div>
     <fieldset><legend>Horário fixo da aula (1 hora)</legend><div class="two"><label class="field" for="n-wd"><span class="sr">Dia</span><select id="n-wd" name="wd">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${v.slot.wd===d?'selected':''}>Toda ${WD[d]}</option>`).join('')}</select></label><label class="field" for="n-time"><span class="sr">Horário</span><input type="time" id="n-time" name="time" required value="${hhmm(v.slot.h,v.slot.m)}"></label></div></fieldset>
     <label class="field" for="n-room">Link da sala online <small>(Google Meet, Zoom… o aluno clica em “Entrar na aula”)</small><input type="url" id="n-room" name="room" value="${esc(v.room)}" placeholder="https://meet.google.com/..."></label>
     ${s? '' : `<fieldset><legend>Primeiro pacote</legend><div class="three"><label class="field" for="n-size">Aulas<input type="number" id="n-size" name="size" min="1" value="8"></label><label class="field" for="n-price">Valor (R$)<input type="number" id="n-price" name="price" min="0" step="1" value="480"></label><label class="field" for="n-paid">Pagamento<select id="n-paid" name="paid"><option value="0">Pendente</option><option value="1">Já pago</option></select></label></div></fieldset>`}
@@ -1482,13 +1505,13 @@ function studentForm(s){
   </form>`,{wide:true});
 }
 function settingsModal(){
-  const av=DB.settings.avail, hs=[...Array(17)].map((_,i)=>i+6);
+  const st=settingsOf(S.me), av=st.avail, hs=[...Array(17)].map((_,i)=>i+6);
   openModal(`<form data-form="settings"><h2>Horários e pagamento</h2>
     <fieldset><legend>Horários em que você pode dar aula</legend><p class="meta" style="margin-top:-6px">Os alunos só podem sugerir remarcação dentro destes horários, e só nos que estiverem livres.</p>
       <div class="avail">${[1,2,3,4,5,6,0].map(d=>{ const a=av[d]; return `<div class="avail-r"><label class="ck"><input type="checkbox" name="on${d}" ${a?'checked':''}>${WD[d]}</label>
         <select name="from${d}" aria-label="Início ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[0]??8)===h?'selected':''}>das ${hhmm(h)}</option>`).join('')}</select>
         <select name="to${d}" aria-label="Fim ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[1]??21)===h?'selected':''}>até ${hhmm(h)}</option>`).join('')}</select></div>`; }).join('')}</div></fieldset>
-    <label class="field" for="st-pix">Sua chave PIX <small>(aparece para o aluno quando há pagamento pendente)</small><input type="text" id="st-pix" name="pix" value="${esc(DB.settings.pix)}"></label>
+    <label class="field" for="st-pix">Sua chave PIX <small>(aparece para o aluno quando há pagamento pendente)</small><input type="text" id="st-pix" name="pix" value="${esc(st.pix)}"></label>
     <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Salvar</button></div></form>`,{wide:true});
 }
 
@@ -1526,12 +1549,12 @@ const ACT={
       <p class="meta muted">As próximas aulas passam a descontar deste pacote quando o atual acabar.</p>
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Criar pacote</button></div></form>`,{focus:'#k-size'}); },
   'mark-paid'(el){ const p=DB.packages.find(x=>x.id===el.dataset.id); p.paid=true; p.paidAt=now(); save(); render(); toast('Pagamento confirmado'); },
-  cant(el){ const l=getLesson(el.dataset.id); if (l.start-now()<24*HOUR){ toast('Faltam menos de 24 horas. Fale direto com a professora.'); return; } cantModal(l); },
+  cant(el){ const l=getLesson(el.dataset.id); if (l.start-now()<24*HOUR){ toast(`Faltam menos de 24 horas. Fale direto com ${aProf()}.`); return; } cantModal(l); },
   'pick-day'(el){ S.pick.day=+el.dataset.v; refreshPick(); },
   'pick-hour'(el){ const ts=+el.dataset.v, c=S.pick.chosen; const k=c.indexOf(ts); if (k>=0) c.splice(k,1); else if (c.length<3) c.push(ts); refreshPick(); },
   'cant-send'(){ const P=S.pick, r=$('#c-reason');
     DB.requests.push({id:uid(),lessonId:P.lessonId,studentId:S.me,reason:r? r.value.trim() : '',options:P.chosen.slice().sort((a,b)=>a-b),status:'pendente',createdAt:now()});
-    save(); closeModal(); render(); toast('Pedido enviado. A professora vai escolher um dos horários.'); },
+    save(); closeModal(); render(); toast(`Pedido enviado. ${AProf()} vai escolher um dos horários.`); },
   'req-cancel'(el){ DB.requests=DB.requests.filter(r=>r.id!==el.dataset.id); save(); render(); toast('Pedido retirado. A aula continua no horário original.'); },
   'req-accept'(el){ const r=DB.requests.find(x=>x.id===el.dataset.id), l=getLesson(r.lessonId), ts=+el.dataset.ts;
     if (conflict(ts,l.id)){ toast('Esse horário já está ocupado.'); return; }
@@ -1566,9 +1589,9 @@ const FORMS={
     if (DB.users.some(u=>u.email.toLowerCase()===email&&u.id!==id)){ err.textContent='Já existe alguém com este e-mail.'; return; }
     const [h,m]=fd.get('time').split(':').map(Number);
     let room=fd.get('room').trim(); if (room&&!/^https?:\/\//i.test(room)) room='https://'+room;
-    const vals={name:fd.get('name').trim(),email,lang:fd.get('lang'),level:fd.get('level').trim(),slot:{wd:+fd.get('wd'),h,m},room:room||'https://meet.google.com/',palette:fd.get('palette'),scene:fd.get('scene'),seed:+fd.get('seed')};
+    const vals={name:fd.get('name').trim(),email,lang:myLang(),level:fd.get('level').trim(),slot:{wd:+fd.get('wd'),h,m},room:room||'https://meet.google.com/',palette:fd.get('palette'),scene:fd.get('scene'),seed:+fd.get('seed')};
     if (id){ const s=user(id), slotChanged=JSON.stringify(s.slot)!==JSON.stringify(vals.slot); Object.assign(s,vals); if (slotChanged) regenFuture(s); save(); closeModal(); render(); toast(slotChanged? 'Aluno atualizado. As próximas aulas mudaram de horário.' : 'Aluno atualizado'); return; }
-    const s={id:'u'+uid(),role:'student',pass:PASS,since:dayStart(now()),...vals};
+    const s={id:'u'+uid(),role:'student',pass:PASS,teacherId:S.me,since:dayStart(now()),...vals};
     DB.users.push(s); DB.packages.push({id:uid(),studentId:s.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null});
     ensureLessons(); save(); location.hash='aluno-'+s.id; render();
     openModal(`<h2>Caderno de ${esc(s.name.split(' ')[0])} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Envie o acesso para o aluno:</p>
@@ -1578,7 +1601,7 @@ const FORMS={
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
     const av={}; for (const d of [0,1,2,3,4,5,6]) if (fd.get('on'+d)){ const a=+fd.get('from'+d), b=+fd.get('to'+d); if (b>a) av[d]=[a,b]; }
-    DB.settings.avail=av; DB.settings.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
+    const st=settingsOf(S.me); st.avail=av; st.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
 Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS);
@@ -1600,7 +1623,7 @@ window.addEventListener('hashchange',go);
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
 if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==3){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=3; } DB.tasks=DB.tasks.filter(t=>user(t.studentId)); ensureLessons(); save(); }
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==4){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=4; } DB.tasks=DB.tasks.filter(t=>user(t.studentId)); ensureLessons(); save(); }
 S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
 setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
