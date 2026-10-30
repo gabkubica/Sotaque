@@ -205,9 +205,12 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   .band-h h2{font-size:clamp(32px,9vw,40px)}
   .poster{aspect-ratio:1/1}
   .poster .quadro{height:100%}
-  .cards,.rv-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:0 20px 8px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .cards::-webkit-scrollbar,.rv-grid::-webkit-scrollbar{display:none}
-  .card,.rv{flex:0 0 82%;scroll-snap-align:start}
+  .cards,.rv-grid,.steps{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:0 20px 8px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards::-webkit-scrollbar,.rv-grid::-webkit-scrollbar,.steps::-webkit-scrollbar{display:none}
+  .card,.rv,.step{flex:0 0 82%;scroll-snap-align:start}
+  .step{padding:24px}
+  .step .n{font-size:52px}
+  .how .swipe{color:#a89e9a}
   .rv.empty{min-height:200px}
   .swipe{display:flex}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -288,7 +291,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
         <div class="step"><span class="n">1</span><h3>A gente conversa</h3><p>Você me chama no WhatsApp e conta o seu objetivo, a sua rotina e o que já sabe de inglês.</p></div>
         <div class="step"><span class="n">2</span><h3>Eu monto o seu plano</h3><p>Vejo o seu nível e preparo um caminho pensado para você, com os temas que fazem sentido no seu dia a dia.</p></div>
         <div class="step"><span class="n">3</span><h3>As aulas começam</h3><p>Aulas online, ao vivo, num horário fixo da semana. Entre uma aula e outra, você recebe tarefas para praticar.</p></div>
-      </div>
+      </div><p class="swipe" aria-hidden="true"><svg viewBox="0 0 28 14"><path d="M2 7h22M18 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</p>
       <div class="rules" aria-label="Como são as aulas"><span>Aulas online e ao vivo</span><span>1 hora por aula</span><span>Horário fixo na semana</span><span>Remarcação até 24 h antes</span><span>Pacotes de aulas</span><span>Tarefas entre as aulas</span></div>
     </div>
   </section>
