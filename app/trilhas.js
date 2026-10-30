@@ -175,7 +175,7 @@ const TRILHAS={
     ],
   },
 };
-const MARCO_SCENES=['amanhecer','livro','conversa','mar','aviao','globo','arcos','disco'];
+const MARCO_SCENES=['amanhecer','livro','conversa','mar','aviao','globo','arcos','disco','balao','montanha','lampada','planta'];
 /* régua de subníveis: o CEFR divide A2, B1 e B2 em nível "cheio" e "plus" */
 const SUBLEVELS=['A1','A2','A2+','B1','B1+','B2','B2+','C1'];
 const hasPlus=l=>l==='A2'||l==='B1'||l==='B2';
@@ -186,8 +186,11 @@ const _mc={};
 function marcosOf(lang,level){
   const k=lang+level; if (_mc[k]) return _mc[k];
   const list=TRILHAS[lang]?.[level]||[], half=Math.ceil(list.length/2);
+  const used=new Set();
   return _mc[k]=list.map(([title,learn,tasks,w,cando],i)=>{ const id=`${lang}-${level}-${i+1}`, h=i<half? 1 : 2;
-    return {id,n:i+1,lang,level,title,can:title,learn,tasks,w,half:h,sub: h===2&&hasPlus(level)? level+'+' : level,scene:MARCO_SCENES[i%MARCO_SCENES.length],
+    /* cena pelo tema do marco; se já apareceu neste nível, tenta a próxima do grupo e depois as tarefas */
+    const cands=[...scenePool(title+' '+learn,''),...tasks.flatMap(t=>scenePool(t,'')),...MARCO_SCENES], scene=cands.find(c=>!used.has(c))||MARCO_SCENES[i%MARCO_SCENES.length]; used.add(scene);
+    return {id,n:i+1,lang,level,title,can:title,learn,tasks,w,half:h,sub: h===2&&hasPlus(level)? level+'+' : level,scene,
       stmts:cando.map((c,j)=>({id:`${id}.${j+1}`,k:c[0],txt:c.slice(2),marcoId:id}))}; });
 }
 const marcoById=id=>{ const [lang,level]=id.split('-'); return marcosOf(lang,level).find(m=>m.id===id); };
