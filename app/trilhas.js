@@ -187,7 +187,8 @@ function marcosOf(lang,level){
   const k=lang+level; if (_mc[k]) return _mc[k];
   const list=TRILHAS[lang]?.[level]||[], half=Math.ceil(list.length/2);
   const used=new Set();
-  return _mc[k]=list.map(([title,learn,tasks,w,cando],i)=>{ const id=`${lang}-${level}-${i+1}`, h=i<half? 1 : 2;
+  return _mc[k]=list.map(([title,learn,tasks0,w,cando],i)=>{ const id=`${lang}-${level}-${i+1}`, h=i<half? 1 : 2;
+    const tasks=tasks0.concat((typeof TRILHA_EXTRA!=='undefined'&&TRILHA_EXTRA[id])||[]);
     /* cena pelo tema do marco; se já apareceu neste nível, tenta a próxima do grupo e depois as tarefas */
     const cands=[...scenePool(title+' '+learn,''),...tasks.flatMap(t=>scenePool(t,'')),...MARCO_SCENES], scene=cands.find(c=>!used.has(c))||MARCO_SCENES[i%MARCO_SCENES.length]; used.add(scene);
     return {id,n:i+1,lang,level,title,can:title,learn,tasks,w,half:h,sub: h===2&&hasPlus(level)? level+'+' : level,scene,

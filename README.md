@@ -35,8 +35,8 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
 - Tarefas com 6 tipos de questão: múltipla escolha, verdadeiro ou falso, completar a lacuna,
   ligar colunas, ordenar a frase e resposta escrita. As objetivas se corrigem sozinhas.
 - Banco de tarefas, separado por idioma, do A1 ao C1, com filtros por nível, tema e tipo:
-  - inglês: 159 tarefas e 972 questões (`banco.js`);
-  - francês: 72 tarefas e 432 questões (`banco-fr.js`).
+  363 tarefas e cerca de 2.100 questões (inglês 222, francês 141), sendo 40 escutas com áudio
+  (`banco.js`, `banco-fr.js`, `provas.js` e a ampliação em `banco-extra.js`).
 - "Colar várias questões": importa questões coladas do Word ou de um PDF.
 - Banco também com escutas (o navegador lê o áudio em voz alta; linhas `A:` e `B:` viram duas vozes)
   e leituras novas (`provas.js`). Qualquer tarefa pode ter um "áudio para escuta".
@@ -61,7 +61,7 @@ Contas de teste (senha `sotaque123`):
 - inglês: `professora@sotaque.app` · alunos `marina@`, `theo@`, `lucas@`, `julia@sotaque.app`;
 - francês: `professor@sotaque.app` · alunos `beatriz@`, `rafael@`, `sofia@sotaque.app`.
 
-Arquivos: `index.html` (o app), `banco.js` e `banco-fr.js` (bancos de tarefas), `trilhas.js` (marcos de cada nível), `provas.js` (escutas, leituras e provas de nível), `quadros.js` (ilustrações).
+Arquivos: `index.html` (o app), `banco.js` e `banco-fr.js` (bancos de tarefas), `trilhas.js` (marcos de cada nível), `provas.js` (escutas, leituras e provas de nível), `banco-extra.js` (ampliação do banco), `quadros.js` (ilustrações).
 
 **Estado atual:** modo demonstração, com os dados no `localStorage` do navegador.
 Cada navegador guarda os próprios dados: o que a professora faz não chega ao aluno em outro aparelho.
