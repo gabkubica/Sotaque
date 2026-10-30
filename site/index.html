@@ -1,0 +1,397 @@
+<title>Teacher Lexi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Teacher Lexi (Alexia): aulas particulares de inglês online, personalizadas de acordo com o seu objetivo. Para crianças, adolescentes e adultos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: página de cartaz, faixas largas, cada faixa com uma paleta do Quadros Winer. Visual claro de propósito (papel). */
+:root{
+  --paper:#f8f2ea; --cream:#fffaf2; --ink:#221c1e; --ink-2:#5a4f52; --ink-3:#8a7e80; --line:#e6dbcf;
+  --wine:#7a1f35; --wine-2:#9c3550; --rose:#f6dde1;
+  --tom-bg:#f6d9cf; --tom-a:#e0563b; --tom-b:#f3a58f; --tom-c:#a8351f;
+  --mus-bg:#f4ead3; --lav-bg:#e5e1f3; --men-bg:#d8eedf; --ceu-bg:#dce7f3;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;letter-spacing:-.025em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+.quadro{display:block;width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
+.fillme{background:repeating-linear-gradient(90deg,transparent 0 6px,rgba(122,31,53,.08) 6px 12px);border-bottom:2px dashed var(--wine);padding:0 .15em}
+
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:15px 26px;font-weight:700;font-size:16.5px;text-decoration:none;border:2px solid transparent;transition:transform .15s ease, filter .15s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn.wa{background:var(--wine);color:var(--cream)}
+.btn.wa:hover{filter:brightness(1.1)}
+.btn.ghost{border-color:var(--ink);color:var(--ink)}
+.btn svg{width:22px;height:22px;flex:none}
+
+/* topo */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(248,242,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.04em;color:var(--ink-3);line-height:1}
+.menu{display:flex;gap:4px;margin-left:auto}
+.menu a{padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;color:var(--ink-2)}
+.menu a:hover{background:var(--cream);color:var(--ink)}
+.top .btn{padding:10px 18px;font-size:15px}
+
+/* hero */
+.hero{padding-block:40px 72px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(46px,7vw,92px);font-weight:800;letter-spacing:-.045em;line-height:.95}
+.hero h1 em{font-style:normal;color:var(--tom-a);position:relative;white-space:nowrap}
+.hero h1 em svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em}
+.hero .lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);max-width:34em;margin-top:26px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.creds{list-style:none;padding:0;margin:36px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.creds li{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14.5px;font-weight:600}
+.creds li i{width:8px;height:8px;border-radius:50%;background:var(--tom-a)}
+.poster{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(122,31,53,.35);transform:rotate(1.2deg)}
+.poster figcaption{position:absolute;left:22px;bottom:20px;right:22px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--cream);font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.02em}
+.poster figcaption b{font-size:26px;line-height:1}
+
+/* faixas */
+.band{padding-block:96px}
+.band-h{display:flex;flex-direction:column;gap:14px;max-width:760px;margin-bottom:52px}
+.band-h h2{font-size:clamp(36px,4.6vw,60px);font-weight:800}
+.band-h p{font-size:19px;color:var(--ink-2)}
+
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:center}
+.photo{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:24px;background:var(--cream);border:2px dashed var(--line);display:grid;place-items:center;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.photo.has{border:0;background:var(--cream);padding:14px;box-shadow:0 30px 60px -30px rgba(122,31,53,.4);transform:rotate(-1.5deg);overflow:visible}
+.photo.has img{border-radius:14px}
+.photo .sticker{position:absolute;right:-26px;top:-26px;width:104px;height:104px;pointer-events:none}
+.photo .hello{position:absolute;left:-16px;bottom:34px;background:var(--wine);color:var(--cream);font-family:var(--display);font-weight:700;font-size:19px;padding:9px 18px;border-radius:999px;transform:rotate(-5deg);box-shadow:0 10px 20px -10px rgba(122,31,53,.6)}
+.hi{display:inline-flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:6px 18px 6px 6px;margin-bottom:22px;font-size:15.5px;color:var(--ink-2)}
+.hi img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 28%}
+.hi b{color:var(--ink)}
+.photo .ph{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;color:var(--ink-3);font-size:14px;padding:24px}
+.photo .ph .quadro{width:72%;border-radius:16px}
+.about h2{font-size:clamp(34px,4vw,52px);font-weight:800;color:var(--ink)}
+.about .txt{display:flex;flex-direction:column;gap:18px;font-size:18px;color:var(--ink-2)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:10px}
+.fact{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.fact b{font-family:var(--display);font-size:20px;color:var(--ink);line-height:1.15}
+.fact span{font-size:14.5px;color:var(--ink-2)}
+
+/* para quem */
+.who{background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.card-b{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:24px;font-weight:800}
+.card p{font-size:15.5px;color:var(--ink-2)}
+
+/* aulas sob medida */
+.goals{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.goal-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.goal-list li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+.goal-list li:last-child{border-bottom:1px solid var(--line)}
+.goal-list svg{width:40px;height:40px}
+.goal-list b{display:block;font-family:var(--display);font-size:22px;line-height:1.2}
+.goal-list span{color:var(--ink-2);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{font-family:var(--display);font-weight:700;font-size:clamp(18px,2vw,24px);padding:10px 20px;border-radius:999px;border:2px solid var(--ink);line-height:1.1}
+.tags span:nth-child(3n+1){background:var(--tom-bg);border-color:var(--tom-bg)}
+.tags span:nth-child(3n+2){background:var(--lav-bg);border-color:var(--lav-bg)}
+.tags span:nth-child(3n){background:var(--men-bg);border-color:var(--men-bg)}
+
+/* como funciona */
+.how{background:var(--ink);color:var(--cream)}
+.how .eyebrow{color:var(--tom-b)}
+.how .band-h p{color:#d9cfca}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s}
+.step{border:1px solid #3b3235;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px;position:relative}
+.step .n{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--tom-a)}
+.step h3{font-size:26px;font-weight:800}
+.step p{color:#d9cfca;font-size:16px}
+.rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.rules span{display:inline-flex;align-items:center;gap:8px;border:1px solid #4a3f42;border-radius:999px;padding:8px 16px;font-size:15px;color:#eee5df}
+.rules span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tom-b)}
+
+/* depoimentos */
+.reviews{background:var(--rose)}
+.rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rv{background:var(--cream);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:18px;position:relative}
+.rv .q{font-family:var(--display);font-size:72px;line-height:.6;color:var(--tom-a);height:30px}
+.rv p{font-size:17.5px;color:var(--ink)}
+.rv footer{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rv footer i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--display);font-weight:700;color:var(--cream)}
+.rv footer b{display:block;line-height:1.2}
+.rv footer small{color:var(--ink-3);font-size:13.5px}
+.rv.empty{background:transparent;border:2px dashed rgba(156,53,80,.35);color:var(--ink-3);justify-content:center;align-items:flex-start;min-height:240px}
+.rv.empty p{color:var(--ink-3);font-size:15.5px}
+.rv.empty .q{opacity:.35}
+
+/* dúvidas */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.faq details{border-top:1px solid var(--line);padding:20px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:var(--display);font-weight:700;font-size:21px;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;line-height:1;color:var(--wine);transition:transform .2s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;color:var(--ink-2);max-width:60ch}
+
+/* chamada final */
+.final{padding-block:24px 96px}
+.final-box{position:relative;border-radius:32px;overflow:hidden;background:var(--tom-bg)}
+.final-box .quadro{min-height:360px;height:100%;object-fit:cover}
+.final-t{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:48px 6%;max-width:640px}
+.final-t h2{font-size:clamp(38px,5vw,66px);font-weight:800;color:var(--tom-c)}
+.final-t p{font-size:19px;color:#5a4f52;max-width:28em}
+
+footer.foot{border-top:1px solid var(--line);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px));font-size:14.5px;color:var(--ink-3)}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.float{position:fixed;z-index:30;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:none;align-items:center;gap:10px;background:var(--wine);color:var(--cream);border-radius:999px;padding:14px 20px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px -10px rgba(122,31,53,.6)}
+.float svg{width:24px;height:24px}
+.float.show{display:inline-flex}
+
+@media (max-width:1020px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rv-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:880px){
+  .menu{display:none}
+  .top .btn{margin-left:auto}
+  .hero .wrap,.about,.goals,.faq{grid-template-columns:minmax(0,1fr);gap:40px}
+  .poster{transform:none;max-width:560px}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .band{padding-block:72px}
+  .photo{max-width:420px}
+  .final-box .quadro{min-height:520px}
+  .final-t{justify-content:flex-start;padding-top:40px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .photo .sticker{right:-8px;top:-18px;width:80px;height:80px}
+  .photo .hello{left:-6px}
+  .cards,.facts{grid-template-columns:minmax(0,1fr)}
+  .top .btn span{display:none}
+  .top .btn{padding:10px 12px}
+  .hero .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" id="brand"></a>
+    <nav class="menu" aria-label="Seções"><a href="#sobre">Sobre</a><a href="#aulas">Aulas</a><a href="#como-funciona">Como funciona</a><a href="#depoimentos">Depoimentos</a><a href="#duvidas">Dúvidas</a></nav>
+    <a class="btn wa" data-wa href="#" aria-label="Falar no WhatsApp">${WA_ICON}<span>Falar no WhatsApp</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <div class="hi" id="hi"></div>
+        <p class="eyebrow">Aulas particulares de inglês · online</p>
+        <h1 style="margin-top:18px">Inglês sob medida para <em>o seu objetivo.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 75 4 150 11 T 296 8" fill="none" stroke="#f3a58f" stroke-width="7" stroke-linecap="round"/></svg></em></h1>
+        <p class="lead">Eu monto cada aula a partir do que você precisa: viajar, trabalhar, acompanhar a escola ou finalmente perder o medo de falar. Dou aula para crianças, adolescentes e adultos.</p>
+        <div class="ctas"><a class="btn wa" data-wa href="#">${WA_ICON}Quero conversar no WhatsApp</a><a class="btn ghost" href="#aulas">Ver como são as aulas</a></div>
+        <ul class="creds" aria-label="Formação e experiência">
+          <li><i></i>Letras Inglês-Português · PUCPR</li>
+          <li><i></i>1 ano e meio estudando nos EUA</li>
+          <li><i></i>Certificação em educação infantil bilíngue</li>
+        </ul>
+      </div>
+      <figure class="poster" style="margin:0" id="poster"></figure>
+    </div>
+  </section>
+
+  <section class="band" id="sobre">
+    <div class="wrap about">
+      <div class="photo" id="photo"></div>
+      <div class="txt">
+        <p class="eyebrow">Sobre mim</p>
+        <h2 id="about-h"></h2>
+        <p>Sou formada em <b>Letras Inglês-Português pela PUCPR</b> e morei <b>um ano e meio nos Estados Unidos</b>, estudando. Foi lá que aprendi, na prática, que um idioma se aprende vivendo situações reais, e é isso que levo para as minhas aulas.</p>
+        <p>Dou aula para <b>todas as idades</b>, das crianças aos adultos, e tenho <b>certificações em educação infantil bilíngue</b>. Cada aluno chega com um objetivo diferente, então cada aula também é diferente.</p>
+        <div class="facts">
+          <div class="fact"><b>Letras · PUCPR</b><span>Licenciatura em Inglês e Português</span></div>
+          <div class="fact"><b>1 ano e meio nos EUA</b><span>Vivência real com o idioma e a cultura</span></div>
+          <div class="fact"><b>Educação infantil bilíngue</b><span>Certificações para ensinar crianças</span></div>
+          <div class="fact"><b>Todas as idades</b><span>Crianças, adolescentes e adultos</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band who" id="aulas">
+    <div class="wrap">
+      <div class="band-h"><p class="eyebrow">Para quem eu dou aula</p><h2>Uma aula diferente para cada fase da vida.</h2><p>O conteúdo, o ritmo e os materiais mudam conforme a idade e o objetivo de cada aluno.</p></div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap goals">
+      <div class="band-h" style="margin-bottom:0"><p class="eyebrow">Aulas personalizáveis</p><h2>Você diz aonde quer chegar. Eu monto a aula a partir disso.</h2><p>Nada de apostila igual para todo mundo. Os temas, os exercícios e a velocidade acompanham você.</p>
+        <div class="tags" style="margin-top:22px" aria-label="Exemplos de objetivos"><span>Viagem</span><span>Trabalho</span><span>Conversação</span><span>Escola</span><span>Entrevista de emprego</span><span>Intercâmbio</span></div></div>
+      <ul class="goal-list" id="goal-list"></ul>
+    </div>
+  </section>
+
+  <section class="band how" id="como-funciona">
+    <div class="wrap">
+      <div class="band-h"><p class="eyebrow">Como funciona</p><h2>Começar é simples.</h2><p>Três passos entre a primeira mensagem e a primeira aula.</p></div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>A gente conversa</h3><p>Você me chama no WhatsApp e conta o seu objetivo, a sua rotina e o que já sabe de inglês.</p></div>
+        <div class="step"><span class="n">2</span><h3>Eu monto o seu plano</h3><p>Vejo o seu nível e preparo um caminho pensado para você, com os temas que fazem sentido no seu dia a dia.</p></div>
+        <div class="step"><span class="n">3</span><h3>As aulas começam</h3><p>Aulas online, ao vivo, num horário fixo da semana. Entre uma aula e outra, você recebe tarefas para praticar.</p></div>
+      </div>
+      <div class="rules" aria-label="Como são as aulas"><span>Aulas online e ao vivo</span><span>1 hora por aula</span><span>Horário fixo na semana</span><span>Remarcação até 24 h antes</span><span>Pacotes de aulas</span><span>Tarefas entre as aulas</span></div>
+    </div>
+  </section>
+
+  <section class="band reviews" id="depoimentos">
+    <div class="wrap">
+      <div class="band-h"><p class="eyebrow">Depoimentos</p><h2>O que dizem os meus alunos.</h2></div>
+      <div class="rv-grid" id="reviews"></div>
+    </div>
+  </section>
+
+  <section class="band" id="duvidas">
+    <div class="wrap faq">
+      <div class="band-h" style="margin-bottom:0"><p class="eyebrow">Dúvidas frequentes</p><h2>Antes de começar.</h2><p>Não achou a sua dúvida aqui? Me mande uma mensagem.</p><a class="btn wa" data-wa href="#" style="align-self:flex-start;margin-top:10px">${WA_ICON}Perguntar no WhatsApp</a></div>
+      <div>
+        <details open><summary>As aulas são online?</summary><p>Sim. As aulas são ao vivo, por videochamada, então você pode estudar de casa ou de onde estiver.</p></details>
+        <details><summary>Quanto dura cada aula?</summary><p>Cada aula tem 1 hora, num horário fixo da semana combinado com você.</p></details>
+        <details><summary>Preciso já saber alguma coisa de inglês?</summary><p>Não. Antes de começar, eu vejo o seu nível e monto o plano a partir dele, seja você iniciante ou avançado.</p></details>
+        <details><summary>Dá para remarcar uma aula?</summary><p>Dá, sim. Basta avisar com pelo menos 24 horas de antecedência para escolhermos outro horário.</p></details>
+        <details><summary>Você dá aula para crianças?</summary><p>Sim. Tenho certificações em educação infantil bilíngue, e as aulas para os pequenos são pensadas para a idade, com atividades lúdicas.</p></details>
+        <details><summary>Como funcionam os pacotes e os valores?</summary><p>As aulas são vendidas em pacotes. Me chame no WhatsApp para saber os valores e escolher o pacote que combina com a sua rotina.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap"><div class="final-box" id="final"><div class="final-t"><h2>Vamos começar?</h2><p>Me conta o seu objetivo e eu te mostro como as aulas podem te levar até lá.</p><a class="btn wa" data-wa href="#" style="align-self:flex-start">${WA_ICON}Chamar no WhatsApp</a></div></div></div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span id="foot-name"></span><span>Aulas particulares de inglês online</span></div></footer>
+<a class="float" data-wa href="#" id="float" aria-label="Falar no WhatsApp"></a>
+
+<script src="quadros.js"></script>
+<script>
+/* =========================================================
+   CONFIGURAÇÃO · preencha aqui
+   ========================================================= */
+const CONFIG={
+  nome:'Teacher Lexi',      // aparece no topo, no cumprimento e no rodapé
+  nomeReal:'Alexia',        // aparece no “Sobre mim”
+  whatsapp:'',              // só números, com DDI e DDD. Ex.: '5541999998888'
+  mensagem:'Olá! Vi seu site e quero saber mais sobre as aulas de inglês.',
+  foto:'foto-alexia.jpg',   // arquivo da foto, na mesma pasta do site
+};
+/* Depoimentos: copie o modelo e preencha com os textos reais dos alunos.
+   { texto:'…', nome:'Nome do aluno', detalhe:'Aluno há 1 ano · inglês para o trabalho' } */
+const DEPOIMENTOS=[
+];
+
+/* ---------- daqui para baixo não precisa mexer ---------- */
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const WA_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18.5l1.2-3.4A7.5 7.5 0 1 1 8.6 18.3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.2 9.3c.3 1.9 1.6 3.4 3.6 4.2l1-1 1.6.8-.4 1.3c-2.8.2-6.2-2.6-6.5-5.6l1.3-.5.8 1.6z" fill="currentColor"/></svg>';
+document.querySelectorAll('a.btn.wa,.faq a.btn').forEach(a=>{ a.innerHTML=a.innerHTML.replace('${WA_ICON}',WA_ICON); });
+const waUrl=`https://wa.me/${CONFIG.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(CONFIG.mensagem)}`;
+document.querySelectorAll('[data-wa]').forEach(a=>{ a.href=waUrl; a.target='_blank'; a.rel='noopener'; });
+const nome=CONFIG.nome.trim();
+const logo=`<svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="11" fill="#7a1f35"/><path d="M7 28a12 12 0 0 1 24 0z" fill="#e0563b"/><circle cx="19" cy="28" r="7.5" fill="none" stroke="#fffaf2" stroke-width="2"/><path d="M0 29h38v9H0z" fill="#a8351f"/>${star(28,10,3.6,'#fffaf2')}</svg>`;
+const real=CONFIG.nomeReal.trim(), apelido=nome.replace(/^Teacher\s+/i,'');
+document.getElementById('brand').innerHTML=`${logo}<span>${esc(nome)}<small>${real? esc(real)+' · ' : ''}aulas de inglês</small></span>`;
+document.getElementById('about-h').innerHTML= real&&apelido&&real!==apelido? `Muito prazer, eu sou a ${esc(real)}. Pode me chamar de ${esc(apelido)}!` : `Muito prazer, eu sou a ${esc(real||nome)}.`;
+document.getElementById('hi').innerHTML=`${CONFIG.foto? `<img src="${esc(CONFIG.foto)}" alt="">` : ''}<span>Oi! Eu sou a <b>${esc(nome)}</b>.</span>`;
+document.getElementById('foot-name').textContent=`© ${new Date().getFullYear()} ${nome}${real? ' · '+real : ''}`;
+document.getElementById('float').innerHTML=`${WA_ICON}<span>WhatsApp</span>`;
+
+/* cartaz do topo: Londres ao amanhecer (cena própria, feita com as peças do quadros.js) */
+function poster(W,H){
+  const p=PAL.tomate, R=rng(1779), m=Math.min(W,H); let o='';
+  o+=`<rect width="${W}" height="${H}" fill="${p.bg}"/>`;
+  const sx=W*.4, sy=H*.6, sr=W*.3;
+  for (let i=0;i<18;i++){ const a=Math.PI+(i+.5)/18*Math.PI, r0=sr*1.12, r1=sr*(i%2?1.3:1.48);
+    o+=`<line x1="${f(sx+Math.cos(a)*r0)}" y1="${f(sy+Math.sin(a)*r0)}" x2="${f(sx+Math.cos(a)*r1)}" y2="${f(sy+Math.sin(a)*r1)}" stroke="${p.b}" stroke-width="${f(W*.012)}" stroke-linecap="round"/>`; }
+  o+=circle(sx,sy,sr,p.a)+ring(sx,sy,sr*.7,CREAM,W*.01);
+  o+=cloud(W*.66,H*.17,W*.035,CREAM)+cloud(W*.08,H*.3,W*.026,CREAM);
+  /* torre */
+  const tx=W*.74, base=H*.66, tw=W*.1, th=H*.5, c=p.c;
+  o+=`<rect x="${f(tx-tw/2)}" y="${f(base-th*.74)}" width="${f(tw)}" height="${f(th*.74+2)}" fill="${c}"/>`;
+  o+=`<rect x="${f(tx-tw*.64)}" y="${f(base-th*.93)}" width="${f(tw*1.28)}" height="${f(th*.21)}" rx="3" fill="${c}"/>`;
+  o+=`<path d="M${f(tx-tw*.64)} ${f(base-th*.93+1)}L${f(tx)} ${f(base-th*1.17)}L${f(tx+tw*.64)} ${f(base-th*.93+1)}Z" fill="${c}"/><rect x="${f(tx-2)}" y="${f(base-th*1.3)}" width="4" height="${f(th*.15)}" fill="${c}"/>`;
+  const cy=base-th*.825, cr=tw*.38;
+  o+=circle(tx,cy,cr,CREAM)+`<path d="M${f(tx)} ${f(cy-cr*.62)}L${f(tx)} ${f(cy)}L${f(tx+cr*.45)} ${f(cy)}" fill="none" stroke="${c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+  for (let r=0;r<3;r++) [-1,1].forEach(k=>{ o+=bar(tx+k*tw*.22-4,base-th*(.62-r*.17),8,th*.1,p.b); });
+  /* ponte com arcos */
+  const by=H*.66, deck=H*.035;
+  let arches=''; const n=6, aw=W/n;
+  for (let i=0;i<n;i++){ const ax=i*aw+aw/2; arches+=`M${f(ax-aw*.36)} ${f(by+deck*3)}A${f(aw*.36)} ${f(deck*1.9)} 0 0 1 ${f(ax+aw*.36)} ${f(by+deck*3)}Z`; }
+  o+=`<path fill-rule="evenodd" fill="${c}" d="M0 ${f(by)}H${W}V${f(by+deck*3)}H0Z${arches}"/>`;
+  o+=bar(0,by-deck*.55,W,deck*.5,p.a);
+  /* rio */
+  o+=`<rect y="${f(by+deck*3)}" width="${W}" height="${f(H)}" fill="${p.b}"/>`;
+  [1.05,.8,.55,.3].forEach((k,i)=>{ o+=bar(sx-sr*k*.8,by+deck*3+H*(.03+i*.028),sr*k*1.6,H*.011,CREAM); });
+  o+=wave(W,H,H*.84,H*.012,W*.18,R.rr(0,W*.18),p.a)+wave(W,H,H*.92,H*.014,W*.22,R.rr(0,W*.2),p.c);
+  o+=birds(R,3,W*.1,H*.13,W*.016,p.c);
+  o+=star(W*.9,H*.09,W*.022,p.c)+star(W*.56,H*.06,W*.014,p.a);
+  return o;
+}
+(function(){
+  const W=800,H=1000, id='hero';
+  document.getElementById('poster').innerHTML=`<svg class="quadro" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração: Londres ao amanhecer"><defs><filter id="${id}g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0 .16"/></filter></defs>${poster(W,H)}<rect width="${W}" height="${H}" filter="url(#${id}g)"/></svg><figcaption><span>London<br>calling</span><b>✦</b></figcaption>`;
+})();
+
+/* foto */
+const ph=document.getElementById('photo');
+if (CONFIG.foto) ph.classList.add('has');
+ph.innerHTML= CONFIG.foto? `<img src="${esc(CONFIG.foto)}" alt="${esc(real||nome)}, a ${esc(nome)}, sorrindo, de casaco rosa claro"><svg class="sticker" viewBox="0 0 104 104" aria-hidden="true"><circle cx="52" cy="52" r="46" fill="#e0563b"/><circle cx="52" cy="52" r="30" fill="none" stroke="#fffaf2" stroke-width="4"/>${star(52,52,12,'#fffaf2')}</svg><span class="hello">Hi, I’m ${esc(apelido||nome)}!</span>`
+  : `<div class="ph">${quadro('rosa','livro',31,{w:320,h:240})}<span>Espaço para a sua foto.<br>Preencha <b>foto</b> no CONFIG.</span></div>`;
+
+/* para quem */
+const CARDS=[
+  ['menta','mar','Crianças','Aulas lúdicas, com músicas, jogos e histórias. Tenho certificação em educação infantil bilíngue.'],
+  ['lavanda','disco','Adolescentes','Inglês para acompanhar a escola, entender as séries e as músicas que eles já amam.'],
+  ['mostarda','conversa','Adultos','Do básico à fluência, com foco em falar com confiança nas situações do seu dia a dia.'],
+  ['ceu','aviao','Objetivos específicos','Viagem, intercâmbio, entrevista de emprego ou reuniões em inglês: a aula vai direto ao ponto.'],
+];
+document.getElementById('cards').innerHTML=CARDS.map(([pk,sk,t,d],i)=>`<article class="card">${quadro(pk,sk,40+i*13,{w:320,h:200,frame:false})}<div class="card-b"><h3>${t}</h3><p>${d}</p></div></article>`).join('');
+
+/* sob medida */
+const ICO=(col,inner)=>`<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="${col}"/>${inner}</svg>`;
+const GOALS=[
+  [ICO('#e0563b','<circle cx="20" cy="20" r="8" fill="none" stroke="#fffaf2" stroke-width="2.4"/><circle cx="20" cy="20" r="2.6" fill="#fffaf2"/>'),'Começa pelo seu objetivo','Na primeira conversa, você conta o que quer conquistar com o inglês e em quanto tempo.'],
+  [ICO('#6a5cb3','<path d="M12 27V13h16v14M12 17h16" fill="none" stroke="#fffaf2" stroke-width="2.4" stroke-linejoin="round"/>'),'Temas que fazem sentido para você','Conversas sobre o seu trabalho, as suas viagens e os seus interesses, não frases soltas de livro.'],
+  [ICO('#3a9563','<path d="M12 21l5 5 11-12" fill="none" stroke="#fffaf2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>'),'No seu ritmo','Se algo precisa de mais tempo, a gente fica nele. Se você avança rápido, a aula acompanha.'],
+  [ICO('#d99a2b','<path d="M14 11h9l4 4v14H14z" fill="none" stroke="#fffaf2" stroke-width="2.4" stroke-linejoin="round"/><path d="M17 20h7M17 24h5" stroke="#fffaf2" stroke-width="2.2" stroke-linecap="round"/>'),'Prática entre as aulas','Tarefas curtas para revisar o que vimos, e um resumo de cada aula para você não esquecer nada.'],
+];
+document.getElementById('goal-list').innerHTML=GOALS.map(([ic,t,d])=>`<li>${ic}<div><b>${t}</b><span>${d}</span></div></li>`).join('');
+
+/* depoimentos */
+const RV_PAL=['#e0563b','#6a5cb3','#3a9563'];
+document.getElementById('reviews').innerHTML= DEPOIMENTOS.length
+  ? DEPOIMENTOS.map((d,i)=>`<figure class="rv" style="margin:0"><span class="q" aria-hidden="true">“</span><blockquote style="margin:0"><p>${esc(d.texto)}</p></blockquote><footer><i style="background:${RV_PAL[i%3]}">${esc(d.nome.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join(''))}</i><div><b>${esc(d.nome)}</b><small>${esc(d.detalhe||'')}</small></div></footer></figure>`).join('')
+  : [1,2,3].map(()=>`<div class="rv empty"><span class="q" aria-hidden="true">“</span><p>Espaço para o depoimento de um aluno.</p><p style="font-size:13.5px">Preencha a lista <b>DEPOIMENTOS</b> no código e ele aparece aqui.</p></div>`).join('');
+
+/* chamada final */
+document.getElementById('final').insertAdjacentHTML('afterbegin',quadro('tomate','amanhecer',412,{w:1180,h:420,frame:false,focus:[.68,.84],align:'xMaxYMid'}));
+
+/* topo e botão flutuante */
+const topEl=document.getElementById('top'), fl=document.getElementById('float'), hero=document.getElementById('inicio');
+addEventListener('scroll',()=>{ topEl.classList.toggle('scrolled',scrollY>8); fl.classList.toggle('show',scrollY>hero.offsetHeight*.8); },{passive:true});
+</script>
