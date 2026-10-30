@@ -14,9 +14,9 @@ Os dois são sites estáticos, sem etapa de build: basta abrir o `index.html` de
 
 Em **Settings → Pages**, escolha *Deploy from a branch*, branch `main`, pasta `/ (root)`, e salve.
 Em um ou dois minutos ficam no ar:
-- página de entrada: https://gabkubica.github.io/sotaque/
-- Sotaque: https://gabkubica.github.io/sotaque/app/
-- Teacher Lexi: https://gabkubica.github.io/sotaque/site/
+- página de entrada: https://gabkubica.github.io/Sotaque/
+- Sotaque: https://gabkubica.github.io/Sotaque/app/
+- Teacher Lexi: https://gabkubica.github.io/Sotaque/site/
 
 O Sotaque é instalável no celular: no Chrome (Android), menu → *Instalar app*;
 no Safari (iPhone), Compartilhar → *Adicionar à Tela de Início*. Ele abre em tela cheia,
