@@ -112,32 +112,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .card h3{font-size:24px;font-weight:800}
 .card p{font-size:15.5px;color:var(--ink-2)}
 
-/* trilha */
-.trail{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:start}
-.levels{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.levels li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:18px;padding:20px 0;border-top:1px solid var(--line);align-items:start}
-.levels li:last-child{border-bottom:1px solid var(--line)}
-.lv{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;border-radius:14px;padding:10px 0;text-align:center;color:#1e2433}
-.levels b{display:block;font-family:var(--display);font-size:21px;line-height:1.2}
-.levels span{color:var(--ink-2);font-size:16px}
-.exams{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.exams span{font-family:var(--display);font-weight:700;font-size:16px;padding:8px 16px;border-radius:999px;border:2px solid var(--blue);color:var(--blue)}
-.mock{position:sticky;top:96px;background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px -36px rgba(36,73,126,.35)}
-.mock-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.mock-h b{font-family:var(--display);font-size:20px}
-.mock-h small{font-size:12.5px;color:var(--ink-3);font-weight:600}
-.mock-art{border-radius:16px;overflow:hidden;height:120px}
-.mock-art .quadro{height:100%}
-.bars{display:flex;flex-direction:column;gap:9px}
-.bars div{display:grid;grid-template-columns:70px minmax(0,1fr) 34px;gap:10px;align-items:center;font-size:14px;font-weight:600}
-.bars i{height:12px;border-radius:6px;background:#ece6dc;overflow:hidden;display:block}
-.bars em{display:block;height:100%;background:var(--blue-2);border-radius:6px}
-.bars span{font-family:var(--display);font-weight:800;text-align:right}
-.stopx{display:flex;align-items:center;gap:12px;border-top:1px dashed var(--line);padding-top:14px}
-.stopx .dot{width:42px;height:42px;border-radius:50%;border:3px solid var(--tom);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--tom);flex:none}
-.stopx small{display:block;color:var(--ink-3);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.stopx b{font-size:16px}
-
 /* como funciona */
 .how{background:var(--ink);color:var(--cream)}
 .how .eyebrow{color:var(--sky-2)}
@@ -150,19 +124,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
 .rules span{display:inline-flex;align-items:center;gap:8px;border:1px solid #434b60;border-radius:999px;padding:8px 16px;font-size:15px;color:#e8ebf2}
 .rules span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tom-b)}
-
-/* expressão do dia */
-.expr{background:var(--tom-bg)}
-.expr .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
-.ex-card{background:var(--cream);border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:14px;position:relative;min-height:300px}
-.ex-card .q{font-family:var(--display);font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.03em;color:var(--blue)}
-.ex-card .lit{color:var(--ink-3);font-size:15.5px}
-.ex-card .mean{font-size:19px}
-.ex-card .use{border-left:3px solid var(--tom);padding-left:14px;color:var(--ink-2);font-style:italic}
-.ex-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;flex-wrap:wrap}
-.ex-foot small{color:var(--ink-3);font-weight:600}
-.ex-card.swap{animation:swap .35s ease}
-@keyframes swap{from{opacity:0;transform:translateY(8px)}}
 
 /* depoimentos */
 .reviews{background:var(--sky)}
@@ -208,9 +169,8 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
 @media (max-width:880px){
   .menu{display:none}
   .top .btn{margin-left:auto}
-  .hero .wrap,.about,.trail,.faq,.expr .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero .wrap,.about,.faq{grid-template-columns:minmax(0,1fr);gap:40px}
   .poster{transform:none;max-width:560px}
-  .mock{position:static}
   .steps{grid-template-columns:minmax(0,1fr)}
   .band{padding-block:72px}
   .photo{max-width:420px}
@@ -224,10 +184,35 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   .top .btn span{display:none}
   .top .btn{padding:10px 12px}
   .hero .btn,.final-t .btn{width:100%;justify-content:center}
-  .ex-card{padding:26px}
-  .levels li{grid-template-columns:60px minmax(0,1fr);gap:14px}
-  .lv{font-size:24px}
 }
+
+/* ---------- celular: chamada final empilhada, carrosséis e ritmo mais curto ---------- */
+@media (max-width:880px){
+  .final-box{display:flex;flex-direction:column}
+  .final-box .quadro{min-height:0;height:200px}
+  .final-t{position:static;inset:auto;justify-content:flex-start;padding:28px 24px 30px;max-width:none;gap:14px}
+  .final-t h2{font-size:clamp(34px,9vw,48px)}
+  .final-t p{font-size:17px}
+}
+@media (max-width:560px){
+  .band{padding-block:60px}
+  .band-h{margin-bottom:30px}
+  .band-h h2{font-size:clamp(32px,9vw,40px)}
+  .poster{aspect-ratio:1/1}
+  .poster .quadro{height:100%}
+  .cards,.rv-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:0 20px 8px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards::-webkit-scrollbar,.rv-grid::-webkit-scrollbar{display:none}
+  .card,.rv{flex:0 0 82%;scroll-snap-align:start}
+  .rv.empty{min-height:200px}
+  .swipe{display:flex}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .fact{padding:14px 14px 16px;border-radius:16px}
+  .fact b{font-size:16.5px}
+  .fact span{font-size:13.5px;line-height:1.4}
+  .float{padding:13px 16px}
+}
+.swipe{display:none;align-items:center;gap:8px;margin-top:14px;color:var(--ink-3);font-size:14px;font-weight:600}
+.swipe svg{width:28px;height:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 
@@ -235,7 +220,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="#inicio" id="brand"></a>
-    <nav class="menu" aria-label="Seções"><a href="#sobre">Sobre</a><a href="#aulas">Aulas</a><a href="#trilha">Trilha</a><a href="#como-funciona">Como funciona</a><a href="#duvidas">Dúvidas</a></nav>
+    <nav class="menu" aria-label="Seções"><a href="#sobre">Sobre</a><a href="#aulas">Aulas</a><a href="#como-funciona">Como funciona</a><a href="#duvidas">Dúvidas</a></nav>
     <a class="btn main" data-cta href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18.5l1.2-3.4A7.5 7.5 0 1 1 8.6 18.3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg><span data-cta-label>Falar comigo</span></a>
   </div>
 </header>
@@ -248,7 +233,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
         <p class="eyebrow">Aulas particulares de francês · online</p>
         <h1 style="margin-top:18px">Do primeiro <span class="fr">bonjour<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 Q 75 4 150 11 T 296 8" fill="none" stroke="#f3a58f" stroke-width="7" stroke-linecap="round"/></svg></span> à conversa de verdade.</h1>
         <p class="lead">Aulas de francês montadas para o seu objetivo: viajar, estudar fora, trabalhar, imigrar para o Canadá ou passar no DELF. Com calma, no seu ritmo e com um caminho claro do A1 ao C1.</p>
-        <div class="ctas"><a class="btn main" data-cta href="#"><span data-cta-label>Falar comigo</span></a><a class="btn ghost" href="#trilha">Ver como é a trilha</a></div>
+        <div class="ctas"><a class="btn main" data-cta href="#"><span data-cta-label>Falar comigo</span></a><a class="btn ghost" href="#aulas">Ver como são as aulas</a></div>
         <ul class="creds" id="creds" aria-label="Formação e experiência"></ul>
       </div>
       <figure class="poster" style="margin:0" id="poster"></figure>
@@ -283,29 +268,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   <section class="band who" id="aulas">
     <div class="wrap">
       <div class="band-h"><p class="eyebrow">Para quem são as aulas</p><h2>Cada objetivo pede uma aula diferente.</h2><p>O conteúdo, os temas e o ritmo mudam conforme o motivo que trouxe você até o francês.</p></div>
-      <div class="cards" id="cards"></div>
-    </div>
-  </section>
-
-  <section class="band" id="trilha">
-    <div class="wrap trail">
-      <div>
-        <div class="band-h" style="margin-bottom:28px"><p class="eyebrow">Uma trilha clara</p><h2>Você sempre sabe onde está e para onde vai.</h2><p>As aulas seguem os níveis do Quadro Europeu (CEFR), os mesmos usados nos diplomas oficiais. Cada nível tem marcos do tipo “eu consigo…”, e você vê o seu progresso em leitura, escuta, escrita e fala.</p></div>
-        <ul class="levels" id="levels"></ul>
-        <div class="exams" aria-label="Provas que eu preparo"><span>DELF</span><span>DALF</span><span>TCF</span><span>TEF Canada</span></div>
-      </div>
-      <aside class="mock" aria-label="Exemplo da trilha do aluno no Sotaque">
-        <div class="mock-h"><b>Sua trilha no francês</b><small>no Sotaque</small></div>
-        <div class="mock-art" id="mock-art"></div>
-        <div class="bars">
-          <div>Ler<i><em style="width:62%"></em></i><span>A2+</span></div>
-          <div>Ouvir<i><em style="width:48%"></em></i><span>A2</span></div>
-          <div>Escrever<i><em style="width:55%"></em></i><span>A2+</span></div>
-          <div>Falar<i><em style="width:44%"></em></i><span>A2</span></div>
-        </div>
-        <div class="stopx"><span class="dot">3</span><div><small>Marco 3 · você está aqui</small><b>Contar o que fiz no fim de semana</b></div></div>
-        <p style="font-size:14.5px;color:var(--ink-2)">Entre as aulas, você faz tarefas, provinhas e recebe o certificado de cada nível pelo app.</p>
-      </aside>
+      <div class="cards" id="cards"></div><p class="swipe" aria-hidden="true"><svg viewBox="0 0 28 14"><path d="M2 7h22M18 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</p>
     </div>
   </section>
 
@@ -315,23 +278,16 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
       <div class="steps">
         <div class="step"><span class="n">1</span><h3>A gente conversa</h3><p>Você me conta o seu objetivo, o seu prazo e o que já sabe de francês. Nada de prova logo de cara.</p></div>
         <div class="step"><span class="n">2</span><h3>Aula experimental</h3><p>Uma primeira aula para ver o seu nível, sentir o ritmo e montar o seu plano de estudos.</p></div>
-        <div class="step"><span class="n">3</span><h3>A trilha começa</h3><p>Aulas ao vivo num horário fixo da semana e, entre uma aula e outra, tarefas curtas no app para praticar.</p></div>
+        <div class="step"><span class="n">3</span><h3>As aulas começam</h3><p>Aulas ao vivo num horário fixo da semana e, entre uma aula e outra, tarefas curtas no app para praticar.</p></div>
       </div>
       <div class="rules" aria-label="Como são as aulas"><span>Online e ao vivo</span><span>1 hora por aula</span><span>Horário fixo na semana</span><span>Remarcação até 24 h antes</span><span>Pacotes de aulas</span><span>Tarefas e trilha no app</span></div>
-    </div>
-  </section>
-
-  <section class="band expr">
-    <div class="wrap">
-      <div class="band-h" style="margin-bottom:0"><p class="eyebrow">L’expression du jour</p><h2>Um pouquinho de francês para levar.</h2><p>Expressões que todo francês usa e nenhum livro ensina no primeiro capítulo. Toque em “outra” para ver mais.</p></div>
-      <div class="ex-card" id="ex" aria-live="polite"></div>
     </div>
   </section>
 
   <section class="band reviews" id="depoimentos" hidden>
     <div class="wrap">
       <div class="band-h"><p class="eyebrow">Depoimentos</p><h2>O que dizem os meus alunos.</h2></div>
-      <div class="rv-grid" id="reviews"></div>
+      <div class="rv-grid" id="reviews"></div><p class="swipe" aria-hidden="true"><svg viewBox="0 0 28 14"><path d="M2 7h22M18 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</p>
     </div>
   </section>
 
@@ -447,38 +403,6 @@ const CARDS=[
 ];
 $('#cards').innerHTML=CARDS.map(([pk,sk,t,d],i)=>`<article class="card">${quadro(pk,sk,50+i*17,{w:320,h:200,frame:false})}<div class="card-b"><h3>${t}</h3><p>${d}</p></div></article>`).join('');
 
-/* trilha */
-const LV=[['A1','#d8eedf','Primeiros passos','Se apresentar, pedir um café e entender frases simples do dia a dia.'],
-  ['A2','#d3e8e5','Básico','Contar o fim de semana, fazer compras e se virar numa viagem.'],
-  ['B1','#f6d9cf','Intermediário','Conversar sobre experiências, planos e opiniões sem preparar antes.'],
-  ['B2','#dce7f3','Avançado','Discutir temas atuais, trabalhar e estudar em francês com segurança.'],
-  ['C1','#ecd8e7','Fluente','Usar o francês com precisão e naturalidade, até em textos acadêmicos.']];
-$('#levels').innerHTML=LV.map(([l,bg,t,d])=>`<li><span class="lv" style="background:${bg}">${l}</span><div><b>${t}</b><span>${d}</span></div></li>`).join('');
-$('#mock-art').innerHTML=quadro('ceu','aviao',33,{w:420,h:120,frame:false,focus:[.6,.8]});
-
-/* expressão do dia: [expressão, tradução ao pé da letra, sentido, exemplo] */
-const EXPR=[
-  ['Avoir le cafard','“ter a barata”','Estar pra baixo, meio deprimido.','Depuis qu’il pleut, j’ai un peu le cafard.'],
-  ['Poser un lapin','“colocar um coelho”','Dar um bolo: não aparecer no encontro marcado.','Elle m’a posé un lapin hier soir !'],
-  ['Il pleut des cordes','“chove cordas”','Está chovendo canivetes.','Prends ton parapluie, il pleut des cordes.'],
-  ['Coûter les yeux de la tête','“custar os olhos da cabeça”','Custar os olhos da cara.','Ce sac coûte les yeux de la tête.'],
-  ['Avoir la flemme','“ter a fleuma”','Estar com preguiça.','J’ai la flemme de faire la vaisselle.'],
-  ['Tomber dans les pommes','“cair nas maçãs”','Desmaiar.','Il faisait si chaud qu’elle est tombée dans les pommes.'],
-  ['Avoir un chat dans la gorge','“ter um gato na garganta”','Estar rouco.','Excusez-moi, j’ai un chat dans la gorge.'],
-  ['Mettre son grain de sel','“pôr o seu grão de sal”','Dar pitaco onde não foi chamado.','Il faut toujours qu’il mette son grain de sel !'],
-  ['Être dans la lune','“estar na lua”','Estar no mundo da lua, distraído.','Pardon, j’étais dans la lune.'],
-  ['Ça me fait une belle jambe','“isso me faz uma bela perna”','E daí? Isso não me adianta nada.','Il est riche ? Ça me fait une belle jambe.'],
-];
-let exI=Math.floor(Math.random()*EXPR.length);
-function showExpr(anim){
-  const [e,lit,mean,use]=EXPR[exI], card=$('#ex');
-  card.innerHTML=`<p class="eyebrow">Expressão ${exI+1} de ${EXPR.length}</p><p class="q" lang="fr">${esc(e)}</p><p class="lit">Ao pé da letra: ${esc(lit)}</p><p class="mean"><b>Quer dizer:</b> ${esc(mean)}</p><p class="use" lang="fr">${esc(use)}</p>
-    <div class="ex-foot"><small>✦ uma por dia, ou quantas quiser</small><button class="btn ghost" id="ex-next" type="button">Outra expressão</button></div>`;
-  if (anim){ card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap'); }
-}
-showExpr(false);
-$('#ex').addEventListener('click',e=>{ if (e.target.closest('#ex-next')){ exI=(exI+1)%EXPR.length; showExpr(true); } });
-
 /* depoimentos: só aparecem quando houver */
 if (DEPOIMENTOS.length){
   const RV=['#3f74b8','#e0563b','#3a9563'];
@@ -491,7 +415,7 @@ const FAQ=[
   ['As aulas são online?','Sim. São aulas ao vivo, por videochamada, então você estuda de casa ou de onde estiver.'],
   ['Nunca estudei francês. Posso começar?','Pode, e é ótimo começar do zero: a gente constrói a pronúncia certa desde a primeira aula.'],
   ['Francês é difícil para quem fala português?','Português e francês vêm do latim e dividem muito vocabulário, então a leitura costuma avançar rápido. O maior desafio é a pronúncia, e é por ela que a gente começa.'],
-  ['Você prepara para DELF, DALF, TCF ou TEF?','Sim. A trilha segue os mesmos níveis das provas, e perto da data a gente faz simulados das quatro partes: ler, ouvir, escrever e falar.'],
+  ['Você prepara para DELF, DALF, TCF ou TEF?','Sim. As aulas seguem os mesmos níveis das provas, e perto da data a gente faz simulados das quatro partes: ler, ouvir, escrever e falar.'],
   ['Como eu acompanho o meu progresso?','Pelo app das aulas: você vê a sua trilha do A1 ao C1, faz as tarefas entre as aulas e recebe o certificado de cada nível.'],
   ['Quanto dura cada aula?','Cada aula tem 1 hora, num horário fixo da semana combinado com você.'],
   soon? ['Quando começam as aulas?',`A agenda abre em ${soon}. Entrando na lista de espera, você é avisado primeiro e escolhe o horário antes de todo mundo.`] : ['Como funcionam os pacotes e os valores?','As aulas são vendidas em pacotes. Me chame para saber os valores e escolher o pacote que combina com a sua rotina.'],
@@ -503,5 +427,7 @@ $('#final').insertAdjacentHTML('afterbegin',quadro('ceu','paris',77,{w:1180,h:42
 
 /* topo e botão flutuante */
 const topEl=$('#top'), fl=$('#float'), hero=$('#inicio');
-addEventListener('scroll',()=>{ topEl.classList.toggle('scrolled',scrollY>8); fl.classList.toggle('show',scrollY>hero.offsetHeight*.8); },{passive:true});
+/* o botão flutuante some perto da chamada final e do rodapé, para não cobrir nada */
+const finalEl=document.querySelector('.final');
+addEventListener('scroll',()=>{ topEl.classList.toggle('scrolled',scrollY>8); fl.classList.toggle('show',scrollY>hero.offsetHeight*.8&&finalEl.getBoundingClientRect().top>innerHeight*.85); },{passive:true});
 </script>

@@ -188,8 +188,36 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   .cards,.facts{grid-template-columns:minmax(0,1fr)}
   .top .btn span{display:none}
   .top .btn{padding:10px 12px}
-  .hero .btn{width:100%;justify-content:center}
+  .hero .btn,.final-t .btn{width:100%;justify-content:center;align-self:stretch!important}
 }
+
+/* ---------- celular: chamada final empilhada, carrosséis e ritmo mais curto ---------- */
+@media (max-width:880px){
+  .final-box{display:flex;flex-direction:column}
+  .final-box .quadro{min-height:0;height:200px}
+  .final-t{position:static;inset:auto;justify-content:flex-start;padding:28px 24px 30px;max-width:none;gap:14px}
+  .final-t h2{font-size:clamp(34px,9vw,48px)}
+  .final-t p{font-size:17px}
+}
+@media (max-width:560px){
+  .band{padding-block:60px}
+  .band-h{margin-bottom:30px}
+  .band-h h2{font-size:clamp(32px,9vw,40px)}
+  .poster{aspect-ratio:1/1}
+  .poster .quadro{height:100%}
+  .cards,.rv-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:0 20px 8px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards::-webkit-scrollbar,.rv-grid::-webkit-scrollbar{display:none}
+  .card,.rv{flex:0 0 82%;scroll-snap-align:start}
+  .rv.empty{min-height:200px}
+  .swipe{display:flex}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .fact{padding:14px 14px 16px;border-radius:16px}
+  .fact b{font-size:16.5px}
+  .fact span{font-size:13.5px;line-height:1.4}
+  .float{padding:13px 16px}
+}
+.swipe{display:none;align-items:center;gap:8px;margin-top:14px;color:var(--ink-3);font-size:14px;font-weight:600}
+.swipe svg{width:28px;height:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 
@@ -241,7 +269,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   <section class="band who" id="aulas">
     <div class="wrap">
       <div class="band-h"><p class="eyebrow">Para quem eu dou aula</p><h2>Uma aula diferente para cada fase da vida.</h2><p>O conteúdo, o ritmo e os materiais mudam conforme a idade e o objetivo de cada aluno.</p></div>
-      <div class="cards" id="cards"></div>
+      <div class="cards" id="cards"></div><p class="swipe" aria-hidden="true"><svg viewBox="0 0 28 14"><path d="M2 7h22M18 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</p>
     </div>
   </section>
 
@@ -268,7 +296,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:
   <section class="band reviews" id="depoimentos">
     <div class="wrap">
       <div class="band-h"><p class="eyebrow">Depoimentos</p><h2>O que dizem os meus alunos.</h2></div>
-      <div class="rv-grid" id="reviews"></div>
+      <div class="rv-grid" id="reviews"></div><p class="swipe" aria-hidden="true"><svg viewBox="0 0 28 14"><path d="M2 7h22M18 2l6 5-6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Arraste para o lado</p>
     </div>
   </section>
 
@@ -398,5 +426,7 @@ document.getElementById('final').insertAdjacentHTML('afterbegin',quadro('tomate'
 
 /* topo e botão flutuante */
 const topEl=document.getElementById('top'), fl=document.getElementById('float'), hero=document.getElementById('inicio');
-addEventListener('scroll',()=>{ topEl.classList.toggle('scrolled',scrollY>8); fl.classList.toggle('show',scrollY>hero.offsetHeight*.8); },{passive:true});
+/* o botão flutuante some perto da chamada final e do rodapé, para não cobrir nada */
+const finalEl=document.querySelector('.final');
+addEventListener('scroll',()=>{ topEl.classList.toggle('scrolled',scrollY>8); fl.classList.toggle('show',scrollY>hero.offsetHeight*.8&&finalEl.getBoundingClientRect().top>innerHeight*.85); },{passive:true});
 </script>
