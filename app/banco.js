@@ -656,6 +656,6 @@ BANK_RAW.push(
 
 function seedBank(){
   const T0=now(), mk=lang=>([level,topic,title,instructions,list],k)=>({id:uid(),lang,level,topic,title,instructions,questions:fromRaw(list),uses:(hashStr(title)%6),mine:false,createdAt:T0-30*DAY+k*MIN});
-  return BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')));
+  return BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')),typeof provasBank!=='undefined'? provasBank(T0) : []);
 }
 

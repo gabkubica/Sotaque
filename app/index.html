@@ -410,6 +410,107 @@ details.more[open] summary{margin-bottom:14px}
 .cert-foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;width:100%;max-width:560px;border-top:1px solid #e6dbcf;padding-top:14px;margin-top:8px;font-size:14px}
 .cert-foot div{display:flex;flex-direction:column;align-items:center;flex:1;min-width:120px}
 .cert-foot small{color:#8a7e80}
+/* trilha: perfil, "eu consigo", provas */
+.prof{margin-bottom:24px}
+.prof-grid{display:flex;flex-direction:column;gap:8px}
+.prof-r{display:grid;grid-template-columns:72px minmax(0,1fr) 44px;align-items:center;gap:10px}
+.prof-r>b{font-size:14px}
+.prof-bar{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px}
+.prof-bar i{position:relative;height:14px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.prof-bar em{position:absolute;inset:0 auto 0 0;background:var(--k-a)}
+.prof-bar u{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,var(--k-a) 0 2px,transparent 2px 5px);opacity:.55}
+.prof-head .prof-bar span{font-size:11px;font-weight:700;color:var(--ink-3);text-align:center}
+.prof-lv{font-family:var(--display);font-weight:800;font-size:16px;text-align:right}
+.prof-key{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px}
+.kk{display:inline-block;width:14px;height:10px;border-radius:3px;background:var(--k-a);margin-left:6px}
+.kk.self{background:repeating-linear-gradient(135deg,var(--k-a) 0 2px,transparent 2px 5px);opacity:.7}
+.prof-foot{display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
+.prof-foot div{display:flex;flex-direction:column;max-width:34ch}
+.prof-foot b{font-family:var(--display);font-size:20px}
+.prof-foot small{font-size:12.5px;color:var(--ink-3);line-height:1.35}
+.mini-prof{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mini-prof span{display:flex;flex-direction:column;background:var(--surface-2);border-radius:10px;padding:6px 8px;line-height:1.2}
+.mini-prof small{font-size:11.5px;color:var(--ink-3);font-weight:600}
+.mini-prof b{font-family:var(--display);font-size:16px}
+.cd summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+.cd-n{font-size:12px;background:var(--surface-2);border-radius:999px;padding:1px 8px;color:var(--ink-2)}
+.cd-list{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px}
+.cd-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px;line-height:1.35;padding:6px 0;border-top:1px dashed var(--line)}
+.cd-list li:first-child{border-top:0}
+.cd-list li.ok .tx{color:var(--ink)}
+.cd-list .tx{color:var(--ink-2)}
+.sk{font-size:11px;font-weight:800;letter-spacing:.02em;border-radius:6px;padding:2px 7px;text-transform:uppercase;background:var(--surface-2);color:var(--ink-2);min-width:62px;text-align:center}
+.cd-list li.ok .sk{background:var(--k-bg);color:#221c1e}
+.cdb{font:inherit;font-size:12.5px;font-weight:700;border-radius:999px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--ink-2);padding:4px 11px;cursor:pointer;white-space:nowrap}
+.cdb.self{border-color:var(--k-a);color:var(--ink)}
+.cdb.on{background:var(--k-a);border-color:var(--k-a);color:#fffaf2}
+.cdb.static{cursor:default}
+.half-sep{display:flex;align-items:center;gap:12px;margin:26px 0;color:var(--ink-3);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.half-sep::before,.half-sep::after{content:"";flex:1;border-top:2px dotted var(--k-a);opacity:.6}
+.half-sep span{font-family:var(--display);color:var(--k-c);font-size:15px}
+.parts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.part{display:flex;flex-direction:column;gap:3px;background:var(--surface-2);border-radius:12px;padding:8px 10px;min-width:0}
+.part small{font-size:12px;color:var(--ink-3);font-weight:700}
+.part b{font-family:var(--display);font-size:20px}
+.part b span{font-size:12px;color:var(--ink-3);font-weight:600}
+.part i{height:5px;border-radius:3px;background:var(--line);overflow:hidden;display:block}
+.part em{display:block;height:100%;background:var(--k-a)}
+.part.skip{opacity:.5}
+.part.tot{background:var(--k-bg);color:#221c1e}
+.part.tot small,.part.tot b span{color:#5a4f52}
+.ed-side .parts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ed-side .part.tot{grid-column:1/-1}
+.ttl{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
+.ttl li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:2px 14px;padding:8px 0 8px 18px;border-left:2px solid var(--line);position:relative}
+.ttl li::before{content:"";position:absolute;left:-7px;top:13px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--k-a)}
+.ttl li.ttl-c::before{background:var(--k-a)}
+.ttl li small{grid-row:span 2;color:var(--ink-3);font-weight:700;font-size:12.5px;padding-top:2px}
+.ttl li b{font-size:14.5px}
+.ttl li .meta{font-size:13px}
+.src{margin-top:28px;font-size:12.5px;max-width:70ch}
+.aud{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.aud .btn svg{width:14px;height:14px;margin-right:4px;vertical-align:-2px}
+.aud .aud-stop{display:none}
+.aud.on .aud-stop{display:inline-flex}
+.aud.on [data-act="say"]:first-child{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6}}
+.aud.mini{margin:-2px 0 2px}
+.transc summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.transc .prose p{margin:6px 0}
+.aud-ed summary{cursor:pointer;font-weight:700;font-size:14px}
+.aud-ed[open]{display:flex;flex-direction:column;gap:10px}
+.part-h{display:flex;align-items:center;gap:14px;margin-top:10px;flex-wrap:wrap}
+.part-h h2{font-size:22px}
+.part-n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--k-a);color:#fffaf2;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px}
+.part-s{display:flex;flex-direction:column;gap:14px}
+.xblk{display:flex;flex-direction:column;gap:12px}
+.panel.read .prose{font-size:16px;line-height:1.6}
+.rub{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.rub-r{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.rub-r>div:first-child{display:flex;flex-direction:column;min-width:0;flex:1 1 200px}
+.rub-r small{font-size:12.5px;color:var(--ink-3)}
+.rub-sc{display:flex;gap:4px}
+.rub-sc button{width:34px;height:34px;border-radius:10px;border:1.5px solid var(--line-2);background:var(--surface);font:inherit;font-weight:800;color:var(--ink-2);cursor:pointer}
+.rub-sc button.on{background:var(--k-a);border-color:var(--k-a);color:#fffaf2}
+.rub-sc button:disabled{cursor:default}
+.fala{display:flex;flex-direction:column;gap:10px}
+.fala div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.fala p{margin:4px 0 0;font-style:italic}
+.cert-parts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%;max-width:520px;margin:6px 0}
+.cert-parts div{display:flex;flex-direction:column;gap:3px;font-size:13px;color:#5a4f52}
+.cert-parts b{color:#221c1e;font-family:var(--display);font-size:17px}
+.cert-parts i{height:5px;border-radius:3px;background:#e6dbcf;overflow:hidden;display:block}
+.cert-parts em{display:block;height:100%;background:var(--k-a)}
+@media (max-width:760px){
+  .prof-r{grid-template-columns:58px minmax(0,1fr) 38px;gap:6px}
+  .prof-head .prof-bar span{font-size:9.5px}
+  .parts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .part.tot{grid-column:1/-1}
+  .cd-list li{grid-template-columns:minmax(0,1fr) auto}
+  .cd-list .sk{grid-column:1/-1;justify-self:start}
+  .cert-parts{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 @media (max-width:760px){
   .stop,.stop.rev{flex-direction:column;align-items:stretch}
   .mbadge{width:76px;height:76px;align-self:flex-start}
@@ -476,6 +577,7 @@ details.more[open] summary{margin-bottom:14px}
 <script src="banco.js"></script>
 <script src="banco-fr.js"></script>
 <script src="trilhas.js"></script>
+<script src="provas.js"></script>
 <script>
 /* =========================================================
    Sotaque · aulas particulares de idiomas
@@ -572,7 +674,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:4,conq:[],certs:[],settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:5,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -918,7 +1020,8 @@ function qAnswer(t,q,i){
       <div class="ord-bank">${ord.filter(k=>!ch.includes(k)).map(k=>`<button class="wchip" data-act="ord-add" ${data} data-q="${q.id}" data-w="${k}">${esc(w[k])}</button>`).join('')}</div>
       ${ch.length? `<button class="link" style="align-self:flex-start" data-act="ord-clear" ${data} data-q="${q.id}">Recomeçar</button>` : ''}`; }
   if (q.type==='open') body=`<label class="sr" for="o-${q.id}">Sua resposta</label><textarea id="o-${q.id}" data-ans-open="${q.id}" ${data} placeholder="Escreva sua resposta…">${esc(a||'')}</textarea>`;
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${esc(qPrompt(q))}</b><span class="qkind">${QT_SHORT[q.type]}</span></div>${body}</div>`;
+  if (q.type==='open'&&q.words) body+=`<small class="muted" id="wc-${q.id}">${wordCount(a)} palavras · pedido: ${q.words}</small>`;
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b><span class="qkind">${q.listen? 'Escuta' : QT_SHORT[q.type]}</span></div>${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
 }
 
 /* resultado, gabarito ou entrega (mode: student | teacher | key | hidden) */
@@ -930,6 +1033,7 @@ function qResult(t,q,i,mode){
     : g>0? `<span class="qtag half">${q.type==='match'? `${Math.round(g*q.pairs.length)} de ${q.pairs.length} pares` : 'Meio certa'}</span>`
     : isAnswered(t,q)? '<span class="qtag no">✗ Errada</span>' : '<span class="qtag no">Sem resposta</span>';
   if (key&&q.type==='open') tag='<span class="qtag wait">Escrita</span>';
+  if ((t.kind==='nivel'||t.kind==='prova')&&q.type==='open'&&t.marks[q.id]==null) tag= mode==='hidden'? '' : `<span class="qtag wait">${t.kind==='nivel'? 'Escrita' : 'Escrita curta'}</span>`;
   const opt=(lt,txt,cls,side)=>`<div class="ans static ${cls}"><span class="lt">${lt}</span><span class="tx">${esc(txt)}</span>${side? `<span class="tag">${side}</span>` : ''}</div>`;
   if (q.type==='mc'||q.type==='tf'){
     const list= q.type==='mc'? q.options.map((o,k)=>[k,LT[k],o]) : [[true,'V','Verdadeiro'],[false,'F','Falso']];
@@ -962,7 +1066,73 @@ function qResult(t,q,i,mode){
     else { body=`<div class="answer" style="background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere">${a? esc(a) : '<span class="muted">Sem resposta</span>'}</div>`;
       if (mode==='teacher') body+=`<div class="marks"><span class="meta">Marque:</span>${[[1,'Certa','m1'],[.5,'Meio certa','m5'],[0,'Errada','m0']].map(([v,l,c])=>`<button class="${c} ${m===v?'on':''}" data-act="mark" data-id="${t.id}" data-q="${q.id}" data-v="${v}">${l}</button>`).join('')}</div>`; }
   }
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${esc(qPrompt(q))}</b>${tag}</div>${body}</div>`;
+  const aud= q.audio? (mode==='hidden'? '' : `<p class="meta muted">Áudio: “${esc(q.audio)}”</p>`) : '';
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${aud}${body}</div>`;
+}
+
+/* ---------- escuta: o navegador lê em voz alta ---------- */
+const AUD={};
+let ttsCur=null;
+const ttsOk=()=>typeof speechSynthesis!=='undefined'&&typeof SpeechSynthesisUtterance!=='undefined';
+const taskLang=t=>user(t.studentId)?.lang||myLang();
+function ttsVoices(lang){
+  if (!ttsOk()) return [];
+  const pre=lang==='FR'? 'fr' : 'en', best=lang==='FR'? ['fr-FR','fr-CA'] : ['en-GB','en-US'];
+  return speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().replace('_','-').startsWith(pre)).sort((a,b)=>(best.indexOf(a.lang)+1||9)-(best.indexOf(b.lang)+1||9));
+}
+function ttsStop(){ if (ttsOk()) speechSynthesis.cancel(); ttsCur=null; document.querySelectorAll('.aud.on').forEach(e=>e.classList.remove('on')); }
+/* linhas "A:" e "B:" viram duas vozes; frases longas vão em pedaços (alguns navegadores cortam falas longas) */
+function speak(key,slow){
+  const a=AUD[key]; if (!a) return;
+  if (!ttsOk()){ toast('Este navegador não lê em voz alta. Tente no Chrome, no Edge ou no Safari.'); return; }
+  ttsStop();
+  const vs=ttsVoices(a.lang), run={key}, parts=[];
+  for (const ln of a.text.split('\n').map(x=>x.trim()).filter(Boolean)){ const m=ln.match(/^([AB]):\s*(.+)$/), who=m&&m[1]==='B'? 1 : 0;
+    for (const ch of (m? m[2] : ln).split(/(?<=[.!?…»”])\s+/)) if (ch.trim()) parts.push([who,ch]); }
+  ttsCur=run; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.add('on'));
+  parts.forEach(([who,ch],i)=>{
+    const u=new SpeechSynthesisUtterance(ch);
+    u.lang= a.lang==='FR'? 'fr-FR' : 'en-GB';
+    if (vs.length) u.voice=vs[Math.min(who,vs.length-1)];
+    u.pitch= who&&vs.length<2? 1.3 : 1; u.rate= slow? .72 : .95;
+    if (i===parts.length-1) u.onend=()=>{ if (ttsCur===run){ ttsCur=null; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.remove('on')); } };
+    speechSynthesis.speak(u);
+  });
+  a.plays=(a.plays||0)+1; document.querySelectorAll(`.aud[data-k="${key}"] .aud-n`).forEach(e=>e.textContent=`ouvido ${a.plays}×`);
+}
+const PLAY_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
+function audioBox(text,lang,o={}){
+  const key='a'+hashStr(lang+text), A=(AUD[key] ||= {text,lang}), lines=text.split('\n').filter(x=>x.trim());
+  return `<div class="aud ${o.mini?'mini':''}" data-k="${key}">${ttsOk()? `<button class="btn small primary" data-act="say" data-k="${key}">${PLAY_ICON}Ouvir</button><button class="btn small" data-act="say" data-k="${key}" data-slow="1">Mais devagar</button><button class="btn small ghost aud-stop" data-act="say-stop">Parar</button><span class="meta muted aud-n">${A.plays? `ouvido ${A.plays}×` : o.mini? '' : 'pode ouvir quantas vezes quiser'}</span>`
+    : '<span class="meta muted">Este navegador não lê em voz alta. Abra no Chrome, no Edge ou no Safari.</span>'}</div>
+    ${o.transcript? `<details class="transc"><summary>Ver transcrição</summary><div class="prose">${lines.map(l=>{ const m=l.match(/^([AB]):\s*(.*)$/); return m? `<p><b>${m[1]}:</b> ${esc(m[2])}</p>` : `<p>${esc(l)}</p>`; }).join('')}</div></details>` : ''}`;
+}
+const AUDIO_ACT={
+  say(el){ speak(el.dataset.k,!!el.dataset.slow); },
+  'say-stop'(){ ttsStop(); },
+  'say-draft'(){ const tx=(S.draft?.audio||'').trim(); if (!tx){ toast('Escreva o texto do áudio primeiro.'); return; } const k='a'+hashStr(myLang()+tx); AUD[k]={text:tx,lang:myLang()}; speak(k); },
+};
+/* questões em partes (prova de nível): leitura, escuta, escrita e, na aula, fala */
+function qList(t,fn,mode){
+  if (!t.blocks) return t.questions.map(fn).join('');
+  const PN={L:1,O:2,E:3,F:4}, idx=id=>t.questions.findIndex(q=>q.id===id), lang=taskLang(t); let last='';
+  const head=k=>`<div class="part-h"><span class="part-n">${PN[k]}</span><div class="grow"><p class="eyebrow">Parte ${PN[k]} de 4</p><h2>${PART[k]}</h2></div></div>`;
+  return t.blocks.map(b=>{ const first=b.part!==last; last=b.part;
+    const media= b.part==='L'? `<div class="panel read"><p class="eyebrow">${esc(b.title)}</p><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></div>`
+      : b.part==='O'? `<div class="panel"><p class="eyebrow">${esc(b.title)}</p>${audioBox(b.audio,lang,{transcript:mode==='student'})}</div>` : '';
+    return (first? head(b.part) : '')+media+b.qIds.map(id=>{ const i=idx(id); return fn(t.questions[i],i); }).join(''); }).join('')
+    + (t.kind==='nivel'? `${head('F')}<div class="panel"><p class="meta">A fala acontece na aula ao vivo: uma conversa de 10 a 15 minutos com ${aProf()}, com perguntas, uma fala mais longa e uma situação para resolver juntos.</p></div>` : '');
+}
+function provaResultS(t){
+  const sc=provaScore(t), c=conqOf(t.studentId,t.marcoId);
+  return `<div class="score"><div class="big">${sc.pct}<span>%</span></div><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1"><p><b>${c? 'Marco conquistado ✦' : 'Vale revisar e tentar de novo'}</b> · ${fmtNum(sc.got)} de ${sc.total} objetivas certas</p>
+    ${t.feedback? `<p style="background:rgba(255,250,242,.75);border-radius:12px;padding:10px 14px;margin-top:4px"><b>Comentário ${daProf()}:</b> ${esc(t.feedback)}</p>` : ''}</div></div>`;
+}
+function nivelResultS(t){
+  const sc=t.result||nivelScore(t), c=certOf(t.studentId,taskLang(t),t.level);
+  return `<section class="panel"><h2>${t.passed? `Aprovação no ${t.level} ✦` : 'Ainda não desta vez'}</h2>${scoreParts(sc)}
+    ${t.feedback? `<p class="note"><b>${AProf()}:</b> ${esc(t.feedback)}</p>` : ''}
+    ${t.passed&&c? `<button class="btn primary" style="align-self:flex-start" data-act="cert-open" data-id="${c.id}">Ver certificado</button>` : `<p class="meta">Revise com ${aProf()} e tente de novo quando vocês acharem que é a hora.</p>`}</section>`;
 }
 
 /* editor */
@@ -1125,16 +1295,16 @@ function seedTasks(){
 
 /* ---------- banco de tarefas (inglês) ---------- */
 const LEVELS=['A1','A2','B1','B2','C1'];
-const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
-const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
+const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
+const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids'];
 const topicsFor=L=>L==='FR'? TOPICS_FR : TOPICS;
 const langBank=()=>DB.bank.filter(b=>b.lang===myLang());
 const LV_PAL={A1:'menta',A2:'petroleo',B1:'tomate',B2:'ceu',C1:'ameixa'};
-const TOPIC_SCENE={'Gramática':'livro','Vocabulário':'uvas','Phrasal verbs':'aviao','Leitura':'londres','Escrita':'arcos','Expressões':'conversa','Pronúncia':'disco','Cultura':'globo','Conjugação':'aviao','Trabalho':'estampa','Kids':'mar'};
+const TOPIC_SCENE={'Gramática':'livro','Vocabulário':'uvas','Phrasal verbs':'aviao','Leitura':'londres','Escuta':'disco','Escrita':'arcos','Expressões':'conversa','Pronúncia':'disco','Cultura':'globo','Conjugação':'aviao','Trabalho':'estampa','Kids':'mar'};
 const levelOf=s=>{ const m=(s.level||'').match(/^(A1|A2|B1|B2|C1)/); return m? m[1] : null; };
 function launchTo(spec){
   const open=spec.questions.some(q=>q.type==='open');
-  for (const sid of spec.students) DB.tasks.push({id:uid(),studentId:sid,title:spec.title,instructions:spec.instructions||'',questions:cloneQs(spec.questions),due:spec.due,createdAt:now(),auto:spec.auto&&!open,status:'pendente',answers:{},marks:{},feedback:'',bankId:spec.bankId||null});
+  for (const sid of spec.students) DB.tasks.push({id:uid(),studentId:sid,title:spec.title,instructions:spec.instructions||'',questions:cloneQs(spec.questions),audio:spec.audio||'',due:spec.due,createdAt:now(),auto:spec.auto&&!open,status:'pendente',answers:{},marks:{},feedback:'',bankId:spec.bankId||null});
   if (spec.bankId){ const bk=DB.bank.find(x=>x.id===spec.bankId); if (bk) bk.uses=(bk.uses||0)+spec.students.length; }
   const names=spec.students.map(id=>user(id).name.split(' ')[0]);
   save(); S.tf='pendentes'; S.draft=null; S.preStudent=null; location.hash='tarefas';
@@ -1176,6 +1346,7 @@ function viewBankItem(b){
       <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:2px solid ${PAL[LV_PAL[b.level]].a}"><p class="eyebrow"><span class="lvl inline" style="background:${PAL[LV_PAL[b.level]].a}">${b.level}</span> ${esc(b.topic)}</p><h1>${esc(b.title)}</h1>
         <p class="meta">${b.questions.length} questões (${typeSummary(b.questions)}) · ${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}</p></div>
       ${b.instructions? `<div class="panel"><p class="eyebrow">Instruções para o aluno</p><div class="prose" style="white-space:pre-wrap">${esc(b.instructions)}</div></div>` : ''}
+      ${b.audio? `<div class="panel"><p class="eyebrow">Áudio</p>${audioBox(b.audio,b.lang,{transcript:true})}</div>` : ''}
       <p class="eyebrow">Questões e gabarito</p>
       ${b.questions.map((q,i)=>qResult(fake,q,i,'key')).join('')}
     </div>
@@ -1196,7 +1367,7 @@ function viewBankItem(b){
     </aside></div>`;
 }
 const newBl=()=>({students:S.preStudent? [S.preStudent] : [],hasDue:true,date:dateKey(addDays(now(),7)),time:'23:59',auto:true});
-const draftFrom=(b,mode)=>({mode,bankId:mode==='bank'? b.id : null,fromBank:mode==='launch'? b.id : null,title:b.title,instructions:b.instructions||'',questions:cloneQs(b.questions),students:S.preStudent? [S.preStudent] : [],hasDue:true,date:dateKey(addDays(now(),7)),time:'23:59',auto:true,level:b.level,topic:b.topic,saveToBank:false});
+const draftFrom=(b,mode)=>({mode,bankId:mode==='bank'? b.id : null,fromBank:mode==='launch'? b.id : null,title:b.title,instructions:b.instructions||'',audio:b.audio||'',questions:cloneQs(b.questions),students:S.preStudent? [S.preStudent] : [],hasDue:true,date:dateKey(addDays(now(),7)),time:'23:59',auto:true,level:b.level,topic:b.topic,saveToBank:false});
 const newBankDraft=()=>({...newDraft(null),mode:'bank',level:'B1',topic:'Gramática'});
 const BANK_ACT={
   'bk-lv'(el){ S.blv=el.dataset.v; S.bkLimit=24; render(); },
@@ -1210,12 +1381,12 @@ const BANK_ACT={
   'bl-launch'(el){ const b=DB.bank.find(x=>x.id===el.dataset.id), L=S.bl;
     if (!L.students.length){ $('#bl-err').textContent='Escolha pelo menos um aluno.'; return; }
     if (L.hasDue&&!L.date){ $('#bl-err').textContent='Escolha a data do prazo.'; return; }
-    launchTo({title:b.title,instructions:b.instructions,questions:b.questions,students:L.students,due:L.hasDue? fromInputs(L.date,L.time||'23:59') : null,auto:L.auto,bankId:b.id}); },
+    launchTo({title:b.title,instructions:b.instructions,audio:b.audio,questions:b.questions,students:L.students,due:L.hasDue? fromInputs(L.date,L.time||'23:59') : null,auto:L.auto,bankId:b.id}); },
   'bk-adjust'(el){ const b=DB.bank.find(x=>x.id===el.dataset.id); S.draft=draftFrom(b,'launch'); S.draft.students=S.bl.students.slice(); S.keepDraft=true; location.hash='nova-tarefa'; },
   'bk-del'(el){ const b=DB.bank.find(x=>x.id===el.dataset.id); confirmBox(`Excluir “${b.title}” do banco?`,'Excluir',()=>{ DB.bank=DB.bank.filter(x=>x.id!==b.id); save(); location.hash='banco'; render(); toast('Excluída do banco'); },'As tarefas que você já lançou com ela continuam com os alunos.'); },
   'd-bank-save'(){ const D=S.draft, err=validateDraft(D);
     if (err){ $('#d-err').textContent=err[0]; const el=err[1]&&document.getElementById(err[1]); if (el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.focus?.(); } return; }
-    const vals={title:D.title.trim(),instructions:D.instructions.trim(),questions:cleanQuestions(D.questions),level:D.level,topic:D.topic};
+    const vals={title:D.title.trim(),instructions:D.instructions.trim(),audio:(D.audio||'').trim(),questions:cleanQuestions(D.questions),level:D.level,topic:D.topic};
     let id=D.bankId;
     if (id) Object.assign(DB.bank.find(x=>x.id===id),vals);
     else { id=uid(); DB.bank.push({id,...vals,lang:myLang(),uses:0,mine:true,createdAt:now()}); }
@@ -1226,7 +1397,7 @@ const BANK_ACT={
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Guardar</button></div></form>`); },
 };
 const BANK_FORMS={
-  tobank(form,fd){ const t=getTask(form.dataset.id); DB.bank.push({id:uid(),lang:myLang(),level:fd.get('level'),topic:fd.get('topic'),title:t.title,instructions:t.instructions,questions:cloneQs(t.questions),uses:0,mine:true,createdAt:now()}); save(); closeModal(); render(); toast('Guardada no banco'); },
+  tobank(form,fd){ const t=getTask(form.dataset.id); DB.bank.push({id:uid(),lang:myLang(),level:fd.get('level'),topic:fd.get('topic'),title:t.title,instructions:t.instructions,audio:t.audio||'',questions:cloneQs(t.questions),uses:0,mine:true,createdAt:now()}); save(); closeModal(); render(); toast('Guardada no banco'); },
 };
 function onBankInput(e){
   const el=e.target;
@@ -1294,34 +1465,38 @@ function viewTaskS(t){
   const back=`<a class="link" href="#tarefas" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Tarefas</a>`;
   if (t.status==='pendente'){
     const n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
-    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='prova'? 'Provinha da trilha' : 'Tarefa '+daProf())}
-      ${t.instructions? `<div class="prose" style="margin-top:16px">${esc(t.instructions)}</div>` : ''}
+    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='prova'? 'Provinha da trilha' : t.kind==='nivel'? 'Prova de nível · '+langName(me.lang) : 'Tarefa '+daProf())}
+      ${t.instructions? `<div class="prose" style="margin-top:16px;white-space:pre-wrap">${esc(t.instructions)}</div>` : ''}
+      ${t.audio? `<div style="margin-top:16px">${audioBox(t.audio,taskLang(t))}</div>` : ''}
       <div class="prog-bar"><b id="prog-t" style="font-size:14px">${done} de ${n} respondidas</b><div class="progress"><i id="prog-i" style="width:${done/n*100}%"></i></div></div>
-      <div class="stack" style="gap:14px">${t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}
-        <div class="row-btns" style="margin-top:6px"><button class="btn primary big" data-act="task-submit" data-id="${t.id}">Entregar tarefa</button><span class="meta muted">Suas respostas ficam salvas enquanto você faz.</span></div></div></div>`;
+      <div class="stack" style="gap:14px">${qList(t,(q,i)=>qAnswer(t,q,i))}
+        <div class="row-btns" style="margin-top:6px"><button class="btn primary big" data-act="task-submit" data-id="${t.id}">${t.kind==='nivel'? 'Entregar prova' : t.kind==='prova'? 'Entregar provinha' : 'Entregar tarefa'}</button><span class="meta muted">Suas respostas ficam salvas enquanto você faz.</span></div></div></div>`;
   }
   if (t.status==='entregue'){
     return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa entregue')}
-      <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. ${AProf()} vai corrigir e o resultado aparece aqui.</div></div>
-      <div class="stack" style="gap:14px">${t.questions.map((q,i)=>qResult(t,q,i,'hidden')).join('')}</div></div>`;
+      <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. ${AProf()} vai ${t.kind==='nivel'? 'avaliar a escrita e a fala (na aula ao vivo)' : 'corrigir'} e o resultado aparece aqui.</div></div>
+      <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'hidden'),'hidden')}</div></div>`;
   }
-  return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa corrigida')}<div style="margin:18px 0">${scoreCard(t,'student')}</div>
-    <div class="stack" style="gap:14px">${t.questions.map((q,i)=>qResult(t,q,i,'student')).join('')}</div></div>`;
+  const res= t.kind==='nivel'? nivelResultS(t) : t.kind==='prova'? provaResultS(t) : scoreCard(t,'student');
+  return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='nivel'? 'Prova de nível' : t.kind==='prova'? 'Provinha da trilha' : 'Tarefa corrigida')}<div style="margin:18px 0">${res}</div>
+    ${t.audio? `<div class="panel" style="margin-bottom:14px">${audioBox(t.audio,taskLang(t),{transcript:true})}</div>` : ''}
+    <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'student'),'student')}</div></div>`;
 }
 function viewTaskT(t){
+  if (t.kind==='nivel') return viewNivelT(t);
   if (t.kind==='prova'&&t.status!=='pendente') return viewProvaT(t);
   const s=user(t.studentId), first=s.name.split(' ')[0], st=taskState(t), sc=scoreOf(t);
   const back=`<a class="link" href="#tarefas" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Tarefas</a>`;
   const head=`<div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Tarefa de ${esc(first)}</p><h1>${esc(t.title)}</h1><p class="meta">Lançada em ${fShort.format(t.createdAt)} · ${t.questions.length} ${t.questions.length===1?'questão':'questões'}${t.due? ' · prazo '+when(t.due) : ' · sem prazo'} · correção ${t.auto&&!hasOpen(t)?'automática':'revisada por você'}</p></div>${pill(st)}</div>`;
   if (t.status==='pendente'){
     const done=t.questions.filter(q=>isAnswered(t,q)).length;
-    return `<div style="${sVars(s)}">${back}${head}<div class="grid2"><div class="stack" style="gap:14px"><p class="eyebrow">Gabarito</p>${t.questions.map((q,i)=>qResult({...t,answers:{}},q,i,'key')).join('')}</div>
+    return `<div style="${sVars(s)}">${back}${head}<div class="grid2"><div class="stack" style="gap:14px">${t.audio? `<div class="panel">${audioBox(t.audio,s.lang,{transcript:true})}</div>` : ''}<p class="eyebrow">Gabarito</p>${t.questions.map((q,i)=>qResult({...t,answers:{}},q,i,'key')).join('')}</div>
       <aside class="stack"><section class="panel"><h2>Esperando ${esc(first)}</h2><p class="meta">${done? `${first} já respondeu ${done} de ${t.questions.length} questões, mas ainda não entregou.` : `${first} ainda não começou.`}</p>
         ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
   }
   const fb=S.fb[t.id]??t.feedback, next=DB.tasks.find(x=>mine(x)&&x.status==='entregue'&&x.id!==t.id);
   return `<div style="${sVars(s)}">${back}${head}<div class="grid2">
-    <div class="stack" style="gap:14px">${scoreCard(t,'teacher')}${t.questions.map((q,i)=>qResult(t,q,i,'teacher')).join('')}</div>
+    <div class="stack" style="gap:14px">${scoreCard(t,'teacher')}${t.audio? `<div class="panel">${audioBox(t.audio,s.lang,{transcript:true})}</div>` : ''}${t.questions.map((q,i)=>qResult(t,q,i,'teacher')).join('')}</div>
     <aside class="stack ed-side"><section class="panel"><h2>${t.status==='entregue'? 'Corrigir e devolver' : 'Corrigida'}</h2>
       <p class="meta">Entregue ${when(t.submittedAt)}${t.due&&t.submittedAt>t.due? ' · <b style="color:var(--late-fg)">depois do prazo</b>' : ''}.${t.status==='corrigida'? ` Devolvida ${rel(t.correctedAt)}.` : ''}</p>
       <p class="meta">As questões objetivas já foram corrigidas.${sc.waiting? ` Falta marcar ${sc.waiting} ${sc.waiting===1?'questão escrita':'questões escritas'}.` : ''}</p>
@@ -1333,7 +1508,7 @@ function viewTaskT(t){
 }
 
 /* ---------- professora: montar tarefa ---------- */
-const newDraft=sid=>({mode:'launch',title:'',instructions:'',questions:[blankMC()],students:sid? [sid] : [],hasDue:true,date:dateKey(addDays(now(),7)),time:'23:59',auto:true,level:levelOf(user(sid)||{})||'B1',topic:'Gramática',saveToBank:false});
+const newDraft=sid=>({mode:'launch',title:'',instructions:'',audio:'',questions:[blankMC()],students:sid? [sid] : [],hasDue:true,date:dateKey(addDays(now(),7)),time:'23:59',auto:true,level:levelOf(user(sid)||{})||'B1',topic:'Gramática',saveToBank:false});
 function viewEditor(){
   const D=S.draft, studs=students(), open=D.questions.some(q=>q.type==='open'), bank=D.mode==='bank';
   const back= bank? (D.bankId? '#banco-'+D.bankId : '#banco') : D.fromBank? '#banco-'+D.fromBank : '#tarefas';
@@ -1344,7 +1519,10 @@ function viewEditor(){
   <div class="ed"><div class="stack" style="gap:14px">
     <div><h1>${title}</h1><p class="meta">${sub}</p></div>
     <div class="panel"><label class="field" for="d-title">Título<input type="text" id="d-title" data-d="title" value="${esc(D.title)}" placeholder="Ex.: Past simple · irregular verbs"></label>
-      <label class="field" for="d-ins">Instruções <small>(opcional)</small><textarea id="d-ins" data-d="instructions" style="min-height:70px" placeholder="Ex.: Escolha a forma certa do verbo.">${esc(D.instructions)}</textarea></label></div>
+      <label class="field" for="d-ins">Instruções <small>(opcional)</small><textarea id="d-ins" data-d="instructions" style="min-height:70px" placeholder="Ex.: Escolha a forma certa do verbo.">${esc(D.instructions)}</textarea></label>
+      <details class="aud-ed" ${D.audio?'open':''}><summary>Áudio para escuta <small class="muted">(opcional)</small></summary>
+        <label class="field" for="d-aud"><span class="meta muted">Escreva o que o aluno vai ouvir: o navegador lê em voz alta em ${langName(myLang()).toLowerCase()}. Para um diálogo, comece as falas com A: e B:.</span><textarea id="d-aud" data-d="audio" style="min-height:90px" placeholder="A: Hi! How are you?&#10;B: I’m fine, thanks.">${esc(D.audio||'')}</textarea></label>
+        <button class="btn small" style="align-self:flex-start" data-act="say-draft">▶ Ouvir como fica</button></details></div>
     ${D.questions.map(qEditor).join('')}
     <div class="addq"><span class="meta" style="width:100%;text-align:center">Adicionar questão</span>${Object.keys(QT).map(k=>`<button class="btn" data-act="q-add" data-t="${k}">+ ${QT[k]}</button>`).join('')}<button class="btn ghost" data-act="q-paste">Colar várias questões de uma vez</button></div>
   </div>
@@ -1369,8 +1547,8 @@ function launchDraft(){
   const D=S.draft, err=validateDraft(D);
   if (err){ $('#d-err').textContent=err[0]; const el=err[1]&&document.getElementById(err[1]); if (el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.focus?.(); } return; }
   const questions=cleanQuestions(D.questions);
-  if (D.saveToBank&&!D.fromBank) DB.bank.push({id:uid(),lang:myLang(),level:D.level,topic:D.topic,title:D.title.trim(),instructions:D.instructions.trim(),questions:cloneQs(questions),uses:0,mine:true,createdAt:now()});
-  launchTo({title:D.title.trim(),instructions:D.instructions.trim(),questions,students:D.students,due:D.hasDue? fromInputs(D.date,D.time||'23:59') : null,auto:D.auto,bankId:D.fromBank});
+  if (D.saveToBank&&!D.fromBank) DB.bank.push({id:uid(),lang:myLang(),level:D.level,topic:D.topic,title:D.title.trim(),instructions:D.instructions.trim(),audio:(D.audio||'').trim(),questions:cloneQs(questions),uses:0,mine:true,createdAt:now()});
+  launchTo({title:D.title.trim(),instructions:D.instructions.trim(),audio:(D.audio||'').trim(),questions,students:D.students,due:D.hasDue? fromInputs(D.date,D.time||'23:59') : null,auto:D.auto,bankId:D.fromBank});
 }
 function submitTask(t){
   t.submittedAt=now();
@@ -1446,7 +1624,7 @@ function onTaskInput(e){
     if (el.dataset.correct!=null&&el.checked){ q.correct=+el.dataset.correct; el.closest('.qcard').querySelectorAll('.optrow').forEach((r,k)=>r.classList.toggle('ok',k===q.correct)); } }
   if (S.draft){ const s=$('#d-sum'); if (s) s.textContent=draftSummary(S.draft); const er=$('#d-err'); if (er&&e.type==='change') er.textContent=''; }
   if (el.dataset.ans){ const t=getTask(el.dataset.task); t.answers[el.dataset.ans]=+el.value; save(); updateProgress(t); }
-  if (el.dataset.ansOpen){ const t=getTask(el.dataset.task); t.answers[el.dataset.ansOpen]=el.value; clearTimeout(S.saveT); S.saveT=setTimeout(save,400); updateProgress(t); }
+  if (el.dataset.ansOpen){ const t=getTask(el.dataset.task); t.answers[el.dataset.ansOpen]=el.value; clearTimeout(S.saveT); S.saveT=setTimeout(save,400); updateProgress(t); const wc=document.getElementById('wc-'+el.dataset.ansOpen), q=t.questions.find(x=>x.id===el.dataset.ansOpen); if (wc&&q) wc.textContent=`${wordCount(el.value)} palavras · pedido: ${q.words}`; }
   if (el.dataset.fb) S.fb[el.dataset.fb]=el.value;
 }
 function tasksPanel(s){
@@ -1459,10 +1637,12 @@ function tasksPanel(s){
 }
 
 /* ---------- trilha ---------- */
-const PROVA_N=10, PROVA_MIN=70;
+const PROVA_N=10, PROVA_MIN=70, PROVA_AUD=3, TRAIL_V=2;
 const conqOf=(sid,mid)=>DB.conq.find(c=>c.studentId===sid&&c.marcoId===mid);
 const provaOf=(sid,mid)=>DB.tasks.filter(t=>t.kind==='prova'&&t.studentId===sid&&t.marcoId===mid).sort((a,b)=>b.createdAt-a.createdAt)[0];
+const nivelOf=(sid,level)=>DB.tasks.filter(t=>t.kind==='nivel'&&t.studentId===sid&&t.level===level).sort((a,b)=>b.createdAt-a.createdAt)[0];
 const certOf=(sid,lang,level)=>DB.certs.find(c=>c.studentId===sid&&c.lang===lang&&c.level===level);
+const nextLevel=l=>LEVELS[LEVELS.indexOf(l)+1]||null;
 function trailProgress(s,level=s.trail?.level){ const ms=marcosOf(s.lang,level), done=ms.filter(m=>conqOf(s.id,m.id)).length; return {ms,done,total:ms.length}; }
 function marcoState(s,m){
   if (conqOf(s.id,m.id)) return {k:'done',label:'Conquistado'};
@@ -1472,50 +1652,125 @@ function marcoState(s,m){
   if (p?.status==='corrigida') return {k:'late',label:'Revisar e tentar de novo'};
   return {k:'pend',label:'A caminho'};
 }
-/* a provinha sorteia questões objetivas das tarefas do marco */
+/* "Eu consigo": o aluno se avalia (s) e o professor confirma (t).
+   Sem decisão do professor, vale a conquista do marco ou o nível de partida da trilha. */
+const cdKey=(sid,id)=>sid+'|'+id;
+const cdOf=(sid,id)=>DB.cando[cdKey(sid,id)]||{};
+function stmtOk(s,st){
+  const o=cdOf(s.id,st.id); if (o.t!=null) return o.t;
+  if (conqOf(s.id,st.marcoId)) return true;
+  return LEVELS.indexOf(st.marcoId.split('-')[1])<LEVELS.indexOf(s.trail?.base||s.trail?.level||'A1');
+}
+const stmtSelf=(s,st)=>!!cdOf(s.id,st.id).s;
+/* perfil por habilidade na régua A1 → C1 (com os níveis "plus"); um subnível conta a partir de 2/3 das frases confirmadas */
+function skillProfile(s){
+  const ms=allMarcos(s.lang), out={};
+  for (const k of SKILL_KEYS){
+    const per=SUBLEVELS.map(sub=>{ const st=ms.filter(m=>m.sub===sub).flatMap(m=>m.stmts).filter(x=>x.k===k); return {sub,total:st.length,ok:st.filter(x=>stmtOk(s,x)).length,self:st.filter(x=>stmtSelf(s,x)&&!stmtOk(s,x)).length}; });
+    let reached=-1; for (let i=0;i<per.length;i++){ const p=per[i]; if (!p.total||p.ok/p.total>=2/3) reached=i; else break; }
+    out[k]={per,reached,label: reached>=0? SUBLEVELS[reached] : 'começando'};
+  }
+  return out;
+}
+const hoursOf=sid=>Math.round(DB.lessons.filter(l=>l.studentId===sid&&l.status==='realizada').reduce((a,l)=>a+l.dur,0)/60);
+/* provinha do marco: questões objetivas das tarefas do marco (algumas viram escuta) + uma escrita curta */
 function provaPool(s,m){
   const out=[];
   for (const title of m.tasks){ const b=DB.bank.find(x=>x.lang===s.lang&&x.title===title&&!x.mine)||DB.bank.find(x=>x.lang===s.lang&&x.title===title); if (b) out.push(...b.questions.filter(q=>q.type!=='open')); }
   return out;
 }
+const shuffle=a=>{ for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+/* frase completa para ler em voz alta: a lacuna recebe a resposta certa */
+const spoken=q=>q.type==='gap'? q.prompt.replace('___',q.answers[0]) : q.type==='mc'&&q.prompt.includes('___')? q.prompt.replace('___',q.options[q.correct]) : null;
 function makeProva(s,m){
-  const pool=provaPool(s,m).slice();
-  for (let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
-  const t={id:uid(),kind:'prova',marcoId:m.id,studentId:s.id,title:`Provinha · ${m.can}`,instructions:`Marco ${m.n} da trilha ${m.level}. Responda com calma: a partir de ${PROVA_MIN}% de acertos, você mostra que domina este marco.`,
-    questions:cloneQs(pool.slice(0,PROVA_N)),due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
+  const qs=cloneQs(shuffle(provaPool(s,m).slice()).slice(0,PROVA_N));
+  let n=0; for (const q of qs){ const sp=n<PROVA_AUD&&spoken(q); if (sp){ q.audio=sp; q.listen=true; n++; } }
+  qs.push({id:uid(),type:'open',prompt:m.w,short:true});
+  const t={id:uid(),kind:'prova',marcoId:m.id,studentId:s.id,title:`Provinha · ${m.title}`,instructions:`Marco ${m.n} da trilha ${m.level}. São ${qs.length-1} questões do marco (${n? `${n} delas com áudio: ouça e responda` : 'objetivas'}) e uma escrita curta no final. Responda com calma.`,
+    questions:qs,due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
   DB.tasks.push(t); return t;
 }
-const correctAnswer=q=>q.type==='gap'? q.answers[0] : q.type==='match'? q.pairs.map((_,i)=>i) : q.type==='order'? words(q).map((_,i)=>i) : q.correct;
-function seedTrail(){
-  const on=(sid,level)=>{ user(sid).trail={on:true,level}; };
-  const conq=(sid,mid,days,note='',score=null)=>DB.conq.push({studentId:sid,marcoId:mid,at:now()-days*DAY,note,score,by:user(sid).teacherId});
-  on('s1','B1'); on('s4','A2'); on('s3','A1');
-  marcosOf('EN','A2').forEach((m,k)=>conq('s1',m.id,90-k*5));
-  DB.certs.push({id:uid(),studentId:'s1',lang:'EN',level:'A2',at:now()-60*DAY,teacherId:'prof'});
-  conq('s1','EN-B1-1',20,'Ótimo domínio dos tempos do passado!',90); conq('s1','EN-B1-2',6,'',80);
-  makeProva(user('s1'),marcoById('EN-B1-3'));
-  conq('s4','EN-A2-1',12,'Muito bem! Já usa a frequência com naturalidade.',85);
-  const t=makeProva(user('s4'),marcoById('EN-A2-2'));
-  t.questions.forEach((q,i)=>{ t.answers[q.id]= i===3||i===7? (q.type==='gap'? 'is' : q.type==='tf'? !q.correct : q.type==='mc'? (q.correct+1)%q.options.length : correctAnswer(q)) : correctAnswer(q); });
-  t.status='entregue'; t.submittedAt=now()-5*HOUR; t.createdAt=now()-2*DAY;
-  conq('s3','FR-A1-1',15,'Très bien !',100); conq('s3','FR-A1-2',4,'',80);
+/* prova de nível: 4 partes de 25 pontos, como no DELF e nos exames Cambridge */
+function makeNivel(s,level){
+  const L=s.lang, pick=(arr,n)=>shuffle(arr.slice()).slice(0,n), questions=[], blocks=[];
+  const fromBank=(topic)=>DB.bank.filter(b=>b.lang===L&&b.level===level&&b.topic===topic&&!b.mine);
+  for (const b of pick(fromBank('Leitura'),2)){ const qs=cloneQs(b.questions.filter(q=>q.type!=='open').slice(0,5)); questions.push(...qs);
+    blocks.push({part:'L',title:b.title.replace(/^(Reading|Lecture) · /,''),text:b.instructions.replace(/^[^\n]*\n\n/,''),qIds:qs.map(q=>q.id)}); }
+  for (const b of pick(fromBank('Escuta'),2)){ const qs=cloneQs(b.questions.slice(0,5)); questions.push(...qs);
+    blocks.push({part:'O',title:b.title.replace(/^(Listening|Écoute) · /,''),audio:b.audio,qIds:qs.map(q=>q.id)}); }
+  const [prompt,words]=pick(NIVEL_E[L][level],1)[0], w={id:uid(),type:'open',prompt,words};
+  questions.push(w); blocks.push({part:'E',title:'Escrita',qIds:[w.id]});
+  const t={id:uid(),kind:'nivel',level,studentId:s.id,title:`Prova de nível ${level}`,instructions:`Quatro partes de 25 pontos: leitura, escuta, escrita e fala. A fala acontece na aula ao vivo com ${aProf()}. Não tem pressa: dá para ouvir os áudios mais de uma vez.`,
+    questions,blocks,fala:NIVEL_F[L][level],exam:{rub:{E:[null,null,null,null],F:[null,null,null,null]},skip:{}},due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
+  DB.tasks.push(t); return t;
 }
+const PART={L:'Leitura',O:'Escuta',E:'Escrita',F:'Fala'};
+const r5=n=>Math.round(n*2)/2;
+function nivelScore(t){
+  const part=k=>{ const ids=t.blocks.filter(b=>b.part===k).flatMap(b=>b.qIds), qs=t.questions.filter(q=>ids.includes(q.id)); return qs.length? r5(qs.reduce((a,q)=>a+gradeQ(t,q),0)/qs.length*25) : 0; };
+  const rub=k=>{ const r=t.exam.rub[k]; return r.every(v=>v!=null)? r5(r.reduce((a,b)=>a+b,0)/20*25) : null; };
+  const P={L:part('L'),O:part('O'),E:rub('E'),F:rub('F')};
+  const used=SKILL_KEYS.filter(k=>!t.exam.skip[k]), missing=used.filter(k=>P[k]==null);
+  const total=used.length? Math.round(used.reduce((a,k)=>a+(P[k]||0),0)/(used.length*25)*100) : 0;
+  return {P,used,missing,total,pass:!missing.length&&total>=50&&used.every(k=>P[k]>=5)};
+}
+const correctAnswer=q=>q.type==='gap'? q.answers[0] : q.type==='match'? q.pairs.map((_,i)=>i) : q.type==='order'? words(q).map((_,i)=>i) : q.correct;
+const wrongAnswer=q=>q.type==='gap'? 'xx' : q.type==='tf'? !q.correct : q.type==='mc'? (q.correct+1)%q.options.length : q.type==='match'? q.pairs.map((_,i)=>(i+1)%q.pairs.length) : correctAnswer(q).slice().reverse();
+function seedTrail(){
+  const on=(sid,level,base=level)=>{ user(sid).trail={on:true,level,base}; };
+  const conq=(sid,mid,days,note='',score=null)=>DB.conq.push({studentId:sid,marcoId:mid,at:now()-days*DAY,note,score,by:user(sid).teacherId});
+  const answer=(t,wrong=[])=>t.questions.forEach((q,i)=>{ if (q.type==='open') t.answers[q.id]=t.kind==='nivel'? WRITE_SAMPLE[user(t.studentId).lang][t.level]||'' : 'I usually study in the evening.'; else t.answers[q.id]= wrong.includes(i)? wrongAnswer(q) : correctAnswer(q); });
+  const self=(sid,ids)=>ids.forEach(id=>{ (DB.cando[cdKey(sid,id)] ||= {}).s=true; });
+  on('s1','B1','A2'); on('s4','A2'); on('s3','A1'); on('s2','B2');
+  /* Marina: A2 completo e aprovado na prova, B1 em andamento */
+  marcosOf('EN','A2').forEach((m,k)=>conq('s1',m.id,120-k*7));
+  { const ex=makeNivel(user('s1'),'A2'); answer(ex,[2,7]); ex.exam.rub.E=[4,4,3,4]; ex.exam.rub.F=[4,3,4,4]; ex.status='corrigida'; ex.createdAt=now()-66*DAY; ex.submittedAt=now()-64*DAY; ex.correctedAt=now()-60*DAY; ex.feedback='Parabéns! Leitura e escuta muito seguras. Na fala, vamos trabalhar a pronúncia do -ed.';
+    const sc=nivelScore(ex); ex.result=sc; DB.certs.push({id:uid(),studentId:'s1',lang:'EN',level:'A2',at:now()-60*DAY,teacherId:'prof',scores:sc.P,total:sc.total,examId:ex.id}); }
+  conq('s1','EN-B1-1',30,'Ótimo domínio dos tempos do passado!',90); conq('s1','EN-B1-2',12,'',80);
+  DB.cando[cdKey('s1','EN-B1-2.3')]={t:false};
+  self('s1',['EN-B1-3.1','EN-B1-3.3','EN-B1-4.1','EN-B1-5.1','EN-B1-6.1','EN-B1-6.3']);
+  makeProva(user('s1'),marcoById('EN-B1-3'));
+  /* Theo: provinha esperando avaliação */
+  conq('s4','EN-A2-1',12,'Muito bem! Já usa a frequência com naturalidade.',85);
+  self('s4',['EN-A2-2.1','EN-A2-2.2','EN-A2-3.1']);
+  { const t=makeProva(user('s4'),marcoById('EN-A2-2')); answer(t,[3,7]); t.answers[t.questions.at(-1).id]='Now I am writing my homework and my sister is watching TV. I am happy!'; t.status='entregue'; t.submittedAt=now()-5*HOUR; t.createdAt=now()-2*DAY; }
+  /* Lucas: B2 quase completo e prova de nível entregue (falta avaliar escrita e fala) */
+  marcosOf('EN','B2').slice(0,6).forEach((m,k)=>conq('s2',m.id,70-k*9,'',75+k*3));
+  self('s2',['EN-B2-7.1','EN-B2-7.2','EN-B2-8.1']);
+  { const ex=makeNivel(user('s2'),'B2'); answer(ex,[1,6,8]); ex.status='entregue'; ex.createdAt=now()-4*DAY; ex.submittedAt=now()-1*DAY; }
+  /* Beatriz: francês A1 */
+  conq('s3','FR-A1-1',15,'Très bien !',100); conq('s3','FR-A1-2',4,'',80);
+  self('s3',['FR-A1-3.1','FR-A1-3.2']);
+  DB.trailV=TRAIL_V;
+}
+const WRITE_SAMPLE={EN:{A2:'Hi Sam! Last summer I went to Salvador with my family. We stayed in a small hotel near the beach. Every day we swam in the sea and ate acarajé. I liked the music in Pelourinho the most. It was amazing! See you soon, Marina',
+  B2:'Many people believe that social media does more harm than good, and to some extent I agree. Firstly, platforms are designed to keep us scrolling, which can affect our concentration and sleep. Secondly, the constant comparison with other people’s “perfect” lives may damage young people’s self-esteem. On the other hand, social media has made it easier to stay in touch with friends abroad and to organise communities. In my opinion, the problem is not the technology itself but the way we use it. Schools should teach students to use it critically, and companies should be more transparent about their algorithms. Personally, I have turned off most notifications on my phone and I only check social media twice a day. Since then, I have been reading more and sleeping better. To sum up, social media can do a lot of good, as long as we stay in control of it.'},FR:{}};
 function trailPanel(s){
   const first=s.name.split(' ')[0];
   if (!s.trail?.on){
     if (!isT()) return '';
     return `<section class="panel"><div class="panel-h"><h2>Trilha</h2><span class="muted" style="font-size:13px">opcional</span></div>
-      <p class="meta">Acompanhe ${esc(first)} por marcos de cada nível. Você libera as provinhas quando achar que é a hora e decide cada conquista.</p>
+      <p class="meta">Acompanhe ${esc(first)} por marcos de cada nível, com o perfil em leitura, escuta, escrita e fala. Você libera as provinhas e decide cada conquista.</p>
       <div class="row-btns"><label class="sr" for="trail-start">Nível de partida</label><select id="trail-start" style="width:auto">${LEVELS.map(l=>`<option ${levelOf(s)===l?'selected':''}>${l}</option>`).join('')}</select><button class="btn small primary" data-act="trail-on" data-id="${s.id}">Ativar trilha</button></div></section>`;
   }
-  const {ms,done,total}=trailProgress(s), cur=ms.find(m=>!conqOf(s.id,m.id));
+  const {ms,done,total}=trailProgress(s), cur=ms.find(m=>!conqOf(s.id,m.id)), pf=skillProfile(s);
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Trilha' : `Sua trilha`}</h2><span class="count">${s.trail.level}</span></div>
     <div class="dots" aria-label="${done} de ${total} marcos">${ms.map(m=>`<i class="${conqOf(s.id,m.id)?'u':''}"></i>`).join('')}</div>
-    <p class="meta">${done} de ${total} marcos conquistados${cur? ` · agora: <b>${esc(cur.can)}</b>` : ' · nível completo!'}</p>
+    <p class="meta">${done} de ${total} marcos conquistados${cur? ` · agora: <b>${esc(cur.title)}</b>` : ' · nível completo!'}</p>
+    <div class="mini-prof">${SKILL_KEYS.map(k=>`<span><small>${SKILLS[k]}</small><b>${pf[k].label==='começando'? '·' : pf[k].label}</b></span>`).join('')}</div>
     <a class="btn small" style="align-self:flex-start" href="#${isT()? 'trilha-'+s.id : 'trilha'}">${isT()? 'Abrir trilha' : 'Ver minha trilha'}</a></section>`;
+}
+/* lista "Eu consigo" de um marco */
+function candoList(s,m){
+  const T=isT(), first=s.name.split(' ')[0];
+  return `<ul class="cd-list">${m.stmts.map(st=>{ const ok=stmtOk(s,st), me=stmtSelf(s,st);
+    const side= T? `<button class="cdb ${ok?'on':''}" data-act="cd-conf" data-s="${s.id}" data-id="${st.id}" aria-pressed="${ok}">${ok? '✦ Confirmado' : 'Confirmar'}</button>`
+      : ok? '<span class="cdb on static">✦ Confirmado</span>' : `<button class="cdb ${me?'self':''}" data-act="cd-self" data-id="${st.id}" aria-pressed="${me}">${me? '✓ Eu consigo' : 'Eu consigo?'}</button>`;
+    return `<li class="${ok?'ok':''}"><span class="sk sk-${st.k}">${SKILLS[st.k]}</span><span class="tx">${esc(st.txt)}${T&&me&&!ok? ` <small class="muted">· ${esc(first)} acha que consegue</small>` : ''}</span>${side}</li>`; }).join('')}</ul>`;
 }
 function stopHtml(s,m,i,cur){
   const st=marcoState(s,m), c=conqOf(s.id,m.id), p=provaOf(s.id,m.id), T=isT(), isCur=m===cur;
+  const okN=m.stmts.filter(x=>stmtOk(s,x)).length;
   let acts='';
   if (T){
     if (c) acts=`<button class="btn small ghost" data-act="m-undo" data-s="${s.id}" data-m="${m.id}">Desfazer conquista</button>`;
@@ -1531,29 +1786,75 @@ function stopHtml(s,m,i,cur){
     return bs.length? `<details class="train"><summary>Treinos do marco (${bs.length})</summary><div class="rows">${bs.map(b=>`<div class="row"><div class="row-m"><b>${esc(b.title)}</b><small>${b.questions.length} questões</small></div><button class="btn small" data-act="m-train" data-s="${s.id}" data-b="${b.id}">Lançar</button></div>`).join('')}</div></details>` : ''; })() : '';
   return `<article class="stop ${i%2?'rev':''} ms-${st.k} ${isCur?'cur':''}">
     <div class="mbadge">${c? quadro(s.palette,m.scene,hashStr(m.id)%997,{w:200,h:200,frame:false}) : `<span>${m.n}</span>`}</div>
-    <div class="stop-c"><p class="eyebrow">Marco ${m.n}${isCur? (T? ' · próximo' : ' · você está aqui') : ''}</p><h3>${esc(m.can)}</h3><p class="meta">${esc(m.learn)}</p>
+    <div class="stop-c"><p class="eyebrow">Marco ${m.n} · ${m.sub}${isCur? (T? ' · próximo' : ' · você está aqui') : ''}</p><h3>${esc(m.title)}</h3><p class="meta">${esc(m.learn)}</p>
+      <details class="cd" ${isCur&&!c?'open':''}><summary>${T? 'O que o aluno vai conseguir fazer' : 'O que você vai conseguir fazer'} <span class="cd-n">${okN}/${m.stmts.length}</span></summary>${candoList(s,m)}
+        ${T? '' : '<p class="meta muted" style="margin-top:8px">Marque o que você sente que já consegue. '+AProf()+' confirma nas aulas.</p>'}</details>
       <div class="row-btns">${pill(st)}${acts}</div>
       ${c? `<p class="note">${c.note? '“'+esc(c.note)+'” · ' : ''}conquistado em ${fShort.format(c.at)}${c.score!=null? ` · provinha ${c.score}%` : ''}</p>` : ''}${train}</div></article>`;
+}
+/* perfil: régua A1 → C1 com as quatro habilidades */
+function profilePanel(s){
+  const pf=skillProfile(s), T=isT(), first=s.name.split(' ')[0], h=hoursOf(s.id), nx=s.trail.level, ref=GLH[nx];
+  return `<section class="panel prof"><div class="panel-h"><h2>${T? `Perfil de ${esc(first)}` : 'Seu progresso'}</h2><span class="muted" style="font-size:13px">por habilidade</span></div>
+    <div class="prof-grid" role="table" aria-label="Progresso por habilidade">
+      <div class="prof-r prof-head" role="row"><span role="columnheader"></span><div class="prof-bar" role="presentation">${SUBLEVELS.map(x=>`<span>${x}</span>`).join('')}</div><span role="columnheader" class="sr">Nível</span></div>
+      ${SKILL_KEYS.map(k=>{ const P=pf[k]; return `<div class="prof-r" role="row"><b role="rowheader">${SKILLS[k]}</b><div class="prof-bar" role="cell" aria-label="${SKILLS[k]}: ${P.label}">${P.per.map(p=>`<i title="${p.sub}: ${p.ok} de ${p.total} confirmadas${p.self? `, ${p.self} marcadas pelo aluno` : ''}"><em style="width:${p.total? p.ok/p.total*100 : 0}%"></em>${p.self? `<u style="left:${p.ok/p.total*100}%;width:${p.self/p.total*100}%"></u>` : ''}</i>`).join('')}</div><span class="prof-lv">${P.label==='começando'? '—' : P.label}</span></div>`; }).join('')}
+    </div>
+    <p class="meta muted prof-key"><span class="kk ok"></span>confirmado ${T? 'por você' : 'por '+aProf()} <span class="kk self"></span>${T? 'o aluno acha que consegue' : 'você acha que consegue'}</p>
+    <div class="prof-foot"><div><b>${h} ${h===1?'hora':'horas'}</b><small>de aula no Sotaque</small></div>
+      ${ref? `<div><b>${ref[0]}–${ref[1]} h</b><small>referência Cambridge para chegar ao ${nx}, desde o zero, contando todo o estudo</small></div>` : ''}</div>
+  </section>`;
+}
+function examCard(s,lv){
+  const T=isT(), ex=nivelOf(s.id,lv), first=s.name.split(' ')[0], cert=certOf(s.id,s.lang,lv);
+  let body='';
+  if (!ex) body= T? `<p class="meta">Quatro partes de 25 pontos, como no DELF e nos exames Cambridge: leitura, escuta, escrita e fala (na aula ao vivo). Libere quando achar que ${esc(first)} está pronto, mesmo sem todos os marcos.</p><div class="row-btns"><button class="btn primary" data-act="nivel-make" data-s="${s.id}" data-v="${lv}">Liberar prova de nível ${lv}</button></div>`
+    : `<p class="meta">Quando ${aProf()} achar que é a hora, ela aparece aqui: leitura, escuta, escrita e uma conversa na aula ao vivo.</p>`;
+  else if (ex.status==='pendente') body= T? `<p class="meta">Liberada ${rel(ex.createdAt)}. Você pode avaliar a fala na aula a qualquer momento.</p><div class="row-btns"><a class="btn" href="#tarefa-${ex.id}">Abrir prova e avaliar a fala</a></div>`
+    : `<div class="row-btns"><a class="btn primary" href="#tarefa-${ex.id}">Fazer a prova</a><span class="meta muted">A fala acontece na aula com ${aProf()}.</span></div>`;
+  else if (ex.status==='entregue') body= T? `<div class="row-btns"><a class="btn primary" href="#tarefa-${ex.id}">Avaliar prova</a><span class="meta muted">Entregue ${rel(ex.submittedAt)}</span></div>` : `<p class="meta">Entregue! ${AProf()} vai avaliar a escrita e a fala.</p>`;
+  else { const sc=ex.result||nivelScore(ex); body=`${scoreParts(sc)}<div class="row-btns">${pill(ex.passed===false? {k:'late',label:'Ainda não'} : {k:'done',label:'Aprovado'})}<a class="link" href="#tarefa-${ex.id}">Ver a prova</a>${T&&!cert&&ex.passed===false? `<button class="btn small" data-act="nivel-make" data-s="${s.id}" data-v="${lv}">Liberar nova prova</button>` : ''}</div>`; }
+  return `<section class="panel exam" style="margin-top:30px"><div class="panel-h"><h2>Prova de nível ${lv}</h2><span class="muted" style="font-size:13px">opcional</span></div>${body}</section>`;
+}
+function scoreParts(sc){
+  return `<div class="parts">${SKILL_KEYS.map(k=>{ const v=sc.P[k], skip=!sc.used.includes(k); return `<div class="part ${skip?'skip':''}"><small>${PART[k]}</small><b>${skip? '—' : v==null? '?' : fmtNum(v)}<span>/25</span></b><i><em style="width:${skip||v==null? 0 : v/25*100}%"></em></i></div>`; }).join('')}
+    <div class="part tot"><small>Total</small><b>${sc.total}<span>/100</span></b></div></div>`;
+}
+function trailTimeline(s){
+  const ev=[...DB.conq.filter(c=>c.studentId===s.id).map(c=>{ const m=marcoById(c.marcoId); return m&&{at:c.at,k:'m',t:`Marco ${m.sub} · ${m.title}`,d:c.score!=null? `provinha ${c.score}%` : 'confirmado na aula'}; }),
+    ...DB.certs.filter(c=>c.studentId===s.id).map(c=>({at:c.at,k:'c',t:`Certificado ${c.level}`,d:c.total!=null? `prova de nível ${c.total}/100` : 'emitido', id:c.id})),
+    ...DB.tasks.filter(t=>t.kind==='nivel'&&t.studentId===s.id&&t.status==='corrigida'&&t.passed===false).map(t=>({at:t.correctedAt,k:'n',t:`Prova de nível ${t.level}`,d:'ainda não: revisar'}))].filter(Boolean).sort((a,b)=>b.at-a.at);
+  if (!ev.length) return '';
+  const lim=S.tlAll? ev.length : 6;
+  return `<section class="panel" style="margin-top:30px"><div class="panel-h"><h2>Linha do tempo</h2><span class="count">${ev.length}</span></div>
+    <ol class="ttl">${ev.slice(0,lim).map(e=>`<li class="ttl-${e.k}"><small>${fShort.format(e.at)}</small><b>${e.id? `<button class="link" data-act="cert-open" data-id="${e.id}">${esc(e.t)} ✦</button>` : esc(e.t)}</b><span class="meta muted">${esc(e.d)}</span></li>`).join('')}</ol>
+    ${ev.length>lim? `<button class="link" style="align-self:flex-start" data-act="tl-all">Ver tudo</button>` : ''}</section>`;
 }
 function viewTrail(s){
   const T=isT(), L=s.lang, first=s.name.split(' ')[0], p=PAL[s.palette];
   const lv= S.trailFor===s.id&&S.trailLv? S.trailLv : s.trail.level;
   const {ms,done,total}=trailProgress(s,lv), cur=ms.find(m=>!conqOf(s.id,m.id)), cert=certOf(s.id,L,lv);
   const conn=i=>`<svg class="conn" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="${i%2? 'M93.7 0C93.7 26 6.3 14 6.3 40' : 'M6.3 0C6.3 26 93.7 14 93.7 40'}"/></svg><div class="conn-m" aria-hidden="true"></div>`;
+  const half=ms.findIndex(m=>m.half===2);
+  const sep=m=>`<div class="half-sep"><span>${m.sub===lv? `${lv} · segunda parte` : m.sub}</span></div>`;
   const certs=DB.certs.filter(c=>c.studentId===s.id&&c.lang===L).sort((a,b)=>LEVELS.indexOf(a.level)-LEVELS.indexOf(b.level));
   return `<div style="${sVars(s)}">
     ${T? `<a class="link" href="#aluno-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Caderno de ${esc(first)}</a>` : ''}
     <div class="banner"><div class="banner-art">${quadro(s.palette,'aviao',s.seed+7,{w:1100,h:220,focus:[.66,.84],align:'xMaxYMid'})}</div>
       <div class="banner-t" style="--bt:${p.c}"><h1>${T? `Trilha de ${esc(first)}` : `Sua trilha no ${langName(L).toLowerCase()}`}</h1><p>Nível ${lv} · ${done} de ${total} marcos conquistados</p></div></div>
+    ${profilePanel(s)}
     <div class="levels" role="group" aria-label="Níveis">${LEVELS.map(l=>{ const pr=trailProgress(s,l), ct=certOf(s.id,L,l);
       return `<button class="lvchip ${l===lv?'on':''} ${l===s.trail.level?'cur':''} ${ct?'got':''}" data-act="trail-lv" data-s="${s.id}" data-v="${l}" aria-pressed="${l===lv}"><b>${l}</b><small>${ct? 'certificado ✦' : `${pr.done}/${pr.total}`}</small></button>`; }).join('')}</div>
     ${T? `<div class="toolbar"><label class="field" for="trail-level" style="flex-direction:row;align-items:center;gap:10px">Nível atual de ${esc(first)}<select id="trail-level" data-trail-level="${s.id}" style="width:auto">${LEVELS.map(l=>`<option ${s.trail.level===l?'selected':''}>${l}</option>`).join('')}</select></label>
       ${cert? '' : `<button class="btn small" data-act="cert-issue" data-s="${s.id}" data-v="${lv}">Emitir certificado ${lv}</button>`}<button class="btn small ghost" data-act="trail-off" data-id="${s.id}">Desativar trilha</button></div>
-      <p class="meta muted" style="margin:-6px 0 22px">A trilha é um guia, não uma regra: você libera as provinhas, decide cada conquista e pode emitir o certificado quando achar justo.</p>` : ''}
+      <p class="meta muted" style="margin:-6px 0 22px">A trilha é um guia, não uma regra: você libera as provinhas, confirma o que ${esc(first)} consegue fazer e decide cada conquista e cada certificado.</p>` : ''}
     ${cert? `<div class="notice ok" style="margin-bottom:22px"><div>${T? `${esc(first)} recebeu o certificado ${lv}` : `Você recebeu o certificado ${lv}`} em ${fShort.format(cert.at)}.</div><button class="btn small" data-act="cert-open" data-id="${cert.id}">Ver certificado</button></div>`
-      : done===total&&total? `<div class="notice" style="margin-bottom:22px"><div>${T? `${esc(first)} conquistou todos os marcos do ${lv}!` : `Você conquistou todos os marcos do ${lv}! ${AProf()} pode emitir o seu certificado.`}</div>${T? `<button class="btn small primary" data-act="cert-issue" data-s="${s.id}" data-v="${lv}">Emitir certificado</button>` : ''}</div>` : ''}
-    <div class="trail">${ms.map((m,i)=>(i? conn(i-1) : '')+stopHtml(s,m,i,cur)).join('')}</div>
-    ${certs.length? `<section class="panel" style="margin-top:36px"><div class="panel-h"><h2>${T? 'Certificados' : 'Seus certificados'}</h2></div><div class="row-btns">${certs.map(c=>`<button class="btn" data-act="cert-open" data-id="${c.id}">✦ Certificado ${c.level}</button>`).join('')}</div></section>` : ''}
+      : done===total&&total? `<div class="notice" style="margin-bottom:22px"><div>${T? `${esc(first)} conquistou todos os marcos do ${lv}! Que tal a prova de nível?` : `Você conquistou todos os marcos do ${lv}!`}</div></div>` : ''}
+    <div class="trail">${ms.map((m,i)=>(i===half&&half>0? sep(m) : i? conn(i-1) : '')+stopHtml(s,m,i,cur)).join('')}</div>
+    ${examCard(s,lv)}
+    ${trailTimeline(s)}
+    ${certs.length? `<section class="panel" style="margin-top:30px"><div class="panel-h"><h2>${T? 'Certificados' : 'Seus certificados'}</h2></div><div class="row-btns">${certs.map(c=>`<button class="btn" data-act="cert-open" data-id="${c.id}">✦ Certificado ${c.level}</button>`).join('')}</div></section>` : ''}
+    <p class="meta muted src">A trilha segue o Quadro Europeu Comum de Referência (CEFR), com os níveis “plus” do volume complementar de 2020 e listas “Eu consigo” no estilo do Portfólio Europeu de Línguas. A prova de nível segue o formato do DELF e dos exames Cambridge.</p>
   </div>`;
 }
 function openCert(id){
@@ -1563,49 +1864,99 @@ function openCert(id){
     <p class="eyebrow" style="color:#7a1f35">Certificado de nível · ${langName(c.lang)}</p>
     <div class="cert-lv">${c.level}</div>
     <p style="color:#5a4f52">Certificamos que</p><p class="cert-name">${esc(s.name)}</p>
-    <p style="color:#5a4f52;max-width:44ch">conquistou os marcos do nível ${c.level} do Quadro Europeu Comum de Referência para Línguas:</p>
-    <ul>${ms.map(m=>`<li>✦ ${esc(m.can)}</li>`).join('')}</ul>
+    <p style="color:#5a4f52;max-width:46ch">${c.scores? `obteve aprovação na prova de nível ${c.level}, com ${c.total} de 100 pontos, e` : ''} conquistou os marcos do nível ${c.level} do Quadro Europeu Comum de Referência para Línguas:</p>
+    ${c.scores? `<div class="cert-parts">${SKILL_KEYS.filter(k=>c.scores[k]!=null).map(k=>`<div><small>${PART[k]}</small><b>${fmtNum(c.scores[k])}/25</b><i><em style="width:${c.scores[k]/25*100}%"></em></i></div>`).join('')}</div>` : ''}
+    <ul>${ms.map(m=>`<li>✦ ${esc(m.title)}</li>`).join('')}</ul>
     <div class="cert-foot"><div><b>${esc(t?.name||'')}</b><small>${t?.fem===false?'Professor':'Professora'}</small></div><div><b>${fLong.format(c.at)}</b><small>Data</small></div><div><b>Sotaque</b><small>aulas de idiomas</small></div></div>
   </div><div class="actions"><button class="btn primary" data-act="close">Fechar</button></div>`,{wide:true});
 }
 const TRAIL_ACT={
-  'trail-on'(el){ const s=user(el.dataset.id); s.trail={on:true,level:$('#trail-start').value}; save(); location.hash='trilha-'+s.id; toast('Trilha ativada'); },
+  'trail-on'(el){ const s=user(el.dataset.id), lv=$('#trail-start').value; s.trail={on:true,level:lv,base:s.trail?.base||lv}; save(); location.hash='trilha-'+s.id; toast('Trilha ativada'); },
   'trail-off'(el){ const s=user(el.dataset.id); confirmBox(`Desativar a trilha de ${s.name.split(' ')[0]}?`,'Desativar',()=>{ s.trail.on=false; save(); location.hash='aluno-'+s.id; toast('Trilha desativada'); },'As conquistas e os certificados ficam guardados. Dá para ativar de novo quando quiser.'); },
   'trail-lv'(el){ S.trailFor=el.dataset.s; S.trailLv=el.dataset.v; render(); },
+  'tl-all'(){ S.tlAll=true; render(); },
+  'cd-self'(el){ const me=ME(), o=(DB.cando[cdKey(me.id,el.dataset.id)] ||= {}); o.s=!o.s; save(); render(); if (o.s) toast(`Marcado! ${AProf()} vai confirmar nas aulas.`); },
+  'cd-conf'(el){ const s=user(el.dataset.s), st=marcoById(el.dataset.id.split('.')[0]).stmts.find(x=>x.id===el.dataset.id), o=(DB.cando[cdKey(s.id,st.id)] ||= {}); o.t=!stmtOk(s,st); save(); render(); },
   'm-prova'(el){ const s=user(el.dataset.s), m=marcoById(el.dataset.m); const t=makeProva(s,m); save(); render(); toast(`Provinha liberada para ${s.name.split(' ')[0]} (${t.questions.length} questões)`); },
   'm-conq'(el){ const s=user(el.dataset.s), m=marcoById(el.dataset.m);
-    openModal(`<form data-form="conq" data-s="${s.id}" data-m="${m.id}"><h2>Marco conquistado</h2><p class="meta"><b>${esc(m.can)}</b></p><p class="meta muted">Use quando você já viu nas aulas que ${esc(s.name.split(' ')[0])} domina este marco, com ou sem provinha.</p>
+    openModal(`<form data-form="conq" data-s="${s.id}" data-m="${m.id}"><h2>Marco conquistado</h2><p class="meta"><b>${esc(m.title)}</b></p><p class="meta muted">Use quando você já viu nas aulas que ${esc(s.name.split(' ')[0])} domina este marco, com ou sem provinha. As frases “Eu consigo” do marco ficam confirmadas; você pode desmarcar alguma depois.</p>
       <label class="field" for="cq-note">Um recado para ${esc(s.name.split(' ')[0])} <small>(opcional)</small><input type="text" id="cq-note" name="note" placeholder="ex.: Mandou muito bem na conversa de hoje!"></label>
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Marcar conquista ✦</button></div></form>`); },
   'm-undo'(el){ const s=user(el.dataset.s), m=marcoById(el.dataset.m); confirmBox('Desfazer esta conquista?','Desfazer',()=>{ DB.conq=DB.conq.filter(c=>!(c.studentId===s.id&&c.marcoId===m.id)); save(); render(); toast('Conquista desfeita'); },'O marco volta a ficar em aberto. A provinha, se houver, continua guardada.'); },
   'm-train'(el){ S.preStudent=el.dataset.s; location.hash='banco-'+el.dataset.b; },
-  'prova-decide'(el){ const t=getTask(el.dataset.id), s=user(t.studentId), ok=el.dataset.v==='ok', sc=scoreOf(t);
+  'prova-decide'(el){ const t=getTask(el.dataset.id), s=user(t.studentId), ok=el.dataset.v==='ok', sc=provaScore(t);
     t.feedback=(S.fb[t.id]??t.feedback).trim(); delete S.fb[t.id]; t.status='corrigida'; t.correctedAt=now();
-    if (ok&&!conqOf(s.id,t.marcoId)) DB.conq.push({studentId:s.id,marcoId:t.marcoId,at:now(),note:t.feedback,score:Math.round(sc.got/sc.total*100),by:S.me});
+    if (ok&&!conqOf(s.id,t.marcoId)) DB.conq.push({studentId:s.id,marcoId:t.marcoId,at:now(),note:t.feedback,score:sc.pct,by:S.me});
     save(); render(); toast(ok? `Marco conquistado por ${s.name.split(' ')[0]} ✦` : 'Provinha devolvida para revisar'); },
+  'nivel-make'(el){ const s=user(el.dataset.s), lv=el.dataset.v; makeNivel(s,lv); save(); render(); toast(`Prova de nível ${lv} liberada para ${s.name.split(' ')[0]}`); },
+  rub(el){ const t=getTask(el.dataset.id), r=t.exam.rub[el.dataset.k], i=+el.dataset.i, v=+el.dataset.v; r[i]= r[i]===v? null : v; save(); render(); },
+  'part-skip'(el){ const t=getTask(el.dataset.id), k=el.dataset.k; t.exam.skip[k]=!t.exam.skip[k]; save(); render(); },
+  'nivel-decide'(el){ const t=getTask(el.dataset.id), s=user(t.studentId), ok=el.dataset.v==='ok', sc=nivelScore(t), first=s.name.split(' ')[0];
+    t.feedback=(S.fb[t.id]??t.feedback).trim(); delete S.fb[t.id]; t.status='corrigida'; t.correctedAt=now(); t.result=sc; t.passed=ok;
+    if (ok){ const old=certOf(s.id,s.lang,t.level); if (old){ Object.assign(old,{scores:sc.P,total:sc.total,examId:t.id}); } else DB.certs.push({id:uid(),studentId:s.id,lang:s.lang,level:t.level,at:now(),teacherId:S.me,scores:sc.P,total:sc.total,examId:t.id});
+      const nx=nextLevel(t.level), adv=$('#nv-adv')?.checked; if (adv&&nx&&s.trail.level===t.level){ s.trail.level=nx; S.trailLv=null; } }
+    save(); location.hash='trilha-'+s.id; toast(ok? `${first} passou no ${t.level} ✦ certificado emitido` : 'Prova devolvida. Vocês revisam e tentam de novo quando quiserem.'); if (ok){ const c=certOf(s.id,s.lang,t.level); setTimeout(()=>openCert(c.id),60); } },
   'cert-issue'(el){ const s=user(el.dataset.s), lv=el.dataset.v; if (certOf(s.id,s.lang,lv)) return;
     const c={id:uid(),studentId:s.id,lang:s.lang,level:lv,at:now(),teacherId:S.me}; DB.certs.push(c); save(); render(); openCert(c.id); toast(`Certificado ${lv} emitido para ${s.name.split(' ')[0]}`); },
   'cert-open'(el){ openCert(el.dataset.id); },
 };
 const TRAIL_FORMS={
-  conq(form,fd){ const s=user(form.dataset.s); DB.conq.push({studentId:s.id,marcoId:form.dataset.m,at:now(),note:fd.get('note').trim(),score:null,by:S.me}); save(); closeModal(); render(); toast(`Marco conquistado por ${s.name.split(' ')[0]} ✦`); },
+  conq(form,fd){ const s=user(form.dataset.s); DB.conq.push({studentId:s.id,marcoId:form.dataset.m,at:now(),note:fd.get('note').trim(),score:null,by:S.me}); marcoById(form.dataset.m).stmts.forEach(st=>{ const o=DB.cando[cdKey(s.id,st.id)]; if (o) delete o.t; }); save(); closeModal(); render(); toast(`Marco conquistado por ${s.name.split(' ')[0]} ✦`); },
 };
 function onTrailInput(e){
   const el=e.target;
   if (el.dataset.trailLevel&&e.type==='change'){ const s=user(el.dataset.trailLevel); s.trail.level=el.value; S.trailLv=null; save(); render(); toast(`Nível atual: ${el.value}`); }
 }
+/* nota da provinha: só as objetivas; a escrita curta o professor lê */
+function provaScore(t){ const obj=t.questions.filter(q=>q.type!=='open'), got=obj.reduce((a,q)=>a+gradeQ(t,q),0); return {got,total:obj.length,pct:obj.length? Math.round(got/obj.length*100) : 0}; }
 /* provinha vista pelo professor: a nota é sugestão, a decisão é dele */
 function viewProvaT(t){
-  const s=user(t.studentId), m=marcoById(t.marcoId), first=s.name.split(' ')[0], sc=scoreOf(t), pct=Math.round(sc.got/sc.total*100), ok=pct>=PROVA_MIN, c=conqOf(s.id,m.id), fb=S.fb[t.id]??t.feedback;
+  const s=user(t.studentId), m=marcoById(t.marcoId), first=s.name.split(' ')[0], sc=provaScore(t), ok=sc.pct>=PROVA_MIN, c=conqOf(s.id,m.id), fb=S.fb[t.id]??t.feedback;
   return `<div style="${sVars(s)}"><a class="link" href="#trilha-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Trilha de ${esc(first)}</a>
-    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Provinha · marco ${m.n} da trilha ${m.level}</p><h1>${esc(m.can)}</h1><p class="meta">Entregue ${when(t.submittedAt)} · ${t.questions.length} questões</p></div>${pill(c? {k:'done',label:'Conquistado'} : t.status==='entregue'? {k:'sent',label:'Para avaliar'} : {k:'late',label:'Para revisar'})}</div>
-    <div class="grid2"><div class="stack" style="gap:14px">${scoreCard(t,'teacher')}${t.questions.map((q,i)=>qResult(t,q,i,'teacher')).join('')}</div>
+    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Provinha · marco ${m.n} · ${m.sub}</p><h1>${esc(m.title)}</h1><p class="meta">Entregue ${when(t.submittedAt)} · ${t.questions.length} questões</p></div>${pill(c? {k:'done',label:'Conquistado'} : t.status==='entregue'? {k:'sent',label:'Para avaliar'} : {k:'late',label:'Para revisar'})}</div>
+    <div class="grid2"><div class="stack" style="gap:14px">${t.questions.map((q,i)=>qResult(t,q,i,'teacher')).join('')}</div>
     <aside class="stack ed-side"><section class="panel"><h2>${t.status==='entregue'? 'Sua avaliação' : 'Avaliada'}</h2>
-      <div class="notice ${ok?'ok':''}"><div>${pct}% de acertos · ${ok? 'sugestão: marco conquistado' : `abaixo de ${PROVA_MIN}%: talvez valha revisar`}</div></div>
-      <p class="meta muted">A nota é só uma sugestão. Considere também o que você vê nas aulas.</p>
+      <div class="notice ${ok?'ok':''}"><div>${sc.pct}% nas objetivas (${fmtNum(sc.got)} de ${sc.total}) · ${ok? 'sugestão: marco conquistado' : `abaixo de ${PROVA_MIN}%: talvez valha revisar`}</div></div>
+      <p class="meta muted">A nota é só uma sugestão. Leia a escrita curta e considere também o que você vê nas aulas.</p>
+      <div><p class="eyebrow">O marco</p>${candoList(s,m)}</div>
       ${t.status==='entregue'? `<label class="field" for="fb-${t.id}">Recado para ${esc(first)} <small>(opcional)</small><textarea id="fb-${t.id}" data-fb="${t.id}" placeholder="ex.: Muito bem! Só revise o passado irregular.">${esc(fb)}</textarea></label>
         <button class="btn primary big" data-act="prova-decide" data-id="${t.id}" data-v="ok">Marco conquistado ✦</button><button class="btn" data-act="prova-decide" data-id="${t.id}" data-v="rev">Ainda não: revisar</button>`
       : c? `<p class="meta">Marco conquistado em ${fShort.format(c.at)}.</p>` : `<p class="meta">Você pediu para ${esc(first)} revisar. Pela trilha, dá para liberar uma nova provinha ou marcar a conquista quando achar justo.</p><a class="btn" href="#trilha-${s.id}">Abrir trilha</a>`}
+    </section></aside></div></div>`;
+}
+/* critérios de 0 a 5 */
+function rubricHtml(t,k,locked){
+  const r=t.exam.rub[k];
+  return `<div class="rub">${RUBRICA[k].map(([n,d],i)=>`<div class="rub-r"><div><b>${n}</b><small>${d}</small></div><div class="rub-sc" role="group" aria-label="${n}">${[0,1,2,3,4,5].map(v=>`<button class="${r[i]===v?'on':''}" data-act="rub" data-id="${t.id}" data-k="${k}" data-i="${i}" data-v="${v}" title="${RUB_HINT[v]}" aria-pressed="${r[i]===v}" ${locked?'disabled':''}>${v}</button>`).join('')}</div></div>`).join('')}
+    <p class="meta muted">0 nada · 1–2 limitado · 3 adequado ao nível · 4 bom · 5 acima do nível</p></div>`;
+}
+const wordCount=s=>(String(s||'').trim().match(/\S+/g)||[]).length;
+/* prova de nível vista pelo professor */
+function viewNivelT(t){
+  const s=user(t.studentId), first=s.name.split(' ')[0], sc=nivelScore(t), fb=S.fb[t.id]??t.feedback, done=t.status==='corrigida', sent=t.status!=='pendente', lang=s.lang;
+  const qIdx=id=>t.questions.findIndex(q=>q.id===id);
+  const skipBtn=k=>done? '' : `<button class="link" data-act="part-skip" data-id="${t.id}" data-k="${k}">${t.exam.skip[k]? 'Avaliar esta parte' : 'Não avaliar esta parte'}</button>`;
+  const partHead=(k,n,extra='')=>`<div class="part-h"><span class="part-n">${n}</span><div class="grow"><p class="eyebrow">Parte ${n} · ${PART[k]}</p><h2>${t.exam.skip[k]? `${PART[k]} <small class="muted">(fora desta prova)</small>` : `${sc.P[k]==null? '?' : fmtNum(sc.P[k])} / 25`}</h2></div>${extra}${skipBtn(k)}</div>`;
+  const objPart=(k,n)=>`<section class="part-s">${partHead(k,n)}${t.exam.skip[k]? '' : !sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : t.blocks.filter(b=>b.part===k).map(b=>`<div class="xblk"><p class="eyebrow">${esc(b.title)}</p>${b.audio? audioBox(b.audio,lang,{transcript:true}) : `<details class="transc"><summary>Ver o texto</summary><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></details>`}${b.qIds.map(id=>qResult(t,t.questions[qIdx(id)],qIdx(id),'teacher')).join('')}</div>`).join('')}</section>`;
+  const wq=t.questions.find(q=>q.id===t.blocks.find(b=>b.part==='E').qIds[0]), wa=t.answers[wq.id];
+  return `<div style="${sVars(s)}"><a class="link" href="#trilha-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Trilha de ${esc(first)}</a>
+    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Prova de nível · ${langName(lang)}</p><h1>${esc(t.title)} · ${esc(first)}</h1><p class="meta">${sent? `Entregue ${when(t.submittedAt)}` : `Liberada ${rel(t.createdAt)} · ${esc(first)} ainda não entregou`}</p></div>${pill(done? (t.passed? {k:'done',label:'Aprovado'} : {k:'late',label:'Ainda não'}) : sent? {k:'sent',label:'Para avaliar'} : {k:'pend',label:'Esperando'})}</div>
+    <div class="grid2"><div class="stack" style="gap:22px">
+      ${objPart('L',1)}${objPart('O',2)}
+      <section class="part-s">${partHead('E',3)}${t.exam.skip.E? '' : !sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : `<div class="qcard"><div class="qhead"><b class="grow">${esc(wq.prompt)}</b><span class="qkind">${wq.words} palavras</span></div>
+        <div class="answer" style="background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere">${wa? esc(wa) : '<span class="muted">Sem resposta</span>'}</div><p class="meta muted">${wordCount(wa)} palavras</p></div>${rubricHtml(t,'E',done)}`}</section>
+      <section class="part-s">${partHead('F',4)}${t.exam.skip.F? '' : `<p class="meta">Faça na aula ao vivo, quando quiser, e marque os critérios aqui. Cerca de 10 a 15 minutos.</p>
+        <div class="fala">${t.fala.map(([a,b,c])=>`<div><b>${esc(a)}</b><small class="muted">${esc(b)}</small><p>${esc(c)}</p></div>`).join('')}</div>${rubricHtml(t,'F',done)}`}</section>
+    </div>
+    <aside class="stack ed-side"><section class="panel"><h2>${done? 'Resultado' : 'Sua avaliação'}</h2>${scoreParts(sc)}
+      ${done? `<p class="meta">${t.passed? `Aprovado em ${fShort.format(t.correctedAt)}. O certificado ${t.level} foi emitido.` : `Você pediu para ${esc(first)} revisar.`}</p>${t.feedback? `<p class="note">“${esc(t.feedback)}”</p>` : ''}${t.passed? `<button class="btn" data-act="cert-open" data-id="${certOf(s.id,lang,t.level)?.id}">Ver certificado</button>` : ''}`
+      : `${sc.missing.length? `<div class="notice"><div>Falta avaliar: ${sc.missing.map(k=>PART[k].toLowerCase()).join(' e ')}.</div></div>`
+          : `<div class="notice ${sc.pass?'ok':''}"><div>${sc.total}/100 · ${sc.pass? 'sugestão: aprovado' : 'sugestão: ainda não'}</div></div>`}
+        <p class="meta muted">Sugestão como no DELF: pelo menos 50 de 100 no total e 5 de 25 em cada parte. A decisão é sua.</p>
+        <label class="field" for="fb-${t.id}">Recado para ${esc(first)} <small>(opcional)</small><textarea id="fb-${t.id}" data-fb="${t.id}" placeholder="ex.: Leitura excelente! Vamos treinar mais a escuta.">${esc(fb)}</textarea></label>
+        ${nextLevel(t.level)&&s.trail?.level===t.level? `<label class="sel" style="padding:0"><input type="checkbox" id="nv-adv" checked>Ao aprovar, passar a trilha para o ${nextLevel(t.level)}</label>` : ''}
+        <button class="btn primary big" data-act="nivel-decide" data-id="${t.id}" data-v="ok" ${sent&&!sc.missing.length?'':'disabled'}>Aprovar e emitir certificado ✦</button>
+        <button class="btn" data-act="nivel-decide" data-id="${t.id}" data-v="rev" ${sent?'':'disabled'}>Ainda não: revisar</button>`}
     </section></aside></div></div>`;
 }
 
@@ -1629,7 +1980,8 @@ function render(){
   app.innerHTML=`${topbar()}<main class="page">${main}</main>`;
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
 }
-function go(){ const prev=S.route; S.route=parseHash(); S.menu=false; const R=S.route, entered=prev.name!==R.name||prev.id!==R.id;
+function go(){ ttsStop(); const prev=S.route; S.route=parseHash(); S.menu=false; const R=S.route, entered=prev.name!==R.name||prev.id!==R.id;
+  if (entered){ S.trailLv=null; S.tlAll=false; }
   if (R.name==='nova'&&entered&&!S.keepDraft) S.draft=newDraft(R.id);
   if (R.name==='bancoNova'&&entered) S.draft=newBankDraft();
   if (R.name==='bancoEd'&&entered){ const b=DB.bank.find(x=>x.id===R.id); S.draft=b? draftFrom(b,'bank') : null; }
@@ -1802,7 +2154,7 @@ const FORMS={
     const st=settingsOf(S.me); st.avail=av; st.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -1821,7 +2173,9 @@ window.addEventListener('hashchange',go);
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
 if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); save(); }
-else { if (!DB.conq){ DB.conq=[]; DB.certs=[]; seedTrail(); } if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==4){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=4; } DB.tasks=DB.tasks.filter(t=>user(t.studentId)); ensureLessons(); save(); }
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==5){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=5; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+  if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
+  ensureLessons(); save(); }
 S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
 setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
