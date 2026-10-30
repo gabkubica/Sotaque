@@ -588,6 +588,62 @@ details.more[open] summary{margin-bottom:14px}
   .next{padding:20px}
 }
 
+/* trilha: mapa geral, peão e próximo passo */
+.route-panel{margin-bottom:22px;gap:6px}
+.route{position:relative;height:104px;margin:0 22px}
+.route-track{position:absolute;left:0;right:0;top:58px;height:6px;border-radius:3px;background:var(--surface-2)}
+.route-track i{display:block;height:100%;border-radius:3px;background:var(--k-a,#3f74b8)}
+.rs{position:absolute;top:47px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink-2);font:inherit}
+.rs i{width:28px;height:28px;border-radius:50%;background:var(--surface);border:3px solid var(--line-2);display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:800;color:#fffaf2;transition:transform .15s}
+.rs small{font-size:12px;font-weight:800;font-family:var(--display);white-space:nowrap}
+.rs.done i{background:var(--k-a,#3f74b8);border-color:var(--k-a,#3f74b8)}
+.rs.cert i{background:var(--k-c,#24497e);border-color:var(--k-c,#24497e)}
+.rs.here i{border-color:var(--k-a,#3f74b8)}
+.rs.sel small{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+@media (hover:hover){ .rs:hover i{transform:scale(1.12)} }
+.pawn{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;pointer-events:none;animation:hop 2.4s ease-in-out infinite}
+.pawn .avatar{box-shadow:0 0 0 3px var(--surface),0 6px 14px -6px rgba(34,28,30,.5)}
+.pawn em{font-style:normal;font-size:11px;font-weight:800;color:var(--ink-2);background:var(--surface);border-radius:999px;padding:0 6px;line-height:1.5}
+.pawn::after{content:"";width:2px;height:6px;background:var(--ink-3);margin-top:-1px}
+@keyframes hop{0%,70%,100%{transform:translateX(-50%) translateY(0)}80%{transform:translateX(-50%) translateY(-6px)}}
+.next-step{display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:14px;flex-wrap:wrap}
+.ns-ic{flex:none;width:42px;height:42px;border-radius:50%;background:var(--k-a,#3f74b8);color:#fffaf2;display:grid;place-items:center;font-size:20px;font-weight:800}
+.ns-t{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ns-t .eyebrow{margin:0}
+.ns-t b{font-family:var(--display);font-size:19px;line-height:1.25}
+.ns-t small{color:var(--ink-2);font-size:14px}
+.lv-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 14px}
+.lv-head h2{font-size:24px}
+.medals{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:22px;display:flex;flex-direction:column;gap:10px}
+.medals-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.medal-row{display:flex;gap:10px;flex-wrap:wrap}
+.medal{position:relative;width:58px;height:58px;border-radius:50%;overflow:hidden;border:3px solid var(--k-a);padding:0;background:none;cursor:pointer}
+.medal .quadro{width:100%;height:100%;display:block}
+.medal small{position:absolute;right:-2px;bottom:-2px;width:22px;height:22px;border-radius:50%;background:var(--k-c);color:#fffaf2;font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid var(--surface)}
+.mwrap{position:relative;flex:none;display:flex;flex-direction:column;align-items:center;gap:8px}
+.stop-pawn{position:absolute;top:-14px;right:-12px;animation:hop2 2.4s ease-in-out infinite}
+.stop-pawn .avatar{box-shadow:0 0 0 3px var(--surface),0 6px 14px -6px rgba(34,28,30,.5)}
+@keyframes hop2{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(-6px)}}
+.here-tag{font-size:11.5px;font-weight:800;color:#fffaf2;background:var(--k-c);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.stop.ms-pend:not(.cur) .stop-c{opacity:.8}
+.cmap{margin-bottom:24px}
+.cmap-route{height:150px}
+.cmap-route .route-track{top:104px}
+.cmap-route .rs{top:93px;cursor:default}
+.pawn.cm{pointer-events:auto;text-decoration:none;top:calc(var(--k) * -34px + 52px);animation:none}
+.pawn.cm em{color:var(--ink)}
+@media (max-width:760px){
+  .route{margin:0 14px;height:100px}
+  .rs i{width:22px;height:22px;font-size:11px;border-width:2.5px}
+  .rs{top:50px}
+  .rs small{font-size:10.5px}
+  .pawn .avatar{width:26px!important;height:26px!important;font-size:10px!important}
+  .next-step .btn{flex:1 1 100%;justify-content:center}
+  .mwrap{align-self:flex-start;flex-direction:row}
+  .stop-pawn{top:-10px;right:auto;left:52px}
+  .here-tag{align-self:center}
+}
+@media (prefers-reduced-motion:reduce){ .pawn,.stop-pawn{animation:none} }
 /* desenvolvimento do professor */
 .nav .ns{display:none}
 .dev-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
@@ -1020,6 +1076,7 @@ function viewAgenda(){
 function viewStudents(){
   const list=students();
   return `<div class="hello"><h1>Alunos</h1><p class="meta">${list.length} ${list.length===1?'aluno':'alunos'} de ${langName(myLang()).toLowerCase()} · cada um com o seu caderno.</p></div>
+    ${classMap()}
     <div class="cards">${list.map(s=>{ const i=pkgInfo(s.id), n=nextLesson(s.id), rq=DB.requests.some(r=>r.studentId===s.id&&r.status==='pendente');
       return `<a class="scard" href="#aluno-${s.id}" style="${sVars(s)}">${quadro(s.palette,s.scene,s.seed,{w:320,h:150,frame:false})}
         <div class="scard-b"><h3>${esc(s.name)}</h3><p class="meta">${langName(s.lang)} · ${esc(s.level)}</p><p class="meta muted">${slotLabel(s)}</p>
@@ -1911,6 +1968,67 @@ function candoList(s,m){
       : ok? '<span class="cdb on static">✦ Confirmado</span>' : `<button class="cdb ${me?'self':''}" data-act="cd-self" data-id="${st.id}" aria-pressed="${me}">${me? '✓ Eu consigo' : 'Eu consigo?'}</button>`;
     return `<li class="${ok?'ok':''}"><span class="sk sk-${st.k}">${SKILLS[st.k]}</span><span class="tx">${esc(st.txt)}${T&&me&&!ok? ` <small class="muted">· ${esc(first)} acha que consegue</small>` : ''}</span>${side}</li>`; }).join('')}</ul>`;
 }
+/* posição do aluno na régua A1 → C1 (0 a 1), pelo marco atual do nível em que ele está */
+function trailPos(s){
+  const lv=s.trail?.level||'A1', ms=marcosOf(s.lang,lv), cur=ms.find(m=>!conqOf(s.id,m.id));
+  let sub=lv, frac=0;
+  if (cur){ sub=cur.sub; const inSub=ms.filter(m=>m.sub===sub); frac=inSub.filter(m=>conqOf(s.id,m.id)).length/inSub.length; }
+  else if (ms.length) sub=ms.at(-1).sub;
+  const i=SUBLEVELS.indexOf(sub);
+  return {i,sub,cur,x:Math.min(1,(i+frac)/(SUBLEVELS.length-1))};
+}
+const lvOfSub=sub=>sub.replace('+','');
+const lastSubOf=L=>SUBLEVELS.filter(x=>lvOfSub(x)===L).at(-1);
+/* mapa geral: as estações A1 → C1, com o peão do aluno */
+function routeMap(s,lv){
+  const P=trailPos(s), T=isT(), first=s.name.split(' ')[0], n=SUBLEVELS.length-1;
+  return `<div class="route" role="group" aria-label="Mapa do A1 ao C1">
+    <div class="route-track" aria-hidden="true"><i style="width:${P.x*100}%"></i></div>
+    ${SUBLEVELS.map((sub,j)=>{ const L=lvOfSub(sub), ms=marcosOf(s.lang,L).filter(m=>m.sub===sub), done=ms.length&&ms.every(m=>conqOf(s.id,m.id)), cert=lastSubOf(L)===sub&&certOf(s.id,s.lang,L);
+      return `<button class="rs ${done||cert?'done':''} ${L===lv?'sel':''} ${cert?'cert':''} ${j===P.i?'here':''}" style="left:${j/n*100}%" data-act="trail-lv" data-s="${s.id}" data-v="${L}" aria-label="${sub}${cert? ', certificado' : done? ', concluído' : ''}"><i>${cert? '✦' : done? '✓' : ''}</i><small>${sub}</small></button>`; }).join('')}
+    <span class="pawn" style="left:${P.x*100}%" aria-label="${T? first+' está aqui' : 'Você está aqui'}">${avatar(s,30)}<em>${T? esc(first) : 'você'}</em></span>
+  </div>`;
+}
+/* o próximo passo: uma ação só, que muda conforme a situação */
+function nextStep(s){
+  const T=isT(), first=s.name.split(' ')[0], lv=s.trail.level, P=trailPos(s), cur=P.cur, ex=nivelOf(s.id,lv), p=cur&&provaOf(s.id,cur.id), cert=certOf(s.id,s.lang,lv);
+  const todo=!T&&tasksOf(s.id).filter(t=>t.status==='pendente'&&!t.kind).length;
+  let ic='→', t='', d='', btn='';
+  if (T){
+    if (ex?.status==='entregue'){ t=`Avaliar a prova de nível ${lv}`; d=`${first} entregou ${rel(ex.submittedAt)}. Faltam a escrita e a fala.`; btn=`<a class="btn primary" href="#tarefa-${ex.id}">Avaliar prova</a>`; }
+    else if (p?.status==='entregue'){ t=`Avaliar a provinha do marco ${cur.n}`; d=`${esc(cur.title)} · entregue ${rel(p.submittedAt)}`; btn=`<a class="btn primary" href="#tarefa-${p.id}">Avaliar provinha</a>`; }
+    else if (ex?.status==='pendente'){ ic='…'; t=`Prova de nível ${lv} liberada`; d=`Esperando ${first}. A fala você avalia na aula ao vivo.`; btn=`<a class="btn" href="#tarefa-${ex.id}">Abrir prova</a>`; }
+    else if (p?.status==='pendente'){ ic='…'; t=`Esperando ${first} fazer a provinha`; d=`Marco ${cur.n} · ${esc(cur.title)} · liberada ${rel(p.createdAt)}`; btn=`<a class="btn" href="#tarefa-${p.id}">Ver provinha</a>`; }
+    else if (!cur&&!cert){ ic='✦'; t=`${first} conquistou todos os marcos do ${lv}`; d='Hora da prova de nível ou do certificado.'; btn=ex? '' : `<button class="btn primary" data-act="nivel-make" data-s="${s.id}" data-v="${lv}">Liberar prova de nível</button>`; }
+    else if (!cur&&cert){ ic='✦'; t=`${lv} concluído, com certificado`; d=nextLevel(lv)? `Você pode passar a trilha para o ${nextLevel(lv)} no seletor abaixo.` : 'Trilha completa!'; }
+    else { t=`Próximo: marco ${cur.n} · ${esc(cur.title)}`; d='Libere a provinha quando achar que é a hora, ou marque a conquista direto.'; btn=`<button class="btn primary" data-act="m-prova" data-s="${s.id}" data-m="${cur.id}">Liberar provinha</button>`; }
+  } else {
+    if (ex?.status==='pendente'){ t=`Fazer a prova de nível ${lv}`; d=`Leitura, escuta e escrita. A fala é na aula com ${aProf()}.`; btn=`<a class="btn primary" href="#tarefa-${ex.id}">Fazer a prova</a>`; }
+    else if (p?.status==='pendente'){ t=`Fazer a provinha do marco ${cur.n}`; d=esc(cur.title); btn=`<a class="btn primary" href="#tarefa-${p.id}">Fazer provinha</a>`; }
+    else if (ex?.status==='entregue'||p?.status==='entregue'){ ic='…'; t='Entregue!'; d=`${AProf()} vai avaliar e o resultado aparece aqui.`; }
+    else if (todo){ t=`Você tem ${todo} ${todo===1? 'tarefa' : 'tarefas'} para fazer`; d='Elas ajudam a conquistar o próximo marco.'; btn=`<a class="btn primary" href="#tarefas">Ver tarefas</a>`; }
+    else if (!cur){ ic='✦'; t= cert? `Você concluiu o ${lv}!` : `Você conquistou todos os marcos do ${lv}!`; d= cert? 'Veja o seu certificado lá embaixo.' : `${AProf()} vai combinar com você a prova de nível.`; }
+    else { t=`Continue no marco ${cur.n}: ${esc(cur.title)}`; d=`Marque o que você já consegue fazer. ${AProf()} libera a provinha quando for a hora.`; btn=`<button class="btn" data-act="go-stop" data-id="${cur.id}">Ver o marco</button>`; }
+  }
+  return `<section class="next-step"><span class="ns-ic" aria-hidden="true">${ic}</span><div class="ns-t"><p class="eyebrow">${T? 'Próximo passo com '+esc(first) : 'Seu próximo passo'}</p><b>${t}</b><small>${d}</small></div>${btn}</section>`;
+}
+/* professor: todos os alunos com trilha no mesmo mapa */
+function classMap(){
+  const list=students().filter(s=>s.trail?.on), off=students().filter(s=>!s.trail?.on);
+  if (!list.length) return '';
+  const n=SUBLEVELS.length-1, groups={};
+  list.forEach(s=>{ const P=trailPos(s); (groups[P.i] ||= []).push([s,P]); });
+  const lastAct=s=>Math.max(0,...DB.conq.filter(c=>c.studentId===s.id).map(c=>c.at),...DB.tasks.filter(t=>t.studentId===s.id&&t.submittedAt).map(t=>t.submittedAt));
+  const stale=list.filter(s=>{ const l=lastAct(s); return !l||now()-l>30*DAY; });
+  return `<section class="panel cmap"><div class="panel-h"><h2>Onde cada aluno está</h2><span class="muted" style="font-size:13px">trilha do A1 ao C1</span></div>
+    <div class="route cmap-route">
+      <div class="route-track" aria-hidden="true"></div>
+      ${SUBLEVELS.map((sub,j)=>`<span class="rs" style="left:${j/n*100}%"><i></i><small>${sub}</small></span>`).join('')}
+      ${Object.values(groups).map(g=>g.map(([s,P],k)=>`<a class="pawn cm" href="#trilha-${s.id}" style="left:${P.x*100}%;--k:${k}" title="${esc(s.name)} · ${P.sub}${P.cur? ' · marco '+P.cur.n : ''}">${avatar(s,30)}<em>${esc(s.name.split(' ')[0])}</em></a>`).join('')).join('')}
+    </div>
+    ${stale.length? `<p class="meta"><b>Sem avanço há mais de 30 dias:</b> ${stale.map(s=>`<a class="link" href="#trilha-${s.id}">${esc(s.name.split(' ')[0])}</a>`).join(', ')}</p>` : ''}
+    ${off.length? `<p class="meta muted">Sem trilha ativa: ${off.map(s=>esc(s.name.split(' ')[0])).join(', ')}.</p>` : ''}</section>`;
+}
 function stopHtml(s,m,i,cur){
   const st=marcoState(s,m), c=conqOf(s.id,m.id), p=provaOf(s.id,m.id), T=isT(), isCur=m===cur;
   const okN=m.stmts.filter(x=>stmtOk(s,x)).length;
@@ -1927,8 +2045,8 @@ function stopHtml(s,m,i,cur){
   }
   const train= T&&!c? (()=>{ const bs=m.tasks.map(t=>DB.bank.find(b=>b.lang===s.lang&&b.title===t)).filter(Boolean);
     return bs.length? `<details class="train"><summary>Treinos do marco (${bs.length})</summary><div class="rows">${bs.map(b=>`<div class="row"><div class="row-m"><b>${esc(b.title)}</b><small>${b.questions.length} questões</small></div><button class="btn small" data-act="m-train" data-s="${s.id}" data-b="${b.id}">Lançar</button></div>`).join('')}</div></details>` : ''; })() : '';
-  return `<article class="stop ${i%2?'rev':''} ms-${st.k} ${isCur?'cur':''}">
-    <div class="mbadge">${c? quadro(s.palette,m.scene,hashStr(m.id)%997,{w:200,h:200,frame:false}) : `<span>${m.n}</span>`}</div>
+  return `<article class="stop ${i%2?'rev':''} ms-${st.k} ${isCur?'cur':''}" id="stop-${m.id}">
+    <div class="mwrap"><div class="mbadge">${c? quadro(s.palette,m.scene,hashStr(m.id)%997,{w:200,h:200,frame:false}) : `<span>${m.n}</span>`}</div>${isCur? `<span class="stop-pawn">${avatar(s,36)}</span><span class="here-tag">${T? esc(s.name.split(' ')[0])+' está aqui' : 'você está aqui'}</span>` : ''}</div>
     <div class="stop-c"><p class="eyebrow">Marco ${m.n} · ${m.sub}${isCur? (T? ' · próximo' : ' · você está aqui') : ''}</p><h3>${esc(m.title)}</h3><p class="meta">${esc(m.learn)}</p>
       <details class="cd" ${isCur&&!c?'open':''}><summary>${T? 'O que o aluno vai conseguir fazer' : 'O que você vai conseguir fazer'} <span class="cd-n">${okN}/${m.stmts.length}</span></summary>${candoList(s,m)}
         ${T? '' : '<p class="meta muted" style="margin-top:8px">Marque o que você sente que já consegue. '+AProf()+' confirma nas aulas.</p>'}</details>
@@ -1978,23 +2096,25 @@ function viewTrail(s){
   const lv= S.trailFor===s.id&&S.trailLv? S.trailLv : s.trail.level;
   const {ms,done,total}=trailProgress(s,lv), cur=ms.find(m=>!conqOf(s.id,m.id)), cert=certOf(s.id,L,lv);
   const conn=i=>`<svg class="conn" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="${i%2? 'M93.7 0C93.7 26 6.3 14 6.3 40' : 'M6.3 0C6.3 26 93.7 14 93.7 40'}"/></svg><div class="conn-m" aria-hidden="true"></div>`;
-  const half=ms.findIndex(m=>m.half===2);
+  const showDone=S.trailDone===s.id+lv, doneMs=ms.filter(m=>conqOf(s.id,m.id));
+  const shown=showDone? ms : ms.filter(m=>!conqOf(s.id,m.id));
+  const half=shown.findIndex(m=>m.half===2);
   const sep=m=>`<div class="half-sep"><span>${m.sub===lv? `${lv} · segunda parte` : m.sub}</span></div>`;
   const certs=DB.certs.filter(c=>c.studentId===s.id&&c.lang===L).sort((a,b)=>LEVELS.indexOf(a.level)-LEVELS.indexOf(b.level));
   return `<div style="${sVars(s)}">
     ${T? `<a class="link" href="#aluno-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Caderno de ${esc(first)}</a>` : ''}
     <div class="banner"><div class="banner-art">${quadro(s.palette,'aviao',s.seed+7,{w:1100,h:220,focus:[.66,.84],align:'xMaxYMid'})}</div>
-      <div class="banner-t" style="--bt:${p.c}"><h1>${T? `Trilha de ${esc(first)}` : `Sua trilha no ${langName(L).toLowerCase()}`}</h1><p>Nível ${lv} · ${done} de ${total} marcos conquistados</p></div></div>
-    ${profilePanel(s)}
-    <div class="levels" role="group" aria-label="Níveis">${LEVELS.map(l=>{ const pr=trailProgress(s,l), ct=certOf(s.id,L,l);
-      return `<button class="lvchip ${l===lv?'on':''} ${l===s.trail.level?'cur':''} ${ct?'got':''}" data-act="trail-lv" data-s="${s.id}" data-v="${l}" aria-pressed="${l===lv}"><b>${l}</b><small>${ct? 'certificado ✦' : `${pr.done}/${pr.total}`}</small></button>`; }).join('')}</div>
+      <div class="banner-t" style="--bt:${p.c}"><h1>${T? `Trilha de ${esc(first)}` : `Sua trilha no ${langName(L).toLowerCase()}`}</h1><p>${T? 'Está' : 'Você está'} no ${s.trail.level} · ${trailProgress(s).done} de ${trailProgress(s).total} marcos</p></div></div>
+    <section class="panel route-panel">${routeMap(s,lv)}${nextStep(s)}</section>
     ${T? `<div class="toolbar"><label class="field" for="trail-level" style="flex-direction:row;align-items:center;gap:10px">Nível atual de ${esc(first)}<select id="trail-level" data-trail-level="${s.id}" style="width:auto">${LEVELS.map(l=>`<option ${s.trail.level===l?'selected':''}>${l}</option>`).join('')}</select></label>
-      ${cert? '' : `<button class="btn small" data-act="cert-issue" data-s="${s.id}" data-v="${lv}">Emitir certificado ${lv}</button>`}<button class="btn small ghost" data-act="trail-off" data-id="${s.id}">Desativar trilha</button></div>
-      <p class="meta muted" style="margin:-6px 0 22px">A trilha é um guia, não uma regra: você libera as provinhas, confirma o que ${esc(first)} consegue fazer e decide cada conquista e cada certificado.</p>` : ''}
-    ${cert? `<div class="notice ok" style="margin-bottom:22px"><div>${T? `${esc(first)} recebeu o certificado ${lv}` : `Você recebeu o certificado ${lv}`} em ${fShort.format(cert.at)}.</div><button class="btn small" data-act="cert-open" data-id="${cert.id}">Ver certificado</button></div>`
-      : done===total&&total? `<div class="notice" style="margin-bottom:22px"><div>${T? `${esc(first)} conquistou todos os marcos do ${lv}! Que tal a prova de nível?` : `Você conquistou todos os marcos do ${lv}!`}</div></div>` : ''}
-    <div class="trail">${ms.map((m,i)=>(i===half&&half>0? sep(m) : i? conn(i-1) : '')+stopHtml(s,m,i,cur)).join('')}</div>
+      ${cert? '' : `<button class="btn small" data-act="cert-issue" data-s="${s.id}" data-v="${lv}">Emitir certificado ${lv}</button>`}<button class="btn small ghost" data-act="trail-off" data-id="${s.id}">Desativar trilha</button></div>` : ''}
+    <div class="lv-head"><h2>Nível ${lv}</h2><span class="meta">${done} de ${total} marcos${lv!==s.trail.level? ` · <button class="link" data-act="trail-lv" data-s="${s.id}" data-v="${s.trail.level}">voltar ao ${s.trail.level}</button>` : ''}</span></div>
+    ${cert? `<div class="notice ok" style="margin-bottom:18px"><div>${T? `${esc(first)} recebeu o certificado ${lv}` : `Você recebeu o certificado ${lv}`} em ${fShort.format(cert.at)}.</div><button class="btn small" data-act="cert-open" data-id="${cert.id}">Ver certificado</button></div>` : ''}
+    ${doneMs.length? `<div class="medals"><div class="medals-h"><b>${doneMs.length} ${doneMs.length===1? 'marco conquistado' : 'marcos conquistados'}</b><button class="link" data-act="trail-done" data-v="${s.id+lv}">${showDone? 'Esconder detalhes' : 'Ver detalhes'}</button></div>
+      <div class="medal-row">${doneMs.map(m=>`<button class="medal" data-act="trail-done" data-v="${s.id+lv}" title="Marco ${m.n} · ${esc(m.title)}">${quadro(s.palette,m.scene,hashStr(m.id)%997,{w:120,h:120,frame:false})}<small>${m.n}</small></button>`).join('')}</div></div>` : ''}
+    ${shown.length? `<div class="trail">${shown.map((m,i)=>(i===half&&half>0? sep(m) : i? conn(i-1) : '')+stopHtml(s,m,i,cur)).join('')}</div>` : ''}
     ${examCard(s,lv)}
+    <div style="margin-top:30px">${profilePanel(s)}</div>
     ${trailTimeline(s)}
     ${certs.length? `<section class="panel" style="margin-top:30px"><div class="panel-h"><h2>${T? 'Certificados' : 'Seus certificados'}</h2></div><div class="row-btns">${certs.map(c=>`<button class="btn" data-act="cert-open" data-id="${c.id}">✦ Certificado ${c.level}</button>`).join('')}</div></section>` : ''}
     <p class="meta muted src">A trilha segue o Quadro Europeu Comum de Referência (CEFR), com os níveis “plus” do volume complementar de 2020 e listas “Eu consigo” no estilo do Portfólio Europeu de Línguas. A prova de nível segue o formato do DELF e dos exames Cambridge.</p>
@@ -2018,6 +2138,8 @@ const TRAIL_ACT={
   'trail-off'(el){ const s=user(el.dataset.id); confirmBox(`Desativar a trilha de ${s.name.split(' ')[0]}?`,'Desativar',()=>{ s.trail.on=false; save(); location.hash='aluno-'+s.id; toast('Trilha desativada'); },'As conquistas e os certificados ficam guardados. Dá para ativar de novo quando quiser.'); },
   'trail-lv'(el){ S.trailFor=el.dataset.s; S.trailLv=el.dataset.v; render(); },
   'tl-all'(){ S.tlAll=true; render(); },
+  'trail-done'(el){ S.trailDone= S.trailDone===el.dataset.v? null : el.dataset.v; render(); },
+  'go-stop'(el){ const e=document.getElementById('stop-'+el.dataset.id); if (e){ e.scrollIntoView({behavior:'smooth',block:'center'}); const d=e.querySelector('details.cd'); if (d) d.open=true; } },
   'cd-self'(el){ const me=ME(), o=(DB.cando[cdKey(me.id,el.dataset.id)] ||= {}); o.s=!o.s; save(); render(); if (o.s) toast(`Marcado! ${AProf()} vai confirmar nas aulas.`); },
   'cd-conf'(el){ const s=user(el.dataset.s), st=marcoById(el.dataset.id.split('.')[0]).stmts.find(x=>x.id===el.dataset.id), o=(DB.cando[cdKey(s.id,st.id)] ||= {}); o.t=!stmtOk(s,st); save(); render(); },
   'm-prova'(el){ const s=user(el.dataset.s), m=marcoById(el.dataset.m); const t=makeProva(s,m); save(); render(); toast(`Provinha liberada para ${s.name.split(' ')[0]} (${t.questions.length} questões)`); },
