@@ -2112,39 +2112,41 @@ function devStats(L){
   const d=devOf(), it=devItems(L), ok=it.filter(x=>d.items[x.id]===2).length, doing=it.filter(x=>d.items[x.id]===1).length, ms=L.missoes.filter(m=>d.missions[m.id]?.status==='feita').length;
   return {ok,doing,total:it.length,ms,mt:L.missoes.length,pct:Math.round((ok+doing*.4+ms*3)/(it.length+L.missoes.length*3)*100)};
 }
-const devNow=()=>(DEV_FR.find(L=>L.lv!=='Prof'&&devStats(L).pct<80)||DEV_FR.find(L=>L.lv==='C2')).lv;
-const devMission=id=>{ for (const L of DEV_FR){ const m=L.missoes.find(x=>x.id===id); if (m) return [L,m]; } return [null,null]; };
+const devData=()=>(typeof DEV!=='undefined'&&DEV[myLang()])||[];
+const devNow=()=>(devData().find(L=>L.lv!=='Prof'&&devStats(L).pct<80)||devData().find(L=>L.lv==='C2')).lv;
+const devMission=id=>{ for (const L of devData()){ const m=L.missoes.find(x=>x.id===id); if (m) return [L,m]; } return [null,null]; };
 function viewDev(){
-  if (typeof DEV_FR==='undefined'||myLang()!=='FR') return `<div class="panel"><div class="empty">${quadro('lavanda','livro',12,{w:320,h:150})}<p>O roteiro de desenvolvimento está pronto para o francês.<br>Para o inglês, é só pedir que eu monto um igual.</p></div></div>`;
-  const d=devOf(), now=devNow(), lv=S.devLv||now, L=DEV_FR.find(x=>x.lv===lv)||DEV_FR[0], st=devStats(L);
-  const all=DEV_FR.reduce((a,x)=>{ const s=devStats(x); a.ok+=s.ok; a.total+=s.total; a.ms+=s.ms; a.mt+=s.mt; return a; },{ok:0,total:0,ms:0,mt:0});
+  if (!devData().length) return `<div class="panel"><div class="empty">${quadro('lavanda','livro',12,{w:320,h:150})}<p>O roteiro de desenvolvimento está pronto para o francês.<br>Para o inglês, é só pedir que eu monto um igual.</p></div></div>`;
+  const d=devOf(), now=devNow(), lv=S.devLv||now, D=devData(), L=D.find(x=>x.lv===lv)||D[0], st=devStats(L), FR=myLang()==='FR';
+  const all=D.reduce((a,x)=>{ const s=devStats(x); a.ok+=s.ok; a.total+=s.total; a.ms+=s.ms; a.mt+=s.mt; return a; },{ok:0,total:0,ms:0,mt:0});
   const sec=sk=>{ const it=devItems(L).filter(x=>x.sk===sk); if (!it.length) return ''; const ok=it.filter(x=>d.items[x.id]===2).length;
     return `<details class="dev-sec" ${S.devOpen?.[L.lv+sk]? 'open' : ''} data-dev-sec="${L.lv+sk}"><summary><b>${DEV_SECOES[sk]}</b><span class="dev-n">${ok}/${it.length}</span><i class="dev-bar"><em style="width:${ok/it.length*100}%"></em></i></summary>
       <ul class="dev-list">${it.map(x=>{ const v=d.items[x.id]||0; return `<li class="dv${v}"><button class="dvb" data-act="dev-item" data-id="${x.id}" aria-label="${esc(DEV_ST[v].l)}: ${esc(x.txt)}" title="${DEV_ST[v].l} · toque para mudar">${DEV_ST[v].s}</button><span>${esc(x.txt)}</span></li>`; }).join('')}</ul></details>`; };
-  return `<div class="banner"><div class="banner-art">${quadro('ceu','paris',2029,{w:1100,h:220,focus:[.7,.86],align:'xMaxYMid'})}</div>
-      <div class="banner-t" style="--bt:${PAL.ceu.c}"><h1>Meu desenvolvimento no francês</h1><p>Tudo o que aprender do A1 ao C2, e missões para provar que aprendeu.</p></div></div>
+  return `<div class="banner"><div class="banner-art">${quadro(FR?'ceu':'tomate',FR?'paris':'londres',2029,{w:1100,h:220,focus:[.7,.86],align:'xMaxYMid'})}</div>
+      <div class="banner-t" style="--bt:${PAL[FR?'ceu':'tomate'].c}"><h1>Meu desenvolvimento no ${FR? 'francês' : 'inglês'}</h1><p>Tudo o que aprender do A1 ao C2, e missões para provar que aprendeu.</p></div></div>
     <div class="dev-stats"><div><small>Estudando agora</small><b>${now==='Prof'? 'Prof.' : now}</b></div><div><small>Itens que você domina</small><b>${all.ok}<span>/${all.total}</span></b></div><div><small>Missões feitas</small><b>${all.ms}<span>/${all.mt}</span></b></div></div>
-    <div class="levels" role="group" aria-label="Níveis">${DEV_FR.map(x=>{ const s=devStats(x); return `<button class="lvchip ${x.lv===lv?'on':''} ${x.lv===now?'cur':''}" data-act="dev-lv" data-v="${x.lv}" aria-pressed="${x.lv===lv}"><b>${x.lv==='Prof'? 'Prof.' : x.lv}</b><small>${s.pct}%</small></button>`; }).join('')}</div>
+    <div class="levels" role="group" aria-label="Níveis">${D.map(x=>{ const s=devStats(x); return `<button class="lvchip ${x.lv===lv?'on':''} ${x.lv===now?'cur':''}" data-act="dev-lv" data-v="${x.lv}" aria-pressed="${x.lv===lv}"><b>${x.lv==='Prof'? 'Prof.' : x.lv}</b><small>${s.pct}%</small></button>`; }).join('')}</div>
     <section class="panel dev-head"><div class="panel-h"><h2>${L.lv==='Prof'? '' : L.lv+' · '}${esc(L.nome)}</h2><span class="count">${esc(L.horas)}</span></div>
       <p>${esc(L.resumo)}</p>
       <div class="dev-books"><small>Materiais sugeridos</small><div>${L.livros.map(b=>`<span>${esc(b)}</span>`).join('')}</div></div>
-      <div class="dev-prog"><i><em style="width:${st.pct}%"></em></i><span>${st.pct}% · ${st.ok} de ${st.total} itens dominados · ${st.ms} de ${st.mt} missões</span></div></section>
+      <div class="dev-prog"><i><em style="width:${st.pct}%"></em></i><span>${st.pct}% · ${st.ok} de ${st.total} itens dominados · ${st.ms} de ${st.mt} missões</span></div>
+      <div class="row-btns">${st.ok<st.total? `<button class="btn small" data-act="dev-all" data-v="${L.lv}">Já domino este nível</button>` : `<button class="btn small ghost" data-act="dev-clear" data-v="${L.lv}">Desmarcar o nível</button>`}</div></section>
     <div class="grid2 dev-grid"><div class="stack" style="gap:12px">
       <p class="meta muted dev-key">Toque no círculo para marcar: <span class="dv0"><i class="dvb"></i>não comecei</span><span class="dv1"><i class="dvb"></i>estudando</span><span class="dv2"><i class="dvb">✓</i>domino</span></p>
       ${DEV_SK.map(sec).join('')}</div>
     <aside class="stack ed-side"><section class="panel"><div class="panel-h"><h2>Missões</h2><span class="count">${st.ms}/${st.mt}</span></div>
       <p class="meta muted">Tarefas grandes para provar que você aprendeu. Faça na ordem ou como preferir.</p>
       <div class="rows">${L.missoes.map(m=>{ const s=d.missions[m.id]?.status; return `<a class="row" href="#missao-${m.id}"><div class="row-m"><b>${esc(m.t)}</b><small>${esc(m.tempo)}</small></div>${pill(s==='feita'? {k:'done',label:'Feita ✦'} : s==='fazendo'? {k:'sent',label:'Fazendo'} : {k:'pend',label:'A fazer'})}</a>`; }).join('')}</div></section></aside></div>
-    <p class="meta muted src">Roteiro baseado nos descritores do CEFR (volume complementar de 2020), no formato do DELF e do DALF e na progressão usual dos métodos de FLE. As marcações ficam salvas neste navegador.</p>`;
+    <p class="meta muted src">${FR? 'Roteiro baseado nos descritores do CEFR (volume complementar de 2020), no formato do DELF e do DALF e na progressão usual dos métodos de FLE.' : 'Roteiro baseado nos descritores do CEFR (volume complementar de 2020), no English Grammar Profile e English Vocabulary Profile e no formato dos exames Cambridge.'} As marcações ficam salvas neste navegador.</p>`;
 }
 const wc=s=>(String(s||'').trim().match(/\S+/g)||[]).length;
 function viewMissao(id){
   const [L,m]=devMission(id); if (!m) return viewDev();
   const r=devOf().missions[m.id]||{}, crit=r.crit||{}, all=m.crit.every((_,i)=>crit[i]), done=r.status==='feita';
-  return `<a class="link" href="#dev" data-act="dev-lv" data-v="${L.lv}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← ${L.lv==='Prof'? 'Ser professor de FLE' : 'Nível '+L.lv}</a>
-    <div class="task-art">${quadro('ceu',['livro','lapis','montanha','fones','lupa','envelope','balao'][hashStr(m.id)%7],hashStr(m.id)%997,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'})}</div>
+  return `<a class="link" href="#dev" data-act="dev-lv" data-v="${L.lv}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← ${L.lv==='Prof'? esc(L.nome) : 'Nível '+L.lv}</a>
+    <div class="task-art">${quadro(myLang()==='FR'?'ceu':'tomate',['livro','lapis','montanha','fones','lupa','envelope','balao'][hashStr(m.id)%7],hashStr(m.id)%997,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'})}</div>
     <div class="grid2"><div class="stack" style="gap:16px">
-      <div><p class="eyebrow">Missão · ${L.lv==='Prof'? 'Ser professor de FLE' : L.lv+' · '+esc(L.nome)}</p><h1>${esc(m.t)}</h1><p class="meta">${esc(m.tempo)} · ${pill(done? {k:'done',label:'Feita ✦'} : r.status==='fazendo'? {k:'sent',label:'Fazendo'} : {k:'pend',label:'A fazer'})}</p></div>
+      <div><p class="eyebrow">Missão · ${L.lv==='Prof'? esc(L.nome) : L.lv+' · '+esc(L.nome)}</p><h1>${esc(m.t)}</h1><p class="meta">${esc(m.tempo)} · ${pill(done? {k:'done',label:'Feita ✦'} : r.status==='fazendo'? {k:'sent',label:'Fazendo'} : {k:'pend',label:'A fazer'})}</p></div>
       <section class="panel"><p class="eyebrow">Objetivo</p><p style="font-size:17px">${esc(m.obj)}</p></section>
       <section class="panel"><p class="eyebrow">Passo a passo</p><ol class="dev-steps">${m.passos.map(p=>`<li>${esc(p)}</li>`).join('')}</ol></section>
       <section class="panel"><label class="field" for="dm-${m.id}"><span class="eyebrow">Sua entrega</span><span class="meta muted">${esc(m.entrega)}</span>
@@ -2160,6 +2162,8 @@ function viewMissao(id){
 const DEV_ACT={
   'dev-lv'(el){ S.devLv=el.dataset.v; if (location.hash!=='#dev') location.hash='dev'; else render(); },
   'dev-item'(el){ const d=devOf(), id=el.dataset.id; d.items[id]=((d.items[id]||0)+1)%3; save(); const y=scrollY; render(); scrollTo(0,y); },
+  'dev-all'(el){ const L=devData().find(x=>x.lv===el.dataset.v); confirmBox(`Marcar ${L.lv==='Prof'? 'toda a trilha de professor' : 'o nível '+L.lv} como dominado?`,'Marcar tudo',()=>{ const d=devOf(); devItems(L).forEach(x=>d.items[x.id]=2); save(); render(); toast(`${L.lv==='Prof'? 'Trilha' : 'Nível '+L.lv} marcado como dominado ✦`); },'Use para pular o que você já sabe. As missões continuam como estão, e dá para desmarcar depois.'); },
+  'dev-clear'(el){ const L=devData().find(x=>x.lv===el.dataset.v); confirmBox(`Desmarcar ${L.lv==='Prof'? 'a trilha de professor' : 'o nível '+L.lv}?`,'Desmarcar',()=>{ const d=devOf(); devItems(L).forEach(x=>delete d.items[x.id]); save(); render(); },'Todos os itens voltam para “não comecei”.'); },
   'dev-done'(el){ const r=(devOf().missions[el.dataset.id] ||= {}); r.status='feita'; r.doneAt=now(); save(); render(); toast('Missão concluída ✦'); },
   'dev-reopen'(el){ const r=devOf().missions[el.dataset.id]; r.status='fazendo'; save(); render(); },
 };

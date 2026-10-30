@@ -54,9 +54,10 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   - certificado com o resultado de cada parte e linha do tempo das conquistas.
 
 - Desenvolvimento (aba só do professor): roteiro de estudo do próprio idioma, do A1 ao C2, mais a formação de
-  professor de FLE (`desenvolvimento.js`). São 351 itens de gramática, vocabulário, pronúncia, comunicação, cultura
-  e habilidades, cada um marcado como "não comecei", "estudando" ou "domino", e 38 missões grandes com passo a passo,
-  campo de entrega e critérios de sucesso. Por enquanto, só para francês.
+  professor (`desenvolvimento.js`). Francês: 351 itens e 38 missões (DELF/DALF, FLE). Inglês: 282 itens e 24 missões
+  (exames Cambridge, TKT, CELTA, aulas para crianças). Cada item é marcado como "não comecei", "estudando" ou "domino";
+  o botão "Já domino este nível" pula o que o professor já sabe. As missões têm passo a passo, campo de entrega e
+  critérios de sucesso.
 
 **Aluno** (Meu caderno · Trilha · Tarefas)
 - "Sua trilha no inglês/francês": perfil por habilidade, mapa dos marcos com as listas "Eu consigo", provinhas, prova de nível e certificados.
