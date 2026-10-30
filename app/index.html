@@ -293,6 +293,7 @@ details.more[open] summary{margin-bottom:14px}
 .filt button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .filt .n{font-size:12px;opacity:.7}
 .tlist{display:flex;flex-direction:column;gap:10px}
+.typechips .aud-chip{background:var(--wine-soft);color:var(--wine)}
 .tthumb{flex:none;width:52px;height:52px;border-radius:14px;overflow:hidden;display:block}
 .tcard-r{display:flex;align-items:center;gap:10px;flex:none}
 @media (max-width:760px){ .tcard:has(.tcard-r){flex-wrap:wrap;row-gap:10px} .tcard-r{flex-basis:100%;justify-content:space-between;padding-left:66px} .tcard-r:empty{display:none} }
@@ -1402,11 +1403,12 @@ function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||
 function bankCard(b){
   const open=b.questions.some(q=>q.type==='open');
   return `<a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${bankArt(b,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
-    <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a>`;
+    <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${hasAudio(b)? '<span class="aud-chip">♪ Áudio</span>' : ''}${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a>`;
 }
+const hasAudio=b=>!!b.audio||b.questions.some(q=>q.audio);
 function bankFiltered(){
   const q=(S.bq||'').trim().toLowerCase(), lv=S.blv||'todos', tp=S.btp||'todos', ty=S.bty||'todos';
-  return langBank().filter(b=>(lv==='todos'||b.level===lv)&&(tp==='todos'||b.topic===tp)&&(ty==='todos'||b.questions.some(x=>x.type===ty))&&(!q||(b.title+' '+b.topic+' '+b.questions.map(x=>x.prompt).join(' ')).toLowerCase().includes(q)))
+  return langBank().filter(b=>(lv==='todos'||b.level===lv)&&(tp==='todos'||b.topic===tp)&&(ty==='todos'||(ty==='audio'? hasAudio(b) : b.questions.some(x=>x.type===ty)))&&(!q||(b.title+' '+b.topic+' '+b.questions.map(x=>x.prompt).join(' ')).toLowerCase().includes(q)))
     .sort((a,b)=>LEVELS.indexOf(a.level)-LEVELS.indexOf(b.level)||a.title.localeCompare(b.title));
 }
 function bankListHtml(){
@@ -1420,7 +1422,7 @@ function viewBank(){
     <div class="bk-tools"><label class="sr" for="bk-q">Buscar no banco</label><input type="text" id="bk-q" data-bk="q" value="${esc(S.bq||'')}" placeholder="${myLang()==='FR'? 'Buscar: passé composé, famille, expressions…' : 'Buscar: past simple, travel, idioms…'}" autocomplete="off">
       <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" aria-pressed="${lv===k}" data-act="bk-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tema">${['todos',...topicsFor(myLang())].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
-      <div class="filt" role="group" aria-label="Tipo de questão">${['todos',...Object.keys(QT)].map(k=>`<button class="${ty===k?'on':''}" aria-pressed="${ty===k}" data-act="bk-ty" data-v="${k}">${k==='todos'? 'Todos os tipos' : QT[k]}</button>`).join('')}</div></div>
+      <div class="filt" role="group" aria-label="Tipo de questão">${['todos','audio',...Object.keys(QT)].map(k=>`<button class="${ty===k?'on':''}" aria-pressed="${ty===k}" data-act="bk-ty" data-v="${k}">${k==='todos'? 'Todos os tipos' : k==='audio'? '♪ Com áudio' : QT[k]}</button>`).join('')}</div></div>
     <div id="bk-list">${bankListHtml()}</div>`;
 }
 function viewBankItem(b){
