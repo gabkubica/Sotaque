@@ -10,6 +10,18 @@ Dois projetos de aulas de idiomas, no estilo visual **Quadros Winer**
 
 Os dois são sites estáticos, sem etapa de build: basta abrir o `index.html` de cada pasta num navegador.
 
+### No ar (GitHub Pages)
+
+Em **Settings → Pages**, escolha *Deploy from a branch*, branch `main`, pasta `/ (root)`, e salve.
+Em um ou dois minutos ficam no ar:
+- página de entrada: https://gabkubica.github.io/sotaque/
+- Sotaque: https://gabkubica.github.io/sotaque/app/
+- Teacher Lexi: https://gabkubica.github.io/sotaque/site/
+
+O Sotaque é instalável no celular: no Chrome (Android), menu → *Instalar app*;
+no Safari (iPhone), Compartilhar → *Adicionar à Tela de Início*. Ele abre em tela cheia,
+com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, `manifest.webmanifest`).
+
 ## app/ · Sotaque
 
 **Professor ou professora** (Hoje · Agenda · Alunos · Tarefas)
@@ -50,7 +62,8 @@ Contas de teste (senha `sotaque123`):
 Arquivos: `index.html` (o app), `banco.js` e `banco-fr.js` (bancos de tarefas), `trilhas.js` (marcos de cada nível), `provas.js` (escutas, leituras e provas de nível), `quadros.js` (ilustrações).
 
 **Estado atual:** modo demonstração, com os dados no `localStorage` do navegador.
-Próximo passo para uso real: login e banco de dados (ex.: Supabase).
+Cada navegador guarda os próprios dados: o que a professora faz não chega ao aluno em outro aparelho.
+Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 
 ## site/ · Teacher Lexi
 

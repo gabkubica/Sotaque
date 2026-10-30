@@ -3,6 +3,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f8f3ec">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sotaque">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Sotaque</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1389,8 +1396,8 @@ function tasksHeader(active){
     <a class="btn primary big" href="${active==='banco'? '#banco-nova' : '#nova-tarefa'}">${active==='banco'? '+ Criar no banco' : '+ Nova tarefa'}</a></div>
     <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}">Banco de tarefas <span class="n">${langBank().length}</span></a></nav></div>`;
 }
-/* ilustração da tarefa: cena pelo assunto, paleta pelo título (assim o banco não fica repetido) */
-function bankArt(b,o){ const h=hashStr(b.title); return quadro(paletteFor(hashStr(b.title+'·')),sceneFor(b.title+' '+(b.instructions||'').slice(0,60),b.topic,h),h%9973,o); }
+/* ilustração da tarefa: a cor é a do nível (A1, A2, B1, B2, C1) e a cena vem do assunto */
+function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||paletteFor(hashStr(b.title+'·')),sceneFor(b.title+' '+(b.instructions||'').slice(0,60),b.topic,h),h%9973,o); }
 function bankCard(b){
   const open=b.questions.some(q=>q.type==='open');
   return `<a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${bankArt(b,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
@@ -1519,7 +1526,7 @@ function taskArt(t,o){
   if (t.kind==='prova'){ const m=marcoById(t.marcoId); return quadro(s.palette,m?.scene||'montanha',hashStr(t.marcoId)%997,o); }
   if (t.kind==='nivel') return quadro(s.palette,'montanha',hashStr(t.id)%997,o);
   const b=t.bankId&&DB.bank.find(x=>x.id===t.bankId);
-  return bankArt(b||{title:t.title,instructions:t.instructions,topic:t.audio? 'Escuta' : ''},o);
+  return bankArt(b||{title:t.title,instructions:t.instructions,topic:t.audio? 'Escuta' : '',level:levelOf(s)},o);
 }
 function taskCardS(t){
   const st=taskState(t), n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
@@ -2270,5 +2277,7 @@ else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if
   ensureLessons(); save(); }
 S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
+/* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
+if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
 setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
 </script>
