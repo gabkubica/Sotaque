@@ -42,14 +42,19 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   e leituras novas (`provas.js`). Qualquer tarefa pode ter um "áudio para escuta".
   Velocidade do áudio em 0,75×, 1× ou 1,5×: dá para trocar a qualquer momento, até no meio da fala
   (ela recomeça da frase em que estava). A escolha fica guardada no aparelho.
-- Teste de nivelamento (`nivelamento.js`), em inglês e francês, no formato dos testes de colocação
-  (Oxford, Cambridge, Alliance Française): régua do A1 ao C1 em 5 partes. Gramática e vocabulário
-  (30 questões, com a opção "Não sei"), leitura (5 textos), escuta com áudio (5 áudios), escrita
-  (3 tarefas em degraus, a última opcional) e fala na aula, com roteiro em degraus para o professor.
-  As objetivas se corrigem sozinhas: um nível conta com 60% de acerto nele e nos de baixo, e 40% no
-  seguinte vira "plus". O professor classifica a escrita e a fala, vê a sugestão final e define o nível,
-  que atualiza o cadastro do aluno e, se quiser, ativa ou ajusta a trilha. Libera-se pelo caderno do
-  aluno ou logo ao criar um aluno novo. A conta de teste da Júlia já tem um teste entregue para avaliar.
+- Nivelamento (aba em Tarefas, ao lado do Banco; `nivelamento.js`), em inglês e francês, no formato dos
+  testes de colocação (Oxford, Cambridge, Alliance Française), do A1 ao C1. Só para quem precisa:
+  a professora escolhe o aluno e a versão, e o teste vai para as tarefas dele.
+  - Rápido (uns 15 min): gramática (3 questões por nível, sorteadas), escuta (3 áudios), 1 escrita livre
+    e fala opcional.
+  - Completo (40 a 60 min): gramática e vocabulário (30), leitura (5 textos), escuta (5 áudios),
+    3 escritas em degraus (a última opcional) e fala na aula, com roteiro em degraus.
+  - As objetivas têm a opção "Não sei" e se corrigem sozinhas: um nível conta com 60% de acerto nele e nos
+    de baixo, e 40% no seguinte vira "plus". A correção é própria: o professor vê os acertos nível por
+    nível, classifica a escrita e a fala, recebe a sugestão final e define o nível, que atualiza o cadastro
+    do aluno e pode ativar ou ajustar a trilha. O aluno vê o nível de partida com uma explicação.
+  - Cada versão tem uma página com todas as questões e o gabarito. A conta de teste da Júlia já tem um
+    teste completo entregue para avaliar.
 - Trilha (opcional, aluno por aluno), com base no Quadro Europeu (CEFR, volume complementar de 2020):
   - 70 marcos (38 em inglês, 32 em francês). Cada nível tem duas metades: o nível "cheio" e o "plus"
     (A2+, B1+, B2+), como no CEFR (`trilhas.js`);

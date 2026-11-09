@@ -7,11 +7,17 @@
      3. Escuta: 1 áudio por nível, 3 questões cada (15)
      4. Escrita: 3 tarefas em degraus (a 3ª é opcional)
      5. Fala: conversa na aula, com roteiro em degraus para o professor
+   Versão rápida (uns 15 minutos): 3 questões de gramática por nível (15), 3 áudios
+   (A2, B1 e B2) com 2 questões cada e uma escrita livre. A fala é opcional.
    As objetivas se corrigem sozinhas. Um nível conta como alcançado com 60% de acerto
    nele e em todos os de baixo. Escrita e fala o professor classifica, e a decisão final é dele.
    Formato das questões: igual ao do banco ([enunciado, alternativas, certa], TF, GAP).
    As alternativas de gramática são embaralhadas na montagem e ganham a opção "Não sei".
    ========================================================= */
+const PLACE_VER={
+  completo:{nome:'Completo',tempo:'40 a 60 min',partes:'Gramática (30) · leitura (5 textos) · escuta (5 áudios) · 3 escritas · fala',uso:'Para quem vai fazer um curso longo ou precisa de um diagnóstico detalhado, habilidade por habilidade.'},
+  curto:{nome:'Rápido',tempo:'uns 15 min',partes:'Gramática (15) · escuta (3 áudios) · 1 escrita · fala opcional',uso:'Para ter uma ideia rápida do nível antes da primeira aula.'},
+};
 const NIVELAMENTO={
   EN:{
     G:{
@@ -105,6 +111,7 @@ const NIVELAMENTO={
       ['Write an email to a friend about a trip or an important day in your life. What happened? How did you feel? Why was it important?','80 a 120','Tarefa 2 · conte a um amigo, por e-mail, sobre uma viagem ou um dia importante: o que aconteceu, como você se sentiu e por que foi importante.'],
       ['“Learning a language online is just as effective as learning it in a classroom.” Do you agree? Give reasons and examples.','150 a 200','Tarefa 3 · opcional: faça se conseguir. Dê a sua opinião sobre aprender idiomas on-line ou em sala, com argumentos e exemplos.'],
     ],
+    E_CURTO:['Write about yourself: who you are, what you do, what you like, and a trip or a special day you remember. Write as much as you can.','40 a 120','Escreva sobre você: quem é, o que faz, do que gosta e uma viagem ou um dia especial de que se lembra. Escreva o quanto conseguir: o texto mostra até onde você vai.'],
     F:[
       ['A1 → A2','Apresentação e rotina','What’s your name? Where are you from? What do you do? Tell me about your family. What do you usually do at the weekend? What’s your favourite food?'],
       ['A2 → B1','Experiências e planos','Tell me about your last holiday. What did you do yesterday? Describe your home or your neighbourhood. What are your plans for next year?'],
@@ -204,6 +211,7 @@ const NIVELAMENTO={
       ['Écrivez un e-mail à un ami pour raconter un voyage ou un jour important de votre vie. Que s’est-il passé ? Comment vous êtes-vous senti ? Pourquoi était-ce important ?','80 a 120','Tarefa 2 · conte a um amigo, por e-mail, sobre uma viagem ou um dia importante: o que aconteceu, como você se sentiu e por que foi importante.'],
       ['« Apprendre une langue en ligne est aussi efficace que de l’apprendre en classe. » Êtes-vous d’accord ? Donnez des arguments et des exemples.','150 a 200','Tarefa 3 · opcional: faça se conseguir. Dê a sua opinião sobre aprender idiomas on-line ou em sala, com argumentos e exemplos.'],
     ],
+    E_CURTO:['Parlez de vous : qui vous êtes, ce que vous faites, ce que vous aimez, et un voyage ou un jour spécial dont vous vous souvenez. Écrivez autant que vous pouvez.','40 a 120','Escreva sobre você: quem é, o que faz, do que gosta e uma viagem ou um dia especial de que se lembra. Escreva o quanto conseguir: o texto mostra até onde você vai.'],
     F:[
       ['A1 → A2','Présentation et quotidien','Comment vous appelez-vous ? Vous venez d’où ? Qu’est-ce que vous faites dans la vie ? Parlez-moi de votre famille. Qu’est-ce que vous faites le week-end ?'],
       ['A2 → B1','Expériences et projets','Racontez-moi vos dernières vacances. Qu’est-ce que vous avez fait hier ? Décrivez votre quartier. Quels sont vos projets pour l’année prochaine ?'],

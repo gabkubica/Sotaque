@@ -511,6 +511,19 @@ details.more[open] summary{margin-bottom:14px}
 .pl-lv>summary::after{content:'▾';color:var(--ink-3);transition:transform .2s}
 .pl-lv[open]>summary::after{transform:rotate(180deg)}
 .pl-ask{gap:6px}
+.plvers{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.plvers legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
+.plver-w{display:flex;flex-direction:column;gap:8px;min-width:0}
+.plver-w .link{font-size:13.5px;align-self:flex-start}
+.plver{display:flex;flex-direction:column;border:2px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;background:var(--surface);height:100%;position:relative}
+.plver input{position:absolute;top:10px;right:10px;width:20px;height:20px;accent-color:var(--wine,#7a1f35)}
+.plver:has(input:checked){border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.plver-art{display:block;line-height:0}.plver-art svg{width:100%;height:auto;display:block}
+.plver-b{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px}
+.plver-b b{font-family:var(--display);font-size:19px}
+.plver-t{font-weight:700;color:var(--ink-2)}
+.plver-b small{font-size:13px;color:var(--ink-2);line-height:1.35}
+@media (max-width:760px){.plvers{grid-template-columns:1fr}.hello .segl a{padding:8px 13px}.hello .segl .nl{display:none}}
 .opts-col.short{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .opts-col.short .ans.idk{grid-column:1/-1}
 .ans.idk{border-style:dashed;background:transparent}
@@ -985,6 +998,8 @@ function parseHash(){
   if ((m=h.match(/^missao-([a-z0-9-]+)$/))) return {name:'missao',id:m[1]};
   if ((m=h.match(/^trilha-([a-z0-9]+)$/))) return {name:'trilhaAluno',id:m[1]};
   if (h==='banco') return {name:'banco'};
+  if (h==='nivelamento') return {name:'nivel'};
+  if ((m=h.match(/^nivelamento-ver-(completo|curto)$/))) return {name:'nivelPrev',id:m[1]};
   if (h==='banco-nova') return {name:'bancoNova'};
   if ((m=h.match(/^banco-editar-([a-z0-9]+)$/))) return {name:'bancoEd',id:m[1]};
   if ((m=h.match(/^banco-([a-z0-9]+)$/))) return {name:'bancoItem',id:m[1]};
@@ -1032,7 +1047,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','hoje','Hoje',reqs)}${navA('#agenda',r==='agenda','agenda','Agenda')}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#tarefas',['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd'].includes(r),'tarefas','Tarefas',toCorrect)}${navA('#dev',r==='dev'||r==='missao','dev','<span class="nl">Desenvolvimento</span><span class="ns">Meu estudo</span>')}</nav>`
+  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','hoje','Hoje',reqs)}${navA('#agenda',r==='agenda','agenda','Agenda')}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#tarefas',['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev'].includes(r),'tarefas','Tarefas',toCorrect)}${navA('#dev',r==='dev'||r==='missao','dev','<span class="nl">Desenvolvimento</span><span class="ns">Meu estudo</span>')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Meu caderno')}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Tarefas',todoS)}</nav>`;
   return `<header class="bar"><div class="bar-in">
     <a class="brand" href="#inicio">${logo()}<span>Sotaque</span></a>${nav}
@@ -1350,14 +1365,14 @@ const AUDIO_ACT={
 /* questões em partes (prova de nível): leitura, escuta, escrita e, na aula, fala */
 function qList(t,fn,mode){
   if (!t.blocks) return t.questions.map(fn).join('');
-  const order=t.kind==='place'? 'GLOEF' : 'LOEF', PN=k=>order.indexOf(k)+1, idx=id=>t.questions.findIndex(q=>q.id===id), lang=taskLang(t); let last='';
-  const head=k=>`<div class="part-h"><span class="part-n">${PN(k)}</span><div class="grow"><p class="eyebrow">Parte ${PN(k)} de ${order.length}</p><h2>${PART[k]}</h2></div></div>${t.kind==='place'&&!mode&&PART_TIP[k]? `<p class="meta part-tip">${PART_TIP[k]}</p>` : ''}`;
+  const order=t.kind==='place'? [...new Set(t.blocks.map(b=>b.part)),'F'].join('') : 'LOEF', PN=k=>order.indexOf(k)+1, idx=id=>t.questions.findIndex(q=>q.id===id), lang=taskLang(t); let last='';
+  const head=k=>`<div class="part-h"><span class="part-n">${PN(k)}</span><div class="grow"><p class="eyebrow">Parte ${PN(k)} de ${order.length}</p><h2>${PART[k]}</h2></div></div>${t.kind==='place'&&!mode&&PART_TIP[k]? `<p class="meta part-tip">${k==='E'&&t.ver==='curto'? 'Escreva o quanto conseguir: pode ser pouco ou muito, o texto mostra até onde você vai.' : PART_TIP[k]}</p>` : ''}`;
   return t.blocks.map(b=>{ const first=b.part!==last; last=b.part;
     const media= b.part==='L'? `<div class="panel read"><p class="eyebrow">${esc(b.title)}</p><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></div>`
       : b.part==='O'? `<div class="panel"><p class="eyebrow">${esc(b.title)}</p>${audioBox(b.audio,lang,{transcript:mode==='student',note:t.kind==='place'? 'o ideal é ouvir até 2 vezes' : ''})}</div>` : '';
     return (first? head(b.part) : '')+media+b.qIds.map(id=>{ const i=idx(id); return fn(t.questions[i],i); }).join(''); }).join('')
     + (t.kind==='nivel'? `${head('F')}<div class="panel"><p class="meta">A fala acontece na aula ao vivo: uma conversa de 10 a 15 minutos com ${aProf()}, com perguntas, uma fala mais longa e uma situação para resolver juntos.</p></div>`
-      : t.kind==='place'? `${head('F')}<div class="panel"><p class="meta">A fala é uma conversa de uns 10 minutos na aula ao vivo com ${aProf()}: começa com perguntas simples e vai ficando mais difícil aos poucos. Não precisa preparar nada.</p></div>` : '');
+      : t.kind==='place'? `${head('F')}<div class="panel"><p class="meta">${t.ver==='curto'? 'Se der, ' : ''}A fala é uma conversa de uns 10 minutos na aula ao vivo com ${aProf()}: começa com perguntas simples e vai ficando mais difícil aos poucos. Não precisa preparar nada.</p></div>` : '');
 }
 function provaResultS(t){
   const sc=provaScore(t), c=conqOf(t.studentId,t.marcoId);
@@ -1546,9 +1561,9 @@ function launchTo(spec){
   toast(`Tarefa lançada para ${names.length>2? names.slice(0,-1).join(', ')+' e '+names.slice(-1) : names.join(' e ')}`);
 }
 function tasksHeader(active){
-  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Tarefas</h1><p class="meta">${active==='banco'? `Tarefas prontas de ${langName(myLang()).toLowerCase()}. Escolha, confira e lance para o aluno.` : 'Monte, lance e corrija por aqui. As questões objetivas se corrigem sozinhas.'}</p></div>
-    <a class="btn primary big" href="${active==='banco'? '#banco-nova' : '#nova-tarefa'}">${active==='banco'? '+ Criar no banco' : '+ Nova tarefa'}</a></div>
-    <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}">Banco de tarefas <span class="n">${langBank().length}</span></a></nav></div>`;
+  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Tarefas</h1><p class="meta">${active==='banco'? `Tarefas prontas de ${langName(myLang()).toLowerCase()}. Escolha, confira e lance para o aluno.` : active==='nivel'? 'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.' : 'Monte, lance e corrija por aqui. As questões objetivas se corrigem sozinhas.'}</p></div>
+    ${active==='nivel'? '' : `<a class="btn primary big" href="${active==='banco'? '#banco-nova' : '#nova-tarefa'}">${active==='banco'? '+ Criar no banco' : '+ Nova tarefa'}</a>`}</div>
+    <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}"><span>Banco<span class="nl"> de tarefas</span></span><span class="n">${langBank().length}</span></a><a href="#nivelamento" class="${active==='nivel'?'on':''}">Nivelamento</a></nav></div>`;
 }
 /* ilustração da tarefa: a cor é a do nível (A1, A2, B1, B2, C1) e a cena vem do assunto */
 function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||paletteFor(hashStr(b.title+'·')),sceneFor(b.title+' '+(b.instructions||'').slice(0,60),b.topic,h),h%9973,o); }
@@ -2235,6 +2250,8 @@ const TRAIL_FORMS={
 };
 function onTrailInput(e){
   const el=e.target;
+  if (el.id==='pl-st') S.plStudent=el.value;
+  if (el.name==='pl-ver') S.plVer=el.value;
   if (el.dataset.place&&e.type==='change'){ const t=getTask(el.dataset.id); t.place[el.dataset.place]=el.value||null; save(); render(); return; }
   if (el.dataset.trailLevel&&e.type==='change'){ const s=user(el.dataset.trailLevel); s.trail.level=el.value; S.trailLv=null; save(); render(); toast(`Nível atual: ${el.value}`); }
 }
@@ -2296,24 +2313,24 @@ const PLACE_LV=['pré-A1',...SUBLEVELS];
 const LV_NAME={A1:'Iniciante',A2:'Básico',B1:'Intermediário',B2:'Avançado',C1:'Proficiente'};
 const PART_TIP={G:'Escolha a resposta certa. As questões ficam mais difíceis aos poucos. Se não souber, marque “Não sei”: chutar atrapalha o resultado.',L:'Leia cada texto e responda. Os textos também vão ficando mais difíceis.',O:'Ouça cada áudio e responda. O ideal é ouvir no máximo duas vezes, como num teste de verdade.',E:'Faça as tarefas 1 e 2. A 3 é opcional: tente se sentir que consegue.'};
 const placeOf=sid=>DB.tasks.filter(t=>t.kind==='place'&&t.studentId===sid).sort((a,b)=>b.createdAt-a.createdAt)[0];
-function makePlace(s){
-  const N=NIVELAMENTO[s.lang], questions=[], blocks=[], put=(qs,part,lv)=>{ qs.forEach(q=>{ q.part=part; q.lv=lv; questions.push(q); }); return qs.map(q=>q.id); };
-  for (const lv of LEVELS){ const qs=fromRaw(N.G[lv]).map(q=>{ const ord=shuffled(q.options.length,uid()), opts=q.options; q.options=ord.map(j=>opts[j]); q.correct=ord.indexOf(q.correct); q.options.push('Não sei'); return q; });
+function makePlace(s,ver='completo',push=true){
+  const N=NIVELAMENTO[s.lang], short=ver==='curto', questions=[], blocks=[], put=(qs,part,lv)=>{ qs.forEach(q=>{ q.part=part; q.lv=lv; questions.push(q); }); return qs.map(q=>q.id); };
+  for (const lv of LEVELS){ const qs=fromRaw(short? shuffle(N.G[lv].slice()).slice(0,3) : N.G[lv]).map(q=>{ const ord=shuffled(q.options.length,uid()), opts=q.options; q.options=ord.map(j=>opts[j]); q.correct=ord.indexOf(q.correct); q.options.push('Não sei'); return q; });
     blocks.push({part:'G',lv,qIds:put(qs,'G',lv)}); }
-  for (const lv of LEVELS){ const [title,text,list]=N.L[lv]; blocks.push({part:'L',lv,title,text,qIds:put(fromRaw(list),'L',lv)}); }
-  for (const lv of LEVELS){ const [title,audio,list]=N.O[lv]; blocks.push({part:'O',lv,title,audio,qIds:put(fromRaw(list),'O',lv)}); }
-  const w=N.E.map(([prompt,words,hint],k)=>({id:uid(),type:'open',prompt,words,hint,opt:k===2}));
+  if (!short) for (const lv of LEVELS){ const [title,text,list]=N.L[lv]; blocks.push({part:'L',lv,title,text,qIds:put(fromRaw(list),'L',lv)}); }
+  for (const lv of short? ['A2','B1','B2'] : LEVELS){ const [title,audio,list]=N.O[lv]; blocks.push({part:'O',lv,title,audio,qIds:put(fromRaw(short? list.slice(0,2) : list),'O',lv)}); }
+  const w= short? [{id:uid(),type:'open',prompt:N.E_CURTO[0],words:N.E_CURTO[1],hint:N.E_CURTO[2]}] : N.E.map(([prompt,words,hint],k)=>({id:uid(),type:'open',prompt,words,hint,opt:k===2}));
   blocks.push({part:'E',title:'Escrita',qIds:put(w,'E',null)});
-  const t={id:uid(),kind:'place',studentId:s.id,title:'Teste de nivelamento',
-    instructions:`Este teste mostra em que ponto do seu ${langName(s.lang).toLowerCase()} você está, do A1 ao C1. Não é prova: não tem nota boa ou ruim, só o seu ponto de partida.\n\nSão 4 partes para fazer aqui (gramática, leitura, escuta e escrita), em uns 40 a 60 minutos. A fala fica para a aula, numa conversa com ${aProf()}.\n\nFaça sozinho, sem dicionário nem tradutor. Suas respostas ficam salvas: dá para parar e continuar depois.`,
+  const t={id:uid(),kind:'place',ver,studentId:s.id,title: short? 'Nivelamento rápido' : 'Teste de nivelamento',
+    instructions: short? `Um teste rápido, de uns 15 minutos, para ${aProf()} saber em que ponto do seu ${langName(s.lang).toLowerCase()} você está. Não é prova: não tem nota boa ou ruim.\n\nSão 3 partes: gramática, escuta e uma escrita curta. Faça sozinho, sem dicionário nem tradutor. Se não souber, marque “Não sei”.` : `Este teste mostra em que ponto do seu ${langName(s.lang).toLowerCase()} você está, do A1 ao C1. Não é prova: não tem nota boa ou ruim, só o seu ponto de partida.\n\nSão 4 partes para fazer aqui (gramática, leitura, escuta e escrita), em uns 40 a 60 minutos. A fala fica para a aula, numa conversa com ${aProf()}.\n\nFaça sozinho, sem dicionário nem tradutor. Suas respostas ficam salvas: dá para parar e continuar depois.`,
     questions,blocks,fala:N.F,place:{w:null,f:null,final:null},due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
-  DB.tasks.push(t); return t;
+  if (push) DB.tasks.push(t); return t;
 }
 /* um nível conta com 60% de acerto nele e em todos os de baixo; 40% no seguinte vira "plus" */
 function placeScore(t){
   const obj=t.questions.filter(q=>q.type!=='open'&&q.lv);
   const cell=(lv,p)=>{ const qs=obj.filter(q=>q.lv===lv&&(!p||q.part===p)); return {got:qs.reduce((a,q)=>a+gradeQ(t,q),0),n:qs.length}; };
-  const reach=p=>{ let r=-1; for (let i=0;i<LEVELS.length;i++){ const c=cell(LEVELS[i],p); if (c.n&&c.got/c.n>=.6) r=i; else break; }
+  const reach=p=>{ if (p&&!obj.some(q=>q.part===p)) return null; let r=-1; for (let i=0;i<LEVELS.length;i++){ const c=cell(LEVELS[i],p); if (!c.n) continue; if (c.got/c.n>=.6) r=i; else break; }
     if (r<0) return 'pré-A1';
     let lv=LEVELS[r]; const nx=LEVELS[r+1], c=nx&&cell(nx,p); if (c&&c.n&&c.got/c.n>=.4&&SUBLEVELS.includes(lv+'+')) lv+='+'; return lv; };
   return {rows:LEVELS.map(lv=>({lv,all:cell(lv),G:cell(lv,'G'),L:cell(lv,'L'),O:cell(lv,'O')})),est:reach(),by:{G:reach('G'),L:reach('L'),O:reach('O')},got:obj.reduce((a,q)=>a+gradeQ(t,q),0),total:obj.length};
@@ -2326,7 +2343,7 @@ function placeSuggest(t,sc=placeScore(t)){
 const placeBase=l=>l==='pré-A1'? 'A1' : lvOfSub(l);
 function placeBars(sc){
   return `<div class="plbars">${sc.rows.map(r=>{ const p=r.all.n? Math.round(r.all.got/r.all.n*100) : 0;
-    return `<div class="plbar ${p>=60?'ok':p>=40?'mid':''}"><b>${r.lv}</b><span class="plt"><i style="width:${p}%"></i></span><em>${p}%</em><small>${['G','L','O'].map(k=>`${k==='G'? 'gramática' : PART[k].toLowerCase()} ${fmtNum(r[k].got)}/${r[k].n}`).join(' · ')}</small></div>`; }).join('')}</div>
+    return `<div class="plbar ${p>=60?'ok':p>=40?'mid':''}"><b>${r.lv}</b><span class="plt"><i style="width:${p}%"></i></span><em>${p}%</em><small>${['G','L','O'].filter(k=>r[k].n).map(k=>`${k==='G'? 'gramática' : PART[k].toLowerCase()} ${fmtNum(r[k].got)}/${r[k].n}`).join(' · ')}</small></div>`; }).join('')}</div>
     <p class="meta muted">Um nível conta a partir de 60% de acerto nele e nos de baixo.</p>`;
 }
 const plSelect=(t,k,label,locked,def)=>`<label class="field" for="pl-${k}">${label}<select id="pl-${k}" data-place="${k}" data-id="${t.id}" ${locked?'disabled':''}><option value="">${k==='final'? 'Escolha…' : 'Ainda não avaliei'}</option>${PLACE_LV.map(l=>`<option ${(t.place[k]||def)===l?'selected':''}>${l}</option>`).join('')}</select></label>`;
@@ -2343,33 +2360,33 @@ function placeResultS(t){
 function placePanel(s){
   if (!isT()) return '';
   const t=placeOf(s.id), first=s.name.split(' ')[0];
-  const make=(lbl,cls='primary')=>`<button class="btn small ${cls}" style="align-self:flex-start" data-act="place-make" data-s="${s.id}">${lbl}</button>`;
-  if (!t) return `<section class="panel"><div class="panel-h"><h2>Nivelamento</h2></div><p class="meta">Um teste completo do A1 ao C1: gramática, leitura, escuta com áudio e escrita. A fala você faz na aula, com um roteiro pronto. Leva de 40 a 60 minutos.</p>${make('Liberar teste de nivelamento')}</section>`;
+  if (!t) return '';
   const st= t.status==='pendente'? {k:'pend',label:'Com '+first} : t.status==='entregue'? {k:'sent',label:'Para avaliar'} : {k:'done',label:t.result.final};
   const d= t.status==='pendente'? `Liberado ${rel(t.createdAt)}. ${t.questions.some(q=>isAnswered(t,q))? `${esc(first)} já começou.` : `${esc(first)} ainda não começou.`}`
     : t.status==='entregue'? `Entregue ${rel(t.submittedAt)}. As objetivas já estão corrigidas: falta você classificar a escrita e a fala.`
     : `Nível definido ${rel(t.correctedAt)}: <b>${esc(t.result.final)}</b>.`;
   return `<section class="panel"><div class="panel-h"><h2>Nivelamento</h2>${pill(st)}</div><p class="meta">${d}</p>
-    <div class="row-btns"><a class="btn small ${t.status==='entregue'?'primary':''}" href="#tarefa-${t.id}">${t.status==='entregue'? 'Avaliar teste' : 'Abrir teste'}</a>${t.status==='corrigida'? make('Novo teste','ghost') : ''}</div></section>`;
+    <div class="row-btns"><a class="btn small ${t.status==='entregue'?'primary':''}" href="#tarefa-${t.id}">${t.status==='entregue'? 'Avaliar teste' : 'Abrir teste'}</a></div></section>`;
 }
 /* teste de nivelamento visto pelo professor */
 function viewPlaceT(t){
   const s=user(t.studentId), first=s.name.split(' ')[0], sent=t.status!=='pendente', done=t.status==='corrigida', lang=s.lang, sc=placeScore(t), sug=placeSuggest(t,sc), fb=S.fb[t.id]??t.feedback;
   const qIdx=id=>t.questions.findIndex(q=>q.id===id), qr=id=>qResult(t,t.questions[qIdx(id)],qIdx(id),'teacher');
   const got=b=>{ const qs=b.qIds.map(id=>t.questions[qIdx(id)]); return `${fmtNum(qs.reduce((a,q)=>a+gradeQ(t,q),0))} de ${qs.length}`; };
-  const head=(k,n,right='')=>`<div class="part-h"><span class="part-n">${n}</span><div class="grow"><p class="eyebrow">Parte ${n} de 5</p><h2>${PART[k]}</h2></div>${right}</div>`;
+  const order=[...new Set(t.blocks.map(b=>b.part)),'F'];
+  const head=(k,_,right='')=>`<div class="part-h"><span class="part-n">${order.indexOf(k)+1}</span><div class="grow"><p class="eyebrow">Parte ${order.indexOf(k)+1} de ${order.length}</p><h2>${PART[k]}</h2></div>${right}</div>`;
   const objPart=(k,n)=>`<section class="part-s">${head(k,n,sent? `<span class="count">${sc.by[k]}</span>` : '')}${!sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : t.blocks.filter(b=>b.part===k).map(b=>`<details class="pl-lv"><summary><b>${b.lv}</b><span class="grow">${b.title? esc(b.title) : 'Questões do nível'}</span><small>${got(b)}</small></summary>
       <div class="stack" style="gap:12px;margin-top:12px">${b.audio? audioBox(b.audio,lang,{transcript:true}) : b.text? `<details class="transc"><summary>Ver o texto</summary><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></details>` : ''}${b.qIds.map(qr).join('')}</div></details>`).join('')}</section>`;
   const wb=t.blocks.find(b=>b.part==='E');
-  return `<div style="${sVars(s)}"><a class="link" href="#aluno-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Caderno de ${esc(first)}</a>
-    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Teste de nivelamento · ${langName(lang)}</p><h1>${esc(first)}</h1><p class="meta">${sent? `Entregue ${when(t.submittedAt)}` : `Liberado ${rel(t.createdAt)} · ${esc(first)} ainda não entregou`} · ${sc.total} objetivas, 3 escritas e a conversa</p></div>${pill(done? {k:'done',label:t.result.final} : sent? {k:'sent',label:'Para avaliar'} : {k:'pend',label:'Esperando'})}</div>
+  return `<div style="${sVars(s)}"><a class="link" href="#nivelamento" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Nivelamento</a>
+    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">${t.ver==='curto'? 'Nivelamento rápido' : 'Teste de nivelamento'} · ${langName(lang)}</p><h1>${esc(first)}</h1><p class="meta">${sent? `Entregue ${when(t.submittedAt)}` : `Liberado ${rel(t.createdAt)} · ${esc(first)} ainda não entregou`} · ${sc.total} objetivas, ${wb.qIds.length===1? '1 escrita' : wb.qIds.length+' escritas'} e a conversa${t.ver==='curto'? ' (opcional)' : ''}</p></div>${pill(done? {k:'done',label:t.result.final} : sent? {k:'sent',label:'Para avaliar'} : {k:'pend',label:'Esperando'})}</div>
     <div class="grid2"><div class="stack" style="gap:22px">
-      ${objPart('G',1)}${objPart('L',2)}${objPart('O',3)}
+      ${order.filter(k=>'GLO'.includes(k)).map(k=>objPart(k)).join('')}
       <section class="part-s">${head('E',4,t.place.w? `<span class="count">${t.place.w}</span>` : '')}${!sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : wb.qIds.map(id=>{ const q=t.questions[qIdx(id)], a=t.answers[id];
         return `<div class="qcard"><div class="qhead"><b class="grow">${esc(q.prompt)}</b><span class="qkind">${q.opt? 'opcional · ' : ''}${q.words} palavras</span></div>
         <div class="answer" style="background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere">${a? esc(a) : `<span class="muted">${q.opt? 'Não fez (era opcional)' : 'Sem resposta'}</span>`}</div><p class="meta muted">${wordCount(a)} palavras</p></div>`; }).join('')
-        +`<div class="panel pl-ask">${plSelect(t,'w','Pela escrita, qual o nível?',done)}<p class="meta muted">A tarefa 1 mostra A1–A2, a 2 mostra B1 e a 3, B2–C1. Veja até onde o texto se sustenta: recursos, correção e organização.</p></div>`}</section>
-      <section class="part-s">${head('F',5,t.place.f? `<span class="count">${t.place.f}</span>` : '')}<p class="meta">Na aula ao vivo, uns 10 minutos. Comece pelo primeiro bloco e vá subindo até ${esc(first)} começar a travar: o nível da fala é o último bloco em que a conversa ainda flui.</p>
+        +`<div class="panel pl-ask">${plSelect(t,'w','Pela escrita, qual o nível?',done)}<p class="meta muted">${t.ver==='curto'? 'Veja até onde o texto se sustenta: frases soltas (A1–A2), um relato ligado e claro (B1) ou um texto rico e bem organizado (B2–C1).' : 'A tarefa 1 mostra A1–A2, a 2 mostra B1 e a 3, B2–C1. Veja até onde o texto se sustenta: recursos, correção e organização.'}</p></div>`}</section>
+      <section class="part-s">${head('F',5,t.place.f? `<span class="count">${t.place.f}</span>` : '')}<p class="meta">${t.ver==='curto'? 'Opcional, mas ajuda muito. ' : ''}Na aula ao vivo, uns 10 minutos. Comece pelo primeiro bloco e vá subindo até ${esc(first)} começar a travar: o nível da fala é o último bloco em que a conversa ainda flui.</p>
         <div class="fala">${t.fala.map(([a,b,c])=>`<div><b>${esc(a)}</b><small class="muted">${esc(b)}</small><p>${esc(c)}</p></div>`).join('')}</div>
         <div class="panel pl-ask">${plSelect(t,'f','Pela fala, qual o nível?',done)}</div></section>
     </div>
@@ -2386,10 +2403,36 @@ function viewPlaceT(t){
         <button class="btn small ghost" style="align-self:flex-start" data-act="task-del" data-id="${t.id}">Excluir teste</button></section>`}
     </aside></div></div>`;
 }
+/* aba "Nivelamento" (em Tarefas): para os alunos que precisam, não para todos */
+function viewPlaceHub(){
+  const studs=students(), list=DB.tasks.filter(t=>t.kind==='place'&&mine(t)).sort((a,b)=>b.createdAt-a.createdAt), ver=S.plVer||'curto';
+  const card=k=>{ const v=PLACE_VER[k]; return `<div class="plver-w"><label class="plver"><input type="radio" name="pl-ver" value="${k}" ${ver===k?'checked':''}><span class="plver-art">${quadro(k==='curto'? 'menta' : 'ameixa','lupa',k==='curto'? 7 : 31,{w:360,h:100,frame:false})}</span>
+    <span class="plver-b"><b>${v.nome}</b><small class="plver-t">${v.tempo}</small><small>${v.partes}</small><span class="meta muted">${v.uso}</span></span></label><a class="link" href="#nivelamento-ver-${k}">Ver as questões e o gabarito →</a></div>`; };
+  const row=t=>{ const s=user(t.studentId), st= t.status==='pendente'? {k:'pend',label:'Com o aluno'} : t.status==='entregue'? {k:'sent',label:'Para avaliar'} : {k:'done',label:t.result.final};
+    return `<a class="row" href="#tarefa-${t.id}" style="${sVars(s)}">${avatar(s,34)}<div class="row-m"><b>${esc(s.name)}</b><small>${PLACE_VER[t.ver||'completo'].nome} · ${t.status==='pendente'? 'lançado '+rel(t.createdAt) : t.status==='entregue'? 'entregue '+rel(t.submittedAt) : 'nível definido '+rel(t.correctedAt)}</small></div>${pill(st)}</a>`; };
+  return `${tasksHeader('nivel')}
+  <div class="grid2"><section class="panel"><h2>Lançar um teste</h2>
+    ${studs.length? `<label class="field" for="pl-st">Para quem<select id="pl-st"><option value="">Escolha o aluno…</option>${studs.map(s=>`<option value="${s.id}" ${S.plStudent===s.id?'selected':''}>${esc(s.name)}${s.level? ' · '+esc(s.level) : ''}</option>`).join('')}</select></label>
+    <fieldset class="plvers"><legend>Versão</legend>${card('curto')}${card('completo')}</fieldset>
+    <p class="meta muted">O teste vai para as tarefas do aluno. Quando ele entregar, as objetivas já chegam corrigidas, nível por nível; você classifica a escrita e a fala e define o nível dele.</p>
+    <button class="btn primary big" data-act="place-make">Lançar teste</button>` : '<p class="meta">Cadastre um aluno primeiro.</p>'}</section>
+  <aside class="stack"><section class="panel"><div class="panel-h"><h2>Testes lançados</h2><span class="count">${list.length}</span></div>
+    ${list.length? `<div class="rows">${list.map(row).join('')}</div>` : '<p class="muted">Nenhum ainda. A maioria dos alunos não precisa: use para quem chega sem você saber o nível.</p>'}</section></aside></div>`;
+}
+function viewPlacePrev(ver){
+  const P=(S.plPrev ||= {}), key=ver+myLang(), t=P[key] ||= makePlace({id:'prev',lang:myLang()},ver,false), v=PLACE_VER[ver];
+  return `<div style="${sVars({palette:ver==='curto'? 'menta' : 'ameixa'})}"><a class="link" href="#nivelamento" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Nivelamento</a>
+    <div class="hello"><p class="eyebrow">Gabarito · versão ${v.nome.toLowerCase()} · ${langName(myLang())}</p><h1>${esc(t.title)}</h1><p class="meta">${v.tempo} · ${v.partes}</p>
+    ${ver==='curto'? '<p class="meta muted">As questões de gramática são sorteadas: cada aluno recebe 3 das 6 de cada nível.</p>' : ''}</div>
+    <div class="stack" style="gap:14px;max-width:780px">${qList(t,(q,i)=>qResult(t,q,i,'key'),'key')}
+      <div class="fala">${t.fala.map(([a,b,c])=>`<div><b>${esc(a)}</b><small class="muted">${esc(b)}</small><p>${esc(c)}</p></div>`).join('')}</div></div></div>`;
+}
 const PLACE_ACT={
-  'place-make'(el){ const s=user(el.dataset.s), first=s.name.split(' ')[0], old=placeOf(s.id); if (S.modal) closeModal();
-    if (old?.status==='pendente'){ location.hash='tarefa-'+old.id; return; }
-    makePlace(s); save(); render(); toast(`Teste de nivelamento liberado. Ele aparece nas tarefas de ${first}.`); },
+  'place-make'(){ const sid=$('#pl-st')?.value, ver=document.querySelector('input[name=pl-ver]:checked')?.value||'curto';
+    if (!sid){ toast('Escolha o aluno.'); $('#pl-st')?.focus(); return; }
+    const s=user(sid), first=s.name.split(' ')[0], old=placeOf(sid);
+    if (old?.status==='pendente'){ toast(`${first} já tem um teste esperando.`); location.hash='tarefa-'+old.id; return; }
+    makePlace(s,ver); S.plStudent=null; save(); render(); toast(`${PLACE_VER[ver].nome === 'Rápido'? 'Nivelamento rápido' : 'Teste de nivelamento'} lançado. Ele aparece nas tarefas de ${first}.`); },
   'place-decide'(el){ const t=getTask(el.dataset.id), s=user(t.studentId), first=s.name.split(' ')[0], final=t.place.final||$('#pl-final').value;
     if (!final){ toast('Escolha o nível de partida.'); $('#pl-final')?.focus(); return; }
     const sc=placeScore(t), base=placeBase(final), trail=$('#pl-trail')?.checked;
@@ -2486,6 +2529,8 @@ function render(){
   else if (r.name==='tarefa'&&getTask(r.id)&&mine(getTask(r.id))) main=viewTaskT(getTask(r.id));
   else if (r.name==='nova'){ if (!S.draft) S.draft=newDraft(r.id); main=viewEditor(); }
   else if (r.name==='banco') main=viewBank();
+  else if (r.name==='nivel') main=viewPlaceHub();
+  else if (r.name==='nivelPrev') main=viewPlacePrev(r.id);
   else if (r.name==='bancoItem'&&langBank().find(b=>b.id===r.id)){ if (!S.bl) S.bl=newBl(); main=viewBankItem(DB.bank.find(b=>b.id===r.id)); }
   else if ((r.name==='bancoNova'||r.name==='bancoEd')&&S.draft) main=viewEditor();
   else if (r.name==='alunos') main=viewStudents();
@@ -2667,7 +2712,7 @@ const FORMS={
     ensureLessons(); save(); location.hash='aluno-'+s.id; render();
     openModal(`<h2>Caderno de ${esc(s.name.split(' ')[0])} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Envie o acesso para o aluno:</p>
       <div class="cred"><span>E-mail: <b>${esc(s.email)}</b></span><span>Senha provisória: <b>${PASS}</b></span></div><p class="meta muted">Na versão online, o aluno recebe um convite por e-mail e escolhe a própria senha.</p>
-      <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${PASS}">Copiar acesso</button><button class="btn" data-act="place-make" data-s="${s.id}">Liberar teste de nivelamento</button><button class="btn primary" data-act="close">Pronto</button></div>`);
+      <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${PASS}">Copiar acesso</button><button class="btn primary" data-act="close">Pronto</button></div>`);
   },
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
@@ -2702,5 +2747,5 @@ S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
 </script>
