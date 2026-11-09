@@ -496,6 +496,41 @@ details.more[open] summary{margin-bottom:14px}
 .aud.on [data-act="say"]:first-child{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.6}}
 .aud.mini{margin:-2px 0 2px}
+.spd{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:2px;background:var(--surface);gap:2px}
+.spd button{border:0;background:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);padding:5px 10px;border-radius:999px;cursor:pointer;min-height:30px;font-variant-numeric:tabular-nums}
+.spd button.on{background:var(--k-a);color:#fffaf2}
+.spd button:focus-visible{outline:2px solid var(--k-a);outline-offset:1px}
+.qhint{display:block;font-weight:500;font-size:13px;color:var(--ink-3);margin-top:4px}
+.part-tip{margin:-4px 0 2px;padding-left:54px}
+.pl-lv{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.pl-lv>summary{display:flex;align-items:center;gap:10px;cursor:pointer;list-style:none;min-height:32px}
+.pl-lv>summary::-webkit-details-marker{display:none}
+.pl-lv>summary b{flex:none;font-family:var(--display);background:var(--k-a);color:#fffaf2;border-radius:8px;padding:2px 8px;font-size:13px}
+.pl-lv>summary span{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl-lv>summary small{flex:none;color:var(--ink-3);font-weight:700}
+.pl-lv>summary::after{content:'▾';color:var(--ink-3);transition:transform .2s}
+.pl-lv[open]>summary::after{transform:rotate(180deg)}
+.pl-ask{gap:6px}
+.opts-col.short{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts-col.short .ans.idk{grid-column:1/-1}
+.ans.idk{border-style:dashed;background:transparent}
+.ans.idk .tx{color:var(--ink-3)}
+.part-h .count{margin-left:auto;font-size:15px;background:var(--surface-2);color:var(--ink-2);border-radius:99px;padding:4px 12px}
+.pl-est{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pl-est span{font-size:13px;color:var(--ink-3);font-weight:600;width:100%}
+.pl-est b{font-family:var(--display);font-size:34px;line-height:1}
+.pl-est small{color:var(--ink-3)}
+.plbars{display:flex;flex-direction:column;gap:8px}
+.plbar{display:grid;grid-template-columns:28px 1fr 40px;align-items:center;gap:4px 8px}
+.plbar b{font-family:var(--display);font-size:14px}
+.plbar .plt{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.plbar .plt i{display:block;height:100%;background:var(--ink-3);border-radius:99px}
+.plbar.mid .plt i{background:var(--k-b,var(--ink-2))}
+.plbar.ok .plt i{background:var(--k-a)}
+.plbar em{font-style:normal;font-size:13px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.plbar small{grid-column:2/4;font-size:11.5px;color:var(--ink-3)}
+.pl-big{font-family:var(--display);font-weight:800;font-size:56px;line-height:1;color:var(--k-a)}
+.pl-chips{grid-template-columns:repeat(auto-fit,minmax(78px,1fr))}
 .transc summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--ink-2);margin-top:8px}
 .transc .prose p{margin:6px 0}
 .aud-ed summary{cursor:pointer;font-weight:700;font-size:14px}
@@ -753,6 +788,7 @@ a,button,summary,label,select,input[type=checkbox],input[type=radio]{touch-actio
 <script src="provas.js"></script>
 <script src="banco-extra.js"></script>
 <script src="desenvolvimento.js"></script>
+<script src="nivelamento.js"></script>
 <script>
 /* =========================================================
    Sotaque · aulas particulares de idiomas
@@ -1138,7 +1174,7 @@ function viewNotebook(s){
       <div class="banner-t" style="--bt:${dark? CREAM : p.c}"><h1>${title}</h1><p>${sub}</p></div></div>
     <div class="grid2">
       <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${timeline(s)}</div>
-      <aside class="stack">${trailPanel(s)}${tasksPanel(s)}${packagePanel(s)}
+      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
           <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd><dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
@@ -1199,7 +1235,7 @@ const gapParts=q=>{ const p=q.prompt.split('___'); return p.length>1? [p[0],p.sl
 function qAnswer(t,q,i){
   const a=t.answers[q.id], data=`data-task="${t.id}"`;
   let body='';
-  if (q.type==='mc') body=`<div class="opts-col" role="radiogroup" aria-label="Questão ${i+1}">${q.options.map((o,k)=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${data} ${a===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`;
+  if (q.type==='mc') body=`<div class="opts-col ${q.options.every(o=>o.length<=18)? 'short' : ''}" role="radiogroup" aria-label="Questão ${i+1}">${q.options.map((o,k)=>`<label class="ans ${q.part&&o==='Não sei'? 'idk' : ''}"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${data} ${a===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`;
   if (q.type==='tf') body=`<div class="tf-row" role="radiogroup" aria-label="Questão ${i+1}">${[[true,'Verdadeiro','V'],[false,'Falso','F']].map(([v,l,s])=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${v?1:0}" data-ans-tf="${q.id}" ${data} ${a===v?'checked':''}><span class="lt">${s}</span><span class="tx">${l}</span></label>`).join('')}</div>`;
   if (q.type==='gap'){ const [x,y]=gapParts(q); body=`<p class="gapline">${esc(x)}<input type="text" class="gapin" data-ans-gap="${q.id}" ${data} value="${esc(a||'')}" aria-label="Lacuna da questão ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false">${esc(y)}</p>`; }
   if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m');
@@ -1210,7 +1246,7 @@ function qAnswer(t,q,i){
       ${ch.length? `<button class="link" style="align-self:flex-start" data-act="ord-clear" ${data} data-q="${q.id}">Recomeçar</button>` : ''}`; }
   if (q.type==='open') body=`<label class="sr" for="o-${q.id}">Sua resposta</label><textarea id="o-${q.id}" data-ans-open="${q.id}" ${data} placeholder="Escreva sua resposta…">${esc(a||'')}</textarea>`;
   if (q.type==='open'&&q.words) body+=`<small class="muted" id="wc-${q.id}">${wordCount(a)} palavras · pedido: ${q.words}</small>`;
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b><span class="qkind">${q.listen? 'Escuta' : QT_SHORT[q.type]}</span></div>${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}${q.hint? `<small class="qhint">${esc(q.hint)}</small>` : ''}</b><span class="qkind">${q.listen? 'Escuta' : q.opt? 'Opcional' : QT_SHORT[q.type]}</span></div>${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
 }
 
 /* resultado, gabarito ou entrega (mode: student | teacher | key | hidden) */
@@ -1270,47 +1306,58 @@ function ttsVoices(lang){
   return speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().replace('_','-').startsWith(pre)).sort((a,b)=>(best.indexOf(a.lang)+1||9)-(best.indexOf(b.lang)+1||9));
 }
 function ttsStop(){ if (ttsOk()) speechSynthesis.cancel(); ttsCur=null; document.querySelectorAll('.aud.on').forEach(e=>e.classList.remove('on')); }
+/* velocidade: vale para todos os áudios e dá para mudar no meio, que a fala recomeça da frase em que estava */
+const RATE_KEY='sotaque:rate', RATES=[.75,1,1.5];
+let ttsRate=RATES.includes(+lsGet(RATE_KEY))? +lsGet(RATE_KEY) : 1;
 /* linhas "A:" e "B:" viram duas vozes; frases longas vão em pedaços (alguns navegadores cortam falas longas) */
-function speak(key,slow){
+function speak(key,from=0){
   const a=AUD[key]; if (!a) return;
   if (!ttsOk()){ toast('Este navegador não lê em voz alta. Tente no Chrome, no Edge ou no Safari.'); return; }
   ttsStop();
-  const vs=ttsVoices(a.lang), run={key}, parts=[];
+  const vs=ttsVoices(a.lang), run={key,i:from}, parts=[];
   for (const ln of a.text.split('\n').map(x=>x.trim()).filter(Boolean)){ const m=ln.match(/^([AB]):\s*(.+)$/), who=m&&m[1]==='B'? 1 : 0;
     for (const ch of (m? m[2] : ln).split(/(?<=[.!?…»”])\s+/)) if (ch.trim()) parts.push([who,ch]); }
   ttsCur=run; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.add('on'));
-  parts.forEach(([who,ch],i)=>{
+  parts.forEach(([who,ch],i)=>{ if (i<from) return;
     const u=new SpeechSynthesisUtterance(ch);
     u.lang= a.lang==='FR'? 'fr-FR' : 'en-GB';
     if (vs.length) u.voice=vs[Math.min(who,vs.length-1)];
-    u.pitch= who&&vs.length<2? 1.3 : 1; u.rate= slow? .72 : .95;
+    u.pitch= who&&vs.length<2? 1.3 : 1; u.rate=ttsRate*.95;
+    u.onstart=()=>{ if (ttsCur===run) run.i=i; };
     if (i===parts.length-1) u.onend=()=>{ if (ttsCur===run){ ttsCur=null; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.remove('on')); } };
     speechSynthesis.speak(u);
   });
+  if (from) return;
   a.plays=(a.plays||0)+1; document.querySelectorAll(`.aud[data-k="${key}"] .aud-n`).forEach(e=>e.textContent=`ouvido ${a.plays}×`);
 }
+const rateLabel=r=>String(r).replace('.',',')+'×';
+const rateBtns=()=>`<span class="spd" role="group" aria-label="Velocidade do áudio">${RATES.map(r=>`<button type="button" class="${r===ttsRate?'on':''}" data-act="say-rate" data-v="${r}" aria-pressed="${r===ttsRate}" title="${r<1? 'Mais devagar' : r>1? 'Mais rápido' : 'Velocidade normal'}">${rateLabel(r)}</button>`).join('')}</span>`;
 const PLAY_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
 function audioBox(text,lang,o={}){
   const key='a'+hashStr(lang+text), A=(AUD[key] ||= {text,lang}), lines=text.split('\n').filter(x=>x.trim());
-  return `<div class="aud ${o.mini?'mini':''}" data-k="${key}">${ttsOk()? `<button class="btn small primary" data-act="say" data-k="${key}">${PLAY_ICON}Ouvir</button><button class="btn small" data-act="say" data-k="${key}" data-slow="1">Mais devagar</button><button class="btn small ghost aud-stop" data-act="say-stop">Parar</button><span class="meta muted aud-n">${A.plays? `ouvido ${A.plays}×` : o.mini? '' : 'pode ouvir quantas vezes quiser'}</span>`
+  return `<div class="aud ${o.mini?'mini':''}" data-k="${key}">${ttsOk()? `<button class="btn small primary" data-act="say" data-k="${key}">${PLAY_ICON}Ouvir</button><button class="btn small ghost aud-stop" data-act="say-stop">Parar</button>${rateBtns()}<span class="meta muted aud-n">${A.plays? `ouvido ${A.plays}×` : o.mini? '' : o.note||'pode ouvir quantas vezes quiser'}</span>`
     : '<span class="meta muted">Este navegador não lê em voz alta. Abra no Chrome, no Edge ou no Safari.</span>'}</div>
     ${o.transcript? `<details class="transc"><summary>Ver transcrição</summary><div class="prose">${lines.map(l=>{ const m=l.match(/^([AB]):\s*(.*)$/); return m? `<p><b>${m[1]}:</b> ${esc(m[2])}</p>` : `<p>${esc(l)}</p>`; }).join('')}</div></details>` : ''}`;
 }
 const AUDIO_ACT={
-  say(el){ speak(el.dataset.k,!!el.dataset.slow); },
+  say(el){ speak(el.dataset.k); },
+  'say-rate'(el){ ttsRate=+el.dataset.v; lsSet(RATE_KEY,String(ttsRate));
+    document.querySelectorAll('.spd button').forEach(b=>{ const on=+b.dataset.v===ttsRate; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); });
+    if (ttsCur) speak(ttsCur.key,ttsCur.i); },
   'say-stop'(){ ttsStop(); },
   'say-draft'(){ const tx=(S.draft?.audio||'').trim(); if (!tx){ toast('Escreva o texto do áudio primeiro.'); return; } const k='a'+hashStr(myLang()+tx); AUD[k]={text:tx,lang:myLang()}; speak(k); },
 };
 /* questões em partes (prova de nível): leitura, escuta, escrita e, na aula, fala */
 function qList(t,fn,mode){
   if (!t.blocks) return t.questions.map(fn).join('');
-  const PN={L:1,O:2,E:3,F:4}, idx=id=>t.questions.findIndex(q=>q.id===id), lang=taskLang(t); let last='';
-  const head=k=>`<div class="part-h"><span class="part-n">${PN[k]}</span><div class="grow"><p class="eyebrow">Parte ${PN[k]} de 4</p><h2>${PART[k]}</h2></div></div>`;
+  const order=t.kind==='place'? 'GLOEF' : 'LOEF', PN=k=>order.indexOf(k)+1, idx=id=>t.questions.findIndex(q=>q.id===id), lang=taskLang(t); let last='';
+  const head=k=>`<div class="part-h"><span class="part-n">${PN(k)}</span><div class="grow"><p class="eyebrow">Parte ${PN(k)} de ${order.length}</p><h2>${PART[k]}</h2></div></div>${t.kind==='place'&&!mode&&PART_TIP[k]? `<p class="meta part-tip">${PART_TIP[k]}</p>` : ''}`;
   return t.blocks.map(b=>{ const first=b.part!==last; last=b.part;
     const media= b.part==='L'? `<div class="panel read"><p class="eyebrow">${esc(b.title)}</p><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></div>`
-      : b.part==='O'? `<div class="panel"><p class="eyebrow">${esc(b.title)}</p>${audioBox(b.audio,lang,{transcript:mode==='student'})}</div>` : '';
+      : b.part==='O'? `<div class="panel"><p class="eyebrow">${esc(b.title)}</p>${audioBox(b.audio,lang,{transcript:mode==='student',note:t.kind==='place'? 'o ideal é ouvir até 2 vezes' : ''})}</div>` : '';
     return (first? head(b.part) : '')+media+b.qIds.map(id=>{ const i=idx(id); return fn(t.questions[i],i); }).join(''); }).join('')
-    + (t.kind==='nivel'? `${head('F')}<div class="panel"><p class="meta">A fala acontece na aula ao vivo: uma conversa de 10 a 15 minutos com ${aProf()}, com perguntas, uma fala mais longa e uma situação para resolver juntos.</p></div>` : '');
+    + (t.kind==='nivel'? `${head('F')}<div class="panel"><p class="meta">A fala acontece na aula ao vivo: uma conversa de 10 a 15 minutos com ${aProf()}, com perguntas, uma fala mais longa e uma situação para resolver juntos.</p></div>`
+      : t.kind==='place'? `${head('F')}<div class="panel"><p class="meta">A fala é uma conversa de uns 10 minutos na aula ao vivo com ${aProf()}: começa com perguntas simples e vai ficando mais difícil aos poucos. Não precisa preparar nada.</p></div>` : '');
 }
 function provaResultS(t){
   const sc=provaScore(t), c=conqOf(t.studentId,t.marcoId);
@@ -1613,7 +1660,7 @@ const THEME_ACT={
 /* ---------- professora: lista ---------- */
 function taskRowT(t){
   const s=user(t.studentId), st=taskState(t);
-  const info= t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${t.questions.length} certas` : t.due? `prazo ${fDay.format(t.due)}` : 'sem prazo';
+  const info= t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : t.kind==='place'&&t.result? `nível ${t.result.final}` : t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${t.questions.length} certas` : t.due? `prazo ${fDay.format(t.due)}` : 'sem prazo';
   return `<a class="tcard" href="#tarefa-${t.id}" style="${sVars(s)}">${avatar(s,42)}<div class="row-m"><b>${esc(t.title)}</b><small>${esc(s.name)} · ${t.questions.length} ${t.questions.length===1?'questão':'questões'} · ${info}</small></div>${pill(st)}</a>`;
 }
 function viewTasksT(){
@@ -1633,12 +1680,13 @@ function taskArt(t,o){
   const s=user(t.studentId), h=hashStr(t.title);
   if (t.kind==='prova'){ const m=marcoById(t.marcoId); return quadro(s.palette,m?.scene||'montanha',hashStr(t.marcoId)%997,o); }
   if (t.kind==='nivel') return quadro(s.palette,'montanha',hashStr(t.id)%997,o);
+  if (t.kind==='place') return quadro(s.palette,'lupa',hashStr(t.id)%997,o);
   const b=t.bankId&&DB.bank.find(x=>x.id===t.bankId);
   return bankArt(b||{title:t.title,instructions:t.instructions,topic:t.audio? 'Escuta' : '',level:levelOf(s)},o);
 }
 function taskCardS(t){
   const st=taskState(t), n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
-  const info= t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${n} certas` : t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : `${n} ${n===1?'questão':'questões'}${t.due? ' · prazo '+fDay.format(t.due)+' ('+rel(t.due)+')' : ''}`;
+  const info= t.kind==='place'&&t.result? `seu nível: ${t.result.final}` : t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${n} certas` : t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : `${n} ${n===1?'questão':'questões'}${t.due? ' · prazo '+fDay.format(t.due)+' ('+rel(t.due)+')' : ''}`;
   return `<a class="tcard" href="#tarefa-${t.id}"><span class="tthumb">${taskArt(t,{w:120,h:120,frame:false})}</span><div class="row-m"><b>${esc(t.title)}</b><small>${info}</small></div><div class="tcard-r">${pill(st)}${t.status==='pendente'? `<span class="btn primary small">${done? 'Continuar' : 'Começar'}</span>` : ''}</div></a>`;
 }
 function viewTasksS(me){
@@ -1665,18 +1713,21 @@ function viewTaskS(t){
   const back=`<a class="link" href="#tarefas" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Tarefas</a>`;
   if (t.status==='pendente'){
     const n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
-    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='prova'? 'Provinha da trilha' : t.kind==='nivel'? 'Prova de nível · '+langName(me.lang) : 'Tarefa '+daProf())}
+    return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='prova'? 'Provinha da trilha' : t.kind==='nivel'? 'Prova de nível · '+langName(me.lang) : t.kind==='place'? 'Teste de nivelamento · '+langName(me.lang) : 'Tarefa '+daProf())}
       ${t.instructions? `<div class="prose" style="margin-top:16px;white-space:pre-wrap">${esc(t.instructions)}</div>` : ''}
       ${t.audio? `<div style="margin-top:16px">${audioBox(t.audio,taskLang(t))}</div>` : ''}
       <div class="prog-bar"><b id="prog-t" style="font-size:14px">${done} de ${n} respondidas</b><div class="progress"><i id="prog-i" style="width:${done/n*100}%"></i></div></div>
       <div class="stack" style="gap:14px">${qList(t,(q,i)=>qAnswer(t,q,i))}
-        <div class="row-btns" style="margin-top:6px"><button class="btn primary big" data-act="task-submit" data-id="${t.id}">${t.kind==='nivel'? 'Entregar prova' : t.kind==='prova'? 'Entregar provinha' : 'Entregar tarefa'}</button><span class="meta muted">Suas respostas ficam salvas enquanto você faz.</span></div></div></div>`;
+        <div class="row-btns" style="margin-top:6px"><button class="btn primary big" data-act="task-submit" data-id="${t.id}">${t.kind==='nivel'? 'Entregar prova' : t.kind==='prova'? 'Entregar provinha' : t.kind==='place'? 'Entregar teste' : 'Entregar tarefa'}</button><span class="meta muted">Suas respostas ficam salvas enquanto você faz.</span></div></div></div>`;
   }
   if (t.status==='entregue'){
+    if (t.kind==='place') return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Teste entregue')}
+      <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. Obrigado! ${AProf()} vai ler a sua escrita e conversar com você na próxima aula. Depois, o seu nível aparece aqui.</div></div></div>`;
     return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Tarefa entregue')}
       <div class="notice ok" style="margin:18px 0"><div>Entregue ${when(t.submittedAt)}. ${AProf()} vai ${t.kind==='nivel'? 'avaliar a escrita e a fala (na aula ao vivo)' : 'corrigir'} e o resultado aparece aqui.</div></div>
       <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'hidden'),'hidden')}</div></div>`;
   }
+  if (t.kind==='place') return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,'Teste de nivelamento')}<div style="margin:18px 0">${placeResultS(t)}</div></div>`;
   const res= t.kind==='nivel'? nivelResultS(t) : t.kind==='prova'? provaResultS(t) : scoreCard(t,'student');
   return `<div style="${sVars(me)};max-width:780px">${back}${taskHead(t,t.kind==='nivel'? 'Prova de nível' : t.kind==='prova'? 'Provinha da trilha' : 'Tarefa corrigida')}<div style="margin:18px 0">${res}</div>
     ${t.audio? `<div class="panel" style="margin-bottom:14px">${audioBox(t.audio,taskLang(t),{transcript:true})}</div>` : ''}
@@ -1684,6 +1735,7 @@ function viewTaskS(t){
 }
 function viewTaskT(t){
   if (t.kind==='nivel') return viewNivelT(t);
+  if (t.kind==='place') return viewPlaceT(t);
   if (t.kind==='prova'&&t.status!=='pendente') return viewProvaT(t);
   const s=user(t.studentId), first=s.name.split(' ')[0], st=taskState(t), sc=scoreOf(t);
   const back=`<a class="link" href="#tarefas" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Tarefas</a>`;
@@ -1753,7 +1805,7 @@ function launchDraft(){
 function submitTask(t){
   t.submittedAt=now();
   if (t.auto&&!hasOpen(t)){ t.status='corrigida'; t.correctedAt=now(); toast('Tarefa entregue. Veja seu resultado!'); }
-  else { t.status='entregue'; toast(`Tarefa entregue. ${AProf()} vai corrigir.`); }
+  else { t.status='entregue'; toast(t.kind==='place'? `Teste entregue! ${AProf()} vai ler a sua escrita e conversar com você na aula.` : `Tarefa entregue. ${AProf()} vai corrigir.`); }
   save(); render(); window.scrollTo(0,0);
 }
 function updateProgress(t){
@@ -1795,9 +1847,9 @@ dog = cachorro
     t.feedback=(S.fb[t.id]??t.feedback).trim(); delete S.fb[t.id];
     if (was==='entregue'){ t.status='corrigida'; t.correctedAt=now(); }
     save(); render(); toast(was==='entregue'? `Devolvida para ${first}` : 'Comentário salvo'); },
-  'task-submit'(el){ const t=getTask(el.dataset.id), left=t.questions.filter(q=>!isAnswered(t,q)).length;
+  'task-submit'(el){ const t=getTask(el.dataset.id), left=t.questions.filter(q=>!q.opt&&!isAnswered(t,q)).length;
     if (left) confirmBox(`Ainda ${left===1?'falta 1 questão':`faltam ${left} questões`}`,'Entregar assim mesmo',()=>submitTask(t),'Questões sem resposta contam como erradas. Depois de entregar, não dá para mudar.');
-    else confirmBox('Entregar a tarefa?','Entregar',()=>submitTask(t),'Depois de entregar, não dá para mudar as respostas.'); },
+    else confirmBox(t.kind==='place'? 'Entregar o teste?' : 'Entregar a tarefa?','Entregar',()=>submitTask(t),'Depois de entregar, não dá para mudar as respostas.'); },
   'task-del'(el){ const t=getTask(el.dataset.id); confirmBox(`Excluir “${t.title}”?`,'Excluir tarefa',()=>{ DB.tasks=DB.tasks.filter(x=>x.id!==t.id); save(); location.hash='tarefas'; render(); toast('Tarefa excluída'); },`Ela some da lista de ${user(t.studentId).name.split(' ')[0]}, junto com as respostas.`); },
 };
 const TASK_FORMS={
@@ -1904,7 +1956,7 @@ function makeNivel(s,level){
     questions,blocks,fala:NIVEL_F[L][level],exam:{rub:{E:[null,null,null,null],F:[null,null,null,null]},skip:{}},due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
   DB.tasks.push(t); return t;
 }
-const PART={L:'Leitura',O:'Escuta',E:'Escrita',F:'Fala'};
+const PART={G:'Gramática e vocabulário',L:'Leitura',O:'Escuta',E:'Escrita',F:'Fala'};
 const r5=n=>Math.round(n*2)/2;
 function nivelScore(t){
   const part=k=>{ const ids=t.blocks.filter(b=>b.part===k).flatMap(b=>b.qIds), qs=t.questions.filter(q=>ids.includes(q.id)); return qs.length? r5(qs.reduce((a,q)=>a+gradeQ(t,q),0)/qs.length*25) : 0; };
@@ -1942,6 +1994,19 @@ function seedTrail(){
   conq('s3','FR-A1-1',15,'Très bien !',100); conq('s3','FR-A1-2',4,'',80);
   self('s3',['FR-A1-3.1','FR-A1-3.2']);
   DB.trailV=TRAIL_V;
+}
+/* exemplo: Júlia entregou o teste de nivelamento e espera a avaliação */
+function seedPlace(){
+  const s=user('s5'); if (!s||!NIVELAMENTO[s.lang]){ DB.placeV=1; return; }
+  const t=makePlace(s); let n=0;
+  for (const q of t.questions){ if (q.type==='open') continue; n++;
+    const miss= q.lv==='C1'? n%2===0 : q.lv==='B2'? n%5===0 : n===9;
+    t.answers[q.id]= !miss? correctAnswer(q) : q.type==='mc'&&q.part==='G'&&q.lv==='C1'? q.options.length-1 : wrongAnswer(q); }
+  const [w1,w2,w3]=t.blocks.find(b=>b.part==='E').qIds;
+  t.answers[w1]='Hi! I’m Júlia and I live in Curitiba with my husband and our dog, Pipoca. At the weekend I love cycling in the park and trying new restaurants. What about you?';
+  t.answers[w2]='Hi Carol,\nI have to tell you about my trip to Chile last month! We went to the Atacama Desert and it was absolutely amazing. On the second night we did a stargazing tour, and I had never seen so many stars in my life. I felt tiny but very happy at the same time. It was important for me because it was my first trip after changing jobs, and I really needed a break. I took hundreds of photos, so I’ll show you when we meet.\nLove,\nJúlia';
+  t.answers[w3]='I partly agree with this statement. Online courses are flexible and cheaper, and you can study whenever you want. However, I think the classroom gives you more chances to speak with other people, which is essential to learn a language. For example, when I studied online alone, I could read well but I was very shy to speak. In my opinion, the best option is to mix both.';
+  t.status='entregue'; t.createdAt=now()-3*DAY; t.submittedAt=now()-20*HOUR; DB.placeV=1;
 }
 const WRITE_SAMPLE={EN:{A2:'Hi Sam! Last summer I went to Salvador with my family. We stayed in a small hotel near the beach. Every day we swam in the sea and ate acarajé. I liked the music in Pelourinho the most. It was amazing! See you soon, Marina',
   B2:'Many people believe that social media does more harm than good, and to some extent I agree. Firstly, platforms are designed to keep us scrolling, which can affect our concentration and sleep. Secondly, the constant comparison with other people’s “perfect” lives may damage young people’s self-esteem. On the other hand, social media has made it easier to stay in touch with friends abroad and to organise communities. In my opinion, the problem is not the technology itself but the way we use it. Schools should teach students to use it critically, and companies should be more transparent about their algorithms. Personally, I have turned off most notifications on my phone and I only check social media twice a day. Since then, I have been reading more and sleeping better. To sum up, social media can do a lot of good, as long as we stay in control of it.'},FR:{}};
@@ -2170,6 +2235,7 @@ const TRAIL_FORMS={
 };
 function onTrailInput(e){
   const el=e.target;
+  if (el.dataset.place&&e.type==='change'){ const t=getTask(el.dataset.id); t.place[el.dataset.place]=el.value||null; save(); render(); return; }
   if (el.dataset.trailLevel&&e.type==='change'){ const s=user(el.dataset.trailLevel); s.trail.level=el.value; S.trailLv=null; save(); render(); toast(`Nível atual: ${el.value}`); }
 }
 /* nota da provinha: só as objetivas; a escrita curta o professor lê */
@@ -2224,6 +2290,115 @@ function viewNivelT(t){
         <button class="btn" data-act="nivel-decide" data-id="${t.id}" data-v="rev" ${sent?'':'disabled'}>Ainda não: revisar</button>`}
     </section></aside></div></div>`;
 }
+
+/* ---------- teste de nivelamento: régua do A1 ao C1 ---------- */
+const PLACE_LV=['pré-A1',...SUBLEVELS];
+const LV_NAME={A1:'Iniciante',A2:'Básico',B1:'Intermediário',B2:'Avançado',C1:'Proficiente'};
+const PART_TIP={G:'Escolha a resposta certa. As questões ficam mais difíceis aos poucos. Se não souber, marque “Não sei”: chutar atrapalha o resultado.',L:'Leia cada texto e responda. Os textos também vão ficando mais difíceis.',O:'Ouça cada áudio e responda. O ideal é ouvir no máximo duas vezes, como num teste de verdade.',E:'Faça as tarefas 1 e 2. A 3 é opcional: tente se sentir que consegue.'};
+const placeOf=sid=>DB.tasks.filter(t=>t.kind==='place'&&t.studentId===sid).sort((a,b)=>b.createdAt-a.createdAt)[0];
+function makePlace(s){
+  const N=NIVELAMENTO[s.lang], questions=[], blocks=[], put=(qs,part,lv)=>{ qs.forEach(q=>{ q.part=part; q.lv=lv; questions.push(q); }); return qs.map(q=>q.id); };
+  for (const lv of LEVELS){ const qs=fromRaw(N.G[lv]).map(q=>{ const ord=shuffled(q.options.length,uid()), opts=q.options; q.options=ord.map(j=>opts[j]); q.correct=ord.indexOf(q.correct); q.options.push('Não sei'); return q; });
+    blocks.push({part:'G',lv,qIds:put(qs,'G',lv)}); }
+  for (const lv of LEVELS){ const [title,text,list]=N.L[lv]; blocks.push({part:'L',lv,title,text,qIds:put(fromRaw(list),'L',lv)}); }
+  for (const lv of LEVELS){ const [title,audio,list]=N.O[lv]; blocks.push({part:'O',lv,title,audio,qIds:put(fromRaw(list),'O',lv)}); }
+  const w=N.E.map(([prompt,words,hint],k)=>({id:uid(),type:'open',prompt,words,hint,opt:k===2}));
+  blocks.push({part:'E',title:'Escrita',qIds:put(w,'E',null)});
+  const t={id:uid(),kind:'place',studentId:s.id,title:'Teste de nivelamento',
+    instructions:`Este teste mostra em que ponto do seu ${langName(s.lang).toLowerCase()} você está, do A1 ao C1. Não é prova: não tem nota boa ou ruim, só o seu ponto de partida.\n\nSão 4 partes para fazer aqui (gramática, leitura, escuta e escrita), em uns 40 a 60 minutos. A fala fica para a aula, numa conversa com ${aProf()}.\n\nFaça sozinho, sem dicionário nem tradutor. Suas respostas ficam salvas: dá para parar e continuar depois.`,
+    questions,blocks,fala:N.F,place:{w:null,f:null,final:null},due:null,createdAt:now(),auto:false,status:'pendente',answers:{},marks:{},feedback:''};
+  DB.tasks.push(t); return t;
+}
+/* um nível conta com 60% de acerto nele e em todos os de baixo; 40% no seguinte vira "plus" */
+function placeScore(t){
+  const obj=t.questions.filter(q=>q.type!=='open'&&q.lv);
+  const cell=(lv,p)=>{ const qs=obj.filter(q=>q.lv===lv&&(!p||q.part===p)); return {got:qs.reduce((a,q)=>a+gradeQ(t,q),0),n:qs.length}; };
+  const reach=p=>{ let r=-1; for (let i=0;i<LEVELS.length;i++){ const c=cell(LEVELS[i],p); if (c.n&&c.got/c.n>=.6) r=i; else break; }
+    if (r<0) return 'pré-A1';
+    let lv=LEVELS[r]; const nx=LEVELS[r+1], c=nx&&cell(nx,p); if (c&&c.n&&c.got/c.n>=.4&&SUBLEVELS.includes(lv+'+')) lv+='+'; return lv; };
+  return {rows:LEVELS.map(lv=>({lv,all:cell(lv),G:cell(lv,'G'),L:cell(lv,'L'),O:cell(lv,'O')})),est:reach(),by:{G:reach('G'),L:reach('L'),O:reach('O')},got:obj.reduce((a,q)=>a+gradeQ(t,q),0),total:obj.length};
+}
+/* sugestão final: as objetivas valem dobrado; escrita e fala entram quando o professor classifica */
+function placeSuggest(t,sc=placeScore(t)){
+  const v=[[sc.est,2],[t.place.w,1],[t.place.f,1]].filter(([l])=>l);
+  return PLACE_LV[Math.round(v.reduce((a,[l,w])=>a+PLACE_LV.indexOf(l)*w,0)/v.reduce((a,[,w])=>a+w,0))];
+}
+const placeBase=l=>l==='pré-A1'? 'A1' : lvOfSub(l);
+function placeBars(sc){
+  return `<div class="plbars">${sc.rows.map(r=>{ const p=r.all.n? Math.round(r.all.got/r.all.n*100) : 0;
+    return `<div class="plbar ${p>=60?'ok':p>=40?'mid':''}"><b>${r.lv}</b><span class="plt"><i style="width:${p}%"></i></span><em>${p}%</em><small>${['G','L','O'].map(k=>`${k==='G'? 'gramática' : PART[k].toLowerCase()} ${fmtNum(r[k].got)}/${r[k].n}`).join(' · ')}</small></div>`; }).join('')}</div>
+    <p class="meta muted">Um nível conta a partir de 60% de acerto nele e nos de baixo.</p>`;
+}
+const plSelect=(t,k,label,locked,def)=>`<label class="field" for="pl-${k}">${label}<select id="pl-${k}" data-place="${k}" data-id="${t.id}" ${locked?'disabled':''}><option value="">${k==='final'? 'Escolha…' : 'Ainda não avaliei'}</option>${PLACE_LV.map(l=>`<option ${(t.place[k]||def)===l?'selected':''}>${l}</option>`).join('')}</select></label>`;
+function placeChips(r){
+  const ch=[['Gramática',r.by.G],['Leitura',r.by.L],['Escuta',r.by.O],['Escrita',r.w],['Fala',r.f]].filter(([,v])=>v);
+  return `<div class="mini-prof pl-chips">${ch.map(([k,v])=>`<span><small>${k}</small><b>${v}</b></span>`).join('')}</div>`;
+}
+function placeResultS(t){
+  const r=t.result;
+  return `<section class="panel pl-res"><p class="eyebrow">Seu nível de partida</p><div class="pl-big">${esc(r.final)}</div><p>${NIVEL_DESC[r.final]||''}</p>${placeChips(r)}
+    ${t.feedback? `<p class="note"><b>${AProf()}:</b> ${esc(t.feedback)}</p>` : ''}
+    <p class="meta muted">É daqui que as aulas partem. O nível não é um rótulo: ele muda conforme você avança.</p></section>`;
+}
+function placePanel(s){
+  if (!isT()) return '';
+  const t=placeOf(s.id), first=s.name.split(' ')[0];
+  const make=(lbl,cls='primary')=>`<button class="btn small ${cls}" style="align-self:flex-start" data-act="place-make" data-s="${s.id}">${lbl}</button>`;
+  if (!t) return `<section class="panel"><div class="panel-h"><h2>Nivelamento</h2></div><p class="meta">Um teste completo do A1 ao C1: gramática, leitura, escuta com áudio e escrita. A fala você faz na aula, com um roteiro pronto. Leva de 40 a 60 minutos.</p>${make('Liberar teste de nivelamento')}</section>`;
+  const st= t.status==='pendente'? {k:'pend',label:'Com '+first} : t.status==='entregue'? {k:'sent',label:'Para avaliar'} : {k:'done',label:t.result.final};
+  const d= t.status==='pendente'? `Liberado ${rel(t.createdAt)}. ${t.questions.some(q=>isAnswered(t,q))? `${esc(first)} já começou.` : `${esc(first)} ainda não começou.`}`
+    : t.status==='entregue'? `Entregue ${rel(t.submittedAt)}. As objetivas já estão corrigidas: falta você classificar a escrita e a fala.`
+    : `Nível definido ${rel(t.correctedAt)}: <b>${esc(t.result.final)}</b>.`;
+  return `<section class="panel"><div class="panel-h"><h2>Nivelamento</h2>${pill(st)}</div><p class="meta">${d}</p>
+    <div class="row-btns"><a class="btn small ${t.status==='entregue'?'primary':''}" href="#tarefa-${t.id}">${t.status==='entregue'? 'Avaliar teste' : 'Abrir teste'}</a>${t.status==='corrigida'? make('Novo teste','ghost') : ''}</div></section>`;
+}
+/* teste de nivelamento visto pelo professor */
+function viewPlaceT(t){
+  const s=user(t.studentId), first=s.name.split(' ')[0], sent=t.status!=='pendente', done=t.status==='corrigida', lang=s.lang, sc=placeScore(t), sug=placeSuggest(t,sc), fb=S.fb[t.id]??t.feedback;
+  const qIdx=id=>t.questions.findIndex(q=>q.id===id), qr=id=>qResult(t,t.questions[qIdx(id)],qIdx(id),'teacher');
+  const got=b=>{ const qs=b.qIds.map(id=>t.questions[qIdx(id)]); return `${fmtNum(qs.reduce((a,q)=>a+gradeQ(t,q),0))} de ${qs.length}`; };
+  const head=(k,n,right='')=>`<div class="part-h"><span class="part-n">${n}</span><div class="grow"><p class="eyebrow">Parte ${n} de 5</p><h2>${PART[k]}</h2></div>${right}</div>`;
+  const objPart=(k,n)=>`<section class="part-s">${head(k,n,sent? `<span class="count">${sc.by[k]}</span>` : '')}${!sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : t.blocks.filter(b=>b.part===k).map(b=>`<details class="pl-lv"><summary><b>${b.lv}</b><span class="grow">${b.title? esc(b.title) : 'Questões do nível'}</span><small>${got(b)}</small></summary>
+      <div class="stack" style="gap:12px;margin-top:12px">${b.audio? audioBox(b.audio,lang,{transcript:true}) : b.text? `<details class="transc"><summary>Ver o texto</summary><div class="prose" style="white-space:pre-wrap">${esc(b.text)}</div></details>` : ''}${b.qIds.map(qr).join('')}</div></details>`).join('')}</section>`;
+  const wb=t.blocks.find(b=>b.part==='E');
+  return `<div style="${sVars(s)}"><a class="link" href="#aluno-${s.id}" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Caderno de ${esc(first)}</a>
+    <div class="mhead" style="margin-bottom:18px">${avatar(s,44)}<div><p class="eyebrow">Teste de nivelamento · ${langName(lang)}</p><h1>${esc(first)}</h1><p class="meta">${sent? `Entregue ${when(t.submittedAt)}` : `Liberado ${rel(t.createdAt)} · ${esc(first)} ainda não entregou`} · ${sc.total} objetivas, 3 escritas e a conversa</p></div>${pill(done? {k:'done',label:t.result.final} : sent? {k:'sent',label:'Para avaliar'} : {k:'pend',label:'Esperando'})}</div>
+    <div class="grid2"><div class="stack" style="gap:22px">
+      ${objPart('G',1)}${objPart('L',2)}${objPart('O',3)}
+      <section class="part-s">${head('E',4,t.place.w? `<span class="count">${t.place.w}</span>` : '')}${!sent? `<p class="meta muted">Esperando ${esc(first)} entregar.</p>` : wb.qIds.map(id=>{ const q=t.questions[qIdx(id)], a=t.answers[id];
+        return `<div class="qcard"><div class="qhead"><b class="grow">${esc(q.prompt)}</b><span class="qkind">${q.opt? 'opcional · ' : ''}${q.words} palavras</span></div>
+        <div class="answer" style="background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere">${a? esc(a) : `<span class="muted">${q.opt? 'Não fez (era opcional)' : 'Sem resposta'}</span>`}</div><p class="meta muted">${wordCount(a)} palavras</p></div>`; }).join('')
+        +`<div class="panel pl-ask">${plSelect(t,'w','Pela escrita, qual o nível?',done)}<p class="meta muted">A tarefa 1 mostra A1–A2, a 2 mostra B1 e a 3, B2–C1. Veja até onde o texto se sustenta: recursos, correção e organização.</p></div>`}</section>
+      <section class="part-s">${head('F',5,t.place.f? `<span class="count">${t.place.f}</span>` : '')}<p class="meta">Na aula ao vivo, uns 10 minutos. Comece pelo primeiro bloco e vá subindo até ${esc(first)} começar a travar: o nível da fala é o último bloco em que a conversa ainda flui.</p>
+        <div class="fala">${t.fala.map(([a,b,c])=>`<div><b>${esc(a)}</b><small class="muted">${esc(b)}</small><p>${esc(c)}</p></div>`).join('')}</div>
+        <div class="panel pl-ask">${plSelect(t,'f','Pela fala, qual o nível?',done)}</div></section>
+    </div>
+    <aside class="stack ed-side"><section class="panel"><h2>${done? 'Resultado' : 'Objetivas'}</h2>
+      ${sent? `<div class="pl-est"><span>Estimativa das objetivas</span><b>${sc.est}</b><small>${fmtNum(sc.got)} de ${sc.total} certas</small></div>${placeBars(sc)}` : `<p class="meta muted">Quando ${esc(first)} entregar, a correção das objetivas aparece aqui, nível por nível.</p>`}</section>
+      ${done? `<section class="panel"><h2>Nível definido</h2><div class="pl-big">${esc(t.result.final)}</div>${placeChips(t.result)}${t.feedback? `<p class="note">“${esc(t.feedback)}”</p>` : ''}<p class="meta muted">Definido em ${fShort.format(t.correctedAt)}. ${esc(first)} já vê o resultado.</p><a class="btn" href="#aluno-${s.id}">Voltar ao caderno</a></section>`
+      : `<section class="panel"><h2>Sua decisão</h2>
+        ${sent? `<div class="notice ok"><div>Sugestão: <b>${sug}</b>${t.place.w&&t.place.f? '' : ` · ${!t.place.w&&!t.place.f? 'classifique a escrita e a fala para afinar' : !t.place.w? 'falta a escrita' : 'falta a fala'}`}</div></div>` : ''}
+        <p class="meta muted">A sugestão junta as objetivas (com peso 2), a escrita e a fala. A decisão é sua.</p>
+        ${plSelect(t,'final','Nível de partida de '+esc(first),!sent,sent? sug : null)}
+        <label class="field" for="fb-${t.id}">Recado para ${esc(first)} <small>(opcional)</small><textarea id="fb-${t.id}" data-fb="${t.id}" placeholder="ex.: Você entende muito bem! Vamos começar pelo B1 e caprichar na escrita.">${esc(fb)}</textarea></label>
+        <label class="sel" style="padding:0"><input type="checkbox" id="pl-trail" checked>${s.trail?.on? 'Ajustar a trilha para este nível' : 'Ativar a trilha a partir deste nível'}</label>
+        <button class="btn primary big" data-act="place-decide" data-id="${t.id}" ${sent?'':'disabled'}>Definir o nível de ${esc(first)}</button>
+        <button class="btn small ghost" style="align-self:flex-start" data-act="task-del" data-id="${t.id}">Excluir teste</button></section>`}
+    </aside></div></div>`;
+}
+const PLACE_ACT={
+  'place-make'(el){ const s=user(el.dataset.s), first=s.name.split(' ')[0], old=placeOf(s.id); if (S.modal) closeModal();
+    if (old?.status==='pendente'){ location.hash='tarefa-'+old.id; return; }
+    makePlace(s); save(); render(); toast(`Teste de nivelamento liberado. Ele aparece nas tarefas de ${first}.`); },
+  'place-decide'(el){ const t=getTask(el.dataset.id), s=user(t.studentId), first=s.name.split(' ')[0], final=t.place.final||$('#pl-final').value;
+    if (!final){ toast('Escolha o nível de partida.'); $('#pl-final')?.focus(); return; }
+    const sc=placeScore(t), base=placeBase(final), trail=$('#pl-trail')?.checked;
+    t.feedback=(S.fb[t.id]??t.feedback).trim(); delete S.fb[t.id]; t.status='corrigida'; t.correctedAt=now();
+    t.result={final,est:sc.est,by:sc.by,w:t.place.w,f:t.place.f,got:sc.got,total:sc.total};
+    s.level=`${final} · ${LV_NAME[base]}`;
+    if (trail){ s.trail={...(s.trail||{}),on:true,level:base,base}; S.trailLv=null; }
+    save(); render(); window.scrollTo(0,0); toast(`Nível de ${first}: ${final}${trail? ' · trilha no '+base : ''}`); },
+};
 
 /* ---------- desenvolvimento do professor: o seu próprio estudo do idioma ---------- */
 const DEV_SK=['g','v','p','c','k','h'];
@@ -2492,7 +2667,7 @@ const FORMS={
     ensureLessons(); save(); location.hash='aluno-'+s.id; render();
     openModal(`<h2>Caderno de ${esc(s.name.split(' ')[0])} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Envie o acesso para o aluno:</p>
       <div class="cred"><span>E-mail: <b>${esc(s.email)}</b></span><span>Senha provisória: <b>${PASS}</b></span></div><p class="meta muted">Na versão online, o aluno recebe um convite por e-mail e escolhe a própria senha.</p>
-      <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${PASS}">Copiar acesso</button><button class="btn primary" data-act="close">Pronto</button></div>`);
+      <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${PASS}">Copiar acesso</button><button class="btn" data-act="place-make" data-s="${s.id}">Liberar teste de nivelamento</button><button class="btn primary" data-act="close">Pronto</button></div>`);
   },
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
@@ -2500,7 +2675,7 @@ const FORMS={
     const st=settingsOf(S.me); st.avail=av; st.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2518,9 +2693,10 @@ window.addEventListener('hashchange',go);
 { const th=lsGet(THEME_KEY); if (th) document.documentElement.dataset.theme=th; }
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
-if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); save(); }
+if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); save(); }
 else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==6){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=6; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
+  if (!DB.placeV) seedPlace();
   ensureLessons(); save(); }
 S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
