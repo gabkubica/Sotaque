@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teste de nivelamento</title>
+<meta name="description" content="Teste rápido de nivelamento, do A1 ao C1, com áudio. Uns 15 minutos.">
+<meta name="theme-color" content="#fffaf2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fffaf2;--ink:#221c1e;--ink-2:#4a3f42;--ink-3:#7c6f72;--wine:#7a1f35;--line:#e9dfd2;--surface:#fffdf9;--surface-2:#f4ece1;--ok:#2f7d55;--ok-bg:#e3f2e9;--display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Figtree',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#1d1819;--ink:#f6efe6;--ink-2:#d9cfc4;--ink-3:#a99c97;--wine:#d9798f;--line:#3a3133;--surface:#262021;--surface-2:#2f2829;--ok:#7fd1a5;--ok-bg:#1f3a2c}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 120px}
+.art{margin:16px 0 0;border-radius:20px;overflow:hidden;line-height:0}
+.art svg{width:100%;height:auto;display:block}
+h1,h2{font-family:var(--display);line-height:1.1;margin:0}
+h1{font-size:clamp(30px,7vw,44px);font-weight:800;margin-top:22px}
+h2{font-size:24px;font-weight:800}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wine);margin:0}
+.meta{color:var(--ink-2);margin:6px 0 0}
+.muted{color:var(--ink-3)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+input[type=text],textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--cream);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+textarea{min-height:170px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--wine);outline-offset:1px}
+.part{display:flex;align-items:center;gap:14px;margin-top:34px}
+.part .n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--wine);color:#fffaf2;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px}
+.tip{margin:8px 0 0;color:var(--ink-2);font-size:15px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}
+.qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.qn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
+.qh b{font-weight:600;font-size:16.5px;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.short{display:grid;grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;background:var(--cream);min-height:46px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .lt{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.opt:has(input:checked){border-color:var(--wine);background:color-mix(in srgb,var(--wine) 10%,var(--cream))}
+.opt:has(input:checked) .lt{background:var(--wine);border-color:var(--wine);color:#fffaf2}
+.opt:has(input:focus-visible){outline:2px solid var(--wine);outline-offset:2px}
+.opt.idk{border-style:dashed;background:transparent;grid-column:1/-1}
+.opt.idk .tx{color:var(--ink-3)}
+.aud{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-weight:700;font-size:15px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;min-height:44px}
+.btn.primary{background:var(--wine);border-color:var(--wine);color:#fffaf2}
+.btn.big{width:100%;font-size:17px;padding:14px 20px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:14px;height:14px}
+.aud.on .play{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6}}
+.stop{display:none}.aud.on .stop{display:inline-flex}
+.spd{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:2px;background:var(--surface);gap:2px}
+.spd button{border:0;background:none;font:inherit;font-size:13px;font-weight:700;color:var(--ink-2);padding:6px 11px;border-radius:999px;cursor:pointer;min-height:34px}
+.spd button.on{background:var(--wine);color:#fffaf2}
+.plays{font-size:13px;color:var(--ink-3)}
+.hint{display:block;font-weight:500;font-size:13.5px;color:var(--ink-3);margin-top:4px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--cream) 92%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.prog{flex:1;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--wine);width:0;transition:width .3s}
+.bar small{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.done{text-align:center}
+.done .big{font-family:var(--display);font-weight:800;font-size:64px;color:var(--wine);line-height:1}
+.err{color:#b3261e;font-size:14px;font-weight:600;min-height:1em;margin:0}
+.notice{background:var(--surface-2);border-radius:14px;padding:12px 14px;font-size:14.5px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1;min-width:200px}
+footer{margin-top:40px;font-size:13px;color:var(--ink-3);text-align:center}
+@media (max-width:420px){.opts.short{grid-template-columns:1fr 1fr}.q{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="bar" id="bar" hidden><div class="bar-in"><div class="prog"><i id="prog"></i></div><small id="progt">0 de 0</small></div></div>
+<script>const TF=(s,v)=>['tf',s,v], GAP=(s,a)=>['gap',s,a];</script>
+<script src="../app/quadros.js"></script>
+<script src="../app/nivelamento.js"></script>
+<script>
+/* Teste de nivelamento rápido, fora do sistema: o aluno faz pelo celular e envia o resultado pelo WhatsApp.
+   Mesmo conteúdo da versão rápida do Sotaque: 3 de gramática por nível, 3 áudios e uma escrita livre. */
+const LANG=/lang=fr/i.test(location.search)? 'FR' : 'EN', N=NIVELAMENTO[LANG], LV=['A1','A2','B1','B2','C1'];
+const LANGNAME=LANG==='FR'? 'francês' : 'inglês', KEY='nivelamento-rapido:'+LANG;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LT='ABCDE';
+/* questões fixas (as 3 primeiras de cada nível), com as alternativas embaralhadas sempre do mesmo jeito */
+function rnd(seed){ let x=seed||1; return ()=>{ x^=x<<13; x^=x>>>17; x^=x<<5; return ((x>>>0)%1e6)/1e6; }; }
+const Q=[];
+LV.forEach((lv,li)=>N.G[lv].slice(0,3).forEach(([p,opts,c],k)=>{ const R=rnd(97*(li+1)+k*13+7), ord=opts.map((_,i)=>i);
+  for (let i=ord.length-1;i>0;i--){ const j=Math.floor(R()*(i+1)); [ord[i],ord[j]]=[ord[j],ord[i]]; }
+  Q.push({id:'g'+lv+k,part:'G',lv,prompt:p,options:[...ord.map(j=>opts[j]),'Não sei'],correct:ord.indexOf(c)}); }));
+const AUDIOS=['A2','B1','B2'].map(lv=>{ const [title,script,list]=N.O[lv]; return {lv,title,script,qs:list.slice(0,2).map((r,k)=>{
+  const q= r[0]==='tf'? {type:'tf',prompt:r[1],options:['True / Vrai','False / Faux'],correct:r[2]? 0 : 1} : {type:'mc',prompt:r[0],options:r[1],correct:r[2]};
+  return {id:'o'+lv+k,part:'O',lv,...q}; })}; });
+AUDIOS.forEach(a=>Q.push(...a.qs));
+const W={prompt:N.E_CURTO[0],words:N.E_CURTO[1],hint:N.E_CURTO[2]};
+
+let S={name:'',ans:{},text:'',sent:false,started:false};
+try { S={...S,...JSON.parse(localStorage.getItem(KEY)||'{}')}; } catch {}
+const save=()=>{ try { localStorage.setItem(KEY,JSON.stringify(S)); } catch {} };
+
+/* áudio: o navegador lê em voz alta; velocidade 0,75× / 1× / 1,5× troca até no meio */
+const tts=typeof speechSynthesis!=='undefined';
+let rate=1, cur=null; const plays={};
+const voices=()=>tts? speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith(LANG==='FR'? 'fr' : 'en')).sort((a,b)=>{ const best=LANG==='FR'? ['fr-FR'] : ['en-GB','en-US']; return (best.indexOf(a.lang)+1||9)-(best.indexOf(b.lang)+1||9); }) : [];
+function stop(){ if (tts) speechSynthesis.cancel(); cur=null; document.querySelectorAll('.aud.on').forEach(e=>e.classList.remove('on')); }
+function speak(i,from=0){
+  if (!tts){ alert('Este navegador não lê em voz alta. Abra no Chrome ou no Safari.'); return; }
+  stop(); const a=AUDIOS[i], vs=voices(), run={i,at:from}, parts=[];
+  for (const ln of a.script.split('\n').map(x=>x.trim()).filter(Boolean)){ const m=ln.match(/^([AB]):\s*(.+)$/), who=m&&m[1]==='B'? 1 : 0;
+    for (const ch of (m? m[2] : ln).split(/(?<=[.!?…»”])\s+/)) if (ch.trim()) parts.push([who,ch]); }
+  cur=run; document.getElementById('aud'+i).classList.add('on');
+  parts.forEach(([who,ch],k)=>{ if (k<from) return; const u=new SpeechSynthesisUtterance(ch); u.lang=LANG==='FR'? 'fr-FR' : 'en-GB';
+    if (vs.length) u.voice=vs[Math.min(who,vs.length-1)]; u.pitch= who&&vs.length<2? 1.3 : 1; u.rate=rate*.95;
+    u.onstart=()=>{ if (cur===run) run.at=k; };
+    if (k===parts.length-1) u.onend=()=>{ if (cur===run) stop(); };
+    speechSynthesis.speak(u); });
+  if (!from){ plays[i]=(plays[i]||0)+1; document.getElementById('pl'+i).textContent=`ouvido ${plays[i]}×`; }
+}
+if (tts) speechSynthesis.onvoiceschanged=()=>{};
+
+const optsHtml=(q,n)=>`<div class="opts ${q.options.every(o=>o.length<=18)? 'short' : ''}" role="radiogroup" aria-label="Questão ${n}">${q.options.map((o,k)=>`<label class="opt ${o==='Não sei'? 'idk' : ''}"><input type="radio" name="${q.id}" value="${k}" ${S.ans[q.id]===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`;
+const qHtml=(q,n)=>`<div class="q"><div class="qh"><span class="qn">${n}</span><b>${esc(q.prompt)}</b></div>${optsHtml(q,n)}</div>`;
+const PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
+
+function render(){
+  const app=document.getElementById('app'); let n=0;
+  const art=typeof quadro==='function'? `<div class="art">${quadro('menta','lupa',7,{w:1000,h:200,frame:false,focus:[.6,.8],align:'xMaxYMid'})}</div>` : '';
+  if (S.sent){ app.innerHTML=`${art}<div class="panel done" style="margin-top:22px"><p class="eyebrow">Teste enviado</p><h1 style="margin-top:6px">Obrigado, ${esc(S.name.split(' ')[0])}!</h1><p class="meta">A professora vai olhar o seu resultado e conversar com você.</p>
+    <div class="row" style="margin-top:8px"><a class="btn primary" href="${waLink()}" target="_blank" rel="noopener">Enviar de novo pelo WhatsApp</a><button class="btn" data-act="copy">Copiar resultado</button></div><button class="btn" style="border:0;color:var(--ink-3);font-weight:600;font-size:14px" data-act="reset">Fazer o teste de novo</button></div>`; document.getElementById('bar').hidden=true; return; }
+  app.innerHTML=`${art}
+  <p class="eyebrow" style="margin-top:22px">Teste de nivelamento · ${LANGNAME}</p><h1 style="margin-top:6px">Em que ponto você está?</h1>
+  <p class="meta">Um teste rápido, de uns 15 minutos, do básico ao avançado. Não é prova: não tem nota boa ou ruim, só o seu ponto de partida.</p>
+  <div class="panel"><label class="field" for="nome">Seu nome<input type="text" id="nome" autocomplete="name" value="${esc(S.name)}" placeholder="Nome e sobrenome"></label>
+    <p class="meta muted" style="margin:0;font-size:14px">Faça sozinho, sem dicionário nem tradutor. Se não souber, marque “Não sei”: chutar atrapalha o resultado. Suas respostas ficam salvas neste aparelho.</p></div>
+
+  <div class="part"><span class="n">1</span><div><p class="eyebrow">Parte 1 de 3</p><h2>Gramática e vocabulário</h2></div></div>
+  <p class="tip">Escolha a resposta certa. As questões ficam mais difíceis aos poucos.</p>
+  ${Q.filter(q=>q.part==='G').map(q=>qHtml(q,++n)).join('')}
+
+  <div class="part"><span class="n">2</span><div><p class="eyebrow">Parte 2 de 3</p><h2>Escuta</h2></div></div>
+  <p class="tip">Toque em “Ouvir” e responda. O ideal é ouvir no máximo duas vezes. Use fone, se puder.</p>
+  ${AUDIOS.map((a,i)=>`<div class="panel"><p class="eyebrow">Áudio ${i+1} · ${esc(a.title)}</p>
+    <div class="aud" id="aud${i}">${tts? `<button class="btn primary play" data-act="say" data-i="${i}">${PLAY}Ouvir</button><button class="btn stop" data-act="stop">Parar</button><span class="spd" role="group" aria-label="Velocidade">${[.75,1,1.5].map(r=>`<button data-act="rate" data-v="${r}" class="${r===rate?'on':''}" aria-pressed="${r===rate}">${String(r).replace('.',',')}×</button>`).join('')}</span><span class="plays" id="pl${i}"></span>` : '<span class="muted">Este navegador não lê em voz alta. Abra o link no Chrome ou no Safari.</span>'}</div></div>
+    ${a.qs.map(q=>qHtml(q,++n)).join('')}`).join('')}
+
+  <div class="part"><span class="n">3</span><div><p class="eyebrow">Parte 3 de 3</p><h2>Escrita</h2></div></div>
+  <p class="tip">Escreva o quanto conseguir: pode ser pouco ou muito, o texto mostra até onde você vai.</p>
+  <div class="q"><div class="qh"><span class="qn">${++n}</span><b>${esc(W.prompt)}<small class="hint">${esc(W.hint)}</small></b></div>
+    <label class="field" for="texto"><span class="muted" style="font-weight:500">Seu texto <span id="wc">${wc(S.text)} palavras</span> · sugestão: ${W.words}</span><textarea id="texto" placeholder="${LANG==='FR'? 'Je m’appelle…' : 'My name is…'}">${esc(S.text)}</textarea></label></div>
+
+  <div class="panel"><p class="err" id="err"></p><button class="btn primary big" data-act="finish">Terminar e enviar pelo WhatsApp</button>
+    <p class="meta muted" style="margin:0;font-size:13.5px">Vai abrir o WhatsApp com o resultado pronto. É só escolher a professora e enviar.</p></div>
+  <footer>Sotaque · teste de nivelamento</footer>`;
+  document.getElementById('bar').hidden=false; prog();
+}
+const wc=s=>(String(s||'').trim().match(/\S+/g)||[]).length;
+function prog(){ const t=Q.length+1, d=Q.filter(q=>Number.isInteger(S.ans[q.id])).length+(S.text.trim()? 1 : 0);
+  document.getElementById('prog').style.width=d/t*100+'%'; document.getElementById('progt').textContent=`${d} de ${t}`; }
+
+/* resultado: um nível conta com 60% de acerto nele e nos de baixo; 40% no seguinte vira "plus" */
+function score(){
+  const cell=lv=>{ const qs=Q.filter(q=>q.lv===lv); return {got:qs.filter(q=>S.ans[q.id]===q.correct).length,n:qs.length}; };
+  const rows=LV.map(lv=>({lv,...cell(lv)}));
+  let r=-1; for (let i=0;i<rows.length;i++){ if (rows[i].got/rows[i].n>=.6) r=i; else break; }
+  let est= r<0? 'pré-A1 (começando do zero)' : LV[r];
+  if (r>=0&&r<4&&r>0&&rows[r+1].got/rows[r+1].n>=.4) est+='+';
+  if (r===0&&rows[1].got/rows[1].n>=.4) est='A1 (quase A2)';
+  const part=p=>{ const qs=Q.filter(q=>q.part===p); return `${qs.filter(q=>S.ans[q.id]===q.correct).length}/${qs.length}`; };
+  return {rows,est,G:part('G'),O:part('O')};
+}
+function report(){
+  const sc=score(), wrong=Q.map((q,i)=>[q,i]).filter(([q])=>S.ans[q.id]!==q.correct);
+  const line=([q,i])=>`${i+1} (${q.lv}): ${Number.isInteger(S.ans[q.id])? `marcou "${q.options[S.ans[q.id]]}"` : 'sem resposta'}, certa "${q.options[q.correct]}"`;
+  return `*Teste de nivelamento (${LANGNAME}) · versão rápida*
+Aluno: ${S.name.trim()}
+
+*Estimativa pelas objetivas: ${sc.est}*
+Acertos por nível: ${sc.rows.map(r=>`${r.lv} ${r.got}/${r.n}`).join(' · ')}
+Gramática ${sc.G} · Escuta ${sc.O}
+
+Erros:
+${wrong.length? wrong.map(line).join('\n') : 'nenhum'}
+
+*Escrita* (${wc(S.text)} palavras):
+${S.text.trim()||'(não escreveu)'}`;
+}
+const waLink=()=>'https://wa.me/?text='+encodeURIComponent(report());
+
+document.addEventListener('change',e=>{ const el=e.target; if (el.type==='radio'){ S.ans[el.name]=+el.value; save(); prog(); } });
+document.addEventListener('input',e=>{ const el=e.target;
+  if (el.id==='nome'){ S.name=el.value; save(); }
+  if (el.id==='texto'){ S.text=el.value; save(); document.getElementById('wc').textContent=wc(el.value)+' palavras'; prog(); } });
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-act]'); if (!b) return; const a=b.dataset.act;
+  if (a==='say') speak(+b.dataset.i);
+  if (a==='stop') stop();
+  if (a==='reset'&&confirm('Apagar as respostas e começar de novo?')){ S={name:'',ans:{},text:'',sent:false}; save(); render(); window.scrollTo(0,0); }
+  if (a==='rate'){ rate=+b.dataset.v; document.querySelectorAll('.spd button').forEach(x=>{ const on=+x.dataset.v===rate; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on); }); if (cur) speak(cur.i,cur.at); }
+  if (a==='copy'){ navigator.clipboard?.writeText(report()).then(()=>{ b.textContent='Copiado!'; }).catch(()=>{ prompt('Copie o resultado:',report()); }); }
+  if (a==='finish'){ const err=document.getElementById('err');
+    if (!S.name.trim()){ err.textContent='Escreva o seu nome lá no começo.'; document.getElementById('nome').focus(); return; }
+    const left=Q.filter(q=>!Number.isInteger(S.ans[q.id])).length;
+    if (left&&!confirm(`Ainda ${left===1? 'falta 1 questão' : `faltam ${left} questões`}. Enviar assim mesmo?`)) return;
+    stop(); const url=waLink(); S.sent=true; save(); render(); window.scrollTo(0,0); location.href=url; } });
+render();
+</script>
+</body>
+</html>
