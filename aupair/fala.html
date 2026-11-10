@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Au Pair · Speaking</title>
+<meta name="description" content="Perguntas para simular o speaking da entrevista de inglês da agência de Au Pair.">
+<meta name="theme-color" content="#fffaf2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="../app/quadros.js"></script>
+<script src="../app/aupair.js"></script>
+<script src="motor.js"></script>
+<script>
+/* roteiro de speaking para a professora: lista por tema e um modo entrevista, uma pergunta por vez */
+const ALL=AUPAIR_FALA.flatMap(g=>g.qs.map(q=>({g:g.g,q:q.startsWith('…')? 'What would you do if '+q.slice(1) : q})));
+let M=null; // modo entrevista: {ord,i,hide}
+function render(){
+  const app=document.getElementById('app');
+  if (M){ const x=ALL[M.ord[M.i]];
+    app.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px"><button class="btn" style="border:0;padding-left:0" data-m="sair">← Todas as perguntas</button><span class="pill">${M.i+1} de ${M.ord.length}</span></div>
+      <div class="panel" style="margin-top:10px;min-height:300px;justify-content:center"><p class="eyebrow">${esc(x.g)}</p><p class="big-q ${M.hide?'hide':''}">${esc(x.q)}</p>${audioHtml(x.q,'Ouvir a pergunta')}
+        <label class="sel" style="display:flex;gap:8px;align-items:center;font-size:14px;font-weight:600"><input type="checkbox" data-m="hide" ${M.hide?'checked':''}> Esconder o texto (só escuta)</label></div>
+      <div class="row" style="margin-top:12px"><button class="btn" data-m="prev" ${M.i?'':'disabled'}>Anterior</button><button class="btn primary" data-m="next">${M.i<M.ord.length-1? 'Próxima pergunta' : 'Recomeçar'}</button></div>
+      <div class="panel"><h2>Frases úteis para a aluna</h2>${AUPAIR_FRASES.map(([a,b])=>`<div class="frase"><small>${esc(a)}</small><span>${esc(b)}</span></div>`).join('')}</div>`; return; }
+  app.innerHTML=`${typeof quadro==='function'? `<div class="art">${quadro('ameixa','conversa',5,{w:1000,h:200,frame:false,focus:[.6,.8],align:'xMaxYMid'})}</div>` : ''}
+    <p class="eyebrow" style="margin-top:22px">Au Pair · speaking</p><h1 style="margin-top:6px">Simulação da entrevista</h1>
+    <p class="meta">Perguntas no estilo da entrevista de inglês que a agência faz no Brasil: vida pessoal, inglês, crianças, situações e expectativas sobre os EUA. Faça as perguntas em ritmo natural, deixe a aluna pensar e peça detalhes: <i>Can you give me an example? Why? How did you feel?</i></p>
+    <div class="row" style="margin-top:14px"><button class="btn primary" data-m="go">Começar o modo entrevista</button><button class="btn" data-m="go-r">Modo entrevista, em ordem aleatória</button></div>
+    ${AUPAIR_FALA.map(g=>`<div class="panel grp"><h2>${esc(g.g)}</h2>${g.qs.map(q=>{ const t=q.startsWith('…')? 'What would you do if '+q.slice(1) : q, i=audKey(t); return `<div class="fq"><span>${esc(t)}</span><button class="iconb" data-act="say" data-a="${i}" aria-label="Ouvir">${PLAY}</button></div>`; }).join('')}</div>`).join('')}
+    <div class="panel"><h2>Frases úteis para a aluna</h2>${AUPAIR_FRASES.map(([a,b])=>`<div class="frase"><small>${esc(a)}</small><span>${esc(b)}</span></div>`).join('')}</div>
+    <div class="panel"><h2>O que observar</h2><p class="meta" style="margin:0">Respostas completas (não só “yes” ou “no”), exemplos concretos com crianças, segurança em primeiro lugar nas situações (“I would stay calm… call the host parents… call 911”), passado e “I would…” usados com naturalidade, e entusiasmo. Silêncios curtos são normais: deixe ela pensar.</p></div>
+    <footer>Sotaque · Au Pair</footer>`;
+}
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-m]'); if (!b||b.type==='checkbox') return; const m=b.dataset.m; stopAudio();
+  if (m==='go'||m==='go-r'){ const ord=ALL.map((_,i)=>i); if (m==='go-r') for (let i=ord.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [ord[i],ord[j]]=[ord[j],ord[i]]; } M={ord,i:0,hide:false}; }
+  if (m==='sair') M=null;
+  if (m==='next') M.i= M.i<M.ord.length-1? M.i+1 : 0;
+  if (m==='prev') M.i=Math.max(0,M.i-1);
+  render(); window.scrollTo(0,0); });
+document.addEventListener('change',e=>{ if (e.target.dataset.m==='hide'){ M.hide=e.target.checked; render(); } });
+render();
+</script>
+</body>
+</html>

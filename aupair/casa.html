@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Au Pair · Lição de casa</title>
+<meta name="description" content="Treino para a entrevista de inglês do programa Au Pair, com áudio e correção na hora.">
+<meta name="theme-color" content="#fffaf2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="bar" id="bar" hidden><div class="bar-in"><div class="prog"><i id="prog"></i></div><small id="progt"></small></div></div>
+<script>const uid=()=>'', DAY=864e5, MIN=6e4;</script>
+<script src="../app/quadros.js"></script>
+<script src="../app/aupair.js"></script>
+<script src="motor.js"></script>
+<script>
+/* lição de casa avulsa: ?dia=1 ou ?dia=2 */
+const DIA=/dia=2/.test(location.search)? 2 : 1, DAYC=AUPAIR_CASA[DIA], ITEMS=itemsOf(DAYC), KEY='aupair-casa:'+DIA;
+let S={name:'',ans:{},done:false,at:null,link:''};
+try { S={...S,...JSON.parse(localStorage.getItem(KEY)||'{}')}; } catch {}
+const save=()=>{ try { localStorage.setItem(KEY,JSON.stringify(S)); } catch {} };
+const art=()=>typeof quadro==='function'? `<div class="art">${quadro(DIA===1? 'ceu' : 'tomate','aviao',DIA*17,{w:1000,h:200,frame:false,focus:[.6,.8],align:'xMaxYMid'})}</div>` : '';
+
+function itemHtml(it,n){
+  const a=S.ans[it.id], head=`<div class="qh"><span class="qn">${n}</span><b>${esc(it.p)}</b></div>`;
+  if (it.t==='mc') return `<div class="q">${head}<div class="opts ${it.o.every(o=>o.length<=18)? 'short' : ''}">${it.o.map((o,k)=>`<label class="opt"><input type="radio" name="${it.id}" value="${k}" data-k="mc" ${a===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div></div>`;
+  if (it.t==='tf') return `<div class="q">${head}<div class="opts short">${[[true,'True','V'],[false,'False','F']].map(([v,l,s])=>`<label class="opt"><input type="radio" name="${it.id}" value="${v?1:0}" data-k="tf" ${a===v?'checked':''}><span class="lt">${s}</span><span class="tx">${l}</span></label>`).join('')}</div></div>`;
+  if (it.t==='gap'){ const [x,y]=it.p.split('___'); return `<div class="q"><div class="qh"><span class="qn">${n}</span><b>Complete a frase.</b></div><p class="gapline">${esc(x)}<input class="gapin" data-gap="${it.id}" value="${esc(a||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Lacuna">${esc(y||'')}</p></div>`; }
+  if (it.t==='match'){ const ord=shuffled(it.pairs.length,it.id+DIA); return `<div class="q">${head}${it.pairs.map((p,i)=>`<div class="mrow"><span>${esc(p[0])}</span><select data-match="${it.id}" data-i="${i}" aria-label="Par de ${esc(p[0])}"><option value="">Escolha…</option>${ord.map(j=>`<option value="${j}" ${Array.isArray(a)&&a[i]===j?'selected':''}>${esc(it.pairs[j][1])}</option>`).join('')}</select></div>`).join('')}</div>`; }
+  return `<div class="q"><div class="qh"><span class="qn">${n}</span><b>${esc(it.p)}</b></div>${it.au? audioHtml(it.au,'Ouvir a pergunta')+`<details class="qtxt"><summary>Ver a pergunta escrita</summary><p style="margin:0">${esc(it.au)}</p></details>` : ''}
+    <textarea data-open="${it.id}" placeholder="Write your answer in English…">${esc(a||'')}</textarea></div>`;
+}
+function render(){
+  const app=document.getElementById('app'); let n=0;
+  if (S.done){ document.getElementById('bar').hidden=true;
+    app.innerHTML=`${art()}<p class="eyebrow" style="margin-top:22px">${esc(DAYC.title)}</p><h1 style="margin-top:6px">Muito bem, ${esc(S.name.split(' ')[0])}!</h1>
+      <div class="panel"><p class="meta" style="margin:0"><b>Último passo:</b> mande o link das suas respostas para a professora. Ele já leva tudo.</p>
+        <div class="row"><a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Oi, teacher! Terminei a lição de casa de Au Pair '+DIA+'. Minhas respostas: '+S.link)}">Enviar pelo WhatsApp</a>${navigator.share? '<button class="btn" data-go="share">Compartilhar</button>' : ''}<button class="btn" data-go="copy">Copiar link</button></div></div>
+      ${resultHtml(DAYC,S.ans,'aluna')}
+      <button class="btn" style="border:0;color:var(--ink-3);font-weight:600;margin-top:16px" data-go="reset">Fazer de novo</button>`; return; }
+  app.innerHTML=`${art()}<p class="eyebrow" style="margin-top:22px">Au Pair · treino para a entrevista</p><h1 style="margin-top:6px">${esc(DAYC.title.replace(/^Au Pair · /,''))}</h1>
+    <p class="meta">${esc(DAYC.intro)}</p>
+    <div class="panel"><label class="field" for="nome">Seu nome<input type="text" id="nome" autocomplete="name" value="${esc(S.name)}" placeholder="Nome e sobrenome"></label>
+      <p class="meta muted" style="margin:0;font-size:14px">Use fone, se puder. Os áudios podem ser ouvidos quantas vezes quiser, na velocidade que preferir. Suas respostas ficam salvas neste aparelho.</p></div>
+    ${DAYC.parts.map((p,pi)=>`<div class="part"><span class="n">${pi+1}</span><div><p class="eyebrow">Parte ${pi+1} de ${DAYC.parts.length}</p><h2>${esc(p.title)}</h2></div></div><p class="tip">${esc(p.ins)}</p>
+      ${p.audio? `<div class="panel">${audioHtml(p.audio)}</div>` : ''}${ITEMS.filter(it=>it.part===pi).map(it=>itemHtml(it,++n)).join('')}`).join('')}
+    <div class="panel"><p class="err" id="err"></p><button class="btn primary big" data-go="finish">Terminar e ver o resultado</button>
+      <p class="meta muted" style="margin:0;font-size:13.5px">Você vê a correção na hora e depois manda o link para a professora.</p></div>
+    <footer>Sotaque · Au Pair</footer>`;
+  document.getElementById('bar').hidden=false; prog();
+}
+function prog(){ const d=ITEMS.filter(it=>answered(it,S.ans[it.id])).length; document.getElementById('prog').style.width=d/ITEMS.length*100+'%'; document.getElementById('progt').textContent=`${d} de ${ITEMS.length}`; }
+document.addEventListener('change',e=>{ const el=e.target;
+  if (el.dataset.k==='mc'){ S.ans[el.name]=+el.value; }
+  if (el.dataset.k==='tf'){ S.ans[el.name]=el.value==='1'; }
+  if (el.dataset.match){ const a=(S.ans[el.dataset.match] ||= []); a[+el.dataset.i]= el.value===''? null : +el.value; }
+  save(); if (!S.done) prog(); });
+document.addEventListener('input',e=>{ const el=e.target;
+  if (el.id==='nome') S.name=el.value;
+  if (el.dataset.gap) S.ans[el.dataset.gap]=el.value;
+  if (el.dataset.open) S.ans[el.dataset.open]=el.value;
+  save(); if (!S.done&&(el.dataset.gap||el.dataset.open)) prog(); });
+document.addEventListener('click',async e=>{ const b=e.target.closest('[data-go]'); if (!b) return; const g=b.dataset.go;
+  if (g==='finish'){ const err=document.getElementById('err');
+    if (!S.name.trim()){ err.textContent='Escreva o seu nome lá no começo.'; document.getElementById('nome').focus(); return; }
+    const left=ITEMS.filter(it=>!answered(it,S.ans[it.id])).length;
+    if (left&&!confirm(`Ainda ${left===1? 'falta 1 questão' : `faltam ${left} questões`}. Terminar assim mesmo?`)) return;
+    stopAudio(); S.at=Date.now();
+    S.link=new URL('respostas.html',location.href).href.split('#')[0]+'#'+await encodeData({v:1,d:DIA,n:S.name.trim(),a:S.ans,at:S.at});
+    S.done=true; save(); render(); window.scrollTo(0,0); }
+  if (g==='copy'){ (navigator.clipboard? navigator.clipboard.writeText(S.link) : Promise.reject()).then(()=>{ b.textContent='Link copiado!'; }).catch(()=>prompt('Copie o link:',S.link)); }
+  if (g==='share') navigator.share({title:'Au Pair · lição de casa',text:'Oi, teacher! Terminei a lição de casa de Au Pair. Minhas respostas:',url:S.link}).catch(()=>{});
+  if (g==='reset'&&confirm('Apagar as respostas e começar de novo?')){ S={name:S.name,ans:{},done:false,at:null,link:''}; save(); render(); window.scrollTo(0,0); } });
+render();
+</script>
+</body>
+</html>

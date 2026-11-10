@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Au Pair · Respostas</title>
+<meta name="description" content="Respostas das lições de casa de Au Pair.">
+<meta name="theme-color" content="#fffaf2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="../app/quadros.js"></script>
+<script src="../app/aupair.js"></script>
+<script src="motor.js"></script>
+<script>
+/* aba escondida: abre o link que a aluna mandou; os que abrir ficam guardados neste aparelho */
+const KEY='aupair-respostas', lista=()=>{ try { return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch { return []; } };
+const guardar=(code,d)=>{ try { const l=lista().filter(x=>x.code!==code); l.unshift({code,n:d.n,d:d.d,at:d.at}); localStorage.setItem(KEY,JSON.stringify(l.slice(0,50))); } catch {} };
+async function render(){
+  const app=document.getElementById('app'), code=location.hash.slice(1);
+  if (!code){ const l=lista(); app.innerHTML=`<p class="eyebrow" style="margin-top:28px">Au Pair · respostas</p><h1 style="margin-top:6px">Lições recebidas</h1><p class="meta">Abra o link que a aluna mandou: as respostas aparecem aqui, já corrigidas. As que você abrir ficam guardadas neste aparelho.</p>
+    <div class="panel saved">${l.length? l.map(x=>`<a href="#${x.code}"><b>${esc(x.n)} · lição ${x.d}</b><span class="muted">${fData(x.at)}</span></a>`).join('') : '<p class="muted" style="margin:0">Nenhuma lição aberta ainda neste aparelho.</p>'}</div>`; return; }
+  let d; try { d=await decodeData(code); } catch { app.innerHTML=`<div class="panel" style="margin-top:28px"><h2>Link incompleto</h2><p class="meta">Este link não abriu. Peça para a aluna copiar e mandar de novo o link inteiro.</p><a class="btn" href="#">Ver lições recebidas</a></div>`; return; }
+  guardar(code,d); const day=AUPAIR_CASA[d.d];
+  app.innerHTML=`<a class="btn" style="margin-top:18px;border:0;padding-left:0" href="#">← Lições recebidas</a><p class="eyebrow" style="margin-top:6px">${esc(day.title)}</p><h1 style="margin-top:6px">${esc(d.n)}</h1><p class="meta">Feita em ${fData(d.at)}</p>${resultHtml(day,d.a,'prof')}`;
+}
+window.addEventListener('hashchange',()=>{ render(); window.scrollTo(0,0); }); render();
+</script>
+</body>
+</html>

@@ -42,6 +42,11 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   e leituras novas (`provas.js`). Qualquer tarefa pode ter um "áudio para escuta".
   Velocidade do áudio em 0,75×, 1× ou 1,5×: dá para trocar a qualquer momento, até no meio da fala
   (ela recomeça da frase em que estava). A escolha fica guardada no aparelho.
+- Au Pair (`aupair.js`, tema "Au Pair" no banco): preparação para a entrevista de inglês que a agência faz
+  no Brasil (vida pessoal, inglês, experiência com crianças, "What would you do if…?", expectativas sobre os EUA).
+  7 tarefas com áudio (A2–B1), incluindo uma simulação de speaking e as duas lições de casa. Páginas avulsas em
+  `/aupair/`: lições de casa 1 e 2 (com correção na hora e link de respostas para a professora), roteiro de
+  speaking com 42 perguntas e modo entrevista, e a aba escondida de respostas.
 - Nivelamento (aba em Tarefas, ao lado do Banco; `nivelamento.js`), em inglês e francês, no formato dos
   testes de colocação (Oxford, Cambridge, Alliance Française), do A1 ao C1. Só para quem precisa:
   a professora escolhe o aluno e a versão, e o teste vai para as tarefas dele.
