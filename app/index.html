@@ -511,6 +511,8 @@ details.more[open] summary{margin-bottom:14px}
 .pl-lv>summary::after{content:'▾';color:var(--ink-3);transition:transform .2s}
 .pl-lv[open]>summary::after{transform:rotate(180deg)}
 .pl-ask{gap:6px}
+.prac-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;border:2px dashed var(--k-a)}
+.prac-bar>div{flex:1;min-width:200px}
 .plvers{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .plvers legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 .plver-w{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -999,6 +1001,7 @@ function parseHash(){
   if ((m=h.match(/^missao-([a-z0-9-]+)$/))) return {name:'missao',id:m[1]};
   if ((m=h.match(/^trilha-([a-z0-9]+)$/))) return {name:'trilhaAluno',id:m[1]};
   if (h==='banco') return {name:'banco'};
+  if ((m=h.match(/^praticar-([a-z0-9]+)$/))) return {name:'praticar',id:m[1]};
   if (h==='nivelamento') return {name:'nivel'};
   if ((m=h.match(/^nivelamento-ver-(completo|curto)$/))) return {name:'nivelPrev',id:m[1]};
   if (h==='banco-nova') return {name:'bancoNova'};
@@ -1048,7 +1051,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','hoje','Hoje',reqs)}${navA('#agenda',r==='agenda','agenda','Agenda')}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#tarefas',['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev'].includes(r),'tarefas','Tarefas',toCorrect)}${navA('#dev',r==='dev'||r==='missao','dev','<span class="nl">Desenvolvimento</span><span class="ns">Meu estudo</span>')}</nav>`
+  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','hoje','Hoje',reqs)}${navA('#agenda',r==='agenda','agenda','Agenda')}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#tarefas',['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar'].includes(r),'tarefas','Tarefas',toCorrect)}${navA('#dev',r==='dev'||r==='missao','dev','<span class="nl">Desenvolvimento</span><span class="ns">Meu estudo</span>')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Meu caderno')}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Tarefas',todoS)}</nav>`;
   return `<header class="bar"><div class="bar-in">
     <a class="brand" href="#inicio">${logo()}<span>Sotaque</span></a>${nav}
@@ -1201,7 +1204,7 @@ function viewNotebook(s){
 const LT='ABCDEFGH';
 const fmtNote=n=>(Math.round(n*10)/10).toFixed(1).replace('.',',');
 const fmtNum=n=>String(Math.round(n*10)/10).replace('.',',');
-const getTask=id=>DB.tasks.find(t=>t.id===id);
+const getTask=id=>id==='prac'? S.prac?.t : DB.tasks.find(t=>t.id===id);
 const tasksOf=id=>DB.tasks.filter(t=>t.studentId===id);
 const hasOpen=t=>t.questions.some(q=>q.type==='open');
 const TASK_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3.5h6l4 4v13h-10z" fill="none" stroke="#fffaf2" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 13.5l2 2 3.5-4" fill="none" stroke="#fffaf2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1348,6 +1351,7 @@ function speak(key,from=0){
 }
 const rateLabel=r=>String(r).replace('.',',')+'×';
 const rateBtns=()=>`<span class="spd" role="group" aria-label="Velocidade do áudio">${RATES.map(r=>`<button type="button" class="${r===ttsRate?'on':''}" data-act="say-rate" data-v="${r}" aria-pressed="${r===ttsRate}" title="${r<1? 'Mais devagar' : r>1? 'Mais rápido' : 'Velocidade normal'}">${rateLabel(r)}</button>`).join('')}</span>`;
+const EYE_ICON='<svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;margin-right:6px;vertical-align:-3px"><path d="M12 5C6.5 5 2.7 9.4 1.6 12c1.1 2.6 4.9 7 10.4 7s9.3-4.4 10.4-7C21.3 9.4 17.5 5 12 5zm0 11a4 4 0 110-8 4 4 0 010 8zm0-2.2a1.8 1.8 0 100-3.6 1.8 1.8 0 000 3.6z" fill="currentColor"/></svg>';
 const PLAY_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
 function audioBox(text,lang,o={}){
   const key='a'+hashStr(lang+text), A=(AUD[key] ||= {text,lang}), lines=text.split('\n').filter(x=>x.trim());
@@ -1602,10 +1606,11 @@ function viewBankItem(b){
         <p class="meta">${b.questions.length} questões (${typeSummary(b.questions)}) · ${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}</p></div>
       ${b.instructions? `<div class="panel"><p class="eyebrow">Instruções para o aluno</p><div class="prose" style="white-space:pre-wrap">${esc(b.instructions)}</div></div>` : ''}
       ${b.audio? `<div class="panel"><p class="eyebrow">Áudio</p>${audioBox(b.audio,b.lang,{transcript:true})}</div>` : ''}
-      <p class="eyebrow">Questões e gabarito</p>
+      <div class="panel-h"><p class="eyebrow">Questões e gabarito</p><a class="btn small" href="#praticar-${b.id}">${EYE_ICON}Ver como aluno</a></div>
       ${b.questions.map((q,i)=>qResult(fake,q,i,'key')).join('')}
     </div>
     <aside class="stack ed-side" style="gap:16px">
+      <section class="panel"><h2>Ver como aluno</h2><p class="meta">Abra a tarefa do jeito que o aluno vê, responda e veja a correção. Bom para fazer junto na aula, com a tela compartilhada.</p><a class="btn primary" style="align-self:flex-start" href="#praticar-${b.id}">${EYE_ICON}Ver como aluno</a></section>
       <section class="panel"><div class="panel-h"><h2>Lançar para</h2>${studs.length>1? `<button class="link" data-act="bl-all">${L.students.length===studs.length? 'Limpar' : 'Todos'}</button>` : ''}</div>
         <div class="sel-list">${studs.map(s=>`<label class="sel"><input type="checkbox" data-bl-st="${s.id}" ${L.students.includes(s.id)?'checked':''}>${avatar(s,28)}<span>${esc(s.name)}<br><small>${esc(s.level)}</small></span></label>`).join('')}</div>
         <label class="sel" style="padding:0"><input type="checkbox" data-bl="hasDue" ${L.hasDue?'checked':''}>Tem prazo</label>
@@ -1760,7 +1765,7 @@ function viewTaskT(t){
     const done=t.questions.filter(q=>isAnswered(t,q)).length;
     return `<div style="${sVars(s)}">${back}${head}<div class="grid2"><div class="stack" style="gap:14px">${t.audio? `<div class="panel">${audioBox(t.audio,s.lang,{transcript:true})}</div>` : ''}<p class="eyebrow">Gabarito</p>${t.questions.map((q,i)=>qResult({...t,answers:{}},q,i,'key')).join('')}</div>
       <aside class="stack"><section class="panel"><h2>Esperando ${esc(first)}</h2><p class="meta">${done? `${first} já respondeu ${done} de ${t.questions.length} questões, mas ainda não entregou.` : `${first} ainda não começou.`}</p>
-        ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
+        ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#praticar-${t.id}">${EYE_ICON}Ver como aluno</a><a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
   }
   const fb=S.fb[t.id]??t.feedback, next=DB.tasks.find(x=>mine(x)&&x.status==='entregue'&&x.id!==t.id);
   return `<div style="${sVars(s)}">${back}${head}<div class="grid2">
@@ -1773,6 +1778,30 @@ function viewTaskT(t){
       ${next&&t.status==='corrigida'? `<a class="btn" href="#tarefa-${next.id}">Próxima para corrigir →</a>` : ''}
       ${t.bankId? '' : `<button class="btn small" style="align-self:flex-start" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}
       <button class="btn small ghost" style="align-self:flex-start" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
+}
+
+/* ---------- ver como aluno: a professora abre a tarefa como o aluno vê, responde e corrige (nada é salvo) ---------- */
+function viewPractice(id){
+  const b=DB.bank.find(x=>x.id===id), src=b||getTask(id);
+  if (!src) return `<div class="panel"><p>Tarefa não encontrada.</p><a class="btn" href="#banco">Banco de tarefas</a></div>`;
+  if (S.prac?.src!==id) S.prac={src:id,done:false,t:{id:'prac',kind:b? undefined : src.kind,title:src.title,instructions:src.instructions||'',audio:src.audio||'',questions:src.questions,blocks:b? undefined : src.blocks,fala:src.fala,studentId:b? null : src.studentId,answers:{},marks:{},status:'pendente'}};
+  const P=S.prac, t=P.t, s=!b&&user(src.studentId), vars= s? sVars(s) : sVars({palette:LV_PAL[b.level]||'menta'});
+  const art= b? bankArt(b,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'}) : taskArt(src,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'});
+  const back= b? `#banco-${b.id}` : `#tarefa-${src.id}`, n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
+  const head=`<a class="link" href="${back}" style="display:inline-block;margin-bottom:12px;text-decoration:none">← Voltar para a tarefa</a>
+    <div class="notice prac-bar"><div><b>Modo aluno.</b> Você está vendo a tarefa como o aluno vê. Pode responder e corrigir à vontade: nada é salvo nem enviado.</div><button class="btn small" data-act="prac-reset">Recomeçar</button></div>
+    <div class="task-art" style="margin-top:14px">${art}</div><div class="ihead" style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:2px solid var(--k-a)"><p class="eyebrow">${b? `${b.level} · ${esc(b.topic)}` : 'Tarefa'}</p><h1>${esc(t.title)}</h1><p class="meta">${n} ${n===1?'questão':'questões'}</p></div>`;
+  if (!P.done) return `<div style="${vars};max-width:780px">${head}
+    ${t.instructions? `<div class="prose" style="margin-top:16px;white-space:pre-wrap">${esc(t.instructions)}</div>` : ''}
+    ${t.audio? `<div style="margin-top:16px">${audioBox(t.audio,taskLang(t))}</div>` : ''}
+    <div class="prog-bar"><b id="prog-t" style="font-size:14px">${done} de ${n} respondidas</b><div class="progress"><i id="prog-i" style="width:${done/n*100}%"></i></div></div>
+    <div class="stack" style="gap:14px">${qList(t,(q,i)=>qAnswer(t,q,i))}
+      <div class="row-btns" style="margin-top:6px"><button class="btn primary big" data-act="prac-check">Corrigir</button><span class="meta muted">Mostra a nota e o gabarito, como o aluno vê.</span></div></div></div>`;
+  const sc=scoreOf(t);
+  return `<div style="${vars};max-width:780px">${head}<div style="margin:18px 0"><div class="score"><div class="big">${fmtNum(sc.got)}<span>/${sc.total-sc.waiting}</span></div><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1"><p><b>${sc.got===sc.total-sc.waiting? 'Todas certas!' : `${fmtNum(sc.got)} de ${sc.total-sc.waiting} certas`}</b></p>${sc.waiting? `<p>${sc.waiting} ${sc.waiting===1?'resposta escrita':'respostas escritas'}: essas você corrige com o aluno.</p>` : ''}</div></div></div>
+    ${t.audio? `<div class="panel" style="margin-bottom:14px">${audioBox(t.audio,taskLang(t),{transcript:true})}</div>` : ''}
+    <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'student'),'student')}</div>
+    <div class="row-btns" style="margin-top:18px"><button class="btn primary" data-act="prac-reset">Fazer de novo</button><a class="btn" href="${back}">Voltar para a tarefa</a></div></div>`;
 }
 
 /* ---------- professora: montar tarefa ---------- */
@@ -2530,6 +2559,7 @@ function render(){
   else if (r.name==='tarefa'&&getTask(r.id)&&mine(getTask(r.id))) main=viewTaskT(getTask(r.id));
   else if (r.name==='nova'){ if (!S.draft) S.draft=newDraft(r.id); main=viewEditor(); }
   else if (r.name==='banco') main=viewBank();
+  else if (r.name==='praticar') main=viewPractice(r.id);
   else if (r.name==='nivel') main=viewPlaceHub();
   else if (r.name==='nivelPrev') main=viewPlacePrev(r.id);
   else if (r.name==='bancoItem'&&langBank().find(b=>b.id===r.id)){ if (!S.bl) S.bl=newBl(); main=viewBankItem(DB.bank.find(b=>b.id===r.id)); }
@@ -2721,6 +2751,8 @@ const FORMS={
     const st=settingsOf(S.me); st.avail=av; st.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
+ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
+ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
 Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
 
 document.addEventListener('click',e=>{
@@ -2748,5 +2780,5 @@ S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
 </script>
