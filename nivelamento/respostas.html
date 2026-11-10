@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Respostas do nivelamento</title>
+<meta name="theme-color" content="#fffaf2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fffaf2;--ink:#221c1e;--ink-2:#4a3f42;--ink-3:#7c6f72;--wine:#7a1f35;--line:#e9dfd2;--surface:#fffdf9;--surface-2:#f4ece1;--ok:#2f7d55;--ok-bg:#e3f2e9;--display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Figtree',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cream:#1d1819;--ink:#f6efe6;--ink-2:#d9cfc4;--ink-3:#a99c97;--wine:#d9798f;--line:#3a3133;--surface:#262021;--surface-2:#2f2829;--ok:#7fd1a5;--ok-bg:#1f3a2c}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 120px}
+.art{margin:16px 0 0;border-radius:20px;overflow:hidden;line-height:0}
+.art svg{width:100%;height:auto;display:block}
+h1,h2{font-family:var(--display);line-height:1.1;margin:0}
+h1{font-size:clamp(30px,7vw,44px);font-weight:800;margin-top:22px}
+h2{font-size:24px;font-weight:800}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wine);margin:0}
+.meta{color:var(--ink-2);margin:6px 0 0}
+.muted{color:var(--ink-3)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+input[type=text],textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--cream);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+textarea{min-height:170px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--wine);outline-offset:1px}
+.part{display:flex;align-items:center;gap:14px;margin-top:34px}
+.part .n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--wine);color:#fffaf2;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px}
+.tip{margin:8px 0 0;color:var(--ink-2);font-size:15px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}
+.qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.qn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
+.qh b{font-weight:600;font-size:16.5px;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.short{display:grid;grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;background:var(--cream);min-height:46px}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .lt{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.opt:has(input:checked){border-color:var(--wine);background:color-mix(in srgb,var(--wine) 10%,var(--cream))}
+.opt:has(input:checked) .lt{background:var(--wine);border-color:var(--wine);color:#fffaf2}
+.opt:has(input:focus-visible){outline:2px solid var(--wine);outline-offset:2px}
+.opt.idk{border-style:dashed;background:transparent;grid-column:1/-1}
+.opt.idk .tx{color:var(--ink-3)}
+.aud{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-weight:700;font-size:15px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 18px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;min-height:44px}
+.btn.primary{background:var(--wine);border-color:var(--wine);color:#fffaf2}
+.btn.big{width:100%;font-size:17px;padding:14px 20px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:14px;height:14px}
+.aud.on .play{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.6}}
+.stop{display:none}.aud.on .stop{display:inline-flex}
+.spd{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:2px;background:var(--surface);gap:2px}
+.spd button{border:0;background:none;font:inherit;font-size:13px;font-weight:700;color:var(--ink-2);padding:6px 11px;border-radius:999px;cursor:pointer;min-height:34px}
+.spd button.on{background:var(--wine);color:#fffaf2}
+.plays{font-size:13px;color:var(--ink-3)}
+.hint{display:block;font-weight:500;font-size:13.5px;color:var(--ink-3);margin-top:4px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--cream) 92%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.prog{flex:1;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--wine);width:0;transition:width .3s}
+.bar small{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.done{text-align:center}
+.done .big{font-family:var(--display);font-weight:800;font-size:64px;color:var(--wine);line-height:1}
+.err{color:#b3261e;font-size:14px;font-weight:600;min-height:1em;margin:0}
+.notice{background:var(--surface-2);border-radius:14px;padding:12px 14px;font-size:14.5px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1;min-width:200px}
+footer{margin-top:40px;font-size:13px;color:var(--ink-3);text-align:center}
+@media (max-width:420px){.opts.short{grid-template-columns:1fr 1fr}.q{padding:14px}}
+
+.lvl{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--wine)}
+.bars{display:flex;flex-direction:column;gap:8px}
+.br{display:grid;grid-template-columns:30px 1fr 52px;gap:10px;align-items:center}
+.br b{font-family:var(--display)}
+.br .t{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.br .t i{display:block;height:100%;border-radius:99px;background:var(--ink-3)}
+.br.ok .t i{background:var(--wine)}
+.br em{font-style:normal;font-weight:700;font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.chips span{background:var(--surface-2);border-radius:12px;padding:8px 10px;display:flex;flex-direction:column}
+.chips small{font-size:12px;color:var(--ink-3);font-weight:600}.chips b{font-family:var(--display);font-size:18px}
+.txt{background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.ql{display:flex;flex-direction:column;gap:8px}
+.qi{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--surface);display:flex;flex-direction:column;gap:4px}
+.qi .top{display:flex;gap:8px;align-items:baseline}
+.qi .lv{flex:none;font-size:12px;font-weight:700;background:var(--surface-2);border-radius:6px;padding:1px 6px}
+.qi .tag{margin-left:auto;flex:none;font-size:12.5px;font-weight:700;border-radius:99px;padding:2px 9px}
+.qi.ok .tag{background:var(--ok-bg);color:var(--ok)}
+.qi.no .tag{background:#fbe3e0;color:#b3261e}
+.qi small{color:var(--ink-2);font-size:14px}
+.qi .mk{text-decoration:line-through;color:#b3261e}
+.qi .rt{color:var(--ok);font-weight:700}
+.filt{display:flex;gap:6px;flex-wrap:wrap}
+.filt button{font:inherit;font-size:13.5px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:99px;padding:6px 12px;cursor:pointer}
+.filt button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.saved a{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);color:var(--ink);text-decoration:none}
+.saved a:first-child{border-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .qi.no .tag{background:#4a2321;color:#ffb4ab}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>const TF=(s,v)=>['tf',s,v], GAP=(s,a)=>['gap',s,a];</script>
+<script src="../app/nivelamento.js"></script>
+<script src="teste.js"></script>
+<script>
+/* Aba escondida: abre o link que o aluno mandou e mostra as respostas corrigidas.
+   Os testes abertos ficam guardados neste aparelho para ver de novo depois. */
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='nivelamento-respostas';
+const lista=()=>{ try { return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch { return []; } };
+const guardar=(code,d)=>{ try { const l=lista().filter(x=>x.code!==code); l.unshift({code,n:d.n,l:d.l,d:d.d}); localStorage.setItem(KEY,JSON.stringify(l.slice(0,50))); } catch {} };
+const fData=t=>new Intl.DateTimeFormat('pt-BR',{dateStyle:'medium',timeStyle:'short'}).format(new Date(t));
+const DESC={'pré-A1':'Começando do zero: o ponto de partida é o A1.',A1:'Frases simples do dia a dia: se apresentar, rotina, pedidos básicos.',A2:'Situações comuns: compras, direções, experiências passadas e planos simples.','A2+':'Passou do A2 e já lida com parte do B1.',B1:'Se vira na maioria das situações, conta experiências e dá opiniões simples.','B1+':'B1 firme, entendendo boa parte do B2.',B2:'Conversa com fluência, argumenta e entende textos e áudios complexos.','B2+':'B2 sólido, a caminho do avançado.',C1:'Usa a língua com flexibilidade e precisão.'};
+let filtro='todas';
+function vazio(){
+  const l=lista();
+  return `<p class="eyebrow" style="margin-top:28px">Respostas do nivelamento</p><h1 style="margin-top:6px">Testes recebidos</h1>
+    <p class="meta">Abra o link que o aluno mandou: as respostas aparecem aqui, já corrigidas. Os testes que você abrir ficam guardados neste aparelho.</p>
+    <div class="panel saved">${l.length? l.map(x=>`<a href="#${x.code}"><b>${esc(x.n)}</b><span class="muted">${x.l==='FR'? 'francês' : 'inglês'} · ${fData(x.d)}</span></a>`).join('') : '<p class="muted" style="margin:0">Nenhum teste aberto ainda neste aparelho.</p>'}</div>`;
+}
+function ver(code){
+  let d; try { d=decodificar(code); } catch { return `<div class="panel" style="margin-top:28px"><h2>Link incompleto</h2><p class="meta">Este link não abriu. Peça para o aluno copiar e mandar de novo o link inteiro.</p><a class="btn" href="#">Ver testes recebidos</a></div>`; }
+  guardar(code,d);
+  const {Q,W,LANGNAME}=montar(d.l), ans={}; Q.forEach((q,i)=>{ const c=d.a[i]; if (c&&c!=='-') ans[q.id]=+c; });
+  const sc=pontuar(Q,ans), tot=sc.G.got+sc.O.got;
+  const items=Q.map((q,i)=>({q,i,ok:ans[q.id]===q.correct,m:Number.isInteger(ans[q.id])? q.options[ans[q.id]] : null})).filter(x=>filtro==='todas'||(filtro==='erros'? !x.ok : x.ok));
+  return `<a class="btn" style="margin-top:18px;border:0;padding-left:0" href="#">← Testes recebidos</a>
+    <p class="eyebrow" style="margin-top:6px">Nivelamento rápido · ${LANGNAME}</p><h1 style="margin-top:6px">${esc(d.n)}</h1><p class="meta">Feito em ${fData(d.d)}</p>
+    <div class="panel"><p class="eyebrow">Estimativa pelas objetivas</p><div class="lvl">${sc.est}</div><p class="meta" style="margin:0">${DESC[sc.est]||''}</p>
+      <div class="chips"><span><small>Total</small><b>${tot} de ${Q.length}</b></span><span><small>Gramática</small><b>${sc.G.got} de ${sc.G.n}</b></span><span><small>Escuta</small><b>${sc.O.got} de ${sc.O.n}</b></span><span><small>Escrita</small><b>${wc(d.t)} palavras</b></span></div>
+      <div class="bars">${sc.rows.map(r=>{ const p=Math.round(r.got/r.n*100); return `<div class="br ${p>=60?'ok':''}"><b>${r.lv}</b><span class="t"><i style="width:${p}%"></i></span><em>${r.got}/${r.n}</em></div>`; }).join('')}</div>
+      <p class="meta muted" style="margin:0;font-size:13.5px">Um nível conta com 60% de acerto nele e nos de baixo. Leia a escrita e, se der, converse com o aluno para fechar o nível.</p></div>
+    <div class="panel"><h2>Escrita</h2><p class="meta" style="margin:0">${esc(W.prompt)}</p><div class="txt">${d.t? esc(d.t) : '<span class="muted">Não escreveu.</span>'}</div><p class="meta muted" style="margin:0">${wc(d.t)} palavras · sugestão: ${W.words}</p></div>
+    <div class="panel"><h2>Questões</h2><div class="filt">${[['todas','Todas'],['erros','Só os erros'],['certas','Só as certas']].map(([k,l])=>`<button data-f="${k}" class="${filtro===k?'on':''}">${l}</button>`).join('')}</div>
+      <div class="ql">${items.map(({q,i,ok,m})=>`<div class="qi ${ok?'ok':'no'}"><div class="top"><span class="lv">${q.lv}</span><b>${i+1}. ${esc(q.prompt)}</b><span class="tag">${ok? 'certa' : m? 'errada' : 'em branco'}</span></div>
+        ${q.part==='O'? `<small class="muted">Escuta · ${esc(q.audio)}</small>` : ''}
+        ${ok? `<small>Marcou <span class="rt">${esc(m)}</span></small>` : `<small>${m? `Marcou <span class="mk">${esc(m)}</span> · ` : ''}certa: <span class="rt">${esc(q.options[q.correct])}</span></small>`}</div>`).join('')||'<p class="muted">Nada aqui.</p>'}</div></div>`;
+}
+function render(){ const code=location.hash.slice(1); document.getElementById('app').innerHTML= code? ver(code) : vazio(); }
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-f]'); if (b){ filtro=b.dataset.f; render(); } });
+window.addEventListener('hashchange',()=>{ filtro='todas'; render(); window.scrollTo(0,0); });
+render();
+</script>
+</body>
+</html>
