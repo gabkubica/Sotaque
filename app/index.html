@@ -853,6 +853,7 @@ a,button,summary,label,select,input[type=checkbox],input[type=radio]{touch-actio
 <script src="trilhas.js"></script>
 <script src="provas.js"></script>
 <script src="banco-extra.js"></script>
+<script src="i18n.js"></script>
 <script src="desenvolvimento.js"></script>
 <script src="nivelamento.js"></script>
 <script src="aupair.js"></script>
@@ -873,12 +874,14 @@ const uid=()=>Math.random().toString(36).slice(2,10);
 const now=()=>Date.now();
 const MIN=6e4, HOUR=36e5, DAY=864e5;
 const WD=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
-const fDay=new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'numeric',month:'short'});
-const fTime=new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit'});
-const fLongI=new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+/* datas no idioma do sistema (português ou inglês) */
+const mkFmt=o=>{ const c={}; return {format:ts=>(c[LOC()] ||= new Intl.DateTimeFormat(LOC(),o)).format(ts)}; };
+const fDay=mkFmt({weekday:'short',day:'numeric',month:'short'});
+const fTime=mkFmt({hour:'2-digit',minute:'2-digit'});
+const fLongI=mkFmt({weekday:'long',day:'numeric',month:'long'});
 const fLong={format:ts=>{ const t=fLongI.format(ts); return t[0].toUpperCase()+t.slice(1); }};
-const fShort=new Intl.DateTimeFormat('pt-BR',{day:'numeric',month:'short'});
-const fMonth=new Intl.DateTimeFormat('pt-BR',{day:'numeric',month:'short',year:'numeric'});
+const fShort=mkFmt({day:'numeric',month:'short'});
+const fMonth=mkFmt({day:'numeric',month:'short',year:'numeric'});
 const when=ts=>`${fDay.format(ts)} · ${fTime.format(ts)}`;
 const money=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const dayStart=ts=>{ const d=new Date(ts); d.setHours(0,0,0,0); return d.getTime(); };
@@ -889,6 +892,7 @@ const dateKey=ts=>{ const d=new Date(ts), z=n=>String(n).padStart(2,'0'); return
 const sameDay=(a,b)=>dayStart(a)===dayStart(b);
 const hhmm=(h,m=0)=>`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
 function rel(ts){
+  if (uiLang()==='en') return relEn(ts);
   const d=ts-now(), a=Math.abs(d);
   if (a<HOUR){ const n=Math.max(1,Math.round(a/MIN)); return d>0? `em ${n} min` : `há ${n} min`; }
   if (a<DAY){ const n=Math.round(a/HOUR); return d>0? `em ${n} h` : `há ${n} h`; }
@@ -1125,7 +1129,7 @@ function topbar(){
     <div class="bar-r">
       ${themeBtn()}<button class="me-btn" data-act="menu" aria-expanded="${S.menu}" aria-label="Sua conta">${avatar(me,36)}</button>
       ${S.menu? `<div class="menu" role="menu"><div class="menu-h">${avatar(me,52)}<b>${esc(me.name)}</b><small>${esc(me.email)}</small></div>
-        <button role="menuitem" data-act="profile">Editar meu nome</button>${isT()? `<a role="menuitem" class="menu-a" href="#dev">Meu estudo</a><a role="menuitem" class="menu-a" href="#agenda">Agenda da semana</a><button role="menuitem" data-act="settings">Horários e pagamento</button>` : ''}${lsGet(THEME_KEY)? '<button role="menuitem" data-act="theme-system">Seguir o tema do sistema</button>' : ''}<button role="menuitem" data-act="logout">Sair</button></div>` : ''}
+        <button role="menuitem" data-act="profile">Editar meu nome</button>${isT()? `<a role="menuitem" class="menu-a" href="#dev">Meu estudo</a><a role="menuitem" class="menu-a" href="#agenda">Agenda da semana</a><button role="menuitem" data-act="settings">Configurações</button>` : ''}${lsGet(THEME_KEY)? '<button role="menuitem" data-act="theme-system">Seguir o tema do sistema</button>' : ''}<button role="menuitem" data-act="logout">Sair</button></div>` : ''}
     </div></div></header>`;
 }
 
@@ -2657,6 +2661,7 @@ function render(){
   else if (r.name==='alunos') main=viewStudents();
   else if (r.name==='aluno'&&user(r.id)?.teacherId===S.me) main=viewNotebook(user(r.id));
   else main=viewToday();
+  document.documentElement.lang= uiLang()==='en'? 'en' : 'pt-BR';
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
   if (isT()&&document.querySelector('[data-pdf-mount]')) mountPdfs();
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
@@ -2744,11 +2749,12 @@ function studentForm(s){
 }
 function settingsModal(){
   const st=settingsOf(S.me), av=st.avail, hs=[...Array(17)].map((_,i)=>i+6);
-  openModal(`<form data-form="settings"><h2>Horários e pagamento</h2>
+  openModal(`<form data-form="settings"><h2>Configurações</h2>
     <fieldset><legend>Horários em que você pode dar aula</legend><p class="meta" style="margin-top:-6px">Os alunos só podem sugerir remarcação dentro destes horários, e só nos que estiverem livres.</p>
       <div class="avail">${[1,2,3,4,5,6,0].map(d=>{ const a=av[d]; return `<div class="avail-r"><label class="ck"><input type="checkbox" name="on${d}" ${a?'checked':''}>${WD[d]}</label>
         <select name="from${d}" aria-label="Início ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[0]??8)===h?'selected':''}>das ${hhmm(h)}</option>`).join('')}</select>
         <select name="to${d}" aria-label="Fim ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[1]??21)===h?'selected':''}>até ${hhmm(h)}</option>`).join('')}</select></div>`; }).join('')}</div></fieldset>
+    <label class="field" for="st-ui">Idioma do Sotaque <small>(vale para você e para os seus alunos)</small><select id="st-ui" name="ui"><option value="pt" ${st.ui!=='en'?'selected':''}>Português</option><option value="en" ${st.ui==='en'?'selected':''}>English</option></select></label>
     <label class="field" for="st-pix">Sua chave PIX <small>(aparece para o aluno quando há pagamento pendente)</small><input type="text" id="st-pix" name="pix" value="${esc(st.pix)}"></label>
     <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Salvar</button></div></form>`,{wide:true});
 }
@@ -2839,7 +2845,7 @@ const FORMS={
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
     const av={}; for (const d of [0,1,2,3,4,5,6]) if (fd.get('on'+d)){ const a=+fd.get('from'+d), b=+fd.get('to'+d); if (b>a) av[d]=[a,b]; }
-    const st=settingsOf(S.me); st.avail=av; st.pix=fd.get('pix').trim(); save(); closeModal(); render(); toast('Configurações salvas'); },
+    const st=settingsOf(S.me), ui=fd.get('ui')||'pt', changed=(st.ui||'pt')!==ui; st.avail=av; st.pix=fd.get('pix').trim(); st.ui=ui; save(); closeModal(); render(); toast(ui==='en'&&changed? 'Settings saved. Sotaque is now in English.' : 'Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };

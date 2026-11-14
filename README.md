@@ -42,6 +42,17 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   e leituras novas (`provas.js`). Qualquer tarefa pode ter um "áudio para escuta".
   Velocidade do áudio em 0,75×, 1× ou 1,5×: dá para trocar a qualquer momento, até no meio da fala
   (ela recomeça da frase em que estava). A escolha fica guardada no aparelho.
+- Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
+  Aluno: Hoje · Homework · Flashcards · Trilha.
+- Biblioteca com sub-abas: Atividades (o banco), Flashcards, Provas e nivelamento, PDFs.
+- Flashcards (`flashcards.js`): baralhos com áudio e repetição espaçada (caixas de Leitner: 1, 2, 4, 8 e 16 dias);
+  6 baralhos prontos (inglês e francês); a professora monta, estuda junto no modo aluno e manda para os alunos.
+- PDFs (`pdfs.js`): importados e guardados no aparelho (IndexedDB), mostrados na aula com caneta e marca-texto;
+  o texto de uma página vira uma atividade nova. Leitor: pdf.js 3.11.174 (Mozilla, Apache 2.0) em `vendor/pdfjs`.
+- Aula (`aula.js`): sequência de blocos (texto, atividade, flashcards, página de PDF) para passar com a tela
+  compartilhada; no fim, manda as atividades e baralhos como homework.
+- Idioma do sistema (`i18n.js`): português ou inglês, escolhido pela professora em Configurações; vale para ela
+  e para os alunos dela. Traduz a interface; o conteúdo das atividades fica como foi escrito.
 - Au Pair (`aupair.js`, tema "Au Pair" no banco): preparação para a entrevista de inglês que a agência faz
   no Brasil (vida pessoal, inglês, experiência com crianças, "What would you do if…?", expectativas sobre os EUA).
   7 tarefas com áudio (A2–B1), incluindo uma simulação de speaking e as duas lições de casa. Páginas avulsas em
