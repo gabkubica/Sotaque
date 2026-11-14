@@ -79,8 +79,8 @@ en effet = de fato | Elle est en retard ; en effet, le bus est tombé en panne.`
 ];
 const parseCards=txt=>String(txt||'').split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{ const [fb,ex='']=l.split('|'), k=fb.indexOf('='); return k<0? null : {f:fb.slice(0,k).trim(),b:fb.slice(k+1).trim(),ex:ex.trim()}; }).filter(c=>c&&c.f&&c.b);
 const cardsText=d=>d.cards.map(c=>`${c.f} = ${c.b}${c.ex? ' | '+c.ex : ''}`).join('\n');
-function seedDecks(){ return FLASH_SEED.map(([lang,level,title,txt])=>({id:'d'+hashStr(lang+title),lang,level,title,teacherId:null,students:[],cards:parseCards(txt).map((c,i)=>({id:'c'+i,...c})),createdAt:now()})); }
-function ensureFlash(){ if (!DB.decks) DB.decks=seedDecks(); if (!DB.flashp) DB.flashp={}; }
+function seedDecks(){ return FLASH_SEED.concat(typeof FLASH_SEED_2!=='undefined'? FLASH_SEED_2 : []).map(([lang,level,title,txt])=>({id:'d'+hashStr(lang+title),lang,level,title,teacherId:null,students:[],cards:parseCards(txt).map((c,i)=>({id:'c'+i,...c})),createdAt:now()})); }
+function ensureFlash(){ if (!DB.decks) DB.decks=[]; for (const d of seedDecks()) if (!DB.decks.some(x=>x.id===d.id)) DB.decks.push(d); if (!DB.flashp) DB.flashp={}; }
 const deckById=id=>DB.decks.find(d=>d.id===id);
 const decksFor=()=>(DB.decks||[]).filter(d=>d.lang===myLang()&&(!d.teacherId||d.teacherId===S.me));
 const decksOfStudent=sid=>(DB.decks||[]).filter(d=>d.students?.includes(sid));
@@ -88,7 +88,7 @@ const fpOf=(sid,did)=>((DB.flashp ||= {})[sid+'|'+did] ||= {});
 const dueCards=(sid,d)=>{ const p=fpOf(sid,d.id), t=now(); return d.cards.filter(c=>!p[c.id]||p[c.id].due<=t); };
 const learned=(sid,d)=>{ const p=fpOf(sid,d.id); return d.cards.filter(c=>(p[c.id]?.box||0)>=3).length; };
 const flashDueCount=sid=>decksOfStudent(sid).reduce((a,d)=>a+Math.min(FLASH_MAX,dueCards(sid,d).length),0);
-const flashArt=(d,o)=>quadro(LV_PAL[d.level]||'menta','livro',hashStr(d.title)%997,o);
+const flashArt=(d,o)=>{ const h=hashStr(d.title); return quadro(LV_PAL[d.level]||'menta',sceneFor(d.title+' '+(d.cards[0]?.f||''),'Vocabulário',h),h%997,o); };
 
 /* ---------- cartões na tela (aluno estudando, professora vendo como aluno, ou dentro da Aula) ---------- */
 function flashStart(did,saveIt){

@@ -473,6 +473,61 @@ const SCENES = {
     for (let i=0;i<6;i++) o+=star(clamp(cx+m*R.rr(-.7,.7),W*.04,W*.96),H*R.rr(.4,.85),m*R.rr(.012,.022),i%2? p.c : p.a);
     return o;
   }},
+  panela:{ nome:'Cozinha', draw(W,H,p,R,id,fx){
+    const m=Math.min(W,H), cx=fx(), base=H*.8, pw=m*.62, ph=m*.3; let o='';
+    o+=circle(cx+m*.46,H*.26,m*.13,p.b);
+    o+=`<rect y="${f(base)}" width="${W}" height="${f(H)}" fill="${p.b}"/>`;
+    for (let k=-1;k<=1;k++){ const x=cx+k*pw*.25; o+=`<path d="M${f(x)} ${f(base-ph-m*.12)}c${f(m*.05)} ${f(-m*.05)} ${f(-m*.05)} ${f(-m*.1)} 0 ${f(-m*.15)}" fill="none" stroke="${k? p.c : p.a}" stroke-width="${f(m*.018)}" stroke-linecap="round"/>`; }
+    o+=bar(cx-pw/2-m*.09,base-ph*.78,m*.12,m*.04,p.c)+bar(cx+pw/2-m*.03,base-ph*.78,m*.12,m*.04,p.c);
+    o+=`<rect x="${f(cx-pw/2)}" y="${f(base-ph)}" width="${f(pw)}" height="${f(ph)}" rx="${f(m*.05)}" fill="${p.a}"/>`;
+    o+=`<path d="M${f(cx-pw*.55)} ${f(base-ph)}Q${f(cx)} ${f(base-ph-m*.16)} ${f(cx+pw*.55)} ${f(base-ph)}Z" fill="${p.c}"/>`+circle(cx,base-ph-m*.1,m*.03,p.c);
+    o+=bar(cx-pw*.32,base-ph*.55,pw*.64,m*.03,CREAM);
+    o+=star(clamp(cx-m*.55,W*.05,W*.95),H*.24,m*.024,p.c)+star(clamp(cx-m*.3,W*.05,W*.95),H*.14,m*.016,p.a);
+    return o;
+  }},
+  bola:{ nome:'Esporte', draw(W,H,p,R,id,fx){
+    const m=Math.min(W,H), cx=fx(), r=m*.17, cy=H*.62; let o='';
+    o+=circle(cx-m*.5,H*.26,m*.12,p.b)+cloud(clamp(cx+m*.3,W*.04,W*.8),H*.22,m*.035,CREAM);
+    o+=hill(W,H,R,H*.86,[[cx-m*.6,H*.06,m*.9],[cx+m*.6,H*.05,m*.8]],p.b).svg;
+    o+=`<rect x="${f(cx+m*.42)}" y="${f(H*.42)}" width="${f(m*.36)}" height="${f(H*.42)}" fill="none" stroke="${CREAM}" stroke-width="${f(m*.022)}"/>`;
+    for (let i=0;i<3;i++) o+=bar(cx-r-m*(.42-i*.06),cy-r*.5+i*r*.5,m*(.22-i*.04),m*.02,p.c);
+    o+=circle(cx,cy,r,CREAM)+circle(cx,cy,r*.34,p.a);
+    [0,72,144,216,288].forEach(a=>{ const t=a*Math.PI/180; o+=circle(cx+Math.cos(t)*r*.78,cy+Math.sin(t)*r*.78,r*.17,p.a); });
+    o+=`<rect y="${f(H*.9)}" width="${W}" height="${f(H)}" fill="${p.c}"/>`;
+    return o;
+  }},
+  bicicleta:{ nome:'Bicicleta', draw(W,H,p,R,id,fx){
+    const m=Math.min(W,H), cx=fx(), base=H*.84, wr=m*.17, gap=m*.27; let o='';
+    o+=circle(cx+m*.42,H*.24,m*.12,p.b); o+=birds(R,2,clamp(cx-m*.5,W*.05,W*.85),H*.22,m*.018,p.c);
+    o+=hill(W,H,R,H*.88,[[cx-m*.7,H*.05,m*.9]],p.b).svg+`<rect y="${f(base+wr*.02)}" width="${W}" height="${f(H)}" fill="${p.c}"/>`;
+    const L=cx-gap, Rr=cx+gap, y=base-wr;
+    o+=ring(L,y,wr,p.a,m*.026)+ring(Rr,y,wr,p.a,m*.026)+circle(L,y,m*.018,p.a)+circle(Rr,y,m*.018,p.a);
+    const sx=cx-m*.02, sy=y-wr*.95, hx=Rr-m*.05, hy=y-wr*1.15;
+    o+=`<path d="M${f(L)} ${f(y)}L${f(sx)} ${f(sy)}L${f(cx+m*.06)} ${f(y)}Z M${f(cx+m*.06)} ${f(y)}L${f(hx)} ${f(hy+m*.04)}L${f(sx)} ${f(sy)} M${f(hx)} ${f(hy)}L${f(Rr)} ${f(y)}" fill="none" stroke="${p.c}" stroke-width="${f(m*.024)}" stroke-linejoin="round" stroke-linecap="round"/>`;
+    o+=bar(sx-m*.06,sy-m*.035,m*.12,m*.035,p.a)+bar(hx-m*.03,hy-m*.02,m*.1,m*.03,p.a);
+    return o;
+  }},
+  presente:{ nome:'Presente', draw(W,H,p,R,id,fx){
+    const m=Math.min(W,H), cx=fx(), base=H*.84, bw=m*.46, bh=m*.34; let o='';
+    o+=`<rect y="${f(base)}" width="${W}" height="${f(H)}" fill="${p.b}"/>`;
+    for (let i=0;i<14;i++){ const x=clamp(cx+m*R.rr(-.95,.95),W*.03,W*.97), y=H*R.rr(.08,.6), c=[p.a,p.c,CREAM][i%3]; o+= i%2? circle(x,y,m*.012,c) : `<rect x="${f(x)}" y="${f(y)}" width="${f(m*.03)}" height="${f(m*.012)}" rx="${f(m*.006)}" transform="rotate(${f(R.rr(-40,40))} ${f(x)} ${f(y)})" fill="${c}"/>`; }
+    o+=`<rect x="${f(cx-bw/2)}" y="${f(base-bh)}" width="${f(bw)}" height="${f(bh)}" fill="${p.a}"/>`+`<rect x="${f(cx-bw*.56)}" y="${f(base-bh-m*.07)}" width="${f(bw*1.12)}" height="${f(m*.09)}" fill="${p.c}"/>`;
+    o+=`<rect x="${f(cx-m*.03)}" y="${f(base-bh-m*.07)}" width="${f(m*.06)}" height="${f(bh+m*.07)}" fill="${CREAM}"/>`;
+    o+=`<ellipse cx="${f(cx-m*.08)}" cy="${f(base-bh-m*.12)}" rx="${f(m*.08)}" ry="${f(m*.045)}" transform="rotate(-20 ${f(cx-m*.08)} ${f(base-bh-m*.12)})" fill="${CREAM}"/><ellipse cx="${f(cx+m*.08)}" cy="${f(base-bh-m*.12)}" rx="${f(m*.08)}" ry="${f(m*.045)}" transform="rotate(20 ${f(cx+m*.08)} ${f(base-bh-m*.12)})" fill="${CREAM}"/>`;
+    return o;
+  }},
+  carrinho:{ nome:'Carrinho de bebê', draw(W,H,p,R,id,fx){
+    const m=Math.min(W,H), cx=fx(), base=H*.86, r=m*.24, cy=H*.52; let o='';
+    o+=circle(cx+m*.5,H*.24,m*.11,p.b)+cloud(clamp(cx-m*.85,W*.04,W*.75),H*.24,m*.035,CREAM);
+    o+=hill(W,H,R,H*.9,[[cx-m*.4,H*.04,m*.9],[cx+m*.8,H*.05,m*.7]],p.b).svg;
+    o+=ring(cx-r*.6,base-m*.06,m*.065,p.c,m*.022)+ring(cx+r*.6,base-m*.06,m*.065,p.c,m*.022);
+    o+=`<path d="M${f(cx-r)} ${f(cy)}L${f(cx+r)} ${f(cy)}A${f(r)} ${f(r*.75)} 0 0 1 ${f(cx-r)} ${f(cy)}Z" fill="${p.a}"/>`;
+    o+=`<path d="M${f(cx-r)} ${f(cy)}A${f(r)} ${f(r)} 0 0 1 ${f(cx+r*.15)} ${f(cy-r)}L${f(cx)} ${f(cy)}Z" fill="${p.c}"/>`;
+    o+=`<path d="M${f(cx+r)} ${f(cy)}l${f(m*.1)} ${f(-m*.14)}" stroke="${p.c}" stroke-width="${f(m*.02)}" stroke-linecap="round"/>`;
+    o+=bar(cx-r*.7,cy+r*.18,r*1.4,m*.025,CREAM);
+    o+=star(clamp(cx-m*.4,W*.05,W*.95),H*.14,m*.02,p.c)+star(clamp(cx+m*.2,W*.05,W*.95),H*.1,m*.014,p.a);
+    return o;
+  }},
 };
 const SKEYS = Object.keys(SCENES);
 
@@ -481,6 +536,11 @@ const SKEYS = Object.keys(SCENES);
    Procura palavras do título (inglês, francês ou português); se nada combina, usa o tema.
    A semente escolhe dentro do grupo, para tarefas parecidas não ficarem iguais. */
 const SCENE_KEYS=[
+  [/child|\bkids?\b|baby|babies|au pair|toddler|criança|enfant|bébé|childcare/i,['carrinho','balao','peixes']],
+  [/sport|football|soccer|\bgym\b|fitness|esporte|exercise|olymp/i,['bola','bicicleta','montanha']],
+  [/bike|bicycle|cycling|vélo|bicicleta|hobb|free time|loisirs|weekend|week-end/i,['bicicleta','bola','balao']],
+  [/cook|recipe|recette|receita|kitchen|cuisine|meal|repas/i,['panela','xicara','uvas']],
+  [/birthday|anniversaire|gift|cadeau|presente|party|celebrat|fête/i,['presente','bandeirinhas','balao']],
   [/listen|écoute|escuta|podcast|radio/i,['fones','disco','microfone']],
   [/pronunc|prononc|\bsounds?\b|\bsons\b|word stress|endings|silent|liaison|rhyme|muettes/i,['microfone','fones','disco']],
   [/holiday|fête|christmas|thanksgiving|festa|celebr/i,['bandeirinhas','balao']],
@@ -489,7 +549,7 @@ const SCENE_KEYS=[
   [/\bbody\b|corps|corpo/i,['coracao','peixes']],
   [/writ|écri|e-?mail|letter|lettre|postcard|postale|réclamation|complaint|essay|dissertation|connecteur/i,['envelope','lapis']],
   [/read|lecture|leitura|news|médias|actualité|notícia/i,['lupa','livro','lampada']],
-  [/restaurant|food|kitchen|cuisine|gastronom|café|courses|comida|sabor|saveur/i,['xicara','uvas']],
+  [/restaurant|food|kitchen|cuisine|gastronom|café|courses|comida|sabor|saveur/i,['xicara','uvas','panela']],
   [/weather|météo|season|saison|environment|environnement|clima|meio ambiente/i,['chuva','planta','amanhecer']],
   [/travel|airport|voyage|transport|direction|en ville|\bcity\b|cidade|viage|chemin|à, en|\bplace\b/i,['mala','trem','cidade','aviao']],
   [/shopping|money|vêtements|clothes|colou?rs?\b|couleur|compras|dinheiro|shapes/i,['estampa','bandeirinhas','mala']],
@@ -507,7 +567,7 @@ const SCENE_KEYS=[
 ];
 const TOPIC_POOL={'Gramática':['livro','lampada','arcos','lapis','estampa','balao','montanha'],'Conjugação':['relogio','arcos','livro','lampada'],'Vocabulário':['uvas','casa','planta','xicara','estampa'],
   'Phrasal verbs':['aviao','balao','trem','montanha'],'Leitura':['lupa','livro'],'Escuta':['fones','disco'],'Escrita':['lapis','envelope'],'Expressões':['conversa','balao','coracao'],
-  'Pronúncia':['microfone','fones','disco'],'Cultura':['bandeirinhas','globo'],'Trabalho':['cidade','xicara','envelope'],'Kids':['peixes','balao','mar','uvas']};
+  'Pronúncia':['microfone','fones','disco'],'Cultura':['bandeirinhas','globo'],'Trabalho':['cidade','xicara','envelope'],'Kids':['peixes','balao','mar','uvas','carrinho'],'Au Pair':['carrinho','aviao','casa','conversa'],'Provas':['montanha','lupa','lapis','livro'],'Homework':['lapis','livro','casa','lampada']};
 function scenePool(text,topic){
   for (const [re,pool] of SCENE_KEYS) if (re.test(text)) return pool;
   return TOPIC_POOL[topic]||['livro','lampada','arcos','globo'];

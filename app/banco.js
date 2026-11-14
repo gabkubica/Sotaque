@@ -656,7 +656,8 @@ BANK_RAW.push(
 
 function seedBank(){
   const T0=now(), mk=lang=>([level,topic,title,instructions,list],k)=>({id:uid(),lang,level,topic,title,instructions,questions:fromRaw(list),uses:(hashStr(title)%6),mine:false,createdAt:T0-30*DAY+k*MIN});
-  return BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')),typeof provasBank!=='undefined'? provasBank(T0) : [],
-    typeof BANK_RAW_EXTRA!=='undefined'? BANK_RAW_EXTRA.map(([lang,...r],k)=>mk(lang)(r,k+500)) : [],typeof aupairBank!=='undefined'? aupairBank(T0) : []);
+  const base=BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')),typeof provasBank!=='undefined'? provasBank(T0) : [],
+    typeof BANK_RAW_EXTRA!=='undefined'? BANK_RAW_EXTRA.map(([lang,...r],k)=>mk(lang)(r,k+500)) : [],typeof aupairBank!=='undefined'? aupairBank(T0) : [],typeof contBank!=='undefined'? contBank(T0) : []);
+  return base.concat(typeof provasMarcos!=='undefined'? provasMarcos(base,T0) : []);
 }
 
