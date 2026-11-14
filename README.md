@@ -24,6 +24,19 @@ O Sotaque é instalável no celular: no Chrome (Android), menu → *Instalar app
 no Safari (iPhone), Compartilhar → *Adicionar à Tela de Início*. Ele abre em tela cheia,
 com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, `manifest.webmanifest`).
 
+## Dois modos com o mesmo código
+
+- **Sotaque real** · `aulas/` → https://gabkubica.github.io/Sotaque/aulas/
+  Começa sem alunos e sem dados de exemplo, com todas as atividades, provas, flashcards e aulas prontas.
+  A professora cria a própria conta ("Criar minha conta"); os alunos recebem uma senha provisória gerada na hora.
+  Por enquanto os dados ficam no navegador de quem usa (chave `sotaque:real`): falta ligar a nuvem (Supabase)
+  para os alunos entrarem pelo celular deles.
+- **Modo adm / demonstração** · `app/` → https://gabkubica.github.io/Sotaque/app/
+  Com professores e alunos de exemplo (senha `sotaque123`), para testar tudo sem mexer no real (chave `sotaque:v2`).
+
+`aulas/index.html` é a mesma página de `app/index.html`, com `window.SOTAQUE_MODE='real'` e os arquivos em `../app/`.
+O estilo fica em `app/app.css` e o código principal em `app/main.js`.
+
 ## app/ · Sotaque
 
 **Professor ou professora** (Hoje · Agenda · Alunos · Tarefas · Desenvolvimento)

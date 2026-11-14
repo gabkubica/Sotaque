@@ -867,3 +867,13 @@ const EXTRA_Q={
   'Reading · A hostel review':[MAT('Ligue.',[['dorm','quarto compartilhado'],['locker','armário com chave'],['noisy','barulhento']]),GAP('The staff were really ___. (prestativos)','helpful'),'Write a short review of a hotel or hostel you stayed in (60–80 words).'],
 };
 function aplicarExtras(bank){ for (const b of bank){ const x=b.lang==='EN'&&EXTRA_Q[b.title]; if (x&&!b.extra){ b.questions.push(...fromRaw(x)); b.extra=true; } } return bank; }
+
+/* conta nova de professor(a): recebe as aulas prontas do idioma que ensina */
+const AULA_AUPAIR=['Au Pair · Interview practice',[{t:'texto',title:'Warm-up',body:'How do you feel about your au pair interview?\nWhat are you most nervous about?\nWhat do you think they will ask you?'},{t:'flash',deck:'Au Pair · Interview phrases'},{t:'ativ',bank:'Au Pair · The interview: all about you'},{t:'ativ',bank:'Au Pair · What would you do if…?'},{t:'texto',title:'Your turn: the interview',body:'Answer like in the real interview. Full sentences, with examples!\n\n1. Tell me a little about yourself.\n2. Do you have any experience with children?\n3. What would you do if the child got hurt?\n4. Why do you want to be an au pair?'}]];
+function seedAulasFor(tid,lang){
+  DB.aulas ||= [];
+  const src={prof:'EN',prof2:'FR'}, bk=t=>DB.bank.find(b=>b.lang===lang&&b.title===t)?.id, dk=t=>DB.decks?.find(d=>d.lang===lang&&d.title===t)?.id;
+  const list=CONT_AULAS.filter(([t])=>src[t]===lang).map(([,title,blocks])=>[title,blocks]); if (lang==='EN') list.unshift(AULA_AUPAIR);
+  list.forEach(([title,blocks],k)=>{ const bl=blocks.map(b=>b.t==='ativ'? {t:'ativ',bankId:bk(b.bank)} : b.t==='flash'? {t:'flash',deckId:dk(b.deck)} : {...b}).filter(b=>b.t==='texto'||b.bankId||b.deckId);
+    DB.aulas.push({id:'au'+uid(),teacherId:tid,title,studentId:null,blocks:bl,createdAt:now()-k*MIN}); });
+}

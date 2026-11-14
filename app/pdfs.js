@@ -16,8 +16,8 @@ const idbDel=id=>idbDo('readwrite',st=>st.delete(id));
 let PDFJS=null;
 function loadPdfjs(){
   if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
-  return PDFJS ||= new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='vendor/pdfjs/pdf.min.js';
-    sc.onload=()=>{ pdfjsLib.GlobalWorkerOptions.workerSrc='vendor/pdfjs/pdf.worker.min.js'; res(pdfjsLib); }; sc.onerror=()=>{ PDFJS=null; rej(new Error('pdfjs')); }; document.head.appendChild(sc); });
+  return PDFJS ||= new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src=(window.APP_BASE||'')+'vendor/pdfjs/pdf.min.js';
+    sc.onload=()=>{ pdfjsLib.GlobalWorkerOptions.workerSrc=(window.APP_BASE||'')+'vendor/pdfjs/pdf.worker.min.js'; res(pdfjsLib); }; sc.onerror=()=>{ PDFJS=null; rej(new Error('pdfjs')); }; document.head.appendChild(sc); });
 }
 async function pdfDoc(id){
   if (PDFDOC[id]) return PDFDOC[id];
