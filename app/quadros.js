@@ -567,7 +567,7 @@ const SCENE_KEYS=[
 ];
 const TOPIC_POOL={'Gramática':['livro','lampada','arcos','lapis','estampa','balao','montanha'],'Conjugação':['relogio','arcos','livro','lampada'],'Vocabulário':['uvas','casa','planta','xicara','estampa'],
   'Phrasal verbs':['aviao','balao','trem','montanha'],'Leitura':['lupa','livro'],'Escuta':['fones','disco'],'Escrita':['lapis','envelope'],'Expressões':['conversa','balao','coracao'],
-  'Pronúncia':['microfone','fones','disco'],'Cultura':['bandeirinhas','globo'],'Trabalho':['cidade','xicara','envelope'],'Kids':['peixes','balao','mar','uvas','carrinho'],'Au Pair':['carrinho','aviao','casa','conversa'],'Provas':['montanha','lupa','lapis','livro'],'Homework':['lapis','livro','casa','lampada']};
+  'Pronúncia':['microfone','fones','disco'],'Cultura':['bandeirinhas','globo'],'Trabalho':['cidade','xicara','envelope'],'Kids':['peixes','balao','mar','uvas','carrinho'],'Au Pair':['carrinho','aviao','casa','conversa'],'Provas':['montanha','lupa','lapis','livro'],'Completa':['lapis','livro','casa','lampada']};
 function scenePool(text,topic){
   for (const [re,pool] of SCENE_KEYS) if (re.test(text)) return pool;
   return TOPIC_POOL[topic]||['livro','lampada','arcos','globo'];

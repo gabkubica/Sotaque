@@ -17,7 +17,7 @@ const pl=(n,one,many)=>`${n} ${+n===1? one : many}`;
 const I18N_EXACT={
   /* navegação e conta */
   'Hoje':'Today','Alunos':'Students','Aula':'Class','Homework':'Homework','Biblioteca':'Library','Flashcards':'Flashcards','Trilha':'Path','Agenda':'Schedule',
-  'Editar meu nome':'Edit my name','Meu estudo':'My study','Agenda da semana':'This week','Configurações':'Settings','Horários em que você pode dar aula':'Hours when you can teach','Sua chave PIX':'Your PIX key','Sair':'Log out','Seguir o tema do sistema':'Follow system theme',
+  'Editar meu nome':'Edit my name','Meu estudo':'My study','Agenda da semana':'This week','Configurações':'Settings','Completa':'Full practice','Provas':'Tests','Au Pair':'Au Pair','Limpar':'Clear','Mandar como uma homework':'Send as one homework','Mandar':'Send','Horários em que você pode dar aula':'Hours when you can teach','Sua chave PIX':'Your PIX key','Sair':'Log out','Seguir o tema do sistema':'Follow system theme',
   'Sua conta':'Your account','Mudar para o modo escuro':'Switch to dark mode','Mudar para o modo claro':'Switch to light mode','Principal':'Main',
   /* entrar */
   'Suas aulas particulares, num lugar só.':'Your private lessons, all in one place.','Agenda, histórico das aulas e pacote. Para quem ensina e para quem aprende.':'Schedule, lesson history and packages. For teachers and learners.',
@@ -80,7 +80,7 @@ const I18N_EXACT={
   'Para ter uma ideia rápida do nível antes da primeira aula.':'For a quick idea of the level before the first lesson.','Para quem vai fazer um curso longo ou precisa de um diagnóstico detalhado, habilidade por habilidade.':'For long courses or a detailed diagnosis, skill by skill.',
   'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.':'A1 to C1 placement test, with audio, for students whose level you don’t know yet.',
   'As tarefas que você mandou para os alunos. As objetivas se corrigem sozinhas; as escritas você corrige aqui.':'The homework you sent to your students. Objective questions are corrected automatically; you correct the written ones here.',
-  'Atividades prontas de inglês. Abra, veja como o aluno vê ou mande como homework.':'Ready-made English activities. Open one, view it as a student or send it as homework.','Atividades prontas de francês. Abra, veja como o aluno vê ou mande como homework.':'Ready-made French activities. Open one, view it as a student or send it as homework.',
+  'Atividades prontas de inglês. Todas servem como homework: mande uma, ou toque no + de várias para juntar numa homework só.':'Ready-made English activities. Any of them can be homework: send one, or tap + on several to combine them into one homework.','Atividades prontas de francês. Abra, veja como o aluno vê ou mande como homework.':'Ready-made French activities. Open one, view it as a student or send it as homework.',
   'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.':'Decks of words and phrases, with audio. Students study at home, and what they get wrong comes back more often.',
   'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.':'Your PDFs, to show in class while sharing your screen and draw on top. They’re stored on this device.',
   'Importe um PDF para mostrar na aula: apostila, exercício, texto. Você passa as páginas, risca e marca por cima com a tela compartilhada.':'Import a PDF to show in class: coursebook, exercise, text. Turn the pages and draw on top while sharing your screen.',

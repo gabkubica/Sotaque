@@ -565,6 +565,230 @@ casser les pieds = encher o saco | Tu me casses les pieds !
 tomber dans les pommes = desmaiar | Elle est tombée dans les pommes.
 mettre son grain de sel = dar pitaco | Il met toujours son grain de sel.
 c’est la goutte d’eau qui fait déborder le vase = é a gota d’água | Ça, c’est la goutte d’eau qui fait déborder le vase !`],
+  ['EN','A1','Numbers and prices',`How much is it? = Quanto custa? | How much is this T-shirt?
+It’s twenty dollars. = Custa vinte dólares. | It’s twenty dollars and fifty cents.
+thirteen / thirty = treze / trinta | Thirteen (13) and thirty (30) sound different!
+fifteen / fifty = quinze / cinquenta | I’m fifteen. My dad is fifty.
+a hundred = cem | There are a hundred people here.
+a thousand = mil | It costs a thousand reais.
+first = primeiro | Take the first street on the left.
+second = segundo | My office is on the second floor.
+third = terceiro | It’s my third time in London.
+What’s your phone number? = Qual é o seu telefone? | What’s your phone number? — It’s 9 8765 4321.`],
+  ['EN','A1','Animals',`dog = cachorro | My dog loves the park.
+cat = gato | The cat is sleeping.
+bird = pássaro | There’s a bird in the tree.
+horse = cavalo | Can you ride a horse?
+cow = vaca | Cows give us milk.
+fish = peixe | I have two fish.
+rabbit = coelho | The rabbit is white.
+mouse = rato (pequeno) | The cat is chasing a mouse.
+monkey = macaco | Monkeys love bananas.
+pet = animal de estimação | Do you have a pet?`],
+  ['EN','A1','The body',`head = cabeça | My head hurts.
+eyes = olhos | She has blue eyes.
+ears = orelhas, ouvidos | Cover your ears!
+nose = nariz | He has a big nose.
+mouth = boca | Open your mouth, please.
+teeth = dentes | Brush your teeth.
+arm = braço | I broke my arm.
+hand = mão | Raise your hand.
+leg = perna | My legs are tired.
+foot / feet = pé / pés | My feet are cold.`],
+  ['EN','A2','Jobs',`nurse = enfermeiro(a) | She’s a nurse at the hospital.
+lawyer = advogado(a) | My uncle is a lawyer.
+engineer = engenheiro(a) | He works as an engineer.
+cook / chef = cozinheiro(a) | The chef is from Italy.
+waiter / waitress = garçom / garçonete | The waiter brought the menu.
+shop assistant = vendedor(a) de loja | I work as a shop assistant.
+accountant = contador(a) | The accountant checks the numbers.
+hairdresser = cabeleireiro(a) | I go to the hairdresser every month.
+unemployed = desempregado | He’s unemployed at the moment.
+What do you do? = O que você faz? / Qual é a sua profissão? | What do you do? — I’m a teacher.`],
+  ['EN','A2','Sports and hobbies',`play football = jogar futebol | We play football on Saturdays.
+go swimming = nadar, ir nadar | I go swimming twice a week.
+go running = correr | She goes running every morning.
+do yoga = fazer ioga | I do yoga to relax.
+ride a bike = andar de bicicleta | Can you ride a bike?
+play the guitar = tocar violão | He plays the guitar very well.
+take photos = tirar fotos | I love taking photos.
+hang out with friends = sair com os amigos | On Fridays I hang out with friends.
+be into (something) = curtir, gostar muito | I’m really into music.
+free time = tempo livre | What do you do in your free time?`],
+  ['EN','A2','Transport',`bus stop = ponto de ônibus | Wait at the bus stop.
+subway / underground = metrô (US / UK) | I take the subway to work.
+train station = estação de trem | The train station is near here.
+ticket = passagem, bilhete | A single ticket, please.
+on foot = a pé | I go to school on foot.
+traffic jam = engarrafamento | Sorry, I was stuck in a traffic jam.
+to miss the bus = perder o ônibus | Hurry up or we’ll miss the bus!
+to get on / off = entrar / descer | Get off at the next stop.
+driver’s license = carteira de motorista | Do you have a driver’s license?
+rush hour = horário de pico | Avoid the rush hour.`],
+  ['EN','A2','Irregular verbs 1',`go – went – gone = ir | I went to the beach yesterday.
+eat – ate – eaten = comer | Have you eaten?
+see – saw – seen = ver | I saw a great film.
+take – took – taken = pegar, levar | She took the bus.
+make – made – made = fazer | I made a cake.
+buy – bought – bought = comprar | He bought a new phone.
+think – thought – thought = pensar | I thought about you.
+come – came – come = vir | They came to my party.
+get – got – got/gotten = conseguir, receber | I got your message.
+know – knew – known = saber, conhecer | I knew the answer.`],
+  ['EN','B1','Irregular verbs 2',`begin – began – begun = começar | The class began at eight.
+bring – brought – brought = trazer | She brought a cake.
+catch – caught – caught = pegar | I caught a cold.
+choose – chose – chosen = escolher | Have you chosen a dish?
+fall – fell – fallen = cair | He fell off his bike.
+forget – forgot – forgotten = esquecer | I forgot my keys.
+lose – lost – lost = perder | We lost the match.
+spend – spent – spent = gastar, passar (tempo) | I spent the weekend at home.
+teach – taught – taught = ensinar | My mum taught me to cook.
+understand – understood – understood = entender | I understood everything.`],
+  ['EN','A2','False friends',`actually = na verdade (não “atualmente”) | Actually, I don’t like coffee.
+pretend = fingir (não “pretender”) | He pretended to be sick.
+push = empurrar (não “puxar”) | Push the door to open it.
+parents = pais (não “parentes”) | My parents live in Recife.
+library = biblioteca (não “livraria”) | I study at the library.
+college = faculdade (não “colégio”) | She’s in college now.
+exquisite = refinado, requintado (não “esquisito”) | The food was exquisite.
+fabric = tecido (não “fábrica”) | This fabric is soft.
+lunch = almoço (não “lanche”) | Let’s have lunch at one.
+eventually = finalmente, no fim (não “eventualmente”) | Eventually, we found the hotel.`],
+  ['EN','A2','Prepositions of time',`in the morning = de manhã | I study in the morning.
+at night = à noite | I can’t sleep at night.
+on Monday = na segunda | See you on Monday!
+in July = em julho | My birthday is in July.
+at 7 o’clock = às 7 horas | The class starts at 7 o’clock.
+in 2020 = em 2020 | I moved here in 2020.
+on May 5th = em 5 de maio | The party is on May 5th.
+at the weekend (UK) / on the weekend (US) = no fim de semana | What are you doing at the weekend?
+for two years = por / há dois anos | I’ve lived here for two years.
+since 2019 = desde 2019 | I’ve worked here since 2019.`],
+  ['EN','B1','At the doctor’s',`I don’t feel well. = Não estou me sentindo bem. | Doctor, I don’t feel well.
+It hurts here. = Dói aqui. | It hurts here when I walk.
+I’ve had a fever since yesterday. = Estou com febre desde ontem. | I’ve had a fever since yesterday.
+I feel dizzy. = Estou tonto(a). | I feel dizzy when I stand up.
+Take this twice a day. = Tome isto duas vezes ao dia. | Take this twice a day after meals.
+side effects = efeitos colaterais | Are there any side effects?
+painkiller = analgésico | Can I take a painkiller?
+to make an appointment = marcar uma consulta | I’d like to make an appointment.
+to be allergic to = ter alergia a | I’m allergic to penicillin.
+Get well soon! = Melhoras! | Get well soon, Ana!`],
+  ['EN','B1','At the airport and hotel',`check-in desk = balcão de check-in | Go to the check-in desk first.
+gate = portão de embarque | Our flight leaves from gate 12.
+boarding time = horário de embarque | Boarding time is 9:30.
+aisle / window seat = assento de corredor / janela | Can I have a window seat?
+baggage claim = esteira de bagagem | Pick up your bags at baggage claim.
+I have a reservation. = Tenho uma reserva. | Hi, I have a reservation under Silva.
+Is breakfast included? = O café da manhã está incluso? | Is breakfast included in the price?
+What time is check-out? = Que horas é o check-out? | What time is check-out tomorrow?
+room service = serviço de quarto | I’ll order room service.
+Could I have a wake-up call? = Pode me ligar para despertar? | Could I have a wake-up call at six?`],
+  ['EN','B1','Small talk',`How’s it going? = Como vai? | Hey! How’s it going?
+Long time no see! = Quanto tempo! | Long time no see! How are you?
+What have you been up to? = O que você tem feito? | What have you been up to lately?
+Not much. = Nada demais. | Not much, just working.
+How was your weekend? = Como foi seu fim de semana? | How was your weekend? Did you go out?
+Lovely weather today! = Que tempo bom hoje! | Lovely weather today, isn’t it?
+I’d better get going. = Preciso ir andando. | Well, I’d better get going.
+Nice talking to you. = Foi bom conversar com você. | Nice talking to you! See you soon.
+Same here. = Eu também. / Igualmente. | — Nice to meet you. — Same here!
+Take care! = Se cuida! | Bye, take care!`],
+  ['EN','B1','-ed or -ing adjectives',`bored / boring = entediado / chato | The film was boring, so I was bored.
+tired / tiring = cansado / cansativo | It was a tiring day. I’m tired.
+interested / interesting = interessado / interessante | I’m interested in history. It’s interesting.
+excited / exciting = animado / empolgante | What an exciting trip! I’m so excited.
+surprised / surprising = surpreso / surpreendente | The news was surprising.
+confused / confusing = confuso (pessoa) / confuso (coisa) | The instructions were confusing.
+embarrassed / embarrassing = envergonhado / constrangedor | That was so embarrassing!
+disappointed / disappointing = decepcionado / decepcionante | The result was disappointing.
+frightened / frightening = assustado / assustador | The film was frightening.`],
+  ['EN','B2','Phrasal verbs: work',`take on = assumir (tarefa, pessoa) | I can’t take on more work.
+carry out = realizar | We carried out a survey.
+put off = adiar | Don’t put off the meeting again.
+come up with = ter (uma ideia), bolar | She came up with a great idea.
+deal with = lidar com | I deal with clients every day.
+set up = montar, criar | They set up a new company.
+run out of = ficar sem | We’ve run out of time.
+look into = investigar, analisar | We’ll look into the problem.
+fill in = preencher | Please fill in this form.
+step down = deixar o cargo | The CEO stepped down last year.`],
+  ['EN','B2','Collocations: take and have',`take a break = fazer uma pausa | Let’s take a five-minute break.
+take a risk = correr um risco | Sometimes you have to take a risk.
+take part in = participar de | I took part in a marathon.
+take advantage of = aproveitar | Take advantage of the sale!
+take place = acontecer | The meeting will take place on Monday.
+have a go = tentar | Can I have a go?
+have a look = dar uma olhada | Have a look at this photo.
+have a word with = conversar rapidamente com | Can I have a word with you?
+have fun = divertir-se | Have fun at the party!
+have second thoughts = pensar duas vezes | I’m having second thoughts about the trip.`],
+  ['EN','B2','More idioms',`spill the beans = contar o segredo | Come on, spill the beans!
+bite the bullet = encarar algo difícil | I bit the bullet and called my boss.
+in hot water = em apuros | He’s in hot water with his teacher.
+a blessing in disguise = há males que vêm para o bem | Losing that job was a blessing in disguise.
+sit on the fence = ficar em cima do muro | Stop sitting on the fence and decide!
+the ball is in your court = a decisão é sua | I’ve made my offer. The ball is in your court.
+hit the nail on the head = acertar em cheio | You’ve hit the nail on the head.
+let the cat out of the bag = deixar escapar um segredo | Who let the cat out of the bag?
+when pigs fly = quando as galinhas criarem dentes | He’ll clean his room when pigs fly.
+cut corners = fazer as coisas nas coxas | Don’t cut corners on safety.`],
+  ['EN','C1','Academic vocabulary',`to argue that = defender que | The author argues that cities must change.
+evidence = evidências, provas | There is little evidence for this claim.
+to highlight = destacar | The report highlights three problems.
+significant = significativo | There was a significant increase in prices.
+a trend = uma tendência | This trend began in the 1990s.
+to account for = representar, explicar | Women account for 60% of students.
+to undermine = minar, enfraquecer | Corruption undermines trust.
+to address (an issue) = tratar (de uma questão) | We need to address this issue.
+to some extent = até certo ponto | To some extent, I agree.
+a drawback = uma desvantagem | The main drawback is the cost.`],
+  ['FR','A1','Les nombres',`un, deux, trois = um, dois, três | J’ai trois frères.
+dix = dez | Il est dix heures.
+vingt = vinte | J’ai vingt ans.
+soixante-dix = setenta | Mon grand-père a soixante-dix ans.
+quatre-vingts = oitenta | Ça coûte quatre-vingts euros.
+quatre-vingt-dix = noventa | Il y a quatre-vingt-dix élèves.
+cent = cem | Cent euros, s’il vous plaît.
+premier, première = primeiro(a) | C’est mon premier jour.
+Quel âge as-tu ? = Quantos anos você tem? | Quel âge as-tu ? — J’ai vingt-cinq ans.`],
+  ['FR','A1','Verbes du quotidien',`être = ser, estar | Je suis brésilien.
+avoir = ter | J’ai un chat.
+aller = ir | Je vais au travail en bus.
+faire = fazer | Je fais du sport.
+prendre = pegar, tomar | Je prends un café.
+venir = vir | Tu viens avec moi ?
+vouloir = querer | Je veux partir.
+pouvoir = poder | Je peux entrer ?
+savoir = saber | Je ne sais pas.
+devoir = dever, ter que | Je dois travailler.`],
+  ['FR','A2','Faux amis',`la salade = alface, salada | Je mange une salade.
+le collège = escola (11 a 15 anos), não “colégio” geral | Mon fils est au collège.
+la boîte = caixa; balada (informal) | On va en boîte ce soir ?
+attendre = esperar (não “atender”) | J’attends le bus.
+le cachet = comprimido, não só “cachê” | Prends un cachet pour la tête.
+la journée = o dia (inteiro), não “jornada” | Bonne journée !
+le magasin = loja (não “magazine”) | Le magasin ferme à 19 h.
+le magazine = revista | Je lis un magazine.
+large = largo (não “grande”) | Cette rue est large.`],
+  ['FR','A2','Au restaurant',`Une table pour deux, s’il vous plaît. = Uma mesa para dois, por favor. | Bonsoir, une table pour deux, s’il vous plaît.
+la carte = o cardápio | Je peux voir la carte ?
+le menu = menu do dia (entrada + prato…) | Je prends le menu à 15 euros.
+l’entrée = a entrada | En entrée, une soupe.
+le plat principal = o prato principal | Comme plat principal, le poulet.
+le dessert = a sobremesa | Et en dessert, une tarte.
+L’addition, s’il vous plaît. = A conta, por favor. | L’addition, s’il vous plaît !
+saignant / à point / bien cuit = mal passado / ao ponto / bem passado | Un steak à point, s’il vous plaît.`],
+  ['FR','B1','La santé',`J’ai mal à la tête. = Estou com dor de cabeça. | J’ai mal à la tête depuis ce matin.
+J’ai de la fièvre. = Estou com febre. | J’ai de la fièvre et je tousse.
+le médecin = o médico | Je dois aller chez le médecin.
+l’ordonnance = a receita médica | Voici votre ordonnance.
+la pharmacie = a farmácia | La pharmacie est ouverte ?
+se sentir mal = sentir-se mal | Je me sens mal.
+être enrhumé = estar resfriado | Je suis enrhumé.
+prendre rendez-vous = marcar consulta | Je voudrais prendre rendez-vous.
+Bon rétablissement ! = Melhoras! | Bon rétablissement, Marie !`],
 ];
 
 /* aulas prontas: [professora, título, blocos] · atividade/baralho pelo título */
@@ -586,7 +810,7 @@ const CONT_AULAS=[
 /* ---------- entrada no banco, nos baralhos e nas aulas ---------- */
 function contBank(T0){
   const mk=(x,topic,k)=>({id:uid(),lang:x.l,level:x.lv,topic,title:x.t,instructions:x.i,audio:x.a||'',questions:fromRaw(x.q),uses:hashStr(x.t)%5,mine:false,createdAt:T0-15*DAY+k*MIN});
-  return CONT_ATIV.map((x,k)=>mk(x,x.tp,k)).concat(CONT_HW.map((x,k)=>mk(x,'Homework',k+200)));
+  return CONT_ATIV.map((x,k)=>mk(x,x.tp,k)).concat(CONT_HW.map((x,k)=>mk(x,'Completa',k+200)));
 }
 /* prova de cada marco: questões das tarefas do marco (até 3 com áudio) e a escrita do marco */
 function provasMarcos(bank,T0){
@@ -615,3 +839,31 @@ function seedContAulas(){
     DB.aulas.push({id:'au'+uid(),teacherId:tid,title,studentId:null,blocks:bl,createdAt:now()-DAY});
   }
 }
+
+/* mais 3 exercícios nas tarefas curtas (inglês A1–B1): vocabulário, uso e uma produção ligada ao tema */
+const EXTRA_Q={
+  'Writing · My best friend':[MAT('Ligue o adjetivo ao significado.',[['kind','gentil'],['funny','engraçado'],['shy','tímido'],['hard-working','trabalhador']]),['My best friend and I ___ each other since school.',['know','have known','knew'],1],GAP('We always have fun ___. (juntos)','together')],
+  'Small talk':[['“How’s it going?” is…',['a formal greeting','an informal greeting','a goodbye'],1],GAP('Nice to meet you. — Nice to meet you, ___.','too'),'Write a short small talk dialogue (4–6 lines) with a new colleague.'],
+  'Writing · A postcard':[MAT('Ligue.',[['Wish you were here!','Queria que você estivesse aqui!'],['The weather is great.','O tempo está ótimo.'],['Lots of love,','Com carinho,']]),['We ___ a great time here!',['are having','have having','are have'],0],GAP('Yesterday we ___ (visit) an old castle.','visited')],
+  'Writing · An informal email':[['“Sorry I haven’t written for ages” means…',['I haven’t written for a long time','I write every day','I’m old'],0],GAP('I’m writing ___ tell you about my new job.','to'),MAT('Ligue.',[['By the way,','A propósito,'],['Anyway,','Enfim,'],['Write back soon!','Me responde logo!']])],
+  'Everyday chunks':[['“I’m on my way” means…',['I’m coming','I’m lost','I’m tired'],0],GAP('It’s up ___ you. (você que sabe)','to'),['“No worries!” is a way to say…',['it’s OK','I’m worried','no, thank you'],0]],
+  'Listening · At the hotel':[MAT('Ligue.',[['reception','recepção'],['key','chave'],['single room','quarto de solteiro'],['lift','elevador']]),GAP('I’d like to ___ a room for two nights. (reservar)','book'),'Write a short dialogue: you check in at a hotel (4–6 lines).'],
+  'Listening · Ben’s family':[['Emma is Ben’s sister. She is Ben’s mum’s ___.',['daughter','son','niece'],0],GAP('Ben ___ (have) a dog called Max.','has'),'Describe your family in 3–4 sentences.'],
+  'Listening · At the café':[MAT('Ligue.',[['a cup of tea','uma xícara de chá'],['a slice of cake','uma fatia de bolo'],['a bottle of water','uma garrafa de água']]),['“Can I ___ a coffee, please?”',['have','has','having'],0],'What do you usually order at a café? Write 2–3 sentences.'],
+  'Listening · Sam’s new flat':[MAT('Ligue.',[['upstairs','no andar de cima'],['next to','ao lado de'],['opposite','em frente a']]),['There ___ two bedrooms in Sam’s flat.',['is','are','be'],1],'Describe your home in 3–4 sentences (there is / there are).'],
+  'Reading · A message from Lily':[GAP('The pool ___ (close) at nine.','closes'),['“Do you fancy coming?” means…',['Do you want to come?','Can you swim?','Are you free?'],0],'Reply to Lily: say yes or no and suggest a time.'],
+  'Reading · Kenji’s bedroom':[MAT('Ligue.',[['bed','cama'],['desk','escrivaninha'],['shelf','prateleira'],['window','janela']]),['The cat is ___ the bed.',['on','in','at'],0],'Describe your bedroom in 3 sentences.'],
+  'Listening · Weekend plans':[['“Are you doing anything this weekend?” asks about…',['the past','plans','the weather'],1],GAP('I’m ___ to play tennis on Saturday. (going)','going'),'What are your plans for next weekend? (3 sentences with going to)'],
+  'Listening · A voicemail':[MAT('Ligue.',[['appointment','consulta'],['call back','retornar a ligação'],['change','mudar, remarcar']]),GAP('Your appointment is ___ Wednesday.','on'),'Leave a short voicemail to reschedule a dentist appointment (3–4 sentences).'],
+  'Listening · Excuse me, where is…?':[MAT('Ligue.',[['turn left','vire à esquerda'],['go straight on','siga em frente'],['traffic lights','semáforo']]),['The bank is ___ the café and the pharmacy.',['between','opposite to','next'],0],'Give directions from your house to a bakery near you (3–4 sentences).'],
+  'Listening · Lost luggage':[MAT('Ligue.',[['suitcase','mala'],['handle','alça'],['flight','voo']]),GAP('My suitcase ___ (not / arrive) yet.','hasn’t arrived|has not arrived'),'Describe your suitcase so the airline can find it (3 sentences).'],
+  'Reading · Summer job':[MAT('Ligue.',[['to apply','candidatar-se'],['experience','experiência'],['part-time','meio período']]),GAP('I’m interested ___ the summer job.','in'),'Write a short message applying for the job (3–4 sentences).'],
+  'Reading · Ana’s first week in Dublin':[['“To get lost” means…',['perder-se','perder algo','chegar atrasado'],0],GAP('Last week she ___ (meet) a new friend.','met'),'Write about your first day in a new place (3–4 sentences).'],
+  'Listening · Radio · Green Hands':[MAT('Ligue.',[['volunteer','voluntário'],['rubbish','lixo'],['neighbour','vizinho']]),GAP('The group ___ (grow) a lot since it started.','has grown'),'Would you join a project like Green Hands? Why (not)? (3–4 sentences)'],
+  'Listening · Booking a trip':[MAT('Ligue.',[['return ticket','passagem de ida e volta'],['package','pacote'],['walking tour','passeio a pé']]),['I’d rather ___ by train.',['go','to go','going'],0],'Write a short email booking a weekend trip (60–80 words).'],
+  'Listening · The new job':[GAP('I’ve been working here ___ two months.','for'),['“I commute by train” means…',['I travel to work by train','I work on a train','I sell trains'],0],'What would be your ideal job? Why? (3–4 sentences)'],
+  'Listening · A voice message from Mark':[MAT('Ligue.',[['to book a table','reservar uma mesa'],['instead','em vez disso'],['to be away','estar fora, viajando']]),GAP('How ___ Sunday instead?','about'),'Reply to Mark: accept or suggest another day (3 sentences).'],
+  'Reading · Why I gave up my car':[MAT('Ligue.',[['to give up','desistir de, largar'],['traffic','trânsito'],['to save money','economizar']]),GAP('If I didn’t have a car, I ___ cycle to work.','would'),'Could you live without a car? Why (not)? (4–5 sentences)'],
+  'Reading · A hostel review':[MAT('Ligue.',[['dorm','quarto compartilhado'],['locker','armário com chave'],['noisy','barulhento']]),GAP('The staff were really ___. (prestativos)','helpful'),'Write a short review of a hotel or hostel you stayed in (60–80 words).'],
+};
+function aplicarExtras(bank){ for (const b of bank){ const x=b.lang==='EN'&&EXTRA_Q[b.title]; if (x&&!b.extra){ b.questions.push(...fromRaw(x)); b.extra=true; } } return bank; }

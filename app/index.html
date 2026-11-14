@@ -511,6 +511,12 @@ details.more[open] summary{margin-bottom:14px}
 .pl-lv>summary::after{content:'▾';color:var(--ink-3);transition:transform .2s}
 .pl-lv[open]>summary::after{transform:rotate(180deg)}
 .pl-ask{gap:6px}
+.bwrap{position:relative;display:flex}.bwrap>.bcard{flex:1}
+.bk-pick{position:absolute;z-index:2;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:2px solid #fffaf2;background:rgba(34,28,30,.55);color:#fffaf2;font-size:18px;font-weight:800;cursor:pointer;display:grid;place-items:center;line-height:1}
+.bk-pick.on{background:var(--wine,#7a1f35)}
+.combo-bar{position:sticky;bottom:16px;z-index:20;margin-top:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:10px 14px;box-shadow:0 10px 30px rgba(34,28,30,.18)}
+.combo-bar .grow{flex:1;min-width:180px;display:flex;flex-direction:column}.combo-bar small{color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:760px){.combo-bar{bottom:calc(84px + env(safe-area-inset-bottom))}}
 .prv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 .aula-ic{flex:none;width:42px;height:42px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;color:var(--wine,#7a1f35)}
 .aula-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7}
@@ -961,7 +967,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:8,conq:[],certs:[],cando:{},settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:9,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -1624,8 +1630,8 @@ function seedTasks(){
 
 /* ---------- banco de tarefas (inglês) ---------- */
 const LEVELS=['A1','A2','B1','B2','C1'];
-const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Au Pair','Homework','Provas'];
-const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Homework','Provas'];
+const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Au Pair','Completa','Provas'];
+const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Completa','Provas'];
 const topicsFor=L=>L==='FR'? TOPICS_FR : TOPICS;
 const langBank=()=>DB.bank.filter(b=>b.lang===myLang());
 const LV_PAL={A1:'menta',A2:'petroleo',B1:'tomate',B2:'ceu',C1:'ameixa'};
@@ -1646,7 +1652,7 @@ function tasksHeader(active){
 /* Biblioteca: tudo o que a professora tem para usar, separado por tipo */
 function libHeader(active){
   const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length]];
-  const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Abra, veja como o aluno vê ou mande como homework.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
+  const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Todas servem como homework: mande uma, ou toque no + de várias para juntar numa homework só.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
   const btn={banco:'<a class="btn primary big" href="#banco-nova">+ Criar atividade</a>',flash:'<button class="btn primary big" data-act="flash-new">+ Novo baralho</button>',pdf:'<label class="btn primary big" for="pdf-in">+ Importar PDF</label><input type="file" id="pdf-in" accept="application/pdf" multiple hidden>',nivel:''}[active];
   return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Biblioteca</h1><p class="meta">${sub}</p></div>${btn}</div>
     <nav class="segl" aria-label="Seção">${tabs.map(([k,h,l,n])=>`<a href="${h}" class="${active===k?'on':''}">${l}${n!=null? ` <span class="n">${n}</span>` : ''}</a>`).join('')}</nav></div>`;
@@ -1655,8 +1661,24 @@ function libHeader(active){
 function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||paletteFor(hashStr(b.title+'·')),sceneFor(b.title+' '+(b.instructions||'').slice(0,60),b.topic,h),h%9973,o); }
 function bankCard(b){
   const open=b.questions.some(q=>q.type==='open');
-  return `<a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${bankArt(b,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
-    <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${hasAudio(b)? '<span class="aud-chip">♪ Áudio</span>' : ''}${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a>`;
+  const on=(S.combo||[]).includes(b.id);
+  return `<div class="bwrap"><button class="bk-pick ${on?'on':''}" data-act="combo" data-id="${b.id}" aria-pressed="${on}" title="${on? 'Tirar da homework' : 'Juntar numa homework'}">${on? '✓' : '+'}</button><a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${bankArt(b,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
+    <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${hasAudio(b)? '<span class="aud-chip">♪ Áudio</span>' : ''}${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a></div>`;
+}
+/* juntar várias atividades numa homework só */
+function comboBar(){
+  const ids=(S.combo||[]).filter(id=>DB.bank.some(b=>b.id===id)); if (!ids.length) return '';
+  const bs=ids.map(id=>DB.bank.find(b=>b.id===id)), n=bs.reduce((a,b)=>a+b.questions.length,0);
+  return `<div class="combo-bar"><div class="grow"><b>${ids.length} ${ids.length===1?'atividade':'atividades'} · ${n} questões</b><small>${bs.map(b=>esc(b.title)).join(' + ')}</small></div>
+    <button class="btn small ghost" data-act="combo-clear">Limpar</button><button class="btn primary" data-act="combo-send">Mandar como uma homework</button></div>`;
+}
+function comboModal(){
+  const bs=(S.combo||[]).map(id=>DB.bank.find(b=>b.id===id)).filter(Boolean), n=bs.reduce((a,b)=>a+b.questions.length,0), studs=students();
+  openModal(`<form data-form="combo"><h2>Mandar como uma homework</h2><p class="meta">${bs.length} atividades · ${n} questões, nesta ordem: ${bs.map(b=>esc(b.title)).join(' → ')}</p>
+    <label class="field" for="cb-title">Título<input type="text" id="cb-title" name="title" required value="${esc(bs.length===1? bs[0].title : 'Homework · '+bs.map(b=>b.title.replace(/^(Au Pair|Homework|Devoirs) · /,'')).slice(0,3).join(' + '))}"></label>
+    <fieldset><legend>Para quem</legend><div class="sel-list">${studs.map(s=>`<label class="sel"><input type="checkbox" name="st" value="${s.id}" ${S.preStudent===s.id?'checked':''}>${avatar(s,28)}<span>${esc(s.name)}<br><small>${esc(s.level)}</small></span></label>`).join('')}</div></fieldset>
+    <label class="field" for="cb-due">Prazo <small>(opcional)</small><input type="date" id="cb-due" name="due" value="${dateKey(addDays(now(),7))}"></label>
+    <p class="err" id="cb-err"></p><div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Mandar</button></div></form>`,{wide:true});
 }
 const hasAudio=b=>!!b.audio||b.questions.some(q=>q.audio);
 function bankFiltered(){
@@ -1676,7 +1698,7 @@ function viewBank(){
       <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" aria-pressed="${lv===k}" data-act="bk-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tema">${['todos',...topicsFor(myLang())].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tipo de questão">${['todos','audio',...Object.keys(QT)].map(k=>`<button class="${ty===k?'on':''}" aria-pressed="${ty===k}" data-act="bk-ty" data-v="${k}">${k==='todos'? 'Todos os tipos' : k==='audio'? '♪ Com áudio' : QT[k]}</button>`).join('')}</div></div>
-    <div id="bk-list">${bankListHtml()}</div>`;
+    <div id="bk-list">${bankListHtml()}</div>${comboBar()}`;
 }
 function viewBankItem(b){
   const L=S.bl, studs=students(), open=b.questions.some(q=>q.type==='open'), fake={questions:b.questions,answers:{},marks:{}};
@@ -1719,6 +1741,9 @@ const BANK_ACT={
   'bk-nopre'(){ S.preStudent=null; S.blv='todos'; render(); },
   'bank-for'(el){ const s=user(el.dataset.id); S.preStudent=s.id; S.blv=levelOf(s)||'todos'; S.btp='todos'; S.bq=''; location.hash='banco'; },
   'bl-all'(){ const all=students().map(s=>s.id); S.bl.students= S.bl.students.length===all.length? [] : all; render(); },
+  'combo'(el){ const id=el.dataset.id, c=(S.combo ||= []); S.combo= c.includes(id)? c.filter(x=>x!==id) : [...c,id]; render(); if (!c.length&&S.combo.length) toast('Marque mais atividades e mande todas juntas como uma homework.'); },
+  'combo-clear'(){ S.combo=[]; render(); },
+  'combo-send'(){ comboModal(); },
   'bl-launch'(el){ const b=DB.bank.find(x=>x.id===el.dataset.id), L=S.bl;
     if (!L.students.length){ $('#bl-err').textContent='Escolha pelo menos um aluno.'; return; }
     if (L.hasDue&&!L.date){ $('#bl-err').textContent='Escolha a data do prazo.'; return; }
@@ -1738,6 +1763,12 @@ const BANK_ACT={
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Guardar</button></div></form>`); },
 };
 const BANK_FORMS={
+  combo(form,fd){ const sts=fd.getAll('st'), bs=(S.combo||[]).map(id=>DB.bank.find(b=>b.id===id)).filter(Boolean);
+    if (!sts.length){ $('#cb-err').textContent='Escolha pelo menos um aluno.'; return; }
+    const questions=[]; bs.forEach(b=>{ const qs=cloneQs(b.questions); if (b.audio&&qs[0]&&!qs[0].audio) qs[0].audio=b.audio; questions.push(...qs); b.uses=(b.uses||0)+sts.length; });
+    const instructions=bs.length===1? bs[0].instructions : bs.map((b,i)=>`${i+1}. ${b.title}${b.instructions? '\n'+b.instructions : ''}`).join('\n\n');
+    const due=fd.get('due')? fromInputs(fd.get('due'),'23:59') : null; closeModal(); S.combo=[];
+    launchTo({title:fd.get('title').trim()||bs[0].title,instructions,audio:'',questions,students:sts,due,auto:true}); },
   tobank(form,fd){ const t=getTask(form.dataset.id); DB.bank.push({id:uid(),lang:myLang(),level:fd.get('level'),topic:fd.get('topic'),title:t.title,instructions:t.instructions,audio:t.audio||'',questions:cloneQs(t.questions),uses:0,mine:true,createdAt:now()}); save(); closeModal(); render(); toast('Guardada no banco'); },
 };
 function onBankInput(e){
@@ -2881,7 +2912,7 @@ window.addEventListener('hashchange',go);
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
 if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==8){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=8; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==9){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=9; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
   if (!DB.decks){ ensureFlash(); seedFlashDemo(); }

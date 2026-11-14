@@ -42,11 +42,14 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   e leituras novas (`provas.js`). Qualquer tarefa pode ter um "áudio para escuta".
   Velocidade do áudio em 0,75×, 1× ou 1,5×: dá para trocar a qualquer momento, até no meio da fala
   (ela recomeça da frase em que estava). A escolha fica guardada no aparelho.
-- Conteúdo extra (`conteudo.js`): 30 atividades novas (A1–C1, inglês e francês, 12 com áudio), 12 lições de casa
-  prontas (tema "Homework", com áudio), 22 baralhos novos de flashcards e 12 aulas montadas. Prova de cada marco da
+- Conteúdo extra (`conteudo.js`): 30 atividades novas (A1–C1, inglês e francês, 12 com áudio), 12 tarefas completas
+  (tema "Completa", com áudio), 71 baralhos novos ao todo (55 no total, 540 cartões) de flashcards e 12 aulas montadas. Prova de cada marco da
   trilha (70: 38 em inglês e 32 em francês), montada com as questões das tarefas do marco, até 3 com áudio e uma escrita;
   ficam em Biblioteca · Provas e nivelamento. Cinco cenas novas nas ilustrações: cozinha, esporte, bicicleta,
   presente e carrinho de bebê.
+- Tudo no banco serve como homework. "Juntar": no banco, o + de cada atividade junta várias numa homework só
+  (os áudios vão junto, na primeira questão de cada atividade). As 23 tarefas de inglês A1–B1 com 5 questões ou menos
+  ganharam 3 exercícios cada (EXTRA_Q em `conteudo.js`).
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
   Aluno: Hoje · Homework · Flashcards · Trilha.
 - Biblioteca com sub-abas: Atividades (o banco), Flashcards, Provas e nivelamento, PDFs.
