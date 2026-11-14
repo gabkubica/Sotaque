@@ -47,6 +47,9 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
   trilha (70: 38 em inglês e 32 em francês), montada com as questões das tarefas do marco, até 3 com áudio e uma escrita;
   ficam em Biblioteca · Provas e nivelamento. Cinco cenas novas nas ilustrações: cozinha, esporte, bicicleta,
   presente e carrinho de bebê.
+- Gramática nova (`gramatica.js`): 46 tarefas de 7 questões com tipos variados (34 de inglês, A1–C1, e 12 de francês),
+  em temas que ainda faltavam (would like, past continuous, present perfect com ever/never, prepositions after adjectives,
+  third conditional, modals of deduction in the past, reporting verbs, hedging, faire + infinitif, temps du récit…).
 - Tudo no banco serve como homework. "Juntar": no banco, o + de cada atividade junta várias numa homework só
   (os áudios vão junto, na primeira questão de cada atividade). As 23 tarefas de inglês A1–B1 com 5 questões ou menos
   ganharam 3 exercícios cada (EXTRA_Q em `conteudo.js`).
