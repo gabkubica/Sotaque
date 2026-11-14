@@ -99,7 +99,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .menu-h{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:16px 12px 14px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .menu-h b{font-size:16px;margin-top:6px}
 .menu-h small{color:var(--ink-3);font-size:13px;overflow-wrap:anywhere}
-.menu button{text-align:left;background:none;border:0;padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px}
+.menu button,.menu a.menu-a{text-align:left;background:none;border:0;padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px}
 @media (hover:hover){.menu button:hover{background:var(--surface-2)}}
 .avatar{flex:none;display:grid;place-items:center;border-radius:50%;font-family:var(--display);font-weight:700;color:#fffaf2}
 
@@ -498,7 +498,7 @@ details.more[open] summary{margin-bottom:14px}
 .aud.mini{margin:-2px 0 2px}
 .spd{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:2px;background:var(--surface);gap:2px}
 .spd button{border:0;background:none;font:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);padding:5px 10px;border-radius:999px;cursor:pointer;min-height:30px;font-variant-numeric:tabular-nums}
-.spd button.on{background:var(--k-a);color:#fffaf2}
+.spd button.on{background:var(--k-a,#7a1f35);color:#fffaf2}
 .spd button:focus-visible{outline:2px solid var(--k-a);outline-offset:1px}
 .qhint{display:block;font-weight:500;font-size:13px;color:var(--ink-3);margin-top:4px}
 .part-tip{margin:-4px 0 2px;padding-left:54px}
@@ -511,6 +511,57 @@ details.more[open] summary{margin-bottom:14px}
 .pl-lv>summary::after{content:'▾';color:var(--ink-3);transition:transform .2s}
 .pl-lv[open]>summary::after{transform:rotate(180deg)}
 .pl-ask{gap:6px}
+.aula-ic{flex:none;width:42px;height:42px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;color:var(--wine,#7a1f35)}
+.aula-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7}
+.ab{gap:10px}.ab-h{display:flex;align-items:center;gap:8px}.ab-h .grow{flex:1}
+.aula{display:flex;flex-direction:column;gap:16px}
+.aula-bar{position:sticky;top:8px;z-index:6;display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px 12px;box-shadow:0 4px 18px rgba(34,28,30,.06)}
+.aula-bar .grow{flex:1;min-width:140px;display:flex;flex-direction:column;line-height:1.25}.aula-bar small{color:var(--ink-3)}
+.aula-dots{display:flex;gap:5px;flex-wrap:wrap}
+.aula-dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.aula-dots button.u{background:var(--k-b,var(--ink-3))}.aula-dots button.on{background:var(--k-a);transform:scale(1.3)}
+.aula-dots button.end{border-radius:3px}
+.aula-stage{max-width:1000px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.aula-txt h2{font-size:clamp(30px,5vw,48px)}
+.aula-body{white-space:pre-wrap;font-size:clamp(20px,2.6vw,28px);line-height:1.5}
+.aula-end{align-items:flex-start}
+html:fullscreen header.bar,html:fullscreen .nav{display:none}
+html:fullscreen .page{padding-top:16px;padding-bottom:16px;max-width:none}
+html:fullscreen .aula-stage{max-width:1200px}
+
+.pdf-th img{width:100%;height:110px;object-fit:cover;object-position:top;display:block;background:#fff}
+.pdf-view{display:flex;flex-direction:column;gap:10px}
+.pdf-view:fullscreen{background:var(--paper);padding:10px;overflow:auto}
+.pdf-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px 10px;position:sticky;top:8px;z-index:5}
+.pdf-pg{font-weight:600;font-variant-numeric:tabular-nums;min-width:68px;text-align:center}
+.pdf-colors{display:inline-flex;gap:6px}
+.pdf-colors button{width:26px;height:26px;border-radius:50%;border:3px solid var(--surface);background:var(--c);box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
+.pdf-colors button.on{box-shadow:0 0 0 2.5px var(--ink)}
+.pdf-stage{display:flex;justify-content:center;background:var(--surface-2);border-radius:16px;padding:12px;min-height:320px;overflow:auto}
+.pdf-page{position:relative;background:#fff;box-shadow:0 6px 24px rgba(34,28,30,.18);flex:none}
+.pdf-page canvas{position:absolute;inset:0;width:100%;height:100%}
+.pdf-ink{touch-action:auto}.pdf-ink.on{touch-action:none;cursor:crosshair}
+.pdf-load{align-self:center}
+
+.fl-wrap{display:flex;flex-direction:column;gap:14px;align-items:stretch;margin-top:8px}
+.fl-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.fl-top .progress{flex:1;min-width:80px}
+.fl-card{all:unset;box-sizing:border-box;cursor:pointer;min-height:260px;border-radius:24px;background:var(--surface);border:2px solid var(--line);box-shadow:0 10px 30px rgba(34,28,30,.08);display:grid;place-items:center;padding:28px;text-align:center;transition:transform .25s ease,background .25s ease}
+.fl-card:focus-visible{outline:3px solid var(--k-a);outline-offset:3px}
+.fl-card.flip{background:var(--k-bg);color:#221c1e;border-color:var(--k-a)}
+.fl-face{display:flex;flex-direction:column;gap:10px;align-items:center}
+.fl-face b{font-family:var(--display);font-size:clamp(28px,6vw,44px);line-height:1.15}
+.fl-face i{font-size:17px;max-width:34ch}
+.fl-say{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.fl-ans{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.fl-ans .btn{min-height:52px;font-size:16px}
+.fl-no{border-color:#e7b4ad}.fl-mid{border-color:var(--line)}
+.fl-end{text-align:center;align-items:center}
+.fl-front{font-size:16px;font-weight:600;color:var(--ink-2)}
+.fl-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.fl-list div{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:8px 0;border-top:1px solid var(--line)}
+.fl-list i{grid-column:1/-1;color:var(--ink-3);font-size:14px}
+
+.menu a.menu-a{display:block;text-decoration:none;color:inherit}
+.hello .segl{overflow-x:auto;scrollbar-width:none}
 .prac-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;border:2px dashed var(--k-a)}
 .prac-bar>div{flex:1;min-width:200px}
 .plvers{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -805,6 +856,9 @@ a,button,summary,label,select,input[type=checkbox],input[type=radio]{touch-actio
 <script src="desenvolvimento.js"></script>
 <script src="nivelamento.js"></script>
 <script src="aupair.js"></script>
+<script src="flashcards.js"></script>
+<script src="pdfs.js"></script>
+<script src="aula.js"></script>
 <script>
 /* =========================================================
    Sotaque · aulas particulares de idiomas
@@ -1001,6 +1055,14 @@ function parseHash(){
   if ((m=h.match(/^missao-([a-z0-9-]+)$/))) return {name:'missao',id:m[1]};
   if ((m=h.match(/^trilha-([a-z0-9]+)$/))) return {name:'trilhaAluno',id:m[1]};
   if (h==='banco') return {name:'banco'};
+  if (h==='flash') return {name:'flash'};
+  if (h==='aula') return {name:'aula'};
+  if ((m=h.match(/^aula-ed-([a-z0-9]+)$/))) return {name:'aulaEd',id:m[1]};
+  if ((m=h.match(/^aula-([a-z0-9]+)$/))) return {name:'aulaPlay',id:m[1]};
+  if (h==='pdfs') return {name:'pdfs'};
+  if ((m=h.match(/^pdf-([a-z0-9]+)$/))) return {name:'pdf',id:m[1]};
+  if ((m=h.match(/^flash-ed-([a-z0-9]+)$/))) return {name:'flashEd',id:m[1]};
+  if ((m=h.match(/^flash-([a-z0-9]+)$/))) return {name:'flashPlay',id:m[1]};
   if ((m=h.match(/^praticar-([a-z0-9]+)$/))) return {name:'praticar',id:m[1]};
   if (h==='nivelamento') return {name:'nivel'};
   if ((m=h.match(/^nivelamento-ver-(completo|curto)$/))) return {name:'nivelPrev',id:m[1]};
@@ -1038,6 +1100,9 @@ function viewAuth(){
 
 /* ---------- barra ---------- */
 const NAV_IC={
+  aula:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2.5"/><path d="M8 20.5h8M12 16.5v4M10.3 8.3v4.4l3.9-2.2z"/></svg>',
+  biblioteca:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5h3.5v15H4.5zM10 4.5h3.5v15H10z"/><path d="M15.6 5.4l3.3-.9 3.4 13.5-3.3.9z"/></svg>',
+  flash:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="13" height="13" rx="2.5"/><path d="M7.5 7V5.5A2 2 0 0 1 9.5 3.5h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H16.5"/></svg>',
   hoje:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/></svg>',
   agenda:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
   alunos:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.3"/><path d="M3 19.5c.6-3.4 3-5.3 6-5.3s5.4 1.9 6 5.3"/><circle cx="16.8" cy="9.3" r="2.6"/><path d="M16.5 14.3c2.4.1 4 1.7 4.5 4.6"/></svg>',
@@ -1051,14 +1116,16 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','hoje','Hoje',reqs)}${navA('#agenda',r==='agenda','agenda','Agenda')}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#tarefas',['tarefas','tarefa','nova','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar'].includes(r),'tarefas','Tarefas',toCorrect)}${navA('#dev',r==='dev'||r==='missao','dev','<span class="nl">Desenvolvimento</span><span class="ns">Meu estudo</span>')}</nav>`
-    : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Meu caderno')}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Tarefas',todoS)}</nav>`;
+  const HW=['tarefas','tarefa','nova'], LIB=['banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay'];
+  const flashDue=isT()? 0 : flashDueCount(me.id);
+  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
+    : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
   return `<header class="bar"><div class="bar-in">
     <a class="brand" href="#inicio">${logo()}<span>Sotaque</span></a>${nav}
     <div class="bar-r">
       ${themeBtn()}<button class="me-btn" data-act="menu" aria-expanded="${S.menu}" aria-label="Sua conta">${avatar(me,36)}</button>
       ${S.menu? `<div class="menu" role="menu"><div class="menu-h">${avatar(me,52)}<b>${esc(me.name)}</b><small>${esc(me.email)}</small></div>
-        <button role="menuitem" data-act="profile">Editar meu nome</button>${isT()? `<button role="menuitem" data-act="settings">Horários e pagamento</button>` : ''}${lsGet(THEME_KEY)? '<button role="menuitem" data-act="theme-system">Seguir o tema do sistema</button>' : ''}<button role="menuitem" data-act="logout">Sair</button></div>` : ''}
+        <button role="menuitem" data-act="profile">Editar meu nome</button>${isT()? `<a role="menuitem" class="menu-a" href="#dev">Meu estudo</a><a role="menuitem" class="menu-a" href="#agenda">Agenda da semana</a><button role="menuitem" data-act="settings">Horários e pagamento</button>` : ''}${lsGet(THEME_KEY)? '<button role="menuitem" data-act="theme-system">Seguir o tema do sistema</button>' : ''}<button role="menuitem" data-act="logout">Sair</button></div>` : ''}
     </div></div></header>`;
 }
 
@@ -1193,7 +1260,7 @@ function viewNotebook(s){
       <div class="banner-t" style="--bt:${dark? CREAM : p.c}"><h1>${title}</h1><p>${sub}</p></div></div>
     <div class="grid2">
       <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${timeline(s)}</div>
-      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${packagePanel(s)}
+      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
           <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd><dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
@@ -1566,9 +1633,17 @@ function launchTo(spec){
   toast(`Tarefa lançada para ${names.length>2? names.slice(0,-1).join(', ')+' e '+names.slice(-1) : names.join(' e ')}`);
 }
 function tasksHeader(active){
-  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Tarefas</h1><p class="meta">${active==='banco'? `Tarefas prontas de ${langName(myLang()).toLowerCase()}. Escolha, confira e lance para o aluno.` : active==='nivel'? 'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.' : 'Monte, lance e corrija por aqui. As questões objetivas se corrigem sozinhas.'}</p></div>
-    ${active==='nivel'? '' : `<a class="btn primary big" href="${active==='banco'? '#banco-nova' : '#nova-tarefa'}">${active==='banco'? '+ Criar no banco' : '+ Nova tarefa'}</a>`}</div>
-    <nav class="segl" aria-label="Seção"><a href="#tarefas" class="${active==='lancadas'?'on':''}">Lançadas</a><a href="#banco" class="${active==='banco'?'on':''}"><span>Banco<span class="nl"> de tarefas</span></span><span class="n">${langBank().length}</span></a><a href="#nivelamento" class="${active==='nivel'?'on':''}">Nivelamento</a></nav></div>`;
+  if (active==='lancadas') return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Homework</h1><p class="meta">As tarefas que você mandou para os alunos. As objetivas se corrigem sozinhas; as escritas você corrige aqui.</p></div>
+    <a class="btn primary big" href="#nova-tarefa">+ Nova tarefa</a></div></div>`;
+  return libHeader(active);
+}
+/* Biblioteca: tudo o que a professora tem para usar, separado por tipo */
+function libHeader(active){
+  const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length]];
+  const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Abra, veja como o aluno vê ou mande como homework.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
+  const btn={banco:'<a class="btn primary big" href="#banco-nova">+ Criar atividade</a>',flash:'<button class="btn primary big" data-act="flash-new">+ Novo baralho</button>',pdf:'<label class="btn primary big" for="pdf-in">+ Importar PDF</label><input type="file" id="pdf-in" accept="application/pdf" multiple hidden>',nivel:''}[active];
+  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Biblioteca</h1><p class="meta">${sub}</p></div>${btn}</div>
+    <nav class="segl" aria-label="Seção">${tabs.map(([k,h,l,n])=>`<a href="${h}" class="${active===k?'on':''}">${l}${n!=null? ` <span class="n">${n}</span>` : ''}</a>`).join('')}</nav></div>`;
 }
 /* ilustração da tarefa: a cor é a do nível (A1, A2, B1, B2, C1) e a cena vem do assunto */
 function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||paletteFor(hashStr(b.title+'·')),sceneFor(b.title+' '+(b.instructions||'').slice(0,60),b.topic,h),h%9973,o); }
@@ -1781,14 +1856,15 @@ function viewTaskT(t){
 }
 
 /* ---------- ver como aluno: a professora abre a tarefa como o aluno vê, responde e corrige (nada é salvo) ---------- */
-function viewPractice(id){
+function viewPractice(id,embed){
   const b=DB.bank.find(x=>x.id===id), src=b||getTask(id);
   if (!src) return `<div class="panel"><p>Tarefa não encontrada.</p><a class="btn" href="#banco">Banco de tarefas</a></div>`;
-  if (S.prac?.src!==id) S.prac={src:id,done:false,t:{id:'prac',kind:b? undefined : src.kind,title:src.title,instructions:src.instructions||'',audio:src.audio||'',questions:src.questions,blocks:b? undefined : src.blocks,fala:src.fala,studentId:b? null : src.studentId,answers:{},marks:{},status:'pendente'}};
+  if (S.prac?.src!==id){ if (S.prac) (S.pc ||= {})[S.prac.src]=S.prac; S.prac=S.pc?.[id]||null; }
+  if (!S.prac) S.prac={src:id,done:false,t:{id:'prac',kind:b? undefined : src.kind,title:src.title,instructions:src.instructions||'',audio:src.audio||'',questions:src.questions,blocks:b? undefined : src.blocks,fala:src.fala,studentId:b? null : src.studentId,answers:{},marks:{},status:'pendente'}};
   const P=S.prac, t=P.t, s=!b&&user(src.studentId), vars= s? sVars(s) : sVars({palette:LV_PAL[b.level]||'menta'});
   const art= b? bankArt(b,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'}) : taskArt(src,{w:1000,h:170,frame:false,focus:[.6,.8],align:'xMaxYMid'});
   const back= b? `#banco-${b.id}` : `#tarefa-${src.id}`, n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
-  const head=`<a class="link" href="${back}" style="display:inline-block;margin-bottom:12px;text-decoration:none">← Voltar para a tarefa</a>
+  const head= embed? `<div class="ihead" style="display:flex;flex-direction:column;gap:6px;padding-bottom:14px;border-bottom:2px solid var(--k-a)"><p class="eyebrow">${b? `${b.level} · ${esc(b.topic)}` : 'Atividade'}</p><h2 style="font-size:26px">${esc(t.title)}</h2></div>` : `<a class="link" href="${back}" style="display:inline-block;margin-bottom:12px;text-decoration:none">← Voltar para a tarefa</a>
     <div class="notice prac-bar"><div><b>Modo aluno.</b> Você está vendo a tarefa como o aluno vê. Pode responder e corrigir à vontade: nada é salvo nem enviado.</div><button class="btn small" data-act="prac-reset">Recomeçar</button></div>
     <div class="task-art" style="margin-top:14px">${art}</div><div class="ihead" style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:2px solid var(--k-a)"><p class="eyebrow">${b? `${b.level} · ${esc(b.topic)}` : 'Tarefa'}</p><h1>${esc(t.title)}</h1><p class="meta">${n} ${n===1?'questão':'questões'}</p></div>`;
   if (!P.done) return `<div style="${vars};max-width:780px">${head}
@@ -1801,7 +1877,7 @@ function viewPractice(id){
   return `<div style="${vars};max-width:780px">${head}<div style="margin:18px 0"><div class="score"><div class="big">${fmtNum(sc.got)}<span>/${sc.total-sc.waiting}</span></div><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1"><p><b>${sc.got===sc.total-sc.waiting? 'Todas certas!' : `${fmtNum(sc.got)} de ${sc.total-sc.waiting} certas`}</b></p>${sc.waiting? `<p>${sc.waiting} ${sc.waiting===1?'resposta escrita':'respostas escritas'}: essas você corrige com o aluno.</p>` : ''}</div></div></div>
     ${t.audio? `<div class="panel" style="margin-bottom:14px">${audioBox(t.audio,taskLang(t),{transcript:true})}</div>` : ''}
     <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'student'),'student')}</div>
-    <div class="row-btns" style="margin-top:18px"><button class="btn primary" data-act="prac-reset">Fazer de novo</button><a class="btn" href="${back}">Voltar para a tarefa</a></div></div>`;
+    <div class="row-btns" style="margin-top:18px"><button class="btn primary" data-act="prac-reset">Fazer de novo</button>${embed? '' : `<a class="btn" href="${back}">Voltar para a tarefa</a>`}</div></div>`;
 }
 
 /* ---------- professora: montar tarefa ---------- */
@@ -2039,6 +2115,12 @@ function seedTrail(){
   conq('s3','FR-A1-1',15,'Très bien !',100); conq('s3','FR-A1-2',4,'',80);
   self('s3',['FR-A1-3.1','FR-A1-3.2']);
   DB.trailV=TRAIL_V;
+}
+/* exemplo: a Marina estuda dois baralhos, com alguns cartões já aprendidos */
+function seedFlashDemo(){
+  ensureFlash(); const a=DB.decks.find(d=>d.title==='Everyday phrasal verbs'), b=DB.decks.find(d=>d.title==='Travel essentials'), f=DB.decks.find(d=>d.title==='Les essentiels du quotidien');
+  if (a) a.students.push('s1'); if (b) b.students.push('s1','s4'); if (f) f.students.push('s3');
+  if (a){ const p=fpOf('s1',a.id); a.cards.slice(0,5).forEach((c,i)=>p[c.id]={box:3+i%2,due:now()+(2+i)*DAY,seen:now()-DAY}); }
 }
 /* exemplo: Júlia entregou o teste de nivelamento e espera a avaliação */
 function seedPlace(){
@@ -2550,7 +2632,7 @@ function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : t&&t.studentId===me.id? viewTaskS(t) : viewNotebook(me); }
+  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -2559,6 +2641,14 @@ function render(){
   else if (r.name==='tarefa'&&getTask(r.id)&&mine(getTask(r.id))) main=viewTaskT(getTask(r.id));
   else if (r.name==='nova'){ if (!S.draft) S.draft=newDraft(r.id); main=viewEditor(); }
   else if (r.name==='banco') main=viewBank();
+  else if (r.name==='flash') main=viewFlashLib();
+  else if (r.name==='aula') main=viewAulas();
+  else if (r.name==='aulaEd') main=viewAulaEd(r.id);
+  else if (r.name==='aulaPlay') main=viewAulaPlay(r.id);
+  else if (r.name==='pdfs') main=viewPdfs();
+  else if (r.name==='pdf') main=viewPdf(r.id);
+  else if (r.name==='flashEd') main=viewFlashEd(r.id);
+  else if (r.name==='flashPlay') main=viewFlashPlay(r.id);
   else if (r.name==='praticar') main=viewPractice(r.id);
   else if (r.name==='nivel') main=viewPlaceHub();
   else if (r.name==='nivelPrev') main=viewPlacePrev(r.id);
@@ -2568,6 +2658,7 @@ function render(){
   else if (r.name==='aluno'&&user(r.id)?.teacherId===S.me) main=viewNotebook(user(r.id));
   else main=viewToday();
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
+  if (isT()&&document.querySelector('[data-pdf-mount]')) mountPdfs();
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
 }
 /* voltar para a tela anterior (botão voltar ou link "←") devolve a rolagem de onde a pessoa estava */
@@ -2580,7 +2671,7 @@ function go(){ ttsStop(); const prev=S.route, h=location.hash||'#inicio'; S.rout
     S.enter=true; if (S.modal) closeModal(); }
   if (entered){ S.trailLv=null; S.tlAll=false; }
   if (R.name==='nova'&&entered&&!S.keepDraft) S.draft=newDraft(R.id);
-  if (R.name==='bancoNova'&&entered) S.draft=newBankDraft();
+  if (R.name==='bancoNova'&&entered){ S.draft=newBankDraft(); if (S.preset){ Object.assign(S.draft,S.preset); S.preset=null; } }
   if (R.name==='bancoEd'&&entered){ const b=DB.bank.find(x=>x.id===R.id); S.draft=b? draftFrom(b,'bank') : null; }
   if (R.name==='bancoItem'&&entered) S.bl=newBl();
   S.keepDraft=false; S.showAll=false; S.scrolled=false; render(); if (entered) window.scrollTo(0,restore||0); }
@@ -2753,7 +2844,7 @@ const FORMS={
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2762,8 +2853,8 @@ document.addEventListener('click',e=>{
   const fn=ACT[el.dataset.act]; if (fn){ if (el.tagName==='A') e.preventDefault(); fn(el,e); }
 });
 document.addEventListener('submit',e=>{ const f=e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); FORMS[f.dataset.form]?.(f,new FormData(f)); });
-document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); });
-document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); } });
+document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); });
+document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); } });
 document.addEventListener('keydown',e=>{ if (e.key==='Escape'){ if (S.modal) closeModal(); else if (S.menu){ S.menu=false; render(); } } });
 window.addEventListener('hashchange',go);
 
@@ -2771,14 +2862,17 @@ window.addEventListener('hashchange',go);
 { const th=lsGet(THEME_KEY); if (th) document.documentElement.dataset.theme=th; }
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
-if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); save(); }
+if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); save(); }
 else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==7){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=7; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
+  if (!DB.decks){ ensureFlash(); seedFlashDemo(); }
+  if (!DB.aulas) seedAulas();
+  if (!DB.pdfs) DB.pdfs=[];
   ensureLessons(); save(); }
 S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
 go();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
 </script>
