@@ -88,7 +88,10 @@ const fpOf=(sid,did)=>((DB.flashp ||= {})[sid+'|'+did] ||= {});
 const dueCards=(sid,d)=>{ const p=fpOf(sid,d.id), t=now(); return d.cards.filter(c=>!p[c.id]||p[c.id].due<=t); };
 const learned=(sid,d)=>{ const p=fpOf(sid,d.id); return d.cards.filter(c=>(p[c.id]?.box||0)>=3).length; };
 const flashDueCount=sid=>decksOfStudent(sid).reduce((a,d)=>a+Math.min(FLASH_MAX,dueCards(sid,d).length),0);
-const flashArt=(d,o)=>{ const h=hashStr(d.title); return quadro(LV_PAL[d.level]||'menta',sceneFor(d.title+' '+(d.cards[0]?.f||''),'Vocabulário',h),h%997,o); };
+/* capa: se o baralho tem cartões com imagem, mostra três deles lado a lado */
+const deckImgs=d=>[...new Set(d.cards.map(cardImg).filter(Boolean))];
+const flashArt=(d,o)=>{ const im=deckImgs(d); if (im.length>=3){ const pick=im.length>3? [im[0],im[Math.floor(im.length/2)],im[im.length-1]] : im; return `<span class="fl-trio">${pick.map(k=>quadro(imgPal(k),k,hashStr(k)%97,{w:200,h:150,frame:false})).join('')}</span>`; }
+  const h=hashStr(d.title); return quadro(LV_PAL[d.level]||'menta',sceneFor(d.title+' '+(d.cards[0]?.f||''),'Vocabulário',h),h%997,o); };
 
 /* ---------- cartões na tela (aluno estudando, professora vendo como aluno, ou dentro da Aula) ---------- */
 function flashStart(did,saveIt){
@@ -107,11 +110,12 @@ function flashStage(did,saveIt,embed){
       <p class="meta muted">${F.save? 'O que você errou volta logo; o que acertou, só daqui a alguns dias.' : 'Modo de visualização: nada foi salvo.'}</p>
       <div class="row-btns"><button class="btn primary" data-act="flash-again" data-id="${did}">Estudar de novo</button>${embed? '' : `<a class="btn" href="#flash">Voltar aos baralhos</a>`}</div></div>`; }
   const c=d.cards.find(x=>x.id===F.q[F.i]), front= rev? c.b : c.f, back= rev? c.f : c.b;
+  const cimg=cardImg(c);
   const say=(t)=>{ const key='a'+hashStr(d.lang+t); AUD[key] ||= {text:t,lang:d.lang}; return `<button class="btn small" data-act="say" data-k="${key}">${PLAY_ICON}Ouvir</button>`; };
   return `<div class="fl-wrap ${embed?'embed':''}">
     <div class="fl-top"><span class="pill-lang">${F.i+1} de ${total}</span><div class="progress"><i style="width:${F.i/total*100}%"></i></div><button class="link" data-act="flash-dir">${rev? 'Português → '+langName(d.lang) : langName(d.lang)+' → Português'}</button></div>
     <button class="fl-card ${F.flip?'flip':''}" data-act="flash-flip" aria-label="${F.flip? 'Cartão virado' : 'Virar o cartão'}">
-      <span class="fl-face">${c.img? `<span class="fl-img ${F.flip?'small':''}">${quadro(imgPal(c.img),c.img,hashStr(c.img)%97,{w:420,h:240,frame:false})}</span>` : ''}${c.img&&!F.flip&&!rev? `<small class="eyebrow">${d.lang==='FR'? 'Qu’est-ce que c’est ?' : 'What’s this?'}</small>` : `<small class="eyebrow">${F.flip? (rev? langName(d.lang) : 'Português') : (rev? 'Português' : langName(d.lang))}</small>${F.flip? `<small class="fl-front">${esc(front)}</small>` : ''}<b>${esc(F.flip? back : front)}</b>`}${F.flip&&c.ex? `<i>${esc(c.ex)}</i>` : ''}${F.flip? '' : '<small class="muted">toque para virar</small>'}</span></button>
+      <span class="fl-face">${cimg? `<span class="fl-img ${F.flip?'small':''}">${quadro(imgPal(cimg),cimg,hashStr(cimg)%97,{w:420,h:240,frame:false})}</span>` : ''}${c.img&&!F.flip&&!rev? `<small class="eyebrow">${d.lang==='FR'? 'Qu’est-ce que c’est ?' : 'What’s this?'}</small>` : `<small class="eyebrow">${F.flip? (rev? langName(d.lang) : 'Português') : (rev? 'Português' : langName(d.lang))}</small>${F.flip? `<small class="fl-front">${esc(front)}</small>` : ''}<b>${esc(F.flip? back : front)}</b>`}${F.flip&&c.ex? `<i>${esc(c.ex)}</i>` : ''}${F.flip? '' : '<small class="muted">toque para virar</small>'}</span></button>
     <div class="fl-say">${say(c.f)}${F.flip&&c.ex? say(c.ex).replace('Ouvir','Ouvir o exemplo') : ''}</div>
     ${F.flip? `<div class="fl-ans"><button class="btn fl-no" data-act="flash-ans" data-v="nao">Errei</button><button class="btn fl-mid" data-act="flash-ans" data-v="quase">Quase</button><button class="btn primary fl-yes" data-act="flash-ans" data-v="sim">Acertei</button></div>`
       : `<button class="btn primary big" data-act="flash-flip">Virar o cartão</button>`}
@@ -150,7 +154,7 @@ function viewFlashPlay(did){
     ${T? `<div class="notice prac-bar"><div><b>Modo aluno.</b> Você está estudando como o aluno estuda. Nada é salvo.</div><a class="btn small" href="#flash-ed-${d.id}">Editar e mandar</a></div>` : ''}
     <div class="hello" style="margin-top:12px"><p class="eyebrow">${d.level} · ${langName(d.lang)}</p><h1>${esc(d.title)}</h1></div>
     ${flashStage(did,!T,false)}
-    <details class="transc" style="margin-top:22px"><summary>Ver todos os cartões (${d.cards.length})</summary><div class="fl-list">${d.cards.map(c=>`<div><b>${esc(c.f)}</b><span>${esc(c.b)}</span>${c.ex? `<i>${esc(c.ex)}</i>` : ''}</div>`).join('')}</div></details></div>`;
+    <details class="transc" style="margin-top:22px"><summary>Ver todos os cartões (${d.cards.length})</summary><div class="fl-list">${d.cards.map(c=>`<div>${cardImg(c)? `<span class="fl-thumb">${quadro(imgPal(cardImg(c)),cardImg(c),hashStr(cardImg(c))%97,{w:96,h:64,frame:false})}</span>` : ''}<b>${esc(c.f)}</b><span>${esc(c.b)}</span>${c.ex? `<i>${esc(c.ex)}</i>` : ''}</div>`).join('')}</div></details></div>`;
 }
 function viewFlashEd(did){
   const d=deckById(did); if (!d) return '<div class="panel"><p>Baralho não encontrado.</p></div>';

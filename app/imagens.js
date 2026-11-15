@@ -123,3 +123,130 @@ la montagne = a montanha | Nous allons à la montagne. | img:montanha
 la ville = a cidade | Paris est une grande ville. | img:cidade
 la tour Eiffel = a torre Eiffel | La tour Eiffel est à Paris. | img:paris`],
 ];
+/* imagem automática nos flashcards: quando a palavra do cartão tem desenho, ele aparece (o img: escrito vale mais) */
+const AUTO_IMG=(()=>{ const m={}, add=(sc,words)=>words.split(',').forEach(w=>m[w.trim()]=sc);
+  add('gato','cat,kitten,chat'); add('cachorro','dog,puppy,chien'); add('passaro','bird,oiseau'); add('coelho','rabbit,bunny,lapin'); add('peixes','fish,poisson');
+  add('cavalo','horse,cheval'); add('vaca','cow,vache'); add('rato','mouse,souris'); add('macaco','monkey,singe');
+  add('maca','apple,pomme'); add('banana','banana,banane'); add('sorvete','ice cream,glace'); add('bolo','cake,gâteau,dessert'); add('pizza','pizza');
+  add('pao','bread,pain'); add('queijo','cheese,fromage'); add('frango','chicken,meat,viande,poulet'); add('legumes','vegetables,légumes,carrot,carotte');
+  add('suco','juice,jus'); add('agua','water,eau,bottle,bouteille'); add('ovo','egg,œuf,oeuf'); add('xicara','cup,coffee,tea,café,thé,tasse');
+  add('uvas','grapes,raisin,fruit,fruits'); add('panela','cook dinner,cook,kitchen,cuisine,pot,casserole');
+  add('camiseta','t-shirt,tee-shirt'); add('camisa','shirt,chemise'); add('calca','trousers,pants,jeans,pantalon'); add('vestido','dress,robe');
+  add('saia','skirt,jupe'); add('jaqueta','jacket,coat,veste,manteau'); add('meias','socks,chaussettes'); add('sapato','shoes,shoe,trainers,sneakers,chaussures,baskets');
+  add('chapeu','hat,cap,chapeau'); add('oculos','glasses,lunettes'); add('mochila','bag,backpack,sac,sac à dos'); add('chave','key,keys,clé');
+  add('sol','sunny,sun,hot,soleil,il fait beau,il fait chaud'); add('nuvem','cloudy,cloud,nuage'); add('chuva','rainy,rain,umbrella,il pleut,pluie,parapluie');
+  add('vento','windy,wind,il y a du vent,vent'); add('tempestade','storm,orage,tempête'); add('neve','snow,cold,it’s freezing!,neige,il fait froid');
+  add('feliz','happy,heureux,heureuse,content'); add('triste','sad,triste'); add('cansado','tired,fatigué'); add('bravo','angry,en colère,fâché');
+  add('preocupado','worried,nervous,inquiet,stressé'); add('animado','excited,proud,fier'); add('entediado','bored,s’ennuyer'); add('surpreso','scared,surprised,surpris');
+  add('sofa','sofa,couch,living room,canapé,salon'); add('geladeira','fridge,frigo,réfrigérateur'); add('armario','wardrobe,armoire'); add('banheira','bathroom,have a shower,salle de bains,bath');
+  add('cama','bed,bedroom,go to bed,lit,chambre,se coucher'); add('cadeira','chair,chaise'); add('flor','flower,garden,jardin,fleur'); add('arvore','tree,arbre,park');
+  add('celular','phone,mobile,smartphone,téléphone,portable'); add('relogio','alarm clock,clock,get up,réveil,se lever'); add('livro','book,livre,read');
+  add('carro','car,drive,voiture,driver’s license'); add('onibus','bus,bus stop,to miss the bus,arrêt de bus'); add('bicicleta','bike,bicycle,ride a bike,vélo');
+  add('trem','train,train station,gare,subway / underground,métro'); add('aviao','plane,flight,boarding pass,departure,avion,vol'); add('mala','suitcase,luggage,carry-on,valise,bagage');
+  add('ingresso','ticket,billet,round trip'); add('violao','guitar,play the guitar,guitare'); add('camera','camera,take photos,appareil photo'); add('bola','ball,play football,football,ballon,sport');
+  add('mar','sea,beach,go swimming,mer,plage'); add('montanha','mountain,montagne'); add('cidade','city,ville,town'); add('presente','gift,present,cadeau,birthday');
+  return m; })();
+const imgKey=s=>String(s||'').toLowerCase().replace(/[’']/g,'’').replace(/^(a|an|the|to|un|une|des|du|de la|le|la|les)\s+/,'').replace(/^l’/,'').replace(/[.!?¿¡]+$/,'').trim();
+const cardImg=(c)=>c.img||AUTO_IMG[imgKey(c.f)]||AUTO_IMG[String(c.f||'').toLowerCase().trim()]||'';
+/* mais dicionários ilustrados, com as imagens novas */
+FLASH_IMG.push(
+  ['EN','A1','Picture dictionary: animals',`a cat = um gato | My cat sleeps all day. | img:gato
+a dog = um cachorro | The dog is in the garden. | img:cachorro
+a bird = um pássaro | A bird is singing. | img:passaro
+a rabbit = um coelho | The rabbit eats carrots. | img:coelho
+a fish = um peixe | I have a red fish. | img:peixes
+a horse = um cavalo | She rides a horse. | img:cavalo
+a cow = uma vaca | Cows give us milk. | img:vaca
+a mouse = um rato | The mouse is very small. | img:rato
+a monkey = um macaco | Monkeys love bananas. | img:macaco`],
+  ['EN','A1','Picture dictionary: food',`an apple = uma maçã | An apple a day keeps the doctor away. | img:maca
+a banana = uma banana | I eat a banana every morning. | img:banana
+bread = pão | Can you buy some bread? | img:pao
+cheese = queijo | I love cheese sandwiches. | img:queijo
+chicken = frango | We’re having chicken for dinner. | img:frango
+vegetables = legumes | Eat your vegetables! | img:legumes
+juice = suco | An orange juice, please. | img:suco
+water = água | Can I have a glass of water? | img:agua
+an egg = um ovo | I have two eggs for breakfast. | img:ovo
+a cake = um bolo | Happy birthday! Here’s your cake. | img:bolo
+ice cream = sorvete | Chocolate or vanilla ice cream? | img:sorvete
+pizza = pizza | Let’s order a pizza tonight. | img:pizza`],
+  ['EN','A1','Picture dictionary: clothes',`a T-shirt = uma camiseta | I’m wearing a blue T-shirt. | img:camiseta
+a shirt = uma camisa | He wears a shirt to work. | img:camisa
+trousers = calça | These trousers are too long. | img:calca
+a dress = um vestido | What a beautiful dress! | img:vestido
+a skirt = uma saia | She’s wearing a purple skirt. | img:saia
+a jacket = uma jaqueta | Take a jacket, it’s cold. | img:jaqueta
+socks = meias | Where are my socks? | img:meias
+shoes = sapatos / tênis | I need new shoes. | img:sapato
+a hat = um chapéu | Wear a hat in the sun. | img:chapeu
+glasses = óculos | I can’t read without my glasses. | img:oculos`],
+  ['EN','A2','Picture dictionary: weather and feelings',`sunny = ensolarado | It’s sunny today! | img:sol
+cloudy = nublado | It’s cloudy but warm. | img:nuvem
+rainy = chuvoso | Take an umbrella, it’s rainy. | img:chuva
+windy = ventando | It’s too windy to go to the beach. | img:vento
+a storm = uma tempestade | There was a big storm last night. | img:tempestade
+snow = neve | Have you ever seen snow? | img:neve
+happy = feliz | I’m so happy to see you! | img:feliz
+sad = triste | Why are you sad? | img:triste
+tired = cansado | I’m tired after work. | img:cansado
+angry = bravo | My boss was angry with me. | img:bravo
+worried = preocupado | Don’t be worried, it’s OK. | img:preocupado
+excited = animado | I’m excited about the trip! | img:animado
+bored = entediado | I’m bored. Let’s go out! | img:entediado
+surprised = surpreso | She was surprised by the gift. | img:surpreso`],
+  ['EN','A2','Picture dictionary: home and free time',`a sofa = um sofá | Sit on the sofa. | img:sofa
+a fridge = uma geladeira | The milk is in the fridge. | img:geladeira
+a wardrobe = um guarda-roupa | My clothes are in the wardrobe. | img:armario
+a bathroom = um banheiro | The bathroom is upstairs. | img:banheira
+a bed = uma cama | My bed is very comfortable. | img:cama
+a chair = uma cadeira | Take a chair and sit down. | img:cadeira
+a phone = um celular | Can I use your phone? | img:celular
+a key = uma chave | I can’t find my key! | img:chave
+a guitar = um violão | He plays the guitar. | img:violao
+a camera = uma câmera | I take photos with my camera. | img:camera
+a ticket = um bilhete / ingresso | Two tickets for the concert, please. | img:ingresso
+a backpack = uma mochila | My backpack is very heavy. | img:mochila`],
+  ['FR','A1','Les animaux en images',`un chat = um gato | Mon chat dort toute la journée. | img:gato
+un chien = um cachorro | Le chien est dans le jardin. | img:cachorro
+un oiseau = um pássaro | Un oiseau chante. | img:passaro
+un lapin = um coelho | Le lapin mange des carottes. | img:coelho
+un poisson = um peixe | J’ai un poisson rouge. | img:peixes
+un cheval = um cavalo | Elle monte à cheval. | img:cavalo
+une vache = uma vaca | La vache donne du lait. | img:vaca
+une souris = um rato | La souris est toute petite. | img:rato
+un singe = um macaco | Les singes adorent les bananes. | img:macaco`],
+  ['FR','A1','La nourriture en images',`une pomme = uma maçã | Je mange une pomme. | img:maca
+une banane = uma banana | Une banane, s’il te plaît. | img:banana
+le pain = o pão | Tu peux acheter du pain ? | img:pao
+le fromage = o queijo | La France a beaucoup de fromages. | img:queijo
+le poulet = o frango | On mange du poulet ce soir. | img:frango
+les légumes = os legumes | Mange tes légumes ! | img:legumes
+le jus d’orange = o suco de laranja | Un jus d’orange, s’il vous plaît. | img:suco
+l’eau = a água | Un verre d’eau, s’il vous plaît. | img:agua
+un œuf = um ovo | Je mange deux œufs le matin. | img:ovo
+un gâteau = um bolo | Joyeux anniversaire ! Voici ton gâteau. | img:bolo
+une glace = um sorvete | Une glace à la vanille ! | img:sorvete`],
+  ['FR','A1','Les vêtements en images',`un t-shirt = uma camiseta | Je porte un t-shirt bleu. | img:camiseta
+une chemise = uma camisa | Il porte une chemise au travail. | img:camisa
+un pantalon = uma calça | Ce pantalon est trop long. | img:calca
+une robe = um vestido | Quelle belle robe ! | img:vestido
+une jupe = uma saia | Elle porte une jupe violette. | img:saia
+une veste = uma jaqueta | Prends une veste, il fait froid. | img:jaqueta
+des chaussettes = meias | Où sont mes chaussettes ? | img:meias
+des chaussures = sapatos | J’ai besoin de nouvelles chaussures. | img:sapato
+un chapeau = um chapéu | Mets un chapeau au soleil. | img:chapeu
+des lunettes = óculos | Je ne peux pas lire sans mes lunettes. | img:oculos`],
+  ['FR','A2','La météo et les émotions',`Il fait beau. = Está um dia bonito. | Il fait beau, on va à la plage ! | img:sol
+Il y a des nuages. = Está nublado. | Il y a des nuages mais il fait doux. | img:nuvem
+Il pleut. = Está chovendo. | Prends un parapluie, il pleut. | img:chuva
+Il y a du vent. = Está ventando. | Il y a trop de vent pour la plage. | img:vento
+un orage = uma tempestade | Il y a eu un gros orage cette nuit. | img:tempestade
+la neige = a neve | Tu as déjà vu la neige ? | img:neve
+heureux / heureuse = feliz | Je suis très heureuse de te voir ! | img:feliz
+triste = triste | Pourquoi tu es triste ? | img:triste
+fatigué(e) = cansado(a) | Je suis fatigué après le travail. | img:cansado
+en colère = bravo | Mon chef était en colère. | img:bravo
+inquiet / inquiète = preocupado(a) | Ne sois pas inquiet, ça va. | img:preocupado
+surpris(e) = surpreso(a) | Elle était surprise par le cadeau. | img:surpreso`],
+);

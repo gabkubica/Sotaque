@@ -245,7 +245,7 @@ function onTipoInput(e){
 function tipoEditor(q,i){
   const T=TIPOS[q.type]; if (!T) return '';
   return `<p class="meta muted" style="margin:0">${esc(T.help)}</p>${T.fields.map(([k,label,ph,area])=>{ const v=T.get? T.get(q,k) : q[k]; return `<label class="field">${esc(label)}${area? `<textarea data-q="${i}" data-tf="${k}" style="min-height:${k==='words'||k==='groups'? 120 : 80}px" placeholder="${esc(ph)}">${esc(v||'')}</textarea>` : `<input type="text" data-q="${i}" data-tf="${k}" value="${esc(v||'')}" placeholder="${esc(ph)}">`}</label>`; }).join('')}
-    ${q.type==='hunt'&&huntWords(q).length? `<details class="transc"><summary>Ver o quadro</summary>${TIPOS.hunt.print(q)}</details>` : ''}${q.type==='cross'&&crossEntries(q).length? `<details class="transc" open><summary>Ver as cruzadas</summary>${crossHtml(null,q,{},'key')}${crossLayout(q).left? `<p class="err">${crossLayout(q).left} palavra(s) não cruzaram com as outras e ficaram de fora. Troque ou acrescente palavras com letras em comum.</p>` : ''}</details>` : ''}`;
+    ${['pmatch','label','cross'].includes(q.type)? scenesHelp() : ''}${['pmatch','label'].includes(q.type)&&picParse(q).length? `<div class="pic-grid">${picParse(q).map(x=>picCard(x.img,`<b>${esc(x.w[0])}</b>`)).join('')}</div>` : ''}${q.type==='hunt'&&huntWords(q).length? `<details class="transc"><summary>Ver o quadro</summary>${TIPOS.hunt.print(q)}</details>` : ''}${q.type==='cross'&&crossEntries(q).length? `<details class="transc" open><summary>Ver as cruzadas</summary>${crossHtml(null,q,{},'key')}${crossLayout(q).left? `<p class="err">${crossLayout(q).left} palavra(s) não cruzaram com as outras e ficaram de fora. Troque ou acrescente palavras com letras em comum.</p>` : ''}</details>` : ''}`;
 }
 /* questões prontas para o conteúdo (mesma ideia de TF, GAP…) */
 const DIT=(text,prompt)=>({type:'dict',prompt:prompt||'Ouça e escreva a frase.',text});
@@ -267,3 +267,94 @@ Object.assign(TIPOS.hunt,{solve:q=>huntGrid(q).words.slice(),wrong:q=>huntGrid(q
 Object.assign(TIPOS.cross,{solve:q=>Object.fromEntries(crossLayout(q).grid),wrong:q=>Object.fromEntries([...crossLayout(q).grid.keys()].map(k=>[k,'X'])),said:(q,a)=>{ const L=crossLayout(q); return `${[...L.grid.keys()].filter(k=>a&&a[k]).length} de ${L.grid.size} letras preenchidas`; }});
 /* campos que cada tipo guarda (para limpar a questão ao salvar) */
 const TIPO_KEEP={dict:['text'],cloze:['text','extra'],fix:['text'],sort:['groups'],kwt:['orig','key','frame','answers'],odd:['options','correct','imgs','why'],hunt:['words'],cross:['words']};
+/* =========================================================
+   Mais 4 tipos: escolha no texto, ordenar o diálogo/texto, ligar palavras às imagens, escreva o nome da imagem
+   ========================================================= */
+/* escolha no texto: "She [*goes/go] to school." (o * marca a certa) */
+const pickParse=q=>{ const parts=String(q.text||'').split(/\[([^\]]+)\]/), segs=[], slots=[];
+  parts.forEach((p,k)=>{ if (k%2){ const ops=p.split('/').map(x=>x.trim()).filter(Boolean); const c=ops.find(x=>x.startsWith('*'))||ops[0]; slots.push({ops:tpShuffle(ops.map(x=>x.replace(/^\*/,'')),q.id+p),right:c.replace(/^\*/,'')}); } else segs.push(p); });
+  return {segs,slots}; };
+/* ordenar: uma linha por fala/frase, na ordem certa */
+const seqLines=q=>String(q.lines||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const seqOrder=q=>{ const n=seqLines(q).length; let o=tpShuffle([...Array(n).keys()],q.id+'sq'); if (n>1&&o.every((v,i)=>v===i)) o.push(o.shift()); return o; };
+/* imagens: "cat/kitten | img:gato", uma por linha */
+const picParse=q=>String(q.items||'').split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{ const parts=l.split('|').map(x=>x.trim()), im=parts.find(x=>/^img:/.test(x)), w=parts.find(x=>!/^img:/.test(x))||''; return {w:alts(w),img:im? im.slice(4) : ''}; }).filter(x=>x.w.length&&x.img);
+const picCard=(img,inner,cls='')=>`<div class="pic ${cls}"><span class="pic-img">${imgMini(img,240,160)}</span>${inner}</div>`;
+const scenesHelp=()=>`<details class="transc"><summary>Nomes das imagens que dá para usar</summary><div class="scn-names">${Object.entries(SCENES).map(([k,v])=>`<span title="${esc(v.nome)}">${quadro(imgPal(k),k,3,{w:90,h:60,frame:false})}<code>${k}</code></span>`).join('')}</div></details>`;
+const frac=(ok,n)=>n? Math.round(ok/n*100)/100 : 0;
+Object.assign(TIPOS,{
+  pick:{label:'Escolha no texto',short:'Escolha',help:'Escreva o texto e ponha as opções entre colchetes, com * na certa: She [*goes/go/going] to school. O aluno toca na opção certa em cada lugar.',
+    fields:[['text','Texto com as opções entre [colchetes]','I [*have been/am/was] here since 2019. She [*doesn’t/don’t] like coffee.',true]],
+    blank:()=>({prompt:'Escolha a opção certa em cada lugar.',text:''}),
+    valid:q=>pickParse(q).slots.some(s=>s.ops.length>=2)? null : 'Ponha pelo menos um lugar com 2 opções entre [colchetes].',
+    answer:(t,q)=>{ const {segs,slots}=pickParse(q), a=Array.isArray(t.answers[q.id])? t.answers[q.id] : [];
+      return `<p class="tp-pick">${segs.map((s,k)=>esc(s)+(k<slots.length? `<span class="pk-grp" role="group" aria-label="Lugar ${k+1}">${slots[k].ops.map(o=>`<button type="button" class="pk-op ${a[k]===o?'on':''}" data-act="pk-pick" ${dt(t)} data-q="${q.id}" data-k="${k}" data-v="${esc(o)}" aria-pressed="${a[k]===o}">${esc(o)}</button>`).join('')}</span>` : '')).join('')}</p>`; },
+    answered:(q,a)=>Array.isArray(a)&&pickParse(q).slots.every((_,k)=>a[k]),
+    grade:(q,a)=>{ const {slots}=pickParse(q); return frac(slots.filter((s,k)=>Array.isArray(a)&&a[k]===s.right).length,slots.length); },
+    tag:(q,a)=>{ const {slots}=pickParse(q); return `${slots.filter((s,k)=>Array.isArray(a)&&a[k]===s.right).length} de ${slots.length} certas`; },
+    result:(t,q,a,g,mode)=>{ const {segs,slots}=pickParse(q), A=Array.isArray(a)? a : [];
+      return `<p class="tp-pick">${segs.map((s,k)=>esc(s)+(k<slots.length? (mode==='key'||A[k]===slots[k].right? `<mark class="fill right">${esc(slots[k].right)}</mark>` : `<mark class="fill wrong">${esc(A[k]||'—')}</mark><small class="tp-right">${esc(slots[k].right)}</small>`) : '')).join('')}</p>`; },
+    print:q=>{ const {segs,slots}=pickParse(q); return `<p>${segs.map((s,k)=>esc(s)+(k<slots.length? ` <b>(${slots[k].ops.map(esc).join(' / ')})</b> ` : '')).join('')}</p>`; },
+    key:q=>pickParse(q).slots.map((s,k)=>`(${k+1}) ${esc(s.right)}`).join(' · '),
+    solve:q=>pickParse(q).slots.map(s=>s.right), wrong:q=>pickParse(q).slots.map(s=>s.ops.find(o=>o!==s.right)||s.right),
+    said:(q,a)=>(Array.isArray(a)? a : []).map(x=>esc(x||'—')).join(' · ')},
+  seq:{label:'Ordenar o diálogo ou o texto',short:'Sequência',help:'Escreva uma fala ou frase por linha, já na ordem certa. O aluno recebe embaralhado e põe na ordem.',
+    fields:[['lines','Falas ou frases, uma por linha, na ordem certa','A: Hi! Can I help you?\nB: Yes, I’d like a coffee, please.\nA: Small or large?\nB: Large, please.',true]],
+    blank:()=>({prompt:'Ponha na ordem certa.',lines:''}),
+    valid:q=>seqLines(q).length>=3? null : 'Escreva pelo menos 3 linhas.',
+    answer:(t,q)=>{ const L=seqLines(q), a=Array.isArray(t.answers[q.id])? t.answers[q.id] : [];
+      return `<ol class="sq-line">${a.length? a.map((k,pos)=>`<li><button type="button" class="sq-it on" data-act="sq-rm" ${dt(t)} data-q="${q.id}" data-pos="${pos}"><span class="sq-n">${pos+1}</span>${esc(L[k])}</button></li>`).join('') : '<li class="muted" style="list-style:none">Toque nas linhas abaixo, na ordem certa.</li>'}</ol>
+        <div class="sq-bank">${seqOrder(q).filter(k=>!a.includes(k)).map(k=>`<button type="button" class="sq-it" data-act="sq-add" ${dt(t)} data-q="${q.id}" data-k="${k}">${esc(L[k])}</button>`).join('')}</div>`; },
+    answered:(q,a)=>Array.isArray(a)&&a.length===seqLines(q).length,
+    grade:(q,a)=>{ const n=seqLines(q).length; return Array.isArray(a)? frac(a.filter((k,i)=>k===i).length,n) : 0; },
+    tag:(q,a)=>`${Array.isArray(a)? a.filter((k,i)=>k===i).length : 0} de ${seqLines(q).length} no lugar`,
+    result:(t,q,a,g,mode)=>{ const L=seqLines(q), A=mode==='key'? L.map((_,i)=>i) : (Array.isArray(a)? a : []);
+      return `<ol class="sq-line res">${A.map((k,pos)=>`<li class="${k===pos?'ok':'no'}"><span class="sq-n">${pos+1}</span><span>${esc(L[k])}</span>${k!==pos? `<small>vai na ${k+1}ª</small>` : ''}</li>`).join('')||'<li class="muted">Sem resposta</li>'}</ol>`; },
+    print:q=>{ const L=seqLines(q); return `<ul class="pr-seq">${seqOrder(q).map(k=>`<li><span class="pr-gap short"></span> ${esc(L[k])}</li>`).join('')}</ul>`; },
+    key:q=>{ const o=seqOrder(q); return seqLines(q).map((_,i)=>o.indexOf(i)+1).join(' → ')+' (ordem das linhas da folha)'; },
+    solve:q=>seqLines(q).map((_,i)=>i), wrong:q=>seqLines(q).map((_,i)=>i).reverse(),
+    said:(q,a)=>(Array.isArray(a)? a : []).map(k=>esc(seqLines(q)[k])).join(' → ')},
+  pmatch:{label:'Ligar palavras às imagens',short:'Imagens',help:'Uma linha por imagem: palavra | img:nome-da-imagem. O aluno escolhe a palavra de cada imagem.',
+    fields:[['items','Palavras e imagens (uma por linha)','cat | img:gato\ndog | img:cachorro\nbird | img:passaro\nhorse | img:cavalo',true]],
+    blank:()=>({prompt:'Escolha a palavra de cada imagem.',items:''}),
+    valid:q=>{ const P=picParse(q); return P.length<3? 'Escreva pelo menos 3 linhas: palavra | img:nome.' : P.some(x=>!SCENES[x.img])? `Imagem desconhecida: ${P.find(x=>!SCENES[x.img]).img}.` : null; },
+    answer:(t,q)=>{ const P=picParse(q), a=t.answers[q.id]||{}, opts=tpShuffle(P.map(x=>x.w[0]),q.id+'pm');
+      return `<div class="pic-grid">${P.map((x,k)=>picCard(x.img,`<label class="sr" for="pm-${q.id}-${k}">Palavra da imagem ${k+1}</label><select id="pm-${q.id}-${k}" data-pm="${q.id}" data-k="${k}" ${dt(t)}><option value="">Escolha…</option>${opts.map(o=>`<option ${a[k]===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`)).join('')}</div>`; },
+    answered:(q,a)=>!!a&&picParse(q).every((_,k)=>a[k]),
+    grade:(q,a)=>{ const P=picParse(q); return frac(P.filter((x,k)=>a&&a[k]===x.w[0]).length,P.length); },
+    tag:(q,a)=>{ const P=picParse(q); return `${P.filter((x,k)=>a&&a[k]===x.w[0]).length} de ${P.length} imagens`; },
+    result:(t,q,a,g,mode)=>`<div class="pic-grid">${picParse(q).map((x,k)=>{ const v=a?.[k], ok=mode==='key'||v===x.w[0]; return picCard(x.img,ok? `<b class="pic-ok">${esc(x.w[0])}</b>` : `<b class="pic-no">${esc(v||'—')}</b><small class="tp-right">${esc(x.w[0])}</small>`,ok?'right':'wrong'); }).join('')}</div>`,
+    print:q=>{ const P=picParse(q); return `<p class="pr-bankbox">${tpShuffle(P.map(x=>x.w[0]),q.id+'pm').map(esc).join(' · ')}</p><div class="pr-pics">${P.map(x=>`<div>${imgMini(x.img,200,130)}<span class="pr-gap"></span></div>`).join('')}</div>`; },
+    key:q=>picParse(q).map((x,k)=>`(${k+1}) ${esc(x.w[0])}`).join(' · '),
+    solve:q=>Object.fromEntries(picParse(q).map((x,k)=>[k,x.w[0]])), wrong:q=>{ const P=picParse(q); return Object.fromEntries(P.map((x,k)=>[k,P[(k+1)%P.length].w[0]])); },
+    said:(q,a)=>picParse(q).map((x,k)=>esc(a?.[k]||'—')).join(' · ')},
+  label:{label:'Escreva o nome da imagem',short:'Nomear',help:'Uma linha por imagem: palavra | img:nome-da-imagem. Para aceitar mais de uma resposta, use /: a cup/cup | img:xicara. O aluno vê a imagem e quantas letras tem a palavra.',
+    fields:[['items','Palavras e imagens (uma por linha)','apple | img:maca\nbread | img:pao\ncheese | img:queijo',true]],
+    blank:()=>({prompt:'Escreva o nome de cada imagem.',items:''}),
+    valid:q=>{ const P=picParse(q); return P.length<2? 'Escreva pelo menos 2 linhas: palavra | img:nome.' : P.some(x=>!SCENES[x.img])? `Imagem desconhecida: ${P.find(x=>!SCENES[x.img]).img}.` : null; },
+    answer:(t,q)=>{ const P=picParse(q), a=t.answers[q.id]||{};
+      return `<div class="pic-grid">${P.map((x,k)=>picCard(x.img,`<small class="pic-hint">${x.w[0].split(' ').map(w=>w[0]+' '+'_ '.repeat(Math.max(0,w.length-1))).join('  ').trim()}</small><input type="text" class="pic-in" data-lb="${q.id}" data-k="${k}" ${dt(t)} value="${esc(a[k]||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Nome da imagem ${k+1}">`)).join('')}</div>`; },
+    answered:(q,a)=>!!a&&picParse(q).every((_,k)=>String(a[k]||'').trim()),
+    grade:(q,a)=>{ const P=picParse(q); return frac(P.filter((x,k)=>a&&x.w.some(w=>nrm(w)===nrm(a[k]))).length,P.length); },
+    tag:(q,a)=>{ const P=picParse(q); return `${P.filter((x,k)=>a&&x.w.some(w=>nrm(w)===nrm(a[k]))).length} de ${P.length} imagens`; },
+    result:(t,q,a,g,mode)=>`<div class="pic-grid">${picParse(q).map((x,k)=>{ const v=a?.[k], ok=mode==='key'||x.w.some(w=>nrm(w)===nrm(v)); return picCard(x.img,ok? `<b class="pic-ok">${esc(mode==='key'? x.w[0] : v)}</b>` : `<b class="pic-no">${esc(v||'—')}</b><small class="tp-right">${esc(x.w[0])}</small>`,ok?'right':'wrong'); }).join('')}</div>`,
+    print:q=>`<div class="pr-pics">${picParse(q).map(x=>`<div>${imgMini(x.img,200,130)}<span class="pr-gap"></span></div>`).join('')}</div>`,
+    key:q=>picParse(q).map((x,k)=>`(${k+1}) ${esc(x.w.join(' / '))}`).join(' · '),
+    solve:q=>Object.fromEntries(picParse(q).map((x,k)=>[k,x.w[0]])), wrong:q=>Object.fromEntries(picParse(q).map((x,k)=>[k,'xx'])),
+    said:(q,a)=>picParse(q).map((x,k)=>esc(a?.[k]||'—')).join(' · ')},
+});
+Object.assign(TIPO_KEEP,{pick:['text'],seq:['lines'],pmatch:['items'],label:['items']});
+Object.assign(TIPO_ACT,{
+  'pk-pick'(el){ const t=getTask(el.dataset.task), q=el.dataset.q, a=Array.isArray(t.answers[q])? t.answers[q] : []; a[+el.dataset.k]=el.dataset.v; t.answers[q]=a; save();
+    el.parentElement.querySelectorAll('.pk-op').forEach(b=>{ const on=b===el; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); }); if (typeof updateProgress==='function') updateProgress(t); },
+  'sq-add'(el){ const t=getTask(el.dataset.task), q=el.dataset.q, a=Array.isArray(t.answers[q])? t.answers[q] : []; a.push(+el.dataset.k); t.answers[q]=a; save(); render(); },
+  'sq-rm'(el){ const t=getTask(el.dataset.task), a=t.answers[el.dataset.q]; a.splice(+el.dataset.pos,1); save(); render(); },
+});
+const _tipoInput=onTipoInput;
+onTipoInput=function(e){ _tipoInput(e); const el=e.target;
+  if (el.dataset.pm&&e.type==='change'){ const t=getTask(el.dataset.task); (t.answers[el.dataset.pm] ||= {})[el.dataset.k]=el.value; save(); if (typeof updateProgress==='function') updateProgress(t); }
+  if (el.dataset.lb){ const t=getTask(el.dataset.task); (t.answers[el.dataset.lb] ||= {})[el.dataset.k]=el.value; clearTimeout(S.tpT); S.tpT=setTimeout(save,400); if (typeof updateProgress==='function') updateProgress(t); } };
+const PICK=(text,prompt)=>({type:'pick',prompt:prompt||'Escolha a opção certa em cada lugar.',text});
+const SEQ=(lines,prompt)=>({type:'seq',prompt:prompt||'Ponha na ordem certa.',lines});
+const PMATCH=(items,prompt)=>({type:'pmatch',prompt:prompt||'Escolha a palavra de cada imagem.',items});
+const LABEL=(items,prompt)=>({type:'label',prompt:prompt||'Escreva o nome de cada imagem.',items});

@@ -660,6 +660,7 @@ function seedBank(){
   const base=BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')),typeof provasBank!=='undefined'? provasBank(T0) : [],
     typeof BANK_RAW_EXTRA!=='undefined'? BANK_RAW_EXTRA.map(([lang,...r],k)=>mk(lang)(r,k+500)) : [],typeof aupairBank!=='undefined'? aupairBank(T0) : [],typeof contBank!=='undefined'? contBank(T0) : [],typeof gramBank!=='undefined'? gramBank(T0) : [],typeof imgBank!=='undefined'? imgBank(T0) : [],typeof tiposBank!=='undefined'? tiposBank(T0) : []);
   if (typeof aplicarExtras!=='undefined') aplicarExtras(base);
+  if (typeof aplicarRevisao!=='undefined') aplicarRevisao(base);
   return base.concat(typeof provasMarcos!=='undefined'? provasMarcos(base,T0) : []);
 }
 

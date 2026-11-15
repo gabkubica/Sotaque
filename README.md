@@ -85,6 +85,18 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   `| img:cena`). 22 atividades prontas com eles (`atividades-tipos.js`, 154 questões, inglês e francês, A1–C1,
   jogos com imagens para crianças) e 23 imagens novas de vocabulário (`quadros-mais.js`: animais, comida,
   transporte, roupas, objetos da casa), também no seletor de imagem do editor.
+- Mais 4 tipos (`tipos.js`): escolha no texto (`[*certa/errada]`), ordenar o diálogo ou o texto, ligar palavras às
+  imagens e escreva o nome da imagem (`palavra | img:cena`). São 12 tipos novos ao todo.
+- Revisão do banco (`revisao.js`): cada tarefa foi avaliada e ganhou uma questão de tipo novo onde fazia sentido
+  (514 tarefas; ficam de fora as provas, o Au Pair e as 2 tarefas de imagem que já são visuais). Gramática e
+  conjugação ganharam escolha no texto, encontre o erro, separar em grupos ou reescrever; vocabulário e crianças, imagens
+  (ligar, nomear, qual não combina); leituras, "ordene as frases como no texto"; escutas, "ordene o diálogo" ou
+  ditado de uma frase do áudio (montados do próprio texto, então o gabarito é sempre o do texto).
+- Flashcards com mais imagens: 36 cenas novas (comida, roupas, clima, sentimentos, animais, casa, hobbies), imagem
+  automática quando a palavra do cartão tem desenho (`AUTO_IMG` em `imagens.js`), capa do baralho com três cartões
+  e 9 baralhos ilustrados novos (236 cartões com imagem, antes eram 35).
+- Pacotes de estudo: dá para ver as atividades de cada pacote antes de mandar (com a data em que cada uma libera,
+  "Ver" como o aluno vê, tirar e mudar a ordem).
 - Atualizações: `python3 scripts/versao.py` marca os arquivos com a versão antes de publicar, e o `sw.js` busca sempre
   a versão nova quando há internet.
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
