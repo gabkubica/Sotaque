@@ -1855,7 +1855,7 @@ function go(){ ttsStop(); const prev=S.route, h=location.hash||'#inicio'; S.rout
   if (entered){ const top=NAVSTACK[NAVSTACK.length-1]; if (top) top.y=window.scrollY;
     const back=NAVSTACK.length>1&&NAVSTACK[NAVSTACK.length-2].h===h;
     if (back){ NAVSTACK.pop(); restore=NAVSTACK[NAVSTACK.length-1].y; } else if (top?.h!==h){ NAVSTACK.push({h,y:0}); if (NAVSTACK.length>30) NAVSTACK.shift(); }
-    S.enter=true; if (S.modal) closeModal(); }
+    S.enter=true; if (S.modal&&!S.keepModal) closeModal(); S.keepModal=false; }
   if (entered){ S.trailLv=null; S.tlAll=false; }
   if (R.name==='nova'&&entered&&!S.keepDraft) S.draft=newDraft(R.id);
   if (R.name==='bancoNova'&&entered){ S.draft=newBankDraft(); if (S.preset){ Object.assign(S.draft,S.preset); S.preset=null; } }
@@ -2065,7 +2065,7 @@ const FORMS={
     const pw= REAL? '' : PASS;
     const s={id:'u'+uid(),role:'student',pass:pw,teacherId:S.me,since:dayStart(now()),...vals};
     DB.users.push(s); DB.packages.push({id:uid(),studentId:s.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null});
-    ensureLessons(); save(); location.hash='aluno-'+s.id; render();
+    ensureLessons(); save(); S.keepModal=true; location.hash='aluno-'+s.id; render();
     if (REAL){ cloudInvite(s.email,s.id); const link=siteUrl(), first=s.name.split(' ')[0], msg=`Oi, ${first}! Seu acesso ao Sotaque, onde ficam as nossas aulas, homeworks e flashcards: ${link} · Toque em “Primeiro acesso de aluno”, use este e-mail (${s.email}) e crie a sua senha.`;
       openModal(`<h2>Caderno de ${esc(first)} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Agora mande o acesso:</p>
         <div class="cred"><span>Link: <b>${esc(link)}</b></span><span>E-mail: <b>${esc(s.email)}</b></span></div>

@@ -152,6 +152,7 @@ async function cloudLogin(email,pass){
 }
 async function cloudSignup(email,pass,meta){
   const {data,error}=await cloudClient().auth.signUp({email,password:pass,options:{data:{app:'sotaque',...meta},emailRedirectTo:siteUrl()}});
+  if (error&&meta.role==='teacher'&&/Database error saving new user|SOTAQUE_PROF/i.test(error.message)) return {err:'Este e-mail ainda não está autorizado a criar conta de professor. Peça a liberação para quem administra o Sotaque.'};
   if (error) return {err:AUTH_MSG(error)};
   if (data?.user&&Array.isArray(data.user.identities)&&!data.user.identities.length) return {err:AUTH_MSG('already registered')};
   if (data?.session){ await cloudLoad(); return {logged:true}; }
