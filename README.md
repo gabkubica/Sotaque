@@ -29,8 +29,13 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
 - **Sotaque real** · `aulas/` → https://gabkubica.github.io/Sotaque/aulas/
   Começa sem alunos e sem dados de exemplo, com todas as atividades, provas, flashcards e aulas prontas.
   A professora cria a própria conta ("Criar minha conta"); os alunos recebem uma senha provisória gerada na hora.
-  Por enquanto os dados ficam no navegador de quem usa (chave `sotaque:real`): falta ligar a nuvem (Supabase)
-  para os alunos entrarem pelo celular deles.
+  Dados na nuvem (Supabase, projeto "Sotaque", São Paulo): `app/cloud.js` faz o login e salva só o que mudou.
+  - Professora: "Criar minha conta" (o e-mail precisa estar em `sq_teacher_allow`) e confirma pelo e-mail.
+  - Aluno: a professora cadastra o e-mail; o aluno toca em "Primeiro acesso de aluno" e cria a senha.
+  - Banco: `supabase/schema.sql` (tabelas sq_members, sq_invites, sq_records e regras de acesso) e
+    `supabase/02-professores.sql` (lista de professores autorizados). Para autorizar alguém:
+    `insert into public.sq_teacher_allow (email) values ('email@exemplo.com') on conflict do nothing;`
+  - Os PDFs ainda ficam no aparelho onde foram importados.
 - **Modo adm / demonstração** · `app/` → https://gabkubica.github.io/Sotaque/app/
   Com professores e alunos de exemplo (senha `sotaque123`), para testar tudo sem mexer no real (chave `sotaque:v2`).
 
