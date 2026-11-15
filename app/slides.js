@@ -30,7 +30,7 @@ const slImg=(k,w=640,h=400)=>k&&SCENES[k]? quadro(imgPal(k),k,hashStr(k)%97,{w,h
 function slideHtml(s,o={}){
   const L=o.lang||'EN', T=s.title? `<h2 class="sl-t">${esc(s.title)}</h2>` : '';
   let b='';
-  if (s.t==='capa') b=`<div class="sl-capa"><div><p class="sl-eye">${esc(o.level||'')} ${o.level? '·' : ''} ${L==='FR'? 'Leçon' : 'Lesson'}</p><h1>${esc(s.title)}</h1>${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}</div>${s.img? `<span class="sl-art">${slImg(s.img,640,480)}</span>` : ''}</div>`;
+  if (s.t==='capa') b=`<div class="sl-cv"><div class="sl-cv-t"><p class="sl-eye">${esc(o.level||'')} ${o.level? '·' : ''} ${L==='FR'? 'Leçon' : 'Lesson'}</p><h1>${esc(s.title)}</h1>${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}<span class="sl-cv-bar"></span></div>${s.img? `<div class="sl-cv-art">${slImg(s.img,600,675)}</div>` : ''}</div>`;
   if (s.t==='vocab') b=`${T}<div class="sl-voc" style="--c:${Math.min(4,Math.ceil(Math.sqrt(s.body.length*1.6)))}">${s.body.map(line=>{ const p=line.split('|').map(x=>x.trim()), im=(p.find(x=>/^img:/.test(x))||'').slice(4)||(typeof AUTO_IMG!=='undefined'? cardImg({f:p[0]}) : ''), tr=p.slice(1).find(x=>!/^img:/.test(x))||'';
     return `<div class="sl-card">${im? `<span class="sl-ci">${slImg(im,320,200)}</span>` : ''}<b>${esc(p[0])} ${slSay(p[0],L)}</b>${tr? `<small class="${o.rev?'':'sl-hide'}">${esc(tr)}</small>` : ''}</div>`; }).join('')}</div>`;
   if (s.t==='frase') b=`${T}<div class="sl-frases">${s.body.map(x=>`<p>${slSay(x,L)}<span>${esc(x)}</span></p>`).join('')}</div>`;
