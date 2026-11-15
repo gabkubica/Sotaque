@@ -2,70 +2,112 @@
    Sotaque · aulas prontas em slides (formato em slides.js) e atividades de tirinha
    ========================================================= */
 const SLIDES_SEED=[
-['EN','A1','At the café',`# capa: At the café | img:xicara
-Ordering food and drinks
-nota: Aquecimento: pergunte o que o aluno costuma tomar de manhã.
-# vocab: Café words
-a coffee | um café | img:xicara
-a juice | um suco | img:suco
-water | água | img:agua
-a cake | um bolo | img:bolo
-bread | pão | img:pao
-an egg | um ovo | img:ovo
-nota: Toque no ▶ de cada palavra. Depois mostre a tradução.
-# frase: Useful phrases
-Can I have a coffee, please?
-I’d like a piece of cake.
-How much is it?
-Here you are.
-# dialogo: Listen
-A: Hi! What can I get you?
-B: Can I have a coffee, please?
-A: Small or large?
-B: Small, please. And a piece of cake.
-A: That’s five pounds.
-B: Here you are. Thank you!
-nota: Ouçam duas vezes antes de mostrar o texto.
-# tirinha: At the café
-[xicara]
-Leo: Hi! What can I get you?
-Ana: A coffee, please.
+['EN','B1','Present perfect',`# capa: Present perfect | img:aviao
+Experiences, recent news and unfinished time
+nota: Aquecimento: “What’s the most interesting place you’ve visited?” Anote as respostas, vamos voltar a elas.
+# tirinha: Have you ever…?
+[aviao]
+Mia: Have you ever been to London?
+Sam: Yes, I have! I went there last year.
 ---
-Leo: Small or large?
-Ana (pensando): Hmm… large!
+Mia (surpreso): Did you like it?
+Sam (feliz): I loved it! But it rained every day.
 ---
-Leo (feliz): Here you are!
-Ana (feliz): Thanks!
-# pergunta: Choose the right answer
-I’d like ___ coffee, please.
-*a
-an
-some cups
-# pergunta: What do you say?
-You want to pay. You say…
-Here you go, a cake.
-*How much is it?
-I’m hungry.
-# conversa: Let’s talk | img:xicara
-What do you drink in the morning?
-Do you prefer coffee or tea?
-What’s your favourite café in your city?
-nota: Faça role-play: você é o atendente.`],
-['EN','A2','My last weekend',`# capa: My last weekend | img:bicicleta
-Talking about the past
-# vocab: Weekend activities
-went to the beach | fui à praia | img:mar
-rode a bike | andei de bicicleta | img:bicicleta
-watched a film | vi um filme | img:noite
-cooked dinner | fiz o jantar | img:panela
-played football | joguei futebol | img:bola
-read a book | li um livro | img:livro
-# frase: Regular and irregular
-I watched a film. (watch → watched)
-I went to the beach. (go → went)
-I didn’t work on Sunday.
-Did you have a good weekend?
-nota: Destaque -ed e os irregulares. Pergunte outros verbos que o aluno conhece.
+Mia (feliz): I’ve never been there.
+Sam: You should go!
+nota: Pergunte: quais frases falam de experiência e quais dizem QUANDO aconteceu?
+# explica: When do we use it?
+**1. Experiences** in our life, without saying when:
+> I have been to London.
+**2. Recent news** or actions with a result now:
+> I’ve lost my keys! I can’t open the door.
+**3. Unfinished time** (from the past until now):
+> She has lived here since 2019.
+# tabela: How to form it
+Subject | have / has | past participle
+I / you / we / they | have (’ve) | worked, seen, been
+he / she / it | has (’s) | worked, seen, been
+Negative: I **haven’t** seen it. · She **hasn’t** called.
+Question: **Have** you ever **tried** sushi?
+# tabela: Irregular past participles
+Verb | Past simple | Past participle
+be | was / were | **been**
+go | went | **gone / been**
+see | saw | **seen**
+eat | ate | **eaten**
+do | did | **done**
+write | wrote | **written**
+# exercicio: Practice 1 · The form
+! Choose the right form.
+escolha: I [*have seen/has seen/have saw] this film three times.
+escolha: My sister [*has finished/have finished/has finish] her project.
+escolha: [*Have/Has/Did] you ever eaten sushi?
+lacunas: We [have] [never] [been] to Japan. || has, ever, went
+# explica: Ever, never, already, yet, just
+**ever** = alguma vez (questions) · **never** = nunca
+> Have you ever seen snow? No, I’ve never seen it.
+**already** = já · **yet** = ainda (negatives) / já (questions)
+> I’ve already finished. · I haven’t finished yet.
+**just** = acabou de
+> She’s just arrived!
+# exercicio: Practice 2 · Ever, never, already, yet, just
+! Choose and complete.
+escolha: Have you [*ever/never/yet] been to Rio?
+escolha: I haven’t done my homework [*yet/already/just].
+escolha: We’ve [*just/yet/ever] arrived. We’re still at the door!
+grupos: Usually in questions and negatives: ever, yet / Usually in positive sentences: already, just, never
+# explica: For or since?
+**for** + a period of time
+> I’ve lived here for ten years.
+**since** + the starting point
+> I’ve lived here since 2015.
+# exercicio: Practice 3 · For or since?
+grupos: for: two weeks, a long time, ages, three years / since: Monday, 2010, I was a child, last summer
+reescreva: I started working here in 2019. | SINCE | I ___ 2019. | have worked here since/’ve worked here since/have been working here since
+reescreva: We met ten years ago. | FOR | We ___ ten years. | have known each other for/’ve known each other for
+# dica: Present perfect or past simple?
+Com hora ou data no passado (yesterday, in 2019, last week…), use o **past simple**.
+x: I have seen him yesterday.
+ok: I saw him yesterday.
+x: When have you arrived?
+ok: When did you arrive?
+ok: I’ve seen him this week. (this week ainda não acabou)
+# exercicio: Practice 4 · Find the mistake
+! Each sentence has one mistake. Tap it and correct it.
+erro: I {have visited|visited} Paris in 2018.
+erro: She has {went|gone} to the supermarket.
+erro: How long {are|have} you lived here?
+erro: They {didn’t|haven’t} finished yet.
+# dialogo: Listen: catching up
+A: Hi Tom! I haven’t seen you for ages!
+B: I know! I’ve been really busy. I’ve just started a new job.
+A: Really? Congratulations! Have you made any friends there?
+B: Yes, a few. And I’ve already been to two team dinners!
+A: That sounds great.
+# exercicio: Practice 5 · Listening and dictation
+! Ouça e responda.
+Tom has just started a new job. (v)
+Tom hasn’t made any friends yet. (f)
+ditado: I have just started a new job.
+# pergunta: Quick check
+Which sentence is correct?
+I have been to Chile last year.
+*I have never been to Chile.
+I never have been to Chile.
+# resumo: Summary
+- **have / has + past participle** (worked, seen, been…)
+- Experiences: **ever / never** · Recent news: **just / already / yet**
+- Unfinished time: **for** (period) / **since** (starting point)
+- With a finished time (yesterday, in 2019…) use the **past simple**
+# conversa: Let’s talk | img:mala
+What’s the most interesting place you’ve ever been to?
+Have you ever tried a very strange food?
+What have you done this week that you’re proud of?
+How long have you studied English?
+nota: Corrija só o present perfect nesta conversa. Homework sugerida: “Present perfect: ever and never” no banco.`],
+['EN','A2','Past simple',`# capa: Past simple | img:bicicleta
+Talking about finished actions in the past
+nota: Aquecimento: “What did you do last weekend?” Deixe o aluno tentar, sem corrigir ainda.
 # tirinha: Monday morning
 [cidade]
 Tom: Hi! Did you have a good weekend?
@@ -76,160 +118,154 @@ Bia: It was sunny there.
 ---
 Bia: And you? What did you do?
 Tom (triste): I stayed at home… and studied!
-# pergunta: Past simple
-Yesterday I ___ to the cinema.
-go
-*went
-goed
-# pergunta: Find the right question
-___ you have a good time?
-*Did
-Do
-Were
-# imagem: What did they do? | img:mar
-Look at the picture. What did they do last weekend?
-Use: went, swam, played, ate, saw…
-# conversa: Your weekend
+# explica: When do we use it?
+For actions that **started and finished** in the past.
+We often say **when**: yesterday, last week, in 2020, two days ago.
+> I watched a film last night.
+> We went to the beach on Saturday.
+# tabela: Regular verbs: + ed
+Verb | Past simple | Rule
+work | worked | + ed
+live | lived | + d
+study | studied | consonant + y → ied
+stop | stopped | double the last letter
+# tabela: Common irregular verbs
+Verb | Past simple | Verb | Past simple
+go | went | have | had
+see | saw | make | made
+eat | ate | buy | bought
+get | got | take | took
+# exercicio: Practice 1 · Regular or irregular?
+grupos: Regular: played, worked, studied, visited / Irregular: went, saw, bought, took
+escolha: Yesterday I [*played/plaied/play] football with my friends.
+escolha: We [*bought/buyed/buy] a new sofa last month.
+lacunas: Last summer we [went] to Bahia and we [ate] a lot of moqueca. || go, eat, eated
+# explica: Negatives and questions
+Negative: **didn’t** + verb (base form)
+> I didn’t go to work yesterday.
+Question: **Did** + subject + verb (base form)
+> Did you see the match?
+Short answers: Yes, I **did**. / No, I **didn’t**.
+# dica: Cuidado!
+Depois de **did** e **didn’t**, o verbo volta para a forma básica.
+x: Did you went to the party?
+ok: Did you go to the party?
+x: She didn’t saw me.
+ok: She didn’t see me.
+# exercicio: Practice 2 · Find the mistake
+erro: Did you {saw|see} the news?
+erro: I didn’t {liked|like} the film.
+erro: We {goed|went} to the cinema yesterday.
+ordem: Did you have a good weekend
+# exercicio: Practice 3 · Was and were
+! Choose the right form.
+escolha: I [*was/were] at home last night.
+escolha: My parents [*were/was] in Rio last week.
+escolha: [*Were/Was] you tired yesterday?
+# dialogo: Listen: a weekend away
+A: How was your weekend?
+B: It was great! We went to the mountains.
+A: Nice! What did you do there?
+B: We walked a lot and we ate in a lovely restaurant.
+A: Did you sleep in a hotel?
+B: No, we stayed in a small cabin.
+# exercicio: Practice 4 · Listening
+They went to the mountains. (v)
+They slept in a hotel. (f)
+1. What did they do there?
+a) They swam in the sea.
+*b) They walked and ate in a restaurant.
+c) They watched films.
+ditado: We stayed in a small cabin.
+# resumo: Summary
+- Finished actions, often with **when** (yesterday, last week…)
+- Regular: **+ ed** · Irregular: learn the list (went, saw, ate…)
+- Negative: **didn’t + verb** · Question: **Did + subject + verb?**
+- To be: **was / were**
+# conversa: Let’s talk | img:mar
 What did you do last weekend?
-Did you go out or stay at home?
-What was the best part?
-What are you going to do next weekend?`],
-['EN','B1','Travel stories',`# capa: Travel stories | img:aviao
-Present perfect and past simple
-# vocab: Travel words
-a suitcase | uma mala | img:mala
-a ticket | um bilhete | img:ingresso
-a flight | um voo | img:aviao
-a train | um trem | img:trem
-a backpack | uma mochila | img:mochila
-a camera | uma câmera | img:camera
-# frase: Have you ever…?
-Have you ever been to another country?
-I’ve never flown in a helicopter.
-I went to Chile in 2019.
-I’ve just booked my holiday!
-nota: Present perfect = experiência (sem quando). Past simple = quando aconteceu.
-# dialogo: Listen: lost luggage
-A: Excuse me, my suitcase didn’t arrive.
-B: I’m sorry. Which flight were you on?
-A: Flight 207 from Lisbon.
-B: Can you describe the suitcase?
-A: It’s blue and quite big.
-B: We’ll send it to your hotel tomorrow.
-# tirinha: At the airport
-[aviao]
-Mia: Have you ever been to London?
-Sam: Yes, I went there last year.
----
-Mia (surpreso): Oh! Did you like it?
-Sam (feliz): I loved it! But it rained every day.
----
-Mia (feliz): I’ve never been there.
-Sam: You should go!
-# pergunta: Choose
-I ___ to Japan in 2018.
-*went
-have been
-have gone
-# pergunta: Choose
-She ___ her passport. She can’t find it!
-*has lost
-lost yesterday
-loses
-# conversa: Let’s talk | img:mala
-What’s the best trip you’ve ever had?
-Have you ever had a problem on a trip?
-Where would you like to go next? Why?`],
-['EN','A1','Animals (kids)',`# capa: Animals | img:gato
-Let’s learn animal words!
-# vocab: Animals
-a cat | um gato | img:gato
-a dog | um cachorro | img:cachorro
-a bird | um pássaro | img:passaro
-a rabbit | um coelho | img:coelho
-a horse | um cavalo | img:cavalo
-a cow | uma vaca | img:vaca
-a mouse | um rato | img:rato
-a monkey | um macaco | img:macaco
-nota: Jogo: faça o som do animal e a criança diz o nome.
-# imagem: What’s this? | img:macaco
-Is it a cat or a monkey?
-What colour is it?
-# tirinha: My pet
+Where did you go on your last holiday?
+What did you eat yesterday?
+When did you start learning English?
+nota: Homework sugerida: “Past simple: find and fix” no banco.`],
+['EN','B1','Au Pair: the interview',`# capa: Au Pair: the interview | img:carrinho
+Talking about yourself, children and difficult situations
+nota: Esta aula prepara para a entrevista da agência. Grave a aluna no fim, se ela quiser.
+# explica: What do they want to know?
+The interviewer wants to see that you can **communicate** and that you are **responsible**.
+- Who are you? (family, studies, hobbies)
+- What experience do you have with **children**?
+- What would you do **if** something happens?
+- Why do you want to be an au pair?
+# frase: Talking about yourself
+I’m twenty-two and I’m from Curitiba.
+I’ve worked as a babysitter for three years.
+I’m patient, creative and very responsible.
+I’d love to experience a new culture.
+# vocab: Childcare words
+a baby stroller | carrinho de bebê | img:carrinho
+a bottle | mamadeira | img:agua
+a nap | soneca | img:cama
+a snack | lanche | img:maca
+a playground | parquinho | img:bola
+a bedtime story | história para dormir | img:livro
+# explica: “What would you do if…?”
+Use **would** + verb for imaginary situations:
+> If the child had a fever, I **would** call the parents.
+> If he refused to eat, I **would** stay calm and offer a different snack.
+Show that you stay **calm**, keep the child **safe** and **communicate** with the parents.
+# exercicio: Practice 1 · Second conditional
+escolha: If the baby [*cried/cries/would cry] all night, I would check if she was hungry.
+escolha: If a child [*fell/falls/would fall] in the playground, I would clean the cut and tell the parents.
+erro: If he hit his sister, I {will|would} talk to him calmly.
+reescreva: I don’t have a car, so I can’t drive the kids. | IF | I could drive the kids ___ a car. | if I had
+# tirinha: A difficult moment
 [casa]
-Ana: I have a pet!
-Leo (surpreso): A dog?
+Mia (triste): I don’t want to sleep!
+Ana: It’s late, sweetie. Let’s read a story first.
 ---
-Ana: No! It’s small and white.
-Leo (pensando): A rabbit?
+Mia (pensando): Can I choose the book?
+Ana (feliz): Of course!
 ---
-Ana (feliz): Yes! Her name is Snow.
-Leo (feliz): I love rabbits!
-# pergunta: Which one can fly?
-Which animal can fly?
-a cow
-*a bird
-a horse
-# conversa: Let’s talk | img:cachorro
-Do you have a pet?
-What’s your favourite animal?
-Is it big or small?`],
-['FR','A1','Au café',`# capa: Au café | img:xicara
-Commander à boire et à manger
-nota: Échauffement : demandez ce que l’élève boit le matin.
-# vocab: Au café
-un café | um café | img:xicara
-un jus d’orange | um suco de laranja | img:suco
-de l’eau | água | img:agua
-un gâteau | um bolo | img:bolo
-du pain | pão | img:pao
-un œuf | um ovo | img:ovo
-# frase: Phrases utiles
-Je voudrais un café, s’il vous plaît.
-C’est combien ?
-L’addition, s’il vous plaît.
-Voilà !
-# dialogo: Écoutez
-A: Bonjour ! Qu’est-ce que je vous sers ?
-B: Un café et un croissant, s’il vous plaît.
-A: Sur place ou à emporter ?
-B: Sur place.
-A: Ça fait quatre euros.
-B: Voilà. Merci !
-# tirinha: Au café
-[xicara]
-Leo: Bonjour ! Qu’est-ce que je vous sers ?
-Ana: Un café, s’il vous plaît.
----
-Leo: Petit ou grand ?
-Ana (pensando): Euh… grand !
----
-Leo (feliz): Voilà !
-Ana (feliz): Merci !
-# pergunta: Choisissez
-Je voudrais ___ café, s’il vous plaît.
-*un
-une
-des
-# conversa: Parlons | img:xicara
-Qu’est-ce que tu bois le matin ?
-Tu préfères le café ou le thé ?
-Quel est ton café préféré ?`],
-['FR','A2','Mon week-end',`# capa: Mon week-end | img:bicicleta
-Raconter au passé composé
-# vocab: Activités
-je suis allé(e) à la plage | fui à praia | img:mar
-j’ai fait du vélo | andei de bicicleta | img:bicicleta
-j’ai regardé un film | vi um filme | img:noite
-j’ai cuisiné | cozinhei | img:panela
-j’ai joué au foot | joguei futebol | img:bola
-j’ai lu un livre | li um livro | img:livro
-nota: Montrez la différence avoir / être.
-# frase: Avoir ou être ?
-J’ai regardé un film.
-Je suis allée au marché.
-Nous sommes restés à la maison.
-Tu as passé un bon week-end ?
+> Ten minutes later…
+Ana (feliz): Good night, Mia.
+# exercicio: Practice 2 · Good answers
+! Choose the best answer for the interview.
+1. Why do you want to be an au pair?
+a) Because I want to go shopping in the USA.
+*b) Because I love working with children and I want to learn about a new culture.
+c) I don’t know.
+1. What would you do if the child didn’t want to eat?
+*a) I would stay calm and try to make the food fun.
+b) I would shout at the child.
+c) I would give him only sweets.
+grupos: Good to say: I’m patient, I love playing outside, I always tell the parents / Better not to say: I get angry easily, I like to sleep late, I don’t like cooking
+# dica: Common mistakes
+x: I have 22 years.
+ok: I’m 22 (years old).
+x: I take care of children since 2020.
+ok: I’ve taken care of children since 2020.
+x: I like very much children.
+ok: I really like children.
+# exercicio: Practice 3 · Find the mistake
+erro: I {have|am} twenty years old.
+erro: I {work|’ve worked} as a babysitter since 2021.
+erro: I like {very much children|children very much}.
+# conversa: Interview practice | img:carrinho
+Tell me about yourself.
+What experience do you have with children?
+What would you do if the child had a fever?
+What would you do in your free time in the USA?
+Why should a family choose you?
+nota: Faça como na entrevista: sem consultar nada. Depois, comente pronúncia e frases prontas que ela pode melhorar.
+# resumo: Summary
+- Talk about yourself with full sentences and examples
+- Experience: **I’ve worked as…**, **I’ve taken care of…**
+- Situations: **If…, I would…** (calm, safe, communicate)
+- Show you are patient, responsible and open to a new culture`],
+['FR','A2','Le passé composé',`# capa: Le passé composé | img:bicicleta
+Raconter ce qu’on a fait
+nota: Échauffement : « Qu’est-ce que tu as fait le week-end dernier ? »
 # tirinha: Lundi matin
 [cidade]
 Tom: Salut ! Tu as passé un bon week-end ?
@@ -240,15 +276,74 @@ Bia: Là-bas, il faisait beau.
 ---
 Bia: Et toi ?
 Tom (triste): Je suis resté à la maison… et j’ai étudié !
-# pergunta: Choisissez
-Samedi, nous ___ allés au cinéma.
-*sommes
-avons
-sont
-# conversa: Ton week-end
+# explica: Quand l’utiliser ?
+Pour une action **terminée** dans le passé.
+> Hier, j’ai regardé un film.
+> Samedi, nous sommes allés au cinéma.
+Formation : **avoir** ou **être** au présent + **participe passé**.
+# tabela: Avec avoir
+Sujet | avoir | participe passé
+j’ | ai | mangé, fini, pris
+tu | as | mangé, fini, pris
+il / elle / on | a | mangé, fini, pris
+nous | avons | mangé, fini, pris
+vous | avez | mangé, fini, pris
+ils / elles | ont | mangé, fini, pris
+# tabela: Participes irréguliers
+Verbe | Participe | Verbe | Participe
+faire | **fait** | prendre | **pris**
+voir | **vu** | lire | **lu**
+boire | **bu** | écrire | **écrit**
+avoir | **eu** | être | **été**
+# exercicio: Pratique 1 · Avec avoir
+escolha: Hier, j’[*ai/suis/a] mangé une pizza.
+escolha: Nous avons [*fait/faisé/fais] du sport.
+escolha: Tu as [*vu/voi/voyé] le film ?
+lacunas: Samedi, j’[ai] [lu] un livre et j’ai [bu] un café. || suis, lire, boire
+# explica: Avec être
+Les verbes de **mouvement** et les verbes **pronominaux** :
+- aller, venir, partir, arriver, entrer, sortir, naître, mourir, rester, tomber…
+- se lever, se coucher, s’habiller…
+Le participe **s’accorde** avec le sujet :
+> Elle est allé**e** au marché.
+> Nous sommes parti**s** tôt.
+# exercicio: Pratique 2 · Avoir ou être ?
+grupos: Avec être : aller, arriver, rester, tomber / Avec avoir : manger, faire, voir, prendre
+escolha: Elle [*est/a] arrivée à huit heures.
+escolha: Nous [*sommes/avons] partis tôt.
+escolha: Ils sont [*allés/allé/allée] au cinéma.
+# dica: Attention !
+x: Je suis mangé une pomme.
+ok: J’ai mangé une pomme.
+x: Elle est allé au marché.
+ok: Elle est allée au marché.
+x: J’ai allé au cinéma.
+ok: Je suis allé au cinéma.
+# exercicio: Pratique 3 · Trouvez l’erreur
+erro: Hier, je {suis|ai} regardé la télé.
+erro: Marie est {sorti|sortie} avec ses amies.
+erro: Nous avons {prendu|pris} le train.
+# dialogo: Écoutez : le week-end de Léa
+A: Alors, ton week-end ?
+B: Super ! Samedi, je suis allée au marché et j’ai acheté des fruits.
+A: Et dimanche ?
+B: Dimanche, j’ai fait une randonnée avec des amis.
+A: Vous êtes rentrés tard ?
+B: Oui, on est rentrés à dix heures.
+# exercicio: Pratique 4 · Compréhension
+Léa est allée au marché samedi. (v)
+Léa a fait une randonnée seule. (f)
+ditado: J’ai acheté des fruits au marché.
+# resumo: Résumé
+- **avoir / être + participe passé**
+- La plupart des verbes : **avoir** (j’ai mangé)
+- Mouvement et verbes pronominaux : **être** (je suis allé·e)
+- Avec être, le participe s’accorde (elle est partie, ils sont partis)
+# conversa: Parlons | img:mar
 Qu’est-ce que tu as fait le week-end dernier ?
-Tu es sorti(e) ou tu es resté(e) à la maison ?
-Qu’est-ce que tu vas faire le week-end prochain ?`],
+Où es-tu allé·e pendant tes dernières vacances ?
+Qu’est-ce que tu as mangé hier ?
+nota: Devoirs suggérés : « Passé composé : trouvez l’erreur » dans la banque.`],
 ];
 /* atividades "Complete a tirinha" (entram no banco com as outras dos tipos novos) */
 if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(

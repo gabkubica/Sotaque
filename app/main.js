@@ -140,6 +140,7 @@ const allStudents=()=>DB.users.filter(u=>u.role==='student').sort((a,b)=>a.name.
 const students=()=>allStudents().filter(u=>u.teacherId===S.me);
 const teacherOfStudent=id=>user(user(id)?.teacherId);
 const mine=x=>user(x.studentId)?.teacherId===S.me;
+const roomOf=s=>s.room||DB.settings[s.teacherId]?.meet||'#';
 const settingsOf=tid=>DB.settings[tid]||(DB.settings[tid]={pix:'',avail:{1:[8,20],2:[8,20],3:[8,20],4:[8,20],5:[8,20]}});
 /* "a professora" ou "o professor", conforme quem dá aula */
 const aProf=()=>teacher()?.fem===false? 'o professor' : 'a professora';
@@ -211,6 +212,7 @@ function parseHash(){
   if (h==='slides') return {name:'slides'};
   if (h==='ao-vivo') return {name:'aoVivo'};
   if ((m=h.match(/^slides-ed-([a-z0-9]+)$/))) return {name:'slidesEd',id:m[1]};
+  if ((m=h.match(/^slides-pdf-([a-z0-9]+)$/))) return {name:'slidesPdf',id:m[1]};
   if ((m=h.match(/^slides-([a-z0-9]+)$/))) return {name:'slidesPlay',id:m[1]};
   if ((m=h.match(/^pdf-([a-z0-9]+)$/))) return {name:'pdf',id:m[1]};
   if ((m=h.match(/^flash-ed-([a-z0-9]+)$/))) return {name:'flashEd',id:m[1]};
@@ -271,7 +273,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','slides','slidesEd','slidesPlay'], AULA=['aula','aulaEd','aulaPlay'];
+  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','slides','slidesEd','slidesPlay','slidesPdf'], AULA=['aula','aulaEd','aulaPlay'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -289,7 +291,7 @@ function lessonRow(l,showDay){
   const s=user(l.studentId), st=lessonState(l);
   return `<div class="row" style="${sVars(s)}"><span class="time">${fTime.format(l.start)}</span>${avatar(s,36)}
     <button class="row-m" style="background:none;border:0;padding:0;text-align:left;cursor:pointer" data-act="lesson" data-id="${l.id}"><b>${esc(s.name)}</b><small>${showDay? esc(fDay.format(l.start))+' · ' : ''}${langName(s.lang)} · ${esc(s.level)}</small></button>
-    ${isLive(l)? `<a class="btn primary small" href="${esc(s.room)}" target="_blank" rel="noopener">Entrar na aula</a>` : pill(st)}</div>`;
+    ${isLive(l)? `<a class="btn primary small" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>` : pill(st)}</div>`;
 }
 function reqCard(r){
   const l=getLesson(r.lessonId), s=user(r.studentId);
@@ -374,7 +376,7 @@ function nextCard(s,l){
     <div style="position:relative;display:flex;flex-direction:column;gap:4px"><p class="next-when">${esc(fLong.format(l.start))}</p><p class="next-sub">${fTime.format(l.start)} às ${fTime.format(l.start+l.dur*MIN)} · ${live? 'comece agora' : rel(l.start)}${l.movedFrom? ' · remarcada' : ''}</p></div>
     ${rq&&!isT()? `<div class="next-note" style="position:relative">Você pediu para remarcar. ${AProf()} vai escolher um destes horários: <b>${rq.options.map(ts=>fDay.format(ts)+' '+fTime.format(ts)).join(', ')}</b>. <button class="link" data-act="req-cancel" data-id="${rq.id}">Desistir do pedido</button></div>` : ''}
     ${rq&&isT()? `<div class="next-note" style="position:relative">${esc(s.name.split(' ')[0])} pediu para remarcar esta aula. Responda em <a class="link" href="#inicio">Hoje</a>.</div>` : ''}
-    <div class="row-btns" style="position:relative"><a class="btn primary big" href="${esc(s.room)}" target="_blank" rel="noopener">Entrar na aula</a>
+    <div class="row-btns" style="position:relative"><a class="btn primary big" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>
       ${isT()? `<button class="btn" data-act="lesson" data-id="${l.id}">Remarcar ou cancelar</button>` : rq? '' : `<button class="btn" data-act="cant" data-id="${l.id}" ${lead<24*HOUR? 'disabled title="Faltam menos de 24 horas"' : ''}>Não posso ir</button>`}</div>
     ${!isT()&&!rq&&lead<24*HOUR&&!live? `<p class="next-sub" style="position:relative;font-size:13px">Faltam menos de 24 horas. Para remarcar agora, fale direto com ${aProf()}.</p>` : ''}</div>`;
 }
@@ -419,7 +421,7 @@ function viewNotebook(s){
       <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${isT()? '' : dailyCard(s)}${timeline(s)}</div>
       <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${dailyPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
-          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
+          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(roomOf(s))}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
       </aside></div></div>`;
 }
@@ -428,7 +430,7 @@ function viewNotebook(s){
 const LT='ABCDEFGH';
 const fmtNote=n=>(Math.round(n*10)/10).toFixed(1).replace('.',',');
 const fmtNum=n=>String(Math.round(n*10)/10).replace('.',',');
-const getTask=id=>id==='prac'? S.prac?.t : id==='dia'? S.dia?.t : DB.tasks.find(t=>t.id===id);
+const getTask=id=>id==='slx'? S.slxT : id==='prac'? S.prac?.t : id==='dia'? S.dia?.t : DB.tasks.find(t=>t.id===id);
 const released=t=>!t.releaseAt||t.releaseAt<=now();
 const tasksOf=id=>DB.tasks.filter(t=>t.studentId===id&&(isT()||released(t)));
 const hasOpen=t=>t.questions.some(q=>q.type==='open');
@@ -1900,6 +1902,7 @@ function render(){
   else if (r.name==='slides') main=viewSlidesLib();
   else if (r.name==='slidesEd') main=viewSlidesEd(r.id);
   else if (r.name==='slidesPlay') main=viewSlidesPlay(r.id);
+  else if (r.name==='slidesPdf') main=viewSlidesPrint(r.id);
   else if (r.name==='aoVivo') main=viewLive();
   else if (r.name==='pdf') main=viewPdf(r.id);
   else if (r.name==='flashEd') main=viewFlashEd(r.id);
@@ -1955,7 +1958,7 @@ function lessonModal(l){
       <fieldset><legend>Como foi?</legend><div class="chips"><label class="chip"><input type="radio" name="status" value="realizada" ${l.status!=='falta'?'checked':''}><span>Aula realizada</span></label><label class="chip"><input type="radio" name="status" value="falta" ${l.status==='falta'?'checked':''}><span>Aluno faltou</span></label></div><small class="muted" style="font-size:13px">As duas opções contam como uma aula do pacote.</small></fieldset>
       <label class="field" for="r-note">Resumo da aula <small>(o aluno vê no caderno dele)</small><textarea id="r-note" name="note" placeholder="O que vocês viram, o que treinar até a próxima…">${esc(l.note||'')}</textarea></label>
       <div class="actions"><button type="button" class="btn" data-act="close">Fechar</button><button class="btn primary">Salvar</button></div></form>`
-    : `<a class="btn primary" style="align-self:flex-start" href="${esc(s.room)}" target="_blank" rel="noopener">Entrar na aula</a>
+    : `<a class="btn primary" style="align-self:flex-start" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>
       <form data-form="move" data-id="${l.id}"><fieldset><legend>Remarcar para</legend><div class="two"><label class="field" for="m-date"><span class="sr">Data</span><input type="date" id="m-date" name="date" required value="${dd}"></label><label class="field" for="m-time"><span class="sr">Horário</span><input type="time" id="m-time" name="time" required value="${tt}"></label></div></fieldset>
         <p class="err" id="m-err"></p>
         <div class="actions" style="justify-content:space-between"><button type="button" class="btn danger" data-act="lesson-cancel" data-id="${l.id}">Cancelar esta aula</button><span class="row-btns"><button type="button" class="btn" data-act="close">Fechar</button><button class="btn primary">Remarcar</button></span></div></form>`}`,{focus: past? '#r-note' : null});
@@ -1989,7 +1992,7 @@ function studentForm(s){
     <div class="two"><label class="field" for="n-name">Nome<input type="text" id="n-name" name="name" required value="${esc(v.name)}"></label><label class="field" for="n-email">E-mail <small>(é o login dele)</small><input type="email" id="n-email" name="email" required value="${esc(v.email)}"></label></div>
     <div class="two"><div class="field">Idioma<span class="pill-lang">${langName(myLang())}</span></div><label class="field" for="n-level">Nível<input type="text" id="n-level" name="level" value="${esc(v.level)}" placeholder="ex.: B1 · Intermediário"></label></div>
     <fieldset><legend>Horário fixo da aula (1 hora)</legend><div class="two"><label class="field" for="n-wd"><span class="sr">Dia</span><select id="n-wd" name="wd">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${v.slot.wd===d?'selected':''}>Toda ${WD[d]}</option>`).join('')}</select></label><label class="field" for="n-time"><span class="sr">Horário</span><input type="time" id="n-time" name="time" required value="${hhmm(v.slot.h,v.slot.m)}"></label></div></fieldset>
-    <label class="field" for="n-room">Link da sala online <small>(Google Meet, Zoom… o aluno clica em “Entrar na aula”)</small><input type="url" id="n-room" name="room" value="${esc(v.room)}" placeholder="https://meet.google.com/..."></label>
+    <label class="field" for="n-room">Link da sala online <small>(Google Meet. Vazio = usa o link fixo das suas Configurações)</small><input type="url" id="n-room" name="room" value="${esc(v.room)}" placeholder="https://meet.google.com/..."></label>
     ${s? '' : `<fieldset><legend>Primeiro pacote</legend><div class="three"><label class="field" for="n-size">Aulas<input type="number" id="n-size" name="size" min="1" value="8"></label><label class="field" for="n-price">Valor (R$)<input type="number" id="n-price" name="price" min="0" step="1" value="480"></label><label class="field" for="n-paid">Pagamento<select id="n-paid" name="paid"><option value="0">Pendente</option><option value="1">Já pago</option></select></label></div></fieldset>`}
     <details class="more"><summary>Ilustração do caderno</summary>
       <div style="display:flex;flex-direction:column;gap:12px"><div class="scenes" id="scenes">${sceneChoices(v.palette,v.scene,v.seed)}</div>
@@ -2007,6 +2010,7 @@ function settingsModal(){
         <select name="from${d}" aria-label="Início ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[0]??8)===h?'selected':''}>das ${hhmm(h)}</option>`).join('')}</select>
         <select name="to${d}" aria-label="Fim ${WD[d]}">${hs.map(h=>`<option value="${h}" ${(a?.[1]??21)===h?'selected':''}>até ${hhmm(h)}</option>`).join('')}</select></div>`; }).join('')}</div></fieldset>
     <label class="field" for="st-ui">Idioma do Sotaque <small>(vale para você e para os seus alunos)</small><select id="st-ui" name="ui"><option value="pt" ${st.ui!=='en'?'selected':''}>Português</option><option value="en" ${st.ui==='en'?'selected':''}>English</option></select></label>
+    <label class="field" for="st-meet">Link fixo da sua sala (Google Meet) <small>(vale para todos os alunos que não têm um link próprio no cadastro)</small><input type="url" id="st-meet" name="meet" value="${esc(st.meet||'')}" placeholder="https://meet.google.com/abc-defg-hij"></label>
     <label class="field" for="st-pix">Sua chave PIX <small>(aparece para o aluno quando há pagamento pendente)</small><input type="text" id="st-pix" name="pix" value="${esc(st.pix)}"></label>
     <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Salvar</button></div></form>`,{wide:true});
 }
@@ -2148,7 +2152,7 @@ const FORMS={
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
     const av={}; for (const d of [0,1,2,3,4,5,6]) if (fd.get('on'+d)){ const a=+fd.get('from'+d), b=+fd.get('to'+d); if (b>a) av[d]=[a,b]; }
-    const st=settingsOf(S.me), ui=fd.get('ui')||'pt', changed=(st.ui||'pt')!==ui; st.avail=av; st.pix=fd.get('pix').trim(); st.ui=ui; save(); closeModal(); render(); toast(ui==='en'&&changed? 'Settings saved. Sotaque is now in English.' : 'Configurações salvas'); },
+    const st=settingsOf(S.me), ui=fd.get('ui')||'pt', changed=(st.ui||'pt')!==ui; st.avail=av; st.pix=fd.get('pix').trim(); st.meet=(fd.get('meet')||'').trim(); st.ui=ui; save(); closeModal(); render(); toast(ui==='en'&&changed? 'Settings saved. Sotaque is now in English.' : 'Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
 ACT['print-key']=el=>{ S.printKey=el.checked; render(); };

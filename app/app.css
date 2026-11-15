@@ -1128,3 +1128,33 @@ span.hs-c{cursor:default}
 .sl-thumbs{grid-auto-columns:164px}
 .sl-prevs{grid-template-columns:repeat(auto-fill,164px)}
 .sl-capa{grid-template-columns:1fr 1.15fr}
+/* slides: aulas completas (explicação, tabela, cuidado, exercício, resumo) e apostila */
+.sl-exp{display:flex;flex-direction:column;gap:1.3cqw;font-size:2.5cqw;max-width:78%}
+.sl-exp p{margin:0}.sl-exp b,.sl-tab b,.sl-dica b,.sl-res b{color:#7a1f35}
+.sl-li{padding-left:2.4cqw;position:relative}.sl-li::before{content:"";position:absolute;left:.4cqw;top:.9cqw;width:1cqw;height:1cqw;border-radius:50%;background:#7a1f35}
+.sl-eg{display:flex;align-items:center;gap:1.2cqw;background:#f1ebe2;border-left:.6cqw solid #7a1f35;border-radius:0 1.2cqw 1.2cqw 0;padding:1cqw 1.6cqw;font-weight:600}
+.sl-corner{position:absolute;right:4cqw;bottom:6cqw;width:20cqw;border-radius:1.6cqw;overflow:hidden;line-height:0}.sl-corner svg{width:100%;height:auto}
+.sl-tab{border-collapse:separate;border-spacing:0;font-size:2.4cqw;width:100%;border-radius:1.4cqw;overflow:hidden;border:1px solid #e7ddd1}
+.sl-tab th{background:#7a1f35;color:#fffaf2;text-align:left;padding:1cqw 1.6cqw}.sl-tab th b{color:#fff}
+.sl-tab td{padding:1cqw 1.6cqw;border-top:1px solid #e7ddd1;background:#fff}.sl-tab tr:nth-child(even) td{background:#faf5ee}
+.sl-small{font-size:1.9cqw;color:#5a4f52;margin:0}
+.sl-dica{display:flex;flex-direction:column;gap:1.4cqw;font-size:2.6cqw}
+.sl-dica p{margin:0;display:flex;align-items:center;gap:1.4cqw;padding:1.2cqw 1.8cqw;border-radius:1.4cqw}
+.sl-dica p span{font-weight:800;font-size:3cqw}
+.sl-dica .no{background:#f8dcd3;color:#a8351f}.sl-dica .no{text-decoration:line-through;text-decoration-thickness:1px}.sl-dica .ok{background:#d7eddf;color:#1f6440}.sl-dica .txt{padding:0 .4cqw;color:#5a4f52}
+.sl-res{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.4cqw;font-size:2.6cqw}
+.sl-res li{display:flex;gap:1.4cqw;align-items:baseline}.sl-res li::before{content:"✓";color:#1f6440;font-weight:800}
+.sl-ins{margin:0;font-size:2cqw;color:#5a4f52}.sl-exsum{font-size:2.6cqw;color:#7a1f35;font-weight:700}
+.sl-stage:has(.sl-exq){aspect-ratio:auto;min-height:min(56vw,620px)}
+.sl-exercicio:has(.sl-exq){position:relative;inset:auto;padding-bottom:70px}
+.sl-exq{display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.45}
+.sl-exq .qcard{background:#fff;color:#221c1e}
+.sl-exbar{display:flex;align-items:center;gap:12px;font-size:16px}
+.sl-book{display:flex;flex-direction:column;gap:18px;max-width:960px;margin:0 auto}
+.sl-page .sl-stage{box-shadow:none}
+@media print{
+  .sl-page{break-after:page;break-inside:avoid}.sl-page .sl-stage{border:1px solid #ddd;border-radius:0}
+  .sl-say,.aud .btn,.spd,.sl-exbar{display:none!important}.sl-lines.blur{filter:none}
+  @page{size:A4 landscape;margin:10mm}
+}
+.sl-capa > *{min-width:0}.sl-capa .sl-art{width:100%}

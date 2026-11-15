@@ -13,7 +13,7 @@
    Linhas que começam com "nota:" aparecem só para a professora.
    Aula ao vivo: a professora apresenta e o aluno acompanha no aparelho dele (o áudio toca lá, sem compartilhar a tela).
    ========================================================= */
-const SL_TYPES={capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
+const SL_TYPES={explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
 function slidesParse(src){
   const out=[]; let cur=null;
   for (const raw of String(src||'').split('\n')){ const l=raw.replace(/\s+$/,''), m=l.match(/^#\s*([a-zç]+)\s*:?\s*(.*)$/i);
@@ -37,11 +37,48 @@ function slideHtml(s,o={}){
   if (s.t==='dialogo') b=`${T}<div class="sl-dlg">${audioBox(s.body.join('\n'),L,{mini:true})}<div class="sl-lines ${o.rev?'':'blur'}">${s.body.map(x=>{ const m=x.match(/^([AB]):\s*(.*)$/); return m? `<p class="${m[1]==='B'?'b':''}"><b>${m[1]}</b>${esc(m[2])}</p>` : `<p>${esc(x)}</p>`; }).join('')}</div>${o.rev? '' : `<small class="sl-tip">${L==='FR'? 'Écoutez d’abord. Le texte apparaît ensuite.' : 'Listen first. The text appears next.'}</small>`}</div>`;
   if (s.t==='tirinha') b=`${T}${tirinha(s.body.join('\n'),{big:true})}`;
   if (s.t==='pergunta'){ const [q,...ops]=s.body; b=`${T}<p class="sl-q">${esc(q||'')}</p><div class="sl-ops">${ops.map((x,k)=>{ const right=x.startsWith('*'), txt=x.replace(/^\*/,'');
-    return `<button type="button" class="sl-op ${o.pick===k?'on':''} ${o.rev&&right?'right':''} ${o.rev&&o.pick===k&&!right?'wrong':''}" ${o.live? `data-act="sl-ans" data-k="${k}"` : 'tabindex="-1"'}><span>${LT[k]}</span>${esc(txt)}</button>`; }).join('')}</div>${o.counts? `<div class="sl-counts">${ops.map((_,k)=>`<span>${LT[k]}: <b>${o.counts[k]||0}</b></span>`).join('')}</div>` : ''}`; }
+    return `<button type="button" class="sl-op ${o.pick===k?'on':''} ${o.rev&&!o.print&&right?'right':''} ${o.rev&&!o.print&&o.pick===k&&!right?'wrong':''}" ${o.live? `data-act="sl-ans" data-k="${k}"` : 'tabindex="-1"'}><span>${LT[k]}</span>${esc(txt)}</button>`; }).join('')}</div>${o.counts? `<div class="sl-counts">${ops.map((_,k)=>`<span>${LT[k]}: <b>${o.counts[k]||0}</b></span>`).join('')}</div>` : ''}`; }
   if (s.t==='conversa') b=`${T}<div class="sl-conv">${s.img? `<span class="sl-art">${slImg(s.img,480,360)}</span>` : ''}<ol>${s.body.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>`;
   if (s.t==='imagem') b=`${T}<div class="sl-imgs"><span class="sl-big">${slImg(s.img,960,540)}</span>${s.body.length? `<div>${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}</div>`;
   if (s.t==='texto') b=`${T}<div class="sl-text">${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}</div>`;
+  const md=x=>esc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+  if (s.t==='explica') b=`${T}<div class="sl-exp">${s.body.map(x=>x.startsWith('>')? `<p class="sl-eg">${slSay(x.slice(1).replace(/\*\*/g,'').trim(),L)}<span>${md(x.slice(1).trim())}</span></p>` : x.startsWith('- ')? `<p class="sl-li">${md(x.slice(2))}</p>` : `<p>${md(x)}</p>`).join('')}</div>${s.img? `<span class="sl-corner">${slImg(s.img,320,220)}</span>` : ''}`;
+  if (s.t==='tabela'){ const rows=s.body.filter(x=>x.includes('|')).map(x=>x.split('|').map(c=>c.trim())), extra=s.body.filter(x=>!x.includes('|'));
+    b=`${T}<table class="sl-tab"><thead><tr>${(rows[0]||[]).map(c=>`<th>${md(c)}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${md(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>${extra.map(x=>`<p class="sl-small">${md(x)}</p>`).join('')}`; }
+  if (s.t==='dica') b=`${T}<div class="sl-dica">${s.body.map(x=>{ const m=x.match(/^(x|ok)\s*:\s*(.*)$/i); return m? `<p class="${m[1].toLowerCase()==='x'?'no':'ok'}"><span>${m[1].toLowerCase()==='x'?'✗':'✓'}</span>${md(m[2])}</p>` : `<p class="txt">${md(x)}</p>`; }).join('')}</div>`;
+  if (s.t==='resumo') b=`${T}<ul class="sl-res">${s.body.map(x=>`<li>${md(x.replace(/^- /,''))}</li>`).join('')}</ul>`;
+  if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
+    if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
+    else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);
+      b=`${T}${ins}<div class="sl-exq">${t.done&&!o.print? t.questions.map((q,i)=>qResult(t,q,i,'student')).join('') : t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}</div>${o.print? '' : `<div class="sl-exbar">${t.done? `<b>${fmtNum(sc.got)} de ${sc.total} certas</b><button class="btn small" data-act="slx-reset">Fazer de novo</button>` : `<button class="btn small primary" data-act="slx-check">Corrigir</button>`}</div>`}`; } }
   return `<div class="sl sl-${s.t}">${b}</div>`;
+}
+/* exercícios dentro do slide: o formato de "Colar várias questões" e mais estes prefixos:
+   escolha: She [*goes/go] …   erro: I {have|am} 20.   lacunas: I [went] home. || go, home
+   grupos: A: x, y / B: z, w   reescreva: frase | PALAVRA | nova ___ | resposta1/resposta2   ditado: frase */
+function exParse(lines){
+  const out=[]; let rest=[]; const flush=()=>{ if (rest.length){ out.push(...parseQuestions(rest.join('\n'))); rest=[]; } };
+  for (const l of lines){ let m;
+    if ((m=l.match(/^(escolha|erro|lacunas|grupos|reescreva|ditado)\s*:\s*(.+)$/i))){ flush(); const k=m[1].toLowerCase(), v=m[2];
+      if (k==='escolha') out.push(PICK(v)); if (k==='erro') out.push(FIX(v)); if (k==='ditado') out.push(DIT(v));
+      if (k==='lacunas'){ const [t,ex]=v.split('||'); out.push(CLOZE(t.trim(),(ex||'').trim())); }
+      if (k==='grupos') out.push(SORT(v.split(' / ').join('\n')));
+      if (k==='reescreva'){ const [o,kw,fr,an]=v.split(' | ').map(x=>(x||'').trim()); out.push(KWT(o,kw,fr,an)); } }
+    else rest.push(l); }
+  flush(); return out;
+}
+function exTask(key,s){
+  const sig=key+'|'+hashStr(s.body.join('\n')), st=(S.slx ||= {});
+  if (!st[sig]){ const qs=fromRaw(exParse(s.body.filter(x=>!x.startsWith('!')))).map((q,k)=>({...q,id:'x'+hashStr(sig+'#'+k).toString(36)}));
+    st[sig]={id:'slx',title:s.title,questions:qs,answers:{},marks:{},status:'pendente',studentId:null,done:false}; }
+  return st[sig];
+}
+function viewSlidesPrint(id){
+  const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p></div>';
+  const list=slidesParse(d.src);
+  return `<div class="no-print pr-tools"><a class="link" href="#slides-${d.id}">← Voltar</a><span class="grow"></span><button class="btn primary" data-act="print-go">Imprimir ou salvar em PDF</button></div>
+    <p class="no-print meta muted" style="margin:0 0 14px">A apostila tem um slide por página. Para salvar em PDF, escolha “Salvar como PDF” no lugar da impressora (de preferência na horizontal).</p>
+    <div class="sl-book">${list.map((x,i)=>`<div class="sl-page"><div class="sl-stage">${slideHtml(x,{lang:d.lang,level:d.level,rev:x.t!=='pergunta',key:'pdf'+d.id+i,print:true})}</div></div>`).join('')}</div>`;
 }
 /* ---------- aulas prontas e as da professora ---------- */
 const slSeed=()=>(typeof SLIDES_SEED!=='undefined'? SLIDES_SEED : []).map(([lang,level,title,src])=>({id:'sd'+hashStr(lang+title).toString(36),lang,level,title,src,seed:true}));
@@ -63,12 +100,12 @@ function viewSlidesPlay(id){
   const ansList=P.live? Object.values(LIVE.ans[P.i]||{}) : [];
   return `<div class="sl-wrap">
     <div class="sl-top"><a class="link" href="#slides">← Slides</a><b class="grow">${esc(d.title)}</b>
-      <button class="btn small ${P.live?'live-on':''}" data-act="sl-live">${P.live? '● Ao vivo: ligada' : 'Ligar aula ao vivo'}</button><button class="btn small ghost" data-act="sl-full">Tela cheia</button></div>
+      <button class="btn small ${P.live?'live-on':''}" data-act="sl-live">${P.live? '● Ao vivo: ligada' : 'Ligar aula ao vivo'}</button><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
-    <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts})}
+    <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i})}
       <div class="sl-nav"><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
-    <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
+    <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
 function viewSlidesEd(id){
   let d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p></div>';
@@ -77,34 +114,42 @@ function viewSlidesEd(id){
     <div class="ed"><div class="stack" style="gap:12px"><h1>Editar aula</h1>
       <div class="two"><label class="field">Título<input type="text" data-sle="title" value="${esc(d.title)}"></label><label class="field">Nível<select data-sle="level">${LEVELS.map(l=>`<option ${d.level===l?'selected':''}>${l}</option>`).join('')}</select></label></div>
       <label class="field">Slides<textarea data-sle="src" class="sl-src" spellcheck="false">${esc(d.src)}</textarea></label>
-      <details class="transc"><summary>Como escrever os slides</summary><pre class="fmt"># capa: Título | img:xicara
-Subtítulo
+      <details class="transc"><summary>Como escrever os slides</summary><pre class="fmt"># capa: Present perfect | img:aviao
+Subtítulo da aula
+# explica: Quando usar
+Usamos o present perfect para **experiências**.
+- Não dizemos quando aconteceu.
+> I have **been** to Chile.
+# tabela: Como formar
+Sujeito | have/has | particípio
+I / you / we / they | have | worked
+he / she / it | has | worked
+# dica: Cuidado!
+x: I have been to Chile in 2019.
+ok: I went to Chile in 2019.
+# exercicio: Pratique
+! Escolha a forma certa.
+escolha: I [*have seen/saw] this film twice.
+erro: She {have|has} finished.
+lacunas: I [have] lived here [since] 2019. || for, has
+grupos: for: two years, ages / since: Monday, 2020
+reescreva: I started in 2019. | SINCE | I ___ 2019. | have worked here since
+ditado: I have never been to Japan.
+She ___ (go) to Paris twice. = has been
+1. Have you ever ___ sushi?
+a) eat
+*b) eaten
+ordem: I have never seen snow
+# resumo: Resumo
+- have/has + particípio
 # vocab: Palavras
 coffee | café | img:xicara
-# frase: Frases úteis
-Can I have a coffee, please?
-# dialogo: Ouça
-A: Hi! What can I get you?
-B: A coffee, please.
-# tirinha: Uma história
-[cidade]
-Ana: Hi!
-Leo (feliz): Hello!
----
-Ana: …
-# pergunta: Escolha
-I’d like ___ coffee.
-*a
-an
-# conversa: Vamos conversar
-What do you drink in the morning?
-# imagem: Descreva | img:cidade
-What can you see?
+# frase / # dialogo / # tirinha / # pergunta / # conversa / # imagem / # texto
 nota: só a professora vê</pre></details>${scenesHelp()}
       <div class="row-btns"><a class="btn primary" href="#slides-${d.id}">Apresentar</a><button class="btn danger" data-act="sl-del" data-id="${d.id}">Excluir aula</button></div></div>
     <aside class="stack" style="gap:8px"><b>Prévia</b><div id="sl-prev" class="sl-prevs">${slPrev(d)}</div></aside></div>`;
 }
-const slPrev=d=>slidesParse(d.src).map((x,k)=>`<div class="sl-th"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,rev:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')||'<p class="muted">Escreva o primeiro slide com # capa: …</p>';
+const slPrev=d=>slidesParse(d.src).map((x,k)=>`<div class="sl-th"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,rev:true,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')||'<p class="muted">Escreva o primeiro slide com # capa: …</p>';
 /* ---------- aula ao vivo ---------- */
 const LIVE={ch:null,key:'',send:null,last:null,ans:{},mine:{}};
 const liveKey=()=>{ const me=ME(); return !me? '' : me.role==='teacher'? me.id : me.teacherId||''; };
@@ -138,7 +183,7 @@ function viewLive(){
   if (!p) return `<div class="panel" style="max-width:640px"><h1>Aula ao vivo</h1><p class="meta">Esperando ${aProf()} começar. Deixe esta página aberta: os slides aparecem aqui sozinhos, e o áudio toca no seu aparelho.</p></div>`;
   const pick=LIVE.mine[p.title+'|'+p.i];
   return `<div class="sl-wrap"><div class="sl-top"><span class="live-dot"></span><b class="grow">${esc(p.title)}</b><span class="meta">${p.i+1} / ${p.n}</span></div>
-    <div class="sl-stage">${slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev})}</div>
+    <div class="sl-stage">${slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev,key:p.title+':'+p.i})}</div>
     ${p.slide.t==='pergunta'&&!p.rev? `<p class="meta muted">${pick!=null? 'Resposta enviada. Dá para trocar até a professora mostrar a certa.' : 'Toque na sua resposta.'}</p>` : ''}</div>`;
 }
 const SLIDE_ACT={
@@ -149,6 +194,8 @@ const SLIDE_ACT={
   'sl-live'(){ S.sl.live=!S.sl.live; if (S.sl.live){ LIVE.ans={}; liveEnsure(); liveSlide(); toast('Aula ao vivo ligada'); } else LIVE.send?.({k:'end'}); render(); },
   'sl-full'(){ const e=document.getElementById('sl-stage'); if (document.fullscreenElement) document.exitFullscreen(); else e?.requestFullscreen?.().catch(()=>{}); },
   'sl-ans'(el){ const p=LIVE.last, me=ME(); if (!p) return; LIVE.mine[p.title+'|'+p.i]=+el.dataset.k; LIVE.send?.({k:'ans',sid:me.id,name:me.name.split(' ')[0],i:p.i,v:+el.dataset.k}); render(); },
+  'slx-check'(){ if (S.slxT){ S.slxT.done=true; render(); } },
+  'slx-reset'(){ if (S.slxT){ S.slxT.answers={}; S.slxT.done=false; render(); } },
   'sl-new'(){ const d={id:'sl'+uid(),lang:myLang(),level:'A2',title:'Nova aula',src:myLang()==='FR'? '# capa: Nouvelle leçon | img:conversa\nSous-titre\n# vocab: Mots\nun café | café | img:xicara' : '# capa: New lesson | img:conversa\nSubtitle\n# vocab: Words\na coffee | café | img:xicara',teacherId:S.me,createdAt:now()}; (DB.slides ||= []).push(d); save(); location.hash='slides-ed-'+d.id; },
   'sl-del'(el){ if (!confirm('Excluir esta aula de slides?')) return; DB.slides=(DB.slides||[]).filter(d=>d.id!==el.dataset.id); save(); location.hash='slides'; },
 };

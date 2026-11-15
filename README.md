@@ -97,6 +97,12 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   e 9 baralhos ilustrados novos (236 cartões com imagem, antes eram 35).
 - Pacotes de estudo: dá para ver as atividades de cada pacote antes de mandar (com a data em que cada uma libera,
   "Ver" como o aluno vê, tirar e mudar a ordem).
+- Slides são aulas completas, como uma mini apostila: explicação (com exemplos em áudio), tabela, "cuidado" (✗/✓),
+  exercícios interativos com todos os tipos de questão (prefixos `escolha:`, `erro:`, `lacunas:`, `grupos:`,
+  `reescreva:`, `ditado:` e o formato de "Colar várias questões"), resumo e conversa. 4 aulas prontas: Present
+  perfect (B1, 17 slides), Past simple (A2), Au Pair: the interview (B1) e Le passé composé (A2). "Apostila (PDF)"
+  imprime um slide por página.
+- Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
 - Slides de aula (`slides.js`, Biblioteca · Slides): capa, vocabulário com imagens e áudio, frases, diálogo, tirinha,
   pergunta, conversa, imagem e texto, com notas só para a professora; 6 aulas prontas (`slides-aulas.js`), editor
   com prévia e tela cheia (setas do teclado). Aula ao vivo: a professora liga e o aluno acompanha no aparelho dele
