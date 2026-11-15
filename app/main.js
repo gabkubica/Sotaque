@@ -55,7 +55,7 @@ const MODE=window.SOTAQUE_MODE==='real'? 'real' : 'demo', REAL=MODE==='real';
 const KEY= REAL? 'sotaque:real' : 'sotaque:v2', ME_KEY= REAL? 'sotaque:real:me' : 'sotaque:me', PASS='sotaque123';
 const genPass=()=>{ const c='abcdefghjkmnpqrstuvwxyz23456789'; let x=''; for (let i=0;i<8;i++) x+=c[Math.floor(Math.random()*c.length)]; return x; };
 /* Sotaque real: sem alunos de exemplo; atividades, provas, flashcards e aulas prontas ficam */
-function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:10,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
+function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:11,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
 const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
@@ -101,7 +101,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:10,conq:[],certs:[],cando:{},settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:11,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -211,6 +211,7 @@ function parseHash(){
   if ((m=h.match(/^flash-ed-([a-z0-9]+)$/))) return {name:'flashEd',id:m[1]};
   if ((m=h.match(/^flash-([a-z0-9]+)$/))) return {name:'flashPlay',id:m[1]};
   if ((m=h.match(/^praticar-([a-z0-9]+)$/))) return {name:'praticar',id:m[1]};
+  if ((m=h.match(/^imprimir-([a-z0-9]+)$/))) return {name:'print',id:m[1]};
   if (h==='nivelamento') return {name:'nivel'};
   if ((m=h.match(/^nivelamento-ver-(completo|curto)$/))) return {name:'nivelPrev',id:m[1]};
   if (h==='banco-nova') return {name:'bancoNova'};
@@ -265,7 +266,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay'];
+  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -483,7 +484,7 @@ function qAnswer(t,q,i){
       ${ch.length? `<button class="link" style="align-self:flex-start" data-act="ord-clear" ${data} data-q="${q.id}">Recomeçar</button>` : ''}`; }
   if (q.type==='open') body=`<label class="sr" for="o-${q.id}">Sua resposta</label><textarea id="o-${q.id}" data-ans-open="${q.id}" ${data} placeholder="Escreva sua resposta…">${esc(a||'')}</textarea>`;
   if (q.type==='open'&&q.words) body+=`<small class="muted" id="wc-${q.id}">${wordCount(a)} palavras · pedido: ${q.words}</small>`;
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}${q.hint? `<small class="qhint">${esc(q.hint)}</small>` : ''}</b><span class="qkind">${q.listen? 'Escuta' : q.opt? 'Opcional' : QT_SHORT[q.type]}</span></div>${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}${q.hint? `<small class="qhint">${esc(q.hint)}</small>` : ''}</b><span class="qkind">${q.listen? 'Escuta' : q.opt? 'Opcional' : QT_SHORT[q.type]}</span></div>${qImg(q)}${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
 }
 
 /* resultado, gabarito ou entrega (mode: student | teacher | key | hidden) */
@@ -529,7 +530,7 @@ function qResult(t,q,i,mode){
       if (mode==='teacher') body+=`<div class="marks"><span class="meta">Marque:</span>${[[1,'Certa','m1'],[.5,'Meio certa','m5'],[0,'Errada','m0']].map(([v,l,c])=>`<button class="${c} ${m===v?'on':''}" data-act="mark" data-id="${t.id}" data-q="${q.id}" data-v="${v}">${l}</button>`).join('')}</div>`; }
   }
   const aud= q.audio? (mode==='hidden'? '' : `<p class="meta muted">Áudio: “${esc(q.audio)}”</p>`) : '';
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${aud}${body}</div>`;
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${qImg(q,true)}${aud}${body}</div>`;
 }
 
 /* ---------- escuta: o navegador lê em voz alta ---------- */
@@ -622,6 +623,9 @@ function blankQ(type){
 }
 const blankMC=()=>blankQ('mc');
 const PH={mc:'Enunciado. Ex.: She ___ to school every day.',tf:'Afirmação. Ex.: London is the capital of England.',gap:'Frase com ___ no lugar da lacuna. Ex.: She ___ (go) to school every day.',match:'Instrução. Ex.: Ligue as palavras ao significado.',order:'Instrução para o aluno.',open:'Pergunta. Ex.: Write about your last weekend.'};
+/* imagem da questão: uma das cenas dos quadros, no estilo do Sotaque */
+const imgPal=k=>['petroleo','tomate','ameixa','menta','ceu','mostarda','terracota','lavanda'][hashStr(k)%8];
+const qImg=(q,small)=>q.img&&SCENES[q.img]? `<div class="q-img ${small?'small':''}">${quadro(imgPal(q.img),q.img,hashStr(q.img)%97,{w:560,h:320,frame:false})}</div>` : '';
 function qEditor(q,i){
   let body='';
   if (q.type==='mc') body=`<div class="opts-col">${q.options.map((o,k)=>`<div class="optrow ${q.correct===k?'ok':''}"><input type="radio" name="c-${q.id}" data-q="${i}" data-correct="${k}" ${q.correct===k?'checked':''} aria-label="Alternativa ${LT[k]} é a certa"><span class="lt">${LT[k]}</span><input type="text" data-q="${i}" data-opt="${k}" value="${esc(o)}" placeholder="Alternativa ${LT[k]}" aria-label="Texto da alternativa ${LT[k]}">${q.options.length>2? `<button class="btn small ghost" data-act="o-del" data-i="${i}" data-k="${k}" aria-label="Remover alternativa ${LT[k]}">×</button>` : ''}</div>`).join('')}</div>
@@ -637,7 +641,8 @@ function qEditor(q,i){
     <div class="qhead"><span class="qnum">${i+1}</span><label class="sr" for="qt-${i}">Tipo da questão ${i+1}</label><select id="qt-${i}" class="qtype" data-qt="${i}">${Object.keys(QT).map(k=>`<option value="${k}" ${q.type===k?'selected':''}>${QT[k]}</option>`).join('')}</select><span class="grow"></span>
       <button class="btn small ghost" data-act="q-up" data-i="${i}" ${i===0?'disabled':''} aria-label="Subir a questão ${i+1}">↑</button><button class="btn small ghost" data-act="q-del" data-i="${i}">Remover</button></div>
     <label class="sr" for="qp-${i}">Enunciado da questão ${i+1}</label><textarea id="qp-${i}" data-q="${i}" data-qf="prompt" style="min-height:60px" placeholder="${PH[q.type]}">${esc(q.prompt)}</textarea>
-    ${body}</div>`;
+    <details class="q-imgpick" ${q.img?'open':''}><summary>${q.img? 'Imagem: '+esc(SCENES[q.img]?.nome||q.img) : 'Pôr uma imagem'}</summary><div class="imgpick">${['',...Object.keys(SCENES)].map(k=>`<button type="button" class="${(q.img||'')===k?'on':''}" data-act="q-img" data-i="${i}" data-v="${k}" title="${k? esc(SCENES[k].nome) : 'Sem imagem'}">${k? quadro(imgPal(k),k,3,{w:120,h:80,frame:false}) : '<span>sem imagem</span>'}</button>`).join('')}</div></details>
+    ${qImg(q)}${body}</div>`;
 }
 function typeSummary(list){
   const c={}; list.forEach(q=>c[q.type]=(c[q.type]||0)+1);
@@ -684,7 +689,7 @@ function validateDraft(D){
 }
 function cleanQuestions(list){
   return list.map(q=>{
-    const base={id:q.id,type:q.type,prompt:q.prompt.trim()};
+    const base={id:q.id,type:q.type,prompt:q.prompt.trim(),...(q.img? {img:q.img} : {}),...(q.audio? {audio:q.audio} : {}),...(q.listen? {listen:true} : {})};
     if (q.type==='mc'){ const keep=q.options.map((o,k)=>({o:o.trim(),k})).filter(x=>x.o); return {...base,options:keep.map(x=>x.o),correct:keep.findIndex(x=>x.k===q.correct)}; }
     if (q.type==='tf') return {...base,correct:q.correct};
     if (q.type==='gap') return {...base,answers:q.answers.slice()};
@@ -852,7 +857,7 @@ function viewBankItem(b){
       ${b.questions.map((q,i)=>qResult(fake,q,i,'key')).join('')}
     </div>
     <aside class="stack ed-side" style="gap:16px">
-      <section class="panel"><h2>Ver como aluno</h2><p class="meta">Abra a tarefa do jeito que o aluno vê, responda e veja a correção. Bom para fazer junto na aula, com a tela compartilhada.</p><a class="btn primary" style="align-self:flex-start" href="#praticar-${b.id}">${EYE_ICON}Ver como aluno</a></section>
+      <section class="panel"><h2>Ver como aluno</h2><p class="meta">Abra a tarefa do jeito que o aluno vê, responda e veja a correção. Bom para fazer junto na aula, com a tela compartilhada.</p><div class="row-btns"><a class="btn primary" href="#praticar-${b.id}">${EYE_ICON}Ver como aluno</a><a class="btn" href="#imprimir-${b.id}">Imprimir / PDF</a></div></section>
       <section class="panel"><div class="panel-h"><h2>Lançar para</h2>${studs.length>1? `<button class="link" data-act="bl-all">${L.students.length===studs.length? 'Limpar' : 'Todos'}</button>` : ''}</div>
         <div class="sel-list">${studs.map(s=>`<label class="sel"><input type="checkbox" data-bl-st="${s.id}" ${L.students.includes(s.id)?'checked':''}>${avatar(s,28)}<span>${esc(s.name)}<br><small>${esc(s.level)}</small></span></label>`).join('')}</div>
         <label class="sel" style="padding:0"><input type="checkbox" data-bl="hasDue" ${L.hasDue?'checked':''}>Tem prazo</label>
@@ -1016,7 +1021,7 @@ function viewTaskT(t){
     const done=t.questions.filter(q=>isAnswered(t,q)).length;
     return `<div style="${sVars(s)}">${back}${head}<div class="grid2"><div class="stack" style="gap:14px">${t.audio? `<div class="panel">${audioBox(t.audio,s.lang,{transcript:true})}</div>` : ''}<p class="eyebrow">Gabarito</p>${t.questions.map((q,i)=>qResult({...t,answers:{}},q,i,'key')).join('')}</div>
       <aside class="stack"><section class="panel"><h2>Esperando ${esc(first)}</h2><p class="meta">${done? `${first} já respondeu ${done} de ${t.questions.length} questões, mas ainda não entregou.` : `${first} ainda não começou.`}</p>
-        ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#praticar-${t.id}">${EYE_ICON}Ver como aluno</a><a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
+        ${t.due&&t.due<now()? '<div class="notice"><div>O prazo já passou.</div></div>' : ''}<a class="btn" href="#praticar-${t.id}">${EYE_ICON}Ver como aluno</a><a class="btn" href="#imprimir-${t.id}">Imprimir / PDF</a><a class="btn" href="#aluno-${s.id}">Ver caderno de ${esc(first)}</a>${t.bankId? '' : `<button class="btn" data-act="save-to-bank" data-id="${t.id}">Guardar no banco</button>`}<button class="btn danger" data-act="task-del" data-id="${t.id}">Excluir tarefa</button></section></aside></div></div>`;
   }
   const fb=S.fb[t.id]??t.feedback, next=DB.tasks.find(x=>mine(x)&&x.status==='entregue'&&x.id!==t.id);
   return `<div style="${sVars(s)}">${back}${head}<div class="grid2">
@@ -1054,6 +1059,42 @@ function viewPractice(id,embed){
     ${t.audio? `<div class="panel" style="margin-bottom:14px">${audioBox(t.audio,taskLang(t),{transcript:true})}</div>` : ''}
     <div class="stack" style="gap:14px">${qList(t,(q,i)=>qResult(t,q,i,'student'),'student')}</div>
     <div class="row-btns" style="margin-top:18px"><button class="btn primary" data-act="prac-reset">Fazer de novo</button>${embed? '' : `<a class="btn" href="${back}">Voltar para a tarefa</a>`}</div></div>`;
+}
+
+/* ---------- imprimir ou salvar em PDF: folha do aluno e gabarito ---------- */
+function viewPrint(id){
+  const b=DB.bank.find(x=>x.id===id)||getTask(id); if (!b) return '<div class="panel"><p>Atividade não encontrada.</p><a class="btn" href="#banco">Biblioteca</a></div>';
+  const L=b.lang||taskLang(b), FR=L==='FR', withKey=S.printKey!==false, back=DB.bank.some(x=>x.id===id)? '#banco-'+id : '#tarefa-'+id;
+  const tfL=FR? ['Vrai','Faux'] : ['True','False'];
+  const line=(n=1)=>Array.from({length:n},()=>'<div class="pr-rule"></div>').join('');
+  const qHtml=(q,i)=>{ let head=esc(qPrompt(q)), body='';
+    if (q.type==='mc') body=`<ul class="pr-opts">${q.options.map((o,k)=>`<li><span class="pr-box"></span>${LT[k]}) ${esc(o)}</li>`).join('')}</ul>`;
+    if (q.type==='tf') body=`<p class="pr-tf"><span class="pr-box"></span>${tfL[0]} <span class="pr-box" style="margin-left:22px"></span>${tfL[1]}</p>`;
+    if (q.type==='gap'){ const [x,y]=gapParts(q); head=`${esc(x)}<span class="pr-gap"></span>${esc(y)}`; }
+    if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m');
+      body=`<div class="pr-match"><ol>${q.pairs.map(p=>`<li>${esc(p[0])} <span class="pr-gap short"></span></li>`).join('')}</ol><ul>${ord.map((j,k)=>`<li><b>${LT[k]}</b> ${esc(q.pairs[j][1])}</li>`).join('')}</ul></div>`; }
+    if (q.type==='order'){ const w=words(q), ord=shuffled(w.length,q.id+'o'); body=`<p class="pr-words">${ord.map(k=>`<span>${esc(w[k])}</span>`).join(' / ')}</p>${line(1)}`; }
+    if (q.type==='open') body=line(q.words&&/1[0-9]{2}|[2-9][0-9]{2}/.test(String(q.words))? 9 : 5);
+    return `<div class="pr-q"><p class="pr-qh"><b>${i+1}.</b> ${q.listen? (FR? 'Écoutez et répondez. ' : 'Listen and answer. ') : ''}${head}</p>${qImg(q,true)}${body}</div>`; };
+  const ans=(q,i)=>{ let a='';
+    if (q.type==='mc') a=`${LT[q.correct]}) ${esc(q.options[q.correct])}`;
+    if (q.type==='tf') a=q.correct? tfL[0] : tfL[1];
+    if (q.type==='gap') a=esc(q.answers.join(' / '));
+    if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m'); a=q.pairs.map((p,k)=>`${k+1}–${LT[ord.indexOf(k)]}`).join(' · '); }
+    if (q.type==='order') a=esc(q.sentence);
+    if (q.type==='open') a= FR? '(réponse personnelle)' : '(resposta pessoal)';
+    return `<li><b>${i+1}.</b> ${a}</li>`; };
+  return `<div class="no-print pr-tools"><a class="link" href="${back}">← Voltar</a><span class="grow"></span><label class="sel" style="padding:0"><input type="checkbox" data-act="print-key" ${withKey?'checked':''}> Incluir o gabarito</label><button class="btn primary" data-act="print-go">Imprimir ou salvar em PDF</button></div>
+    <p class="no-print meta muted" style="margin:0 0 14px">Para salvar em PDF, escolha “Salvar como PDF” no lugar da impressora.</p>
+    <article class="sheet">
+      <header class="pr-head"><span class="pr-brand">${logo(26)}Sotaque</span><span class="pr-tag">${esc(b.level||'')}${b.topic? ' · '+esc(b.topic) : ''}</span></header>
+      <h1 class="pr-title">${esc(b.title)}</h1>
+      <div class="pr-name"><span>${FR? 'Nom' : 'Name'}: <i></i></span><span>${FR? 'Date' : 'Date'}: <i></i></span></div>
+      ${b.instructions? `<div class="pr-ins">${esc(b.instructions)}</div>` : ''}
+      ${b.audio? `<div class="pr-audio"><b>${FR? 'Texte de l’audio' : 'Audio script'}</b><div>${esc(b.audio)}</div></div>` : ''}
+      ${b.questions.map(qHtml).join('')}
+      ${withKey? `<section class="pr-key"><h2>${FR? 'Corrigé' : 'Answer key'} · ${esc(b.title)}</h2><ol>${b.questions.map(ans).join('')}</ol></section>` : ''}
+    </article>`;
 }
 
 /* ---------- professora: montar tarefa ---------- */
@@ -1113,6 +1154,7 @@ const TASK_ACT={
   tf(el){ S.tf=el.dataset.v; render(); },
   'q-add'(el){ S.draft.questions.push(blankQ(el.dataset.t)); render(); const k=S.draft.questions.length-1; setTimeout(()=>{ document.getElementById('qe-'+k)?.scrollIntoView({behavior:'smooth',block:'center'}); document.getElementById('qp-'+k)?.focus(); },30); },
   'q-del'(el){ S.draft.questions.splice(+el.dataset.i,1); render(); },
+  'q-img'(el){ const q=S.draft.questions[+el.dataset.i]; if (el.dataset.v) q.img=el.dataset.v; else delete q.img; render(); },
   'q-up'(el){ const i=+el.dataset.i, Q=S.draft.questions; [Q[i-1],Q[i]]=[Q[i],Q[i-1]]; render(); },
   'q-type'(el){ const q=S.draft.questions[+el.dataset.i]; if (el.dataset.t==='mc'&&q.type!=='mc'){ q.type='mc'; q.options=['','','','']; q.correct=null; } if (el.dataset.t==='open'){ q.type='open'; delete q.options; delete q.correct; } render(); },
   'o-add'(el){ S.draft.questions[+el.dataset.i].options.push(''); render(); },
@@ -1836,6 +1878,7 @@ function render(){
   else if (r.name==='flashEd') main=viewFlashEd(r.id);
   else if (r.name==='flashPlay') main=viewFlashPlay(r.id);
   else if (r.name==='praticar') main=viewPractice(r.id);
+  else if (r.name==='print') main=viewPrint(r.id);
   else if (r.name==='nivel') main=viewPlaceHub();
   else if (r.name==='nivelPrev') main=viewPlacePrev(r.id);
   else if (r.name==='bancoItem'&&langBank().find(b=>b.id===r.id)){ if (!S.bl) S.bl=newBl(); main=viewBankItem(DB.bank.find(b=>b.id===r.id)); }
@@ -2081,6 +2124,8 @@ const FORMS={
     const st=settingsOf(S.me), ui=fd.get('ui')||'pt', changed=(st.ui||'pt')!==ui; st.avail=av; st.pix=fd.get('pix').trim(); st.ui=ui; save(); closeModal(); render(); toast(ui==='en'&&changed? 'Settings saved. Sotaque is now in English.' : 'Configurações salvas'); },
 };
 ACT['copy-cred']=el=>copyText(el.dataset.v,'Acesso copiado');
+ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
+ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
 Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
@@ -2103,7 +2148,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if 
 if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
 if (REAL){ baseDB(); S.cloudLoading=true; }
 else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==10){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=10; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==11){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=11; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
   if (!DB.decks){ ensureFlash(); seedFlashDemo(); }

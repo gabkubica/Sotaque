@@ -71,6 +71,10 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - Tudo no banco serve como homework. "Juntar": no banco, o + de cada atividade junta várias numa homework só
   (os áudios vão junto, na primeira questão de cada atividade). As 23 tarefas de inglês A1–B1 com 5 questões ou menos
   ganharam 3 exercícios cada (EXTRA_Q em `conteudo.js`).
+- Inspirado no Ellii: imagens nas questões (cenas dos quadros; a professora escolhe no editor), 10 atividades com
+  imagem (`imagens.js`) e dicionários ilustrados de flashcards; "Imprimir / PDF" de qualquer atividade (folha do aluno
+  com nome, data, linhas e gabarito em página separada, rota `#imprimir-id`); planejador de curso na aba Aula
+  (modelos → próximas aulas do aluno, com a data de cada aula → dadas; arrastar no computador, botões no celular).
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
   Aluno: Hoje · Homework · Flashcards · Trilha.
 - Biblioteca com sub-abas: Atividades (o banco), Flashcards, Provas e nivelamento, PDFs.

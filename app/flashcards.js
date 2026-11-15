@@ -77,9 +77,9 @@ bien que = embora (+ subjuntivo) | Bien qu’il soit fatigué, il travaille.
 afin de = a fim de | Il étudie afin de réussir l’examen.
 en effet = de fato | Elle est en retard ; en effet, le bus est tombé en panne.`],
 ];
-const parseCards=txt=>String(txt||'').split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{ const [fb,ex='']=l.split('|'), k=fb.indexOf('='); return k<0? null : {f:fb.slice(0,k).trim(),b:fb.slice(k+1).trim(),ex:ex.trim()}; }).filter(c=>c&&c.f&&c.b);
-const cardsText=d=>d.cards.map(c=>`${c.f} = ${c.b}${c.ex? ' | '+c.ex : ''}`).join('\n');
-function seedDecks(){ return FLASH_SEED.concat(typeof FLASH_SEED_2!=='undefined'? FLASH_SEED_2 : []).map(([lang,level,title,txt])=>({id:'d'+hashStr(lang+title),lang,level,title,teacherId:null,students:[],cards:parseCards(txt).map((c,i)=>({id:'c'+i,...c})),createdAt:now()})); }
+const parseCards=txt=>String(txt||'').split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{ const parts=l.split('|').map(x=>x.trim()), fb=parts[0], k=fb.indexOf('='), im=parts.find(x=>/^img:/.test(x)), ex=parts.slice(1).find(x=>!/^img:/.test(x))||''; if (k<0) return null; const c={f:fb.slice(0,k).trim(),b:fb.slice(k+1).trim(),ex}; if (im&&typeof SCENES!=='undefined'&&SCENES[im.slice(4)]) c.img=im.slice(4); return c; }).filter(c=>c&&c.f&&c.b);
+const cardsText=d=>d.cards.map(c=>`${c.f} = ${c.b}${c.ex? ' | '+c.ex : ''}${c.img? ' | img:'+c.img : ''}`).join('\n');
+function seedDecks(){ return FLASH_SEED.concat(typeof FLASH_SEED_2!=='undefined'? FLASH_SEED_2 : [],typeof FLASH_IMG!=='undefined'? FLASH_IMG : []).map(([lang,level,title,txt])=>({id:'d'+hashStr(lang+title),lang,level,title,teacherId:null,students:[],cards:parseCards(txt).map((c,i)=>({id:'c'+i,...c})),createdAt:now()})); }
 function ensureFlash(){ if (!DB.decks) DB.decks=[]; for (const d of seedDecks()) if (!DB.decks.some(x=>x.id===d.id)) DB.decks.push(d); if (!DB.flashp) DB.flashp={}; }
 const deckById=id=>DB.decks.find(d=>d.id===id);
 const decksFor=()=>(DB.decks||[]).filter(d=>d.lang===myLang()&&(!d.teacherId||d.teacherId===S.me));
@@ -111,7 +111,7 @@ function flashStage(did,saveIt,embed){
   return `<div class="fl-wrap ${embed?'embed':''}">
     <div class="fl-top"><span class="pill-lang">${F.i+1} de ${total}</span><div class="progress"><i style="width:${F.i/total*100}%"></i></div><button class="link" data-act="flash-dir">${rev? 'Português → '+langName(d.lang) : langName(d.lang)+' → Português'}</button></div>
     <button class="fl-card ${F.flip?'flip':''}" data-act="flash-flip" aria-label="${F.flip? 'Cartão virado' : 'Virar o cartão'}">
-      <span class="fl-face"><small class="eyebrow">${F.flip? (rev? langName(d.lang) : 'Português') : (rev? 'Português' : langName(d.lang))}</small>${F.flip? `<small class="fl-front">${esc(front)}</small>` : ''}<b>${esc(F.flip? back : front)}</b>${F.flip&&c.ex? `<i>${esc(c.ex)}</i>` : ''}${F.flip? '' : '<small class="muted">toque para virar</small>'}</span></button>
+      <span class="fl-face">${c.img? `<span class="fl-img ${F.flip?'small':''}">${quadro(imgPal(c.img),c.img,hashStr(c.img)%97,{w:420,h:240,frame:false})}</span>` : ''}${c.img&&!F.flip&&!rev? `<small class="eyebrow">${d.lang==='FR'? 'Qu’est-ce que c’est ?' : 'What’s this?'}</small>` : `<small class="eyebrow">${F.flip? (rev? langName(d.lang) : 'Português') : (rev? 'Português' : langName(d.lang))}</small>${F.flip? `<small class="fl-front">${esc(front)}</small>` : ''}<b>${esc(F.flip? back : front)}</b>`}${F.flip&&c.ex? `<i>${esc(c.ex)}</i>` : ''}${F.flip? '' : '<small class="muted">toque para virar</small>'}</span></button>
     <div class="fl-say">${say(c.f)}${F.flip&&c.ex? say(c.ex).replace('Ouvir','Ouvir o exemplo') : ''}</div>
     ${F.flip? `<div class="fl-ans"><button class="btn fl-no" data-act="flash-ans" data-v="nao">Errei</button><button class="btn fl-mid" data-act="flash-ans" data-v="quase">Quase</button><button class="btn primary fl-yes" data-act="flash-ans" data-v="sim">Acertei</button></div>`
       : `<button class="btn primary big" data-act="flash-flip">Virar o cartão</button>`}

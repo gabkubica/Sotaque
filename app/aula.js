@@ -28,13 +28,37 @@ function seedAulas(){
   ].filter(b=>b.t==='texto'||b.bankId||b.deckId);
   DB.aulas.push({id:'au'+uid(),teacherId:'prof',title:'Au Pair · Interview practice',studentId:null,blocks,createdAt:now()});
 }
+/* planejador de curso (inspirado no planejador em colunas do Ellii): modelos → próximas aulas do aluno → dadas */
+const planOf=sid=>aulasMine().filter(a=>a.studentId===sid);
+const planNext=sid=>planOf(sid).filter(a=>!a.doneAt).sort((a,b)=>(a.ord??a.createdAt)-(b.ord??b.createdAt));
+const planDone=sid=>planOf(sid).filter(a=>a.doneAt).sort((a,b)=>b.doneAt-a.doneAt);
+const modelos=()=>aulasMine().filter(a=>!a.studentId).sort((a,b)=>a.title.localeCompare(b.title));
+function planClone(tplId,sid,beforeId){
+  const t=aulaById(tplId); if (!t) return; const a={...JSON.parse(JSON.stringify(t)),id:'au'+uid(),studentId:sid,doneAt:null,from:t.id,createdAt:now()};
+  const list=planNext(sid); let k=beforeId? list.findIndex(x=>x.id===beforeId) : list.length; if (k<0) k=list.length;
+  list.splice(k,0,a); DB.aulas.push(a); list.forEach((x,n)=>x.ord=n);
+}
+function planReorder(sid,id,beforeId){ const list=planNext(sid), a=list.find(x=>x.id===id); if (!a) return; const rest=list.filter(x=>x!==a); let k=beforeId? rest.findIndex(x=>x.id===beforeId) : rest.length; if (k<0) k=rest.length; rest.splice(k,0,a); rest.forEach((x,n)=>x.ord=n); }
 function viewAulas(){
-  const list=aulasMine().sort((a,b)=>b.createdAt-a.createdAt);
-  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Aula</h1><p class="meta">Monte a sequência da aula e passe bloco a bloco com a tela compartilhada. Se preferir, abra qualquer atividade da Biblioteca em “Ver como aluno”.</p></div><button class="btn primary big" data-act="aula-new">+ Nova aula</button></div></div>
-    ${list.length? `<div class="tlist">${list.map(a=>{ const s=a.studentId&&user(a.studentId);
-      return `<div class="tcard aula-card" ${s? `style="${sVars(s)}"` : ''}>${s? avatar(s,42) : `<span class="aula-ic">${NAV_IC.aula}</span>`}<div class="row-m"><b>${esc(a.title)}</b><small>${s? esc(s.name)+' · ' : ''}${a.blocks.length} ${a.blocks.length===1?'bloco':'blocos'}${a.doneAt? ' · dada '+rel(a.doneAt) : ''}</small></div>
-        <div class="tcard-r"><a class="btn small" href="#aula-ed-${a.id}">Editar</a><a class="btn small primary" href="#aula-${a.id}">Começar</a></div></div>`; }).join('')}</div>`
-    : `<div class="panel"><div class="empty">${quadro('ceu','conversa',8,{w:320,h:150})}<p>Nenhuma aula montada ainda.</p><button class="btn primary" data-act="aula-new">Montar a primeira aula</button></div></div>`}`;
+  const studs=students(), sel= S.planS&&user(S.planS)? S.planS : 'modelos', s=sel!=='modelos'&&user(sel);
+  const chips=`<div class="filt plan-st" role="group" aria-label="Aluno"><button class="${sel==='modelos'?'on':''}" data-act="plan-s" data-v="modelos">Modelos de aula</button>${studs.map(x=>`<button class="${sel===x.id?'on':''}" data-act="plan-s" data-v="${x.id}">${esc(x.name.split(' ')[0])}${planNext(x.id).length? ` <span class="n">${planNext(x.id).length}</span>` : ''}</button>`).join('')}</div>`;
+  const head=`<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Aula</h1><p class="meta">${s? `O curso de ${esc(s.name.split(' ')[0])}: arraste os modelos para as próximas aulas (ou use os botões), passe na ordem e marque as que já foram dadas.` : 'Seus modelos de aula. Escolha um aluno acima para planejar o curso dele: cada aula vai para a data da próxima aula marcada.'}</p></div><button class="btn primary big" data-act="aula-new">+ Nova aula</button></div>${chips}</div>`;
+  const card=(a,k,col,date)=>{ const n=a.blocks.length;
+    return `<div class="plan-card" draggable="true" data-drag="${col}:${a.id}" data-card="${a.id}">
+      <div class="plan-top">${date? `<span class="plan-date">${esc(date)}</span>` : col==='done'? `<span class="plan-date done">dada ${rel(a.doneAt)}</span>` : ''}<b>${esc(a.title)}</b><small>${n} ${n===1?'bloco':'blocos'} · ${[...new Set(a.blocks.map(b=>AULA_T[b.t]))].join(', ')}</small></div>
+      <div class="plan-btns">${col==='tpl'? (s? `<button class="btn small primary" data-act="plan-add" data-id="${a.id}">+ Pôr no plano</button>` : `<a class="btn small primary" href="#aula-${a.id}">Começar</a>`)+`<a class="btn small" href="#aula-ed-${a.id}">Editar</a>`
+        : col==='next'? `<a class="btn small primary" href="#aula-${a.id}">Começar</a><a class="btn small" href="#aula-ed-${a.id}">Editar</a><button class="btn small ghost" data-act="plan-mv" data-id="${a.id}" data-v="-1" ${k?'':'disabled'} aria-label="Antes">↑</button><button class="btn small ghost" data-act="plan-mv" data-id="${a.id}" data-v="1" aria-label="Depois">↓</button><button class="btn small ghost" data-act="plan-done" data-id="${a.id}" title="Marcar como dada">✓ Dada</button><button class="btn small ghost" data-act="plan-del" data-id="${a.id}">Tirar</button>`
+        : `<a class="btn small" href="#aula-${a.id}">Rever</a><button class="btn small ghost" data-act="plan-undo" data-id="${a.id}">Voltar para próximas</button>`}</div></div>`; };
+  if (!s){ const list=modelos();
+    return `${head}${list.length? `<div class="plan-grid">${list.map((a,k)=>card(a,k,'tpl')).join('')}</div>` : `<div class="panel"><div class="empty">${quadro('ceu','conversa',8,{w:320,h:150})}<p>Nenhuma aula montada ainda.</p><button class="btn primary" data-act="aula-new">Montar a primeira aula</button></div></div>`}`; }
+  const dates=DB.lessons.filter(l=>l.studentId===s.id&&l.status==='agendada'&&l.start>=dayStart(now())).sort((a,b)=>a.start-b.start).map(l=>fDay.format(l.start)+' · '+fTime.format(l.start));
+  const next=planNext(s.id), done=planDone(s.id), tpls=modelos();
+  const col=(key,title,sub,html,empty)=>`<section class="plan-col" data-drop="${key}"><div class="plan-colh"><h2>${title}</h2><small>${sub}</small></div><div class="plan-list">${html||`<p class="plan-empty">${empty}</p>`}</div></section>`;
+  return `${head}<div class="plan-board" style="${sVars(s)}">
+    ${col('tpl','Modelos',`${tpls.length} aulas prontas`,tpls.map((a,k)=>card(a,k,'tpl')).join(''),'Nenhum modelo ainda.')}
+    ${col('next','Próximas aulas',next.length? `${next.length} no plano` : 'arraste um modelo para cá',next.map((a,k)=>card(a,k,'next',dates[k])).join(''),'O plano está vazio. Arraste um modelo ou toque em “+ Pôr no plano”.')}
+    ${col('done','Dadas',done.length? `${done.length} ${done.length===1?'aula':'aulas'}` : '',done.map((a,k)=>card(a,k,'done')).join(''),'As aulas dadas aparecem aqui.')}
+  </div>`;
 }
 function viewAulaEd(id){
   const a=aulaById(id); if (!a) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#aula">Aula</a></div>';
@@ -79,8 +103,14 @@ function viewAulaPlay(id){
 }
 function togglePresent(){ if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.().catch(()=>toast('Este navegador não deixou abrir em tela cheia.')); }
 const AULA_ACT={
+  'plan-s'(el){ S.planS=el.dataset.v; render(); },
+  'plan-add'(el){ planClone(el.dataset.id,S.planS); save(); render(); toast('Aula no plano'); },
+  'plan-mv'(el){ const sid=S.planS, list=planNext(sid), k=list.findIndex(a=>a.id===el.dataset.id), j=k+ +el.dataset.v; if (j<0||j>=list.length) return; [list[k],list[j]]=[list[j],list[k]]; list.forEach((x,n)=>x.ord=n); save(); render(); },
+  'plan-done'(el){ const a=aulaById(el.dataset.id); a.doneAt=now(); save(); render(); toast('Marcada como dada'); },
+  'plan-undo'(el){ const a=aulaById(el.dataset.id); a.doneAt=null; a.ord=planNext(a.studentId).length; save(); render(); },
+  'plan-del'(el){ const a=aulaById(el.dataset.id); confirmBox(`Tirar “${a.title}” do plano?`,'Tirar',()=>{ DB.aulas=DB.aulas.filter(x=>x.id!==a.id); save(); render(); toast('Tirada do plano'); },'O modelo continua guardado.'); },
   'present'(){ togglePresent(); },
-  'aula-new'(){ const a={id:'au'+uid(),teacherId:S.me,title:'',studentId:null,blocks:[{t:'texto',title:'Warm-up',body:''}],createdAt:now()}; DB.aulas.push(a); save(); S.ad=null; location.hash='aula-ed-'+a.id; },
+  'aula-new'(){ const sid=S.planS&&S.planS!=='modelos'&&user(S.planS)? S.planS : null; const a={id:'au'+uid(),teacherId:S.me,title:'',studentId:sid,ord:sid? planNext(sid).length : undefined,blocks:[{t:'texto',title:'Warm-up',body:''}],createdAt:now()}; DB.aulas.push(a); save(); S.ad=null; location.hash='aula-ed-'+a.id; },
   'ab-add'(el){ const t=el.dataset.t; S.ad.blocks.push(t==='texto'? {t,title:'',body:''} : t==='pdf'? {t,pdfId:'',page:1} : {t}); render(); setTimeout(()=>document.querySelectorAll('.ab')[S.ad.blocks.length-1]?.scrollIntoView({behavior:'smooth',block:'center'}),30); },
   'ab-del'(el){ S.ad.blocks.splice(+el.dataset.i,1); render(); },
   'ab-move'(el){ const i=+el.dataset.i, j=i+ +el.dataset.v, B=S.ad.blocks; [B[i],B[j]]=[B[j],B[i]]; render(); },
@@ -109,3 +139,17 @@ document.addEventListener('keydown',e=>{ if (S.route?.name!=='aulaPlay'||e.targe
   if (e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); AULA_ACT['aula-go']({dataset:{v:S.ap.i+1}}); }
   if (e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); AULA_ACT['aula-go']({dataset:{v:S.ap.i-1}}); } });
 document.addEventListener('fullscreenchange',()=>{ if (S.route?.name==='aulaPlay') render(); });
+
+/* arrastar e soltar entre as colunas do planejador (no computador; no celular, os botões fazem o mesmo) */
+document.addEventListener('dragstart',e=>{ const c=e.target.closest?.('[data-drag]'); if (!c) return; S.drag=c.dataset.drag; e.dataTransfer.effectAllowed='move'; try { e.dataTransfer.setData('text/plain',S.drag); } catch {} c.classList.add('dragging'); });
+document.addEventListener('dragend',()=>{ document.querySelectorAll('.dragging,.drop-on').forEach(x=>x.classList.remove('dragging','drop-on')); });
+document.addEventListener('dragover',e=>{ const z=e.target.closest?.('[data-drop]'); if (!z||!S.drag) return; e.preventDefault(); document.querySelectorAll('.drop-on').forEach(x=>x!==z&&x.classList.remove('drop-on')); z.classList.add('drop-on'); });
+document.addEventListener('drop',e=>{ const z=e.target.closest?.('[data-drop]'); if (!z||!S.drag) return; e.preventDefault();
+  const [from,id]=S.drag.split(':'), to=z.dataset.drop, sid=S.planS, before=e.target.closest('[data-card]')?.dataset.card; S.drag=null;
+  if (!sid||sid==='modelos') return;
+  if (from==='tpl'&&to==='next') planClone(id,sid,before);
+  else if (from==='next'&&to==='next') planReorder(sid,id,before);
+  else if (from==='next'&&to==='done'){ aulaById(id).doneAt=now(); }
+  else if (from==='done'&&to==='next'){ const a=aulaById(id); a.doneAt=null; planReorder(sid,id,before); }
+  else return;
+  save(); render(); });
