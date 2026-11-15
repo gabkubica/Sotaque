@@ -1185,3 +1185,4 @@ body.sl-fs .sl-stage:has(.sl-exq){max-height:100vh;overflow:auto;width:min(100vw
 .sl-hwn{width:3.6cqw;height:3.6cqw;border-radius:50%;background:#7a1f35;color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.8cqw;flex:none}
 .sl-tarefas > .btn{align-self:flex-start}
 @media (max-width:720px){.sl-warm,.sl-hw{grid-template-columns:1fr}.sl-wc b{font-size:4cqw}.sl-wc p,.sl-wc small{font-size:3.2cqw}.sl-wi{width:9cqw;height:9cqw;font-size:4.6cqw}.sl-yt{font-size:3.2cqw}.sl-hwc b{font-size:3.8cqw}.sl-hwc small{font-size:3cqw}}
+.sl-dica{font-size:2.3cqw;gap:1cqw}.sl-dica p{padding:.8cqw 1.6cqw}.sl-dica p.txt{display:block;padding:0 .4cqw}
