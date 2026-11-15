@@ -75,6 +75,11 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   imagem (`imagens.js`) e dicionários ilustrados de flashcards; "Imprimir / PDF" de qualquer atividade (folha do aluno
   com nome, data, linhas e gabarito em página separada, rota `#imprimir-id`); planejador de curso na aba Aula
   (modelos → próximas aulas do aluno, com a data de cada aula → dadas; arrastar no computador, botões no celular).
+- Mais ideias do Ellii (`extras.js`): leitura e escuta do dia no caderno do aluno (alterna texto e áudio do nível
+  dele, 3 perguntas, sequência de dias; a professora vê os últimos 14 dias); pacotes de estudo (8 prontos ou montados
+  com o +, liberados um por semana, a cada 3 dias, por dia ou todos de uma vez); comentário em cada questão na correção.
+- Atualizações: `python3 scripts/versao.py` marca os arquivos com a versão antes de publicar, e o `sw.js` busca sempre
+  a versão nova quando há internet.
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
   Aluno: Hoje · Homework · Flashcards · Trilha.
 - Biblioteca com sub-abas: Atividades (o banco), Flashcards, Provas e nivelamento, PDFs.

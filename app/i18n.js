@@ -17,7 +17,7 @@ const pl=(n,one,many)=>`${n} ${+n===1? one : many}`;
 const I18N_EXACT={
   /* navegação e conta */
   'Hoje':'Today','Alunos':'Students','Aula':'Class','Homework':'Homework','Biblioteca':'Library','Flashcards':'Flashcards','Trilha':'Path','Agenda':'Schedule',
-  'Editar meu nome':'Edit my name','Meu estudo':'My study','Agenda da semana':'This week','Configurações':'Settings','Completa':'Full practice','Provas':'Tests','Au Pair':'Au Pair','Limpar':'Clear','Mandar como uma homework':'Send as one homework','Mandar':'Send','Horários em que você pode dar aula':'Hours when you can teach','Sua chave PIX':'Your PIX key','Sair':'Log out','Seguir o tema do sistema':'Follow system theme',
+  'Editar meu nome':'Edit my name','Meu estudo':'My study','Agenda da semana':'This week','Configurações':'Settings','Conferir':'Check','Voltar para Hoje':'Back to Today','Ver de novo':'Do it again','Perfeito!':'Perfect!','Feito!':'Done!','Volte amanhã para a próxima. Um pouquinho por dia faz diferença.':'Come back tomorrow for the next one. A little every day makes a difference.','Você já fez a de hoje ✓. Pode ler ou ouvir de novo à vontade.':'You’ve already done today’s ✓. Feel free to read or listen again.','← Hoje':'← Today','Pacotes de estudo':'Study packs','Mandar pacote':'Send pack','Criar pacote de estudo':'Create study pack','Completa':'Full practice','Provas':'Tests','Au Pair':'Au Pair','Limpar':'Clear','Mandar como uma homework':'Send as one homework','Mandar':'Send','Horários em que você pode dar aula':'Hours when you can teach','Sua chave PIX':'Your PIX key','Sair':'Log out','Seguir o tema do sistema':'Follow system theme',
   'Sua conta':'Your account','Mudar para o modo escuro':'Switch to dark mode','Mudar para o modo claro':'Switch to light mode','Principal':'Main',
   /* entrar */
   'Suas aulas particulares, num lugar só.':'Your private lessons, all in one place.','Agenda, histórico das aulas e pacote. Para quem ensina e para quem aprende.':'Schedule, lesson history and packages. For teachers and learners.',
@@ -98,6 +98,9 @@ const I18N_EXACT={
   'Idioma do Sotaque':'Sotaque language','Vale para você e para os seus alunos.':'Applies to you and your students.','Todos os níveis':'All levels','Todos os temas':'All themes','Todos os tipos':'All types','♪ Com áudio':'♪ With audio',
 };
 const I18N_RX=[
+  [/^Feito hoje ✓ · (\d+) de (\d+) certas(.*)$/,(m,a,b,r)=>`Done today ✓ · ${a} of ${b} right${r.replace(/ · (\d+) dias seguidos/,' · $1 days in a row')}`],
+  [/^Um (áudio|texto) curto e 3 perguntas\. Uns 3 minutos\.(.*)$/,(m,k,r)=>`A short ${k==='áudio'? 'audio' : 'text'} and 3 questions. About 3 minutes.${r.replace(/ Você está há (\d+) dias? seguidos!/,' You’re on a $1-day streak!')}`],
+  [/^Libera (.+)$/,'Opens $1'],
   [/^(.+) às (.+) · (.+)$/,'$1 to $2 · $3'],
   [/^Remarcada · o horário original era (.+)$/,'Rescheduled · originally $1'],
   [/^Ver todas as (\d+) aulas$/,'See all $1 lessons'],

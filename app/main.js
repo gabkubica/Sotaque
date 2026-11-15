@@ -203,6 +203,7 @@ function parseHash(){
   if ((m=h.match(/^trilha-([a-z0-9]+)$/))) return {name:'trilhaAluno',id:m[1]};
   if (h==='banco') return {name:'banco'};
   if (h==='flash') return {name:'flash'};
+  if (h==='dia') return {name:'dia'};
   if (h==='aula') return {name:'aula'};
   if ((m=h.match(/^aula-ed-([a-z0-9]+)$/))) return {name:'aulaEd',id:m[1]};
   if ((m=h.match(/^aula-([a-z0-9]+)$/))) return {name:'aulaPlay',id:m[1]};
@@ -411,8 +412,8 @@ function viewNotebook(s){
     <div class="banner"><div class="banner-art">${quadro(s.palette,s.scene,s.seed,{w:1100,h:240,focus:[.64,.84],align:'xMaxYMid'})}</div>
       <div class="banner-t" style="--bt:${dark? CREAM : p.c}"><h1>${title}</h1><p>${sub}</p></div></div>
     <div class="grid2">
-      <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${timeline(s)}</div>
-      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${packagePanel(s)}
+      <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${isT()? '' : dailyCard(s)}${timeline(s)}</div>
+      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${dailyPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
           <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
@@ -423,8 +424,9 @@ function viewNotebook(s){
 const LT='ABCDEFGH';
 const fmtNote=n=>(Math.round(n*10)/10).toFixed(1).replace('.',',');
 const fmtNum=n=>String(Math.round(n*10)/10).replace('.',',');
-const getTask=id=>id==='prac'? S.prac?.t : DB.tasks.find(t=>t.id===id);
-const tasksOf=id=>DB.tasks.filter(t=>t.studentId===id);
+const getTask=id=>id==='prac'? S.prac?.t : id==='dia'? S.dia?.t : DB.tasks.find(t=>t.id===id);
+const released=t=>!t.releaseAt||t.releaseAt<=now();
+const tasksOf=id=>DB.tasks.filter(t=>t.studentId===id&&(isT()||released(t)));
 const hasOpen=t=>t.questions.some(q=>q.type==='open');
 const TASK_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3.5h6l4 4v13h-10z" fill="none" stroke="#fffaf2" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 13.5l2 2 3.5-4" fill="none" stroke="#fffaf2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 /* ---------- tipos de questão ---------- */
@@ -530,7 +532,8 @@ function qResult(t,q,i,mode){
       if (mode==='teacher') body+=`<div class="marks"><span class="meta">Marque:</span>${[[1,'Certa','m1'],[.5,'Meio certa','m5'],[0,'Errada','m0']].map(([v,l,c])=>`<button class="${c} ${m===v?'on':''}" data-act="mark" data-id="${t.id}" data-q="${q.id}" data-v="${v}">${l}</button>`).join('')}</div>`; }
   }
   const aud= q.audio? (mode==='hidden'? '' : `<p class="meta muted">Áudio: “${esc(q.audio)}”</p>`) : '';
-  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${qImg(q,true)}${aud}${body}</div>`;
+  const fb= mode==='teacher'&&DB.tasks.includes(t)? qfbTeacher(t,q) : mode==='student'? qfbStudent(t,q) : '';
+  return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${qImg(q,true)}${aud}${body}${fb}</div>`;
 }
 
 /* ---------- escuta: o navegador lê em voz alta ---------- */
@@ -728,6 +731,7 @@ const TYPE_ACT={
 };
 
 function taskState(t){
+  if (t.releaseAt&&t.releaseAt>now()) return {k:'pend',label:'Libera '+fShort.format(t.releaseAt)};
   if (t.status==='corrigida'){ const sc=scoreOf(t); return {k:'done',label:`Nota ${fmtNote(sc.note)}`}; }
   if (t.status==='entregue') return {k:'sent',label: isT()? 'Para corrigir' : 'Entregue'};
   if (t.due&&t.due<now()) return {k:'late',label:'Atrasada'};
@@ -814,7 +818,7 @@ function comboBar(){
   const ids=(S.combo||[]).filter(id=>DB.bank.some(b=>b.id===id)); if (!ids.length) return '';
   const bs=ids.map(id=>DB.bank.find(b=>b.id===id)), n=bs.reduce((a,b)=>a+b.questions.length,0);
   return `<div class="combo-bar"><div class="grow"><b>${ids.length} ${ids.length===1?'atividade':'atividades'} · ${n} questões</b><small>${bs.map(b=>esc(b.title)).join(' + ')}</small></div>
-    <button class="btn small ghost" data-act="combo-clear">Limpar</button><button class="btn primary" data-act="combo-send">Mandar como uma homework</button></div>`;
+    <button class="btn small ghost" data-act="combo-clear">Limpar</button><button class="btn" data-act="combo-pack">Criar pacote de estudo</button><button class="btn primary" data-act="combo-send">Mandar como uma homework</button></div>`;
 }
 function comboModal(){
   const bs=(S.combo||[]).map(id=>DB.bank.find(b=>b.id===id)).filter(Boolean), n=bs.reduce((a,b)=>a+b.questions.length,0), studs=students();
@@ -838,6 +842,7 @@ function viewBank(){
   const pre=S.preStudent&&user(S.preStudent), lv=S.blv||'todos', tp=S.btp||'todos', ty=S.bty||'todos';
   return `${tasksHeader('banco')}
     ${pre? `<div class="notice ok" style="margin-bottom:18px"><div>Escolhendo uma tarefa para <b>${esc(pre.name)}</b>${levelOf(pre)? ` · filtrando pelo nível ${levelOf(pre)}` : ''}.</div><button class="btn small ghost" data-act="bk-nopre">Cancelar</button></div>` : ''}
+    ${packsHtml()}
     <div class="bk-tools"><label class="sr" for="bk-q">Buscar no banco</label><input type="text" id="bk-q" data-bk="q" value="${esc(S.bq||'')}" placeholder="${myLang()==='FR'? 'Buscar: passé composé, famille, expressions…' : 'Buscar: past simple, travel, idioms…'}" autocomplete="off">
       <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" aria-pressed="${lv===k}" data-act="bk-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tema">${['todos',...topicsFor(myLang())].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
@@ -938,7 +943,7 @@ const THEME_ACT={
 function taskRowT(t){
   const s=user(t.studentId), st=taskState(t);
   const info= t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : t.kind==='place'&&t.result? `nível ${t.result.final}` : t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${t.questions.length} certas` : t.due? `prazo ${fDay.format(t.due)}` : 'sem prazo';
-  return `<a class="tcard" href="#tarefa-${t.id}" style="${sVars(s)}">${avatar(s,42)}<div class="row-m"><b>${esc(t.title)}</b><small>${esc(s.name)} · ${t.questions.length} ${t.questions.length===1?'questão':'questões'} · ${info}</small></div>${pill(st)}</a>`;
+  return `<a class="tcard" href="#tarefa-${t.id}" style="${sVars(s)}">${avatar(s,42)}<div class="row-m">${t.pack? `<small class="pk-tag">${esc(t.pack.title)} · ${t.pack.k} de ${t.pack.n}</small>` : ''}<b>${esc(t.title)}</b><small>${esc(s.name)} · ${t.questions.length} ${t.questions.length===1?'questão':'questões'} · ${info}</small></div>${pill(st)}</a>`;
 }
 function viewTasksT(){
   const all=DB.tasks.filter(mine).sort((a,b)=>b.createdAt-a.createdAt);
@@ -964,7 +969,7 @@ function taskArt(t,o){
 function taskCardS(t){
   const st=taskState(t), n=t.questions.length, done=t.questions.filter(q=>isAnswered(t,q)).length;
   const info= t.kind==='place'&&t.result? `seu nível: ${t.result.final}` : t.status==='corrigida'? `${fmtNum(scoreOf(t).got)} de ${n} certas` : t.status==='entregue'? `entregue ${rel(t.submittedAt)}` : `${n} ${n===1?'questão':'questões'}${t.due? ' · prazo '+fDay.format(t.due)+' ('+rel(t.due)+')' : ''}`;
-  return `<a class="tcard" href="#tarefa-${t.id}"><span class="tthumb">${taskArt(t,{w:120,h:120,frame:false})}</span><div class="row-m"><b>${esc(t.title)}</b><small>${info}</small></div><div class="tcard-r">${pill(st)}${t.status==='pendente'? `<span class="btn primary small">${done? 'Continuar' : 'Começar'}</span>` : ''}</div></a>`;
+  return `<a class="tcard" href="#tarefa-${t.id}"><span class="tthumb">${taskArt(t,{w:120,h:120,frame:false})}</span><div class="row-m">${t.pack? `<small class="pk-tag">${esc(t.pack.title)} · ${t.pack.k} de ${t.pack.n}</small>` : ''}<b>${esc(t.title)}</b><small>${info}</small></div><div class="tcard-r">${pill(st)}${t.status==='pendente'? `<span class="btn primary small">${done? 'Continuar' : 'Começar'}</span>` : ''}</div></a>`;
 }
 function viewTasksS(me){
   const mine=tasksOf(me.id), byDue=(a,b)=>(a.due??Infinity)-(b.due??Infinity);
@@ -1860,7 +1865,7 @@ function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id? viewTaskS(t) : viewNotebook(me); }
+  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -2128,7 +2133,7 @@ ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
 ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2138,7 +2143,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('submit',e=>{ const f=e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); FORMS[f.dataset.form]?.(f,new FormData(f)); });
 document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); });
-document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); } });
+document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onExtraInput(e); } });
 document.addEventListener('keydown',e=>{ if (e.key==='Escape'){ if (S.modal) closeModal(); else if (S.menu){ S.menu=false; render(); } } });
 window.addEventListener('hashchange',go);
 
