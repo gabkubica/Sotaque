@@ -6,7 +6,7 @@
    MAT = ligar colunas · ORD = ordenar a frase · texto solto = resposta escrita */
 const TF=(s,v)=>['tf',s,v], GAP=(s,a)=>['gap',s,a], MAT=(p,pairs)=>['match',p,pairs], ORD=s=>['order',s];
 const IMG=(img,q)=>({img,q});
-const rawQ=r=> r&&r.img&&r.q!==undefined? {...rawQ(r.q),img:r.img} : typeof r==='string'? {type:'open',prompt:r}
+const rawQ=r=> r&&r.img&&r.q!==undefined? {...rawQ(r.q),img:r.img} : r&&!Array.isArray(r)&&typeof r==='object'&&r.type? JSON.parse(JSON.stringify(r)) : typeof r==='string'? {type:'open',prompt:r}
   : r[0]==='tf'? {type:'tf',prompt:r[1],correct:r[2]}
   : r[0]==='gap'? {type:'gap',prompt:r[1],answers:r[2].split('|')}
   : r[0]==='match'? {type:'match',prompt:r[1],pairs:r[2].map(p=>p.slice())}
@@ -658,7 +658,7 @@ BANK_RAW.push(
 function seedBank(){
   const T0=now(), mk=lang=>([level,topic,title,instructions,list],k)=>({id:uid(),lang,level,topic,title,instructions,questions:fromRaw(list),uses:(hashStr(title)%6),mine:false,createdAt:T0-30*DAY+k*MIN});
   const base=BANK_RAW.map(mk('EN')).concat((typeof BANK_RAW_FR!=='undefined'? BANK_RAW_FR : []).map(mk('FR')),typeof provasBank!=='undefined'? provasBank(T0) : [],
-    typeof BANK_RAW_EXTRA!=='undefined'? BANK_RAW_EXTRA.map(([lang,...r],k)=>mk(lang)(r,k+500)) : [],typeof aupairBank!=='undefined'? aupairBank(T0) : [],typeof contBank!=='undefined'? contBank(T0) : [],typeof gramBank!=='undefined'? gramBank(T0) : [],typeof imgBank!=='undefined'? imgBank(T0) : []);
+    typeof BANK_RAW_EXTRA!=='undefined'? BANK_RAW_EXTRA.map(([lang,...r],k)=>mk(lang)(r,k+500)) : [],typeof aupairBank!=='undefined'? aupairBank(T0) : [],typeof contBank!=='undefined'? contBank(T0) : [],typeof gramBank!=='undefined'? gramBank(T0) : [],typeof imgBank!=='undefined'? imgBank(T0) : [],typeof tiposBank!=='undefined'? tiposBank(T0) : []);
   if (typeof aplicarExtras!=='undefined') aplicarExtras(base);
   return base.concat(typeof provasMarcos!=='undefined'? provasMarcos(base,T0) : []);
 }

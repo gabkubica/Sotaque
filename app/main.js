@@ -55,7 +55,7 @@ const MODE=window.SOTAQUE_MODE==='real'? 'real' : 'demo', REAL=MODE==='real';
 const KEY= REAL? 'sotaque:real' : 'sotaque:v2', ME_KEY= REAL? 'sotaque:real:me' : 'sotaque:me', PASS='sotaque123';
 const genPass=()=>{ const c='abcdefghjkmnpqrstuvwxyz23456789'; let x=''; for (let i=0;i<8;i++) x+=c[Math.floor(Math.random()*c.length)]; return x; };
 /* Sotaque real: sem alunos de exemplo; atividades, provas, flashcards e aulas prontas ficam */
-function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:11,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
+function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:12,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
 const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
@@ -101,7 +101,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:11,conq:[],certs:[],cando:{},settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:12,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -432,6 +432,8 @@ const TASK_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3.5h6
 /* ---------- tipos de questão ---------- */
 const QT={mc:'Múltipla escolha',tf:'Verdadeiro ou falso',gap:'Completar a lacuna',match:'Ligar colunas',order:'Ordenar a frase',open:'Resposta escrita'};
 const QT_SHORT={mc:'Múltipla',tf:'V ou F',gap:'Lacuna',match:'Ligar',order:'Ordenar',open:'Escrita'};
+/* os tipos novos (tipos.js) entram na mesma lista */
+for (const [k,T] of Object.entries(TIPOS)){ QT[k]=T.label; QT_SHORT[k]=T.short; }
 const norm=s=>String(s??'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g,' ').trim().replace(/[.!?]+$/,'').trim();
 const words=q=>q.sentence.trim().split(/\s+/);
 /* embaralha sempre do mesmo jeito para a mesma questão */
@@ -449,7 +451,8 @@ function gradeQ(t,q){
     case 'gap': return q.answers.some(x=>norm(x)===norm(a))? 1 : 0;
     case 'match': return Array.isArray(a)? q.pairs.filter((_,i)=>a[i]===i).length/q.pairs.length : 0;
     case 'order': { const w=words(q); return Array.isArray(a)&&norm(a.map(k=>w[k]).join(' '))===norm(w.join(' '))? 1 : 0; }
-    default: { const m=t.marks[q.id]; return m==null? null : m; }
+    case 'open': break;
+    default: if (TIPOS[q.type]) return TIPOS[q.type].grade(q,a); { const m=t.marks[q.id]; return m==null? null : m; }
   }
 }
 function isAnswered(t,q){
@@ -459,7 +462,8 @@ function isAnswered(t,q){
     case 'tf': return typeof a==='boolean';
     case 'match': return Array.isArray(a)&&q.pairs.every((_,i)=>Number.isInteger(a[i]));
     case 'order': return Array.isArray(a)&&a.length===words(q).length;
-    default: return !!String(a??'').trim();
+    case 'open': break;
+    default: if (TIPOS[q.type]) return TIPOS[q.type].answered(q,a); return !!String(a??'').trim();
   }
 }
 function scoreOf(t){
@@ -485,6 +489,7 @@ function qAnswer(t,q,i){
       <div class="ord-bank">${ord.filter(k=>!ch.includes(k)).map(k=>`<button class="wchip" data-act="ord-add" ${data} data-q="${q.id}" data-w="${k}">${esc(w[k])}</button>`).join('')}</div>
       ${ch.length? `<button class="link" style="align-self:flex-start" data-act="ord-clear" ${data} data-q="${q.id}">Recomeçar</button>` : ''}`; }
   if (q.type==='open') body=`<label class="sr" for="o-${q.id}">Sua resposta</label><textarea id="o-${q.id}" data-ans-open="${q.id}" ${data} placeholder="Escreva sua resposta…">${esc(a||'')}</textarea>`;
+  if (TIPOS[q.type]) body=TIPOS[q.type].answer(t,q,i);
   if (q.type==='open'&&q.words) body+=`<small class="muted" id="wc-${q.id}">${wordCount(a)} palavras · pedido: ${q.words}</small>`;
   return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}${q.hint? `<small class="qhint">${esc(q.hint)}</small>` : ''}</b><span class="qkind">${q.listen? 'Escuta' : q.opt? 'Opcional' : QT_SHORT[q.type]}</span></div>${qImg(q)}${q.audio? audioBox(q.audio,taskLang(t),{mini:true}) : ''}${body}</div>`;
 }
@@ -495,7 +500,7 @@ function qResult(t,q,i,mode){
   let tag='', body='';
   if (reveal) tag= g==null? '<span class="qtag wait">Aguardando correção</span>'
     : g===1? '<span class="qtag ok">✓ Certa</span>'
-    : g>0? `<span class="qtag half">${q.type==='match'? `${Math.round(g*q.pairs.length)} de ${q.pairs.length} pares` : 'Meio certa'}</span>`
+    : g>0? `<span class="qtag half">${q.type==='match'? `${Math.round(g*q.pairs.length)} de ${q.pairs.length} pares` : TIPOS[q.type]?.tag?.(q,a,g)||'Meio certa'}</span>`
     : isAnswered(t,q)? '<span class="qtag no">✗ Errada</span>' : '<span class="qtag no">Sem resposta</span>';
   if (key&&q.type==='open') tag='<span class="qtag wait">Escrita</span>';
   if ((t.kind==='nivel'||t.kind==='prova')&&q.type==='open'&&t.marks[q.id]==null) tag= mode==='hidden'? '' : `<span class="qtag wait">${t.kind==='nivel'? 'Escrita' : 'Escrita curta'}</span>`;
@@ -531,6 +536,7 @@ function qResult(t,q,i,mode){
     else { body=`<div class="answer" style="background:var(--surface-2);border-radius:12px;padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere">${a? esc(a) : '<span class="muted">Sem resposta</span>'}</div>`;
       if (mode==='teacher') body+=`<div class="marks"><span class="meta">Marque:</span>${[[1,'Certa','m1'],[.5,'Meio certa','m5'],[0,'Errada','m0']].map(([v,l,c])=>`<button class="${c} ${m===v?'on':''}" data-act="mark" data-id="${t.id}" data-q="${q.id}" data-v="${v}">${l}</button>`).join('')}</div>`; }
   }
+  if (TIPOS[q.type]) body= mode==='hidden'? `<p class="gapline"><mark class="fill chosen">${TIPOS[q.type].said(q,a)}</mark></p>` : TIPOS[q.type].result(t,q,a,g,mode);
   const aud= q.audio? (mode==='hidden'? '' : `<p class="meta muted">Áudio: “${esc(q.audio)}”</p>`) : '';
   const fb= mode==='teacher'&&DB.tasks.includes(t)? qfbTeacher(t,q) : mode==='student'? qfbStudent(t,q) : '';
   return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${qImg(q,true)}${aud}${body}${fb}</div>`;
@@ -615,6 +621,7 @@ function nivelResultS(t){
 
 /* editor */
 const DEFAULT_PROMPT={match:'Ligue as colunas.',order:'Ponha as palavras na ordem certa.'};
+for (const [k,T] of Object.entries(TIPOS)) DEFAULT_PROMPT[k]=T.blank().prompt;
 function blankQ(type){
   const base={id:uid(),type,prompt:DEFAULT_PROMPT[type]||''};
   if (type==='mc') return {...base,options:['','','',''],correct:null};
@@ -622,17 +629,19 @@ function blankQ(type){
   if (type==='gap') return {...base,answers:[]};
   if (type==='match') return {...base,pairs:[['',''],['',''],['','']]};
   if (type==='order') return {...base,sentence:''};
+  if (TIPOS[type]) return {...base,...TIPOS[type].blank()};
   return base;
 }
 const blankMC=()=>blankQ('mc');
 const PH={mc:'Enunciado. Ex.: She ___ to school every day.',tf:'Afirmação. Ex.: London is the capital of England.',gap:'Frase com ___ no lugar da lacuna. Ex.: She ___ (go) to school every day.',match:'Instrução. Ex.: Ligue as palavras ao significado.',order:'Instrução para o aluno.',open:'Pergunta. Ex.: Write about your last weekend.'};
 /* imagem da questão: uma das cenas dos quadros, no estilo do Sotaque */
-const imgPal=k=>['petroleo','tomate','ameixa','menta','ceu','mostarda','terracota','lavanda'][hashStr(k)%8];
+const imgPal=k=>SCENES[k]?.pal||['petroleo','tomate','ameixa','menta','ceu','mostarda','terracota','lavanda'][hashStr(k)%8];
 const qImg=(q,small)=>q.img&&SCENES[q.img]? `<div class="q-img ${small?'small':''}">${quadro(imgPal(q.img),q.img,hashStr(q.img)%97,{w:560,h:320,frame:false})}</div>` : '';
 function qEditor(q,i){
   let body='';
-  if (q.type==='mc') body=`<div class="opts-col">${q.options.map((o,k)=>`<div class="optrow ${q.correct===k?'ok':''}"><input type="radio" name="c-${q.id}" data-q="${i}" data-correct="${k}" ${q.correct===k?'checked':''} aria-label="Alternativa ${LT[k]} é a certa"><span class="lt">${LT[k]}</span><input type="text" data-q="${i}" data-opt="${k}" value="${esc(o)}" placeholder="Alternativa ${LT[k]}" aria-label="Texto da alternativa ${LT[k]}">${q.options.length>2? `<button class="btn small ghost" data-act="o-del" data-i="${i}" data-k="${k}" aria-label="Remover alternativa ${LT[k]}">×</button>` : ''}</div>`).join('')}</div>
-    <div class="row-btns">${q.options.length<6? `<button class="link" data-act="o-add" data-i="${i}">+ Alternativa</button>` : ''}<small class="muted">Marque a bolinha da alternativa certa.</small></div>`;
+  if (q.type==='mc'||TIPOS[q.type]?.mcEditor) body=`<div class="opts-col">${q.options.map((o,k)=>`<div class="optrow ${q.correct===k?'ok':''}"><input type="radio" name="c-${q.id}" data-q="${i}" data-correct="${k}" ${q.correct===k?'checked':''} aria-label="Alternativa ${LT[k]} é a certa"><span class="lt">${LT[k]}</span><input type="text" data-q="${i}" data-opt="${k}" value="${esc(o)}" placeholder="Alternativa ${LT[k]}" aria-label="Texto da alternativa ${LT[k]}">${q.options.length>2? `<button class="btn small ghost" data-act="o-del" data-i="${i}" data-k="${k}" aria-label="Remover alternativa ${LT[k]}">×</button>` : ''}</div>`).join('')}</div>
+    <div class="row-btns">${q.options.length<6? `<button class="link" data-act="o-add" data-i="${i}">+ Alternativa</button>` : ''}<small class="muted">${q.type==='odd'? 'Marque a bolinha da que não combina.' : 'Marque a bolinha da alternativa certa.'}</small></div>`;
+  if (TIPOS[q.type]) body+=tipoEditor(q,i);
   if (q.type==='tf') body=`<div class="chips"><span class="meta" style="align-self:center">A resposta certa é:</span>${[[true,'Verdadeiro'],[false,'Falso']].map(([v,l])=>`<label class="chip"><input type="radio" name="tf-${q.id}" data-q="${i}" data-tfv="${v?1:0}" ${q.correct===v?'checked':''}><span>${l}</span></label>`).join('')}</div>`;
   if (q.type==='gap') body=`<label class="field" for="qg-${i}">Respostas aceitas <small>(se houver mais de uma, separe com /)</small><input type="text" id="qg-${i}" data-q="${i}" data-gap value="${esc(q.answers.join(' / '))}" placeholder="Ex.: goes"></label>
     <small class="muted">Use três sublinhados ___ no enunciado onde o aluno vai escrever. Maiúsculas e o ponto final não contam.</small>`;
@@ -643,7 +652,7 @@ function qEditor(q,i){
   return `<div class="qcard" id="qe-${i}">
     <div class="qhead"><span class="qnum">${i+1}</span><label class="sr" for="qt-${i}">Tipo da questão ${i+1}</label><select id="qt-${i}" class="qtype" data-qt="${i}">${Object.keys(QT).map(k=>`<option value="${k}" ${q.type===k?'selected':''}>${QT[k]}</option>`).join('')}</select><span class="grow"></span>
       <button class="btn small ghost" data-act="q-up" data-i="${i}" ${i===0?'disabled':''} aria-label="Subir a questão ${i+1}">↑</button><button class="btn small ghost" data-act="q-del" data-i="${i}">Remover</button></div>
-    <label class="sr" for="qp-${i}">Enunciado da questão ${i+1}</label><textarea id="qp-${i}" data-q="${i}" data-qf="prompt" style="min-height:60px" placeholder="${PH[q.type]}">${esc(q.prompt)}</textarea>
+    <label class="sr" for="qp-${i}">Enunciado da questão ${i+1}</label><textarea id="qp-${i}" data-q="${i}" data-qf="prompt" style="min-height:60px" placeholder="${PH[q.type]||'Instrução para o aluno.'}">${esc(q.prompt)}</textarea>
     <details class="q-imgpick" ${q.img?'open':''}><summary>${q.img? 'Imagem: '+esc(SCENES[q.img]?.nome||q.img) : 'Pôr uma imagem'}</summary><div class="imgpick">${['',...Object.keys(SCENES)].map(k=>`<button type="button" class="${(q.img||'')===k?'on':''}" data-act="q-img" data-i="${i}" data-v="${k}" title="${k? esc(SCENES[k].nome) : 'Sem imagem'}">${k? quadro(imgPal(k),k,3,{w:120,h:80,frame:false}) : '<span>sem imagem</span>'}</button>`).join('')}</div></details>
     ${qImg(q)}${body}</div>`;
 }
@@ -685,6 +694,7 @@ function validateDraft(D){
     if (q.type==='gap'){ if (!q.prompt.includes('___')) return [`${n} use ___ no enunciado para marcar a lacuna.`,`qp-${i}`]; if (!q.answers.length) return [`${n} escreva a resposta certa.`,`qg-${i}`]; }
     if (q.type==='match'&&q.pairs.filter(p=>p[0].trim()&&p[1].trim()).length<2) return [`${n} preencha pelo menos 2 pares.`,at];
     if (q.type==='order'&&q.sentence.trim().split(/\s+/).length<2) return [`${n} escreva a frase com pelo menos 2 palavras.`,`qs-${i}`];
+    if (TIPOS[q.type]){ const m=TIPOS[q.type].valid(q); if (m) return [`${n} ${m.charAt(0).toLowerCase()+m.slice(1)}`,at]; }
   }
   if (D.mode!=='bank'&&!D.students.length) return ['Escolha pelo menos um aluno.',null];
   if (D.hasDue&&!D.date) return ['Escolha a data do prazo.','d-date'];
@@ -698,6 +708,8 @@ function cleanQuestions(list){
     if (q.type==='gap') return {...base,answers:q.answers.slice()};
     if (q.type==='match') return {...base,pairs:q.pairs.filter(p=>p[0].trim()&&p[1].trim()).map(p=>[p[0].trim(),p[1].trim()])};
     if (q.type==='order') return {...base,sentence:q.sentence.trim().replace(/\s+/g,' ')};
+    if (q.type==='odd'){ const keep=q.options.map((o,k)=>({o:String(o).trim(),k,im:q.imgs?.[k]||''})).filter(x=>x.o); return {...base,options:keep.map(x=>x.o),correct:keep.findIndex(x=>x.k===q.correct),imgs:keep.some(x=>x.im)? keep.map(x=>x.im) : [],why:String(q.why||'').trim()}; }
+    if (TIPO_KEEP[q.type]){ const o={...base}; for (const k of TIPO_KEEP[q.type]) o[k]= typeof q[k]==='string'? q[k].trim() : JSON.parse(JSON.stringify(q[k]??'')); return o; }
     return base;
   });
 }
@@ -1079,8 +1091,9 @@ function viewPrint(id){
     if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m');
       body=`<div class="pr-match"><ol>${q.pairs.map(p=>`<li>${esc(p[0])} <span class="pr-gap short"></span></li>`).join('')}</ol><ul>${ord.map((j,k)=>`<li><b>${LT[k]}</b> ${esc(q.pairs[j][1])}</li>`).join('')}</ul></div>`; }
     if (q.type==='order'){ const w=words(q), ord=shuffled(w.length,q.id+'o'); body=`<p class="pr-words">${ord.map(k=>`<span>${esc(w[k])}</span>`).join(' / ')}</p>${line(1)}`; }
+    if (TIPOS[q.type]) body=TIPOS[q.type].print(q);
     if (q.type==='open') body=line(q.words&&/1[0-9]{2}|[2-9][0-9]{2}/.test(String(q.words))? 9 : 5);
-    return `<div class="pr-q"><p class="pr-qh"><b>${i+1}.</b> ${q.listen? (FR? 'Écoutez et répondez. ' : 'Listen and answer. ') : ''}${head}</p>${qImg(q,true)}${body}</div>`; };
+    return `<div class="pr-q"><p class="pr-qh"><b>${i+1}.</b> ${q.listen? (FR? 'Écoutez et répondez. ' : 'Listen and answer. ') : ''}${head}</p>${qImg(q,true)}${q.type==='dict'? `<p class="meta muted" style="margin:0 0 4px">(${FR? 'le professeur lit la phrase' : 'the teacher reads the sentence aloud'})</p>` : ''}${body}</div>`; };
   const ans=(q,i)=>{ let a='';
     if (q.type==='mc') a=`${LT[q.correct]}) ${esc(q.options[q.correct])}`;
     if (q.type==='tf') a=q.correct? tfL[0] : tfL[1];
@@ -1088,6 +1101,7 @@ function viewPrint(id){
     if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m'); a=q.pairs.map((p,k)=>`${k+1}–${LT[ord.indexOf(k)]}`).join(' · '); }
     if (q.type==='order') a=esc(q.sentence);
     if (q.type==='open') a= FR? '(réponse personnelle)' : '(resposta pessoal)';
+    if (TIPOS[q.type]) a=TIPOS[q.type].key(q);
     return `<li><b>${i+1}.</b> ${a}</li>`; };
   return `<div class="no-print pr-tools"><a class="link" href="${back}">← Voltar</a><span class="grow"></span><label class="sel" style="padding:0"><input type="checkbox" data-act="print-key" ${withKey?'checked':''}> Incluir o gabarito</label><button class="btn primary" data-act="print-go">Imprimir ou salvar em PDF</button></div>
     <p class="no-print meta muted" style="margin:0 0 14px">Para salvar em PDF, escolha “Salvar como PDF” no lugar da impressora.</p>
@@ -1310,8 +1324,8 @@ function nivelScore(t){
   const total=used.length? Math.round(used.reduce((a,k)=>a+(P[k]||0),0)/(used.length*25)*100) : 0;
   return {P,used,missing,total,pass:!missing.length&&total>=50&&used.every(k=>P[k]>=5)};
 }
-const correctAnswer=q=>q.type==='gap'? q.answers[0] : q.type==='match'? q.pairs.map((_,i)=>i) : q.type==='order'? words(q).map((_,i)=>i) : q.correct;
-const wrongAnswer=q=>q.type==='gap'? 'xx' : q.type==='tf'? !q.correct : q.type==='mc'? (q.correct+1)%q.options.length : q.type==='match'? q.pairs.map((_,i)=>(i+1)%q.pairs.length) : correctAnswer(q).slice().reverse();
+const correctAnswer=q=>TIPOS[q.type]? TIPOS[q.type].solve(q) : q.type==='gap'? q.answers[0] : q.type==='match'? q.pairs.map((_,i)=>i) : q.type==='order'? words(q).map((_,i)=>i) : q.correct;
+const wrongAnswer=q=>TIPOS[q.type]? TIPOS[q.type].wrong(q) : q.type==='gap'? 'xx' : q.type==='tf'? !q.correct : q.type==='mc'? (q.correct+1)%q.options.length : q.type==='match'? q.pairs.map((_,i)=>(i+1)%q.pairs.length) : correctAnswer(q).slice().reverse();
 function seedTrail(){
   const on=(sid,level,base=level)=>{ user(sid).trail={on:true,level,base}; };
   const conq=(sid,mid,days,note='',score=null)=>DB.conq.push({studentId:sid,marcoId:mid,at:now()-days*DAY,note,score,by:user(sid).teacherId});
@@ -2133,7 +2147,7 @@ ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
 ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2142,8 +2156,8 @@ document.addEventListener('click',e=>{
   const fn=ACT[el.dataset.act]; if (fn){ if (el.tagName==='A') e.preventDefault(); fn(el,e); }
 });
 document.addEventListener('submit',e=>{ const f=e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); FORMS[f.dataset.form]?.(f,new FormData(f)); });
-document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); });
-document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onExtraInput(e); } });
+document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onTipoInput(e); });
+document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onExtraInput(e); onTipoInput(e); } });
 document.addEventListener('keydown',e=>{ if (e.key==='Escape'){ if (S.modal) closeModal(); else if (S.menu){ S.menu=false; render(); } } });
 window.addEventListener('hashchange',go);
 
@@ -2153,7 +2167,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if 
 if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
 if (REAL){ baseDB(); S.cloudLoading=true; }
 else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==11){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=11; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==12){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=12; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
   if (!DB.decks){ ensureFlash(); seedFlashDemo(); }

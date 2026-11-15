@@ -78,6 +78,13 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - Mais ideias do Ellii (`extras.js`): leitura e escuta do dia no caderno do aluno (alterna texto e áudio do nível
   dele, 3 perguntas, sequência de dias; a professora vê os últimos 14 dias); pacotes de estudo (8 prontos ou montados
   com o +, liberados um por semana, a cada 3 dias, por dia ou todos de uma vez); comentário em cada questão na correção.
+- Tipos novos de questão (`tipos.js`, um lugar só para tudo de cada tipo: resposta, correção, editor, impressão
+  e gabarito): ditado (nota pelas palavras certas, na ordem), texto com lacunas e banco de palavras (`[resposta]`),
+  encontre e corrija o erro (`{errada|certa}`), separar em grupos, reescrever com a palavra dada (estilo Cambridge),
+  qual não combina (cartas com imagem), caça-palavras e palavras cruzadas (montados sozinhos; dica com imagem via
+  `| img:cena`). 22 atividades prontas com eles (`atividades-tipos.js`, 154 questões, inglês e francês, A1–C1,
+  jogos com imagens para crianças) e 23 imagens novas de vocabulário (`quadros-mais.js`: animais, comida,
+  transporte, roupas, objetos da casa), também no seletor de imagem do editor.
 - Atualizações: `python3 scripts/versao.py` marca os arquivos com a versão antes de publicar, e o `sw.js` busca sempre
   a versão nova quando há internet.
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).
