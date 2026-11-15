@@ -877,3 +877,451 @@ Superlatives
 Comparatives and superlatives
 As…as and not as…as`],
 );
+/* ---------- mais aulas (temas variados) ---------- */
+SLIDES_SEED.push(
+['EN','A1','There is / there are: my dream house',`# capa: There is / there are | img:casa
+Describing places: my dream house
+# aquecimento: Dream houses
+musica: There Is a Light That Never Goes Out — The Smiths | O título começa com “There is”. O que ele significa? (existe / há)
+filme: Up (2009) | A casa voa com balões! Pausem e descrevam: “There is a sofa… There are pictures on the wall…”
+jogo: Memory | Olhe a imagem da casa por 20 segundos, feche os olhos e diga tudo o que há nela.
+pergunta: What is there in your bedroom?
+# vocab: In the house
+a sofa | um sofá | img:sofa
+a bed | uma cama | img:cama
+a fridge | uma geladeira | img:geladeira
+a wardrobe | um guarda-roupa | img:armario
+a lamp | uma luminária | img:lampada
+a plant | uma planta | img:planta
+# explica: There is or there are?
+**There is** + one thing (singular)
+> There is a big sofa in the living room.
+**There are** + two or more things (plural)
+> There are three bedrooms in my house.
+Uncountable things use **there is**: There is some water in the fridge.
+# tabela: Positive, negative, questions
+ | Singular | Plural
+Positive | There’s a garden. | There are two bathrooms.
+Negative | There isn’t a garage. | There aren’t any chairs.
+Question | Is there a pool? | Are there any shops near?
+Short answers | Yes, there is. / No, there isn’t. | Yes, there are. / No, there aren’t.
+# exercicio: Practice 1 · is or are?
+escolha: [*There is/There are] a lamp next to the bed.
+escolha: [*There are/There is] four chairs in the kitchen.
+escolha: [*Is there/Are there] a garden? Yes, [*there is/there are].
+grupos: There is: a sofa, a garden, some milk / There are: two bedrooms, some plants, three windows
+# imagem: Describe the house | img:casa
+What is there in the picture? How many houses are there?
+Use: There is… / There are… / There isn’t… / There aren’t any…
+# dica: Cuidado!
+Em português dizemos “tem”, mas em inglês não usamos **have** para isso.
+x: In my city have a big park.
+ok: In my city there is a big park.
+x: There is two bathrooms.
+ok: There are two bathrooms.
+# exercicio: Practice 2 · Find the mistake
+erro: In my street {have|there is} a bakery.
+erro: There {is|are} many people at the party.
+erro: {Is|Are} there any eggs in the fridge?
+lacunas: My dream house is by the sea. There [is] a big garden and there [are] two pools. There [isn’t] a TV: it’s a quiet house! || are not, have
+# tirinha: Looking for a flat
+[casa]
+Ana: Is there a balcony?
+Leo: Yes, there is. And there are two bedrooms.
+---
+Ana (surpreso): Is there a lift?
+Leo (triste): No, there isn’t. It’s on the fifth floor…
+---
+Ana (feliz): Great exercise every day, then!
+# dialogo: Listen: a holiday house
+A: Hi, I’m calling about the beach house. Is there a garden?
+B: Yes, there is. And there’s a small pool too.
+A: Great! How many bedrooms are there?
+B: There are three bedrooms and two bathrooms.
+A: Is there Wi-Fi?
+B: No, there isn’t, sorry.
+# exercicio: Practice 3 · Listening
+There is a small pool. (v)
+There are two bedrooms. (f)
+There isn’t any Wi-Fi. (v)
+ditado: There are three bedrooms and two bathrooms.
+# resumo: Summary
+- **There is** + singular / uncountable · **There are** + plural
+- Negative: **There isn’t / There aren’t any**
+- Question: **Is there…? Are there any…?**
+- Não use **have** para “tem” (existe)
+# conversa: Your dream house | img:casa
+Describe your dream house. Where is it? What is there?
+What is there in your neighbourhood?
+Is there anything you don’t like in your house?
+# tarefas: Atividades recomendadas
+There is and there are
+There is / there are
+What’s in the picture? There is / there are
+Prepositions of place`],
+['EN','A1','Can and can’t: superpowers and talents',`# capa: Can and can’t | img:bola
+Superpowers, talents and abilities
+# aquecimento: Superpowers
+filme: The Incredibles (2004) | Cada personagem tem um poder. What can Dash do? What can Violet do? What can Mr. Incredible do?
+musica: Can’t Stop the Feeling! — Justin Timberlake | Ouçam o título: “can’t” = não consegue. Você consegue ficar parado ouvindo?
+jogo: Talent show | Cada um diz 2 coisas que sabe fazer e 1 que não sabe: “I can cook. I can swim. I can’t dance!”
+pergunta: If you could have one superpower, what would it be?
+# explica: What does can mean?
+**can** = saber / conseguir / poder
+> I can swim. (sei nadar)
+> Can you help me? (pode me ajudar?)
+> You can park here. (é permitido)
+Depois de **can**, o verbo vem **sem to** e **sem -s**.
+# tabela: The form
+Positive | Negative | Question
+I can swim. | I can’t swim. | Can you swim?
+She can drive. | She can’t drive. | Can she drive?
+Short answers: Yes, I **can**. / No, I **can’t**.
+# vocab: Talents
+play the guitar | tocar violão | img:violao
+ride a bike | andar de bicicleta | img:bicicleta
+take good photos | tirar boas fotos | img:camera
+play football | jogar futebol | img:bola
+cook | cozinhar | img:panela
+swim | nadar | img:mar
+# exercicio: Practice 1 · The form
+escolha: My brother [*can play/cans play/can to play] the guitar.
+escolha: [*Can you/Do you can/You can] speak Spanish?
+escolha: Penguins [*can’t/don’t can/can not to] fly.
+ordem: Can you ride a bike
+# dica: Cuidado!
+x: She cans dance.
+ok: She can dance.
+x: I can to speak English.
+ok: I can speak English.
+x: Do you can help me?
+ok: Can you help me?
+# exercicio: Practice 2 · Find the mistake
+erro: He {cans|can} run very fast.
+erro: We can {to swim|swim} in the sea here.
+erro: {Do you can|Can you} open the window, please?
+grupos: Animals that can fly: bird, bee, butterfly / Animals that can’t fly: dog, fish, penguin
+# tirinha: Super Mia
+[cidade]
+Sam: Can you really fly, Mia?
+Mia (feliz): Yes, I can! Look!
+---
+Sam (surpreso): Wow! Can you carry me too?
+Mia (pensando): Hmm… no, I can’t. You’re too heavy!
+# dialogo: Listen: a job interview at a summer camp
+A: So, can you swim?
+B: Yes, I can. I’m a very good swimmer.
+A: Great. Can you play any instruments?
+B: I can play the guitar, but I can’t sing very well!
+A: That’s OK. Can you work at weekends?
+B: Yes, I can.
+# exercicio: Practice 3 · Listening
+The candidate can swim. (v)
+The candidate can sing very well. (f)
+ditado: I can play the guitar.
+# resumo: Summary
+- **can / can’t + verb** (no to, no -s)
+- Ability: I can swim · Request: Can you help me? · Permission: You can sit here
+- Question: **Can you…?** · Short answer: Yes, I can / No, I can’t
+# conversa: Your talents | img:violao
+What can you do very well?
+What can’t you do, but would like to learn?
+Can you cook? What can you make?
+What can people do in your city at night?
+# tarefas: Atividades recomendadas
+Can and can’t
+Hobbies and free time`],
+['EN','A2','Past continuous: a mystery story',`# capa: Past continuous | img:lupa
+A mystery at the hotel: what were you doing?
+# aquecimento: Where were you?
+filme: Knives Out (2019) | O detetive pergunta a cada pessoa da família onde estava e o que estava fazendo na noite da festa. Hoje vocês são os detetives!
+musica: (Sittin’ On) The Dock of the Bay — Otis Redding | O título descreve uma ação em andamento (sitting). Que imagem vem à cabeça?
+jogo: Alibi | “What were you doing yesterday at 8 pm?” Cada um inventa um álibi; o outro tenta achar a mentira.
+pergunta: What were you doing at this time yesterday?
+nota: Mantenha o clima de mistério: vocês vão resolver o caso do colar roubado.
+# linha: An action in progress
+faixa: 0.25-0.55 | I was reading
+ponto: 0.42 | the phone rang
+agora: 0.85
+O **past continuous** mostra uma ação **em andamento** num momento do passado. Muitas vezes, outra ação (past simple) **interrompe**.
+> I was reading when the phone rang.
+> At 9 pm, we were having dinner.
+# tabela: How to form it
+Subject | was / were | verb + ing
+I / he / she / it | was | sleeping
+you / we / they | were | sleeping
+Negative: wasn’t / weren’t · Question: **Were** you sleeping?
+# exercicio: Practice 1 · was or were?
+escolha: At 10 pm, I [*was watching/were watching/watched] a film.
+escolha: The guests [*were dancing/was dancing/were dance] in the hall.
+escolha: [*Were/Was/Did] you sleeping when I called?
+# texto: The case of the missing necklace
+Last night, there was a party at the Grand Hotel. At 9 pm, the lights went out for one minute.
+When the lights came on, Lady Rose’s necklace was not there anymore!
+The detective has four suspects. What was each person doing at 9 pm?
+# tabela: The suspects at 9 pm
+Suspect | What were they doing?
+The chef | He was cooking in the kitchen.
+The singer | She was singing on the stage.
+The waiter | He was carrying drinks… near Lady Rose.
+The guest | She was talking on the phone in the garden.
+nota: Pergunte: “Who was near Lady Rose? Who’s the thief?” Deixe o aluno argumentar com past continuous.
+# exercicio: Practice 2 · Solve the case
+1. Who was near Lady Rose when the lights went out?
+a) The chef
+*b) The waiter
+c) The singer
+The singer was singing on the stage. (v)
+The guest was cooking in the kitchen. (f)
+reescreva: The chef cooked. The lights went out in the middle. | WAS | The chef ___ when the lights went out. | was cooking
+# explica: When or while?
+**when** + past simple (ação curta)
+> I was walking home **when** it started to rain.
+**while** + past continuous (ação longa)
+> **While** I was walking home, it started to rain.
+# dica: Cuidado!
+x: I was watch TV when you called.
+ok: I was watching TV when you called.
+x: They was playing football.
+ok: They were playing football.
+# exercicio: Practice 3 · Find the mistake
+erro: She {were|was} reading when I arrived.
+erro: We were {have|having} dinner at 8.
+lacunas: While I [was] cooking, the cat [jumped] on the table. || were, jumping
+# resumo: Summary
+- **was / were + verb-ing**: an action in progress in the past
+- Long action (past continuous) + short action (past simple)
+- **when** + short action · **while** + long action
+# conversa: Your alibi | img:lupa
+What were you doing yesterday at 9 pm?
+What were you doing when you heard some big news?
+Tell a story: “I was walking home when…”
+# tarefas: Atividades recomendadas
+Past continuous
+Past continuous or past simple?
+Was and were`],
+['EN','A2','Some, any, much, many: in the kitchen',`# capa: Some, any, much, many | img:panela
+Cooking, shopping and quantities
+# aquecimento: What’s in the fridge?
+filme: Ratatouille (2007) | Remy cozinha no restaurante. Que ingredientes aparecem? Separem em coisas que dá e que não dá para contar.
+musica: Banana Pancakes — Jack Johnson | Comida no título! Banana e pancakes: dá para contar? (one banana, two pancakes)
+jogo: Supermarket memory | “I went to the supermarket and I bought some milk.” O próximo repete e acrescenta: “…some milk and some eggs.”
+pergunta: What do you usually have in your fridge?
+# vocab: Food
+bread | pão | img:pao
+cheese | queijo | img:queijo
+eggs | ovos | img:ovo
+juice | suco | img:suco
+water | água | img:agua
+apples | maçãs | img:maca
+# explica: Countable or uncountable?
+**Countable**: dá para contar (one egg, two eggs)
+**Uncountable**: não dá para contar (water, bread, cheese, money, rice)
+> I need **an** egg. · I need **some** water.
+Incontáveis não têm plural nem **a/an**: ~~a bread~~ → **some bread / a piece of bread**
+# tabela: Some, any, much, many
+ | Countable (eggs) | Uncountable (milk)
++ | There are **some** eggs. | There is **some** milk.
+– | There aren’t **any** eggs. | There isn’t **any** milk.
+? | Are there **any** eggs? | Is there **any** milk?
+How…? | How **many** eggs? | How **much** milk?
+# exercicio: Practice 1 · Countable or uncountable?
+grupos: Countable: egg, apple, tomato, cup / Uncountable: rice, milk, sugar, bread
+escolha: We need [*some/any/a] milk for the cake.
+escolha: Is there [*any/some/many] cheese?
+escolha: How [*many/much] eggs do you want?
+# texto: Recipe: easy pancakes
+You need: 2 eggs, some milk, some flour, a little sugar and some butter.
+1. Mix the eggs, the milk and the flour.
+2. Add a little sugar.
+3. Cook in a hot pan with some butter.
+# exercicio: Practice 2 · The recipe
+For this recipe you need ___ eggs.
+= 2/two
+1. How much sugar do you need?
+a) a lot
+*b) a little
+c) none
+ordem: Mix the eggs and the milk
+# dica: Cuidado!
+x: Can I have a bread?
+ok: Can I have some bread?
+x: How much eggs do we need?
+ok: How many eggs do we need?
+x: There aren’t some apples.
+ok: There aren’t any apples.
+# exercicio: Practice 3 · Find the mistake
+erro: How {much|many} apples do you want?
+erro: I’d like {a|some} water, please.
+erro: There isn’t {some|any} sugar.
+# dialogo: Listen: shopping list
+A: Do we need any bread?
+B: No, we have some bread. But we don’t have any cheese.
+A: OK, cheese. How many eggs do we have?
+B: Only two. Let’s buy a dozen.
+A: And milk?
+B: Yes, we need some milk too.
+# exercicio: Practice 4 · Listening
+They need some bread. (f)
+They need some cheese. (v)
+ditado: We don’t have any cheese.
+# resumo: Summary
+- Countable: a/an, many · Uncountable: some, much
+- **some** (+) · **any** (– and ?)
+- **How many** + countable · **How much** + uncountable
+# conversa: Food talk | img:panela
+What do you usually buy at the supermarket?
+How much water do you drink a day?
+Can you cook? What do you need for your favourite recipe?
+# tarefas: Atividades recomendadas
+Some, any, much, many
+How much and how many
+Countable and uncountable nouns
+Countable and uncountable`],
+['EN','A2','Should, must, have to: travel rules',`# capa: Should, must, have to | img:aviao
+Rules and advice for travellers
+# aquecimento: At the airport
+musica: Should I Stay or Should I Go — The Clash | O título é um conselho em forma de pergunta. O que você responderia?
+filme: The Terminal (2004) | Viktor fica preso no aeroporto. Que regras ele tem que seguir? O que ele não pode fazer?
+jogo: Airport rules | Digam regras de aeroporto: “You must show your passport. You mustn’t carry big bottles of water.”
+pergunta: What’s the best advice for a first trip abroad?
+# vocab: Travel
+a passport | passaporte | img:livro
+a ticket | passagem | img:ingresso
+a suitcase | mala | img:mala
+a plane | avião | img:aviao
+a backpack | mochila | img:mochila
+# explica: Rules or advice?
+**must** = regra forte / obrigação (muitas vezes escrita)
+> You must wear a seatbelt.
+**have to** = obrigação (do dia a dia)
+> I have to get up at 5 to catch my flight.
+**should** = conselho, recomendação
+> You should arrive two hours early.
+# tabela: Positive and negative
+Verb | Meaning | Negative | Meaning
+must | é obrigatório | mustn’t | é proibido
+have to | é preciso | don’t have to | não é preciso
+should | é bom / recomendo | shouldn’t | não é bom
+# exercicio: Practice 1 · Rule or advice?
+grupos: Rules (must): You must show your passport, You must wear a seatbelt / Advice (should): You should take a jacket, You should drink water on the plane
+escolha: You [*mustn’t/don’t have to] smoke on the plane. It’s forbidden.
+escolha: You [*don’t have to/mustn’t] print your ticket. You can use your phone.
+escolha: It’s cold in London. You [*should/mustn’t] take a coat.
+# dica: mustn’t × don’t have to
+x: You don’t have to smoke here. (proibido!)
+ok: You mustn’t smoke here.
+ok: You don’t have to pay. It’s free. (não é preciso)
+# exercicio: Practice 2 · Find the mistake
+erro: You {must to|must} wear a seatbelt.
+erro: She {have to|has to} check in online.
+erro: You {should to|should} learn some local words.
+reescreva: It isn’t necessary to bring towels. | HAVE | You ___ bring towels. | don’t have to/do not have to
+# tirinha: First trip
+[aviao]
+Bia (preocupado): It’s my first trip abroad. Any advice?
+Tom: You should keep your passport with you.
+---
+Bia: Do I have to take cash?
+Tom: No, you don’t have to. Cards are fine.
+---
+Tom (feliz): And you must try the local food!
+Bia (feliz): That’s the best rule!
+# dialogo: Listen: at check-in
+A: Good morning. Can I see your passport, please?
+B: Here you are.
+A: Your bag is too heavy. You have to pay an extra fee.
+B: Oh no! How much is it?
+A: Fifty dollars. Or you can take some things out.
+B: I’ll take some things out!
+# exercicio: Practice 3 · Listening
+The bag is too heavy. (v)
+The passenger has to pay one hundred dollars. (f)
+ditado: You have to pay an extra fee.
+# resumo: Summary
+- **must**: rules · **mustn’t**: forbidden
+- **have to**: obligation · **don’t have to**: not necessary
+- **should / shouldn’t**: advice
+- No **to** after must and should
+# conversa: Your rules | img:mala
+What do you have to do before a trip?
+What should a tourist do in your city?
+What mustn’t people do on a plane?
+What rules do you have at work or at home?
+# tarefas: Atividades recomendadas
+Should, must, have to
+Must and mustn’t · rules
+Have to and don’t have to
+Had to and didn’t have to`],
+['EN','B1','First conditional: superstitions and choices',`# capa: First conditional | img:nuvem
+Real possibilities: if… will…
+# aquecimento: What will happen?
+musica: If You Leave Me Now — Chicago | O título começa com “If”. Ouçam: o que vai acontecer se a pessoa for embora?
+filme: Sliding Doors (1998) | A vida da Helen muda dependendo de pegar ou não o metrô. Pergunte: “If you miss the train today, what will happen?”
+jogo: Chain story | “If it rains tomorrow, I’ll stay home.” → “If I stay home, I’ll watch a film.” → “If I watch a film…” Até onde a história vai?
+pergunta: Are you superstitious? What superstitions do you know?
+# explica: Real possibilities
+Usamos o **first conditional** para situações **possíveis** no futuro e seus resultados.
+> If it rains, we’ll stay at home.
+> If you study, you’ll pass the exam.
+**if + present simple, will + verb**
+# tabela: The structure
+If clause | Result clause
+If it rains, | we’ll stay home.
+If you don’t hurry, | you’ll miss the bus.
+If she calls, | I won’t answer.
+A ordem pode mudar: We’ll stay home **if** it rains. (sem vírgula)
+# exercicio: Practice 1 · The form
+escolha: If it [*rains/will rain] tomorrow, we’ll cancel the picnic.
+escolha: If you heat ice, it [*melts/will melts/melted].
+escolha: I [*’ll call/call/called] you if I need help.
+lacunas: If you [don’t] hurry, you [’ll] miss the train. || won’t, will be
+# texto: Superstitions around the world
+In Brazil, people say that if you leave your bag on the floor, you’ll lose money.
+In the UK, some people believe that if you walk under a ladder, you’ll have bad luck.
+In China, if you give someone a clock as a present, it will bring bad luck.
+# exercicio: Practice 2 · Superstitions
+1. In Brazil, what will happen if you leave your bag on the floor?
+a) You’ll have good luck.
+*b) You’ll lose money.
+c) You’ll find money.
+grupos: Brazil: bag on the floor, lose money / UK: ladder, walk under / China: clock, present
+# dica: Cuidado!
+Depois de **if**, não usamos **will**.
+x: If it will rain, I’ll stay home.
+ok: If it rains, I’ll stay home.
+x: I call you if I will arrive late.
+ok: I’ll call you if I arrive late.
+# exercicio: Practice 3 · Find the mistake
+erro: If you {will come|come}, I’ll cook dinner.
+erro: If she studies, she {passes|will pass} next week.
+reescreva: Hurry up or you’ll miss the bus. | IF | You’ll miss the bus ___ . | if you don’t hurry/if you do not hurry
+# explica: Unless, when, as soon as
+**unless** = if… not
+> I’ll go **unless** it rains. (= if it doesn’t rain)
+**when / as soon as** + present (para o que vai acontecer com certeza)
+> I’ll call you **as soon as** I arrive.
+# tirinha: Monday morning choices
+[relogio]
+Leo (cansado): If I get up now, I’ll be on time…
+---
+Leo (feliz): But if I sleep five more minutes, I’ll be happy!
+---
+> Twenty minutes later…
+Ana (bravo): You’re late again, Leo!
+# resumo: Summary
+- **If + present simple, will + verb**
+- Possible future situations and their results
+- No **will** after if, when, unless, as soon as
+- **unless** = if… not
+# conversa: Let’s talk | img:nuvem
+What will you do if it rains this weekend?
+If you get a raise, what will you buy?
+What superstitions do people believe in your family?
+What will happen if people stop using cars?
+# tarefas: Atividades recomendadas
+First conditional
+Zero conditional
+Future time clauses
+First and second conditional`],
+);
