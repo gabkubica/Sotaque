@@ -831,3 +831,6 @@ a,button,summary,label,select,input[type=checkbox],input[type=radio]{touch-actio
 }
 @keyframes sheet{from{transform:translateY(40px);opacity:.4}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.auth-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.auth-load{min-height:80vh;display:grid;place-items:center;align-content:center;gap:12px;text-align:center}

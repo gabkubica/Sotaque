@@ -60,7 +60,7 @@ const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } 
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
 let DB;
-function save(){ if (!lsSet(KEY,JSON.stringify(DB))) toast('Não consegui salvar neste navegador.'); }
+function save(){ if (REAL){ if (typeof cloudQueue==='function') cloudQueue(); return; } if (!lsSet(KEY,JSON.stringify(DB))) toast('Não consegui salvar neste navegador.'); }
 
 /* ---------- dados de exemplo ---------- */
 const NOTES={
@@ -107,6 +107,7 @@ function seedData(){
 }
 /* aulas fixas: garante as próximas 8 semanas de cada aluno */
 function ensureLessons(){
+  if (REAL&&!isT()) return;
   let changed=false;
   for (const s of allStudents()){
     if (!s.slot) continue;
@@ -223,6 +224,7 @@ function parseHash(){
 
 /* ---------- entrar ---------- */
 function viewAuth(){
+  if (REAL&&S.cloudLoading) return `<div class="auth-load">${logo(48)}<p class="meta">Abrindo o Sotaque…</p></div>`;
   const {pk,seed}=(()=>{ const d=Math.floor((now()-new Date().getTimezoneOffset()*MIN)/DAY); return {pk:PKEYS[d%PKEYS.length],seed:d}; })();
   const demo=[['professora@sotaque.app','Professora de inglês','agenda, alunos e pedidos de remarcação'],['professor@sotaque.app','Professor de francês','três alunos de francês'],['marina@sotaque.app','Aluna Marina','inglês, toda terça às 19h'],['beatriz@sotaque.app','Aluna Beatriz','francês, toda segunda às 19h'],['theo@sotaque.app','Aluno Theo','pediu para remarcar a próxima aula']];
   return `${themeBtn('auth-theme')}<div class="auth">
@@ -235,7 +237,8 @@ function viewAuth(){
         <label class="field" for="l-pass">Senha<input type="password" id="l-pass" name="pass" required autocomplete="current-password"></label>
         <p class="err" id="l-err"></p>
         <button class="btn primary big">Entrar</button>
-        <p class="meta muted">Ainda não tem acesso? Seu professor ou professora cria a sua conta e te envia o login.</p>
+        ${REAL? `<div class="auth-links"><button type="button" class="link" data-act="first-access">Primeiro acesso de aluno</button><button type="button" class="link" data-act="forgot">Esqueci minha senha</button></div>
+        <p class="meta muted">Aluno: no primeiro acesso, use o e-mail que o seu professor ou professora cadastrou e crie a sua senha.</p>` : '<p class="meta muted">Ainda não tem acesso? Seu professor ou professora cria a sua conta e te envia o login.</p>'}
       </form>
       ${REAL? `<div class="demo"><b>É professor ou professora?</b><span>Crie a sua conta e monte o Sotaque das suas aulas: as atividades, os flashcards e as provas já estão prontos.</span><button class="btn primary" style="align-self:flex-start" data-act="signup">Criar minha conta</button></div>` : `<div class="demo"><b>Contas de teste</b><span>A senha de todas é <b>${PASS}</b>.</span>
         ${demo.map(([e,t,d])=>`<div class="demo-row"><div><b>${t}</b><small>${e} · ${d}</small></div><button class="btn small" data-act="fill" data-v="${e}">Usar</button></div>`).join('')}
@@ -300,7 +303,7 @@ function viewToday(){
   const pk=students().map(s=>({s,i:pkgInfo(s.id)})).filter(x=>x.i.remaining<=1||x.i.unpaid.length);
   const corr=DB.tasks.filter(t=>mine(t)&&t.status==='entregue');
   const att=reqs.length+rec.length+pk.length+(corr.length?1:0);
-  const cloud= REAL&&!settingsOf(S.me).cloudSeen? `<div class="notice" style="margin-bottom:18px"><div><b>Seu Sotaque está pronto.</b> Por enquanto ele guarda tudo neste navegador: use sempre o mesmo computador. Os alunos vão entrar pelo celular deles assim que a nuvem for ligada.</div><button class="btn small" data-act="cloud-ok">Entendi</button></div>` : '';
+  const cloud= false? `<div class="notice" style="margin-bottom:18px"><div><b>Seu Sotaque está pronto.</b> Por enquanto ele guarda tudo neste navegador: use sempre o mesmo computador. Os alunos vão entrar pelo celular deles assim que a nuvem for ligada.</div><button class="btn small" data-act="cloud-ok">Entendi</button></div>` : '';
   const empty= REAL&&!students().length? `<section class="panel" style="margin-bottom:18px"><h2>Primeiro passo: cadastre um aluno</h2><p class="meta">Com o aluno cadastrado, as aulas fixas entram na agenda e você já pode mandar homework, flashcards e o teste de nivelamento.</p><button class="btn primary" style="align-self:flex-start" data-act="new-student">+ Novo aluno</button></section>` : '';
   return `${cloud}${empty}<div class="hello"><p class="eyebrow">${fLongI.format(now())}</p><h1>${greet}, ${esc(me.name.split(' ')[0])}.</h1>
       <p class="meta">${today.length? `Hoje você tem ${today.length} ${today.length===1?'aula':'aulas'}.` : 'Nenhuma aula hoje.'}${att? ` E ${att} ${att===1?'coisa precisa':'coisas precisam'} da sua atenção.` : ''}</p></div>
@@ -410,7 +413,7 @@ function viewNotebook(s){
       <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${timeline(s)}</div>
       <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
-          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd><dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
+          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(s.room)}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
       </aside></div></div>`;
 }
@@ -1949,12 +1952,22 @@ const ACT={
     <div class="two"><label class="field" for="su-name">Seu nome<input type="text" id="su-name" name="name" required autocomplete="name"></label><label class="field" for="su-email">E-mail<input type="email" id="su-email" name="email" required autocomplete="username"></label></div>
     <div class="two"><label class="field" for="su-pass">Senha <small>(pelo menos 6 caracteres)</small><input type="password" id="su-pass" name="pass" required minlength="6" autocomplete="new-password"></label><label class="field" for="su-pass2">Repita a senha<input type="password" id="su-pass2" name="pass2" required autocomplete="new-password"></label></div>
     <div class="two"><label class="field" for="su-lang">Você ensina<select id="su-lang" name="lang"><option value="EN">Inglês</option><option value="FR">Francês</option></select></label><label class="field" for="su-fem">Os alunos te chamam de<select id="su-fem" name="fem"><option value="1">professora</option><option value="0">professor</option></select></label></div>
-    <p class="meta muted">Por enquanto, o Sotaque guarda tudo neste navegador. Quando a nuvem estiver ligada, seus alunos entram pelo celular deles.</p>
+    <p class="meta muted">Depois de criar, confirme o seu e-mail pelo link que o Sotaque vai mandar. Aí é só entrar, de qualquer aparelho.</p>
     <p class="err" id="su-err"></p><div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Criar conta</button></div></form>`,{wide:true}); },
+  'first-access'(){ openModal(`<form data-form="firstaccess"><h2>Primeiro acesso de aluno</h2><p class="meta">Use o e-mail que o seu professor ou professora cadastrou no Sotaque e crie a sua senha.</p>
+    <label class="field" for="fa-email">E-mail<input type="email" id="fa-email" name="email" required autocomplete="username"></label>
+    <div class="two"><label class="field" for="fa-pass">Crie uma senha <small>(pelo menos 6 caracteres)</small><input type="password" id="fa-pass" name="pass" required minlength="6" autocomplete="new-password"></label><label class="field" for="fa-pass2">Repita a senha<input type="password" id="fa-pass2" name="pass2" required autocomplete="new-password"></label></div>
+    <p class="err" id="fa-err"></p><div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Criar minha senha</button></div></form>`); },
+  forgot(){ openModal(`<form data-form="forgot"><h2>Esqueci minha senha</h2><p class="meta">Digite o seu e-mail. Mandamos um link para você criar uma senha nova.</p>
+    <label class="field" for="fg-email">E-mail<input type="email" id="fg-email" name="email" required autocomplete="username" value="${esc($('#l-email')?.value||'')}"></label>
+    <p class="err" id="fg-err"></p><div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Mandar o link</button></div></form>`); },
+  'new-pass'(){ openModal(`<form data-form="newpass"><h2>Crie a sua senha nova</h2>
+    <div class="two"><label class="field" for="np-pass">Senha nova<input type="password" id="np-pass" name="pass" required minlength="6" autocomplete="new-password"></label><label class="field" for="np-pass2">Repita<input type="password" id="np-pass2" name="pass2" required autocomplete="new-password"></label></div>
+    <p class="err" id="np-err"></p><div class="actions"><button class="btn primary">Salvar senha</button></div></form>`); },
   'cloud-ok'(){ settingsOf(S.me).cloudSeen=true; save(); render(); },
   'reset-demo'(){ confirmBox('Restaurar os dados de exemplo?','Restaurar',()=>{ DB=seedData(); ensureLessons(); seedRequest(); save(); render(); toast('Exemplos restaurados'); },'Tudo o que você mudou neste navegador volta ao exemplo inicial.'); },
   menu(){ S.menu=!S.menu; render(); },
-  logout(){ S.me=null; S.menu=false; lsDel(ME_KEY); render(); window.scrollTo(0,0); },
+  logout(){ S.me=null; S.menu=false; lsDel(ME_KEY); if (REAL) cloudLogout().then(()=>render()); render(); window.scrollTo(0,0); },
   profile(){ S.menu=false; render(); const me=ME();
     openModal(`<form data-form="profile"><h2>Meu nome</h2><label class="field" for="p-name">Nome<input type="text" id="p-name" name="name" required value="${esc(me.name)}"></label><div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Salvar</button></div></form>`); },
   settings(){ S.menu=false; render(); settingsModal(); },
@@ -1971,7 +1984,7 @@ const ACT={
   'edit-student'(el){ studentForm(user(el.dataset.id)); },
   reroll(){ const s=$('form[data-form=student] [name=seed]'); s.value=Math.floor(Math.random()*9999); refreshScenes(); },
   'delete-student'(el){ const s=user(el.dataset.id); confirmBox(`Remover ${s.name}?`,'Remover aluno',()=>{
-    DB.users=DB.users.filter(u=>u.id!==s.id); DB.lessons=DB.lessons.filter(l=>l.studentId!==s.id); DB.packages=DB.packages.filter(p=>p.studentId!==s.id); DB.requests=DB.requests.filter(r=>r.studentId!==s.id); DB.tasks=DB.tasks.filter(t=>t.studentId!==s.id); DB.conq=DB.conq.filter(c=>c.studentId!==s.id); DB.certs=DB.certs.filter(c=>c.studentId!==s.id);
+    if (REAL) cloudUninvite(s.id); DB.users=DB.users.filter(u=>u.id!==s.id); DB.lessons=DB.lessons.filter(l=>l.studentId!==s.id); DB.packages=DB.packages.filter(p=>p.studentId!==s.id); DB.requests=DB.requests.filter(r=>r.studentId!==s.id); DB.tasks=DB.tasks.filter(t=>t.studentId!==s.id); DB.conq=DB.conq.filter(c=>c.studentId!==s.id); DB.certs=DB.certs.filter(c=>c.studentId!==s.id);
     save(); location.hash='alunos'; render(); toast(s.name+' foi removido'); },'O aluno perde o acesso, e o histórico de aulas e pacotes dele é apagado.'); },
   'new-package'(el){ const s=user(el.dataset.id), last=pkgInfo(s.id).rows.slice(-1)[0];
     openModal(`<form data-form="package" data-id="${s.id}"><h2>Novo pacote para ${esc(s.name.split(' ')[0])}</h2>
@@ -1998,6 +2011,9 @@ const ACT={
 function refreshScenes(){ const f=$('form[data-form=student]'); if (!f) return; const fd=new FormData(f); $('#scenes').innerHTML=sceneChoices(fd.get('palette'),fd.get('scene'),+fd.get('seed')); }
 const FORMS={
   login(form,fd){
+    if (REAL){ const email=fd.get('email').trim().toLowerCase(), btn=form.querySelector('button.primary'); btn.disabled=true; btn.textContent='Entrando…';
+      cloudLogin(email,fd.get('pass')).then(err=>{ if (err){ btn.disabled=false; btn.textContent='Entrar'; $('#l-err').textContent=err; return; }
+        S.route={name:'inicio'}; if (location.hash!=='#inicio') location.hash='inicio'; else render(); window.scrollTo(0,0); cloudActivated().then(a=>{ S.activated=a; }).catch(()=>{}); }); return; }
     const email=fd.get('email').trim().toLowerCase(), u=DB.users.find(x=>x.email.toLowerCase()===email);
     if (!u||u.pass!==fd.get('pass')){ $('#l-err').textContent='E-mail ou senha incorretos.'; return; }
     S.me=u.id; lsSet(ME_KEY,u.id); S.route={name:'inicio'}; if (location.hash&&location.hash!=='#inicio') location.hash='inicio'; else render(); window.scrollTo(0,0);
@@ -2014,8 +2030,25 @@ const FORMS={
   other(form,fd){ const r=DB.requests.find(x=>x.id===form.dataset.id), l=getLesson(r.lessonId), ts=fromInputs(fd.get('date'),fd.get('time')), c=conflict(ts,l.id);
     if (c){ $('#o-err').textContent=`Esse horário já tem aula com ${user(c.studentId).name.split(' ')[0]}.`; return; }
     if (!l.movedFrom) l.movedFrom=l.start; l.start=ts; r.status='aceito'; r.chosen=ts; r.answeredAt=now(); save(); closeModal(); render(); toast(`Aula remarcada para ${fDay.format(ts)} · ${fTime.format(ts)}`); },
+  firstaccess(form,fd){ const email=fd.get('email').trim().toLowerCase(), pass=fd.get('pass'), err=$('#fa-err');
+    if (pass.length<6){ err.textContent='A senha precisa ter pelo menos 6 caracteres.'; return; } if (pass!==fd.get('pass2')){ err.textContent='As senhas não são iguais.'; return; }
+    const btn=form.querySelector('button.primary'); btn.disabled=true; btn.textContent='Criando…';
+    cloudSignup(email,pass,{role:'student'}).then(r=>{ if (r.err){ btn.disabled=false; btn.textContent='Criar minha senha'; err.textContent=r.err; return; }
+      if (r.logged){ closeModal(); location.hash='inicio'; render(); return; }
+      openModal(`<h2>Quase lá!</h2><p class="meta">Mandamos um link para <b>${esc(email)}</b>. Abra a mensagem e clique em confirmar: você entra direto no seu caderno.</p><p class="meta muted">Não chegou? Olhe a caixa de spam ou promoções.</p><div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`); }); },
+  forgot(form,fd){ const btn=form.querySelector('button.primary'); btn.disabled=true;
+    cloudForgot(fd.get('email').trim().toLowerCase()).then(e=>{ if (e){ btn.disabled=false; $('#fg-err').textContent=e; return; }
+      openModal(`<h2>Link enviado</h2><p class="meta">Se este e-mail tiver conta no Sotaque, chega uma mensagem com o link para criar a senha nova. Olhe também o spam.</p><div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`); }); },
+  newpass(form,fd){ const p=fd.get('pass'); if (p.length<6){ $('#np-err').textContent='A senha precisa ter pelo menos 6 caracteres.'; return; } if (p!==fd.get('pass2')){ $('#np-err').textContent='As senhas não são iguais.'; return; }
+    cloudNewPass(p).then(e=>{ if (e){ $('#np-err').textContent=e; return; } closeModal(); toast('Senha nova salva.'); }); },
   signup(form,fd){
     const email=fd.get('email').trim().toLowerCase(), err=$('#su-err'), pass=fd.get('pass');
+    if (REAL){ if (pass.length<6){ err.textContent='A senha precisa ter pelo menos 6 caracteres.'; return; } if (pass!==fd.get('pass2')){ err.textContent='As senhas não são iguais.'; return; }
+      const btn=form.querySelector('button.primary'); btn.disabled=true; btn.textContent='Criando…';
+      cloudSignup(email,pass,{role:'teacher',name:fd.get('name').trim(),lang:fd.get('lang'),fem:fd.get('fem')==='1'}).then(r=>{
+        if (r.err){ btn.disabled=false; btn.textContent='Criar conta'; err.textContent=r.err; return; }
+        if (r.logged){ closeModal(); location.hash='inicio'; render(); return; }
+        openModal(`<h2>Confirme o seu e-mail</h2><p class="meta">Mandamos um link para <b>${esc(email)}</b>. Abra a mensagem e clique em confirmar: você volta para o Sotaque já dentro da sua conta.</p><p class="meta muted">Não chegou? Olhe a caixa de spam ou promoções. O remetente é o Supabase, o serviço que guarda os dados do Sotaque.</p><div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`); }); return; }
     if (DB.users.some(u=>u.email.toLowerCase()===email)){ err.textContent='Já existe uma conta com este e-mail.'; return; }
     if (pass.length<6){ err.textContent='A senha precisa ter pelo menos 6 caracteres.'; return; }
     if (pass!==fd.get('pass2')){ err.textContent='As senhas não são iguais.'; return; }
@@ -2028,11 +2061,16 @@ const FORMS={
     const [h,m]=fd.get('time').split(':').map(Number);
     let room=fd.get('room').trim(); if (room&&!/^https?:\/\//i.test(room)) room='https://'+room;
     const vals={name:fd.get('name').trim(),email,lang:myLang(),level:fd.get('level').trim(),slot:{wd:+fd.get('wd'),h,m},room:room||'https://meet.google.com/',palette:fd.get('palette'),scene:fd.get('scene'),seed:+fd.get('seed')};
-    if (id){ const s=user(id), slotChanged=JSON.stringify(s.slot)!==JSON.stringify(vals.slot); Object.assign(s,vals); if (slotChanged) regenFuture(s); save(); closeModal(); render(); toast(slotChanged? 'Aluno atualizado. As próximas aulas mudaram de horário.' : 'Aluno atualizado'); return; }
-    const pw= REAL? genPass() : PASS;
+    if (id){ const s=user(id), slotChanged=JSON.stringify(s.slot)!==JSON.stringify(vals.slot); if (REAL&&s.email!==vals.email) cloudInvite(vals.email,s.id); Object.assign(s,vals); if (slotChanged) regenFuture(s); save(); closeModal(); render(); toast(slotChanged? 'Aluno atualizado. As próximas aulas mudaram de horário.' : 'Aluno atualizado'); return; }
+    const pw= REAL? '' : PASS;
     const s={id:'u'+uid(),role:'student',pass:pw,teacherId:S.me,since:dayStart(now()),...vals};
     DB.users.push(s); DB.packages.push({id:uid(),studentId:s.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null});
     ensureLessons(); save(); location.hash='aluno-'+s.id; render();
+    if (REAL){ cloudInvite(s.email,s.id); const link=siteUrl(), first=s.name.split(' ')[0], msg=`Oi, ${first}! Seu acesso ao Sotaque, onde ficam as nossas aulas, homeworks e flashcards: ${link} · Toque em “Primeiro acesso de aluno”, use este e-mail (${s.email}) e crie a sua senha.`;
+      openModal(`<h2>Caderno de ${esc(first)} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Agora mande o acesso:</p>
+        <div class="cred"><span>Link: <b>${esc(link)}</b></span><span>E-mail: <b>${esc(s.email)}</b></span></div>
+        <p class="meta muted">${esc(first)} toca em <b>Primeiro acesso de aluno</b>, usa este e-mail e cria a própria senha. Só e-mails que você cadastrou conseguem criar conta.</p>
+        <div class="actions"><button class="btn" data-act="copy-cred" data-v="${esc(msg)}">Copiar mensagem para o aluno</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(msg)}">Mandar pelo WhatsApp</a><button class="btn primary" data-act="close">Pronto</button></div>`); return; }
     openModal(`<h2>Caderno de ${esc(s.name.split(' ')[0])} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Envie o acesso para o aluno:</p>
       <div class="cred"><span>E-mail: <b>${esc(s.email)}</b></span><span>Senha provisória: <b>${pw}</b></span></div>${REAL? '<p class="notice"><span>Por enquanto, o aluno só consegue entrar neste mesmo navegador. Quando a nuvem estiver ligada, ele entra pelo celular dele com este e-mail e esta senha.</span></p>' : ''}<p class="meta muted">Na versão online, o aluno recebe um convite por e-mail e escolhe a própria senha.</p>
       <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${pw}">Copiar acesso</button><button class="btn primary" data-act="close">Pronto</button></div>`);
@@ -2062,8 +2100,8 @@ window.addEventListener('hashchange',go);
 /* ---------- início ---------- */
 { const th=lsGet(THEME_KEY); if (th) document.documentElement.dataset.theme=th; }
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
-try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; }
-if (REAL&&(!DB||!DB.users||!DB.settings)){ DB=seedReal(); ensureFlash(); save(); }
+if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
+if (REAL){ baseDB(); S.cloudLoading=true; }
 else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
 else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==10){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=10; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
@@ -2073,8 +2111,9 @@ else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if
   ensureFlash(); if (DB.contV!==1){ seedContAulas(); DB.contV=1; }
   if (!DB.pdfs) DB.pdfs=[];
   ensureLessons(); save(); }
-S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null;
+if (!REAL){ S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null; }
 go();
+if (REAL) cloudStart();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
 setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
