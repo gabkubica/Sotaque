@@ -97,6 +97,14 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   e 9 baralhos ilustrados novos (236 cartões com imagem, antes eram 35).
 - Pacotes de estudo: dá para ver as atividades de cada pacote antes de mandar (com a data em que cada uma libera,
   "Ver" como o aluno vê, tirar e mudar a ordem).
+- Slides de aula (`slides.js`, Biblioteca · Slides): capa, vocabulário com imagens e áudio, frases, diálogo, tirinha,
+  pergunta, conversa, imagem e texto, com notas só para a professora; 6 aulas prontas (`slides-aulas.js`), editor
+  com prévia e tela cheia (setas do teclado). Aula ao vivo: a professora liga e o aluno acompanha no aparelho dele
+  (os slides mudam junto, o áudio toca lá e as respostas das perguntas chegam para a professora). Na nuvem usa o
+  Realtime do Supabase (broadcast, sem tabela nova); no demo, entre abas do mesmo navegador.
+- Tirinhas (`tirinhas.js`): 6 personagens desenhados no estilo dos quadros, com expressões e balões
+  (`Nome (feliz): fala`, `---` separa os quadrinhos, `[cena]` dá o fundo). Tipo de questão "Complete a tirinha" e
+  2 atividades prontas (inglês e francês).
 - Atualizações: `python3 scripts/versao.py` marca os arquivos com a versão antes de publicar, e o `sw.js` busca sempre
   a versão nova quando há internet.
 - Navegação da professora: Hoje · Alunos · Aula · Homework · Biblioteca (Agenda e "Meu estudo" no menu do perfil).

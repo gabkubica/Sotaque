@@ -208,6 +208,10 @@ function parseHash(){
   if ((m=h.match(/^aula-ed-([a-z0-9]+)$/))) return {name:'aulaEd',id:m[1]};
   if ((m=h.match(/^aula-([a-z0-9]+)$/))) return {name:'aulaPlay',id:m[1]};
   if (h==='pdfs') return {name:'pdfs'};
+  if (h==='slides') return {name:'slides'};
+  if (h==='ao-vivo') return {name:'aoVivo'};
+  if ((m=h.match(/^slides-ed-([a-z0-9]+)$/))) return {name:'slidesEd',id:m[1]};
+  if ((m=h.match(/^slides-([a-z0-9]+)$/))) return {name:'slidesPlay',id:m[1]};
   if ((m=h.match(/^pdf-([a-z0-9]+)$/))) return {name:'pdf',id:m[1]};
   if ((m=h.match(/^flash-ed-([a-z0-9]+)$/))) return {name:'flashEd',id:m[1]};
   if ((m=h.match(/^flash-([a-z0-9]+)$/))) return {name:'flashPlay',id:m[1]};
@@ -267,7 +271,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay'];
+  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','slides','slidesEd','slidesPlay'], AULA=['aula','aulaEd','aulaPlay'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -708,7 +712,7 @@ function cleanQuestions(list){
     if (q.type==='gap') return {...base,answers:q.answers.slice()};
     if (q.type==='match') return {...base,pairs:q.pairs.filter(p=>p[0].trim()&&p[1].trim()).map(p=>[p[0].trim(),p[1].trim()])};
     if (q.type==='order') return {...base,sentence:q.sentence.trim().replace(/\s+/g,' ')};
-    if (q.type==='odd'){ const keep=q.options.map((o,k)=>({o:String(o).trim(),k,im:q.imgs?.[k]||''})).filter(x=>x.o); return {...base,options:keep.map(x=>x.o),correct:keep.findIndex(x=>x.k===q.correct),imgs:keep.some(x=>x.im)? keep.map(x=>x.im) : [],why:String(q.why||'').trim()}; }
+    if (q.type==='odd'||q.type==='comic'){ const keep=q.options.map((o,k)=>({o:String(o).trim(),k,im:q.imgs?.[k]||''})).filter(x=>x.o); return {...base,options:keep.map(x=>x.o),correct:keep.findIndex(x=>x.k===q.correct),...(q.type==='comic'? {strip:String(q.strip||'').trim()} : {imgs:keep.some(x=>x.im)? keep.map(x=>x.im) : [],why:String(q.why||'').trim()})}; }
     if (TIPO_KEEP[q.type]){ const o={...base}; for (const k of TIPO_KEEP[q.type]) o[k]= typeof q[k]==='string'? q[k].trim() : JSON.parse(JSON.stringify(q[k]??'')); return o; }
     return base;
   });
@@ -811,9 +815,9 @@ function tasksHeader(active){
 }
 /* Biblioteca: tudo o que a professora tem para usar, separado por tipo */
 function libHeader(active){
-  const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length]];
-  const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Todas servem como homework: mande uma, ou toque no + de várias para juntar numa homework só.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
-  const btn={banco:'<a class="btn primary big" href="#banco-nova">+ Criar atividade</a>',flash:'<button class="btn primary big" data-act="flash-new">+ Novo baralho</button>',pdf:'<label class="btn primary big" for="pdf-in">+ Importar PDF</label><input type="file" id="pdf-in" accept="application/pdf" multiple hidden>',nivel:''}[active];
+  const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length],['slides','#slides','Slides',slDecks().length]];
+  const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Todas servem como homework: mande uma, ou toque no + de várias para juntar numa homework só.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',slides:'Slides para a aula, com imagens, áudio e tirinhas.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
+  const btn={banco:'<a class="btn primary big" href="#banco-nova">+ Criar atividade</a>',flash:'<button class="btn primary big" data-act="flash-new">+ Novo baralho</button>',pdf:'<label class="btn primary big" for="pdf-in">+ Importar PDF</label><input type="file" id="pdf-in" accept="application/pdf" multiple hidden>',slides:'<button class="btn primary big" data-act="sl-new">+ Nova aula</button>',nivel:''}[active];
   return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Biblioteca</h1><p class="meta">${sub}</p></div>${btn}</div>
     <nav class="segl" aria-label="Seção">${tabs.map(([k,h,l,n])=>`<a href="${h}" class="${active===k?'on':''}">${l}${n!=null? ` <span class="n">${n}</span>` : ''}</a>`).join('')}</nav></div>`;
 }
@@ -1879,7 +1883,7 @@ function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
+  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -1893,6 +1897,10 @@ function render(){
   else if (r.name==='aulaEd') main=viewAulaEd(r.id);
   else if (r.name==='aulaPlay') main=viewAulaPlay(r.id);
   else if (r.name==='pdfs') main=viewPdfs();
+  else if (r.name==='slides') main=viewSlidesLib();
+  else if (r.name==='slidesEd') main=viewSlidesEd(r.id);
+  else if (r.name==='slidesPlay') main=viewSlidesPlay(r.id);
+  else if (r.name==='aoVivo') main=viewLive();
   else if (r.name==='pdf') main=viewPdf(r.id);
   else if (r.name==='flashEd') main=viewFlashEd(r.id);
   else if (r.name==='flashPlay') main=viewFlashPlay(r.id);
@@ -2147,7 +2155,7 @@ ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
 ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT,SLIDE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2157,7 +2165,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('submit',e=>{ const f=e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); FORMS[f.dataset.form]?.(f,new FormData(f)); });
 document.addEventListener('change',e=>{ if (e.target.closest('form[data-form=student]')&&e.target.name==='palette') refreshScenes(); onTaskInput(e); onBankInput(e); onTypeInput(e); onTrailInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onTipoInput(e); onExtraInput(e); });
-document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onExtraInput(e); onTipoInput(e); } });
+document.addEventListener('input',e=>{ if (e.target.type!=='radio'&&e.target.type!=='checkbox'&&e.target.tagName!=='SELECT'){ onTaskInput(e); onBankInput(e); onTypeInput(e); onDevInput(e); onFlashInput(e); onAulaInput(e); onExtraInput(e); onTipoInput(e); onSlideInput(e); } });
 document.addEventListener('keydown',e=>{ if (e.key==='Escape'){ if (S.modal) closeModal(); else if (S.menu){ S.menu=false; render(); } } });
 window.addEventListener('hashchange',go);
 
@@ -2180,4 +2188,4 @@ go();
 if (REAL) cloudStart();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);

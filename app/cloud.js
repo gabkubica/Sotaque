@@ -38,6 +38,7 @@ function recsFromDB(){
   (DB.aulas||[]).forEach(a=>add('aula',a.id,null,a));
   (DB.pdfs||[]).forEach(p=>add('pdf',p.id,null,p));
   (DB.bank||[]).filter(b=>b.mine).forEach(b=>add('bank',b.id,null,b));
+  (DB.slides||[]).forEach(d=>add('slides',d.id,null,d));
   return out;
 }
 function dbFromRecords(rows){
@@ -59,6 +60,7 @@ function dbFromRecords(rows){
       case 'aula': D.aulas.push(d); break;
       case 'pdf': D.pdfs.push(d); break;
       case 'bank': D.bank.push(d); break;
+      case 'slides': (D.slides ||= []).push(d); break;
     }
   }
   return D;
