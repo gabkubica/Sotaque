@@ -677,7 +677,7 @@ function revAuto(b){
     const S=[...new Set(revSentences(parts.slice(1).join(' ')))]; if (S.length<4) return null;
     const n=Math.min(5,S.length), pick=Array.from({length:n},(_,k)=>S[Math.round(k*(S.length-1)/(n-1))]);
     return SEQ(pick.join('\n'),FR? 'Remettez les phrases dans l’ordre du texte.' : 'Put the sentences in the order they appear in the text.'); }
-  if ((b.topic==='Escuta'||b.topic==='Completa')&&b.audio){ const L=b.audio.split('\n').map(x=>x.trim()).filter(Boolean);
+  if ((b.topic==='Escuta'||/^(Homework|Devoirs) ·/.test(b.title))&&b.audio){ const L=b.audio.split('\n').map(x=>x.trim()).filter(Boolean);
     const dl=L.filter(x=>/^[AB]:/.test(x));
     if (dl.length>=4){ for (let i=0;i+4<=dl.length;i++){ const w=dl.slice(i,i+Math.min(5,dl.length-i)); if (new Set(w).size===w.length&&w.every(x=>x.length<=150)) return SEQ(w.join('\n'),FR? 'Réécoutez et remettez le dialogue dans l’ordre.' : 'Listen again and put the dialogue in order.'); } }
     const S=revSentences(L.map(x=>x.replace(/^[AB]:\s*/,'')).join(' ')).filter(x=>{ const n=x.split(' ').length; return n>=6&&n<=14; }); if (!S.length) return null;

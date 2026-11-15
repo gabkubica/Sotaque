@@ -273,7 +273,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','slides','slidesEd','slidesPlay','slidesPdf'], AULA=['aula','aulaEd','aulaPlay'];
+  const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -543,7 +543,7 @@ function qResult(t,q,i,mode){
       if (mode==='teacher') body+=`<div class="marks"><span class="meta">Marque:</span>${[[1,'Certa','m1'],[.5,'Meio certa','m5'],[0,'Errada','m0']].map(([v,l,c])=>`<button class="${c} ${m===v?'on':''}" data-act="mark" data-id="${t.id}" data-q="${q.id}" data-v="${v}">${l}</button>`).join('')}</div>`; }
   }
   if (TIPOS[q.type]) body= mode==='hidden'? `<p class="gapline"><mark class="fill chosen">${TIPOS[q.type].said(q,a)}</mark></p>` : TIPOS[q.type].result(t,q,a,g,mode);
-  const aud= q.audio? (mode==='hidden'? '' : `<p class="meta muted">Áudio: “${esc(q.audio)}”</p>`) : '';
+  const aud= q.audio? (mode==='hidden'? '' : `${audioBox(q.audio,taskLang(t),{mini:true})}<p class="meta muted" style="margin:0">Áudio: “${esc(q.audio)}”</p>`) : '';
   const fb= mode==='teacher'&&DB.tasks.includes(t)? qfbTeacher(t,q) : mode==='student'? qfbStudent(t,q) : '';
   return `<div class="qcard"><div class="qhead"><span class="qnum">${i+1}</span><b class="grow">${q.listen? 'Ouça e responda. ' : ''}${esc(qPrompt(q))}</b>${tag}</div>${qImg(q,true)}${aud}${body}${fb}</div>`;
 }
@@ -796,8 +796,8 @@ function seedTasks(){
 
 /* ---------- banco de tarefas (inglês) ---------- */
 const LEVELS=['A1','A2','B1','B2','C1'];
-const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Au Pair','Completa','Provas'];
-const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Completa','Provas'];
+const TOPICS=['Gramática','Vocabulário','Phrasal verbs','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Au Pair','Provas'];
+const TOPICS_FR=['Gramática','Conjugação','Vocabulário','Leitura','Escuta','Escrita','Expressões','Pronúncia','Cultura','Trabalho','Kids','Provas'];
 const topicsFor=L=>L==='FR'? TOPICS_FR : TOPICS;
 const langBank=()=>DB.bank.filter(b=>b.lang===myLang());
 const LV_PAL={A1:'menta',A2:'petroleo',B1:'tomate',B2:'ceu',C1:'ameixa'};
@@ -817,7 +817,7 @@ function tasksHeader(active){
 }
 /* Biblioteca: tudo o que a professora tem para usar, separado por tipo */
 function libHeader(active){
-  const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length],['slides','#slides','Slides',slDecks().length]];
+  const tabs=[['banco','#banco','Atividades',langBank().length],['flash','#flash','Flashcards',decksFor().length],['nivel','#nivelamento','Provas e nivelamento'],['pdf','#pdfs','PDFs',pdfsMine().length]];
   const sub={banco:`Atividades prontas de ${langName(myLang()).toLowerCase()}. Todas servem como homework: mande uma, ou toque no + de várias para juntar numa homework só.`,flash:'Baralhos de palavras e frases, com áudio. O aluno estuda em casa e o que ele erra volta mais vezes.',slides:'Slides para a aula, com imagens, áudio e tirinhas.',nivel:'Teste de nivelamento do A1 ao C1, com áudio, para quem chega sem você saber o nível.',pdf:'Seus PDFs, para mostrar na aula com a tela compartilhada e riscar por cima. Ficam guardados neste aparelho.'}[active];
   const btn={banco:'<a class="btn primary big" href="#banco-nova">+ Criar atividade</a>',flash:'<button class="btn primary big" data-act="flash-new">+ Novo baralho</button>',pdf:'<label class="btn primary big" for="pdf-in">+ Importar PDF</label><input type="file" id="pdf-in" accept="application/pdf" multiple hidden>',slides:'<button class="btn primary big" data-act="sl-new">+ Nova aula</button>',nivel:''}[active];
   return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Biblioteca</h1><p class="meta">${sub}</p></div>${btn}</div>
@@ -1895,7 +1895,7 @@ function render(){
   else if (r.name==='nova'){ if (!S.draft) S.draft=newDraft(r.id); main=viewEditor(); }
   else if (r.name==='banco') main=viewBank();
   else if (r.name==='flash') main=viewFlashLib();
-  else if (r.name==='aula') main=viewAulas();
+  else if (r.name==='aula') main=viewSlidesLib();
   else if (r.name==='aulaEd') main=viewAulaEd(r.id);
   else if (r.name==='aulaPlay') main=viewAulaPlay(r.id);
   else if (r.name==='pdfs') main=viewPdfs();

@@ -13,7 +13,7 @@
    Linhas que começam com "nota:" aparecem só para a professora.
    Aula ao vivo: a professora apresenta e o aluno acompanha no aparelho dele (o áudio toca lá, sem compartilhar a tela).
    ========================================================= */
-const SL_TYPES={explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
+const SL_TYPES={aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
 function slidesParse(src){
   const out=[]; let cur=null;
   for (const raw of String(src||'').split('\n')){ const l=raw.replace(/\s+$/,''), m=l.match(/^#\s*([a-zç]+)\s*:?\s*(.*)$/i);
@@ -47,6 +47,23 @@ function slideHtml(s,o={}){
     b=`${T}<table class="sl-tab"><thead><tr>${(rows[0]||[]).map(c=>`<th>${md(c)}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${md(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>${extra.map(x=>`<p class="sl-small">${md(x)}</p>`).join('')}`; }
   if (s.t==='dica') b=`${T}<div class="sl-dica">${s.body.map(x=>{ const m=x.match(/^(x|ok)\s*:\s*(.*)$/i); return m? `<p class="${m[1].toLowerCase()==='x'?'no':'ok'}"><span>${m[1].toLowerCase()==='x'?'✗':'✓'}</span>${md(m[2])}</p>` : `<p class="txt">${md(x)}</p>`; }).join('')}</div>`;
   if (s.t==='resumo') b=`${T}<ul class="sl-res">${s.body.map(x=>`<li>${md(x.replace(/^- /,''))}</li>`).join('')}</ul>`;
+  const yt=q=>`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+  const exLines=list=>list.map(x=>x.startsWith('>')? `<p class="sl-eg">${slSay(x.slice(1).replace(/\*\*/g,'').trim(),L)}<span>${md(x.slice(1).trim())}</span></p>` : `<p>${md(x)}</p>`).join('');
+  if (s.t==='aquecimento') b=`<p class="sl-eye">Warm-up</p>${T}<div class="sl-warm">${s.body.map(x=>{ const m=x.match(/^(musica|música|filme|jogo|pergunta|video|vídeo)\s*:\s*(.*)$/i); if (!m) return `<p class="sl-wtxt">${md(x)}</p>`;
+      const k=m[1].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''), [a1,a2]=m[2].split('|').map(z=>z.trim()), ic={musica:'♪',filme:'🎬',video:'▶',jogo:'★',pergunta:'?'}[k], lb={musica:'Música',filme:'Cena de filme',video:'Vídeo',jogo:'Jogo',pergunta:'Pergunta'}[k];
+      return `<div class="sl-wc ${k}"><span class="sl-wi">${ic}</span><div><small>${lb}</small><b>${md(a1||'')}</b>${a2? `<p>${md(a2)}</p>` : ''}${(k==='musica'||k==='filme'||k==='video')&&!o.print? `<a class="sl-yt" href="${yt(a1.replace(/\*\*/g,'')+(k==='filme'? ' scene' : ''))}" target="_blank" rel="noopener">Procurar no YouTube ↗</a>` : ''}</div></div>`; }).join('')}</div>`;
+  if (s.t==='linha'){ let now=.75; const pts=[], rng=[], rest=[];
+    for (const x of s.body){ let m; if ((m=x.match(/^agora\s*:\s*([\d.]+)/i))) now=+m[1]; else if ((m=x.match(/^ponto\s*:\s*([\d.]+)\s*\|\s*(.*)$/i))) pts.push([+m[1],m[2]]); else if ((m=x.match(/^faixa\s*:\s*([\d.]+)\s*-\s*([\d.]+)\s*\|\s*(.*)$/i))) rng.push([+m[1],+m[2],m[3]]); else rest.push(x); }
+    const X=v=>40+v*920;
+    b=`${T}<svg class="sl-tl" viewBox="0 0 1000 230" role="img" aria-label="Linha do tempo"><line x1="20" y1="150" x2="980" y2="150" stroke="#221c1e" stroke-width="4"/><path d="M980 150l-16 -9v18z" fill="#221c1e"/>
+      <text x="30" y="200" font-size="22" fill="#8a7e80" font-weight="700">${L==='FR'? 'passé' : 'past'}</text><text x="970" y="200" font-size="22" fill="#8a7e80" font-weight="700" text-anchor="end">${L==='FR'? 'futur' : 'future'}</text>
+      <line x1="${X(now)}" y1="40" x2="${X(now)}" y2="170" stroke="#7a1f35" stroke-width="3" stroke-dasharray="6 6"/><text x="${X(now)}" y="200" font-size="24" fill="#7a1f35" font-weight="800" text-anchor="middle">${L==='FR'? 'MAINTENANT' : 'NOW'}</text>
+      ${rng.map(([a,c,l],k)=>`<rect x="${X(a)}" y="${118-k*38}" width="${X(c)-X(a)}" height="22" rx="11" fill="#3f74b8" opacity=".85"/><text x="${(X(a)+X(c))/2}" y="${108-k*38}" font-size="22" text-anchor="middle" fill="#24497e" font-weight="700">${esc(l)}</text>`).join('')}
+      ${pts.map(([v,l],k)=>`<circle cx="${X(v)}" cy="150" r="13" fill="#e0563b" stroke="#fff" stroke-width="4"/><text x="${X(v)}" y="${k%2? 60 : 95}" font-size="22" text-anchor="middle" fill="#a8351f" font-weight="700">${esc(l)}</text><line x1="${X(v)}" y1="${k%2? 68 : 103}" x2="${X(v)}" y2="136" stroke="#e0563b" stroke-width="2"/>`).join('')}</svg>
+      <div class="sl-exp wide">${exLines(rest)}</div>`; }
+  if (s.t==='tarefas'){ const bs=s.body.map(x=>({x,b:DB.bank.find(z=>z.lang===L&&z.title===x)}));
+    b=`<p class="sl-eye">Homework</p>${T}<div class="sl-hw">${bs.map(({x,b:bk},k)=>`<div class="sl-hwc"><span class="sl-hwn">${k+1}</span><div><b>${esc(x)}</b><small>${bk? `${bk.level} · ${esc(bk.topic)} · ${bk.questions.length} questões` : 'atividade'}</small></div>${bk&&isT()&&!o.print&&!o.thumb? `<a class="btn small" href="#banco-${bk.id}" target="_blank" rel="noopener">Ver</a>` : ''}</div>`).join('')}</div>
+      ${isT()&&!o.print&&!o.thumb&&bs.some(z=>z.b)? `<button class="btn primary" data-act="sl-hw" data-ids="${bs.filter(z=>z.b).map(z=>z.b.id).join(',')}">Mandar como homework (pacote)</button>` : ''}`; }
   if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
     if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
     else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);
@@ -88,29 +105,31 @@ const slCover=d=>{ const c=slidesParse(d.src).find(s=>s.img)?.img; return c? slI
 function viewSlidesLib(){
   if (!isT()) return '<div class="panel"><p>Só para professores.</p></div>';
   const list=slDecks();
-  return `${libHeader('slides')}<p class="meta" style="margin:-6px 0 14px">Apresente na aula com a tela compartilhada, ou ligue a <b>aula ao vivo</b>: o aluno abre o Sotaque e os slides mudam junto no aparelho dele, com o áudio tocando lá.</p>
-    <div class="bgrid">${list.map(d=>{ const n=slidesParse(d.src).length; return `<article class="bcard"><a class="bcard-art" href="#slides-${d.id}">${slCover(d)}<span class="lvl">${d.level}</span></a>
+  const lv=S.slLv||'todos', shown=list.filter(d=>lv==='todos'||d.level===lv);
+  return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Aulas</h1><p class="meta">Apresentações completas para dar a aula: warm-up, explicação, exercícios, conversa e homework recomendada. Apresente com a tela compartilhada ou ligue a <b>aula ao vivo</b> (o aluno acompanha no aparelho dele).</p></div><button class="btn primary big" data-act="sl-new">+ Nova aula</button></div>
+    <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" data-act="sl-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div></div>
+    <div class="bgrid">${shown.map(d=>{ const n=slidesParse(d.src).length; return `<article class="bcard"><a class="bcard-art" href="#slides-${d.id}">${slCover(d)}<span class="lvl">${d.level}</span></a>
       <div class="bcard-b"><b>${esc(d.title)}</b><small>${n} slides${d.seed? '' : ' · criada por você'}</small><div class="row-btns" style="margin-top:6px"><a class="btn small primary" href="#slides-${d.id}">Apresentar</a><a class="btn small" href="#slides-ed-${d.id}">${d.seed? 'Copiar e editar' : 'Editar'}</a></div></div></article>`; }).join('')}</div>`;
 }
 function viewSlidesPlay(id){
-  const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#slides">Slides</a></div>';
+  const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#aula">Aulas</a></div>';
   const list=slidesParse(d.src); if (!S.sl||S.sl.id!==id) S.sl={id,i:0,rev:false,live:S.sl?.live&&S.sl.id===id};
   const P=S.sl; P.i=Math.max(0,Math.min(P.i,list.length-1)); const s=list[P.i]; if (!s) return '<div class="panel"><p>Esta aula ainda não tem slides.</p></div>';
   const counts=P.live&&s.t==='pergunta'? Object.values(LIVE.ans[P.i]||{}).reduce((a,x)=>{ a[x.v]=(a[x.v]||0)+1; return a; },{}) : null;
   const ansList=P.live? Object.values(LIVE.ans[P.i]||{}) : [];
   return `<div class="sl-wrap">
-    <div class="sl-top"><a class="link" href="#slides">← Slides</a><b class="grow">${esc(d.title)}</b>
+    <div class="sl-top"><a class="link" href="#aula">← Aulas</a><b class="grow">${esc(d.title)}</b>
       <button class="btn small ${P.live?'live-on':''}" data-act="sl-live">${P.live? '● Ao vivo: ligada' : 'Ligar aula ao vivo'}</button><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
     <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i})}
-      <div class="sl-nav"><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
+      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
     <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
 function viewSlidesEd(id){
   let d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p></div>';
   if (d.seed){ const c={id:'sl'+uid(),lang:d.lang,level:d.level,title:d.title+' (cópia)',src:d.src,teacherId:S.me,createdAt:now()}; (DB.slides ||= []).push(c); save(); S.keepModal=true; location.replace('#slides-ed-'+c.id); return ''; }
-  return `<a class="link" href="#slides" style="display:inline-block;margin-bottom:12px;text-decoration:none">← Slides</a>
+  return `<a class="link" href="#aula" style="display:inline-block;margin-bottom:12px;text-decoration:none">← Aulas</a>
     <div class="ed"><div class="stack" style="gap:12px"><h1>Editar aula</h1>
       <div class="two"><label class="field">Título<input type="text" data-sle="title" value="${esc(d.title)}"></label><label class="field">Nível<select data-sle="level">${LEVELS.map(l=>`<option ${d.level===l?'selected':''}>${l}</option>`).join('')}</select></label></div>
       <label class="field">Slides<textarea data-sle="src" class="sl-src" spellcheck="false">${esc(d.src)}</textarea></label>
@@ -163,7 +182,7 @@ function liveEnsure(){
   } catch {}
 }
 function liveSlide(){ const P=S.sl; if (!P?.live) return; const d=slById(P.id), list=slidesParse(d.src);
-  LIVE.send?.({k:'slide',title:d.title,lang:d.lang,level:d.level,i:P.i,n:list.length,slide:list[P.i],rev:P.rev,from:ME().name.split(' ')[0]}); }
+  LIVE.send?.({k:'slide',title:d.title,lang:d.lang,level:d.level,i:P.i,n:list.length,slide:list[P.i],rev:P.rev,ink:DB.ink?.[d.id+':'+P.i]||[],from:ME().name.split(' ')[0]}); }
 function liveOn(p){
   if (!p||!S.me) return;
   if (isT()){ if (p.k==='hello') liveSlide();
@@ -183,7 +202,7 @@ function viewLive(){
   if (!p) return `<div class="panel" style="max-width:640px"><h1>Aula ao vivo</h1><p class="meta">Esperando ${aProf()} começar. Deixe esta página aberta: os slides aparecem aqui sozinhos, e o áudio toca no seu aparelho.</p></div>`;
   const pick=LIVE.mine[p.title+'|'+p.i];
   return `<div class="sl-wrap"><div class="sl-top"><span class="live-dot"></span><b class="grow">${esc(p.title)}</b><span class="meta">${p.i+1} / ${p.n}</span></div>
-    <div class="sl-stage">${slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev,key:p.title+':'+p.i})}</div>
+    <div class="sl-stage">${slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev,key:p.title+':'+p.i})}${inkSvg('',p.ink,false)}</div>
     ${p.slide.t==='pergunta'&&!p.rev? `<p class="meta muted">${pick!=null? 'Resposta enviada. Dá para trocar até a professora mostrar a certa.' : 'Toque na sua resposta.'}</p>` : ''}</div>`;
 }
 const SLIDE_ACT={
@@ -192,12 +211,14 @@ const SLIDE_ACT={
   'sl-go'(el){ S.sl.i=+el.dataset.k; S.sl.rev=false; ttsStop(); render(); liveSlide(); },
   'sl-rev'(){ S.sl.rev=!S.sl.rev; render(); liveSlide(); },
   'sl-live'(){ S.sl.live=!S.sl.live; if (S.sl.live){ LIVE.ans={}; liveEnsure(); liveSlide(); toast('Aula ao vivo ligada'); } else LIVE.send?.({k:'end'}); render(); },
-  'sl-full'(){ const e=document.getElementById('sl-stage'); if (document.fullscreenElement) document.exitFullscreen(); else e?.requestFullscreen?.().catch(()=>{}); },
+  'sl-full'(){ if (document.fullscreenElement||document.body.classList.contains('sl-fs')){ document.exitFullscreen?.().catch(()=>{}); document.body.classList.remove('sl-fs'); } else { document.body.classList.add('sl-fs'); document.documentElement.requestFullscreen?.().catch(()=>{}); } },
   'sl-ans'(el){ const p=LIVE.last, me=ME(); if (!p) return; LIVE.mine[p.title+'|'+p.i]=+el.dataset.k; LIVE.send?.({k:'ans',sid:me.id,name:me.name.split(' ')[0],i:p.i,v:+el.dataset.k}); render(); },
   'slx-check'(){ if (S.slxT){ S.slxT.done=true; render(); } },
   'slx-reset'(){ if (S.slxT){ S.slxT.answers={}; S.slxT.done=false; render(); } },
+  'sl-hw'(el){ const d=slById(S.sl?.id); packModal(el.dataset.ids.split(','),(d? d.title+' · ' : '')+'homework'); },
+  'sl-lv'(el){ S.slLv=el.dataset.v; render(); },
   'sl-new'(){ const d={id:'sl'+uid(),lang:myLang(),level:'A2',title:'Nova aula',src:myLang()==='FR'? '# capa: Nouvelle leçon | img:conversa\nSous-titre\n# vocab: Mots\nun café | café | img:xicara' : '# capa: New lesson | img:conversa\nSubtitle\n# vocab: Words\na coffee | café | img:xicara',teacherId:S.me,createdAt:now()}; (DB.slides ||= []).push(d); save(); location.hash='slides-ed-'+d.id; },
-  'sl-del'(el){ if (!confirm('Excluir esta aula de slides?')) return; DB.slides=(DB.slides||[]).filter(d=>d.id!==el.dataset.id); save(); location.hash='slides'; },
+  'sl-del'(el){ if (!confirm('Excluir esta aula de slides?')) return; DB.slides=(DB.slides||[]).filter(d=>d.id!==el.dataset.id); save(); location.hash='aula'; },
 };
 function onSlideInput(e){ const el=e.target; if (!el.dataset.sle||S.route.name!=='slidesEd') return; const d=slById(S.route.id); if (!d||d.seed) return;
   d[el.dataset.sle]=el.value; clearTimeout(S.slT); S.slT=setTimeout(()=>{ save(); const pv=document.getElementById('sl-prev'); if (pv) pv.innerHTML=slPrev(d); },350); }
@@ -206,3 +227,27 @@ document.addEventListener('keydown',e=>{ if (S.route?.name!=='slidesPlay'||e.tar
   if (e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); SLIDE_ACT['sl-prev'](); } });
 window.addEventListener('hashchange',()=>setTimeout(liveBadge,0));
 setInterval(()=>{ liveEnsure(); liveBadge(); },2000);
+
+/* tela cheia: a página inteira fica em tela cheia (o slide pode trocar sem sair dela) */
+document.addEventListener('fullscreenchange',()=>{ if (!document.fullscreenElement) document.body.classList.remove('sl-fs'); });
+window.addEventListener('hashchange',()=>{ if (!/^#slides-[a-z0-9]+$/.test(location.hash)&&document.body.classList.contains('sl-fs')){ document.body.classList.remove('sl-fs'); document.exitFullscreen?.().catch(()=>{}); } });
+
+/* ---------- desenho por cima do slide (fica salvo à parte, não entra na apostila) ---------- */
+const INK_COLORS=['#c0392b','#2b6cb0','#1f6440','#e0a020','#221c1e'];
+const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
+const inkSvg=(key,list,edit)=>`<svg class="sl-ink ${edit&&S.draw?'on':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${(list||[]).map(inkPath).join('')}</svg>`;
+Object.assign(SLIDE_ACT,{
+  'sl-draw'(){ S.draw=!S.draw; render(); },
+  'sl-color'(el){ S.inkC=el.dataset.c; render(); },
+  'sl-undo'(){ const k=S.sl.id+':'+S.sl.i, L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
+  'sl-clear'(){ const k=S.sl.id+':'+S.sl.i; if (DB.ink?.[k]?.length&&confirm('Apagar os desenhos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
+});
+let SLINK=null;
+document.addEventListener('pointerdown',e=>{ const sv=e.target.closest?.('svg.sl-ink.on'); if (!sv) return; e.preventDefault(); sv.setPointerCapture?.(e.pointerId);
+  const r=sv.getBoundingClientRect(), pt=ev=>`${Math.round((ev.clientX-r.left)/r.width*1000)},${Math.round((ev.clientY-r.top)/r.height*1000)}`;
+  const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline'); const st={c:S.inkC||INK_COLORS[0],w:4,p:pt(e)};
+  pl.setAttribute('fill','none'); pl.setAttribute('stroke',st.c); pl.setAttribute('stroke-width',st.w); pl.setAttribute('stroke-linecap','round'); pl.setAttribute('stroke-linejoin','round'); pl.setAttribute('vector-effect','non-scaling-stroke'); pl.setAttribute('points',st.p); sv.appendChild(pl);
+  SLINK={sv,pl,st,pt,key:sv.dataset.ink}; });
+document.addEventListener('pointermove',e=>{ if (!SLINK) return; SLINK.st.p+=' '+SLINK.pt(e); SLINK.pl.setAttribute('points',SLINK.st.p); });
+const inkEnd=()=>{ if (!SLINK) return; const {st,key}=SLINK; SLINK=null; if (st.p.split(' ').length<2) st.p+=' '+st.p; ((DB.ink ||= {})[key] ||= []).push(st); save(); liveSlide(); };
+document.addEventListener('pointerup',inkEnd); document.addEventListener('pointercancel',inkEnd);

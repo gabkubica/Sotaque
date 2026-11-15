@@ -102,6 +102,13 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   `reescreva:`, `ditado:` e o formato de "Colar várias questões"), resumo e conversa. 4 aulas prontas: Present
   perfect (B1, 17 slides), Past simple (A2), Au Pair: the interview (B1) e Le passé composé (A2). "Apostila (PDF)"
   imprime um slide por página.
+- A aba Aula agora são as apresentações de slides (filtro por nível). Cada aula começa com um warm-up
+  (música, cena de filme com link de busca no YouTube, jogo e pergunta), tem linha do tempo para a gramática e
+  termina com atividades recomendadas do banco, que a professora manda como pacote. Desenho por cima do slide
+  (5 cores, desfazer, limpar), salvo à parte por aula e slide, fora da apostila; na aula ao vivo o aluno vê o desenho.
+  Tela cheia da página inteira (trocar de slide não sai mais dela).
+- O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
+  mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
 - Slides de aula (`slides.js`, Biblioteca · Slides): capa, vocabulário com imagens e áudio, frases, diálogo, tirinha,
   pergunta, conversa, imagem e texto, com notas só para a professora; 6 aulas prontas (`slides-aulas.js`), editor

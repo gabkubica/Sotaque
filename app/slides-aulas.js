@@ -5,6 +5,11 @@ const SLIDES_SEED=[
 ['EN','B1','Present perfect',`# capa: Present perfect | img:aviao
 Experiences, recent news and unfinished time
 nota: Aquecimento: “What’s the most interesting place you’ve visited?” Anote as respostas, vamos voltar a elas.
+# aquecimento: Have you ever…?
+musica: I Still Haven’t Found What I’m Looking For — U2 | Ouçam o começo. O título já tem o tempo da aula: que verbo vem depois de “haven’t”?
+filme: Up (2009) | Vejam a abertura: Carl e Ellie sonham com uma grande viagem. Depois pergunte: “Have you ever dreamed of a big trip?”
+jogo: Never have I ever | Cada um diz “I’ve never…”. Quem já fez aquilo levanta a mão e conta quando foi.
+pergunta: What’s the most amazing thing you’ve ever done?
 # tirinha: Have you ever…?
 [aviao]
 Mia: Have you ever been to London?
@@ -23,6 +28,14 @@ nota: Pergunte: quais frases falam de experiência e quais dizem QUANDO acontece
 > I’ve lost my keys! I can’t open the door.
 **3. Unfinished time** (from the past until now):
 > She has lived here since 2019.
+# linha: Past simple × present perfect
+ponto: 0.2 | I went to Chile in 2019.
+faixa: 0.35-0.75 | I’ve lived here since 2020.
+agora: 0.75
+O **past simple** é um ponto fechado no passado, com data.
+O **present perfect** liga o passado ao **agora**: a experiência conta hoje, ou a ação continua até agora.
+> I went to Chile in 2019.
+> I’ve been to Chile.
 # tabela: How to form it
 Subject | have / has | past participle
 I / you / we / they | have (’ve) | worked, seen, been
@@ -61,6 +74,12 @@ grupos: Usually in questions and negatives: ever, yet / Usually in positive sent
 > I’ve lived here for ten years.
 **since** + the starting point
 > I’ve lived here since 2015.
+# explica: Been or gone?
+**been** = foi e **voltou** (a experiência terminou)
+> She’s been to Paris.
+**gone** = foi e **ainda está lá**
+> She’s gone to Paris.
+- Nas perguntas de experiência, use **been**: Have you ever been to…?
 # exercicio: Practice 3 · For or since?
 grupos: for: two weeks, a long time, ages, three years / since: Monday, 2010, I was a child, last summer
 reescreva: I started working here in 2019. | SINCE | I ___ 2019. | have worked here since/’ve worked here since/have been working here since
@@ -94,6 +113,12 @@ Which sentence is correct?
 I have been to Chile last year.
 *I have never been to Chile.
 I never have been to Chile.
+# tarefas: Atividades recomendadas
+Present perfect: ever and never
+Present perfect · for and since
+Already, yet and just
+Present perfect or past simple?
+Present perfect vs past simple: sort and fix
 # resumo: Summary
 - **have / has + past participle** (worked, seen, been…)
 - Experiences: **ever / never** · Recent news: **just / already / yet**
@@ -108,6 +133,11 @@ nota: Corrija só o present perfect nesta conversa. Homework sugerida: “Presen
 ['EN','A2','Past simple',`# capa: Past simple | img:bicicleta
 Talking about finished actions in the past
 nota: Aquecimento: “What did you do last weekend?” Deixe o aluno tentar, sem corrigir ainda.
+# aquecimento: Back in time
+musica: Yesterday — The Beatles | Só pelo título já estamos no passado. Que palavras de tempo no passado você conhece? (yesterday, last…, …ago)
+filme: Back to the Future (1985) | Marty volta para 1955. Pergunte: “What was different in 1955?”
+jogo: Two truths and a lie | Conte 3 coisas que você fez no fim de semana. Uma é mentira: o outro adivinha qual.
+pergunta: What did you do last weekend?
 # tirinha: Monday morning
 [cidade]
 Tom: Hi! Did you have a good weekend?
@@ -129,6 +159,19 @@ work | worked | + ed
 live | lived | + d
 study | studied | consonant + y → ied
 stop | stopped | double the last letter
+# linha: Finished time
+ponto: 0.15 | in 2020
+ponto: 0.4 | last week
+ponto: 0.62 | yesterday
+agora: 0.8
+O past simple fala de momentos **terminados**: o momento já acabou, mesmo que tenha sido ontem.
+> I started this job in 2020.
+> We saw a great film yesterday.
+# tabela: How to say -ed
+Sound | Examples | When?
+/t/ | worked, watched, stopped | after p, k, s, sh, ch
+/d/ | played, lived, cleaned | after voiced sounds
+/ɪd/ | wanted, needed, visited | after t or d
 # tabela: Common irregular verbs
 Verb | Past simple | Verb | Past simple
 go | went | have | had
@@ -177,6 +220,12 @@ a) They swam in the sea.
 *b) They walked and ate in a restaurant.
 c) They watched films.
 ditado: We stayed in a small cabin.
+# tarefas: Atividades recomendadas
+Past simple · regular verbs
+Past simple · irregular verbs
+Past simple · questions and negatives
+Was and were
+Past simple: find and fix
 # resumo: Summary
 - Finished actions, often with **when** (yesterday, last week…)
 - Regular: **+ ed** · Irregular: learn the list (went, saw, ate…)
@@ -191,6 +240,11 @@ nota: Homework sugerida: “Past simple: find and fix” no banco.`],
 ['EN','B1','Au Pair: the interview',`# capa: Au Pair: the interview | img:carrinho
 Talking about yourself, children and difficult situations
 nota: Esta aula prepara para a entrevista da agência. Grave a aluna no fim, se ela quiser.
+# aquecimento: A new family
+filme: Mary Poppins (1964) | A babá chega numa família nova. Pergunte: “What qualities does a good nanny have?”
+musica: Home — Phillip Phillips | Fala de ir para longe e fazer de um lugar novo a sua casa. Como você se sentiria morando com outra família?
+jogo: 60 seconds about me | Fale de você por um minuto sem parar: família, estudos, hobbies, crianças.
+pergunta: Why do you want to be an au pair?
 # explica: What do they want to know?
 The interviewer wants to see that you can **communicate** and that you are **responsible**.
 - Who are you? (family, studies, hobbies)
@@ -262,10 +316,20 @@ nota: Faça como na entrevista: sem consultar nada. Depois, comente pronúncia e
 - Talk about yourself with full sentences and examples
 - Experience: **I’ve worked as…**, **I’ve taken care of…**
 - Situations: **If…, I would…** (calm, safe, communicate)
-- Show you are patient, responsible and open to a new culture`],
+- Show you are patient, responsible and open to a new culture
+# tarefas: Atividades recomendadas
+Au Pair · The interview: all about you
+Au Pair · Experience with children
+Au Pair · What would you do if…?
+Au Pair · Interview simulation (speaking)`],
 ['FR','A2','Le passé composé',`# capa: Le passé composé | img:bicicleta
 Raconter ce qu’on a fait
 nota: Échauffement : « Qu’est-ce que tu as fait le week-end dernier ? »
+# aquecimento: Souvenirs
+musica: Non, je ne regrette rien — Édith Piaf | Écoutez et notez les verbes au passé composé que vous reconnaissez.
+filme: Le Fabuleux Destin d’Amélie Poulain (2001) | Au début, le narrateur présente les personnages et ce qu’ils ont fait : attention aux verbes !
+jogo: Le menteur | Dites 3 choses que vous avez faites hier. Une est fausse : l’autre doit deviner.
+pergunta: Qu’est-ce que tu as fait le week-end dernier ?
 # tirinha: Lundi matin
 [cidade]
 Tom: Salut ! Tu as passé un bon week-end ?
@@ -334,6 +398,12 @@ B: Oui, on est rentrés à dix heures.
 Léa est allée au marché samedi. (v)
 Léa a fait une randonnée seule. (f)
 ditado: J’ai acheté des fruits au marché.
+# tarefas: Activités recommandées
+Passé composé avec avoir
+Passé composé avec être
+Passé composé : être ou avoir ?
+Passé composé : trouvez l’erreur
+Devoirs · Mes vacances
 # resumo: Résumé
 - **avoir / être + participe passé**
 - La plupart des verbes : **avoir** (j’ai mangé)

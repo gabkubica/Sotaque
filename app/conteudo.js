@@ -810,7 +810,7 @@ const CONT_AULAS=[
 /* ---------- entrada no banco, nos baralhos e nas aulas ---------- */
 function contBank(T0){
   const mk=(x,topic,k)=>({id:uid(),lang:x.l,level:x.lv,topic,title:x.t,instructions:x.i,audio:x.a||'',questions:fromRaw(x.q),uses:hashStr(x.t)%5,mine:false,createdAt:T0-15*DAY+k*MIN});
-  return CONT_ATIV.map((x,k)=>mk(x,x.tp,k)).concat(CONT_HW.map((x,k)=>mk(x,'Completa',k+200)));
+  return CONT_ATIV.map((x,k)=>mk(x,x.tp,k)).concat(CONT_HW.map((x,k)=>mk(x,'Vocabulário',k+200)));
 }
 /* prova de cada marco: questões das tarefas do marco (até 3 com áudio) e a escrita do marco */
 function provasMarcos(bank,T0){
