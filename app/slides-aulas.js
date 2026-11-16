@@ -1926,3 +1926,131 @@ Second conditional
 First and second conditional
 Conditionals · review`],
 );
+SLIDES_SEED.push(
+['EN','B2','Reported speech: gossip and news',`# capa: Reported speech | img:conversa
+She said that… · He told me… · They asked if…
+# aquecimento: Did you hear?
+filme: Mean Girls (2004) | Fofoca na escola! Como as personagens contam o que as outras disseram?
+jogo: Telephone | A professora diz uma frase no ouvido (ou no chat). O aluno conta: “You said that…”
+pergunta: What’s the best piece of news you heard this week?
+# explica: Telling what someone said
+Quando contamos o que alguém disse, o verbo geralmente **volta um tempo**.
+> “I **am** tired.” → She said she **was** tired.
+> “We **will** call you.” → They said they **would** call me.
+**say** + (that) · **tell** + pessoa + (that)
+> He **said** that… · He **told me** that…
+# tabela: Backshift
+Direct speech | Reported speech
+present simple: “I work here.” | past simple: he worked there
+present continuous: “I’m leaving.” | past continuous: she was leaving
+past simple: “I saw it.” | past perfect: he had seen it
+will: “I’ll help.” | would: she would help
+can: “I can swim.” | could: he could swim
+Palavras também mudam: today → that day · tomorrow → the next day · here → there
+# exercicio: Practice 1 · Report it
+escolha: “I’m hungry,” said Tom. → Tom said he [*was/is/has been] hungry.
+escolha: “I will call you,” she said. → She said she [*would/will/can] call me.
+erro: He {said me|told me} that he was busy.
+reescreva: “I can’t come tomorrow,” Ana said. | COULDN’T | Ana said that she ___ the next day. | couldn’t come
+# explica: Questions and orders
+Perguntas viram frases normais (sem do/does):
+> “Where do you live?” → She asked me **where I lived**.
+> “Are you OK?” → He asked **if I was** OK.
+Pedidos e ordens: **told / asked + to**
+> “Sit down.” → She told me **to sit** down. · “Don’t be late.” → He told us **not to be** late.
+# dica: Cuidado!
+x: She asked me where did I live.
+ok: She asked me where I lived.
+x: He said me that he was tired.
+ok: He told me that he was tired.
+# exercicio: Practice 2 · Questions and orders
+escolha: “Do you like sushi?” → She asked me [*if I liked/do I like/if did I like] sushi.
+erro: The teacher told us {don’t talk|not to talk}.
+reescreva: “Where is the station?” he asked me. | WHERE | He asked me ___ . | where the station was
+# leitura: The interview that went viral | img:microfone
+tipo: News
+A young chef said in an interview that she **had learned** to cook with her grandmother. She explained that her grandmother **had never written** any recipes down.
+The journalist asked her what her secret **was**. She laughed and said that the secret **was** “a lot of butter and a lot of patience”.
+After the interview went viral, she told reporters that she **would open** her first restaurant the following year.
+# exercicio: Practice 3 · The article
+The chef learned to cook with her grandmother. (v)
+Her grandmother wrote all her recipes down. (f)
+ditado: She said that the secret was patience.
+# conversa: Tell me what they said | img:conversa
+Tell me something a friend told you recently.
+What did your parents always tell you when you were a child?
+What did your teacher ask you in your last English class?
+# tarefas: Atividades recomendadas
+Reported speech
+Reported speech: what they said
+Reporting verbs
+Indirect questions`],
+['EN','A2','At the restaurant',`# capa: At the restaurant | img:pizza
+From booking a table to paying the bill
+# aquecimento: Hungry?
+filme: Ratatouille (2007) | A crítica Anton Ego pede “perspective” ao garçom. Como é pedir comida num restaurante chique?
+jogo: Menu game | Montem um menu de 3 pratos e um preço. O outro é o cliente e pede: “I’d like…”
+pergunta: What’s your favourite restaurant? What do you usually order?
+nota: Objetivo: o aluno conseguir reservar, pedir, reclamar com educação e pagar.
+# vocab: On the menu
+a starter | uma entrada | img:legumes
+a main course | um prato principal | img:frango
+a dessert | uma sobremesa | img:sorvete
+a drink | uma bebida | img:suco
+the bill | a conta | img:ingresso
+# frase: Useful phrases
+I’d like to book a table for two, please.
+Could we see the menu, please?
+I’ll have the chicken, please.
+Could we have the bill, please?
+# dialogo: Listen: ordering
+A: Good evening. Are you ready to order?
+B: Yes. I’ll have the soup to start, please.
+A: And for your main course?
+B: The grilled fish, please. Does it come with salad?
+A: Yes, it does. Anything to drink?
+B: Just a sparkling water, thanks.
+# exercicio: Practice 1 · Listening
+The customer orders soup as a starter. (v)
+The fish comes with chips. (f)
+ordem: Are you ready to order
+# tabela: Polite or not?
+Too direct | Polite
+I want a table. | I’d like a table, please.
+Bring the menu. | Could we see the menu, please?
+Give me the bill. | Could we have the bill, please?
+This is cold! | Excuse me, I think my soup is a bit cold.
+# exercicio: Practice 2 · Polite requests
+escolha: [*Could we/Can we to/We could] have some more bread, please?
+escolha: I[*’d like/like/’d] the pasta, please.
+erro: Excuse me, {give me|could we have} the bill, please?
+grupos: Before the meal: book a table, see the menu, order / After the meal: ask for the bill, pay by card, leave a tip
+# tirinha: A small problem
+[pizza]
+Mia: Excuse me, I ordered a pizza with no onions.
+Sam (surpreso): Oh, I’m so sorry!
+---
+Sam: I’ll bring you a new one right away.
+Mia (feliz): Thank you, that’s very kind.
+# leitura: Tipping around the world | img:ingresso
+tipo: Curiosity
+In the United States, people usually leave a tip of 15 to 20 percent. Waiters **depend** on tips for a big part of their salary.
+In Japan, it’s different: leaving a tip **can** feel strange or even rude, because good service **is** part of the job.
+In Brazil, a service charge of 10 percent **is** often already on the bill. So before you pay, always check the bill!
+# exercicio: Practice 3 · Tipping
+1. Where can a tip feel strange?
+a) the United States
+*b) Japan
+c) Brazil
+lacunas: Excuse me, could we have the [bill], please? Can I pay by [card]? || menu, tip
+# conversa: Role-play | img:pizza
+Call the restaurant and book a table for Saturday.
+Order a starter, a main course and a drink.
+There’s a problem with your food. Complain politely.
+nota: A professora é o garçom; depois troquem os papéis.
+# tarefas: Atividades recomendadas
+At the restaurant
+Food and drinks
+Homework · Food and restaurants
+Some, any, much, many`],
+);
