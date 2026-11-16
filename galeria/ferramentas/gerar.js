@@ -38,7 +38,7 @@ const servidor=http.createServer((req,res)=>{
     await pag.evaluate(([ids,legenda])=>{
       const L=ids.map(id=>GAL.obras.find(o=>o.id===id)), H=legenda?440:500, gap=56;
       let ws=L.map(o=>H*o.medidas[1]/o.medidas[0]); const k=Math.min(1,(1200-120-gap*(L.length-1))/ws.reduce((a,b)=>a+b,0));
-      document.body.innerHTML=`<div id="og" style="width:1200px;height:630px;background:#ebe7e0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;font-family:Fraunces,serif;color:#1d1b19">
+      document.body.innerHTML=`<div id="og" style="width:1200px;height:630px;background:#e6e6e4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;font-family:Fraunces,serif;color:#1d1b19">
         <div style="display:flex;gap:${gap}px;align-items:center">${L.map((o,i)=>`<div style="width:${Math.round(ws[i]*k)}px;height:${Math.round(H*k)}px;line-height:0;outline:10px solid #fff;outline-offset:-1px;box-shadow:0 26px 40px -22px rgba(40,30,20,.55)">${art(o,800).replace('<svg','<svg style="width:100%;height:100%;display:block"').replace('<img','<img style="width:100%;height:100%;object-fit:cover;display:block"')}</div>`).join('')}</div>
         ${legenda? `<div style="font-size:40px;font-weight:600;letter-spacing:.01em">${legenda}</div>` : ''}</div>`;
       document.body.style.margin='0';
