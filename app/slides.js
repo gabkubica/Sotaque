@@ -61,14 +61,14 @@ function slideHtml(s,o={}){
       ${rng.map(([a,c,l],k)=>`<rect x="${X(a)}" y="${118-k*38}" width="${X(c)-X(a)}" height="22" rx="11" fill="#3f74b8" opacity=".85"/><text x="${(X(a)+X(c))/2}" y="${108-k*38}" font-size="22" text-anchor="middle" fill="#24497e" font-weight="700">${esc(l)}</text>`).join('')}
       ${pts.map(([v,l],k)=>`<circle cx="${X(v)}" cy="150" r="13" fill="#e0563b" stroke="#fff" stroke-width="4"/><text x="${X(v)}" y="${k%2? 212 : 188}" font-size="22" text-anchor="middle" fill="#a8351f" font-weight="700">${esc(l)}</text>`).join('')}</svg>
       <div class="sl-exp wide">${exLines(rest)}</div>`; }
-  if (s.t==='tarefas'){ const bs=s.body.map(x=>({x,b:DB.bank.find(z=>z.lang===L&&z.title===x)}));
-    b=`<p class="sl-eye">Homework</p>${T}<div class="sl-hw">${bs.map(({x,b:bk},k)=>`<div class="sl-hwc"><span class="sl-hwn">${k+1}</span><div><b>${esc(x)}</b><small>${bk? `${bk.level} · ${esc(bk.topic)} · ${bk.questions.length} questões` : 'atividade'}</small></div>${bk&&isT()&&!o.print&&!o.thumb? `<a class="btn small" href="#banco-${bk.id}" target="_blank" rel="noopener">Ver</a>` : ''}</div>`).join('')}</div>
-      ${isT()&&!o.print&&!o.thumb&&bs.some(z=>z.b)? `<button class="btn primary" data-act="sl-hw" data-ids="${bs.filter(z=>z.b).map(z=>z.b.id).join(',')}">Mandar como homework (pacote)</button>` : ''}`; }
+  if (s.t==='tarefas'){ const bs=s.body.map(x=>({x,b:DB.bank.find(z=>z.lang===L&&z.title===x)})), live=isT()&&!o.print&&!o.thumb, sid=live? slStudent() : '';
+    b=`<p class="sl-eye">Homework</p>${T}${live? `<div class="sl-hwbar"><span>${sid? `Para <b>${esc(user(sid)?.name||'')}</b>: escolha 2 ou 3.` : 'Escolha o aluno da aula no alto da tela.'}</span><label>Prazo <select data-sldue="1"><option value="0" ${S.slDue? '' : 'selected'}>sem prazo</option><option value="7" ${S.slDue? 'selected' : ''}>7 dias</option></select></label></div>` : ''}<div class="sl-hw">${bs.map(({x,b:bk},k)=>{ const sent=sid&&bk&&DB.tasks.some(t=>t.studentId===sid&&t.bankId===bk.id&&t.createdAt>now()-12*3600000);
+      return `<div class="sl-hwc"><span class="sl-hwn">${k+1}</span><div><b>${esc(x)}</b><small>${bk? `${bk.level} · ${esc(bk.topic)} · ${bk.questions.length} questões` : 'atividade'}</small></div>${bk&&live? `<a class="btn small ghost" href="#praticar-${bk.id}" target="_blank" rel="noopener" title="Ver como o aluno vê">Ver</a><button class="btn small ${sent?'':'primary'}" data-act="sl-send" data-id="${bk.id}" ${sent||!sid?'disabled':''}>${sent? 'Enviada ✓' : 'Mandar'}</button>` : ''}</div>`; }).join('')}</div>`; }
   if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
     if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
     else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);
       b=`${T}${ins}<div class="sl-exq">${t.done&&!o.print? t.questions.map((q,i)=>qResult(t,q,i,'student')).join('') : t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}</div>${o.print? '' : `<div class="sl-exbar">${t.done? `<b>${fmtNum(sc.got)} de ${sc.total} certas</b><button class="btn small" data-act="slx-reset">Fazer de novo</button>` : `<button class="btn small primary" data-act="slx-check">Corrigir</button>`}</div>`}`; } }
-  return `<div class="sl sl-${s.t}">${b}</div>`;
+  return `<div class="sl sl-${s.t}">${b}${o.thumb? '' : `<span class="sl-brand"><b>Sotaque</b>${o.prof? ` · ${esc(o.prof)}` : ''}</span>`}</div>`;
 }
 /* exercícios dentro do slide: o formato de "Colar várias questões" e mais estes prefixos:
    escolha: She [*goes/go] …   erro: I {have|am} 20.   lacunas: I [went] home. || go, home
@@ -95,7 +95,7 @@ function viewSlidesPrint(id){
   const list=slidesParse(d.src);
   return `<div class="no-print pr-tools"><a class="link" href="#slides-${d.id}">← Voltar</a><span class="grow"></span><button class="btn primary" data-act="print-go">Imprimir ou salvar em PDF</button></div>
     <p class="no-print meta muted" style="margin:0 0 14px">A apostila tem um slide por página. Para salvar em PDF, escolha “Salvar como PDF” no lugar da impressora (de preferência na horizontal).</p>
-    <div class="sl-book">${list.map((x,i)=>`<div class="sl-page"><div class="sl-stage">${slideHtml(x,{lang:d.lang,level:d.level,rev:x.t!=='pergunta',key:'pdf'+d.id+i,print:true})}</div></div>`).join('')}</div>`;
+    <div class="sl-book">${list.map((x,i)=>`<div class="sl-page"><div class="sl-stage">${slideHtml(x,{lang:d.lang,level:d.level,rev:x.t!=='pergunta',key:'pdf'+d.id+i,print:true,prof:ME()?.name})}</div></div>`).join('')}</div>`;
 }
 /* ---------- aulas prontas e as da professora ---------- */
 const slSeed=()=>(typeof SLIDES_SEED!=='undefined'? SLIDES_SEED : []).map(([lang,level,title,src])=>({id:'sd'+hashStr(lang+title).toString(36),lang,level,title,src,seed:true}));
@@ -119,10 +119,10 @@ function viewSlidesPlay(id){
   const ansList=P.live? Object.values(LIVE.ans[P.i]||{}) : [];
   return `<div class="sl-wrap">
     <div class="sl-top"><a class="link" href="#aula">← Aulas</a><b class="grow">${esc(d.title)}</b>
-      <button class="btn small ${P.live?'live-on':''}" data-act="sl-live">${P.live? '● Ao vivo: ligada' : 'Ligar aula ao vivo'}</button><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
+      <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
-    <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i})}
-      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
+    <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
+      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small ${S.inkT==='hl'?'':'on'}" data-act="sl-tool" data-t="pen" title="Caneta">Caneta</button><button class="btn small ${S.inkT==='hl'?'on':''}" data-act="sl-tool" data-t="hl" title="Marca-texto">Marca-texto</button><button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
     <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
@@ -217,6 +217,11 @@ const SLIDE_ACT={
   'slx-reset'(){ if (S.slxT){ S.slxT.answers={}; S.slxT.done=false; render(); } },
   'sl-hw'(el){ const d=slById(S.sl?.id); packModal(el.dataset.ids.split(','),(d? d.title+' · ' : '')+'homework'); },
   'sl-lv'(el){ S.slLv=el.dataset.v; render(); },
+  'sl-send'(el){ const sid=slStudent(), bk=DB.bank.find(x=>x.id===el.dataset.id); if (!sid){ toast('Escolha o aluno da aula no alto da tela.'); return; } if (!bk) return;
+    const open=bk.questions.some(q=>q.type==='open');
+    DB.tasks.push({id:uid(),studentId:sid,title:bk.title,instructions:bk.instructions||'',questions:cloneQs(bk.questions),audio:bk.audio||'',due:S.slDue? atTime(now()+7*DAY,23,59) : null,createdAt:now(),auto:!open,status:'pendente',answers:{},marks:{},feedback:'',bankId:bk.id});
+    bk.uses=(bk.uses||0)+1; save(); render(); toast(`“${bk.title}” enviada para ${user(sid).name.split(' ')[0]}${S.slDue? ' (prazo de 7 dias)' : ''}`); },
+  'sl-tool'(el){ S.inkT=el.dataset.t; render(); },
   'sl-new'(){ const d={id:'sl'+uid(),lang:myLang(),level:'A2',title:'Nova aula',src:myLang()==='FR'? '# capa: Nouvelle leçon | img:conversa\nSous-titre\n# vocab: Mots\nun café | café | img:xicara' : '# capa: New lesson | img:conversa\nSubtitle\n# vocab: Words\na coffee | café | img:xicara',teacherId:S.me,createdAt:now()}; (DB.slides ||= []).push(d); save(); location.hash='slides-ed-'+d.id; },
   'sl-del'(el){ if (!confirm('Excluir esta aula de slides?')) return; DB.slides=(DB.slides||[]).filter(d=>d.id!==el.dataset.id); save(); location.hash='aula'; },
 };
@@ -234,7 +239,7 @@ window.addEventListener('hashchange',()=>{ if (!/^#slides-[a-z0-9]+$/.test(locat
 
 /* ---------- desenho por cima do slide (fica salvo à parte, não entra na apostila) ---------- */
 const INK_COLORS=['#c0392b','#2b6cb0','#1f6440','#e0a020','#221c1e'];
-const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
+const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-opacity="${st.o||1}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
 const inkSvg=(key,list,edit)=>`<svg class="sl-ink ${edit&&S.draw?'on':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${(list||[]).map(inkPath).join('')}</svg>`;
 Object.assign(SLIDE_ACT,{
   'sl-draw'(){ S.draw=!S.draw; render(); },
@@ -245,9 +250,13 @@ Object.assign(SLIDE_ACT,{
 let SLINK=null;
 document.addEventListener('pointerdown',e=>{ const sv=e.target.closest?.('svg.sl-ink.on'); if (!sv) return; e.preventDefault(); sv.setPointerCapture?.(e.pointerId);
   const r=sv.getBoundingClientRect(), pt=ev=>`${Math.round((ev.clientX-r.left)/r.width*1000)},${Math.round((ev.clientY-r.top)/r.height*1000)}`;
-  const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline'); const st={c:S.inkC||INK_COLORS[0],w:4,p:pt(e)};
-  pl.setAttribute('fill','none'); pl.setAttribute('stroke',st.c); pl.setAttribute('stroke-width',st.w); pl.setAttribute('stroke-linecap','round'); pl.setAttribute('stroke-linejoin','round'); pl.setAttribute('vector-effect','non-scaling-stroke'); pl.setAttribute('points',st.p); sv.appendChild(pl);
+  const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline'); const hl=S.inkT==='hl', st={c:S.inkC||INK_COLORS[0],w:hl? 22 : 4,o:hl? .35 : 1,p:pt(e)};
+  pl.setAttribute('fill','none'); pl.setAttribute('stroke',st.c); pl.setAttribute('stroke-width',st.w); pl.setAttribute('stroke-opacity',st.o); pl.setAttribute('stroke-linecap','round'); pl.setAttribute('stroke-linejoin','round'); pl.setAttribute('vector-effect','non-scaling-stroke'); pl.setAttribute('points',st.p); sv.appendChild(pl);
   SLINK={sv,pl,st,pt,key:sv.dataset.ink}; });
 document.addEventListener('pointermove',e=>{ if (!SLINK) return; SLINK.st.p+=' '+SLINK.pt(e); SLINK.pl.setAttribute('points',SLINK.st.p); });
 const inkEnd=()=>{ if (!SLINK) return; const {st,key}=SLINK; SLINK=null; if (st.p.split(' ').length<2) st.p+=' '+st.p; ((DB.ink ||= {})[key] ||= []).push(st); save(); liveSlide(); };
 document.addEventListener('pointerup',inkEnd); document.addEventListener('pointercancel',inkEnd);
+
+/* aluno que está recebendo a aula: o da aula marcada agora, ou o escolhido */
+function slStudent(){ if (S.slStu===undefined){ const l=(DB.lessons||[]).find(l=>isLive(l)&&user(l.studentId)?.teacherId===S.me); S.slStu=l? l.studentId : ''; } return S.slStu; }
+document.addEventListener('change',e=>{ const el=e.target; if (el.dataset?.slstu){ S.slStu=el.value; render(); } if (el.dataset?.sldue){ S.slDue=el.value==='7'; render(); } });

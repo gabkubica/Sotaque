@@ -1325,3 +1325,285 @@ Zero conditional
 Future time clauses
 First and second conditional`],
 );
+SLIDES_SEED.push(
+['EN','A1','Possessives: family portraits',`# capa: Possessives | img:casa
+My, your, his, her… and Homer’s family
+# aquecimento: Famous families
+filme: The Simpsons | Mostre uma imagem da família Simpson. Quem é quem? “Homer is Bart’s father. Marge is his wife.”
+musica: We Are Family — Sister Sledge | O título fala de família. Quem faz parte da sua família?
+jogo: Family tree | Desenhe sua árvore genealógica no slide (✎) e apresente: “This is my mother. Her name is…”
+pergunta: How many people are there in your family?
+# tabela: Possessive adjectives
+Subject | Possessive | Example
+I | my | This is **my** sister.
+you | your | Is this **your** bag?
+he | his | **His** name is Leo.
+she | her | **Her** car is red.
+we / they | our / their | **Their** house is big.
+# explica: ’s for people
+Para dizer “de alguém”, usamos **’s**:
+> This is **Ana’s** phone. (o celular da Ana)
+> Bart is **Homer’s** son.
+Plural com s: só o apóstrofo
+> My **parents’** house.
+# exercicio: Practice 1 · his or her?
+escolha: This is my brother. [*His/Her/Their] name is Tom.
+escolha: My grandparents love [*their/his/our] garden.
+escolha: Is this [*your/you/yours] jacket?
+erro: This is {the car of my father|my father’s car}.
+# tabela: Possessive pronouns
+Adjective + noun | Pronoun (alone)
+It’s my book. | It’s **mine**.
+It’s your book. | It’s **yours**.
+It’s his / her book. | It’s **his** / **hers**.
+It’s our / their book. | It’s **ours** / **theirs**.
+# dica: Cuidado!
+x: Ana is my friend. His name is… (Ana é mulher!)
+ok: Ana is my friend. Her name is…
+x: This pen is my.
+ok: This pen is mine.
+# exercicio: Practice 2 · Whose is it?
+escolha: A: Whose is this bag? B: It’s [*mine/my/me].
+escolha: That isn’t our car. [*Ours/Our] is blue.
+grupos: Possessive adjectives: my, your, their / Possessive pronouns: mine, yours, theirs
+lacunas: Leo is [Ana’s] brother. [His] wife is called Bia, and [their] baby is Sam. || Ana, her, them
+# conversa: Your family | img:casa
+Tell me about your family. What are their names?
+Who is your favourite relative? Why?
+What is your best friend’s name? What is he or she like?
+# tarefas: Atividades recomendadas
+Possessive adjectives
+Possessive ’s
+Possessive pronouns
+Family members`],
+['EN','A2','In, on, at: time and dates',`# capa: In, on, at | img:relogio
+Prepositions of time: birthdays, holidays and appointments
+# aquecimento: Calendar
+musica: Saturday in the Park — Chicago | “in the park” é lugar… mas e “on Saturday”? Hoje vamos ver o tempo.
+jogo: Birthday line | Cada um diz o aniversário: “My birthday is on 5th May.” Façam a fila do ano!
+pergunta: When is your birthday? What do you do at Christmas?
+# tabela: The pyramid
+Preposition | Use | Examples
+**in** | periods: months, years, seasons, parts of the day | in May · in 2025 · in summer · in the morning
+**on** | days and dates | on Monday · on 5th May · on my birthday · on Christmas Day
+**at** | exact times and short moments | at 7 o’clock · at night · at the weekend · at Christmas
+nota: Desenhe a pirâmide no slide (✎): IN em baixo (maior), ON no meio, AT em cima (mais exato).
+# exercicio: Practice 1 · in, on or at?
+grupos: in: July, 2010, the morning / on: Friday, my birthday, 1st May / at: 8 pm, night, midnight
+escolha: The meeting is [*at/in/on] 10 o’clock [*on/in/at] Monday.
+escolha: I was born [*in/on/at] 1998, [*in/on/at] winter.
+# dica: Cuidado!
+x: in Monday
+ok: on Monday
+x: on the night
+ok: at night
+x: I’ll see you in next week.
+ok: I’ll see you next week. (sem preposição com next, last, this, every)
+# exercicio: Practice 2 · Find the mistake
+erro: My birthday is {in|on} 12th April.
+erro: We go to the beach {in|at} the weekend.
+erro: I’ll call you {on next Tuesday|next Tuesday}.
+# dialogo: Listen: booking a doctor
+A: Good morning. I’d like to see Dr Lee, please.
+B: Sure. Can you come on Thursday?
+A: Thursday is fine. In the morning?
+B: Yes, at half past nine.
+A: Perfect. See you on Thursday at nine thirty.
+# exercicio: Practice 3 · Listening
+The appointment is on Tuesday. (f)
+It’s at half past nine. (v)
+ditado: Can you come on Thursday?
+# conversa: Your calendar | img:relogio
+What do you usually do on Sunday mornings?
+What did you do at New Year?
+When is the best time of the year in your city?
+# tarefas: Atividades recomendadas
+In, on, at · time
+Days, months and seasons
+Days, months and dates
+Telling the time`],
+['EN','B1','Used to: when I was a kid',`# capa: Used to | img:bicicleta
+Childhood memories and the 90s
+# aquecimento: Back to childhood
+musica: Somebody That I Used to Know — Gotye | O título já tem a estrutura da aula: “used to know” = conhecia antes, não mais.
+filme: Stranger Things | As crianças andam de bicicleta pela cidade nos anos 80: o que as crianças faziam antes do celular?
+jogo: Guess the decade | Diga uma coisa que as pessoas faziam antigamente (“People used to rent videos”). Qual década?
+pergunta: What did you use to play when you were a child?
+# linha: Past habits
+faixa: 0.1-0.45 | I used to play outside
+agora: 0.8
+**used to** = hábito ou estado do passado que **não existe mais**.
+> I used to play football every day. (now I don’t)
+> There used to be a cinema here. (now there isn’t)
+# tabela: The form
+ | Example
++ | I **used to** live in Bahia.
+– | I **didn’t use to** like vegetables.
+? | **Did** you **use to** play outside?
+Depois de did / didn’t: **use to** (sem d)
+# exercicio: Practice 1 · The form
+escolha: When I was a kid, I [*used to/use to/was used to] watch cartoons every morning.
+escolha: [*Did you use to/Did you used to/Used you to] have long hair?
+erro: I didn’t {used|use} to like coffee.
+reescreva: I don’t play the piano now, but I played it as a child. | USED | I ___ the piano. | used to play
+# explica: Used to or would?
+**would** também fala de hábitos do passado, mas **só ações**, não estados.
+> Every summer we **would** go to the beach. (ação ✓)
+> I **used to** have a dog. (estado: não use would)
+# exercicio: Practice 2 · used to or would?
+grupos: Only used to: have a dog, live in Rio, be shy / Used to or would: go to the beach, play outside, visit grandma
+erro: I {would|used to} have a red bike.
+# tirinha: Then and now
+[bicicleta]
+Bia: I used to ride my bike to school every day.
+Tom (surpreso): Really? Now you drive everywhere!
+---
+Bia (triste): I know… I used to be fitter!
+# conversa: Childhood memories | img:bicicleta
+What did you use to do after school?
+What food did you use to hate?
+What’s something people used to do that nobody does now?
+How has your city changed? What used to be there?
+# tarefas: Atividades recomendadas
+Used to
+Used to and would
+Used to, be used to, get used to`],
+['EN','B1','-ed or -ing? Horror movie night',`# capa: -ed or -ing adjectives | img:noite
+Bored or boring? Scared or scary?
+# aquecimento: Movie night
+filme: Scream (1996) | Filme de terror! Antes de ver o trailer: “Do you like scary films? Are you easily frightened?”
+musica: Thriller — Michael Jackson | Um clássico assustador. O clipe é scary ou funny?
+jogo: How do you feel? | A professora diz uma situação (“a long meeting”, “a spider”) e o aluno responde: “It’s boring! I feel bored.”
+pergunta: What’s the most frightening film you’ve ever seen?
+# explica: The rule
+**-ed** = como a pessoa **se sente**
+> I’m **bored**. I’m **scared**.
+**-ing** = como a coisa ou pessoa **é** (a causa)
+> The film is **boring**. The film is **scary/frightening**.
+# tabela: Pairs
+Feeling (-ed) | Cause (-ing)
+bored | boring
+interested | interesting
+tired | tiring
+excited | exciting
+frightened | frightening
+surprised | surprising
+# exercicio: Practice 1 · -ed or -ing?
+escolha: The film was so [*boring/bored] that I fell asleep.
+escolha: I was really [*frightened/frightening] during the film.
+escolha: Your news is very [*surprising/surprised]!
+erro: I’m very {interesting|interested} in history.
+# dica: Cuidado!
+x: I’m boring. (= eu sou chato!)
+ok: I’m bored. (= estou entediado)
+x: The class was very tired.
+ok: The class was very tiring.
+# exercicio: Practice 2 · Movie reviews
+lacunas: The new horror film is really [frightening]. I was so [scared] that I closed my eyes! But the end was a bit [disappointing]. || frightened, scaring, disappointed
+grupos: Describe a person’s feelings: bored, excited, tired / Describe a thing or situation: boring, exciting, tiring
+# imagem: How do they feel? | img:surpreso
+Look at the face. How does he feel? What happened?
+Use: surprised, shocked, excited, frightened…
+# conversa: Movie talk | img:noite
+What kind of films do you find boring?
+What’s the most exciting thing you did this year?
+When do you feel tired or stressed?
+# tarefas: Atividades recomendadas
+-ed or -ing adjectives?
+Feelings`],
+['EN','B2','Passive voice: great inventions',`# capa: The passive | img:lampada
+Who invented it? Great inventions
+# aquecimento: Inventions
+filme: The Imitation Game (2014) | Alan Turing e a máquina que quebrou o código Enigma. Pergunte: “What was invented during the war?”
+jogo: Guess the invention | “It was invented in 1876. It is used to talk to people far away.” (the telephone)
+pergunta: Which invention can’t you live without?
+# explica: Why use the passive?
+Usamos a passiva quando **a ação ou o objeto** é mais importante que quem fez.
+> The telephone **was invented** in 1876.
+Quem fez aparece com **by** (só se importar):
+> The light bulb was improved **by** Edison.
+# tabela: be + past participle
+Tense | Active | Passive
+Present | They make cars here. | Cars **are made** here.
+Past | They built it in 1920. | It **was built** in 1920.
+Present perfect | They have sold the house. | The house **has been sold**.
+Future | They will open it soon. | It **will be opened** soon.
+Modal | You must wear a helmet. | A helmet **must be worn**.
+# exercicio: Practice 1 · The form
+escolha: Coffee [*is grown/grows/is grow] in Brazil.
+escolha: The Eiffel Tower [*was built/built/is built] in 1889.
+escolha: The results [*will be announced/will announce/are announcing] tomorrow.
+reescreva: Someone stole my bike yesterday. | WAS | My bike ___ yesterday. | was stolen
+# texto: Did you know?
+The first photograph was taken in 1826.
+The World Wide Web was invented by Tim Berners-Lee in 1989.
+More than 100 billion emails are sent every day.
+# exercicio: Practice 2 · Inventions
+The World Wide Web was invented in 1989. (v)
+The first photograph was taken in 1926. (f)
+erro: The book {wrote|was written} in 1950.
+reescreva: People speak Portuguese in Angola. | SPOKEN | Portuguese ___ in Angola. | is spoken
+# dica: Cuidado!
+x: The house was build in 2000.
+ok: The house was built in 2000. (particípio!)
+x: English is speak here.
+ok: English is spoken here.
+# conversa: Let’s talk | img:lampada
+What is your country famous for? What is produced there?
+What do you think will be invented in the next 20 years?
+Which invention has changed your life the most?
+# tarefas: Atividades recomendadas
+Passive voice
+Passive voice and causative
+Passive with modals`],
+['EN','B1','Relative clauses: guess who!',`# capa: Relative clauses | img:lupa
+Who, which, where: describing people, things and places
+# aquecimento: Guess who
+jogo: Guess who! | Descreva uma pessoa famosa sem dizer o nome: “It’s a woman who sings… She’s someone who…” O outro adivinha.
+filme: Harry Potter | “It’s a place where young wizards study.” Que lugar é? (Hogwarts) Invente outras definições.
+pergunta: Can you describe your best friend in one sentence?
+# explica: Who, which, where
+**who** → pessoas
+> A teacher is a person **who** helps students learn.
+**which** → coisas e animais
+> A key is a thing **which** opens doors.
+**where** → lugares
+> A bakery is a place **where** you buy bread.
+**that** pode substituir who e which.
+# exercicio: Practice 1 · who, which or where?
+escolha: A chef is someone [*who/which/where] cooks in a restaurant.
+escolha: This is the hotel [*where/which/who] we stayed last summer.
+escolha: I lost the phone [*which/who/where] you gave me.
+lacunas: A dentist is a person [who] looks after your teeth. A library is a place [where] you can borrow books. || which, what
+# exercicio: Practice 2 · Definitions
+1. “A place where you can see films” is…
+a) a library
+*b) a cinema
+c) a bakery
+1. “A thing which tells you the time” is…
+*a) a clock
+b) a map
+c) a key
+ordem: She is the girl who lives next door
+# explica: Non-defining clauses
+Com informação **extra**, usamos vírgulas e **não** usamos that:
+> My brother, **who** lives in London, is a doctor.
+> Rio, **which** is famous for its beaches, is my favourite city.
+# dica: Cuidado!
+x: The man which called you is my boss.
+ok: The man who called you is my boss.
+x: My mother, that is a teacher, loves books.
+ok: My mother, who is a teacher, loves books.
+# exercicio: Practice 3 · Find the mistake
+erro: That’s the restaurant {which|where} we had dinner.
+erro: My sister, {that|who} lives in Recife, is coming tomorrow.
+# conversa: Describe it! | img:lupa
+Describe a person who changed your life.
+Describe a place where you feel happy.
+Describe a thing which you use every day.
+# tarefas: Atividades recomendadas
+Who, which or where?
+Defining relative clauses: that and omission
+Relative clauses
+Non-defining relative clauses`],
+);
