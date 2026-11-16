@@ -1219,3 +1219,11 @@ body.sl-fs .sl-stage:has(.sl-exq){width:min(100vw,1280px);max-height:none;min-he
 .sl-read-t p.first::first-letter{float:left;font:800 5.2cqw/.85 var(--display);color:#7a1f35;margin:.4cqw 1cqw 0 0}
 .sl-read-t b{color:#7a1f35;background:#f3e1e5;border-radius:.4cqw;padding:0 .3cqw}
 @media (max-width:720px){.sl-read{grid-template-columns:1fr;grid-template-rows:26% 1fr}.sl-read-t p{font-size:3.6cqw}.sl-read-kind{font-size:2.6cqw}.sl-read-t p.first::first-letter{font-size:9cqw}}
+/* tela cheia (v2): sem barras de rolagem, capa centralizada, exercícios no centro e maiores */
+body.sl-fs .sl-wrap{display:flex;align-items:safe center;justify-content:safe center;overflow:hidden}
+body.sl-fs .sl-stage{width:min(100vw,177.7vh);margin:auto}
+body.sl-fs .sl-wrap:has(.sl-exq){overflow-y:auto;align-items:flex-start}
+body.sl-fs .sl-stage:has(.sl-exq){width:100vw;min-height:100vh;border-radius:0}
+body.sl-fs .sl-exercicio:has(.sl-exq){max-width:1240px;margin:0 auto;zoom:1.25}
+body.sl-fs :has(.sl-wrap){transform:none!important;animation:none!important;filter:none!important;contain:none!important;will-change:auto!important}
+body.sl-fs .sl-wrap{top:0;left:0;width:100vw;height:100vh}
