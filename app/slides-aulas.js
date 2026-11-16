@@ -124,6 +124,11 @@ Present perfect vs past simple: sort and fix
 - Experiences: **ever / never** · Recent news: **just / already / yet**
 - Unfinished time: **for** (period) / **since** (starting point)
 - With a finished time (yesterday, in 2019…) use the **past simple**
+# leitura: The woman who has visited every country | img:globo
+tipo: Curiosity
+Some travellers **have visited** every country in the world. It’s a very small club: only a few hundred people **have done** it.
+One of them says: “I**’ve slept** in airports, I**’ve eaten** things I can’t name, and I**’ve made** friends everywhere.”
+**Have** they **seen** everything? No! “I **haven’t finished** yet,” she laughs. “Now I want to see every city.”
 # conversa: Let’s talk | img:mala
 What’s the most interesting place you’ve ever been to?
 Have you ever tried a very strange food?
@@ -231,6 +236,11 @@ Past simple: find and fix
 - Regular: **+ ed** · Irregular: learn the list (went, saw, ate…)
 - Negative: **didn’t + verb** · Question: **Did + subject + verb?**
 - To be: **was / were**
+# leitura: The day a band played on a roof | img:disco
+tipo: History
+On 30th January 1969, the Beatles **climbed** to the roof of their office in London and **played** a surprise concert.
+People in the street **stopped** and **looked** up. Some **didn’t understand** where the music **came** from.
+After about 40 minutes, the police **arrived** and the concert **ended**. It **was** their last public show together.
 # conversa: Let’s talk | img:mar
 What did you do last weekend?
 Where did you go on your last holiday?
@@ -305,6 +315,11 @@ ok: I really like children.
 erro: I {have|am} twenty years old.
 erro: I {work|’ve worked} as a babysitter since 2021.
 erro: I like {very much children|children very much}.
+# leitura: A day in the life of an au pair | img:carrinho
+tipo: Interview
+Julia **is** 21 and she**’s been** an au pair in Boston for six months. “I wake up at seven and make breakfast for the kids,” she says.
+“If one of them **gets** sick, I **call** the parents right away. Communication **is** everything.”
+Her advice? “Be yourself in the interview. They want to see that you **love** children and that you **are** responsible.”
 # conversa: Interview practice | img:carrinho
 Tell me about yourself.
 What experience do you have with children?
@@ -563,6 +578,11 @@ ditado: I’m Carla’s cousin.
 - Negative: **’m not / isn’t / aren’t**
 - Question: put **be first**: Are you…? Is she…?
 - Age with **be**: I’m 20.
+# leitura: Meet the Andrade family | img:casa
+tipo: Profile
+This **is** the Andrade family. They **are** from Belo Horizonte, but now they **are** in Lisbon.
+Marta **is** a nurse and her husband, Paulo, **is** a chef. Their kids **are** Lia, who **is** 10, and Theo, who **is** 7.
+**Are** they happy in Portugal? “Yes, we **are**!” says Lia. “But I**’m not** happy with the cold winters!”
 # conversa: Let’s talk | img:conversa
 What’s your name? How old are you?
 Where are you from? Where are you now?
@@ -644,6 +664,11 @@ ditado: I usually get up at six.
 - **he / she / it + s** (works, goes, studies, has)
 - **don’t / doesn’t + verb** · **Do / Does … + verb?**
 - always, usually, sometimes, never **before** the verb
+# leitura: A day in space | img:noite
+tipo: Curiosity
+Astronauts on the International Space Station **follow** a strict routine. They **wake up** at about six and **check** the station.
+They **exercise** for around two hours every day, because muscles **get** weak in space.
+At night, they **don’t sleep** in beds: they **sleep** in sleeping bags attached to the wall. And **does** anyone snore? Yes, sometimes!
 # conversa: Your routine | img:relogio
 What time do you get up on weekdays?
 What do you usually have for breakfast?
@@ -724,6 +749,11 @@ ditado: I’m sitting in a café.
 - Now and temporary situations: now, at the moment, this week, Look!
 - Routines → present simple · Now → present continuous
 - State verbs (like, know, want) don’t use -ing
+# leitura: Live from the street | img:cidade
+tipo: Report
+Hello from São Paulo! It**’s raining** a little, but the city **is moving** as always.
+Next to me, a man **is selling** umbrellas and two kids **are jumping** in the water. People **are running** to the metro.
+Right now, I**’m standing** in front of a café and the smell of coffee **is making** me hungry. Back to you in the studio!
 # conversa: Let’s talk | img:cidade
 What are you doing these days?
 What is your family doing right now?
@@ -795,6 +825,11 @@ ditado: We’re going to visit the desert.
 - Plans decided before: I’m going to study abroad.
 - Predictions with evidence: It’s going to rain.
 - Decisions now, offers: **will** (I’ll help you!)
+# leitura: My plan for the next 12 months | img:mala
+tipo: Blog
+I made a decision: this year I**’m going to** say yes to new things.
+First, I**’m going to** learn to swim. I’m 32 and I can’t swim! Then I**’m going to** travel alone for the first time.
+I**’m not going to** wait for the perfect moment. And you? What **are** you **going to** do differently this year?
 # conversa: Your plans | img:mala
 What are you going to do this weekend?
 Where are you going to go on your next holiday?
@@ -866,6 +901,11 @@ ditado: It’s closer to the beach.
 - Long: **more … than / the most …**
 - Irregular: good → better → the best · bad → worse → the worst
 - Equal: **as … as** · Different: **not as … as**
+# leitura: Which is the best city in the world? | img:cidade
+tipo: Opinion
+Every year, someone publishes a list of **the best** cities to live in. But is a big city always **better than** a small one?
+Big cities are **more exciting**, but they are also **more expensive** and **noisier**. Small towns are **quieter** and often **friendlier**.
+In my opinion, **the best** city is the one where you feel at home. What’s **the most important** thing for you?
 # conversa: Let’s compare | img:montanha
 Compare your city with another city you know.
 What’s the best restaurant in your city?
@@ -950,6 +990,11 @@ ditado: There are three bedrooms and two bathrooms.
 - Negative: **There isn’t / There aren’t any**
 - Question: **Is there…? Are there any…?**
 - Não use **have** para “tem” (existe)
+# leitura: Houses made of bottles | img:casa
+tipo: Curiosity
+In some countries, **there are** houses made of plastic bottles! The bottles are filled with sand and used like bricks.
+In one of these houses, **there is** a living room, **there are** two bedrooms and **there is** even a small garden on the roof.
+**Is there** a problem with this idea? Not really: the houses are strong, cheap and good for the planet.
 # conversa: Your dream house | img:casa
 Describe your dream house. Where is it? What is there?
 What is there in your neighbourhood?
@@ -1023,6 +1068,11 @@ ditado: I can play the guitar.
 - **can / can’t + verb** (no to, no -s)
 - Ability: I can swim · Request: Can you help me? · Permission: You can sit here
 - Question: **Can you…?** · Short answer: Yes, I can / No, I can’t
+# leitura: Animals with superpowers | img:passaro
+tipo: Curiosity
+Some animals **can** do incredible things. An octopus **can** change colour in less than a second.
+Some parrots **can** repeat hundreds of words, and a cheetah **can** run faster than a car in the city.
+Penguins **can’t** fly, but they **can** swim very fast. And humans? We **can’t** fly either… but we **can** build planes!
 # conversa: Your talents | img:violao
 What can you do very well?
 What can’t you do, but would like to learn?
@@ -1092,6 +1142,11 @@ lacunas: While I [was] cooking, the cat [jumped] on the table. || were, jumping
 - **was / were + verb-ing**: an action in progress in the past
 - Long action (past continuous) + short action (past simple)
 - **when** + short action · **while** + long action
+# leitura: The night the lights went out | img:noite
+tipo: Story
+It **was raining** hard that night. I **was reading** in bed and my brother **was playing** video games.
+Suddenly, all the lights went out. While we **were looking** for a torch, we heard a noise in the kitchen.
+Someone **was opening** the fridge… It was our dog! He **was eating** the birthday cake in the dark.
 # conversa: Your alibi | img:lupa
 What were you doing yesterday at 9 pm?
 What were you doing when you heard some big news?
@@ -1169,6 +1224,11 @@ ditado: We don’t have any cheese.
 - Countable: a/an, many · Uncountable: some, much
 - **some** (+) · **any** (– and ?)
 - **How many** + countable · **How much** + uncountable
+# leitura: Breakfast around the world | img:pao
+tipo: Curiosity
+In Brazil, people often have **some** bread, cheese and coffee. In Japan, many people eat **some** rice, fish and miso soup.
+In the UK, a traditional breakfast has eggs, sausages and **some** beans. It doesn’t have **much** fruit!
+How **many** different breakfasts do you know? And how **much** coffee do you drink in the morning?
 # conversa: Food talk | img:panela
 What do you usually buy at the supermarket?
 How much water do you drink a day?
@@ -1243,6 +1303,11 @@ ditado: You have to pay an extra fee.
 - **have to**: obligation · **don’t have to**: not necessary
 - **should / shouldn’t**: advice
 - No **to** after must and should
+# leitura: Seven seconds of travel advice | img:aviao
+tipo: Blog
+You **don’t have to** spend a lot of money to travel well. But there are some things you **should** remember.
+You **must** check if you need a visa. You **should** always have a copy of your passport.
+And you **shouldn’t** try to see everything in two days. Slow down: the best moments happen when you **don’t have to** run.
 # conversa: Your rules | img:mala
 What do you have to do before a trip?
 What should a tourist do in your city?
@@ -1314,6 +1379,11 @@ Ana (bravo): You’re late again, Leo!
 - Possible future situations and their results
 - No **will** after if, when, unless, as soon as
 - **unless** = if… not
+# leitura: Lucky or not? | img:nuvem
+tipo: Opinion
+Many people say they aren’t superstitious… but **if** they **see** a black cat, they**’ll** feel a little nervous.
+Some football fans believe that **if** they **change** their shirt, their team **will** lose.
+I think superstitions are harmless. **If** a ritual **makes** you calm, you**’ll** probably do better. What **will** you do **if** you break a mirror today?
 # conversa: Let’s talk | img:nuvem
 What will you do if it rains this weekend?
 If you get a raise, what will you buy?
@@ -1367,6 +1437,11 @@ escolha: A: Whose is this bag? B: It’s [*mine/my/me].
 escolha: That isn’t our car. [*Ours/Our] is blue.
 grupos: Possessive adjectives: my, your, their / Possessive pronouns: mine, yours, theirs
 lacunas: Leo is [Ana’s] brother. [His] wife is called Bia, and [their] baby is Sam. || Ana, her, them
+# leitura: Whose idea was it? | img:presente
+tipo: Story
+It was **my** mum’s birthday, and **my** brother and I wanted to surprise her.
+**His** idea was a big party. **My** idea was a quiet dinner. In the end, we used **our** dad’s plan: a picnic in the park!
+Mum loved it. “This was the best present,” she said. “And whose idea was it?” We both said: “**Mine**!”
 # conversa: Your family | img:casa
 Tell me about your family. What are their names?
 Who is your favourite relative? Why?
@@ -1413,6 +1488,11 @@ A: Perfect. See you on Thursday at nine thirty.
 The appointment is on Tuesday. (f)
 It’s at half past nine. (v)
 ditado: Can you come on Thursday?
+# leitura: A year of festivals | img:bandeirinhas
+tipo: Curiosity
+Carnival in Brazil is **in** February or March, and the parties start **on** a Friday.
+Halloween is **on** 31st October, and Chinese New Year is usually **in** January or February.
+In France, Bastille Day is **on** 14th July, and many cities have fireworks **at** night. Which festival is your favourite?
 # conversa: Your calendar | img:relogio
 What do you usually do on Sunday mornings?
 What did you do at New Year?
@@ -1459,6 +1539,11 @@ Bia: I used to ride my bike to school every day.
 Tom (surpreso): Really? Now you drive everywhere!
 ---
 Bia (triste): I know… I used to be fitter!
+# leitura: Before smartphones | img:celular
+tipo: Opinion
+Before smartphones, people **used to** remember phone numbers. We **used to** use paper maps and ask strangers for directions.
+Friends **would** call your house and talk to your parents first!
+Life **used to** be slower. Was it better? I don’t know, but I miss the time when we **didn’t use to** check our phones every five minutes.
 # conversa: Childhood memories | img:bicicleta
 What did you use to do after school?
 What food did you use to hate?
@@ -1504,6 +1589,11 @@ grupos: Describe a person’s feelings: bored, excited, tired / Describe a thing
 # imagem: How do they feel? | img:surpreso
 Look at the face. How does he feel? What happened?
 Use: surprised, shocked, excited, frightened…
+# leitura: Why do we like being frightened? | img:noite
+tipo: Article
+Horror films are **frightening**, but millions of people love them. Why?
+Scientists say that when we are **scared** in a safe place, our body feels **excited**, not in danger. After the film, we feel **relaxed** and even happy.
+So if you think horror films are **boring**, maybe you just haven’t found the right one!
 # conversa: Movie talk | img:noite
 What kind of films do you find boring?
 What’s the most exciting thing you did this year?
@@ -1548,6 +1638,11 @@ x: The house was build in 2000.
 ok: The house was built in 2000. (particípio!)
 x: English is speak here.
 ok: English is spoken here.
+# leitura: Who invented the pizza? | img:pizza
+tipo: History
+Flat bread with toppings **was eaten** in many ancient cultures. But the modern pizza **was born** in Naples, Italy.
+It **is said** that in 1889 a pizza **was made** for Queen Margherita, with tomato, mozzarella and basil: the colours of the Italian flag.
+Today, billions of pizzas **are eaten** every year, and new flavours **are invented** all the time.
 # conversa: Let’s talk | img:lampada
 What is your country famous for? What is produced there?
 What do you think will be invented in the next 20 years?
@@ -1597,6 +1692,11 @@ ok: My mother, who is a teacher, loves books.
 # exercicio: Practice 3 · Find the mistake
 erro: That’s the restaurant {which|where} we had dinner.
 erro: My sister, {that|who} lives in Recife, is coming tomorrow.
+# leitura: Places where time stops | img:montanha
+tipo: Travel
+There are places **where** time seems to stop. One of them is a small village **which** has no cars and no internet.
+The people **who** live there grow their own food and go to bed early.
+Visitors **who** stay for a week say they sleep better and talk more. Would you like to visit a place **where** your phone doesn’t work?
 # conversa: Describe it! | img:lupa
 Describe a person who changed your life.
 Describe a place where you feel happy.
@@ -1606,4 +1706,223 @@ Who, which or where?
 Defining relative clauses: that and omission
 Relative clauses
 Non-defining relative clauses`],
+);
+SLIDES_SEED.push(
+['EN','A2','Travel English: from the airport to the hotel',`# capa: Travel English | img:aviao
+From check-in to your hotel room
+# aquecimento: Ready to travel?
+filme: The Terminal (2004) | Viktor não entende o inglês do aeroporto. Que frases ele precisaria saber?
+musica: Leaving on a Jet Plane — John Denver | Uma viagem de avião no título. Qual foi sua última viagem?
+jogo: Pack your bag | “I’m going to London and I’m taking a passport.” O próximo repete e acrescenta um item.
+pergunta: What’s the most stressful part of a trip for you?
+nota: Objetivo: o aluno sobreviver sozinho do check-in ao hotel. Faça role-play em cada etapa.
+# vocab: At the airport
+a passport | passaporte | img:livro
+a boarding pass | cartão de embarque | img:ingresso
+a suitcase | mala | img:mala
+hand luggage | bagagem de mão | img:mochila
+the gate | o portão | img:aviao
+# frase: Check-in
+I’d like to check in, please.
+Can I have a window seat?
+Is this bag OK as hand luggage?
+What time does boarding start?
+# dialogo: Listen: check-in
+A: Good morning. Where are you flying to today?
+B: To Lisbon. Here’s my passport.
+A: Thank you. Are you checking in any bags?
+B: Yes, just this suitcase.
+A: Window or aisle?
+B: Window, please.
+A: Here’s your boarding pass. Boarding starts at 10:40 at gate 12.
+# exercicio: Practice 1 · At the airport
+Boarding starts at gate 12. (v)
+The passenger wants an aisle seat. (f)
+escolha: Can I [*have/do/make] a window seat, please?
+ordem: What time does boarding start
+# explica: Polite requests
+Em viagens, use pedidos educados:
+> **Could you** help me with my bag, please?
+> **Can I** have some water, please?
+> **I’d like** a room for two nights.
+**Could** é mais educado que **can**. **I’d like** é mais educado que **I want**.
+# dica: Cuidado!
+x: I want a room.
+ok: I’d like a room, please.
+x: Give me the key.
+ok: Could I have the key, please?
+x: I lost my luggages.
+ok: I lost my luggage. (luggage não tem plural)
+# frase: At the hotel
+I have a reservation under the name Silva.
+What time is breakfast?
+Could I have a late check-out?
+The air conditioning isn’t working.
+# tirinha: A small problem
+[mala]
+Ana: Hi, I have a reservation. My name is Ana Silva.
+Leo: Welcome! Room 305. Here’s your key.
+---
+Ana (preocupado): Excuse me, the shower isn’t working.
+Leo: I’m so sorry! I’ll send someone right away.
+---
+Ana (feliz): Thank you! That was quick.
+# exercicio: Practice 2 · What do you say?
+1. You want breakfast information. You say…
+a) Give me breakfast.
+*b) What time is breakfast?
+c) I want eat.
+1. Your room is too noisy. You say…
+*a) Could I change rooms, please?
+b) This room is bad, change.
+c) I don’t like.
+grupos: Airport: boarding pass, gate, check in / Hotel: reservation, room key, check-out
+# leitura: Lost in Lisbon | img:cidade
+tipo: Travel story
+Last summer, my bag didn’t arrive in Lisbon. I went to the lost luggage desk and said: “Excuse me, **could you** help me? My suitcase didn’t arrive.”
+The woman was very kind. She asked me to describe it and gave me a form. “We’ll send it to your hotel,” she said.
+The next morning, the receptionist called me: “Your bag is here!” Lesson learned: always pack a T-shirt in your hand luggage.
+# exercicio: Practice 3 · Complete the conversation
+lacunas: A: Good evening. Do you have a [reservation]? B: Yes, under the name Costa. A: Here’s your [key]. [Breakfast] is from 7 to 10. || gate, suitcase
+reescreva: I want a taxi to the airport. | COULD | ___ a taxi to the airport, please? | could you call me/could I have/could you get me
+ditado: I have a reservation under the name Silva.
+# conversa: Role-play | img:mala
+You are at check-in. The teacher is the airline agent.
+You arrive at the hotel and your room has a problem.
+Your bag didn’t arrive. Explain the problem.
+nota: Troque de papéis: o aluno também faz o atendente.
+# tarefas: Atividades recomendadas
+Travel and airports
+At the hotel
+Phrasal verbs: travel
+Word games: around town`],
+['EN','B1','Job interviews in English',`# capa: Job interviews | img:conversa
+Talking about yourself, your experience and your strengths
+# aquecimento: The interview
+filme: The Pursuit of Happyness (2006) | Na cena da entrevista, Chris chega sem terno e precisa convencer os entrevistadores. Como ele faz isso?
+jogo: Sell this pen | Venda um objeto da sala em 30 segundos. Depois: venda você mesmo!
+pergunta: What’s the most difficult interview question you know?
+# explica: The big three questions
+**1. Tell me about yourself.** Fale do presente, do passado e do futuro, em 1 minuto.
+> I’m a marketing assistant. I’ve worked in retail for three years, and now I’m looking for a new challenge.
+**2. What are your strengths?** Dê um exemplo real.
+**3. Why do you want this job?** Mostre que você conhece a empresa.
+# tabela: Useful structures
+To talk about… | Structure | Example
+experience | I’ve worked as… for… | I’ve worked as a designer for five years.
+past jobs | I was responsible for… | I was responsible for the social media.
+strengths | I’m good at + -ing | I’m good at solving problems.
+goals | I’d like to… | I’d like to grow in an international company.
+# exercicio: Practice 1 · The structures
+escolha: I [*’ve worked/work/am working] as a teacher since 2019.
+escolha: I’m good at [*working/work/to work] in teams.
+escolha: In my last job, I [*was/am/have been] responsible for sales.
+erro: I have {experience in work|experience working} with clients.
+# vocab: Strengths
+reliable | confiável | img:chave
+organised | organizado | img:relogio
+creative | criativo | img:lampada
+a team player | bom em equipe | img:bola
+# dica: Cuidado!
+x: I have 5 years of experience in work with clients.
+ok: I have 5 years’ experience working with clients.
+x: My defect is perfectionism.
+ok: My weakness is that I’m sometimes too detail-oriented.
+# tirinha: The weakness question
+[conversa]
+Sam: What’s your biggest weakness?
+Mia (pensando): Hmm… I work too hard?
+---
+Sam: Everyone says that!
+Mia (feliz): OK. I’m learning to say no to extra tasks.
+---
+Sam (feliz): Good answer. That’s honest.
+# dialogo: Listen: an interview
+A: So, tell me about yourself.
+B: I’m a sales assistant. I’ve worked in a big store for three years.
+A: What are your strengths?
+B: I’m good at talking to customers, and I’m very organised.
+A: Why do you want to work here?
+B: I’d like to work for an international company and use my English.
+# exercicio: Practice 2 · Listening
+The candidate has worked in a store for three years. (v)
+The candidate wants to stop using English. (f)
+ditado: I’m good at talking to customers.
+# leitura: Five things recruiters notice | img:conversa
+tipo: Article
+Recruiters say that the first minute of an interview **is** very important. They notice if you **are** on time, if you **smile** and if you **listen**.
+Good candidates **give** real examples. Instead of “I’m a team player”, they say: “**I’ve worked** with a team of ten people on a big project.”
+And at the end, they **ask** questions. “What does a normal day look like in this job?” is a great one.
+# exercicio: Practice 3 · Good answers
+grupos: Good answer: I’ve led a team of five people, I’m learning to delegate more, I’d like to grow here / Bad answer: I don’t have weaknesses, I just need money, I don’t know your company
+reescreva: I started working here three years ago. | FOR | I ___ three years. | have worked here for/’ve worked here for/have been working here for
+# conversa: Interview practice | img:conversa
+Tell me about yourself.
+What are your strengths? Give an example.
+Tell me about a problem you solved at work.
+Where do you see yourself in five years?
+Do you have any questions for us?
+nota: Simule a entrevista sem interromper. Depois comente 3 pontos fortes e 2 frases para melhorar.
+# tarefas: Atividades recomendadas
+Job interviews
+A job interview
+Introducing yourself at work
+Homework · Work and careers`],
+['EN','B1','Second conditional: what would you do?',`# capa: Second conditional | img:balao
+Imaginary situations: if I were…, I would…
+# aquecimento: Imagine…
+musica: If I Were a Boy — Beyoncé | O título é uma situação imaginária. Por que “were” e não “was”?
+filme: Big (1988) | Um menino acorda no corpo de um adulto. What would you do if you woke up as an adult — or as a child?
+jogo: Would you rather? | “Would you rather live without music or without TV?” Responda com “I’d… because…”
+pergunta: What would you do if you won the lottery?
+# linha: Real or imaginary?
+ponto: 0.82 | If it rains, I’ll stay home. (real)
+agora: 0.6
+**First conditional**: situação possível, real.
+**Second conditional**: situação imaginária ou improvável, no presente ou futuro.
+> If I **had** a million dollars, I **would** travel the world.
+> If I **were** you, I**’d** talk to her.
+# tabela: The structure
+If + past simple | would + verb
+If I had more time, | I would learn Japanese.
+If she lived near the sea, | she would surf every day.
+If I were you, | I wouldn’t buy that car.
+**were** para todas as pessoas: If I/he/she **were**…
+# exercicio: Practice 1 · The form
+escolha: If I [*had/have/would have] a car, I would drive to work.
+escolha: If she [*were/is/be] taller, she would play basketball.
+escolha: What [*would you do/will you do/did you do] if you lost your phone?
+lacunas: If I [won] the lottery, I [would] buy a house by the sea. || win, will
+# dica: Cuidado!
+x: If I would have money, I would travel.
+ok: If I had money, I would travel.
+x: If I was you…
+ok: If I were you… (mais correto)
+# exercicio: Practice 2 · Find the mistake
+erro: If I {would know|knew} the answer, I would tell you.
+erro: She {will|would} be happier if she changed jobs.
+reescreva: I don’t have time, so I can’t go to the gym. | IF | I would go to the gym ___ time. | if I had
+# tirinha: Superpowers
+[balao]
+Tom: If you could fly, where would you go?
+Bia (feliz): I’d fly to Paris for breakfast!
+---
+Tom: And if you were invisible?
+Bia (pensando): I’d go to the cinema for free…
+---
+Tom (surpreso): Bia!
+# leitura: If I lived somewhere else | img:montanha
+tipo: Opinion
+If I **lived** in the mountains, I **would** wake up with the birds and walk every day. But I **would** probably miss the city at night.
+If I **moved** to a big capital, I **would have** more job options, but rent **would be** much more expensive.
+Maybe the perfect place doesn’t exist. If it **did**, everybody **would** live there!
+# conversa: Imagine… | img:balao
+If you could live anywhere, where would you live?
+What would you change in your city if you were the mayor?
+If you could have dinner with a famous person, who would it be?
+What would you do if you had a free year?
+# tarefas: Atividades recomendadas
+Second conditional
+First and second conditional
+Conditionals · review`],
 );

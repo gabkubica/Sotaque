@@ -13,7 +13,7 @@
    Linhas que começam com "nota:" aparecem só para a professora.
    Aula ao vivo: a professora apresenta e o aluno acompanha no aparelho dele (o áudio toca lá, sem compartilhar a tela).
    ========================================================= */
-const SL_TYPES={aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
+const SL_TYPES={leitura:'Leitura',aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
 function slidesParse(src){
   const out=[]; let cur=null;
   for (const raw of String(src||'').split('\n')){ const l=raw.replace(/\s+$/,''), m=l.match(/^#\s*([a-zç]+)\s*:?\s*(.*)$/i);
@@ -64,6 +64,8 @@ function slideHtml(s,o={}){
   if (s.t==='tarefas'){ const bs=s.body.map(x=>({x,b:DB.bank.find(z=>z.lang===L&&z.title===x)})), live=isT()&&!o.print&&!o.thumb, sid=live? slStudent() : '';
     b=`<p class="sl-eye">Homework</p>${T}${live? `<div class="sl-hwbar"><span>${sid? `Para <b>${esc(user(sid)?.name||'')}</b>: escolha 2 ou 3.` : 'Escolha o aluno da aula no alto da tela.'}</span><label>Prazo <select data-sldue="1"><option value="0" ${S.slDue? '' : 'selected'}>sem prazo</option><option value="7" ${S.slDue? 'selected' : ''}>7 dias</option></select></label></div>` : ''}<div class="sl-hw">${bs.map(({x,b:bk},k)=>{ const sent=sid&&bk&&DB.tasks.some(t=>t.studentId===sid&&t.bankId===bk.id&&t.createdAt>now()-12*3600000);
       return `<div class="sl-hwc"><span class="sl-hwn">${k+1}</span><div><b>${esc(x)}</b><small>${bk? `${bk.level} · ${esc(bk.topic)} · ${bk.questions.length} questões` : 'atividade'}</small></div>${bk&&live? `<a class="btn small ghost" href="#praticar-${bk.id}" target="_blank" rel="noopener" title="Ver como o aluno vê">Ver</a><button class="btn small ${sent?'':'primary'}" data-act="sl-send" data-id="${bk.id}" ${sent||!sid?'disabled':''}>${sent? 'Enviada ✓' : 'Mandar'}</button>` : ''}</div>`; }).join('')}</div>`; }
+  if (s.t==='leitura'){ const kind=(s.body.find(x=>/^tipo:/i.test(x))||'').replace(/^tipo:\s*/i,''), ps=s.body.filter(x=>!/^tipo:/i.test(x));
+    b=`<div class="sl-read"><div class="sl-read-art">${s.img? slImg(s.img,480,640) : ''}<span class="sl-read-kind">${esc(kind||'Reading')}</span></div><div class="sl-read-t"><h2 class="sl-t">${esc(s.title)}</h2>${ps.map((x,k)=>`<p class="${k?'':'first'}">${md(x)}</p>`).join('')}</div></div>`; }
   if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
     if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
     else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);
@@ -211,7 +213,7 @@ const SLIDE_ACT={
   'sl-go'(el){ S.sl.i=+el.dataset.k; S.sl.rev=false; ttsStop(); render(); liveSlide(); },
   'sl-rev'(){ S.sl.rev=!S.sl.rev; render(); liveSlide(); },
   'sl-live'(){ S.sl.live=!S.sl.live; if (S.sl.live){ LIVE.ans={}; liveEnsure(); liveSlide(); toast('Aula ao vivo ligada'); } else LIVE.send?.({k:'end'}); render(); },
-  'sl-full'(){ if (document.fullscreenElement||document.body.classList.contains('sl-fs')){ document.exitFullscreen?.().catch(()=>{}); document.body.classList.remove('sl-fs'); } else { document.body.classList.add('sl-fs'); document.documentElement.requestFullscreen?.().catch(()=>{}); } },
+  'sl-full'(){ if (document.fullscreenElement||document.body.classList.contains('sl-fs')){ document.exitFullscreen?.().catch(()=>{}); document.body.classList.remove('sl-fs'); } else { document.body.classList.add('sl-fs'); const R=document.documentElement; try { const f=R.requestFullscreen||R.webkitRequestFullscreen; const p=f&&f.call(R); p?.catch?.(()=>{}); } catch {} } },
   'sl-ans'(el){ const p=LIVE.last, me=ME(); if (!p) return; LIVE.mine[p.title+'|'+p.i]=+el.dataset.k; LIVE.send?.({k:'ans',sid:me.id,name:me.name.split(' ')[0],i:p.i,v:+el.dataset.k}); render(); },
   'slx-check'(){ if (S.slxT){ S.slxT.done=true; render(); } },
   'slx-reset'(){ if (S.slxT){ S.slxT.answers={}; S.slxT.done=false; render(); } },
