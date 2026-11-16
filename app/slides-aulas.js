@@ -2718,3 +2718,198 @@ Is there anything at your work or school that isn’t good enough?
 Too and enough
 So and such`],
 );
+/* ---------- homeworks novas (entram no banco) ---------- */
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Present perfect continuous: how long?',i:'Pratique o present perfect continuous: escolha, corrija e reescreva.',q:[
+    PICK('I’m tired because I [*’ve been working/’ve worked/work] all day.'),
+    PICK('How long [*have you been waiting/are you waiting/did you wait] for the bus?'),
+    PICK('She [*has been learning/is learning/learns] Spanish since January.'),
+    FIX('They {have been knowing|have known} each other for years.'),
+    FIX('It {is raining|has been raining} since this morning.'),
+    SORT('Continuous (activity): have been running, have been painting, have been studying\nSimple (result or state): have painted three rooms, have known her, have finished'),
+    KWT('I started reading this book two hours ago and I’m still reading.','BEEN','I ___ this book for two hours.','have been reading/’ve been reading')]},
+  {l:'EN',lv:'A2',tp:'Expressões',t:'Small talk: keep the conversation going',i:'Frases e respostas para conversas rápidas do dia a dia.',q:[
+    ['How’s it going?',['Pretty good, thanks. And you?','I’m 25.','Yes, I do.'],0],
+    ['Lovely weather today, isn’t it?',['Yes, it’s beautiful!','No, I’m not.','I like pizza.'],0],
+    ODD('Which one is NOT a good small talk topic?',['the weather','the weekend','your salary','food'],2,[],'Salary is too personal for small talk.'),
+    SEQ('A: Hi! How was your weekend?\nB: Great, thanks! I went to the beach.\nA: Oh, nice! Which beach?\nB: Praia do Forte. Have you been there?','Put the conversation in order.'),
+    CLOZE('A: What do you [do]? B: I’m a nurse. A: Oh, [really]? Do you [enjoy] it?','make, real'),
+    FIX('Nice to {know|meet} you!'),
+    DIT('It was nice talking to you.')]},
+  {l:'EN',lv:'A2',tp:'Vocabulário',t:'At the doctor: symptoms and advice',i:'Sintomas, conselhos e frases para a consulta médica.',q:[
+    SORT('Symptoms: a headache, a sore throat, a fever, a cough\nAdvice: take this medicine, drink water, stay in bed, see a doctor'),
+    PICK('I’ve got a [*sore/sour/sick] throat.'),
+    PICK('You [*should/must to/shoulds] stay in bed for two days.'),
+    ['The doctor says: “What’s the matter?” You answer:',['I’ve got a terrible headache.','I’m a doctor.','It’s the matter.'],0],
+    FIX('I’ve had {pain of head|a headache} since yesterday.'),
+    CLOZE('Take one [tablet] three times a [day], after meals.','week, pill box'),
+    DIT('I’ve had a fever since Monday.')]},
+);
+SLIDES_SEED.push(
+['EN','B1','Present perfect continuous: how long?',`# capa: Present perfect continuous | img:relogio
+How long have you been doing it?
+# sobre: Sobre esta aula
+ver: a forma **have/has been + -ing**; how long, for e since; continuous × simple (atividade × resultado); verbos que não usam -ing
+porque: É a forma natural de dizer **há quanto tempo** uma atividade vem acontecendo até agora (“estou estudando inglês há 2 anos”), algo que brasileiros costumam dizer errado com o present simple.
+meta: dizer há quanto tempo faz algo; explicar resultados visíveis (I’m tired because…); escolher entre continuous e simple
+nivel: Nível B1
+# aquecimento: How long?
+musica: I’ve Been Waiting for You — ABBA | O título é a estrutura da aula! Há quanto tempo você espera por algo?
+filme: Cast Away (2000) | Chuck ficou anos na ilha. “How long has he been living there?” | busca: Cast Away Wilson scene
+jogo: Guess how long | Diga algo que você faz (“I play the guitar”). O outro pergunta “How long have you been playing?” e tenta adivinhar.
+pergunta: How long have you been studying English?
+# linha: An activity until now
+faixa: 0.3-0.75 | I’ve been studying for 2 hours
+agora: 0.75
+Uma atividade que **começou no passado e continua até agora** (ou acabou de parar e o resultado aparece).
+> I’ve been studying English since 2022.
+> You’re wet! Have you been running?
+# tabela: The form
+Type | Structure | Example
++ | have/has been + -ing | She **has been working** here for a year.
+– | haven’t/hasn’t been + -ing | I **haven’t been sleeping** well.
+? | Have/Has … been + -ing? | **How long have you been waiting**?
+# exercicio: Practice 1 · The form
+escolha: I [*’ve been waiting/’m waiting/wait] for you for 30 minutes!
+escolha: How long [*has she been living/is she living/does she live] in London?
+lacunas: We [have] [been] [learning] French since March. || are, learn
+# explica: Continuous or simple?
+**Continuous** → a **atividade**, quanto tempo (how long)
+> I’ve been painting the house all day. (ainda não acabei)
+**Simple** → o **resultado**, quantas vezes (how many)
+> I’ve painted three rooms. (resultado)
+Verbos de estado (know, like, want, have = possuir) **não** usam -ing: I’ve known her for years.
+# dica: Cuidado!
+x: I study English for two years.
+ok: I’ve been studying English for two years.
+x: I’ve been knowing him since 2010.
+ok: I’ve known him since 2010.
+# exercicio: Practice 2 · Continuous or simple?
+escolha: She’s tired. She [*’s been running/’s run] for an hour.
+escolha: I [*’ve read/’ve been reading] three books this month.
+erro: How long {do you work|have you been working} here?
+reescreva: I started waiting at 2 pm. It’s 4 pm now. | BEEN | I ___ for two hours. | have been waiting/’ve been waiting
+# leitura: The longest… | img:relogio
+tipo: Curiosity
+Some people **have been doing** the same thing for an incredibly long time. In Japan, a hotel **has been welcoming** guests for more than a thousand years, run by the same family.
+Some musicians **have been playing** in the same band for over 50 years, and some couples **have been dancing** together every Saturday since they met.
+And you? What **have** you **been doing** for a long time?
+# conversa: How long? | img:relogio
+How long have you been living in your city?
+What have you been doing lately?
+What hobby have you been doing for the longest time?
+# tarefas: Atividades recomendadas
+Present perfect continuous: how long?
+Present perfect continuous
+Present perfect · for and since`],
+['EN','A2','Small talk: everyday conversations',`# capa: Small talk | img:conversa
+Starting, keeping and ending a conversation
+# sobre: Sobre esta aula
+ver: como **começar** uma conversa; perguntas para **manter** o papo; respostas naturais; como **terminar** com educação
+porque: Em viagens, no trabalho e em festas, a primeira conversa é quase sempre **small talk**. Saber puxar e manter um papo leve dá confiança e cria conexão.
+meta: começar uma conversa com um desconhecido; manter o papo com perguntas; encerrar com educação
+nivel: Nível A2
+# aquecimento: Breaking the ice
+filme: Notting Hill (1999) | O primeiro encontro na livraria: uma conversa curta e meio sem jeito. Como eles começam? | busca: Notting Hill bookshop scene
+jogo: 60-second chat | Conversem 1 minuto sobre um tema sorteado (weather, weekend, food) sem silêncio!
+pergunta: What do people usually talk about with strangers in Brazil?
+# tabela: Start, keep, end
+Start | Keep going | End
+Hi! How’s it going? | Oh really? Why? | It was nice talking to you!
+Lovely day, isn’t it? | What about you? | I’d better get going.
+Is this seat free? | That sounds great! | See you around!
+# frase: Natural answers
+Not bad, thanks. And you?
+Pretty busy, actually!
+Oh, nice! How was it?
+Same here!
+# dica: Cuidado!
+Evite respostas curtas demais: devolva a pergunta!
+x: A: How was your weekend? B: Good.
+ok: B: Good, thanks! I went to the beach. How about yours?
+Temas pessoais demais (salário, idade, religião) não são small talk.
+# exercicio: Practice 1 · Good answers
+1. “How’s it going?”
+*a) Not bad, thanks. And you?
+b) I’m going to the bank.
+c) It’s 3 o’clock.
+grupos: Good topics: the weather, the weekend, food, travel / Too personal: salary, age, religion, weight
+# dialogo: Listen: at a party
+A: Hi! I don’t think we’ve met. I’m Paula.
+B: Hi, Paula! I’m Mark. How do you know Julia?
+A: We work together. And you?
+B: We went to university together.
+A: Oh, nice! So, what do you do?
+B: I’m a designer. It’s fun, but busy!
+# exercicio: Practice 2 · Listening
+Paula and Julia work together. (v)
+Mark is a teacher. (f)
+ditado: How do you know Julia?
+# leitura: The art of small talk | img:conversa
+tipo: Article
+Many people **think** small talk is boring, but researchers say it **makes** us happier. Short conversations with strangers **help** us feel connected.
+The secret is simple: ask questions and **show** interest. “Oh, really? How was that?” keeps any conversation alive.
+And when you **want** to leave? Smile and say: “It was really nice talking to you!”
+# conversa: Role-play | img:conversa
+You meet someone at a party. Start a conversation.
+You are waiting for a bus. Talk about the weather.
+End the conversation politely.
+# tarefas: Atividades recomendadas
+Small talk: keep the conversation going
+Small talk
+Question tags`],
+['EN','A2','At the doctor: symptoms and advice',`# capa: At the doctor | img:lupa
+Describing symptoms and understanding advice
+# sobre: Sobre esta aula
+ver: partes do corpo e **sintomas** (I’ve got a headache); a consulta; conselhos com **should**; remédios e instruções
+porque: Ficar doente em outro país é uma das situações mais estressantes de uma viagem. Saber **explicar o que sente** e entender o médico é essencial.
+meta: descrever sintomas; entender e pedir conselhos; entender instruções do remédio
+nivel: Nível A2
+# aquecimento: How do you feel?
+filme: Patch Adams (1998) | O médico que usa humor com os pacientes. Como deveria ser um bom médico? | busca: Patch Adams hospital scene
+jogo: Doctor, doctor! | Um faz mímica de um sintoma; o outro diagnostica: “You’ve got a headache!”
+pergunta: What do you do when you have a cold?
+# vocab: Feeling sick
+a headache | dor de cabeça | img:triste
+a fever | febre | img:sol
+a cold | resfriado | img:neve
+tired | cansado | img:cansado
+medicine | remédio | img:agua
+# tabela: Symptoms
+I’ve got… | I feel… | My … hurts.
+a headache | sick | My back hurts.
+a sore throat | dizzy | My leg hurts.
+a fever / a cough | tired | My stomach hurts.
+# exercicio: Practice 1 · Symptoms
+escolha: I’ve got a [*sore/sour/sick] throat.
+escolha: My stomach [*hurts/hurt/is hurt].
+grupos: I’ve got…: a headache, a cold, a fever / I feel…: sick, dizzy, tired
+# dialogo: Listen: the appointment
+A: Good morning. What’s the matter?
+B: I’ve had a sore throat and a fever since Monday.
+A: Let me see… It’s an infection. Take this medicine three times a day.
+B: Should I stay at home?
+A: Yes, you should rest for two days and drink lots of water.
+# exercicio: Practice 2 · Listening
+The patient has had a fever since Monday. (v)
+The doctor says the patient should go to work. (f)
+ditado: Take this medicine three times a day.
+# dica: Cuidado!
+x: I have pain of head.
+ok: I’ve got a headache.
+x: I’m with fever.
+ok: I’ve got a fever.
+# leitura: Healthy habits from around the world | img:legumes
+tipo: Curiosity
+In Japan, many people **eat** a lot of fish and vegetables. In Mediterranean countries, olive oil **is** part of almost every meal.
+Doctors around the world **agree** on a few simple things: you **should** sleep well, drink water and move your body every day.
+And when you **feel** sick? Rest, and **don’t** wait too long to see a doctor!
+# conversa: Role-play | img:lupa
+You are at the doctor. Explain your symptoms.
+Give advice to a friend with a cold.
+What do you do to stay healthy?
+# tarefas: Atividades recomendadas
+At the doctor: symptoms and advice
+At the doctor
+Should, must, have to`],
+);
