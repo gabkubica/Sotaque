@@ -13,7 +13,7 @@
    Linhas que começam com "nota:" aparecem só para a professora.
    Aula ao vivo: a professora apresenta e o aluno acompanha no aparelho dele (o áudio toca lá, sem compartilhar a tela).
    ========================================================= */
-const SL_TYPES={leitura:'Leitura',aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
+const SL_TYPES={sobre:'Sobre a aula',leitura:'Leitura',aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
 function slidesParse(src){
   const out=[]; let cur=null;
   for (const raw of String(src||'').split('\n')){ const l=raw.replace(/\s+$/,''), m=l.match(/^#\s*([a-zç]+)\s*:?\s*(.*)$/i);
@@ -47,11 +47,11 @@ function slideHtml(s,o={}){
     b=`${T}<table class="sl-tab"><thead><tr>${(rows[0]||[]).map(c=>`<th>${md(c)}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${md(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>${extra.map(x=>`<p class="sl-small">${md(x)}</p>`).join('')}`; }
   if (s.t==='dica') b=`${T}<div class="sl-dica">${s.body.map(x=>{ const m=x.match(/^(x|ok)\s*:\s*(.*)$/i); return m? `<p class="${m[1].toLowerCase()==='x'?'no':'ok'}"><span>${m[1].toLowerCase()==='x'?'✗':'✓'}</span>${md(m[2])}</p>` : `<p class="txt">${md(x)}</p>`; }).join('')}</div>`;
   if (s.t==='resumo') b=`${T}<ul class="sl-res">${s.body.map(x=>`<li>${md(x.replace(/^- /,''))}</li>`).join('')}</ul>`;
-  const yt=q=>`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+  const yt=q=>`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}&sp=EgIQAQ%253D%253D`;
   const exLines=list=>list.map(x=>x.startsWith('>')? `<p class="sl-eg">${slSay(x.slice(1).replace(/\*\*/g,'').trim(),L)}<span>${md(x.slice(1).trim())}</span></p>` : `<p>${md(x)}</p>`).join('');
   if (s.t==='aquecimento') b=`<p class="sl-eye">Warm-up</p>${T}<div class="sl-warm">${s.body.map(x=>{ const m=x.match(/^(musica|música|filme|jogo|pergunta|video|vídeo)\s*:\s*(.*)$/i); if (!m) return `<p class="sl-wtxt">${md(x)}</p>`;
-      const k=m[1].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''), [a1,a2]=m[2].split('|').map(z=>z.trim()), ic={musica:'♪',filme:'🎬',video:'▶',jogo:'★',pergunta:'?'}[k], lb={musica:'Música',filme:'Cena de filme',video:'Vídeo',jogo:'Jogo',pergunta:'Pergunta'}[k];
-      return `<div class="sl-wc ${k}"><span class="sl-wi">${ic}</span><div><small>${lb}</small><b>${md(a1||'')}</b>${a2? `<p>${md(a2)}</p>` : ''}${(k==='musica'||k==='filme'||k==='video')&&!o.print? `<a class="sl-yt" href="${yt(a1.replace(/\*\*/g,'')+(k==='filme'? ' scene' : ''))}" target="_blank" rel="noopener">Procurar no YouTube ↗</a>` : ''}</div></div>`; }).join('')}</div>`;
+      const k=m[1].toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''), [a1,a2,a3]=m[2].split('|').map(z=>z.trim()), ic={musica:'♪',filme:'🎬',video:'▶',jogo:'★',pergunta:'?'}[k], lb={musica:'Música',filme:'Cena de filme',video:'Vídeo',jogo:'Jogo',pergunta:'Pergunta'}[k];
+      return `<div class="sl-wc ${k}"><span class="sl-wi">${ic}</span><div><small>${lb}</small><b>${md(a1||'')}</b>${a2? `<p>${md(a2)}</p>` : ''}${(k==='musica'||k==='filme'||k==='video')&&!o.print? `<a class="sl-yt" href="${yt(a3? a3.replace(/^busca:\s*/i,'') : k==='musica'? a1.replace(/\*\*/g,'').replace(' — ',' ')+' official video' : a1.replace(/\*\*/g,'').replace(/[()]/g,'')+' movie clip')}" target="_blank" rel="noopener">Procurar no YouTube ↗</a>` : ''}</div></div>`; }).join('')}</div>`;
   if (s.t==='linha'){ let now=.75; const pts=[], rng=[], rest=[];
     for (const x of s.body){ let m; if ((m=x.match(/^agora\s*:\s*([\d.]+)/i))) now=+m[1]; else if ((m=x.match(/^ponto\s*:\s*([\d.]+)\s*\|\s*(.*)$/i))) pts.push([+m[1],m[2]]); else if ((m=x.match(/^faixa\s*:\s*([\d.]+)\s*-\s*([\d.]+)\s*\|\s*(.*)$/i))) rng.push([+m[1],+m[2],m[3]]); else rest.push(x); }
     const X=v=>40+v*920;
@@ -66,6 +66,10 @@ function slideHtml(s,o={}){
       return `<div class="sl-hwc"><span class="sl-hwn">${k+1}</span><div><b>${esc(x)}</b><small>${bk? `${bk.level} · ${esc(bk.topic)} · ${bk.questions.length} questões` : 'atividade'}</small></div>${bk&&live? `<a class="btn small ghost" href="#praticar-${bk.id}" target="_blank" rel="noopener" title="Ver como o aluno vê">Ver</a><button class="btn small ${sent?'':'primary'}" data-act="sl-send" data-id="${bk.id}" ${sent||!sid?'disabled':''}>${sent? 'Enviada ✓' : 'Mandar'}</button>` : ''}</div>`; }).join('')}</div>`; }
   if (s.t==='leitura'){ const kind=(s.body.find(x=>/^tipo:/i.test(x))||'').replace(/^tipo:\s*/i,''), ps=s.body.filter(x=>!/^tipo:/i.test(x));
     b=`<div class="sl-read"><div class="sl-read-art">${s.img? slImg(s.img,480,640) : ''}<span class="sl-read-kind">${esc(kind||'Reading')}</span></div><div class="sl-read-t"><h2 class="sl-t">${esc(s.title)}</h2>${ps.map((x,k)=>`<p class="${k?'':'first'}">${md(x)}</p>`).join('')}</div></div>`; }
+  if (s.t==='sobre'){ const get=k=>s.body.filter(x=>x.toLowerCase().startsWith(k+':')).map(x=>x.slice(k.length+1).trim()), list=k=>get(k).flatMap(x=>x.split(';').map(z=>z.trim()).filter(Boolean));
+    b=`<p class="sl-eye">Para a professora e o aluno</p>${T}<div class="sl-sbg"><div class="sl-sb"><span class="sl-sbi">1</span><b>O que vamos ver</b><ul>${list('ver').map(x=>`<li>${md(x)}</li>`).join('')}</ul></div>
+      <div class="sl-sb"><span class="sl-sbi">2</span><b>Por que isso é importante</b>${get('porque').map(x=>`<p>${md(x)}</p>`).join('')}</div>
+      <div class="sl-sb"><span class="sl-sbi">3</span><b>No fim da aula, o aluno consegue</b><ul class="ok">${list('meta').map(x=>`<li>${md(x)}</li>`).join('')}</ul></div></div>${get('nivel').length? `<p class="sl-sbn">${md(get('nivel')[0])}</p>` : ''}`; }
   if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
     if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
     else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);

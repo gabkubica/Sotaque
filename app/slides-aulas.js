@@ -4,10 +4,16 @@
 const SLIDES_SEED=[
 ['EN','B1','Present perfect',`# capa: Present perfect | img:aviao
 Experiences, recent news and unfinished time
+# sobre: Sobre esta aula
+ver: o que é o **present perfect** (have/has + particípio); os 3 usos: experiências, novidades recentes e tempo que continua até agora; ever, never, already, yet, just, for e since; a diferença para o **past simple**
+porque: É um dos tempos mais usados no inglês do dia a dia e um dos mais difíceis para brasileiros, porque **não existe igual em português**: “eu já fui” às vezes é present perfect e às vezes é past simple.
+porque: Ele aparece em entrevistas de emprego (“I’ve worked…”), em conversas sobre viagens e experiências e nas notícias. É uma marca clara do nível **B1**.
+meta: falar de experiências de vida (Have you ever…?); contar novidades (I’ve just…); dizer há quanto tempo algo acontece (for / since); escolher entre present perfect e past simple
+nivel: Nível B1 · Quadro Europeu (CEFR): “descrever experiências e acontecimentos”
 nota: Aquecimento: “What’s the most interesting place you’ve visited?” Anote as respostas, vamos voltar a elas.
 # aquecimento: Have you ever…?
 musica: I Still Haven’t Found What I’m Looking For — U2 | Ouçam o começo. O título já tem o tempo da aula: que verbo vem depois de “haven’t”?
-filme: Up (2009) | Vejam a abertura: Carl e Ellie sonham com uma grande viagem. Depois pergunte: “Have you ever dreamed of a big trip?”
+filme: Up (2009) | Vejam a abertura: Carl e Ellie sonham com uma grande viagem. Depois pergunte: “Have you ever dreamed of a big trip?” | busca: Up married life scene
 jogo: Never have I ever | Cada um diz “I’ve never…”. Quem já fez aquilo levanta a mão e conta quando foi.
 pergunta: What’s the most amazing thing you’ve ever done?
 # tirinha: Have you ever…?
@@ -138,6 +144,11 @@ nota: Corrija só o present perfect nesta conversa. Homework sugerida: “Presen
 ['EN','A2','Past simple',`# capa: Past simple | img:bicicleta
 Talking about finished actions in the past
 nota: Aquecimento: “What did you do last weekend?” Deixe o aluno tentar, sem corrigir ainda.
+# sobre: Sobre esta aula
+ver: a forma com **-ed** e os verbos irregulares; negativas e perguntas com **did**; was e were; a pronúncia do -ed
+porque: É o tempo das **histórias**: tudo o que já terminou (ontem, no fim de semana, em 2020). Sem ele, o aluno não consegue contar nada que aconteceu.
+meta: contar o que fez no fim de semana; fazer perguntas sobre o passado; usar os irregulares mais comuns
+nivel: Nível A2
 # aquecimento: Back in time
 musica: Yesterday — The Beatles | Só pelo título já estamos no passado. Que palavras de tempo no passado você conhece? (yesterday, last…, …ago)
 filme: Back to the Future (1985) | Marty volta para 1955. Pergunte: “What was different in 1955?”
@@ -250,6 +261,11 @@ nota: Homework sugerida: “Past simple: find and fix” no banco.`],
 ['EN','B1','Au Pair: the interview',`# capa: Au Pair: the interview | img:carrinho
 Talking about yourself, children and difficult situations
 nota: Esta aula prepara para a entrevista da agência. Grave a aluna no fim, se ela quiser.
+# sobre: Sobre esta aula
+ver: apresentação pessoal; experiência com crianças; **What would you do if…?**; erros comuns na entrevista
+porque: A entrevista da agência avalia se a candidata **se comunica com segurança** e é responsável. Frases prontas e bem treinadas fazem muita diferença.
+meta: falar de si por 1 minuto; descrever a experiência com crianças; responder a situações difíceis com would
+nivel: Nível B1
 # aquecimento: A new family
 filme: Mary Poppins (1964) | A babá chega numa família nova. Pergunte: “What qualities does a good nanny have?”
 musica: Home — Phillip Phillips | Fala de ir para longe e fazer de um lugar novo a sua casa. Como você se sentiria morando com outra família?
@@ -340,6 +356,11 @@ Au Pair · Interview simulation (speaking)`],
 ['FR','A2','Le passé composé',`# capa: Le passé composé | img:bicicleta
 Raconter ce qu’on a fait
 nota: Échauffement : « Qu’est-ce que tu as fait le week-end dernier ? »
+# sobre: Sobre esta aula
+ver: **avoir / être + participe passé**; particípios irregulares; a concordância com être
+porque: É o tempo para **contar o que aconteceu**: fim de semana, viagens e experiências. Escolher entre avoir e être é o grande desafio.
+meta: contar o que fez no passado; escolher entre avoir e être; fazer a concordância do particípio
+nivel: Nível A2
 # aquecimento: Souvenirs
 musica: Non, je ne regrette rien — Édith Piaf | Écoutez et notez les verbes au passé composé que vous reconnaissez.
 filme: Le Fabuleux Destin d’Amélie Poulain (2001) | Au début, le narrateur présente les personnages et ce qu’ils ont fait : attention aux verbes !
@@ -503,6 +524,11 @@ if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.forEach(a=>a.q.forEach((q,k)=>{ 
 SLIDES_SEED.push(
 ['EN','A1','Verb to be',`# capa: Verb to be | img:conversa
 I am, you are, she is: introducing yourself and others
+# sobre: Sobre esta aula
+ver: **am, is, are**; formas curtas (I’m, she’s); negativas e perguntas; idade, origem, profissão e sentimentos
+porque: É o verbo mais usado do inglês e substitui **ser e estar** ao mesmo tempo. Toda conversa começa com ele.
+meta: se apresentar e apresentar outras pessoas; dizer idade, origem e como está; fazer e responder perguntas simples
+nivel: Nível A1
 # aquecimento: Hello, who are you?
 musica: Happy — Pharrell Williams | Ouçam o refrão e contem: quantas vezes aparece “I’m”? “I’m” = I am.
 filme: Finding Nemo (2003) | Procurem a cena em que Marlin conhece a Dory: os dois se apresentam. Como eles dizem o nome?
@@ -595,6 +621,11 @@ Possessive adjectives
 Find the mistake: to be and have got`],
 ['EN','A1','Present simple',`# capa: Present simple | img:relogio
 Routines, habits and facts
+# sobre: Sobre esta aula
+ver: rotinas, hábitos e fatos; o **-s** da 3ª pessoa; do e does; advérbios de frequência
+porque: É a base para falar do **dia a dia**, do trabalho e dos gostos. O -s do he/she/it é um dos erros mais comuns de brasileiros.
+meta: descrever a própria rotina; perguntar sobre a rotina dos outros; dizer com que frequência faz as coisas
+nivel: Nível A1
 # aquecimento: Every day
 musica: Every Breath You Take — The Police | O título já está no present simple: “every” = toda vez. Que coisas você faz todo dia?
 filme: Groundhog Day (1993) | Phil vive o mesmo dia de novo e de novo. Descrevam a rotina dele: “He wakes up at 6…”
@@ -682,6 +713,11 @@ Adverbs of frequency
 Present simple · daily routine`],
 ['EN','A2','Present continuous',`# capa: Present continuous | img:cidade
 What’s happening now?
+# sobre: Sobre esta aula
+ver: **am/is/are + -ing**; o que está acontecendo agora; diferença para o present simple; verbos que não usam -ing
+porque: Serve para descrever **o que está acontecendo** (agora ou nestes dias) e para descrever imagens, algo muito usado em provas e no dia a dia.
+meta: descrever o que está acontecendo; descrever uma imagem; diferenciar rotina e momento
+nivel: Nível A2
 # aquecimento: Right now!
 musica: Waiting on the World to Change — John Mayer | O título usa -ing: uma ação em andamento. Que outras palavras com -ing vocês conhecem?
 filme: Home Alone (1990) | Pausem qualquer cena com o Kevin sozinho em casa e descrevam: “What is he doing?”
@@ -765,6 +801,11 @@ Present simple or continuous?
 Present simple · daily routine`],
 ['EN','A2','Going to: future plans',`# capa: Going to | img:mala
 Plans and predictions
+# sobre: Sobre esta aula
+ver: **be going to** para planos e previsões; negativas e perguntas; going to × will
+porque: É a forma mais natural de falar de **planos** já decididos, em conversas, no trabalho e em viagens.
+meta: contar planos para o fim de semana e para o ano; fazer previsões com evidência; escolher entre going to e will
+nivel: Nível A2
 # aquecimento: Big plans
 musica: I’m Gonna Be (500 Miles) — The Proclaimers | “Gonna” é como se fala “going to” na conversa. Ouçam o título!
 filme: The Secret Life of Walter Mitty (2013) | Walter imagina e planeja grandes aventuras. Qual seria a sua grande aventura?
@@ -841,6 +882,11 @@ Will or going to?
 Will: predictions, offers and decisions`],
 ['EN','A2','Comparatives and superlatives (A2+)',`# capa: Comparatives and superlatives | img:montanha
 A2+ · Bigger, better, the best
+# sobre: Sobre esta aula
+ver: adjetivos curtos (-er, -est) e longos (more, the most); irregulares (better, the best); as… as
+porque: **Comparar** é essencial para escolher, opinar e descrever: hotéis, cidades, produtos, pessoas.
+meta: comparar duas coisas; dizer qual é a melhor ou a maior; dar opiniões com comparações
+nivel: Nível A2+
 # aquecimento: Bigger and better
 musica: Harder, Better, Faster, Stronger — Daft Punk | O título inteiro é feito de comparativos! Como é cada palavra na forma “normal”?
 filme: Zootopia (2016) | A Judy é menor que os outros policiais. Comparem os personagens: “The elephant is bigger than Judy.”
@@ -921,6 +967,11 @@ As…as and not as…as`],
 SLIDES_SEED.push(
 ['EN','A1','There is / there are: my dream house',`# capa: There is / there are | img:casa
 Describing places: my dream house
+# sobre: Sobre esta aula
+ver: **there is / there are**; negativas e perguntas; descrever lugares; por que não usar “have” para dizer “tem”
+porque: Em português dizemos “tem” para tudo; em inglês, para **existir** usamos there is/are. É essencial para descrever casas, cidades e imagens.
+meta: descrever a casa e o bairro; perguntar o que tem num lugar; descrever uma imagem
+nivel: Nível A1
 # aquecimento: Dream houses
 musica: There Is a Light That Never Goes Out — The Smiths | O título começa com “There is”. O que ele significa? (existe / há)
 filme: Up (2009) | A casa voa com balões! Pausem e descrevam: “There is a sofa… There are pictures on the wall…”
@@ -1006,6 +1057,11 @@ What’s in the picture? There is / there are
 Prepositions of place`],
 ['EN','A1','Can and can’t: superpowers and talents',`# capa: Can and can’t | img:bola
 Superpowers, talents and abilities
+# sobre: Sobre esta aula
+ver: **can / can’t** para habilidade, pedido e permissão; a forma sem to e sem -s; perguntas e respostas curtas
+porque: Com uma só palavra o aluno fala de **habilidades**, pede coisas e pede permissão: é um dos verbos mais úteis do inglês.
+meta: dizer o que sabe e não sabe fazer; fazer pedidos educados (Can you…?); pedir permissão
+nivel: Nível A1
 # aquecimento: Superpowers
 filme: The Incredibles (2004) | Cada personagem tem um poder. What can Dash do? What can Violet do? What can Mr. Incredible do?
 musica: Can’t Stop the Feeling! — Justin Timberlake | Ouçam o título: “can’t” = não consegue. Você consegue ficar parado ouvindo?
@@ -1083,6 +1139,11 @@ Can and can’t
 Hobbies and free time`],
 ['EN','A2','Past continuous: a mystery story',`# capa: Past continuous | img:lupa
 A mystery at the hotel: what were you doing?
+# sobre: Sobre esta aula
+ver: **was/were + -ing**; ação em andamento × ação que interrompe; when e while
+porque: É o tempo da **narração**: dá o cenário da história (I was walking when…) e combina com o past simple.
+meta: contar o que estava fazendo num momento do passado; narrar uma história com interrupção; usar when e while
+nivel: Nível A2
 # aquecimento: Where were you?
 filme: Knives Out (2019) | O detetive pergunta a cada pessoa da família onde estava e o que estava fazendo na noite da festa. Hoje vocês são os detetives!
 musica: (Sittin’ On) The Dock of the Bay — Otis Redding | O título descreve uma ação em andamento (sitting). Que imagem vem à cabeça?
@@ -1157,6 +1218,11 @@ Past continuous or past simple?
 Was and were`],
 ['EN','A2','Some, any, much, many: in the kitchen',`# capa: Some, any, much, many | img:panela
 Cooking, shopping and quantities
+# sobre: Sobre esta aula
+ver: contáveis e incontáveis; **some e any**; **much e many**; how much / how many
+porque: Quantidades aparecem em **compras, receitas e restaurantes**. E palavras como bread e money não têm plural, o que confunde brasileiros.
+meta: separar contáveis e incontáveis; pedir e perguntar quantidades; fazer uma lista de compras
+nivel: Nível A2
 # aquecimento: What’s in the fridge?
 filme: Ratatouille (2007) | Remy cozinha no restaurante. Que ingredientes aparecem? Separem em coisas que dá e que não dá para contar.
 musica: Banana Pancakes — Jack Johnson | Comida no título! Banana e pancakes: dá para contar? (one banana, two pancakes)
@@ -1240,6 +1306,11 @@ Countable and uncountable nouns
 Countable and uncountable`],
 ['EN','A2','Should, must, have to: travel rules',`# capa: Should, must, have to | img:aviao
 Rules and advice for travellers
+# sobre: Sobre esta aula
+ver: **must / mustn’t**; **have to / don’t have to**; **should** para conselhos
+porque: Regras e conselhos aparecem em **viagens, trabalho e avisos**. A diferença entre mustn’t (proibido) e don’t have to (não precisa) é essencial.
+meta: entender regras e avisos; dar e pedir conselhos; explicar o que é obrigatório e o que não é
+nivel: Nível A2
 # aquecimento: At the airport
 musica: Should I Stay or Should I Go — The Clash | O título é um conselho em forma de pergunta. O que você responderia?
 filme: The Terminal (2004) | Viktor fica preso no aeroporto. Que regras ele tem que seguir? O que ele não pode fazer?
@@ -1320,6 +1391,11 @@ Have to and don’t have to
 Had to and didn’t have to`],
 ['EN','B1','First conditional: superstitions and choices',`# capa: First conditional | img:nuvem
 Real possibilities: if… will…
+# sobre: Sobre esta aula
+ver: **if + present, will + verbo**; unless, when e as soon as; zero × first conditional
+porque: Serve para falar de **possibilidades reais** e consequências: planos, avisos, negociações e promessas.
+meta: falar de possibilidades futuras; fazer avisos e promessas; usar unless e as soon as
+nivel: Nível B1
 # aquecimento: What will happen?
 musica: If You Leave Me Now — Chicago | O título começa com “If”. Ouçam: o que vai acontecer se a pessoa for embora?
 filme: Sliding Doors (1998) | A vida da Helen muda dependendo de pegar ou não o metrô. Pergunte: “If you miss the train today, what will happen?”
@@ -1398,6 +1474,11 @@ First and second conditional`],
 SLIDES_SEED.push(
 ['EN','A1','Possessives: family portraits',`# capa: Possessives | img:casa
 My, your, his, her… and Homer’s family
+# sobre: Sobre esta aula
+ver: **my, your, his, her, our, their**; o **’s** (Ana’s car); mine, yours, hers
+porque: Brasileiros confundem muito **his e her** (o dono é que define, não a coisa). E o ’s não existe em português.
+meta: falar da família; dizer de quem é algo; usar his/her sem errar
+nivel: Nível A1
 # aquecimento: Famous families
 filme: The Simpsons | Mostre uma imagem da família Simpson. Quem é quem? “Homer is Bart’s father. Marge is his wife.”
 musica: We Are Family — Sister Sledge | O título fala de família. Quem faz parte da sua família?
@@ -1453,6 +1534,11 @@ Possessive pronouns
 Family members`],
 ['EN','A2','In, on, at: time and dates',`# capa: In, on, at | img:relogio
 Prepositions of time: birthdays, holidays and appointments
+# sobre: Sobre esta aula
+ver: **in** (meses, anos, períodos); **on** (dias e datas); **at** (horas e momentos); sem preposição com next, last, this
+porque: Datas e horários aparecem em **compromissos, e-mails e viagens**. As três preposições viram uma só em português (“em”).
+meta: marcar compromissos; dizer datas e horários; falar de feriados e rotinas
+nivel: Nível A2
 # aquecimento: Calendar
 musica: Saturday in the Park — Chicago | “in the park” é lugar… mas e “on Saturday”? Hoje vamos ver o tempo.
 jogo: Birthday line | Cada um diz o aniversário: “My birthday is on 5th May.” Façam a fila do ano!
@@ -1504,6 +1590,11 @@ Days, months and dates
 Telling the time`],
 ['EN','B1','Used to: when I was a kid',`# capa: Used to | img:bicicleta
 Childhood memories and the 90s
+# sobre: Sobre esta aula
+ver: **used to** para hábitos e estados do passado; didn’t use to; **would** para ações repetidas
+porque: Serve para falar de **como as coisas eram** e comparar com hoje: infância, mudanças de vida e da cidade.
+meta: contar hábitos da infância; comparar passado e presente; usar used to e would
+nivel: Nível B1
 # aquecimento: Back to childhood
 musica: Somebody That I Used to Know — Gotye | O título já tem a estrutura da aula: “used to know” = conhecia antes, não mais.
 filme: Stranger Things | As crianças andam de bicicleta pela cidade nos anos 80: o que as crianças faziam antes do celular?
@@ -1555,6 +1646,11 @@ Used to and would
 Used to, be used to, get used to`],
 ['EN','B1','-ed or -ing? Horror movie night',`# capa: -ed or -ing adjectives | img:noite
 Bored or boring? Scared or scary?
+# sobre: Sobre esta aula
+ver: adjetivos com **-ed** (como a pessoa se sente) e **-ing** (como a coisa é); os pares mais comuns
+porque: “I’m boring” e “I’m bored” significam coisas muito diferentes! O erro é comum e muda o sentido da frase.
+meta: descrever sentimentos; avaliar filmes, aulas e situações; evitar a troca bored/boring
+nivel: Nível B1
 # aquecimento: Movie night
 filme: Scream (1996) | Filme de terror! Antes de ver o trailer: “Do you like scary films? Are you easily frightened?”
 musica: Thriller — Michael Jackson | Um clássico assustador. O clipe é scary ou funny?
@@ -1603,6 +1699,11 @@ When do you feel tired or stressed?
 Feelings`],
 ['EN','B2','Passive voice: great inventions',`# capa: The passive | img:lampada
 Who invented it? Great inventions
+# sobre: Sobre esta aula
+ver: **be + particípio** em vários tempos; by; quando usar a passiva
+porque: A passiva é muito usada em **notícias, textos acadêmicos e no trabalho**, quando a ação importa mais do que quem fez.
+meta: entender notícias e textos formais; descrever processos e invenções; transformar frases ativas em passivas
+nivel: Nível B2
 # aquecimento: Inventions
 filme: The Imitation Game (2014) | Alan Turing e a máquina que quebrou o código Enigma. Pergunte: “What was invented during the war?”
 jogo: Guess the invention | “It was invented in 1876. It is used to talk to people far away.” (the telephone)
@@ -1653,6 +1754,11 @@ Passive voice and causative
 Passive with modals`],
 ['EN','B1','Relative clauses: guess who!',`# capa: Relative clauses | img:lupa
 Who, which, where: describing people, things and places
+# sobre: Sobre esta aula
+ver: **who, which, where** e that; defining × non-defining (com vírgulas)
+porque: Servem para **definir e descrever** sem repetir frases curtas, deixando a fala e a escrita mais naturais.
+meta: definir pessoas, coisas e lugares; juntar duas frases em uma; usar a vírgula na informação extra
+nivel: Nível B1
 # aquecimento: Guess who
 jogo: Guess who! | Descreva uma pessoa famosa sem dizer o nome: “It’s a woman who sings… She’s someone who…” O outro adivinha.
 filme: Harry Potter | “It’s a place where young wizards study.” Que lugar é? (Hogwarts) Invente outras definições.
@@ -1710,6 +1816,11 @@ Non-defining relative clauses`],
 SLIDES_SEED.push(
 ['EN','A2','Travel English: from the airport to the hotel',`# capa: Travel English | img:aviao
 From check-in to your hotel room
+# sobre: Sobre esta aula
+ver: vocabulário de aeroporto e hotel; check-in; **pedidos educados** (could, I’d like); resolver problemas
+porque: Viajar é um dos maiores motivos para aprender inglês. Esta aula é **prática**: o aluno sai pronto para cada etapa da viagem.
+meta: fazer check-in; pedir coisas com educação; resolver um problema no hotel ou com a bagagem
+nivel: Nível A2
 # aquecimento: Ready to travel?
 filme: The Terminal (2004) | Viktor não entende o inglês do aeroporto. Que frases ele precisaria saber?
 musica: Leaving on a Jet Plane — John Denver | Uma viagem de avião no título. Qual foi sua última viagem?
@@ -1798,6 +1909,11 @@ Phrasal verbs: travel
 Word games: around town`],
 ['EN','B1','Job interviews in English',`# capa: Job interviews | img:conversa
 Talking about yourself, your experience and your strengths
+# sobre: Sobre esta aula
+ver: as 3 perguntas principais; estruturas para falar de experiência (I’ve worked…); pontos fortes e a pergunta da fraqueza
+porque: Uma entrevista em inglês exige **frases bem treinadas** e exemplos concretos. É uma das aulas de maior impacto profissional.
+meta: se apresentar de forma profissional; falar de experiência e pontos fortes; responder às perguntas mais comuns
+nivel: Nível B1
 # aquecimento: The interview
 filme: The Pursuit of Happyness (2006) | Na cena da entrevista, Chris chega sem terno e precisa convencer os entrevistadores. Como ele faz isso?
 jogo: Sell this pen | Venda um objeto da sala em 30 segundos. Depois: venda você mesmo!
@@ -1870,6 +1986,11 @@ Introducing yourself at work
 Homework · Work and careers`],
 ['EN','B1','Second conditional: what would you do?',`# capa: Second conditional | img:balao
 Imaginary situations: if I were…, I would…
+# sobre: Sobre esta aula
+ver: **if + past, would + verbo**; If I were…; real × imaginário
+porque: Serve para **imaginar, dar conselhos** (If I were you…) e falar de sonhos. Aparece muito em conversas e em entrevistas.
+meta: falar de situações imaginárias; dar conselhos com If I were you; diferenciar first e second conditional
+nivel: Nível B1
 # aquecimento: Imagine…
 musica: If I Were a Boy — Beyoncé | O título é uma situação imaginária. Por que “were” e não “was”?
 filme: Big (1988) | Um menino acorda no corpo de um adulto. What would you do if you woke up as an adult — or as a child?
@@ -1929,6 +2050,11 @@ Conditionals · review`],
 SLIDES_SEED.push(
 ['EN','B2','Reported speech: gossip and news',`# capa: Reported speech | img:conversa
 She said that… · He told me… · They asked if…
+# sobre: Sobre esta aula
+ver: como os tempos “voltam” (backshift); say × tell; perguntas e ordens no discurso indireto
+porque: Contar **o que alguém disse** é muito comum em conversas, reuniões e notícias.
+meta: contar o que alguém disse; relatar perguntas e pedidos; usar say e tell corretamente
+nivel: Nível B2
 # aquecimento: Did you hear?
 filme: Mean Girls (2004) | Fofoca na escola! Como as personagens contam o que as outras disseram?
 jogo: Telephone | A professora diz uma frase no ouvido (ou no chat). O aluno conta: “You said that…”
@@ -1987,6 +2113,11 @@ Reporting verbs
 Indirect questions`],
 ['EN','A2','At the restaurant',`# capa: At the restaurant | img:pizza
 From booking a table to paying the bill
+# sobre: Sobre esta aula
+ver: vocabulário do cardápio; reservar e pedir; **pedidos educados**; reclamar e pagar
+porque: Restaurantes estão em toda viagem e em muitos encontros de trabalho. O tom educado faz **muita diferença** em inglês.
+meta: reservar uma mesa; pedir comida e bebida; reclamar com educação e pedir a conta
+nivel: Nível A2
 # aquecimento: Hungry?
 filme: Ratatouille (2007) | A crítica Anton Ego pede “perspective” ao garçom. Como é pedir comida num restaurante chique?
 jogo: Menu game | Montem um menu de 3 pratos e um preço. O outro é o cliente e pede: “I’d like…”
@@ -2057,6 +2188,11 @@ Some, any, much, many`],
 SLIDES_SEED.push(
 ['EN','B1','Past perfect: the earlier past',`# capa: Past perfect | img:relogio
 had + past participle: what happened before
+# sobre: Sobre esta aula
+ver: **had + particípio**; o passado antes do passado; by the time, already, before
+porque: Organiza a **ordem dos acontecimentos** em histórias e relatos, deixando claro o que aconteceu primeiro.
+meta: contar histórias com dois momentos no passado; explicar o que já tinha acontecido; usar by the time
+nivel: Nível B1
 # aquecimento: Too late!
 filme: Titanic (1997) | Quando o navio partiu, a Rose já tinha conhecido o Jack? Use: “When…, she had already…”
 jogo: What had happened? | A professora mostra uma situação (“The kitchen was a mess when I arrived”). O aluno explica: “Someone had cooked…”
@@ -2112,6 +2248,11 @@ Narrative tenses
 Past simple: regular and irregular`],
 ['EN','B1','Question tags: isn’t it?',`# capa: Question tags | img:conversa
 Checking information and keeping the conversation going
+# sobre: Sobre esta aula
+ver: positivo → tag negativa e vice-versa; tags por verbo; casos especiais; entonação
+porque: É o “**né?**” do inglês. Deixa a conversa mais natural e é muito usado no small talk.
+meta: confirmar informações; puxar conversa com naturalidade; usar a entonação certa
+nivel: Nível B1
 # aquecimento: Right?
 filme: Notting Hill (1999) | Nas conversas educadas dos ingleses aparecem muitas frases como “It’s a lovely day, isn’t it?”. Procurem uma cena de conversa e ouçam.
 jogo: Detective | Faça frases sobre o outro com tags: “You’re from Recife, aren’t you?” Ele responde se está certo.
@@ -2164,6 +2305,11 @@ Question tags
 So do I and neither do I`],
 ['EN','B2','Gerund or infinitive?',`# capa: Gerund or infinitive? | img:violao
 enjoy doing · decide to do · stop doing / stop to do
+# sobre: Sobre esta aula
+ver: verbos + **-ing** e verbos + **to**; -ing depois de preposição; verbos que mudam de sentido (stop, remember, try)
+porque: Não existe regra lógica para muitos verbos: é preciso **memorizar os mais comuns**. Esses erros chamam muita atenção no B2.
+meta: usar enjoy, avoid, decide, hope etc. corretamente; diferenciar stop doing e stop to do; usar -ing depois de preposição
+nivel: Nível B2
 # aquecimento: Likes and plans
 musica: Don’t Stop Believin’ — Journey | “Stop” + -ing! O que você nunca deveria parar de fazer?
 jogo: Finish my sentence | A professora diz “I enjoy…”, “I decided…”, “I can’t stand…” e o aluno completa.
@@ -2227,6 +2373,11 @@ Stop, remember, try + -ing or to
 Like, love, hate + -ing`],
 ['EN','B2','Modals of deduction',`# capa: Modals of deduction | img:lupa
 must, might, can’t: being a detective
+# sobre: Sobre esta aula
+ver: **must, might, can’t** para deduzir; no passado: must have, might have, can’t have + particípio
+porque: Serve para **raciocinar e especular**: “deve estar”, “pode ser”, “não pode ser”. Muito usado em conversas e provas do B2.
+meta: fazer deduções sobre o presente; especular sobre o passado; não usar mustn’t para dedução
+nivel: Nível B2
 # aquecimento: Sherlock time
 filme: Sherlock Holmes (2009) | Holmes olha para uma pessoa e deduz tudo. Escolham uma foto de alguém e deduzam: “She must be… He can’t be…”
 jogo: What’s in the box? | Descreva um objeto com pistas. O outro deduz: “It might be a phone. It can’t be a book.”
@@ -2271,6 +2422,11 @@ Modals of deduction in the past
 Might, may and could`],
 ['EN','B2','Third conditional: regrets',`# capa: Third conditional | img:chuva
 If I had known…, I would have…
+# sobre: Sobre esta aula
+ver: **if + had + particípio, would have + particípio**; could/might have; os 4 condicionais
+porque: Serve para falar de **arrependimentos e hipóteses sobre o passado**. Fecha o quadro completo dos condicionais.
+meta: falar de arrependimentos; imaginar outro resultado para o passado; escolher o condicional certo
+nivel: Nível B2
 # aquecimento: What if…?
 musica: If I Could Turn Back Time — Cher | O título é um desejo impossível sobre o passado. O que você mudaria?
 filme: Sliding Doors (1998) | Se a Helen não tivesse perdido o metrô, o que teria acontecido? Pensem nas duas versões.
@@ -2322,6 +2478,11 @@ Should have and shouldn’t have`],
 SLIDES_SEED.push(
 ['EN','A1','Imperatives: the treasure map',`# capa: Imperatives | img:montanha
 Instructions, directions and a treasure map
+# sobre: Sobre esta aula
+ver: o imperativo (verbo sem sujeito); **don’t**; let’s; direções
+porque: Instruções estão em toda parte: **receitas, placas, direções, manuais**. É uma estrutura simples e muito útil.
+meta: dar e entender instruções; explicar um caminho; dizer regras com don’t
+nivel: Nível A1
 # aquecimento: Simon says
 jogo: Simon says | “Simon says: stand up! Simon says: touch your nose! Sit down!” Só obedeça se ouvir “Simon says”.
 filme: Pirates of the Caribbean (2003) | Piratas e mapas do tesouro! Que instruções um mapa de tesouro daria?
@@ -2378,6 +2539,11 @@ Directions in the city
 Prepositions of movement`],
 ['EN','A1','Like, love, hate + -ing',`# capa: Likes and dislikes | img:violao
 I love dancing, I hate waiting
+# sobre: Sobre esta aula
+ver: **love, like, don’t mind, hate + -ing**; a escrita do -ing; perguntas com Do you like…?
+porque: Falar de **gostos** é uma das primeiras conversas em inglês e ajuda a criar vínculo com as pessoas.
+meta: falar do que gosta e não gosta; perguntar sobre hobbies; escrever o -ing corretamente
+nivel: Nível A1
 # aquecimento: Love it or hate it?
 musica: I Love Rock ’n’ Roll — Joan Jett | “I love” + algo. Do que você ama ou odeia?
 jogo: Love it or hate it? | A professora diz uma atividade (“cooking”, “running”, “waiting in queues”). O aluno responde: “I love it! / I hate it!”
@@ -2435,6 +2601,11 @@ Like, love, hate + -ing
 Hobbies and free time`],
 ['EN','A2','Was, were and there was: my old town',`# capa: Was and were | img:casa
 How things were in the past
+# sobre: Sobre esta aula
+ver: **was / were**; **there was / there were**; negativas e perguntas
+porque: É o passado do verbo to be: a base para **descrever como as coisas eram** e onde a pessoa estava.
+meta: dizer onde estava; descrever como um lugar era; fazer perguntas sobre o passado
+nivel: Nível A2
 # aquecimento: The old days
 filme: Toy Story (1995) | Os brinquedos antigos do Andy: como eram os brinquedos quando você era criança?
 musica: Those Were the Days — Mary Hopkin | “Those were the days”: aqueles eram os bons tempos!
@@ -2484,6 +2655,11 @@ There was and there were
 Past simple · regular verbs`],
 ['EN','A2','Too and enough (A2+)',`# capa: Too and enough | img:sapato
 A2+ · It’s too big! It isn’t big enough!
+# sobre: Sobre esta aula
+ver: **too** + adjetivo; too much / too many; adjetivo + **enough**; enough + substantivo
+porque: Serve para **reclamar e explicar problemas**: em lojas, hotéis, restaurantes. A posição do enough confunde muitos alunos.
+meta: explicar o que está errado (too big, not big enough); reclamar com educação; usar too much e too many
+nivel: Nível A2+
 # aquecimento: The wrong size
 filme: Alice in Wonderland (2010) | A Alice fica pequena demais e grande demais. “She’s too big for the door!”
 jogo: Shop problems | Invente problemas de compra: “These shoes are too small. This jacket isn’t warm enough.”
