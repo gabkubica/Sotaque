@@ -1227,3 +1227,4 @@ body.sl-fs .sl-stage:has(.sl-exq){width:100vw;min-height:100vh;border-radius:0}
 body.sl-fs .sl-exercicio:has(.sl-exq){max-width:1240px;margin:0 auto;zoom:1.25}
 body.sl-fs :has(.sl-wrap){transform:none!important;animation:none!important;filter:none!important;contain:none!important;will-change:auto!important}
 body.sl-fs .sl-wrap{top:0;left:0;width:100vw;height:100vh}
+body.sl-fs .sl-exercicio .sl-brand{position:fixed;left:calc(2.4vw / 1.25);bottom:calc(1.6vw / 1.25);font-size:calc(1.25vw / 1.25)}

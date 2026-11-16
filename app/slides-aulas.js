@@ -2319,3 +2319,226 @@ Third conditional
 Third and mixed conditionals
 Should have and shouldn’t have`],
 );
+SLIDES_SEED.push(
+['EN','A1','Imperatives: the treasure map',`# capa: Imperatives | img:montanha
+Instructions, directions and a treasure map
+# aquecimento: Simon says
+jogo: Simon says | “Simon says: stand up! Simon says: touch your nose! Sit down!” Só obedeça se ouvir “Simon says”.
+filme: Pirates of the Caribbean (2003) | Piratas e mapas do tesouro! Que instruções um mapa de tesouro daria?
+pergunta: What instructions do you hear every day? (at work, at home, in the car)
+# explica: How to give instructions
+O **imperativo** é o verbo na forma base, **sem sujeito**:
+> **Open** your book. · **Turn** left. · **Sit** down, please.
+Negativo: **Don’t** + verbo
+> **Don’t** run! · **Don’t** forget your keys.
+Para ser educado, use **please**. Para convidar: **Let’s** + verbo (Let’s go!).
+# tabela: Directions
+Instruction | Meaning
+Go straight on. | Siga em frente.
+Turn left / right. | Vire à esquerda / direita.
+Take the second street on the left. | Pegue a segunda rua à esquerda.
+Cross the bridge. | Atravesse a ponte.
+Stop at the big tree. | Pare na árvore grande.
+# exercicio: Practice 1 · The form
+escolha: [*Open/Opens/You open] the window, please.
+escolha: [*Don’t/Doesn’t/Not] touch that! It’s hot.
+escolha: [*Let’s/Let/Lets] go to the beach!
+erro: {Not|Don’t} be late tomorrow.
+# texto: The treasure map
+Start at the old house. **Go** straight on to the river.
+**Cross** the bridge and **turn** right.
+**Walk** ten steps to the big tree. **Don’t** go into the forest!
+**Dig** under the tree. The treasure is there!
+nota: Desenhe o caminho no slide com o ✎ enquanto o aluno lê.
+# exercicio: Practice 2 · Follow the map
+ordem: Cross the bridge and turn right
+1. Where is the treasure?
+a) in the forest
+*b) under the big tree
+c) in the old house
+ditado: Cross the bridge and turn right.
+grupos: Do it: go straight on, cross the bridge, dig / Don’t do it: go into the forest, be late, forget the map
+# dica: Cuidado!
+x: You open the door, please.
+ok: Open the door, please.
+x: No smoke here.
+ok: Don’t smoke here.
+# leitura: Rules for a happy home | img:casa
+tipo: Poster
+**Say** good morning. **Make** your bed. **Don’t** leave your shoes in the living room.
+**Help** with the dishes, **share** your chocolate and **don’t** shout.
+And the most important rule: **laugh** every day!
+# conversa: Your turn | img:montanha
+Explain how to get from your house to the nearest bakery.
+Give 3 rules for your house or your work.
+Teach me how to make your favourite drink, step by step.
+# tarefas: Atividades recomendadas
+Imperatives
+Directions in the city
+Prepositions of movement`],
+['EN','A1','Like, love, hate + -ing',`# capa: Likes and dislikes | img:violao
+I love dancing, I hate waiting
+# aquecimento: Love it or hate it?
+musica: I Love Rock ’n’ Roll — Joan Jett | “I love” + algo. Do que você ama ou odeia?
+jogo: Love it or hate it? | A professora diz uma atividade (“cooking”, “running”, “waiting in queues”). O aluno responde: “I love it! / I hate it!”
+pergunta: What do you love doing on Sundays?
+# tabela: From ♥ to ✗
+Verb | Example
+love ♥♥ | I **love** dancing.
+like ♥ | I **like** reading.
+don’t mind ~ | I **don’t mind** cooking.
+don’t like ✗ | I **don’t like** running.
+hate ✗✗ | I **hate** waiting.
+# explica: The rule
+Depois de **love, like, don’t mind, hate, enjoy**, o verbo vai com **-ing**:
+> She **loves swimming**. · We **don’t like getting up** early.
+Na pergunta: **Do you like** + -ing?
+> **Do you like** cooking? Yes, I do. / No, I don’t.
+# tabela: Spelling of -ing
+Rule | Examples
+most verbs + ing | read → reading · play → playing
+-e → drop the e | dance → dancing · write → writing
+short verb with consonant-vowel-consonant → double | run → running · swim → swimming
+# vocab: Hobbies
+play the guitar | tocar violão | img:violao
+take photos | tirar fotos | img:camera
+cook | cozinhar | img:panela
+ride a bike | andar de bicicleta | img:bicicleta
+play football | jogar futebol | img:bola
+read | ler | img:livro
+# exercicio: Practice 1 · The form
+escolha: I love [*dancing/dance/to dancing].
+escolha: He [*doesn’t like/don’t like/not likes] getting up early.
+escolha: [*Do you like/Are you like/You like] swimming?
+grupos: + ing: reading, playing, cooking / drop the e: dancing, writing, making / double: running, swimming, shopping
+# dica: Cuidado!
+x: I like very much dance.
+ok: I really like dancing.
+x: She love cooking.
+ok: She loves cooking.
+# exercicio: Practice 2 · Find the mistake
+erro: I hate {wait|waiting} for the bus.
+erro: My brother {love|loves} playing video games.
+erro: We like {swiming|swimming} in the sea.
+lacunas: I [love] going to the beach, but I [hate] getting sunburnt! || loves, hates
+# leitura: My perfect Sunday | img:bicicleta
+tipo: Blog
+I **love waking up** late on Sundays. Then I **like having** a big breakfast with my family.
+In the afternoon, I **enjoy riding** my bike in the park. I **don’t mind cooking** dinner, but I **hate washing** the dishes!
+What about you? What do you **like doing** on Sundays?
+# conversa: Your likes | img:violao
+What do you love doing in your free time?
+What do you hate doing at home?
+Is there anything you don’t mind doing that other people hate?
+# tarefas: Atividades recomendadas
+Like, love, hate + -ing
+Hobbies and free time`],
+['EN','A2','Was, were and there was: my old town',`# capa: Was and were | img:casa
+How things were in the past
+# aquecimento: The old days
+filme: Toy Story (1995) | Os brinquedos antigos do Andy: como eram os brinquedos quando você era criança?
+musica: Those Were the Days — Mary Hopkin | “Those were the days”: aqueles eram os bons tempos!
+jogo: Then and now | Mostre uma foto antiga da sua cidade (ou imagine). “There was a cinema here. Now there’s a bank.”
+pergunta: Where were you at 8 o’clock last night?
+# tabela: Was and were
+Subject | + | – | ?
+I / he / she / it | was | wasn’t | Was I/he/she…?
+you / we / they | were | weren’t | Were you/we/they…?
+Short answers: Yes, I **was**. / No, they **weren’t**.
+# tabela: There was / there were
+ | Singular | Plural
++ | There was a cinema. | There were two parks.
+– | There wasn’t a mall. | There weren’t any cars.
+? | Was there a school? | Were there many shops?
+# exercicio: Practice 1 · was or were?
+escolha: I [*was/were] at home yesterday.
+escolha: My grandparents [*were/was] farmers.
+escolha: [*Was/Were] the film good?
+escolha: There [*were/was] a lot of people at the party.
+# dica: Cuidado!
+x: There was many people.
+ok: There were many people.
+x: Did you was at school?
+ok: Were you at school?
+# exercicio: Practice 2 · Find the mistake
+erro: We {was|were} very tired after the trip.
+erro: There {was|were} three shops in my street.
+erro: {Did you were|Were you} at the party?
+lacunas: When I was a child, there [was] a small park near my house and there [were] a lot of trees. || is, are
+# leitura: My grandmother’s town | img:casa
+tipo: Memory
+When my grandmother **was** young, her town **was** very small. There **was** only one school and there **were** no cars, just horses and bikes.
+There **wasn’t** a supermarket. People **were** friends with everyone, and the market **was** the centre of the town.
+“Life **was** slower,” she says, “but we **were** happy.”
+# exercicio: Practice 3 · The text
+There were no cars in the town. (v)
+There was a big supermarket. (f)
+ditado: Life was slower, but we were happy.
+# conversa: Your memories | img:casa
+Where were you last Saturday night?
+What was your school like? Was it big or small?
+What was there in your neighbourhood when you were a child?
+# tarefas: Atividades recomendadas
+Was and were
+There was and there were
+Past simple · regular verbs`],
+['EN','A2','Too and enough (A2+)',`# capa: Too and enough | img:sapato
+A2+ · It’s too big! It isn’t big enough!
+# aquecimento: The wrong size
+filme: Alice in Wonderland (2010) | A Alice fica pequena demais e grande demais. “She’s too big for the door!”
+jogo: Shop problems | Invente problemas de compra: “These shoes are too small. This jacket isn’t warm enough.”
+pergunta: Have you ever bought something that was too big or too small?
+# explica: Too
+**too + adjective** = demais (um problema)
+> This coffee is **too hot**. I can’t drink it.
+> The shoes are **too small** for me.
+**too much** + incontável · **too many** + contável
+> There’s **too much** sugar. · There are **too many** people.
+# explica: Enough
+**adjective + enough** = suficiente (depois do adjetivo!)
+> She isn’t **old enough** to drive.
+**enough + noun** (antes do substantivo)
+> We don’t have **enough money**. · Is there **enough time**?
+# tabela: Compare
+Problem with too | Same idea with not enough
+The bag is too small. | The bag isn’t big enough.
+The room is too cold. | The room isn’t warm enough.
+He is too young to vote. | He isn’t old enough to vote.
+# exercicio: Practice 1 · too or enough?
+escolha: I can’t sleep. It’s [*too/enough] noisy here.
+escolha: This T-shirt isn’t [*big enough/enough big/too big].
+escolha: We have [*too many/too much] chairs and [*not enough/enough not] tables.
+grupos: too much: sugar, noise, homework / too many: people, cars, questions
+# dica: Cuidado!
+x: She is enough old to drive.
+ok: She is old enough to drive.
+x: There are too much people.
+ok: There are too many people.
+x: It’s too much hot.
+ok: It’s too hot.
+# exercicio: Practice 2 · Rewrite
+reescreva: The box is too heavy for me to carry. | STRONG | I’m not ___ to carry the box. | strong enough
+reescreva: The water isn’t warm enough to swim in. | COLD | The water is ___ to swim in. | too cold
+erro: I don’t have {money enough|enough money} for the ticket.
+# tirinha: At the shoe shop
+[sapato]
+Ana: These shoes are too small.
+Leo: Try these. They’re bigger.
+---
+Ana (triste): Now they’re too big!
+Leo (pensando): And these?
+---
+Ana (feliz): Perfect! They’re big enough.
+# leitura: The worst holiday ever | img:mala
+tipo: Review
+★☆☆☆☆ The hotel room was **too small** for two people and the bed wasn’t **big enough**.
+There were **too many** tourists at the pool and **not enough** chairs. The food was **too salty** and the coffee was **too cold**.
+The only good thing? The view. But it wasn’t **enough** to save our holiday!
+# conversa: Complain! | img:sapato
+What’s something in your city that is too expensive?
+Do you have enough free time? Why or why not?
+Is there anything at your work or school that isn’t good enough?
+# tarefas: Atividades recomendadas
+Too and enough
+So and such`],
+);
