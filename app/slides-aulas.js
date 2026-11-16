@@ -2054,3 +2054,268 @@ Food and drinks
 Homework · Food and restaurants
 Some, any, much, many`],
 );
+SLIDES_SEED.push(
+['EN','B1','Past perfect: the earlier past',`# capa: Past perfect | img:relogio
+had + past participle: what happened before
+# aquecimento: Too late!
+filme: Titanic (1997) | Quando o navio partiu, a Rose já tinha conhecido o Jack? Use: “When…, she had already…”
+jogo: What had happened? | A professora mostra uma situação (“The kitchen was a mess when I arrived”). O aluno explica: “Someone had cooked…”
+pergunta: Have you ever arrived somewhere and the event had already finished?
+# linha: Two moments in the past
+ponto: 0.2 | the film had started
+ponto: 0.5 | I arrived
+agora: 0.85
+O **past perfect** mostra a ação que aconteceu **antes** de outra ação no passado.
+> When I arrived, the film **had** already **started**.
+# tabela: The form
+Type | Structure | Example
++ | had + past participle | She **had left**.
+– | hadn’t + past participle | We **hadn’t eaten**.
+? | Had + subject + participle? | **Had** you **seen** it before?
+Short form: I’d, you’d, she’d… (I’d forgotten)
+# explica: Rules of use
+**1.** Só use quando houver **dois momentos** no passado e for importante mostrar a ordem.
+**2.** Combina com **already, just, never, by the time, before, after, when**.
+> By the time we got there, the shop **had closed**.
+**3.** Se a ordem já está clara (after, before), o past simple também é possível.
+> After I finished / had finished work, I went home.
+# exercicio: Practice 1 · The form
+escolha: When I got to the station, the train [*had left/left/has left].
+escolha: She was nervous because she [*had never flown/never flew/has never flown] before.
+escolha: [*Had you seen/Did you saw/Have you seen] the film before last night?
+lacunas: By the time the police [arrived], the thief [had] [escaped]. || arrives, escape
+# dica: Cuidado!
+x: When I arrived, the film started. (= começou quando cheguei)
+ok: When I arrived, the film had started. (= já tinha começado)
+x: I had went home.
+ok: I had gone home.
+# exercicio: Practice 2 · Which happened first?
+grupos: Happened first: the bus had left, she had cooked dinner, I had lost my key / Happened second: I got to the bus stop, we arrived, I couldn’t open the door
+erro: They {have|had} already eaten when we arrived.
+reescreva: I finished my homework. Then I went out. | AFTER | I went out ___ my homework. | after I had finished/after I’d finished/after finishing
+# leitura: The best excuse ever | img:relogio
+tipo: Story
+Last Monday, Leo arrived at work two hours late. His boss was furious. “Where were you?” she asked.
+Leo explained that he **had woken up** on time, but his cat **had hidden** his keys. When he finally found them, the bus **had** already **gone**.
+His boss didn’t believe him… until she saw the photo: the cat **had put** the keys in the fish bowl!
+# exercicio: Practice 3 · The story
+Leo had woken up late. (f)
+The cat had hidden the keys. (v)
+ditado: The bus had already gone.
+# conversa: Let’s talk | img:relogio
+Tell me about a time you were late. What had happened?
+Had you studied English before this course?
+What had you never done before you were 18?
+# tarefas: Atividades recomendadas
+Past perfect
+Narrative tenses
+Past simple: regular and irregular`],
+['EN','B1','Question tags: isn’t it?',`# capa: Question tags | img:conversa
+Checking information and keeping the conversation going
+# aquecimento: Right?
+filme: Notting Hill (1999) | Nas conversas educadas dos ingleses aparecem muitas frases como “It’s a lovely day, isn’t it?”. Procurem uma cena de conversa e ouçam.
+jogo: Detective | Faça frases sobre o outro com tags: “You’re from Recife, aren’t you?” Ele responde se está certo.
+pergunta: In Portuguese, how do you say “right?” at the end of a sentence? (né?)
+# explica: The main rule
+Frase **positiva** → tag **negativa**. Frase **negativa** → tag **positiva**.
+> You’re tired, **aren’t you**?
+> She doesn’t eat meat, **does she**?
+O tag usa o **mesmo auxiliar** da frase (be, do, have, can, will…) e um **pronome**.
+# tabela: Tags by verb
+Sentence | Tag
+You’re Brazilian, | aren’t you?
+He works here, | doesn’t he?
+They went home, | didn’t they?
+She can swim, | can’t she?
+We’ve met before, | haven’t we?
+It won’t rain, | will it?
+# tabela: Special cases
+Sentence | Tag
+I’m late, | **aren’t I**? (não “amn’t I”)
+Let’s go, | **shall we**?
+Open the door, | **will you**?
+Nobody called, | **did they**?
+There’s a problem, | **isn’t there**?
+# exercicio: Practice 1 · Choose the tag
+escolha: You like pizza, [*don’t you/do you/aren’t you]?
+escolha: She isn’t at home, [*is she/isn’t she/does she]?
+escolha: They’ve finished, [*haven’t they/didn’t they/have they]?
+escolha: Let’s order food, [*shall we/don’t we/will we]?
+# explica: Intonation
+Entonação **descendo** ↘: você tem certeza, só quer confirmar.
+> It’s a beautiful day, isn’t it? ↘
+Entonação **subindo** ↗: é uma pergunta de verdade.
+> You’re coming tomorrow, aren’t you? ↗
+# exercicio: Practice 2 · Find the mistake
+erro: He plays the guitar, {isn’t he|doesn’t he}?
+erro: I’m right, {amn’t I|aren’t I}?
+erro: You didn’t call her, {didn’t you|did you}?
+lacunas: A: It’s cold today, [isn’t] it? B: Yes! And you forgot your coat, [didn’t] you? || doesn’t, wasn’t
+# leitura: Small talk, the British way | img:chuva
+tipo: Culture
+In the UK, people often start a conversation with the weather: “Terrible weather, **isn’t it**?” It isn’t really a question. It’s a friendly way to connect.
+The answer is usually short and positive: “Yes, it’s awful, **isn’t it**?” And then the conversation continues.
+So, next time you are in London, try it. It works, **doesn’t it**?
+# conversa: Let’s practise | img:conversa
+Make 3 sentences with tags about your teacher. Is the teacher right?
+Start a small talk conversation using a question tag.
+# tarefas: Atividades recomendadas
+Question tags
+So do I and neither do I`],
+['EN','B2','Gerund or infinitive?',`# capa: Gerund or infinitive? | img:violao
+enjoy doing · decide to do · stop doing / stop to do
+# aquecimento: Likes and plans
+musica: Don’t Stop Believin’ — Journey | “Stop” + -ing! O que você nunca deveria parar de fazer?
+jogo: Finish my sentence | A professora diz “I enjoy…”, “I decided…”, “I can’t stand…” e o aluno completa.
+pergunta: What do you enjoy doing at the weekend?
+# tabela: Verbs + -ing
+Verb | Example
+enjoy | I enjoy **cooking**.
+avoid | She avoids **driving** at night.
+mind | Do you mind **waiting**?
+finish | We finished **eating** at 9.
+suggest | He suggested **going** out.
+can’t stand | I can’t stand **waiting** in queues.
+# tabela: Verbs + to
+Verb | Example
+decide | I decided **to stay**.
+hope | We hope **to see** you soon.
+want / would like | I’d like **to travel**.
+promise | She promised **to call**.
+refuse | He refused **to help**.
+afford | We can’t afford **to buy** a car.
+# explica: Other rules
+**Depois de preposição**, sempre **-ing**:
+> I’m interested **in learning** Japanese. · Thanks **for coming**!
+**Como sujeito** da frase, use **-ing**:
+> **Swimming** is good for you.
+**Depois de adjetivo**, use **to**:
+> It’s easy **to learn**. · I’m happy **to help**.
+# exercicio: Practice 1 · -ing or to?
+escolha: I really enjoy [*reading/to read] before bed.
+escolha: They decided [*to move/moving] to Portugal.
+escolha: I’m tired of [*waiting/to wait].
+grupos: + -ing: enjoy, avoid, finish, suggest / + to: decide, hope, promise, refuse
+# explica: Verbs that change meaning
+**stop + -ing** = parar de fazer · **stop + to** = parar para fazer
+> I stopped **smoking**. · I stopped **to buy** coffee.
+**remember + to** = lembrar de fazer (futuro) · **remember + -ing** = lembrar de ter feito
+> Remember **to lock** the door! · I remember **meeting** her.
+**try + to** = esforçar-se · **try + -ing** = experimentar
+# exercicio: Practice 2 · Meaning matters
+escolha: Please remember [*to buy/buying] milk on your way home.
+escolha: I’ll never forget [*seeing/to see] the sea for the first time.
+erro: I’m looking forward to {see|seeing} you.
+reescreva: Do you want to go to the cinema? | SUGGESTED | She ___ to the cinema. | suggested going
+# dica: Cuidado!
+x: I’m looking forward to meet you.
+ok: I’m looking forward to meeting you. (to aqui é preposição!)
+x: I enjoy to dance.
+ok: I enjoy dancing.
+# leitura: Why we stop doing things we love | img:violao
+tipo: Opinion
+As children, we enjoy **drawing**, **singing** and **dancing** without fear. Then, at some point, many of us stop **doing** these things.
+We decide **to focus** on work, we promise **to start** again “one day”, and we avoid **trying** because we are afraid **to fail**.
+Maybe it’s time to remember **playing** just for fun. What would you like **to start** again?
+# conversa: Let’s talk | img:violao
+What do you enjoy doing that you don’t have time for?
+What have you decided to do this year?
+What do you avoid doing? Why?
+# tarefas: Atividades recomendadas
+Gerund or infinitive?
+Stop, remember, try + -ing or to
+Like, love, hate + -ing`],
+['EN','B2','Modals of deduction',`# capa: Modals of deduction | img:lupa
+must, might, can’t: being a detective
+# aquecimento: Sherlock time
+filme: Sherlock Holmes (2009) | Holmes olha para uma pessoa e deduz tudo. Escolham uma foto de alguém e deduzam: “She must be… He can’t be…”
+jogo: What’s in the box? | Descreva um objeto com pistas. O outro deduz: “It might be a phone. It can’t be a book.”
+pergunta: Look at the teacher. What must they like? What can’t they like?
+# tabela: How sure are you?
+Certainty | Modal | Example
+100% sim | must | He **must** be tired. He worked all night.
+50% | might / may / could | She **might** be at home.
+100% não | can’t | That **can’t** be Tom. He’s in Paris.
+Não use **mustn’t** para dedução! Use **can’t**.
+# exercicio: Practice 1 · Present deduction
+escolha: The lights are off. They [*must/can’t/should] be asleep.
+escolha: I’m not sure where Ana is. She [*might/must/can’t] be at the gym.
+escolha: That [*can’t/mustn’t/must] be true! It’s impossible.
+grupos: She must be tired: she’s yawning all day, she worked all night / He can’t be hungry: he has just had lunch, he ate a huge pizza / She might be at home: she isn’t answering, nobody knows where she is
+# tabela: Deduction in the past
+Certainty | Structure | Example
+sure yes | must have + participle | They **must have left** early.
+maybe | might / could have + participle | She **might have missed** the bus.
+sure no | can’t / couldn’t have + participle | He **can’t have seen** me.
+# exercicio: Practice 2 · Past deduction
+escolha: The ground is wet. It [*must have rained/must rain/can’t have rained] last night.
+escolha: She didn’t answer. She [*might have been/must be/can’t be] in a meeting.
+erro: He {mustn’t have|can’t have} stolen it. He was with me all day.
+reescreva: I’m sure he forgot our meeting. | MUST | He ___ our meeting. | must have forgotten
+# dica: Cuidado!
+x: He mustn’t be at home. (dedução)
+ok: He can’t be at home.
+x: She must have went home.
+ok: She must have gone home.
+# leitura: The mystery of the empty office | img:lupa
+tipo: Mystery
+On Monday morning, the office was empty. The computers were on and the coffee was still warm, so people **must have left** in a hurry.
+There was no fire alarm, so it **can’t have been** a fire. Someone **might have received** bad news… or good news!
+Then the manager found a note: “Free pizza in the park. Everyone come!” Mystery solved.
+# conversa: Deduce! | img:lupa
+Look at a photo on your phone. What must have happened before it was taken?
+Your friend didn’t answer your messages yesterday. Why? (might, could, must)
+# tarefas: Atividades recomendadas
+Modals of deduction
+Modals of deduction in the past
+Might, may and could`],
+['EN','B2','Third conditional: regrets',`# capa: Third conditional | img:chuva
+If I had known…, I would have…
+# aquecimento: What if…?
+musica: If I Could Turn Back Time — Cher | O título é um desejo impossível sobre o passado. O que você mudaria?
+filme: Sliding Doors (1998) | Se a Helen não tivesse perdido o metrô, o que teria acontecido? Pensem nas duas versões.
+jogo: Chain of consequences | “If I hadn’t woken up late, I wouldn’t have missed the bus.” → “If I hadn’t missed the bus…”
+pergunta: Is there anything you would have done differently last year?
+# explica: Imaginary past
+O **third conditional** fala de uma situação **passada que não aconteceu** e do resultado imaginado.
+> If I **had studied**, I **would have passed**. (mas não estudei e não passei)
+É usado para **arrependimentos** e **críticas**.
+# tabela: The structure
+If clause | Result
+If + had + participle | would have + participle
+If I had known, | I would have called you.
+If she hadn’t missed the bus, | she wouldn’t have been late.
+Também: **could have / might have** (If we’d left earlier, we might have caught the train.)
+# exercicio: Practice 1 · The form
+escolha: If I [*had seen/saw/would have seen] you, I would have said hello.
+escolha: We [*would have won/would win/had won] if we had played better.
+escolha: If she hadn’t helped me, I [*couldn’t have finished/can’t finish/hadn’t finished] it.
+lacunas: If I [had] [known] about the party, I [would] have come. || have, will
+# tabela: Conditionals: the big picture
+Type | Situation | Example
+Zero | always true | If you heat ice, it melts.
+First | possible future | If it rains, I’ll stay home.
+Second | imaginary present | If I were rich, I’d travel.
+Third | imaginary past | If I had saved, I’d have travelled.
+# exercicio: Practice 2 · Which conditional?
+grupos: Second (now): I would read more if I had more time, I’d travel if I were rich / Third (past): I would have read more if I had had time, I’d have travelled if I had saved
+erro: If I {would have known|had known}, I would have helped.
+reescreva: I didn’t take an umbrella, so I got wet. | HAD | If I ___ an umbrella, I wouldn’t have got wet. | had taken
+# dica: Cuidado!
+x: If I would have studied, I would have passed.
+ok: If I had studied, I would have passed.
+Na fala, **I’d have** soa como “I’da”. Ouça com atenção!
+# leitura: The email I never sent | img:envelope
+tipo: Story
+Ten years ago, I wrote an email to a company in Canada asking for a job. I never sent it.
+If I **had sent** it, I **might have moved** to Toronto. I **would have learned** to love the snow, and maybe I **would have met** different people.
+But if I **had left**, I **wouldn’t have met** my wife here. So, do I regret it? Not at all.
+# conversa: Regrets and lessons | img:chuva
+What would you have done differently at school?
+If you had been born in another country, how would your life have been different?
+Tell me about a lucky moment. What would have happened if…?
+# tarefas: Atividades recomendadas
+Third conditional
+Third and mixed conditionals
+Should have and shouldn’t have`],
+);
