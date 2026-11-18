@@ -384,9 +384,15 @@ function nextCard(s,l){
 function timeline(s){
   const all=lessonsOf(s.id), past=all.filter(l=>isPast(l)||l.status!=='agendada').reverse(), fut=all.filter(l=>!isPast(l)&&l.status==='agendada').slice(1,3);
   const shown=S.showAll? past : past.slice(0,5);
+  /* tarefas enviadas: cada uma fica na aula anterior a ela (do início dessa aula até o início da seguinte) */
+  const held=all.filter(l=>l.status!=='cancelada'), sent={};
+  for (const t of tasksOf(s.id)){ let k=-1; for (let j=0;j<held.length;j++) if (held[j].start<=t.createdAt) k=j; else break;
+    const l=held[k]; if (l&&(isPast(l)||l.status!=='agendada')) (sent[l.id] ||= []).push(t); }
+  const tasksOfL=l=>{ const L=(sent[l.id]||[]).sort((a,b)=>a.createdAt-b.createdAt); if (!L.length) return '';
+    return `<div class="tl-tasks"><small>${isT()? 'Tarefas enviadas' : 'Tarefas desta aula'}</small>${L.map(t=>`<a class="tl-task" href="#tarefa-${t.id}"><span>${esc(t.title)}</span>${pill(taskState(t))}</a>`).join('')}</div>`; };
   const item=(l,future)=>{ const st=lessonState(l), cls=future?'fut':l.status==='falta'?'miss':l.status==='cancelada'?'off':'';
     return `<li class="tl-i ${cls}"><span class="tl-dot"></span><div class="tl-c"><div class="tl-h"><b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>${pill(st)}${isT()&&!future? `<button class="link" data-act="lesson" data-id="${l.id}">${l.note? 'Editar resumo' : 'Escrever resumo'}</button>` : ''}</div>
-      ${deckChip(l)}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
+      ${deckChip(l)}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${future? '' : tasksOfL(l)}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px;${isT()? 'margin-left:auto;margin-right:4px' : ''}">${past.filter(l=>l.status==='realizada').length} realizadas</span>${isT()? `<button class="btn small" data-act="lesson-add" data-id="${s.id}">+ Aula dada</button>` : ''}</div>
     ${fut.length? `<p class="eyebrow">Depois da próxima</p><ul class="tl">${fut.map(l=>item(l,true)).join('')}</ul>` : ''}
     <p class="eyebrow">Histórico</p>

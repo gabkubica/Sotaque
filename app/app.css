@@ -1247,3 +1247,10 @@ body.sl-fs .sl-exercicio .sl-brand{position:fixed;left:calc(2.4vw / 1.25);bottom
 .tl-deck{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--k-a,#7a1f35);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px 11px;text-decoration:none}
 a.tl-deck:hover{border-color:currentColor}
 .tl-deck span{font-size:10px}
+/* tarefas enviadas depois de cada aula, no histórico */
+.tl-tasks{display:flex;flex-direction:column;gap:4px;border-left:3px solid var(--line);padding:2px 0 2px 12px}
+.tl-tasks>small{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:11px!important}
+.tl-task{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;color:var(--ink);font-size:14px;padding:3px 0}
+.tl-task span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tl-task:hover span:first-child{text-decoration:underline}
+.tl-task .st{flex:none}

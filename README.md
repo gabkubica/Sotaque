@@ -53,6 +53,7 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   histórico) e registra aulas dadas fora da agenda ("+ Aula dada": data, horário, realizada/falta e resumo; contam no pacote).
   Cada aula do histórico pode ficar ligada à apresentação de slides usada (`deckId`/`deckTitle` na aula): escolhida
   ao registrar, sugerida quando a professora apresentou para aquele aluno, e ligada sozinha se a aula está acontecendo.
+  Embaixo de cada aula do histórico aparecem as tarefas enviadas depois dela (até a aula seguinte), com o status de cada uma.
 - Remarcação: o aluno sugere até 3 horários (até 24 h antes) e o professor confirma.
 - Tarefas com 6 tipos de questão: múltipla escolha, verdadeiro ou falso, completar a lacuna,
   ligar colunas, ordenar a frase e resposta escrita. As objetivas se corrigem sozinhas.
