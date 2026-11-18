@@ -98,6 +98,7 @@ const I18N_EXACT={
   'Idioma do Sotaque':'Sotaque language','Vale para você e para os seus alunos.':'Applies to you and your students.','Todos os níveis':'All levels','Todos os temas':'All themes','Todos os tipos':'All types','♪ Com áudio':'♪ With audio',
   'Ajustar':'Adjust','Aulas restantes':'Lessons left','Corrija o saldo quando precisar: uma aula dada fora do Sotaque, uma aula de cortesia, um pacote antigo… O histórico de aulas não muda.':'Fix the balance when you need to: a lesson given outside Sotaque, a free lesson, an old package… The lesson history doesn’t change.',
   '+ Aula dada':'+ Lesson given','Registrar uma aula dada':'Log a lesson given','Registrar aula':'Log lesson','Aula extra, registrada à mão':'Extra lesson, logged by hand','Nada mudou':'Nothing changed','Aula registrada. Ela já conta no pacote.':'Lesson logged. It already counts in the package.',
+  'Apresentação usada':'Presentation used','(opcional · aparece no histórico)':'(optional · shows in the history)','Nenhuma':'None',
   '(o aluno vê no caderno dele)':'(the student sees it in their notebook)','Como foi?':'How did it go?','Aula realizada':'Lesson given','Aluno faltou':'Student missed it','Data':'Date','Horário':'Time','Texto':'Text',
 };
 const I18N_RX=[

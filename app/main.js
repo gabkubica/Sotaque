@@ -386,7 +386,7 @@ function timeline(s){
   const shown=S.showAll? past : past.slice(0,5);
   const item=(l,future)=>{ const st=lessonState(l), cls=future?'fut':l.status==='falta'?'miss':l.status==='cancelada'?'off':'';
     return `<li class="tl-i ${cls}"><span class="tl-dot"></span><div class="tl-c"><div class="tl-h"><b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>${pill(st)}${isT()&&!future? `<button class="link" data-act="lesson" data-id="${l.id}">${l.note? 'Editar resumo' : 'Escrever resumo'}</button>` : ''}</div>
-      ${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
+      ${deckChip(l)}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px;${isT()? 'margin-left:auto;margin-right:4px' : ''}">${past.filter(l=>l.status==='realizada').length} realizadas</span>${isT()? `<button class="btn small" data-act="lesson-add" data-id="${s.id}">+ Aula dada</button>` : ''}</div>
     ${fut.length? `<p class="eyebrow">Depois da próxima</p><ul class="tl">${fut.map(l=>item(l,true)).join('')}</ul>` : ''}
     <p class="eyebrow">Histórico</p>
@@ -1950,6 +1950,16 @@ function confirmBox(msg,yes,onYes,detail='Essa ação não pode ser desfeita.'){
 const toInputs=ts=>{ const d=new Date(ts); return [dateKey(ts),hhmm(d.getHours(),d.getMinutes())]; };
 const fromInputs=(d,t)=>new Date(`${d}T${t||'19:00'}`).getTime();
 
+/* apresentação de slides ligada à aula (fica no histórico) */
+function deckRecent(sid,ts){ const u=S.slUsed?.[sid]; return u&&Math.abs(u.at-(ts||now()))<8*HOUR? u.id : ''; }
+function deckField(cur){
+  const L=slDecks(), lv=[...new Set(L.map(d=>d.level))];
+  return `<label class="field" for="r-deck">Apresentação usada <small>(opcional · aparece no histórico)</small><select id="r-deck" name="deck"><option value="">Nenhuma</option>${lv.map(v=>`<optgroup label="${esc(v)}">${L.filter(d=>d.level===v).map(d=>`<option value="${d.id}" ${d.id===cur?'selected':''}>${esc(d.title)}</option>`).join('')}</optgroup>`).join('')}${cur&&!L.some(d=>d.id===cur)? `<option value="${esc(cur)}" selected>${esc(slById(cur)?.title||'(apresentação removida)')}</option>` : ''}</select></label>`;
+}
+function setDeck(l,id){ const d=id&&slById(id); if (d){ l.deckId=d.id; l.deckTitle=d.title; } else if (!id){ delete l.deckId; delete l.deckTitle; } }
+function deckChip(l){ if (!l.deckId) return ''; const d=slById(l.deckId), t=d?.title||l.deckTitle||'Apresentação';
+  return isT()&&d? `<a class="tl-deck" href="#slides-${d.id}" title="Abrir a apresentação"><span aria-hidden="true">▶</span> ${esc(t)}</a>` : `<span class="tl-deck"><span aria-hidden="true">▶</span> ${esc(t)}</span>`; }
+
 /* aula (professora): registrar, remarcar, cancelar */
 function lessonModal(l){
   const s=user(l.studentId), st=lessonState(l), past=isPast(l)||isLive(l), [dd,tt]=toInputs(l.start);
@@ -1958,6 +1968,7 @@ function lessonModal(l){
     : past? `<form data-form="record" data-id="${l.id}">
       <fieldset><legend>Como foi?</legend><div class="chips"><label class="chip"><input type="radio" name="status" value="realizada" ${l.status!=='falta'?'checked':''}><span>Aula realizada</span></label><label class="chip"><input type="radio" name="status" value="falta" ${l.status==='falta'?'checked':''}><span>Aluno faltou</span></label></div><small class="muted" style="font-size:13px">As duas opções contam como uma aula do pacote.</small></fieldset>
       <label class="field" for="r-note">Resumo da aula <small>(o aluno vê no caderno dele)</small><textarea id="r-note" name="note" placeholder="O que vocês viram, o que treinar até a próxima…">${esc(l.note||'')}</textarea></label>
+      ${deckField(l.deckId||deckRecent(l.studentId,l.start))}
       <div class="actions"><button type="button" class="btn" data-act="close">Fechar</button><button class="btn primary">Salvar</button></div></form>`
     : `<a class="btn primary" style="align-self:flex-start" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>
       <form data-form="move" data-id="${l.id}"><fieldset><legend>Remarcar para</legend><div class="two"><label class="field" for="m-date"><span class="sr">Data</span><input type="date" id="m-date" name="date" required value="${dd}"></label><label class="field" for="m-time"><span class="sr">Horário</span><input type="time" id="m-time" name="time" required value="${tt}"></label></div></fieldset>
@@ -2077,6 +2088,7 @@ const ACT={
       <div class="two"><label class="field" for="la-date">Data<input type="date" id="la-date" name="date" required max="${dd}" value="${dd}"></label><label class="field" for="la-time">Horário<input type="time" id="la-time" name="time" required value="${tt}"></label></div>
       <fieldset><legend>Como foi?</legend><div class="chips"><label class="chip"><input type="radio" name="status" value="realizada" checked><span>Aula realizada</span></label><label class="chip"><input type="radio" name="status" value="falta"><span>Aluno faltou</span></label></div></fieldset>
       <label class="field" for="la-note">Resumo da aula <small>(o aluno vê no caderno dele)</small><textarea id="la-note" name="note" placeholder="O que vocês viram, o que treinar até a próxima…"></textarea></label>
+      ${deckField(deckRecent(s.id))}
       <p class="err" id="la-err"></p>
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Registrar aula</button></div></form>`,{focus:'#la-date'}); },
   'mark-paid'(el){ const p=DB.packages.find(x=>x.id===el.dataset.id); p.paid=true; p.paidAt=now(); save(); render(); toast('Pagamento confirmado'); },
@@ -2107,7 +2119,7 @@ const FORMS={
     S.me=u.id; lsSet(ME_KEY,u.id); S.route={name:'inicio'}; if (location.hash&&location.hash!=='#inicio') location.hash='inicio'; else render(); window.scrollTo(0,0);
   },
   profile(form,fd){ ME().name=fd.get('name').trim()||ME().name; save(); closeModal(); render(); toast('Nome atualizado'); },
-  record(form,fd){ const l=getLesson(form.dataset.id); l.status=fd.get('status'); l.note=fd.get('note').trim(); save(); closeModal(); render(); toast(l.status==='falta'? 'Falta registrada' : 'Aula registrada'); },
+  record(form,fd){ const l=getLesson(form.dataset.id); l.status=fd.get('status'); l.note=fd.get('note').trim(); setDeck(l,fd.get('deck')||''); save(); closeModal(); render(); toast(l.status==='falta'? 'Falta registrada' : 'Aula registrada'); },
   move(form,fd){ const l=getLesson(form.dataset.id), ts=fromInputs(fd.get('date'),fd.get('time')), c=conflict(ts,l.id);
     if (c){ $('#m-err').textContent=`Esse horário já tem aula com ${user(c.studentId).name.split(' ')[0]}.`; return; }
     if (ts===l.start){ closeModal(); return; }
@@ -2172,7 +2184,7 @@ const FORMS={
     if (ts>now()){ $('#la-err').textContent='Essa data ainda não chegou. Aulas futuras entram pela agenda.'; return; }
     const same=DB.lessons.find(l=>l.studentId===id&&l.status!=='cancelada'&&Math.abs(l.start-ts)<HOUR);
     if (same){ $('#la-err').textContent= same.status==='agendada'? 'Já existe uma aula marcada nesse horário. Feche e clique nela no histórico para registrar.' : 'Já existe uma aula registrada nesse horário.'; return; }
-    DB.lessons.push({id:uid(),studentId:id,start:ts,dur:60,status:fd.get('status')==='falta'? 'falta' : 'realizada',note:String(fd.get('note')||'').trim(),extra:true});
+    const nl={id:uid(),studentId:id,start:ts,dur:60,status:fd.get('status')==='falta'? 'falta' : 'realizada',note:String(fd.get('note')||'').trim(),extra:true}; setDeck(nl,fd.get('deck')||''); DB.lessons.push(nl);
     save(); closeModal(); render(); toast('Aula registrada. Ela já conta no pacote.'); },
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){

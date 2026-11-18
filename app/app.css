@@ -1243,3 +1243,7 @@ body.sl-fs .sl-exercicio .sl-brand{position:fixed;left:calc(2.4vw / 1.25);bottom
 .sl-tx.editing{visibility:hidden}
 .sl-txin{position:absolute;z-index:3;min-width:18cqw;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;transform:translateY(-.6em);background:rgba(255,250,242,.94);border:2px dashed currentColor;border-radius:6px;padding:.1em .3em;margin:-.2em 0 0 -.35em;resize:none;overflow:hidden;outline:none;field-sizing:content}
 .big-num .link{float:right;font:600 13px/1 var(--body);margin-top:14px}
+/* apresentação ligada à aula, no histórico */
+.tl-deck{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--k-a,#7a1f35);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px 11px;text-decoration:none}
+a.tl-deck:hover{border-color:currentColor}
+.tl-deck span{font-size:10px}

@@ -121,6 +121,7 @@ function viewSlidesPlay(id){
   const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#aula">Aulas</a></div>';
   const list=slidesParse(d.src); if (!S.sl||S.sl.id!==id) S.sl={id,i:0,rev:false,live:S.sl?.live&&S.sl.id===id};
   const P=S.sl; P.i=Math.max(0,Math.min(P.i,list.length-1)); const s=list[P.i]; if (!s) return '<div class="panel"><p>Esta aula ainda não tem slides.</p></div>';
+  slLink(d);
   const counts=P.live&&s.t==='pergunta'? Object.values(LIVE.ans[P.i]||{}).reduce((a,x)=>{ a[x.v]=(a[x.v]||0)+1; return a; },{}) : null;
   const ansList=P.live? Object.values(LIVE.ans[P.i]||{}) : [];
   return `<div class="sl-wrap">
@@ -294,6 +295,12 @@ document.addEventListener('pointermove',e=>{ if (!SLINK) return; SLINK.st.p+=' '
 const inkEnd=()=>{ if (!SLINK) return; const {st,key}=SLINK; SLINK=null; if (st.p.split(' ').length<2) st.p+=' '+st.p; ((DB.ink ||= {})[key] ||= []).push(st); save(); liveSlide(); };
 document.addEventListener('pointerup',inkEnd); document.addEventListener('pointercancel',inkEnd);
 
+/* apresentação mostrada para um aluno: fica lembrada (sugestão ao registrar a aula) e,
+   se a aula dele está acontecendo agora e ainda não tem apresentação, já fica ligada ao histórico */
+function slLink(d){ const sid=slStudent(); if (!sid) return;
+  (S.slUsed ||= {})[sid]={id:d.id,at:now()};
+  const l=(DB.lessons||[]).find(x=>x.studentId===sid&&isLive(x));
+  if (l&&!l.deckId){ l.deckId=d.id; l.deckTitle=d.title; save(); } }
 /* aluno que está recebendo a aula: o da aula marcada agora, ou o escolhido */
 function slStudent(){ if (S.slStu===undefined){ const l=(DB.lessons||[]).find(l=>isLive(l)&&user(l.studentId)?.teacherId===S.me); S.slStu=l? l.studentId : ''; } return S.slStu; }
 document.addEventListener('change',e=>{ const el=e.target; if (el.dataset?.slstu){ S.slStu=el.value; render(); } if (el.dataset?.sldue){ S.slDue=el.value==='7'; render(); } });
