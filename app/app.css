@@ -1235,3 +1235,11 @@ body.sl-fs .sl-exercicio .sl-brand{position:fixed;left:calc(2.4vw / 1.25);bottom
 .sl-sb ul{margin:0;padding-left:2cqw;display:flex;flex-direction:column;gap:.6cqw}.sl-sb ul.ok{list-style:none;padding:0}.sl-sb ul.ok li::before{content:"✓ ";color:#1f6440;font-weight:800}
 .sl-sbn{margin:0;font-size:1.5cqw;color:#8a7e80}
 @media (max-width:720px){.sl-sbg{grid-template-columns:1fr}.sl-sb{font-size:3.4cqw}.sl-sb > b{font-size:4cqw}.sl-sbi{width:6cqw;height:6cqw;font-size:3cqw}}
+/* texto digitado por cima do slide */
+.sl-ink.on.tx{cursor:text}
+.sl-txl{position:absolute;inset:0;pointer-events:none;z-index:1}
+.sl-tx{position:absolute;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;white-space:pre-wrap;transform:translateY(-.6em);text-shadow:0 0 .25em #fffaf2,0 0 .25em #fffaf2,0 0 .12em #fffaf2}
+.sl-txl.on .sl-tx{pointer-events:auto;cursor:text;outline:1px dashed rgba(34,28,30,.25);outline-offset:.2em;border-radius:3px}
+.sl-tx.editing{visibility:hidden}
+.sl-txin{position:absolute;z-index:3;min-width:18cqw;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;transform:translateY(-.6em);background:rgba(255,250,242,.94);border:2px dashed currentColor;border-radius:6px;padding:.1em .3em;margin:-.2em 0 0 -.35em;resize:none;overflow:hidden;outline:none;field-sizing:content}
+.big-num .link{float:right;font:600 13px/1 var(--body);margin-top:14px}

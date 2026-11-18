@@ -96,8 +96,16 @@ const I18N_EXACT={
   'Fim da aula':'End of class','Mandar e encerrar':'Send and finish','Encerrar sem mandar nada':'Finish without sending','Encerrar':'Finish','Texto ou pergunta':'Text or question','Atividade':'Activity','PDF':'PDF',
   'Ver':'View','Caneta':'Pen','Marca-texto':'Highlighter','Apagar marcas':'Clear marks','Virar atividade':'Turn into activity','Abrindo o PDF…':'Opening the PDF…',
   'Idioma do Sotaque':'Sotaque language','Vale para você e para os seus alunos.':'Applies to you and your students.','Todos os níveis':'All levels','Todos os temas':'All themes','Todos os tipos':'All types','♪ Com áudio':'♪ With audio',
+  'Ajustar':'Adjust','Aulas restantes':'Lessons left','Corrija o saldo quando precisar: uma aula dada fora do Sotaque, uma aula de cortesia, um pacote antigo… O histórico de aulas não muda.':'Fix the balance when you need to: a lesson given outside Sotaque, a free lesson, an old package… The lesson history doesn’t change.',
+  '+ Aula dada':'+ Lesson given','Registrar uma aula dada':'Log a lesson given','Registrar aula':'Log lesson','Aula extra, registrada à mão':'Extra lesson, logged by hand','Nada mudou':'Nothing changed','Aula registrada. Ela já conta no pacote.':'Lesson logged. It already counts in the package.',
+  '(o aluno vê no caderno dele)':'(the student sees it in their notebook)','Como foi?':'How did it go?','Aula realizada':'Lesson given','Aluno faltou':'Student missed it','Data':'Date','Horário':'Time','Texto':'Text',
 };
 const I18N_RX=[
+  [/^Aulas restantes de (.+)$/,'Lessons left for $1'],
+  [/^Agora: (-?\d+) (aula restante|aulas restantes)$/,(m,n)=>`Now: ${pl(n,'lesson left','lessons left')}`],
+  [/^Para uma aula que aconteceu fora da agenda \(aula extra, reposição…\)\. Ela conta no pacote de (.+)\.$/,'For a lesson that happened outside the schedule (extra lesson, make-up…). It counts in $1’s package.'],
+  [/^Hoje: (-?\d+) · pacote atual de (\d+) aulas\. Para vender mais aulas, use “\+ Novo pacote”\.$/,'Now: $1 · current package of $2 lessons. To sell more lessons, use “+ New package”.'],
+  [/^ · ajuste manual de (.+)$/,' · manual adjustment of $1'],
   [/^Feito hoje ✓ · (\d+) de (\d+) certas(.*)$/,(m,a,b,r)=>`Done today ✓ · ${a} of ${b} right${r.replace(/ · (\d+) dias seguidos/,' · $1 days in a row')}`],
   [/^Um (áudio|texto) curto e 3 perguntas\. Uns 3 minutos\.(.*)$/,(m,k,r)=>`A short ${k==='áudio'? 'audio' : 'text'} and 3 questions. About 3 minutes.${r.replace(/ Você está há (\d+) dias? seguidos!/,' You’re on a $1-day streak!')}`],
   [/^Libera (.+)$/,'Opens $1'],

@@ -128,7 +128,7 @@ function viewSlidesPlay(id){
       <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
     <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
-      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small ${S.inkT==='hl'?'':'on'}" data-act="sl-tool" data-t="pen" title="Caneta">Caneta</button><button class="btn small ${S.inkT==='hl'?'on':''}" data-act="sl-tool" data-t="hl" title="Marca-texto">Marca-texto</button><button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
+      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small ${S.inkT==='hl'||S.inkT==='tx'?'':'on'}" data-act="sl-tool" data-t="pen" title="Caneta">Caneta</button><button class="btn small ${S.inkT==='hl'?'on':''}" data-act="sl-tool" data-t="hl" title="Marca-texto">Marca-texto</button><button class="btn small ${S.inkT==='tx'?'on':''}" data-act="sl-tool" data-t="tx" title="Escrever: clique no slide onde quer o texto">Texto</button><button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
     <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
@@ -246,15 +246,46 @@ window.addEventListener('hashchange',()=>{ if (!/^#slides-[a-z0-9]+$/.test(locat
 /* ---------- desenho por cima do slide (fica salvo à parte, não entra na apostila) ---------- */
 const INK_COLORS=['#c0392b','#2b6cb0','#1f6440','#e0a020','#221c1e'];
 const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-opacity="${st.o||1}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
-const inkSvg=(key,list,edit)=>`<svg class="sl-ink ${edit&&S.draw?'on':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${(list||[]).map(inkPath).join('')}</svg>`;
+/* textos digitados ficam numa camada HTML (o SVG estica e deformaria as letras) */
+const inkTx=(st,k,edit)=>`<span class="sl-tx no-i18n" style="left:${st.x/10}%;top:${st.y/10}%;color:${st.c}" ${edit? `data-tx="${k}"` : ''}>${esc(st.s)}</span>`;
+const inkSvg=(key,list,edit)=>{ const L=list||[];
+  return `<svg class="sl-ink ${edit&&S.draw?'on':''} ${edit&&S.draw&&S.inkT==='tx'?'tx':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${L.filter(st=>st.t!=='tx').map(inkPath).join('')}</svg>`
+    +(L.some(st=>st.t==='tx')? `<div class="sl-txl ${edit&&S.draw&&S.inkT==='tx'?'on':''}" ${edit? `data-inkl="${key}"` : ''}>${L.map((st,k)=>st.t==='tx'? inkTx(st,k,edit) : '').join('')}</div>` : ''); };
 Object.assign(SLIDE_ACT,{
   'sl-draw'(){ S.draw=!S.draw; render(); },
   'sl-color'(el){ S.inkC=el.dataset.c; render(); },
   'sl-undo'(){ const k=S.sl.id+':'+S.sl.i, L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
-  'sl-clear'(){ const k=S.sl.id+':'+S.sl.i; if (DB.ink?.[k]?.length&&confirm('Apagar os desenhos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
+  'sl-clear'(){ const k=S.sl.id+':'+S.sl.i; if (DB.ink?.[k]?.length&&confirm('Apagar os desenhos e textos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
 });
 let SLINK=null;
-document.addEventListener('pointerdown',e=>{ const sv=e.target.closest?.('svg.sl-ink.on'); if (!sv) return; e.preventDefault(); sv.setPointerCapture?.(e.pointerId);
+/* ferramenta Texto: clique no slide abre uma caixa; Enter salva, Shift+Enter quebra a linha, Esc cancela.
+   Clicar num texto que já existe edita (apagar tudo e salvar remove o texto). */
+function inkTextBox(key,x,y,k){
+  const stage=document.getElementById('sl-stage'); if (!stage) return;
+  stage.querySelector('.sl-txin')?.remove();
+  const L=DB.ink?.[key]||[], old=k!=null? L[k] : null;
+  const ta=document.createElement('textarea'); ta.className='sl-txin'; ta.rows=1; ta.value=old?.s||''; ta.placeholder='Escreva aqui…';
+  ta.style.left=x/10+'%'; ta.style.top=y/10+'%'; ta.style.color=old?.c||S.inkC||INK_COLORS[0];
+  if (old) stage.querySelector(`[data-tx="${k}"]`)?.classList.add('editing');
+  let done=false;
+  const fit=()=>{ ta.style.height='auto'; ta.style.height=ta.scrollHeight+'px'; };
+  const finish=ok=>{ if (done) return; done=true; const v=ta.value.replace(/\s+$/,'');
+    if (ok){ const A=((DB.ink ||= {})[key] ||= []);
+      if (old){ if (v) old.s=v; else A.splice(k,1); } else if (v) A.push({t:'tx',x,y,s:v,c:S.inkC||INK_COLORS[0]});
+      if (!A.length) delete DB.ink[key];
+      if (v||old){ save(); liveSlide(); } }
+    render(); };
+  ta.addEventListener('input',fit);
+  ta.addEventListener('keydown',e=>{ e.stopPropagation(); if (e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); finish(true); } else if (e.key==='Escape'){ e.preventDefault(); finish(false); } });
+  ta.addEventListener('blur',()=>finish(true));
+  stage.appendChild(ta); fit(); ta.focus(); setTimeout(()=>{ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); },0);
+}
+document.addEventListener('pointerdown',e=>{
+  const tx=e.target.closest?.('.sl-txl.on [data-tx]');
+  if (tx){ e.preventDefault(); const lay=tx.closest('.sl-txl'), st=DB.ink?.[lay.dataset.inkl]?.[+tx.dataset.tx]; if (st) inkTextBox(lay.dataset.inkl,st.x,st.y,+tx.dataset.tx); return; }
+  const sv=e.target.closest?.('svg.sl-ink.on'); if (!sv) return; e.preventDefault();
+  if (S.inkT==='tx'){ const r=sv.getBoundingClientRect(); inkTextBox(sv.dataset.ink,Math.round((e.clientX-r.left)/r.width*1000),Math.round((e.clientY-r.top)/r.height*1000)); return; }
+  sv.setPointerCapture?.(e.pointerId);
   const r=sv.getBoundingClientRect(), pt=ev=>`${Math.round((ev.clientX-r.left)/r.width*1000)},${Math.round((ev.clientY-r.top)/r.height*1000)}`;
   const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline'); const hl=S.inkT==='hl', st={c:S.inkC||INK_COLORS[0],w:hl? 22 : 4,o:hl? .35 : 1,p:pt(e)};
   pl.setAttribute('fill','none'); pl.setAttribute('stroke',st.c); pl.setAttribute('stroke-width',st.w); pl.setAttribute('stroke-opacity',st.o); pl.setAttribute('stroke-linecap','round'); pl.setAttribute('stroke-linejoin','round'); pl.setAttribute('vector-effect','non-scaling-stroke'); pl.setAttribute('points',st.p); sv.appendChild(pl);

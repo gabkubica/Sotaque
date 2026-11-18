@@ -49,6 +49,8 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - Horários livres e chave PIX são de cada professor.
 - Agenda da semana gerada a partir do horário fixo de cada aluno (aulas de 1 h).
 - Caderno de cada aluno: próxima aula, histórico com o resumo de cada aula, pacote e pagamento (PIX).
+  A professora ajusta à mão o número de aulas restantes ("Ajustar", guardado como `adj` no pacote atual, sem mexer no
+  histórico) e registra aulas dadas fora da agenda ("+ Aula dada": data, horário, realizada/falta e resumo; contam no pacote).
 - Remarcação: o aluno sugere até 3 horários (até 24 h antes) e o professor confirma.
 - Tarefas com 6 tipos de questão: múltipla escolha, verdadeiro ou falso, completar a lacuna,
   ligar colunas, ordenar a frase e resposta escrita. As objetivas se corrigem sozinhas.
@@ -105,7 +107,7 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - A aba Aula agora são as apresentações de slides (filtro por nível). Cada aula começa com um warm-up
   (música, cena de filme com link de busca no YouTube, jogo e pergunta), tem linha do tempo para a gramática e
   termina com atividades recomendadas do banco, que a professora manda como pacote. Desenho por cima do slide
-  (5 cores, desfazer, limpar), salvo à parte por aula e slide, fora da apostila; na aula ao vivo o aluno vê o desenho.
+  (5 cores, caneta, marca-texto e Texto: clique no slide e digite, clique num texto para editar; desfazer, limpar), salvo à parte por aula e slide, fora da apostila; na aula ao vivo o aluno vê o desenho.
   Tela cheia da página inteira (trocar de slide não sai mais dela).
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.

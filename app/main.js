@@ -170,9 +170,10 @@ function lessonState(l){
 const pill=s=>`<span class="st st-${s.k}">${esc(s.label)}</span>`;
 function pkgInfo(id){
   const pk=DB.packages.filter(p=>p.studentId===id).sort((a,b)=>a.createdAt-b.createdAt);
-  const consumed=DB.lessons.filter(l=>l.studentId===id&&['realizada','falta'].includes(l.status)).length;
+  /* p.adj: ajuste manual da professora no saldo (positivo = aulas a menos, negativo = aulas a mais) */
+  const consumed=DB.lessons.filter(l=>l.studentId===id&&['realizada','falta'].includes(l.status)).length+pk.reduce((a,p)=>a+(p.adj||0),0);
   let left=consumed;
-  const rows=pk.map(p=>{ const used=Math.min(p.size,left); left-=used; return {...p,used}; });
+  const rows=pk.map(p=>{ const used=Math.max(0,Math.min(p.size,left)); left-=used; return {...p,used}; });
   const total=pk.reduce((s,p)=>s+p.size,0);
   const current=rows.find(r=>r.used<r.size)||rows[rows.length-1]||null;
   return {rows,consumed,total,remaining:total-consumed,current,unpaid:rows.filter(r=>!r.paid)};
@@ -385,8 +386,8 @@ function timeline(s){
   const shown=S.showAll? past : past.slice(0,5);
   const item=(l,future)=>{ const st=lessonState(l), cls=future?'fut':l.status==='falta'?'miss':l.status==='cancelada'?'off':'';
     return `<li class="tl-i ${cls}"><span class="tl-dot"></span><div class="tl-c"><div class="tl-h"><b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>${pill(st)}${isT()&&!future? `<button class="link" data-act="lesson" data-id="${l.id}">${l.note? 'Editar resumo' : 'Escrever resumo'}</button>` : ''}</div>
-      ${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
-  return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px">${past.filter(l=>l.status==='realizada').length} realizadas</span></div>
+      ${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
+  return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px;${isT()? 'margin-left:auto;margin-right:4px' : ''}">${past.filter(l=>l.status==='realizada').length} realizadas</span>${isT()? `<button class="btn small" data-act="lesson-add" data-id="${s.id}">+ Aula dada</button>` : ''}</div>
     ${fut.length? `<p class="eyebrow">Depois da próxima</p><ul class="tl">${fut.map(l=>item(l,true)).join('')}</ul>` : ''}
     <p class="eyebrow">Histórico</p>
     ${past.length? `<ul class="tl">${shown.map(l=>item(l,false)).join('')}</ul>${past.length>5? `<button class="btn small" style="align-self:flex-start" data-act="show-all">${S.showAll? 'Mostrar menos' : `Ver todas as ${past.length} aulas`}</button>` : ''}` : '<p class="muted">As aulas aparecem aqui depois que acontecem.</p>'}</section>`;
@@ -394,13 +395,13 @@ function timeline(s){
 function packagePanel(s){
   const i=pkgInfo(s.id), c=i.current;
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Pacote' : 'Seu pacote'}</h2>${isT()? `<button class="btn small" data-act="new-package" data-id="${s.id}">+ Novo pacote</button>` : ''}</div>
-    ${c? `<div class="big-num">${Math.max(0,i.remaining)}<span>${Math.max(0,i.remaining)===1?'aula restante':'aulas restantes'}</span></div>
+    ${c? `<div class="big-num">${Math.max(0,i.remaining)}<span>${Math.max(0,i.remaining)===1?'aula restante':'aulas restantes'}</span>${isT()? `<button class="link" data-act="pkg-adjust" data-id="${s.id}">Ajustar</button>` : ''}</div>
       <div class="dots" aria-label="${c.used} de ${c.size} aulas usadas">${[...Array(c.size)].map((_,k)=>`<i class="${k<c.used?'u':''}"></i>`).join('')}</div>
       <p class="meta">Pacote de ${c.size} aulas · ${c.used} ${c.used===1?'usada':'usadas'} · ${money(c.price)}</p>
       ${i.remaining<0? `<div class="notice"><div>${-i.remaining} ${-i.remaining===1?'aula foi dada':'aulas foram dadas'} além do pacote.</div></div>` : i.remaining<=1? `<div class="notice"><div>${i.remaining===1? 'Esta é a última aula do pacote.' : 'O pacote terminou.'} ${isT()? 'Hora de renovar.' : `Fale com ${aProf()} para renovar.`}</div></div>` : ''}
       ${i.unpaid.map(p=>`<div class="notice"><div>Pagamento pendente: ${money(p.price)} <small style="font-weight:500">(pacote de ${p.size} aulas)</small>${isT()? '' : `<br><span style="font-weight:500">Pague pelo PIX e ${aProf()} confirma por aqui.</span>`}</div>${isT()? `<button class="btn small" data-act="mark-paid" data-id="${p.id}">Marcar como pago</button>` : ''}</div>`).join('')}
       ${!isT()&&i.unpaid.length? `<div class="pix"><span class="muted">PIX</span><b>${esc(settingsOf(s.teacherId).pix)}</b><button class="btn small" data-act="copy" data-v="${esc(settingsOf(s.teacherId).pix)}">Copiar</button></div>` : ''}
-      <details class="more"><summary>Histórico de pacotes</summary><div class="rows">${i.rows.slice().reverse().map(p=>`<div class="row"><div class="row-m"><b>${p.size} aulas · ${money(p.price)}</b><small>Comprado em ${fMonth.format(p.createdAt)} · ${p.used}/${p.size} usadas</small></div>${p.paid? '<span class="st st-done">Pago</span>' : '<span class="st st-sent">Pendente</span>'}</div>`).join('')}</div></details>`
+      <details class="more"><summary>Histórico de pacotes</summary><div class="rows">${i.rows.slice().reverse().map(p=>`<div class="row"><div class="row-m"><b>${p.size} aulas · ${money(p.price)}</b><small>Comprado em ${fMonth.format(p.createdAt)} · ${p.used}/${p.size} usadas${isT()&&p.adj? ` · ajuste manual de ${p.adj>0? '−'+p.adj : '+'+(-p.adj)}` : ''}</small></div>${p.paid? '<span class="st st-done">Pago</span>' : '<span class="st st-sent">Pendente</span>'}</div>`).join('')}</div></details>`
     : `<p class="muted">Nenhum pacote ainda.</p>`}</section>`;
 }
 function notices(s){
@@ -2065,6 +2066,19 @@ const ACT={
       <div class="three"><label class="field" for="k-size">Aulas<input type="number" id="k-size" name="size" min="1" value="${last?.size||8}"></label><label class="field" for="k-price">Valor (R$)<input type="number" id="k-price" name="price" min="0" value="${last?.price||480}"></label><label class="field" for="k-paid">Pagamento<select id="k-paid" name="paid"><option value="0">Pendente</option><option value="1">Já pago</option></select></label></div>
       <p class="meta muted">As próximas aulas passam a descontar deste pacote quando o atual acabar.</p>
       <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Criar pacote</button></div></form>`,{focus:'#k-size'}); },
+  'pkg-adjust'(el){ const s=user(el.dataset.id), i=pkgInfo(s.id);
+    openModal(`<form data-form="pkgadjust" data-id="${s.id}"><h2>Aulas restantes de ${esc(s.name.split(' ')[0])}</h2>
+      <p class="meta">Corrija o saldo quando precisar: uma aula dada fora do Sotaque, uma aula de cortesia, um pacote antigo… O histórico de aulas não muda.</p>
+      <label class="field" for="pa-n">Aulas restantes<input type="number" id="pa-n" name="n" step="1" required value="${Math.max(0,i.remaining)}"></label>
+      <p class="meta muted">Hoje: ${i.remaining} · pacote atual de ${i.current.size} aulas. Para vender mais aulas, use “+ Novo pacote”.</p>
+      <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Salvar</button></div></form>`,{focus:'#pa-n'}); },
+  'lesson-add'(el){ const s=user(el.dataset.id), [dd]=toInputs(now()), tt=s.slot? hhmm(s.slot.h,s.slot.m) : toInputs(now())[1];
+    openModal(`<form data-form="lessonadd" data-id="${s.id}"><h2>Registrar uma aula dada</h2><p class="meta">Para uma aula que aconteceu fora da agenda (aula extra, reposição…). Ela conta no pacote de ${esc(s.name.split(' ')[0])}.</p>
+      <div class="two"><label class="field" for="la-date">Data<input type="date" id="la-date" name="date" required max="${dd}" value="${dd}"></label><label class="field" for="la-time">Horário<input type="time" id="la-time" name="time" required value="${tt}"></label></div>
+      <fieldset><legend>Como foi?</legend><div class="chips"><label class="chip"><input type="radio" name="status" value="realizada" checked><span>Aula realizada</span></label><label class="chip"><input type="radio" name="status" value="falta"><span>Aluno faltou</span></label></div></fieldset>
+      <label class="field" for="la-note">Resumo da aula <small>(o aluno vê no caderno dele)</small><textarea id="la-note" name="note" placeholder="O que vocês viram, o que treinar até a próxima…"></textarea></label>
+      <p class="err" id="la-err"></p>
+      <div class="actions"><button type="button" class="btn" data-act="close">Cancelar</button><button class="btn primary">Registrar aula</button></div></form>`,{focus:'#la-date'}); },
   'mark-paid'(el){ const p=DB.packages.find(x=>x.id===el.dataset.id); p.paid=true; p.paidAt=now(); save(); render(); toast('Pagamento confirmado'); },
   cant(el){ const l=getLesson(el.dataset.id); if (l.start-now()<24*HOUR){ toast(`Faltam menos de 24 horas. Fale direto com ${aProf()}.`); return; } cantModal(l); },
   'pick-day'(el){ S.pick.day=+el.dataset.v; refreshPick(); },
@@ -2149,6 +2163,17 @@ const FORMS={
       <div class="cred"><span>E-mail: <b>${esc(s.email)}</b></span><span>Senha provisória: <b>${pw}</b></span></div>${REAL? '<p class="notice"><span>Por enquanto, o aluno só consegue entrar neste mesmo navegador. Quando a nuvem estiver ligada, ele entra pelo celular dele com este e-mail e esta senha.</span></p>' : ''}<p class="meta muted">Na versão online, o aluno recebe um convite por e-mail e escolhe a própria senha.</p>
       <div class="actions"><button class="btn" data-act="copy-cred" data-v="Seu acesso ao Sotaque · E-mail: ${esc(s.email)} · Senha: ${pw}">Copiar acesso</button><button class="btn primary" data-act="close">Pronto</button></div>`);
   },
+  pkgadjust(form,fd){ const id=form.dataset.id, i=pkgInfo(id), n=Math.round(+fd.get('n')); if (!Number.isFinite(n)) return;
+    const p=DB.packages.find(x=>x.id===i.current?.id); if (!p) return;
+    const d=i.remaining-n; if (d){ p.adj=(p.adj||0)+d; if (!p.adj) delete p.adj; save(); }
+    closeModal(); render(); toast(d? `Agora: ${n} ${Math.abs(n)===1? 'aula restante' : 'aulas restantes'}` : 'Nada mudou'); },
+  lessonadd(form,fd){ const id=form.dataset.id, ts=fromInputs(fd.get('date'),fd.get('time'));
+    if (!Number.isFinite(ts)){ $('#la-err').textContent='Confira a data e o horário.'; return; }
+    if (ts>now()){ $('#la-err').textContent='Essa data ainda não chegou. Aulas futuras entram pela agenda.'; return; }
+    const same=DB.lessons.find(l=>l.studentId===id&&l.status!=='cancelada'&&Math.abs(l.start-ts)<HOUR);
+    if (same){ $('#la-err').textContent= same.status==='agendada'? 'Já existe uma aula marcada nesse horário. Feche e clique nela no histórico para registrar.' : 'Já existe uma aula registrada nesse horário.'; return; }
+    DB.lessons.push({id:uid(),studentId:id,start:ts,dur:60,status:fd.get('status')==='falta'? 'falta' : 'realizada',note:String(fd.get('note')||'').trim(),extra:true});
+    save(); closeModal(); render(); toast('Aula registrada. Ela já conta no pacote.'); },
   package(form,fd){ DB.packages.push({id:uid(),studentId:form.dataset.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null}); save(); closeModal(); render(); toast('Pacote criado'); },
   settings(form,fd){
     const av={}; for (const d of [0,1,2,3,4,5,6]) if (fd.get('on'+d)){ const a=+fd.get('from'+d), b=+fd.get('to'+d); if (b>a) av[d]=[a,b]; }
