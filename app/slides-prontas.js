@@ -6288,4 +6288,1240 @@ The subjunctive
 Homework · The crisis statement`]
 );
 
+/* ---------- aulas para adultos · lote 3 (inglês e francês) ---------- */
+SLIDES_SEED.push(
+/* ===================== EN · A1 ===================== */
+['EN','A1','At the café: ordering drinks and snacks',`# capa: At the café | img:xicara
+Can I have…? How much is it? Eat in or take away?
+# sobre: Sobre esta aula
+ver: bebidas e lanches; pedir com **Can I have…? / I’d like…**; tamanhos (small, medium, large); **eat in or take away**; pagar e agradecer
+porque: Pedir um café é a primeira conversa real de quem viaja. Com 8 frases, o aluno consegue pedir qualquer coisa em qualquer cafeteria.
+meta: pedir uma bebida e um lanche; responder às perguntas do atendente; perguntar o preço e pagar
+nivel: Nível A1
+# aquecimento: Coffee time
+pergunta: Coffee or tea? How do you like it?
+jogo: Barista game | A professora é o barista e fala rápido: “Hi! What can I get you? Small, medium or large? Anything else?” O aluno responde sem pensar muito.
+video: Ordering at Starbucks | Procurem um vídeo de alguém pedindo café em inglês. Quantas perguntas o atendente faz? | busca: ordering coffee in English
+# vocab: Drinks and snacks
+coffee with milk | café com leite | img:xicara
+tea | chá | img:xicara
+orange juice | suco de laranja | img:suco
+water | água | img:agua
+cake | bolo | img:bolo
+sandwich | sanduíche | img:pao
+cookie | biscoito
+muffin | bolinho
+# dialogo: At the counter
+A: Hi! What can I get you?
+B: Can I have a coffee with milk, please?
+A: Sure. Small, medium or large?
+B: Medium, please. And a muffin.
+A: Eat in or take away?
+B: Take away. How much is it?
+# tabela: The barista asks… you answer
+Barista | You
+What can I get you? | Can I have a tea, please? / I’d like a juice.
+Small, medium or large? | Small, please.
+Anything else? | No, that’s all, thanks.
+Eat in or take away? | Eat in. / Take away.
+That’s 5.50. | Here you are. Thank you!
+# exercicio: Practice 1
+escolha: [*Can I have/Can I has/I can have] a coffee, please?
+escolha: I’d [*like/likes/liking] a sandwich.
+escolha: — Anything else? — No, [*that’s all/that all/is all], thanks.
+ligue: Ligue a pergunta à resposta.
+Eat in or take away? = Take away, please.
+How much is it? = It’s four dollars.
+Small or large? = Large, please.
+# frase: Useful extras
+Can I have it with oat milk?
+No sugar, please.
+Can I pay by card?
+Can I have the Wi-Fi password?
+Sorry, can you repeat that?
+# exercicio: Practice 2 · Listen and write
+ditado: Can I have a large tea, please?
+ditado: Eat in or take away?
+ordem: can I have a muffin please
+# pergunta: What do you say?
+The barista says “Anything else?”. You don’t want more. You say…
+*No, that’s all, thanks.
+Yes, I don’t.
+No, anything.
+# conversa: Role-play | img:xicara
+Order your favourite drink and a snack. The teacher is the barista.
+Now you are the barista! Serve the teacher.
+What’s the best café in your city? What do you order there?
+# tarefas: Atividades recomendadas
+Ordering at a café
+Food and drinks
+Homework · Coffee, please!`],
+
+['EN','A1','Weather and seasons',`# capa: Weather and seasons | img:sol
+It’s sunny! What’s the weather like?
+# sobre: Sobre esta aula
+ver: o tempo (sunny, rainy, cloudy, windy, snowy) e temperaturas; **It’s + adjetivo**; as quatro estações e os meses; o que vestir e fazer em cada tempo
+porque: Falar do tempo é o small talk número 1 em inglês, principalmente com britânicos! É a forma mais fácil de começar uma conversa.
+meta: perguntar e dizer como está o tempo; falar da estação favorita; ler uma previsão do tempo simples
+nivel: Nível A1
+# aquecimento: Today
+pergunta: What’s the weather like today in your city?
+jogo: Weather mime | A professora faz mímica (frio, calor, chuva, vento). O aluno diz: “It’s cold! It’s windy!”
+musica: Here Comes the Sun — The Beatles | Uma música sobre o sol depois de um inverno longo. Como você se sente quando o sol aparece?
+# vocab: The weather
+sunny | ensolarado | img:sol
+rainy | chuvoso | img:chuva
+cloudy | nublado | img:nuvem
+windy | com vento | img:vento
+snowy | com neve | img:neve
+stormy | com tempestade | img:tempestade
+hot | quente
+cold | frio
+# explica: How to talk about the weather
+Pergunta: **What’s the weather like?**
+Resposta com **It’s** + adjetivo:
+> It’s sunny. · It’s cold. · It’s 30 degrees.
+Com **raining / snowing** (agora):
+> It’s raining! Take an umbrella.
+# tabela: The four seasons
+Season | In the UK | In Brazil (south)
+spring | March – May | September – November
+summer | June – August | December – February
+autumn | September – November | March – May
+winter | December – February | June – August
+Nos EUA, **autumn** = **fall**.
+# exercicio: Practice 1
+escolha: What’s the weather [*like/is/likes] today?
+escolha: It’s [*raining/rain/rains] now. Take an umbrella!
+escolha: In winter, it’s [*cold/hot/sunny] in London.
+grupos: Hot weather: sunny, hot, summer / Cold weather: snowy, cold, winter
+# imagem: Look and say | img:tempestade
+What’s the weather like in the picture?
+What do you wear in this weather?
+What do you do on a day like this?
+# texto: Weather forecast
+**Monday**: sunny, 28 °C ☀️
+**Tuesday**: cloudy, 22 °C ☁️
+**Wednesday**: rainy and windy, 18 °C 🌧️
+**Thursday**: stormy, 16 °C ⛈️
+# exercicio: Practice 2 · The forecast
+What’s the weather like on Monday?
+*a) It’s sunny.
+b) It’s rainy.
+c) It’s snowy.
+It’s hot on Thursday. (f)
+Which is the best day for the beach?
+*a) Monday
+b) Wednesday
+c) Thursday
+ditado: It’s cloudy and windy today.
+# conversa: Let’s talk | img:sol
+What’s your favourite season? Why?
+What do you do on rainy days?
+Describe the weather in your city in summer and in winter.
+# tarefas: Atividades recomendadas
+The weather
+Days, months and seasons
+Homework · What’s the weather like?`],
+
+/* ===================== EN · A2 ===================== */
+['EN','A2','My hometown: describing places',`# capa: My hometown | img:cidade
+Describing where you live and where you’re from
+# sobre: Sobre esta aula
+ver: lugares da cidade; adjetivos para descrever lugares (busy, quiet, crowded, lively); **there is / there are / there isn’t any**; comparativos (bigger, more expensive); recomendar lugares para um turista
+porque: “Where are you from? What’s it like?” é uma das perguntas mais comuns ao conhecer alguém. Descrever bem a sua cidade é uma ótima forma de puxar conversa.
+meta: descrever a cidade onde mora; comparar duas cidades; recomendar 3 lugares para um visitante
+nivel: Nível A2
+# aquecimento: Your city
+pergunta: Where are you from? Do you like living there?
+jogo: Guess the city | Um descreve uma cidade famosa sem dizer o nome (“It’s very big. There are yellow taxis…”). O outro adivinha.
+filme: Notting Hill (1999) | O filme começa com o personagem descrevendo o bairro onde mora. Que lugares ele mostra? | busca: Notting Hill opening scene
+# vocab: Describing places
+busy | movimentado
+quiet | tranquilo
+crowded | lotado
+lively | animado
+historic | histórico
+modern | moderno
+dangerous | perigoso
+safe | seguro
+# tabela: There is / there are
+Positive | Negative | Question
+There’s a big park. | There isn’t a beach. | Is there a museum?
+There are lots of restaurants. | There aren’t any cinemas. | Are there any good cafés?
+Use **lots of** (muitos) e **not many** (poucos): There aren’t **many** parks.
+# exercicio: Practice 1
+escolha: There [*are/is] a lot of bars in the centre.
+escolha: There aren’t [*any/some] beaches in my city.
+escolha: [*Is/Are] there a good museum?
+lacunas: My hometown is very [quiet]. There’s a small [square] and there are some old [churches]. It’s very [safe]. || crowded, beach
+# explica: Comparing cities
+**Adjetivos curtos**: + **-er than**
+> São Paulo is **bigger than** Curitiba.
+**Adjetivos longos**: **more … than**
+> Rio is **more crowded than** my town.
+**Irregulares**: good → **better**, bad → **worse**
+> The food here is **better than** in London!
+# leitura: My hometown | img:cidade
+tipo: Blog
+I’m from Paraty, a small historic town between Rio and São Paulo. The centre is very **old** and **charming**, with white houses and stone streets. There **aren’t any** cars in the historic centre!
+In summer, it’s very **lively** and **crowded**, because there **are** lots of tourists. In winter, it’s **quieter**. There **are** beautiful beaches and islands near the town.
+It’s **smaller than** most cities, but for me, it’s **the best place** in the world.
+# exercicio: Practice 2
+Where is Paraty?
+*a) between Rio and São Paulo
+b) near Curitiba
+c) in the north of Brazil
+There are lots of cars in the historic centre. (f)
+When is the town quieter?
+a) in summer
+*b) in winter
+reescreva: My town is smaller than your town. | BIGGER | Your town ___ my town. | is bigger than
+# frase: Recommending places
+You should definitely visit…
+Don’t miss the…
+The best time to go is…
+It’s worth going to…
+# conversa: Your turn | img:cidade
+Describe your hometown in 6 sentences.
+Compare your city with another city you know.
+A tourist has one day in your city. What should they do?
+# tarefas: Atividades recomendadas
+Places in town
+Comparatives: my city
+Homework · Welcome to my city`],
+
+['EN','A2','Texting in English: messages and abbreviations',`# capa: Texting in English | img:celular
+lol, btw, omw: how people really write
+# sobre: Sobre esta aula
+ver: abreviações comuns em mensagens (btw, omw, idk, tbh, asap); como escrever mensagens curtas e informais; emojis e o tom da mensagem; quando **não** usar abreviações (e-mail de trabalho!)
+porque: Hoje a maior parte da comunicação em inglês é por mensagem. Sem conhecer as abreviações, uma conversa de WhatsApp com estrangeiros vira um mistério.
+meta: entender abreviações comuns; responder mensagens informais; transformar uma mensagem informal em formal
+nivel: Nível A2
+# aquecimento: Your messages
+pergunta: How many messages do you send a day? Do you ever text in English?
+jogo: Decode it! | A professora escreve “omw, b there in 5 min. srry!” O aluno “traduz” para o inglês completo.
+# tabela: Common abbreviations
+Abbreviation | Meaning | Português
+btw | by the way | aliás
+omw | on my way | tô a caminho
+idk | I don’t know | não sei
+tbh | to be honest | sinceramente
+asap | as soon as possible | o quanto antes
+Outras: **lol** (rindo), **thx** (thanks), **u** (you), **pls** (please), **brb** (be right back)
+# dialogo: A chat
+A: hey! r u free tonight?
+B: idk, maybe. why?
+A: there’s a party at Tom’s. wanna come?
+B: sounds fun! what time?
+A: 8ish. I can pick u up
+B: thx! omw at 8 then 😊
+nota: Leia em voz alta e peça para o aluno reescrever o diálogo em inglês completo.
+# exercicio: Practice 1 · What does it mean?
+“btw” means…
+a) be there walking
+*b) by the way
+c) bye, thank you
+ligue: Ligue a abreviação ao significado.
+omw = on my way
+idk = I don’t know
+asap = as soon as possible
+tbh = to be honest
+grupos: Informal texting: lol, u, thx / Work email: Kind regards, Thank you, as soon as possible
+# explica: Texting style
+Mensagens informais costumam **cortar palavras**:
+> (Are you) **coming** tonight? · (I’m) **on my way**!
+**-ish** = mais ou menos: 8ish = por volta das 8.
+**Wanna / gonna** = want to / going to (só no informal!).
+O emoji muda o tom: “ok.” 😐 × “ok! 😊”
+# tirinha: The boss’s message
+[celular]
+Leo (surpreso): My boss sent me “pls call asap”.
+Ana: Oh no. What did you reply?
+---
+Leo (preocupado): I wrote “omw lol”.
+---
+Ana (surpreso): Leo! That’s your BOSS!
+# exercicio: Practice 2 · Rewrite
+reescreva: r u coming 2nite? | ARE | ___ tonight? | Are you coming
+reescreva: idk, tbh | KNOW | To be honest, I ___ . | don’t know
+erro: Dear Mr Smith, pls send the report {asap|as soon as possible}. Kind regards.
+ditado: I’m on my way. See you in five minutes!
+# pergunta: Formal or informal?
+Which message is right for your manager?
+hey! can u send me the file? thx
+*Hi Anna, could you send me the file, please? Thanks!
+yo! file pls asap
+# conversa: Your turn | img:celular
+Write 3 text messages to a friend inviting them to something.
+Translate your last WhatsApp message into English.
+Do you prefer texting or calling? Why?
+# tarefas: Atividades recomendadas
+Small talk
+Everyday chunks
+Homework · Text me back`],
+
+['EN','A2','Sports and fitness: play, go, do',`# capa: Sports and fitness | img:bola
+play football, go swimming, do yoga
+# sobre: Sobre esta aula
+ver: esportes e atividades físicas; **play / go / do** (o trio que confunde todo mundo); **can / can’t** para habilidades; **how often** + advérbios de frequência
+porque: Esportes e exercício aparecem em todo small talk (“Do you do any sports?”). E “do / play / go” é um erro clássico: “I practise football” soa estranho em inglês.
+meta: falar dos esportes que pratica e com que frequência; escolher entre play, go e do; falar de habilidades com can
+nivel: Nível A2
+# aquecimento: Get moving
+pergunta: Do you do any sports or exercise? How often?
+jogo: Mime the sport | Um faz mímica de um esporte, o outro adivinha com a frase completa: “You’re playing tennis!”
+video: Olympic highlights | Escolham um esporte olímpico e assistam 1 minuto. Como se chama em inglês? | busca: Olympics best moments
+# vocab: Sports
+football | futebol | img:bola
+tennis | tênis
+swimming | natação | img:mar
+cycling | ciclismo | img:bicicleta
+running | corrida
+yoga | ioga
+volleyball | vôlei
+gym | academia
+# tabela: Play, go or do?
+Verb | When | Examples
+play | esportes com bola ou competição | play football, play tennis, play chess
+go | atividades com -ing | go swimming, go running, go cycling
+do | artes marciais, ginástica, exercício | do yoga, do karate, do exercise
+No inglês, **practise** é pouco usado para esportes: diga **I play football**, não “I practise football”.
+# exercicio: Practice 1
+escolha: I [*play/go/do] volleyball on Saturdays.
+escolha: She [*goes/plays/does] running every morning.
+escolha: We [*do/play/go] yoga twice a week.
+grupos: play: football, tennis, chess / go: swimming, cycling, running / do: yoga, karate, exercise
+# explica: How often?
+**always** → **usually** → **often** → **sometimes** → **never**
+> I **usually** go running in the morning. · He **never** plays football.
+Ou com expressões no fim da frase:
+> I go to the gym **twice a week**. · I do yoga **every day**.
+# dialogo: At the gym
+A: Hi! Are you new here?
+B: Yes, it’s my first week. I usually go running in the park.
+A: Cool! Do you do any classes?
+B: Not yet. Can you recommend one?
+A: The yoga class on Tuesdays is great.
+B: Thanks! I can’t touch my toes, but I’ll try!
+# exercicio: Practice 2
+How often does B go running?
+*a) usually
+b) never
+c) once a month
+B can touch her toes easily. (f)
+reescreva: I go to the gym on Monday and on Thursday. | TWICE | I go to the gym ___ a week. | twice
+erro: I {practise|play} football with my friends.
+# pergunta: Quick quiz
+Which one is correct?
+I go yoga every day.
+*I do yoga every day.
+I play yoga every day.
+# conversa: Let’s talk | img:bola
+What sports can you do? What sports can’t you do?
+Which sport would you like to try? Why?
+Are you a sports fan? Which team do you support?
+# tarefas: Atividades recomendadas
+Hobbies and free time
+Adverbs of frequency
+Homework · My fitness plan`],
+
+/* ===================== EN · B1 ===================== */
+['EN','B1','Let’s cook! Recipes and instructions',`# capa: Let’s cook! | img:panela
+Following and giving instructions in the kitchen
+# sobre: Sobre esta aula
+ver: verbos de cozinha (chop, slice, boil, fry, stir, add, mix); **imperativos**; **sequenciadores** (first, then, after that, finally); quantidades (a pinch of, a cup of, a tablespoon of)
+porque: Receitas são o melhor treino de **instruções**, que usamos também no trabalho, em tutoriais e para explicar caminhos.
+meta: entender uma receita em inglês; explicar o passo a passo de um prato; usar sequenciadores com naturalidade
+nivel: Nível B1
+nota: Peça para o aluno escolher um prato que ele sabe fazer. No fim, ele vai ensinar a receita para você.
+# aquecimento: In the kitchen
+pergunta: Can you cook? What’s your speciality?
+jogo: Guess the dish | A professora diz ingredientes (“eggs, cheese, ham, a frying pan”). O aluno adivinha o prato (an omelette!).
+video: Gordon Ramsay | Assistam um minuto de uma receita rápida. Que verbos ele usa? | busca: Gordon Ramsay scrambled eggs
+# vocab: Cooking verbs
+chop | picar
+slice | fatiar
+boil | ferver
+fry | fritar
+stir | mexer
+add | adicionar
+mix | misturar
+bake | assar (no forno)
+# tabela: Quantities
+Quantity | Example
+a pinch of | a pinch of salt
+a cup of | a cup of flour
+a tablespoon of | a tablespoon of olive oil
+a clove of | a clove of garlic
+a slice of | a slice of cheese
+# linha: Scrambled eggs in 4 steps | eixo: start | ready!
+agora: não
+ponto: 0.1 | 1. crack the eggs
+ponto: 0.4 | 2. mix with salt
+ponto: 0.7 | 3. cook and stir
+ponto: 0.95 | 4. serve
+**First**, crack three eggs into a bowl. **Then**, add a pinch of salt and mix.
+**After that**, cook them in a pan with butter and **stir** slowly. **Finally**, serve on toast.
+# exercicio: Practice 1
+escolha: [*Chop/Boil/Bake] the onions into small pieces.
+escolha: [*Boil/Fry/Slice] the water before you add the pasta.
+escolha: Add [*a pinch/a cup/a slice] of salt.
+grupos: First: first, to start with / Next: then, after that, next / Last: finally, at the end
+ordem: first chop the onion and the garlic
+# explica: Giving instructions
+**Imperativo**: verbo no começo, sem sujeito:
+> **Heat** the oil. **Don’t burn** the garlic!
+Com **until** (até) e **for** (durante):
+> Stir **until** it’s golden. · Bake **for** 20 minutes.
+Para soar mais simpático: **You need to… / Make sure you…**
+# leitura: Brazilian cheese bread (pão de queijo) | img:panela
+tipo: Recipe
+You need: 2 cups of tapioca flour, 1 cup of milk, half a cup of oil, 2 eggs, 1 cup of grated cheese and a pinch of salt.
+**First**, boil the milk, oil and salt. **Then**, pour it over the flour and **mix** well. **After that**, add the eggs one by one and the cheese.
+Make small balls with your hands. **Finally**, bake them at 180 °C **for** about 25 minutes, **until** they’re golden. Enjoy them warm!
+# exercicio: Practice 2
+How long do you bake the cheese bread?
+a) 10 minutes
+*b) about 25 minutes
+c) one hour
+You add the eggs before you boil the milk. (f)
+lacunas: [First], boil the milk. [Then], mix it with the flour. [Finally], bake the balls [until] they’re golden. || during, firstly
+# conversa: Teach me a recipe | img:panela
+Teach the teacher how to make your favourite dish. Use 5 cooking verbs and 4 sequencers.
+What’s a typical dish from your region? How do you make it?
+What’s the worst thing you’ve ever cooked?
+# tarefas: Atividades recomendadas
+In the kitchen
+Imperatives
+Homework · My recipe`],
+
+['EN','B1','Money matters: saving and spending',`# capa: Money matters | img:presente
+Are you a saver or a spender?
+# sobre: Sobre esta aula
+ver: vocabulário de dinheiro (save, spend, waste, afford, owe, lend, borrow, budget); **lend × borrow**; **can / can’t afford**; **first conditional** para planos financeiros; um quiz de personalidade
+porque: Dinheiro é assunto de todo dia: preços, salário, viagens, compras online. E “lend / borrow” é uma das confusões mais comuns.
+meta: falar dos próprios hábitos com dinheiro; usar lend, borrow, afford corretamente; dar conselhos financeiros simples
+nivel: Nível B1
+# aquecimento: You and money
+pergunta: What was the last thing you bought? Was it a good decision?
+musica: Money, Money, Money — ABBA | Uma música sobre sonhar com dinheiro. O que você faria com um milhão?
+# vocab: Money words
+save | economizar, guardar
+spend | gastar
+waste | desperdiçar
+afford | ter dinheiro para
+owe | dever
+budget | orçamento
+lend | emprestar (dar)
+borrow | pegar emprestado
+# explica: Lend or borrow?
+**lend** = dar emprestado · **borrow** = pegar emprestado
+> Can you **lend** me 20 dollars? (você me empresta)
+> Can I **borrow** 20 dollars? (eu pego emprestado)
+**afford** = ter condições de pagar:
+> I **can’t afford** a new car. · We **can afford** a holiday this year.
+# pergunta: Quiz 1 · Saver or spender?
+You get your salary. What do you do first?
+Go shopping!
+*Save a part of it.
+Pay for a big dinner with friends.
+nota: Este quiz é de personalidade: some as respostas “*”. Muitas respostas certas = poupador; poucas = gastador. Brinque com o resultado!
+# pergunta: Quiz 2 · Saver or spender?
+You see a jacket you love, but it’s very expensive. You…
+buy it immediately.
+*wait for a sale or think about it for a week.
+buy it and two more.
+# pergunta: Quiz 3 · Saver or spender?
+A friend asks to borrow money. You…
+*lend it, but agree on a date to pay back.
+give it and forget about it.
+say you don’t have any (even if you do).
+# exercicio: Practice 1
+escolha: Could you [*lend/borrow] me your car this weekend?
+escolha: Can I [*borrow/lend] your pen?
+escolha: We can’t [*afford/afford to buying/afford buy] a new house.
+escolha: I [*owe/own/borrow] my brother 100 dollars.
+grupos: Good habits: save, plan a budget, compare prices / Bad habits: waste, buy on impulse, borrow too much
+# explica: Money plans
+**First conditional**: If + present, will:
+> **If** I **save** 200 a month, I**’ll have** enough for a trip in December.
+> I **won’t buy** it **unless** it’s on sale.
+# leitura: The 50/30/20 rule | img:presente
+tipo: Personal finance
+Many financial experts recommend a simple **budget**: the 50/30/20 rule. You **spend** 50% of your income on **needs** (rent, food, transport), 30% on **wants** (restaurants, clothes, trips) and you **save** 20%.
+It sounds simple, but it isn’t easy. If you live in an expensive city, rent alone can take 50%. The important thing, experts say, is to **know where your money goes**.
+Try writing down everything you **spend** for one month. Most people are surprised by how much they **waste** on small things like coffee and apps.
+# exercicio: Practice 2
+In the 50/30/20 rule, how much do you save?
+a) 50%
+b) 30%
+*c) 20%
+Restaurants and trips are “needs”. (f)
+reescreva: I don’t have enough money for a new phone. | AFFORD | I ___ a new phone. | can’t afford
+erro: Can you {borrow|lend} me some money until Friday?
+# conversa: Let’s talk | img:presente
+Are you a saver or a spender? Give examples.
+What’s something you think is worth spending money on?
+Give the teacher 3 tips to save money.
+# tarefas: Atividades recomendadas
+Money
+First conditional
+Homework · My budget`],
+
+['EN','B1','Urban legends: stories with the past perfect',`# capa: Urban legends | img:noite
+Creepy stories that “happened to a friend of a friend”
+# sobre: Sobre esta aula
+ver: lendas urbanas famosas; **past perfect** para o “antes do passado” (had + particípio); **past simple × past perfect** numa história; contar uma história de suspense com ritmo
+porque: Histórias de mistério prendem a atenção e obrigam a usar o past perfect de verdade: o segredo da lenda quase sempre é algo que **tinha acontecido antes**.
+meta: entender e recontar uma lenda urbana; usar o past perfect para revelar o que tinha acontecido; criar o seu próprio final
+nivel: Nível B1
+# aquecimento: Scary stories
+pergunta: Do you know any Brazilian urban legends? (A loira do banheiro? O homem do saco?)
+jogo: True or legend? | A professora conta 3 “fatos” estranhos. O aluno decide: true story or urban legend?
+filme: Urban Legend (1998) | Um filme inteiro baseado em lendas urbanas. Vocês conhecem alguma do trailer? | busca: Urban Legend 1998 trailer
+# explica: The past perfect
+Usamos o **past perfect** (had + particípio) para algo que aconteceu **antes** de outro momento no passado:
+> When she got home, someone **had opened** the window.
+> He realised he **had left** his keys in the car.
+Muitas vezes com **already, just, never… before, by the time**.
+# linha: The story order
+agora: não
+ponto: 0.2 | someone had called her
+ponto: 0.55 | she got home
+ponto: 0.85 | she found the message
+O que aconteceu **primeiro** vai no **past perfect**, mesmo que apareça depois na frase.
+# leitura: The hitchhiker | img:noite
+tipo: Urban legend
+One rainy night, a man was driving home when he saw a young woman on the side of the road. She **had been** waiting there for hours, she said. He gave her a ride and she told him her address.
+When they arrived, she **had disappeared** from the back seat. Confused, he knocked on the door. An old woman opened it and showed him a photo: it was the girl.
+“That’s my daughter,” she said. “She **had died** in a car accident on that road… twenty years earlier.”
+# exercicio: Practice 1 · The story
+Why was the young woman on the road?
+a) her car had broken down
+*b) she had been waiting there for hours
+c) she was walking her dog
+When they arrived, the woman was still in the car. (f)
+escolha: When he arrived, she [*had disappeared/disappeared/has disappeared].
+escolha: The mother said her daughter [*had died/died/has died] years before.
+# explica: Past simple or past perfect?
+Se você conta na **ordem**, o past simple basta:
+> She **closed** the door and **went** to bed.
+Se você **volta** no tempo, use o past perfect:
+> She went to bed. She **had closed** the door, but now it was open…
+# exercicio: Practice 2
+escolha: By the time the police arrived, the thief [*had escaped/escaped/escapes].
+escolha: I [*had never seen/never saw/have never seen] anything like it before that night.
+reescreva: I left my phone at home. Then I realised it. | HAD | I realised I ___ at home. | had left my phone
+erro: When I got to the cinema, the film {already started|had already started}.
+# tirinha: The babysitter
+[noite]
+Mia (preocupado): Hello? Who is this?
+Tom: Have you checked the children?
+---
+Mia (surpreso): The police said the call had come from… inside the house!
+---
+Tom (feliz): Relax! It was me. I had forgotten my phone in the kitchen!
+# pergunta: True or legend?
+Which of these is a famous urban legend (not true)?
+*Alligators live in the sewers of New York.
+The Eiffel Tower grows in summer.
+Honey never goes bad.
+nota: As duas últimas são verdade! A Torre Eiffel cresce até 15 cm no calor por causa da dilatação do metal.
+# conversa: Your story | img:noite
+Retell “The hitchhiker” in your own words.
+Tell a Brazilian urban legend in English using the past perfect.
+Invent a new ending for one of the stories.
+# tarefas: Atividades recomendadas
+Past perfect
+Narrative tenses
+Homework · A strange night`],
+
+/* ===================== EN · B2 ===================== */
+['EN','B2','Crime and punishment',`# capa: Crime and punishment | img:lupa
+Crimes, the law and what is fair
+# sobre: Sobre esta aula
+ver: vocabulário de crime (crimes, criminosos e verbos: steal × rob, arrest, charge, sentence); **passiva com modais** (should be punished, must be sent); discutir **punições** e justiça
+porque: Crime é um tema constante em notícias, séries e provas como FCE e IELTS. Além disso, debater o que é “justo” desenvolve argumentação e vocabulário preciso.
+meta: usar o vocabulário de crime corretamente (steal × rob); discutir punições com a passiva com modais; defender uma opinião sobre justiça
+nivel: Nível B2
+# aquecimento: True crime
+pergunta: Do you watch true crime series or documentaries? Why are they so popular?
+filme: Making a Murderer (Netflix) | Uma série documental que dividiu opiniões. Ele era culpado ou inocente? | busca: Making a Murderer trailer
+# tabela: Crime, criminal, verb
+Crime | Criminal | Verb
+theft | thief | steal (something)
+robbery | robber | rob (a person / a place)
+burglary | burglar | break into (a house)
+fraud | fraudster | cheat, deceive
+vandalism | vandal | damage, vandalise
+**steal** a phone × **rob** a person / a bank: They **robbed** the bank and **stole** 1 million.
+# vocab: The legal process
+arrest | prender
+charge | acusar formalmente
+trial | julgamento
+witness | testemunha
+evidence | provas
+guilty | culpado
+sentence | sentença, condenar
+fine | multa
+# exercicio: Practice 1
+escolha: Someone [*stole/robbed] my bike yesterday.
+escolha: Two men [*robbed/stole] the bank on Main Street.
+escolha: The police [*arrested/sentenced/charged] him at the airport.
+escolha: The judge [*sentenced/arrested/witnessed] her to two years in prison.
+ligue: Ligue o crime ao criminoso.
+burglary = burglar
+theft = thief
+robbery = robber
+# explica: Talking about punishment
+Para opinar sobre punições, a **passiva com modais** é muito natural:
+> Drunk drivers **should be banned** from driving for life.
+> Graffiti artists **shouldn’t be sent** to prison.
+> Young offenders **could be given** community service.
+# texto: What should happen?
+1. A 16-year-old **steals** a phone for the first time.
+2. A company director **cheats** clients out of 2 million.
+3. A driver **texting** on the phone causes an accident.
+4. A woman **steals** food from a supermarket to feed her children.
+nota: Para cada caso, o aluno decide a punição (fine, community service, prison, nothing) e justifica com a passiva com modais.
+# exercicio: Practice 2
+reescreva: They should send him to prison. | BE | He should ___ to prison. | be sent
+reescreva: The court must give her a fine. | GIVEN | She must ___ a fine. | be given
+erro: My wallet was {robbed|stolen} on the bus.
+lacunas: The [witness] saw everything. There was enough [evidence], so the jury found him [guilty]. || innocent, judge
+# leitura: Prisons without bars | img:lupa
+tipo: Report
+In Norway, some prisons look more like university campuses than prisons. Prisoners cook their own food, study and work, and guards don’t carry guns.
+Critics say this is too soft. But the results are hard to ignore: only about **20%** of Norwegian prisoners commit another crime within two years, compared with over **60%** in some other countries.
+Supporters argue that prison **should be used** to prepare people to return to society, not just to punish them. The question is whether this model **could be copied** elsewhere.
+# pergunta: Your opinion
+What should prisons focus on most?
+punishment
+rehabilitation
+protecting society
+nota: Sem resposta certa: peça para o aluno justificar com dados do texto.
+# conversa: Debate | img:lupa
+Discuss the four cases. What should happen in each one?
+Is the Norwegian model a good idea for your country? Why (not)?
+Should famous people get the same punishments as everyone else?
+# tarefas: Atividades recomendadas
+Crime and the law
+Passive with modals
+Homework · Guilty or not guilty?`],
+
+['EN','B2','Networking: small talk at work events',`# capa: Networking | img:conversa
+Starting, keeping and ending conversations at work events
+# sobre: Sobre esta aula
+ver: como **abrir** uma conversa com um desconhecido; perguntas abertas para manter o papo; mostrar interesse (follow-up questions); **sair** da conversa com elegância; temas seguros e temas a evitar
+porque: Em eventos, conferências e happy hours, o networking acontece **em inglês e em pé**, com pessoas que você nunca viu. Saber puxar e encerrar a conversa é uma habilidade profissional.
+meta: abrir uma conversa naturalmente; fazer perguntas de continuação; encerrar sem constrangimento e trocar contatos
+nivel: Nível B2 · inglês para o trabalho
+nota: Faça o role-play duas vezes: na primeira, a professora conduz; na segunda, o aluno precisa abrir, manter e encerrar a conversa sozinho.
+# aquecimento: Breaking the ice
+pergunta: Do you enjoy networking events, or do you find them uncomfortable?
+jogo: Two truths and a lie | Cada um diz 3 fatos sobre a própria carreira. Um é mentira. O outro faz perguntas para descobrir.
+# tabela: The conversation map
+Stage | Useful language
+Opening | Hi, I don’t think we’ve met. I’m… · How do you know the host?
+Keeping it going | What brings you here? · How did you get into that?
+Showing interest | That sounds fascinating. What’s the most challenging part?
+Ending | It’s been great talking to you. · I’ll let you mingle.
+Swapping contacts | Are you on LinkedIn? · Let me give you my card.
+# explica: Open questions
+Perguntas de **sim / não** matam a conversa. Prefira perguntas **abertas**:
+> ✗ Do you like your job? → ✓ What do you enjoy most about your job?
+> ✗ Is this your first time here? → ✓ What brings you to the conference?
+E faça **follow-up**: pegue um detalhe da resposta e pergunte mais.
+# dialogo: At the conference
+A: Hi, I don’t think we’ve met. I’m Carla, from Lima Design.
+B: Nice to meet you, Carla. I’m Tom. What brings you here?
+A: I’m speaking tomorrow about branding. How about you?
+B: I’m looking for new partners. How did you get into branding?
+A: Oh, by accident, really! I started as an illustrator.
+B: That sounds fascinating. Are you on LinkedIn?
+# exercicio: Practice 1
+Which question is best to keep the conversation going?
+a) Do you work here?
+*b) What do you enjoy most about your work?
+c) Are you OK?
+escolha: It’s been great [*talking/to talk/talk] to you.
+escolha: [*How/What/Why] did you get into marketing?
+grupos: Opening: I don’t think we’ve met, How do you know the host? / Ending: I’ll let you mingle, It’s been great talking to you
+# texto: Safe topics × risky topics
+✅ **Safe**: the event, travel, work projects, food, the city, sports (carefully!)
+⚠️ **Risky**: salary, politics, religion, age, weight, personal relationships
+Dica: elogie algo **concreto** (“Great talk this morning!”) em vez de algo pessoal.
+# frase: Leaving politely
+I’m going to grab another drink. Can I get you anything?
+I don’t want to keep you. It’s been lovely chatting.
+I should say hello to a colleague over there.
+Let’s stay in touch!
+# exercicio: Practice 2
+reescreva: Do you like your job? | ENJOY | What do you ___ your job? | enjoy most about
+erro: It’s been great {to talking|talking} to you.
+Asking about someone’s salary is a safe topic at networking events. (f)
+# leitura: The power of weak ties | img:conversa
+tipo: Research
+In a famous 1973 study, sociologist Mark Granovetter found that most people got new jobs not through close friends, but through **acquaintances**: people they barely knew.
+He called these “**weak ties**”. Close friends usually know the same people and opportunities as you. Acquaintances connect you to **different** worlds.
+So that short conversation by the coffee machine at a conference? It might be more valuable than you think.
+# conversa: Role-play | img:conversa
+You’re at a conference coffee break. Start a conversation with the teacher, keep it going for 3 minutes and end it politely.
+Tell me about the most useful contact you’ve ever made.
+What’s your “elevator pitch” in 20 seconds?
+# tarefas: Atividades recomendadas
+Small talk: keep the conversation going
+Politeness in English
+Homework · Nice to meet you, again`],
+
+['EN','B2','Space: the final frontier',`# capa: Space: the final frontier | img:noite
+Exploration, the future and the big questions
+# sobre: Sobre esta aula
+ver: vocabulário de espaço e ciência; formas do futuro para previsões (will, is likely to, will have + particípio); **passiva** para descobertas (was discovered, has been launched); debate: vale a pena gastar com exploração espacial?
+porque: Ciência e espaço geram curiosidade e vocabulário muito usado em textos e notícias. O debate sobre custos desenvolve argumentação.
+meta: descrever marcos da exploração espacial com a passiva; fazer previsões com graus de certeza; defender uma posição sobre gastos com o espaço
+nivel: Nível B2
+# aquecimento: Look up
+pergunta: Would you go to Mars if you could? Even if you couldn’t come back?
+filme: The Martian (2015) | Um astronauta abandonado em Marte precisa sobreviver. O que você levaria? | busca: The Martian trailer
+jogo: Space quiz | Quantos planetas tem o sistema solar? Qual é o maior? Quem foi o primeiro a ir ao espaço? (8, Júpiter, Yuri Gagarin)
+# vocab: Space words
+astronaut | astronauta
+rocket | foguete
+launch | lançar, lançamento
+orbit | órbita
+spacecraft | nave espacial
+galaxy | galáxia
+gravity | gravidade
+mission | missão
+# linha: Milestones | eixo: 1950 | 2040
+agora: 0.82
+ponto: 0.08 | 1957 Sputnik
+ponto: 0.25 | 1969 Moon landing
+ponto: 0.55 | 1998 ISS
+ponto: 0.88 | 2030s Mars?
+O primeiro satélite **was launched** em 1957. Humanos **were sent** à Lua em 1969. Desde 1998, astronautas **have been living** na Estação Espacial.
+# explica: The passive in science
+Em textos científicos, o importante é **o que** foi feito, não quem fez:
+> The first satellite **was launched** in 1957.
+> More than 5,000 planets **have been discovered** outside our solar system.
+> A new telescope **will be sent** into space next year.
+# exercicio: Practice 1
+escolha: Water [*has been found/has found/found] on Mars.
+escolha: The first photo of a black hole [*was taken/took/was take] in 2019.
+escolha: By 2050, humans [*will probably have landed/will probably land/probably landed] on Mars.
+reescreva: Scientists discovered the planet in 2016. | WAS | The planet ___ in 2016. | was discovered
+# leitura: Is space worth the money? | img:noite
+tipo: Opinion
+NASA’s budget is about **25 billion dollars** a year. Critics ask: with poverty and climate change on Earth, **is it worth** spending so much on space?
+Supporters point out that space research **has given us** many everyday things: GPS, weather forecasts, scratch-resistant lenses and even baby food formulas. Satellites **are used** to monitor forests, floods and crops.
+And there’s a bigger argument: if humanity wants to survive in the long term, many scientists believe we **will have to** become a multi-planet species.
+# exercicio: Practice 2
+How much is NASA’s budget?
+a) 2.5 billion dollars
+*b) about 25 billion dollars
+c) 250 billion dollars
+Which is NOT mentioned as a result of space research?
+a) GPS
+b) weather forecasts
+*c) smartphones
+grupos: For space exploration: new technology, survival of humanity, monitoring the Earth / Against: too expensive, problems on Earth first, risky for astronauts
+# pergunta: Your vote
+Should governments spend more on space exploration?
+Yes, more.
+Keep it the same.
+No, spend less.
+nota: Sem resposta certa: peça uma justificativa com a passiva ou com previsões.
+# frase: Speculating about the future
+It’s very likely that we’ll find life on another planet.
+I doubt humans will live on Mars in my lifetime.
+By 2100, space tourism will have become normal.
+There’s a good chance that…
+# conversa: Discuss | img:noite
+Should space tourism be allowed, or is it just for billionaires?
+Do you think there is life on other planets?
+If you could send one object into space to represent humanity, what would it be?
+# tarefas: Atividades recomendadas
+Future continuous and future perfect
+Passive voice
+Homework · Mission to Mars`],
+
+/* ===================== EN · C1 ===================== */
+['EN','C1','Why we make bad decisions',`# capa: Why we make bad decisions | img:lampada
+Behavioural economics and cognitive biases
+# sobre: Sobre esta aula
+ver: vieses cognitivos (anchoring, loss aversion, confirmation bias, sunk cost fallacy, the decoy effect); vocabulário acadêmico; **experimentos ao vivo** com o aluno; linguagem para explicar causa e efeito com precisão
+porque: Economia comportamental está em livros best-sellers, no marketing e nas decisões do dia a dia. Explicar ideias abstratas com clareza é uma marca do C1.
+meta: explicar 4 vieses com exemplos; relacionar vieses a situações reais (compras, trabalho, investimentos); usar vocabulário acadêmico com naturalidade
+nivel: Nível C1
+nota: Faça os experimentos ANTES de explicar os vieses. O efeito é mais forte quando o aluno não sabe o que está sendo testado.
+# aquecimento: Quick experiment
+pergunta: Is the population of Turkey more or less than 30 million? Now guess the exact number.
+nota: Ancoragem: o número 30 milhões puxa a estimativa para baixo. A população real é de cerca de 85 milhões. Compare com o palpite do aluno!
+jogo: Bat and ball | “A bat and a ball cost 1.10 in total. The bat costs 1.00 more than the ball. How much is the ball?” (Resposta: 0.05, não 0.10!)
+# tabela: Five biases
+Bias | What it means | Example
+anchoring | the first number influences us | “Was 200, now 99!” feels cheap
+loss aversion | losing hurts more than winning feels good | we keep bad investments
+confirmation bias | we look for what we already believe | only reading news we agree with
+sunk cost fallacy | continuing because we’ve already invested | finishing a terrible film
+# texto: Experiment 2 · The decoy
+A magazine offers three subscriptions:
+**Online only**: $59 · **Print only**: $125 · **Print + online**: $125
+Which would you choose?
+nota: Efeito chamariz: ninguém escolhe “Print only”, mas ele faz “Print + online” parecer uma ótima oferta. Num estudo do MIT, 84% escolheram a opção combinada; sem a opção chamariz, a maioria escolheu “Online only”.
+# vocab: Academic vocabulary
+to underestimate | subestimar
+to overestimate | superestimar
+irrational | irracional
+heuristic | atalho mental
+to be prone to | ter tendência a
+to counteract | neutralizar, compensar
+rationale | lógica, justificativa
+trade-off | compromisso, troca
+# exercicio: Practice 1 · Name the bias
+“We’ve already spent two years on this project, so we can’t stop now.”
+a) anchoring
+*b) sunk cost fallacy
+c) loss aversion
+“I only follow people on social media who share my opinions.”
+a) loss aversion
+b) anchoring
+*c) confirmation bias
+escolha: People are [*prone to/prone of/prone for] overestimating their abilities.
+reescreva: We think tasks will take less time than they really do. | UNDERESTIMATE | We ___ tasks will take. | underestimate how long/underestimate how much time
+# explica: Explaining cause and effect precisely
+No C1, evite só “because”. Varie:
+> This **stems from** our need to avoid losses.
+> Anchoring **can be attributed to** the way we process numbers.
+> **As a consequence**, we tend to overpay.
+> This **gives rise to** irrational decisions.
+# leitura: Thinking, fast and slow | img:lampada
+tipo: Psychology
+Nobel Prize winner Daniel Kahneman described two systems in our minds. **System 1** is fast, automatic and emotional: it recognises faces and answers “2 + 2”. **System 2** is slow, deliberate and logical: it solves “17 × 24”.
+Most of our biases **stem from** System 1. It uses **heuristics** – mental shortcuts – that usually work, but sometimes lead us astray. The bat-and-ball question fools so many people because System 1 answers before System 2 has a chance to check.
+The good news? Simply knowing about biases helps to **counteract** them, especially in important decisions like investments or hiring.
+# exercicio: Practice 2
+Which system solves “17 × 24”?
+a) System 1
+*b) System 2
+Heuristics always lead to bad decisions. (f)
+erro: This problem {stems of|stems from} a lack of information.
+lacunas: Most biases [stem] from System 1. As a [consequence], we are [prone] to errors. || cause, likely
+# conversa: Discussion | img:lampada
+Which bias do you think affects you the most? Give an example.
+How do companies use these biases to sell to us?
+Design a “nudge” to make people save more money or eat healthier.
+# tarefas: Atividades recomendadas
+Academic vocabulary
+Reading · The paradox of choice
+Homework · Think twice`],
+
+['EN','C1','Irony, sarcasm and British humour',`# capa: Irony, sarcasm and British humour | img:feliz
+“Oh, brilliant.” (It wasn’t brilliant.)
+# sobre: Sobre esta aula
+ver: **ironia, sarcasmo e understatement** (a marca do humor britânico); como a entonação muda o sentido; expressões irônicas comuns (Oh, great. · That’s just what I needed.); quando é melhor **não** usar
+porque: Muitos mal-entendidos com nativos (principalmente britânicos) vêm de não perceber a ironia. “Not bad” pode ser um grande elogio, e “Brilliant…” pode ser uma reclamação.
+meta: reconhecer sarcasmo e understatement; interpretar o sentido real; usar ironia leve de forma adequada
+nivel: Nível C1 · cultura e pragmática
+# aquecimento: Funny or not?
+pergunta: Is humour in your country different from British or American humour?
+video: British understatement | Procurem vídeos sobre “what the British say vs what they mean”. Qual frase surpreendeu mais? | busca: what British people say and what they mean
+jogo: Say it two ways | O aluno diz “That’s great” de forma sincera e de forma sarcástica. A professora adivinha qual é qual.
+# tabela: What they say… what they mean
+They say | They mean
+Not bad at all. | That’s excellent!
+That’s an interesting idea. | That’s a terrible idea.
+I’ll bear it in mind. | I’ll forget it immediately.
+With the greatest respect… | I think you’re wrong.
+Quite good. | A bit disappointing.
+# explica: Three kinds of “not saying what you mean”
+**Irony**: dizer o contrário do que você quer dizer, muitas vezes com humor.
+**Sarcasm**: ironia com intenção de criticar ou provocar.
+> (chovendo no seu dia de folga) “Oh, **perfect**. Just **perfect**.”
+**Understatement**: dizer **menos** do que a realidade.
+> (depois de um furacão) “It was **a bit windy** last night.”
+# dialogo: A great start to the week
+A: How was your weekend?
+B: Oh, fantastic. My flight was cancelled and I slept at the airport.
+A: Sounds relaxing.
+B: Totally. And then they lost my suitcase. Brilliant.
+A: Well, at least the weather’s nice.
+B: It’s pouring. But apart from that, not bad.
+# exercicio: Practice 1 · Sincere or sarcastic?
+(Your friend arrives two hours late.) “Thanks for being so punctual.”
+a) sincere
+*b) sarcastic
+(A British colleague tastes your cake.) “Mmm, not bad at all!”
+*a) a real compliment
+b) a criticism
+grupos: Understatement: a bit chilly (it’s freezing), not the best idea (a terrible idea) / Sarcasm: Oh, great!, That’s just what I needed
+# tirinha: The new haircut
+[cidade]
+Ana (feliz): Do you like my new haircut?
+Tom (pensando): It’s… very brave.
+---
+Ana (bravo): “Brave”? What does that mean?
+---
+Tom (preocupado): It means I should stop talking now.
+# explica: How we know it’s sarcasm
+Os sinais costumam ser **a situação** e **a entonação**:
+> Entonação **plana** ou exagerada: “Oh. **Great**.”
+> Elogio **exagerado** para algo pequeno ou ruim.
+> Por escrito, às vezes com **itálico**, aspas ou um emoji 🙃.
+Em e-mails de trabalho e com quem você não conhece bem, **evite**: por escrito, o sarcasmo é facilmente mal interpretado.
+# exercicio: Practice 2
+erro: (sarcastic) Oh {fantastically|fantastic}, another meeting!
+What does “I’ll bear it in mind” often mean in British English?
+a) I will definitely do it.
+*b) I probably won’t do it.
+c) I don’t understand.
+reescreva: It was extremely cold in Scotland. | BIT | It was ___ in Scotland. (understatement) | a bit chilly/a bit cold
+# leitura: The art of understatement | img:feliz
+tipo: Culture
+In 1982, a British Airways plane lost power in all four engines after flying through volcanic ash. The captain calmly told the passengers: “**We have a small problem.** All four engines have stopped. We are doing our damnedest to get them going again. I trust you are not in **too much distress**.”
+The engines restarted and everyone survived. The announcement became famous as the perfect example of British **understatement**: describing a terrifying situation as if it were a minor inconvenience.
+For many foreigners, this style is confusing. For the British, it’s a way of staying calm and, often, of being funny.
+# conversa: Let’s talk | img:feliz
+Tell the teacher about a bad day using sarcasm and understatement.
+Have you ever misunderstood someone’s irony? What happened?
+Which British or American comedies do you know? Do you find them funny?
+# tarefas: Atividades recomendadas
+Politeness in English
+Everyday idioms
+Homework · Oh, brilliant`],
+
+/* ===================== FR ===================== */
+['FR','A1','Au café : commander',`# capa: Au café | img:xicara
+Je voudrais un café, s’il vous plaît !
+# sobre: Sobre esta aula
+ver: bebidas e lanches num café francês; pedir com **je voudrais / je vais prendre**; tu × **vous**; perguntar o preço (**C’est combien ?**) e pedir a conta (**L’addition, s’il vous plaît**)
+porque: O café é o coração da vida na França. Saber pedir com educação (sempre com **bonjour** e **s’il vous plaît**!) muda completamente a forma como você é atendido.
+meta: cumprimentar o garçom; pedir uma bebida e um lanche; pedir a conta e pagar
+nivel: Nível A1 · francês
+# aquecimento: Le café en France
+pergunta: Vous préférez un café ou un thé ? Et au Brésil, comment on commande un café ?
+musica: Les Champs-Élysées — Joe Dassin | Uma música clássica de Paris. Que lugares e palavras vocês reconhecem ?
+jogo: Bonjour ou bonsoir ? | A professora diz uma hora (9h, 15h, 20h). O aluno cumprimenta certo: bonjour ou bonsoir.
+# vocab: Au café
+un café | um café expresso | img:xicara
+un café crème | café com leite | img:xicara
+un thé | um chá
+un jus d’orange | um suco de laranja | img:suco
+une eau minérale | uma água mineral | img:agua
+un croissant | um croissant | img:pao
+un sandwich | um sanduíche
+une tarte | uma torta | img:bolo
+# dialogo: Au comptoir
+A: Bonjour, madame. Vous désirez ?
+B: Bonjour ! Je voudrais un café crème, s’il vous plaît.
+A: Et avec ceci ?
+B: Un croissant, s’il vous plaît. C’est combien ?
+A: Ça fait cinq euros cinquante.
+B: Voilà. Merci, bonne journée !
+# tabela: Phrases utiles
+Le serveur dit… | Vous répondez…
+Vous désirez ? | Je voudrais un thé, s’il vous plaît.
+Et avec ceci ? | C’est tout, merci.
+Sur place ou à emporter ? | Sur place. / À emporter.
+Ça fait 4 euros. | Voilà. / Je peux payer par carte ?
+Na França, sempre comece com **Bonjour** antes de pedir qualquer coisa!
+# exercicio: Practice 1
+escolha: [*Je voudrais/Je veux voudrais/Je voudrai] un café, s’il vous plaît.
+escolha: L’[*addition/adition/additione], s’il vous plaît !
+escolha: Sur place ou [*à emporter/à porter/emporter] ?
+ligue: Associez.
+Vous désirez ? = Je voudrais un thé.
+C’est combien ? = Trois euros.
+Et avec ceci ? = C’est tout, merci.
+# explica: Un, une et le prix
+Os substantivos são **masculinos** (un) ou **femininos** (une):
+> **un** café, **un** croissant · **une** eau, **une** tarte
+Para perguntar o preço: **C’est combien ? / Ça fait combien ?**
+> Ça fait **trois euros vingt**.
+# exercicio: Practice 2
+escolha: Je voudrais [*une/un] eau minérale.
+escolha: Je voudrais [*un/une] croissant.
+ditado: Je voudrais un café, s’il vous plaît.
+ordem: c’est combien le croissant
+# pergunta: Au café
+Vous voulez payer. Vous dites…
+*L’addition, s’il vous plaît.
+Le menu, s’il vous plaît.
+Bonne nuit !
+# conversa: À vous ! | img:xicara
+Commandez une boisson et quelque chose à manger. La professeure est le serveur.
+Demandez le prix et payez.
+Quel est votre café préféré ? Qu’est-ce que vous commandez ?
+# tarefas: Atividades recomendadas
+Au café
+Au café : commander
+Devoirs · Un café, s’il vous plaît`],
+
+['FR','A2','Au marché : les partitifs',`# capa: Au marché | img:carrinho
+du pain, de la confiture, des fruits
+# sobre: Sobre esta aula
+ver: comida no mercado; os **artigos partitivos** (du, de la, de l’, des); quantidades (**un kilo de, un peu de, beaucoup de**); **pas de** na negativa; comprar no mercado
+porque: Os partitivos não existem em português e são um dos erros mais comuns de brasileiros (“je mange pain” ✗). O mercado é o lugar perfeito para praticar.
+meta: usar du, de la, des corretamente; pedir quantidades; comprar frutas e legumes no mercado
+nivel: Nível A2 · francês
+# aquecimento: Le marché
+pergunta: Vous allez souvent au marché ? Qu’est-ce que vous achetez ?
+jogo: Au marché, j’ai acheté… | Um diz “Au marché, j’ai acheté du pain.” O outro repete e acrescenta: “…du pain et des pommes.” Quem esquecer perde!
+# vocab: Au marché
+du pain | pão | img:pao
+du fromage | queijo | img:queijo
+des œufs | ovos | img:ovo
+du poulet | frango | img:frango
+des légumes | legumes | img:legumes
+des pommes | maçãs | img:maca
+des bananes | bananas | img:banana
+de l’eau | água | img:agua
+# tabela: Les articles partitifs
+Masculin | Féminin | Voyelle | Pluriel
+du pain | de la confiture | de l’eau | des fruits
+du fromage | de la salade | de l’huile | des tomates
+Na negativa, tudo vira **de / d’**: Je ne mange **pas de** viande. Il n’y a **pas d’**eau.
+# explica: Quantités
+Depois de uma quantidade, use só **de / d’**:
+> **un kilo de** pommes · **un peu de** sucre · **beaucoup d’**eau
+> **une bouteille de** vin · **un paquet de** pâtes
+# exercicio: Practice 1
+escolha: Je voudrais [*du/de la/des] pain.
+escolha: Tu bois [*de l’/du/de la] eau ?
+escolha: Elle achète [*des/du/de la] tomates.
+escolha: Je ne mange pas [*de/du/de la] viande.
+escolha: Un kilo [*de/des/du] pommes, s’il vous plaît.
+grupos: du: pain, fromage, poulet / de la: salade, confiture, viande / des: œufs, pommes, légumes
+# dialogo: Chez le marchand
+A: Bonjour, monsieur ! Qu’est-ce que je vous sers ?
+B: Bonjour ! Je voudrais un kilo de tomates, s’il vous plaît.
+A: Voilà. Et avec ça ?
+B: Des pommes. Elles sont à combien ?
+A: Trois euros le kilo.
+B: Alors, deux kilos. C’est tout, merci !
+# exercicio: Practice 2
+Combien de kilos de pommes il achète ?
+a) un kilo
+*b) deux kilos
+c) trois kilos
+lacunas: Pour le dîner, j’achète [du] poulet, [de la] salade et [des] légumes, mais je n’achète pas [de] fromage. || le, les
+erro: Je mange {pain|du pain} le matin.
+# frase: Au marché
+Qu’est-ce que vous avez de bon aujourd’hui ?
+Elles sont à combien, les fraises ?
+Je peux goûter ?
+Un peu plus, s’il vous plaît.
+C’est tout, merci !
+# conversa: À vous ! | img:carrinho
+Qu’est-ce que vous mangez au petit-déjeuner ? (du, de la, des)
+Faites la liste des courses pour un pique-nique.
+Jeu de rôle : vous achetez des fruits au marché.
+# tarefas: Atividades recomendadas
+Les articles partitifs
+Les vêtements et les courses
+Devoirs · La liste des courses`],
+
+['FR','A2','En ville : demander son chemin',`# capa: En ville | img:cidade
+Excusez-moi, où est la gare ?
+# sobre: Sobre esta aula
+ver: lugares da cidade; perguntar o caminho com educação; **l’impératif** (tournez, allez, prenez); preposições (à côté de, en face de, au bout de); entender instruções
+porque: Pedir e entender direções é uma situação real de viagem. E o imperativo também serve para receitas, instruções e conselhos.
+meta: perguntar onde fica um lugar; dar e entender direções com o imperativo; usar preposições de lugar
+nivel: Nível A2 · francês
+# aquecimento: Ma ville
+pergunta: Qu’est-ce qu’il y a dans votre quartier ?
+jogo: Où suis-je ? | A professora dá direções a partir de um ponto conhecido da cidade do aluno. Onde ele chega?
+# vocab: Les lieux
+la gare | a estação de trem | img:trem
+la boulangerie | a padaria | img:pao
+la pharmacie | a farmácia
+la banque | o banco
+le musée | o museu
+la poste | o correio | img:envelope
+le parc | o parque | img:arvore
+l’arrêt de bus | o ponto de ônibus | img:onibus
+# tabela: Donner des directions
+Direction | Exemple
+tout droit | Allez tout droit.
+à droite / à gauche | Tournez à droite.
+la première rue | Prenez la première rue à gauche.
+traverser | Traversez la place.
+au bout de | C’est au bout de la rue.
+# explica: L’impératif
+O imperativo usa o verbo **sem o sujeito** (com **vous**, mais educado):
+> **Tournez** à gauche. · **Allez** tout droit. · **Prenez** le bus 12.
+Com **tu**, o **-s** dos verbos em -er desaparece:
+> **Tourne** à droite ! · **Va** tout droit !
+# exercicio: Practice 1
+escolha: [*Tournez/Tourner/Tournes] à droite, monsieur.
+escolha: [*Prenez/Prendre/Prends-vous] la deuxième rue.
+escolha: La pharmacie est [*en face de/en face/face de] la banque.
+ligue: Associez.
+à côté de = ao lado de
+en face de = em frente a
+au bout de = no fim de
+# dialogo: Excusez-moi…
+A: Excusez-moi, madame. Où est la gare, s’il vous plaît ?
+B: Allez tout droit, puis tournez à gauche.
+A: À gauche après la banque ?
+B: Oui. La gare est au bout de la rue, en face du parc.
+A: C’est loin ?
+B: Non, à cinq minutes à pied.
+# exercicio: Practice 2
+Où est la gare ?
+a) à côté de la banque
+*b) au bout de la rue, en face du parc
+c) derrière le musée
+La gare est très loin. (f)
+ditado: Tournez à droite et allez tout droit.
+erro: Excusez-moi, {où la gare est|où est la gare} ?
+# frase: Demander poliment
+Excusez-moi, je cherche la poste.
+Il y a une pharmacie près d’ici ?
+C’est loin d’ici ?
+Vous pouvez répéter, s’il vous plaît ?
+Merci beaucoup, bonne journée !
+# conversa: À vous ! | img:cidade
+Expliquez le chemin de chez vous à la boulangerie.
+Un touriste cherche le musée de votre ville. Aidez-le !
+Décrivez votre quartier : qu’est-ce qu’il y a à côté de chez vous ?
+# tarefas: Atividades recomendadas
+En ville
+L’impératif
+Devoirs · Le plan de la ville`],
+
+['FR','B1','Souvenirs d’enfance : l’imparfait',`# capa: Souvenirs d’enfance | img:bicicleta
+Quand j’étais petit…
+# sobre: Sobre esta aula
+ver: o **imparfait** para hábitos e descrições no passado (je jouais, il faisait beau); **imparfait × passé composé** numa lembrança; expressões de tempo (autrefois, quand j’étais petit, tous les étés)
+porque: Contar lembranças é uma das conversas mais naturais e afetivas. E a diferença entre imparfait e passé composé é o grande desafio do B1.
+meta: descrever a infância com o imparfait; contar uma lembrança combinando os dois tempos; comparar o passado com hoje
+nivel: Nível B1 · francês
+# aquecimento: Quand j’étais petit
+pergunta: Où est-ce que vous habitiez quand vous étiez petit(e) ?
+musica: La Bohème — Charles Aznavour | Uma música inteira sobre lembranças da juventude em Paris. Que verbos no imparfait vocês escutam ?
+filme: Le Petit Nicolas (2009) | As aventuras de um menino nos anos 60. Como era a escola naquela época ? | busca: Le Petit Nicolas bande annonce
+# tabela: L’imparfait
+Personne | jouer | être | avoir
+je | jouais | étais | avais
+tu | jouais | étais | avais
+il / elle | jouait | était | avait
+nous | jouions | étions | avions
+vous / ils | jouiez / jouaient | étiez / étaient | aviez / avaient
+Raiz: o **nous** do presente (nous **jou**ons) + -ais, -ais, -ait, -ions, -iez, -aient. Exceção: **être** (ét-).
+# explica: Quand utiliser l’imparfait ?
+**Hábitos** no passado:
+> Tous les étés, nous **allions** chez ma grand-mère.
+**Descrições** (tempo, lugar, pessoas, sentimentos):
+> Il **faisait** beau. La maison **était** petite. J’**avais** peur du noir.
+**Ação em andamento** interrompida (com o passé composé):
+> Je **regardais** la télé quand le téléphone **a sonné**.
+# exercicio: Practice 1
+escolha: Quand j’étais petit, je [*jouais/ai joué/joue] au football tous les jours.
+escolha: Il [*faisait/a fait/fait] très chaud cet été-là.
+escolha: Nous [*habitions/avons habité/habitons] à la campagne.
+escolha: Je dormais quand ma mère [*est entrée/entrait/entre].
+grupos: Imparfait: tous les jours, d’habitude, souvent / Passé composé: un jour, soudain, hier
+# leitura: Les vacances chez ma grand-mère | img:bicicleta
+tipo: Souvenir
+Quand j’**étais** petite, je **passais** tous les étés chez ma grand-mère, en Bretagne. Sa maison **était** près de la mer et il y **avait** un grand jardin avec des pommiers.
+Le matin, nous **allions** à la plage et l’après-midi, je **faisais** du vélo avec mes cousins. Un jour, je **suis tombée** de vélo et je me **suis cassé** le bras !
+Ma grand-mère m’**a acheté** une glace énorme pour me consoler. C’**était** le meilleur été de ma vie.
+# exercicio: Practice 2
+Où habitait la grand-mère ?
+*a) en Bretagne
+b) à Paris
+c) à Lyon
+L’après-midi, elle allait à la plage. (f)
+lacunas: Quand j’[étais] enfant, nous [allions] à l’école à pied. Un jour, il [a neigé] et l’école [a fermé]. || allons, est
+erro: Quand j’étais petit, je {suis allé|allais} à la plage tous les week-ends.
+# tirinha: Autrefois
+[casa]
+Bia (feliz): Quand j’étais petite, il n’y avait pas de portable !
+Tom (surpreso): Et qu’est-ce que vous faisiez ?
+---
+Bia (feliz): On jouait dans la rue et on lisait des bandes dessinées.
+---
+Tom (pensando): Hmm… ça semble mieux, en fait !
+# conversa: À vous ! | img:bicicleta
+Décrivez votre maison d’enfance.
+Qu’est-ce que vous faisiez pendant les vacances ?
+Racontez un souvenir précis : il faisait…, j’étais…, et soudain…
+# tarefas: Atividades recomendadas
+Imparfait ou passé composé : souvenirs
+Imparfait ou passé composé ?
+Devoirs · Mon enfance`],
+
+['FR','B2','Donner son avis : le subjonctif',`# capa: Donner son avis | img:conversa
+Je pense que… / Je ne pense pas que…
+# sobre: Sobre esta aula
+ver: o **subjonctif** depois de expressões de opinião negativa, dúvida, desejo e sentimento (je ne pense pas que, je doute que, il est important que, je suis content que); **indicatif × subjonctif**; debater um tema atual
+porque: No B2, dar uma opinião com nuance exige o subjuntivo. Erros como “je ne pense pas qu’il est” chamam muita atenção em provas como o DELF B2.
+meta: escolher entre indicatif e subjonctif depois de verbos de opinião; expressar dúvida, desejo e sentimento; participar de um debate
+nivel: Nível B2 · francês
+# aquecimento: Pour ou contre ?
+pergunta: Est-ce que vous pensez que le télétravail est l’avenir ?
+jogo: D’accord / pas d’accord | A professora lê frases polêmicas (“Les réseaux sociaux devraient être interdits aux moins de 16 ans.”). O aluno reage rápido: je suis d’accord / je ne suis pas d’accord.
+# tabela: Indicatif ou subjonctif ?
+Indicatif (certitude) | Subjonctif (doute, sentiment, volonté)
+Je pense qu’il **a** raison. | Je ne pense pas qu’il **ait** raison.
+Je suis sûr qu’elle **vient**. | Je doute qu’elle **vienne**.
+Il est évident que c’**est** cher. | Il est important que ce **soit** gratuit.
+Je crois qu’on **peut** changer. | Je voudrais qu’on **puisse** changer.
+# tabela: Subjonctifs irréguliers
+Verbe | Subjonctif (que je / que nous)
+être | que je sois / que nous soyons
+avoir | que j’aie / que nous ayons
+faire | que je fasse / que nous fassions
+aller | que j’aille / que nous allions
+pouvoir | que je puisse / que nous puissions
+# explica: Les déclencheurs
+**Opinião negativa ou pergunta**: je ne pense pas que, je ne crois pas que, pensez-vous que…
+**Dúvida**: je doute que, il est possible que
+**Necessidade**: il faut que, il est important / essentiel que
+**Sentimento**: je suis content(e) que, j’ai peur que, je regrette que
+> **Il est essentiel que** chacun **fasse** un effort.
+# exercicio: Practice 1
+escolha: Je ne crois pas que ce [*soit/est/sera] une bonne idée.
+escolha: Je pense que tu [*as/aies/avoir] raison.
+escolha: Il faut que nous [*fassions/faisons/ferons] quelque chose.
+escolha: Je doute qu’il [*puisse/peut/pourra] venir demain.
+escolha: Je suis content que vous [*soyez/êtes/serez] là.
+# frase: Débattre
+À mon avis, il est indispensable que…
+Je ne suis pas sûr(e) que ce soit la solution.
+Je comprends votre point de vue, mais…
+Il est vrai que…, pourtant…
+Pour conclure, je dirais que…
+# leitura: Faut-il interdire les voitures en centre-ville ? | img:cidade
+tipo: Débat
+Plusieurs villes européennes ont déjà interdit les voitures dans leur centre. Pour les défenseurs de cette mesure, **il est urgent que** les villes **deviennent** plus vertes et plus calmes.
+Les commerçants, eux, **ont peur que** les clients **ne viennent** plus. Et beaucoup d’habitants **doutent que** les transports en commun **soient** suffisants pour remplacer la voiture.
+**Il faut que** chaque ville **trouve** son propre équilibre, concluent les experts.
+# exercicio: Practice 2
+De quoi ont peur les commerçants ?
+*a) que les clients ne viennent plus
+b) que les loyers augmentent
+c) que la ville soit trop calme
+Tout le monde pense que les transports en commun sont suffisants. (f)
+reescreva: Je pense que c’est possible. | PENSE | Je ne ___ possible. | pense pas que ce soit
+erro: Il est important que tu {viens|viennes} à la réunion.
+# pergunta: Votre avis
+Les voitures en centre-ville : qu’en pensez-vous ?
+Il faut les interdire.
+Il faut les limiter.
+Il ne faut rien changer.
+nota: Pas de bonne réponse : demandez une justification avec le subjonctif.
+# conversa: Débat | img:conversa
+Débattez : « Il faut interdire les voitures en centre-ville. »
+Qu’est-ce qu’il faut que votre ville change ?
+De quoi avez-vous peur pour l’avenir ? (j’ai peur que…)
+# tarefas: Atividades recomendadas
+Le subjonctif · doute et sentiments
+Le vocabulaire de l’argumentation
+Devoirs · Je ne pense pas que…`]
+);
+
 var SLIDES_LOADED=true;

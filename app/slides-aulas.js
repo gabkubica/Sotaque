@@ -1005,3 +1005,166 @@ Vague language: sort of, and stuff like that, or something`),
     ['“To cut a long story short” means…',['to add more details','to get to the end quickly','to start again'],1],
     'Write an anecdote (150–180 words) in informal spoken English: a travel disaster or an embarrassing moment. Use the narrative present, two exaggerations and three discourse markers.']}
 );
+
+/* ---------- homeworks do lote 3 (inglês e francês) ---------- */
+CONT_HW.push(
+  {l:'EN',lv:'A2',t:'Homework · Welcome to my city',i:'Lição de casa: ouça um guia da cidade, responda e escreva sobre a sua.',a:`Welcome to Bath, a beautiful historic city in the south-west of England. It's quite small, so you can walk everywhere. The most famous place is the Roman Baths, which are almost two thousand years old. There's also a big abbey in the centre and lots of elegant streets with cafés and small shops. The city is quiet in winter, but in summer it's very lively and crowded with tourists. If you like food, there's a great market on Saturdays. Bath is smaller than London, but many people say it's more charming. Don't miss the view from the hill: it's the best in the city!`,q:[
+    ['Where is Bath?',['in the north of England','in the south-west of England','in Scotland'],1],['How do people usually get around?',['by bus','on foot','by bike'],1],
+    ['How old are the Roman Baths?',['about 200 years','about 2,000 years','about 20,000 years'],1],TF('The city is lively in summer.',true),['When is the market?',['on Saturdays','on Mondays','every day'],0],
+    GAP('There ___ lots of cafés in the centre.','are'),GAP('Bath is ___ than London. (small)','smaller'),
+    MAT('Ligue.',[['crowded','lotado'],['lively','animado'],['quiet','tranquilo'],['charming','encantador']]),
+    'Write a short guide to your city (70–90 words): what it’s like, three places to visit and the best time to go.']},
+  {l:'EN',lv:'A2',t:'Homework · My fitness plan',i:'Lição de casa: ouça o plano de exercícios de alguém e crie o seu.',a:`Hi, I'm Marcos. This year, I want to be healthier, so I made a fitness plan. On Mondays and Thursdays, I go running in the park before work. It's hard, but I feel great after. On Tuesdays, I do yoga with my sister. She's very good, but I can't touch my toes yet! On Saturdays, I play football with my friends. We play for two hours and then we have lunch together. I never go to the gym, because I think it's boring. My goal is to run ten kilometres in December.`,q:[
+    ['Why did Marcos make a fitness plan?',['to be healthier','for a competition','because of his doctor'],0],['How often does he go running?',['once a week','twice a week','every day'],1],
+    ['What does he do on Tuesdays?',['he plays football','he does yoga','he goes swimming'],1],TF('Marcos can touch his toes.',false),['Why doesn’t he go to the gym?',['it’s expensive','it’s boring','it’s far'],1],
+    ['I ___ swimming on Sundays.',['go','play','do'],0],['She ___ karate twice a week.',['does','plays','goes'],0],GAP('We ___ tennis every Friday.','play'),
+    'Write your fitness plan for one week (60–80 words). Use play, go and do, and say how often.']},
+  {l:'EN',lv:'B1',t:'Homework · My budget',i:'Lição de casa: ouça um conselho financeiro e organize o seu orçamento.',a:`Welcome to Money Tips. Today's listener, Julia, wrote to us. She earns two thousand dollars a month, but at the end of every month she has nothing left, and she often has to borrow money from her brother. So, Julia, here's my advice. First, write down everything you spend for one month. Second, try the 50/30/20 rule: fifty percent for needs, thirty for wants and twenty for savings. Third, if you can't afford something, don't buy it on credit. And finally, if you save just a hundred dollars a month, you'll have more than a thousand by the end of the year. Small steps make a big difference!`,q:[
+    ['How much does Julia earn?',['1,000 dollars a month','2,000 dollars a month','3,000 dollars a month'],1],['Who does Julia borrow money from?',['her brother','her bank','her friend'],0],
+    ['What is the first piece of advice?',['write down everything you spend','get a new job','stop going out'],0],TF('In the 50/30/20 rule, you save 30%.',false),
+    ['If you save 100 dollars a month, how much will you have in a year?',['more than 1,000 dollars','500 dollars','10,000 dollars'],0],
+    ['Can you ___ me your car?',['lend','borrow'],0],['Can I ___ your car?',['borrow','lend'],0],GAP('I can’t ___ a holiday this year. (ter dinheiro para)','afford'),
+    'Write your own monthly budget plan (80–100 words): your needs, wants and savings, and two things you will do to save money.']},
+  {l:'EN',lv:'B2',t:'Homework · Guilty or not guilty?',i:'Lição de casa: ouça o caso, responda e dê o seu veredito.',a:`In 2019, a 70-year-old man in a small English town was arrested for theft. He had taken food worth twenty pounds from a supermarket. At his trial, he explained that his pension had been delayed and he had nothing to eat. The supermarket manager, who was a witness, said the man had been a loyal customer for thirty years. The judge said that theft must always be taken seriously, but that this case was exceptional. Instead of a fine or prison, he was given a conditional discharge, which means no punishment unless he commits another crime. After the trial, local people raised over five thousand pounds for him.`,q:[
+    ['What did the man steal?',['money','food','a phone'],1],['Why did he do it?',['his pension had been delayed','for fun','he was a thief'],0],
+    ['Who was the witness?',['his neighbour','the supermarket manager','a police officer'],1],['What was the sentence?',['prison','a big fine','a conditional discharge'],2],
+    TF('Local people raised money for him.',true),['The man ___ for theft. (passive)',['was arrested','arrested','has arrest'],0],
+    GAP('Theft must always ___ taken seriously.','be'),
+    MAT('Ligue.',[['witness','testemunha'],['trial','julgamento'],['sentence','sentença'],['fine','multa']]),
+    'Do you agree with the judge? Write your opinion (120–150 words) using the passive with modals (should be punished, could be given…).']},
+  {l:'EN',lv:'B2',t:'Homework · Nice to meet you, again',i:'Lição de casa: ouça uma conversa num evento e escreva a mensagem de follow-up.',a:`A: Hi, I don't think we've met. I'm Rafael. B: Nice to meet you, Rafael. I'm Emma. How do you know the organisers? A: I worked with them on a project last year. What brings you here? B: I'm launching an app for small restaurants, so I'm looking for partners. A: That sounds fascinating. How did you get into that? B: My parents had a restaurant, and I saw how hard it was to manage bookings. A: Interesting! I work in marketing for a food delivery company, actually. B: Really? We should definitely talk more. Are you on LinkedIn? A: Yes, here's my card. It's been great talking to you. I'll let you mingle.`,q:[
+    ['How does Rafael know the organisers?',['they are his family','he worked with them on a project','he met them online'],1],['What is Emma launching?',['a restaurant','an app for small restaurants','a delivery company'],1],
+    ['Why did Emma get into this area?',['her parents had a restaurant','she studied it','by accident'],0],TF('Rafael works for a food delivery company.',true),
+    ['Which is an open question?',['What brings you here?','Are you OK?','Do you like it?'],0],['How does Rafael end the conversation?',['“I’ll let you mingle.”','“Goodbye forever.”','“I’m bored.”'],0],
+    GAP('It’s been great ___ to you. (talk)','talking'),
+    'Write a follow-up LinkedIn message (60–80 words) to someone you met at an event: remind them where you met, mention something you talked about and suggest a next step.']},
+  {l:'EN',lv:'B2',t:'Homework · Mission to Mars',i:'Lição de casa: ouça a notícia científica e responda.',a:`Scientists have announced exciting news about Mars. Evidence of ancient lakes has been found by a robot that has been exploring the planet since 2021. The rocks that were collected may contain signs of life that existed billions of years ago. The samples will be brought back to Earth in the 2030s, when they will be studied in special laboratories. Meanwhile, several space agencies are preparing to send humans to Mars. Experts believe that by 2040, the first astronauts will probably have landed there. However, the journey will take about seven months, and many problems, like radiation and food, still need to be solved.`,q:[
+    ['What has been found on Mars?',['evidence of ancient lakes','living animals','a city'],0],['Since when has the robot been exploring?',['2012','2021','2030'],1],
+    ['When will the samples be brought back?',['next year','in the 2030s','never'],1],['How long will the journey to Mars take?',['about seven days','about seven months','about seven years'],1],
+    TF('All the problems of a Mars mission have been solved.',false),['The samples ___ in special laboratories.',['will be studied','will study','studied'],0],
+    GAP('By 2040, astronauts will probably ___ landed on Mars.','have'),
+    'Would you go on a one-way mission to Mars? Write 100–120 words with your reasons, using the future and the passive.']},
+  {l:'EN',lv:'C1',t:'Homework · Think twice',i:'Lição de casa: ouça a explicação de um viés e analise uma decisão sua.',a:`Imagine you paid one hundred dollars for a concert ticket. On the day of the concert, it's pouring with rain, you feel ill, and you'd honestly rather stay at home. Most people go anyway. Why? Because they've already paid. This is known as the sunk cost fallacy: we continue investing in something because of what we've already spent, not because of what we'll gain. It can be attributed to loss aversion, our tendency to feel losses more strongly than gains. The same bias affects companies that keep funding failing projects, and people who stay in jobs they hate. The rational question is simple: ignoring what I've already spent, is this still worth it?`,q:[
+    ['Why do most people go to the concert?',['they’ve already paid','they love the band','their friends insist'],0],['What is the sunk cost fallacy?',['continuing because of what you’ve already invested','spending too much money','buying expensive tickets'],0],
+    ['What can it be attributed to?',['loss aversion','anchoring','confirmation bias'],0],TF('The bias only affects individuals, not companies.',false),
+    ['According to the speaker, what is the rational question?',['Ignoring what I’ve spent, is it still worth it?','How much did I pay?','What will people think?'],0],
+    ['This behaviour ___ our fear of losing.',['stems from','stems of','stems by'],0],GAP('We are ___ to overestimate our abilities. (temos tendência)','prone'),
+    'Describe a decision in your life that might have been influenced by a cognitive bias (150–180 words). Use at least four expressions of cause and effect.']},
+  {l:'FR',lv:'B1',t:'Devoirs · Mon enfance',i:'Devoirs : écoutez le souvenir, répondez et racontez le vôtre.',a:`Quand j'étais petit, j'habitais dans un petit village près de Lyon. Notre maison avait un grand jardin et mon père cultivait des tomates. Tous les mercredis, j'allais chez mon grand-père. Il me racontait des histoires et nous jouions aux cartes. L'été, nous partions à la mer, en Bretagne. Il faisait souvent froid, mais j'adorais ça. Un jour, pendant que je jouais sur la plage, j'ai trouvé une vieille bouteille avec un message à l'intérieur ! Je l'ai encore aujourd'hui.`,q:[
+    ['Où habitait-il ?',['à Paris','dans un village près de Lyon','en Bretagne'],1],['Que faisait-il le mercredi ?',['il allait chez son grand-père','il allait à l’école','il allait à la mer'],0],
+    ['Quel temps faisait-il en Bretagne ?',['il faisait souvent froid','il faisait très chaud','il neigeait'],0],TF('Il a trouvé une bouteille avec un message.',true),
+    ['Quand j’étais petit, je ___ au football tous les jours.',['jouais','ai joué','joue'],0],['Un jour, je ___ une lettre.',['ai trouvé','trouvais','trouve'],0],
+    GAP('Nous ___ (habiter) à la campagne.','habitions'),
+    MAT('Associez.',[['tous les étés','todo verão'],['un jour','um dia'],['autrefois','antigamente'],['souvent','frequentemente']]),
+    'Racontez un souvenir d’enfance (80–100 mots) : décrivez le lieu et vos habitudes (imparfait), puis un événement précis (passé composé).']},
+  {l:'FR',lv:'B2',t:'Devoirs · Je ne pense pas que…',i:'Devoirs : écoutez le débat, répondez et donnez votre avis avec le subjonctif.',a:`Animateur : Faut-il interdire les réseaux sociaux aux moins de quinze ans ? Claire, vous êtes pour. Claire : Absolument. Il est essentiel que les enfants puissent grandir sans cette pression. Je ne pense pas qu'un adolescent de douze ans soit capable de gérer ces plateformes. Animateur : Thomas, vous n'êtes pas d'accord. Thomas : Je comprends cette inquiétude, mais je doute qu'une interdiction soit efficace. Les jeunes trouvent toujours une solution. Il faut plutôt que l'école leur apprenne à utiliser ces outils. Animateur : Vous êtes donc d'accord sur un point : il faut que les adultes s'impliquent.`,q:[
+    ['Quel est le sujet du débat ?',['les réseaux sociaux pour les moins de 15 ans','les jeux vidéo','l’école le samedi'],0],['Que pense Claire ?',['qu’il faut les interdire','qu’ils sont utiles','qu’il ne faut rien changer'],0],
+    ['Selon Thomas, que faut-il faire ?',['que l’école apprenne aux jeunes à les utiliser','interdire les téléphones','fermer les réseaux'],0],TF('Claire et Thomas ne sont d’accord sur rien.',false),
+    ['Je ne pense pas que ce ___ une bonne idée.',['soit','est','sera'],0],['Je pense qu’il ___ raison.',['a','ait','avoir'],0],
+    GAP('Il faut que nous ___ (faire) un effort.','fassions'),
+    'Donnez votre avis (120–150 mots) : « Faut-il interdire les réseaux sociaux aux moins de 15 ans ? » Utilisez au moins quatre structures avec le subjonctif.']}
+);
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Expressões',t:'Homework · Coffee, please!',i:'Lição de casa: pedir no café, perguntar o preço e pagar.',q:[
+    COMIC(`[xicara]
+Sam: Hi! What can I get you?
+Mia: ___
+---
+Sam (feliz): Small, medium or large?
+Mia: Small, please.`,['I’m fine, thank you.','Can I have a tea, please?','Yes, I can.'],1),
+    SEQ('Hi! What can I get you?\nA coffee with milk, please.\nEat in or take away?\nTake away. How much is it?\nThat’s three fifty, please.','Put the conversation in order.'),
+    PICK('[*Can I have/Can I has/I can have] a juice, please? — Anything else? — No, [*that’s all/that all/is all], thanks.'),
+    CROSS(`cake = A sweet food for birthdays. | img:bolo
+juice = A drink made from fruit. | img:suco
+water = A drink with no colour. | img:agua
+bread = You make a sandwich with it. | img:pao`,'Complete the crossword.'),
+    MAT('Ligue.',[['Eat in or take away?','Take away, please.'],['How much is it?','It’s five dollars.'],['Anything else?','No, thanks.']]),
+    DIT('Can I have a large coffee, please?'),
+    'Write a dialogue at a café (6 lines): you order a drink and a snack, ask the price and pay.']},
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · What’s the weather like?',i:'Lição de casa: o tempo e as estações.',q:[
+    HUNT('sunny, rainy, cloudy, windy, snowy, hot, cold','Find 7 weather words.'),
+    SORT(`Hot weather: sunny, hot, summer
+Cold weather: snowy, cold, winter`),
+    ODD('Which one is NOT a season?',['spring','summer','sunny','winter'],2,[],'Sunny is the weather, not a season.'),
+    PICK('What’s the weather [*like/is/likes] today? It’s [*raining/rain/rains] now. In winter, it’s very [*cold/hot].'),
+    CLOZE('Today it’s [cloudy] and [windy]. Tomorrow it will be [sunny] and [hot]. Perfect for the beach!','snowy, cold'),
+    DIT('It’s sunny and hot today.'),
+    'Describe the weather in your city today and your favourite season (5 sentences).']},
+  {l:'EN',lv:'A2',tp:'Expressões',t:'Homework · Text me back',i:'Lição de casa: mensagens, abreviações e o tom certo.',q:[
+    MAT('Ligue a abreviação ao significado.',[['btw','by the way'],['omw','on my way'],['idk','I don’t know'],['asap','as soon as possible']]),
+    COMIC(`[celular]
+Leo: r u free tonight?
+Ana: ___
+---
+Leo (feliz): cool! c u at 8 then
+Ana (feliz): 👍`,['yes, wanna do something?','I am Ana.','Kind regards, Ana'],0),
+    SORT(`Message to a friend: lol, c u later, thx!
+Email to a manager: Kind regards, Could you…?, Thank you for…`),
+    KWT('r u coming 2nite?','ARE','___ tonight?','Are you coming'),
+    FIX('Dear Ms Lopez, I am writing to confirm the meeting. {thx|Thank you}, Paulo.'),
+    ODD('Which one is NOT an abbreviation?',['tbh','brb','lol','hello'],3),
+    'Write the same message twice: first to a friend (informal, with abbreviations), then to your boss (formal). Topic: you will be 20 minutes late.']},
+  {l:'EN',lv:'B1',tp:'Vocabulário',t:'Homework · My recipe',i:'Lição de casa: verbos de cozinha, quantidades e sequência.',q:[
+    SEQ('First, boil some water in a big pan.\nThen, add the pasta and a pinch of salt.\nAfter that, cook it for about ten minutes.\nMeanwhile, fry the garlic in olive oil.\nFinally, mix everything and add the cheese.','Put the recipe in order.'),
+    MAT('Ligue o verbo à tradução.',[['chop','picar'],['stir','mexer'],['boil','ferver'],['bake','assar']]),
+    PICK('Add [*a pinch/a cup/a slice] of salt. [*Bake/Boil/Fry] the cake for 40 minutes. Stir [*until/during/while] it’s golden.'),
+    CLOZE('[First], chop the onion. [Then], fry it in oil. [After] that, add the tomatoes. [Finally], serve with rice.','during, firstly'),
+    ODD('Which one is NOT a cooking verb?',['slice','fry','mix','swim'],3),
+    FIX('Cook the rice {during|for} 20 minutes.'),
+    'Write the recipe of your favourite dish (100–120 words): ingredients with quantities and 5 steps with sequencers.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · A strange night',i:'Lição de casa: uma lenda urbana com o past perfect.',q:[
+    SEQ('A man was driving home on a rainy night.\nHe saw a young woman on the side of the road and gave her a ride.\nWhen they arrived, she had disappeared from the car.\nAn old woman opened the door and showed him a photo.\nThe girl had died on that road twenty years earlier.','Put the legend in order.'),
+    PICK('When I got to the station, the train [*had already left/already left/has left]. By the time we arrived, the party [*had finished/finished/has finished].'),
+    KWT('I locked the door. Then I realised my keys were inside.','HAD','I realised I ___ inside.','had left my keys/had locked my keys'),
+    COMIC(`[noite]
+Tom (preocupado): Why were you so scared last night?
+Bia: ___
+---
+Tom (surpreso): A ghost?!
+Bia (feliz): No! It was my cat.`,['Because I had heard a strange noise.','Because I have hear a noise.','Because I hear a noise tomorrow.'],0),
+    FIX('She was sad because she {lost|had lost} her ring the day before.'),
+    TF('In “When I arrived, she had left”, she left before I arrived.',true),
+    'Write a short scary story (100–120 words) with a surprise ending. Use the past perfect at least three times.']},
+  {l:'EN',lv:'C1',tp:'Expressões',t:'Homework · Oh, brilliant',i:'Lição de casa: ironia, sarcasmo e understatement.',q:[
+    ['(Your friend arrives two hours late.) “Thanks for being so punctual.” This is…',['sincere','sarcastic','a compliment'],1],
+    ['A British colleague says your idea is “very interesting”. This might mean…',['they love it','they have doubts about it','they want to copy it'],1],
+    SORT(`Understatement: a bit chilly, not the best idea, slightly annoying
+Sarcasm: Oh, great!, That’s just what I needed, Lovely weather (in a storm)`),
+    COMIC(`[chuva]
+Ana: How’s the holiday?
+Leo: ___
+---
+Ana (feliz): Ha! I’m sorry. At least you’re not at work!`,['Oh, perfect. It’s rained every single day.','It is a holiday.','I am on a holiday now.'],0),
+    KWT('The storm was terrible.','BIT','It was ___ last night. (understatement)','a bit windy/a bit stormy/a little windy'),
+    MAT('O que eles dizem → o que eles querem dizer.',[['Not bad at all.','Excellent!'],['I’ll bear it in mind.','I’ll probably forget it.'],['With the greatest respect…','I think you’re wrong.']]),
+    'Write a short story (120–150 words) about a terrible day, told with sarcasm and understatement. Then explain in one line what really happened.']},
+  {l:'FR',lv:'A1',tp:'Expressões',t:'Devoirs · Un café, s’il vous plaît',i:'Devoirs : commander au café et payer.',q:[
+    COMIC(`[xicara]
+Leo: Bonjour, madame. Vous désirez ?
+Ana: ___
+---
+Leo (feliz): Et avec ceci ?
+Ana: C’est tout, merci.`,['Je voudrais un café, s’il vous plaît.','Je suis un café.','Bonne nuit !'],0),
+    SEQ('Bonjour ! Vous désirez ?\nUn thé, s’il vous plaît.\nEt avec ceci ?\nUn croissant. C’est combien ?\nÇa fait quatre euros.','Mettez le dialogue dans l’ordre.'),
+    PICK('Je voudrais [*un/une] croissant et [*une/un] eau minérale. L’[*addition/adition], s’il vous plaît !'),
+    MAT('Associez.',[['Sur place ou à emporter ?','À emporter.'],['C’est combien ?','Trois euros.'],['Vous désirez ?','Un café, s’il vous plaît.']]),
+    DIT('Je voudrais un café crème, s’il vous plaît.','Écoutez et écrivez la phrase.'),
+    'Écrivez un dialogue au café (6 répliques) : vous saluez, vous commandez une boisson et quelque chose à manger, et vous payez.']},
+  {l:'FR',lv:'A2',tp:'Gramática',t:'Devoirs · La liste des courses',i:'Devoirs : les partitifs et les quantités.',q:[
+    SORT(`du: pain, fromage, poulet
+de la: salade, confiture, viande
+des: œufs, pommes, légumes`,'Classez avec le bon article.'),
+    PICK('Je voudrais [*du/de la/des] pain et [*de la/du/des] confiture. Je ne mange pas [*de/du/de la] viande.'),
+    CLOZE('Pour le pique-nique, j’achète [du] fromage, [de la] salade, [des] fruits et une bouteille [d’]eau.','le, les'),
+    FIX('Je voudrais un kilo {des|de} pommes, s’il vous plaît.'),
+    ['Elle boit ___ eau.',['de l’','du','de la'],0],['Il n’y a pas ___ lait.',['de','du','des'],0],
+    'Écrivez votre liste de courses pour la semaine (8 produits avec du, de la, des) et deux phrases à la forme négative.']},
+  {l:'FR',lv:'A2',tp:'Vocabulário',t:'Devoirs · Le plan de la ville',i:'Devoirs : demander et donner son chemin.',q:[
+    MAT('Associez.',[['la gare','a estação de trem'],['la boulangerie','a padaria'],['la poste','o correio'],['la pharmacie','a farmácia']]),
+    PICK('[*Tournez/Tourner/Tournes] à gauche. [*Prenez/Prendre/Prends-vous] la deuxième rue. La banque est [*en face de/en face/face de] la poste.'),
+    SEQ('Excusez-moi, où est le musée, s’il vous plaît ?\nAllez tout droit jusqu’à la place.\nPuis, tournez à droite.\nLe musée est à côté de la banque.\nMerci beaucoup, bonne journée !','Mettez le dialogue dans l’ordre.'),
+    FIX('Excusez-moi, {où la gare est|où est la gare} ?'),
+    ODD('Quel mot n’est pas une direction ?',['à droite','tout droit','à gauche','la boulangerie'],3),
+    DIT('Prenez la première rue à droite.','Écoutez et écrivez la phrase.'),
+    'Expliquez le chemin de chez vous jusqu’à la boulangerie ou au supermarché (60–80 mots), avec l’impératif.']}
+);

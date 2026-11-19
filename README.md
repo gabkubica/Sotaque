@@ -154,7 +154,16 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   votação) (B2); **AI and us** (dilemas éticos e hedging), **Telling anecdotes** (inglês falado: marcadores, linguagem
   vaga, exagero), **Case study: the crisis meeting** (estudo de caso de negócios com opções, prós e contras) (C1).
   Cada uma tem homework nova: metade com áudio e escrita, metade interativa (tirinha, ordem da história, cruzadinha,
-  caça-palavras, ditado, corrigir o erro, separar em grupos). O slide “texto” agora aceita **negrito**. 88 aulas.
+  caça-palavras, ditado, corrigir o erro, separar em grupos). O slide “texto” agora aceita **negrito**.
+- **Lote 3** (18 aulas, inglês e francês): At the café, Weather and seasons (A1); My hometown, **Texting in English**
+  (abreviações e “traduzir a mensagem”), Sports and fitness (play/go/do) (A2); **Let’s cook!** (receita em passos na linha do
+  tempo e o aluno ensina um prato), **Money matters** (quiz de personalidade “saver or spender?”), **Urban legends** (past
+  perfect e “true or legend?”) (B1); **Crime and punishment** (casos para decidir a pena e o modelo norueguês),
+  **Networking** (mapa da conversa e tópicos seguros × arriscados), **Space** (marcos na linha do tempo e votação) (B2);
+  **Why we make bad decisions** (experimentos de vieses feitos ao vivo com o aluno, com a explicação nas notas), **Irony,
+  sarcasm and British humour** (“what they say × what they mean”) (C1). **Francês**: Au café (A1), Au marché: les partitifs
+  e En ville: demander son chemin (A2), Souvenirs d’enfance: l’imparfait (B1), Donner son avis: le subjonctif (B2).
+  18 homeworks novas (13 “Homework · …” e 5 “Devoirs · …”), com áudio ou interativas. 106 aulas no total.
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
