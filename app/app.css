@@ -1365,6 +1365,7 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
 .kids-th-img{display:block;aspect-ratio:1000/1414;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(34,28,30,.12);border:1px solid var(--line);transition:transform .15s}
 .kids-card:hover .kids-th-img{transform:translateY(-3px)}
 .kids-th-img svg{width:100%;height:100%;display:block}
+.kth-ph{display:block;width:100%;aspect-ratio:1000/1414;background:linear-gradient(#fff,#faf6f0)}
 .kids-card b{font-size:15px}.kids-card small{color:var(--ink-3);font-size:12.5px;line-height:1.35}
 .kp{display:flex;flex-direction:column;gap:12px}
 .kp-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -1474,3 +1475,6 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
   body.kd-printing #app>*:not(main),body.kd-printing .kd>*:not(.kd-print){display:none!important}
   body.kd-printing .kd-print{display:block}.kd-pp{break-after:page;width:210mm;height:297mm}.kd-pp svg{width:210mm;height:297mm}
 }
+
+/* listas longas: o navegador só desenha os cartões que estão na tela */
+.bgrid>.bcard,.kids-grid>.kids-card{content-visibility:auto;contain-intrinsic-size:auto 340px}

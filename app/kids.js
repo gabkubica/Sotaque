@@ -304,9 +304,22 @@ const KIDS_SHEETS={
 const KIDS_THEMED=k=>!KIDS_SHEETS[k].opts;
 
 /* ---------- folha pronta ---------- */
+/* as folhas são sempre iguais para o mesmo tipo + tema + versão: guarda as últimas prontas (abrir de novo é instantâneo) */
+const KMEMO=new Map();
+function kMemo(key,fn){ let v=KMEMO.get(key); if (v!==undefined){ KMEMO.delete(key); KMEMO.set(key,v); return v; }
+  v=fn(); KMEMO.set(key,v); if (KMEMO.size>160) KMEMO.delete(KMEMO.keys().next().value); return v; }
 function kidsSheetSvg(kind,theme,o={}){ const S=KIDS_SHEETS[kind]; if (!S||typeof EMOJI==='undefined') return '';
   const key=S.opts? (S.opts[theme]? theme : Object.keys(S.opts)[0]) : (KIDS_THEMES[theme]? theme : 'pets');
-  try { return S.f(key,rng(hashStr(kind+key)+(o.seed||0))); } catch(e){ console.error(kind,e); return ''; } }
+  return kMemo(`s|${kind}|${key}|${o.seed||0}`,()=>{ try { return S.f(key,rng(hashStr(kind+key)+(o.seed||0))); } catch(e){ console.error(kind,e); return ''; } }); }
+/* miniaturas: desenha só as que aparecem na tela (a lista abre na hora, mesmo com 90 atividades) */
+const KTH={fn:new Map(),io:null,t:0};
+function kThumb(key,fn){ if (KMEMO.has(key)) return kMemo(key,fn); KTH.fn.set(key,fn); clearTimeout(KTH.t); KTH.t=setTimeout(kThumbsWatch,0);
+  return `<i class="kth-ph" data-kt="${esc(key)}"></i>`; }
+function kThumbFill(el){ const key=el.dataset.kt, fn=KTH.fn.get(key); if (!fn||!el.isConnected) return; const t=document.createElement('template'); t.innerHTML=kMemo(key,fn); el.replaceWith(t.content); }
+function kThumbsWatch(){ const els=[...document.querySelectorAll('[data-kt]:not([data-ktw])')]; if (!els.length) return;
+  if (!('IntersectionObserver' in window)){ els.forEach(kThumbFill); return; }
+  KTH.io ||= new IntersectionObserver(es=>es.forEach(e=>{ if (e.isIntersecting){ KTH.io.unobserve(e.target); kThumbFill(e.target); } }),{rootMargin:'300px'});
+  els.forEach(el=>{ el.dataset.ktw=1; KTH.io.observe(el); }); }
 const kidsTitle=(kind,theme)=>{ const S=KIDS_SHEETS[kind]; return S? `${S.n} · ${S.opts? S.opts[theme]||'' : KIDS_THEMES[theme]?.pt||''}` : 'Material'; };
 
 /* ---------- ligar o material à aula (fica no histórico) ---------- */
@@ -339,7 +352,7 @@ function viewKids(){ if (!isT()) return '';
       ${age? `<p class="meta" style="margin:0">${KIDS_AGES[age]}: ${KIDS_AGES_D[age]}.</p>` : ''}</div>
     ${tab==='livros'? (typeof kidsBooksShelf==='function'? kidsBooksShelf(age) : '') : tab==='meus'? (typeof kidsFilesHtml==='function'? kidsFilesHtml() : '') : tab==='aulas'? (typeof kidsDecksHtml==='function'? kidsDecksHtml(age) : '')
       : `<p class="meta muted">${list.length} ${list.length===1? 'atividade' : 'atividades'}${q? ` para “${esc(q)}”` : ''} · ilustrações do Fluent Emoji (Microsoft, MIT)</p>
-    <div class="kids-grid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<a class="kids-card" href="#kids-${k}-${t}-0"><span class="kids-th-img">${kidsSheetSvg(k,t)}</span><b>${esc(S0.n)}${S0.audio? ' <span class="kaud" title="Tem áudio">🔈</span>' : ''}</b><small>${S0.ages.map(a=>KIDS_AGES[a].replace(' anos','')).join(' · ')} anos · ${esc(S0.d)}</small></a>`; }).join('')}</div>`}</div>`; }
+    <div class="kids-grid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<a class="kids-card" href="#kids-${k}-${t}-0"><span class="kids-th-img">${kThumb(`s|${k}|${t}|0`,()=>kidsSheetSvg(k,t))}</span><b>${esc(S0.n)}${S0.audio? ' <span class="kaud" title="Tem áudio">🔈</span>' : ''}</b><small>${S0.ages.map(a=>KIDS_AGES[a].replace(' anos','')).join(' · ')} anos · ${esc(S0.d)}</small></a>`; }).join('')}</div>`}</div>`; }
 function viewKidsSheet(kind,theme,seed){ const S0=KIDS_SHEETS[kind]; if (!S0) return `${libHeader('kids')}<div class="panel"><p>Material não encontrado.</p></div>`;
   const opts=S0.opts||Object.fromEntries(Object.entries(KIDS_THEMES).map(([k,t])=>[k,t.pt])), K=kidsStudents(), sid=S.kstu&&user(S.kstu)? S.kstu : K[0]?.id||'';
   const song=kind==='musica'? KIDS_SONGS[theme]||KIDS_SONGS.head : null;
@@ -356,7 +369,7 @@ function viewKidsSheet(kind,theme,seed){ const S0=KIDS_SHEETS[kind]; if (!S0) re
 function kidsPickerHtml(){ const s=user(CD.sid), age=S.kpage!==undefined? S.kpage : kidsAgeOf(s), th=S.kth||'pets', list=kidsList(age,'','',false).filter(([k])=>!['bingo','memoria','domino','tabuleiro','separar','flash','minilivro','cartao','mascara','quebra','certificado','estrelas'].includes(k));
   return `<div class="cd-bgs"><b>Idade</b>${[['','Todas'],...Object.entries(KIDS_AGES)].map(([k,l])=>`<button class="${age===k?'on':''}" data-cd="kage" data-v="${k}">${l}</button>`).join('')}</div>
     <div class="cd-bgs"><b>Tema</b>${Object.entries(KIDS_THEMES).map(([k,t])=>`<button class="${th===k?'on':''}" data-cd="kth" data-v="${k}">${esc(t.pt)}</button>`).join('')}</div>
-    <div class="cd-grid cd-agrid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<button class="cd-gi cd-ai" data-cd="addact" data-k="${k}" data-t="${t}"><span>${kidsSheetSvg(k,t)}</span><small>${esc(S0.n)}</small></button>`; }).join('')}</div>
+    <div class="cd-grid cd-agrid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<button class="cd-gi cd-ai" data-cd="addact" data-k="${k}" data-t="${t}"><span>${kThumb(`s|${k}|${t}|0`,()=>kidsSheetSvg(k,t))}</span><small>${esc(S0.n)}</small></button>`; }).join('')}</div>
     <div class="cd-bgs"><b>Alfabeto: traçar a letra</b>${Object.keys(KIDS_ABCW).map(l=>`<button data-cd="addact" data-k="letra" data-t="${l}">${l.toUpperCase()} ${l}</button>`).join('')}</div>`; }
 const KIDS_ACT={
   'k-cat'(el){ S.kcat=el.dataset.v; render(); }, 'k-age'(el){ S.kage=el.dataset.v; render(); }, 'k-th'(el){ S.kth=el.dataset.v; render(); }, 'k-tab'(el){ S.ktab=el.dataset.v; render(); },

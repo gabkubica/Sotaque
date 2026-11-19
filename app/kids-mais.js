@@ -1,19 +1,22 @@
 /* =========================================================
    Sotaque · Kids: atividades mais completas (perguntas, leitura, cena, escuta)
-   e o áudio das atividades (voz neural gravada em app/audio/kids.json).
+   e o áudio das atividades (voz neural: app/audio/k/<id>.mp3, índice em app/audio/kids-idx.json).
    O alto-falante 🔈 nas folhas toca a palavra ou a frase: na tela da Biblioteca,
    no caderno digital (a criança toca e ouve) e some na impressão.
    ========================================================= */
 /* ---------- áudio ---------- */
+/* cada fala é um mp3 pequeno (audio/k/<id>.mp3), baixado só quando a criança toca; o índice (texto → id) é leve */
 let KAUD=null, KAUDP=null, KAUDEL=null;
-const KAUD_URL=(()=>{ try { return new URL('audio/kids.json',document.currentScript.src).href; } catch { return 'audio/kids.json'; } })();
-function kidsAudioLoad(){ if (KAUD) return Promise.resolve(KAUD); return KAUDP ||= fetch(KAUD_URL).then(r=>r.ok? r.json() : {}).then(j=>KAUD=j).catch(()=>{ KAUDP=null; return {}; }); }
+const KAUD_BASE=(()=>{ try { return new URL('audio/',document.currentScript.src).href; } catch { return 'audio/'; } })();
+function kidsAudioLoad(){ if (KAUD) return Promise.resolve(KAUD); return KAUDP ||= fetch(KAUD_BASE+'kids-idx.json').then(r=>r.ok? r.json() : {}).then(j=>KAUD=j).catch(()=>{ KAUDP=null; return {}; }); }
 function kidsSay(text){ const parts=String(text).split('|').map(x=>x.trim()).filter(Boolean); if (!parts.length) return;
-  kidsAudioLoad().then(A=>{ if (typeof ttsStop==='function') ttsStop(); KAUDEL ||= new Audio(); let i=0;
-    const next=()=>{ if (i>=parts.length) return; const p=parts[i++], b=A[p.toLowerCase()];
-      if (b){ KAUDEL.src='data:audio/mpeg;base64,'+b; KAUDEL.onended=()=>setTimeout(next,90); KAUDEL.play().catch(()=>{}); }
+  const go=A=>{ if (typeof ttsStop==='function') ttsStop(); KAUDEL ||= new Audio(); let i=0;
+    const next=()=>{ if (i>=parts.length) return; const p=parts[i++], id=A[p.toLowerCase()];
+      if (id){ KAUDEL.src=KAUD_BASE+'k/'+id+'.mp3'; KAUDEL.onended=()=>setTimeout(next,90); KAUDEL.play().catch(()=>{}); }
       else if (typeof speechSynthesis!=='undefined'){ const u=new SpeechSynthesisUtterance(p); u.lang='en-US'; u.rate=.85; u.onend=()=>setTimeout(next,60); speechSynthesis.speak(u); } };
-    next(); }); }
+    next(); };
+  if (KAUD) go(KAUD); else kidsAudioLoad().then(go); }   /* com o índice já carregado, toca no mesmo toque (o iPad exige) */
+kidsAudioLoad();
 document.addEventListener('click',e=>{ const sp=e.target.closest?.('.kp-page [data-say], .kids-card [data-say]'); if (sp){ e.preventDefault(); kidsSay(sp.getAttribute('data-say')); } });
 /* alto-falante desenhado na folha (não sai na impressão) */
 const kSpk=(x,y,say,s=46)=>`<g class="k-spk" data-say="${esc(say)}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${s/2}" fill="#7a1f35"/><path d="M${x-s*.2} ${y-s*.1}h${s*.12}l${s*.16} ${-s*.14}v${s*.48}l${-s*.16} ${-s*.14}h${-s*.12}z" fill="#fff"/><path d="M${x+s*.16} ${y-s*.14}q${s*.12} ${s*.14} 0 ${s*.28}" stroke="#fff" stroke-width="${s*.06}" fill="none" stroke-linecap="round"/></g>`;

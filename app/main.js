@@ -60,7 +60,11 @@ const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } 
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
 let DB;
-function save(){ if (REAL){ if (typeof cloudQueue==='function') cloudQueue(); return; } if (!lsSet(KEY,JSON.stringify(DB))) toast('Não consegui salvar neste navegador.'); }
+/* demonstração: grava no navegador logo depois da última mudança (várias mudanças seguidas = uma gravação só) */
+let SAVE_T=0;
+function saveNow(){ clearTimeout(SAVE_T); SAVE_T=0; if (!lsSet(KEY,JSON.stringify(DB))) toast('Não consegui salvar neste navegador.'); }
+function save(){ if (REAL){ if (typeof cloudQueue==='function') cloudQueue(); return; } clearTimeout(SAVE_T); SAVE_T=setTimeout(saveNow,250); }
+addEventListener('pagehide',()=>{ if (SAVE_T) saveNow(); }); document.addEventListener('visibilitychange',()=>{ if (document.visibilityState==='hidden'&&SAVE_T) saveNow(); });
 
 /* ---------- dados de exemplo ---------- */
 const NOTES={
@@ -387,7 +391,7 @@ function nextCard(s,l){
     ${rq&&!isT()? `<div class="next-note" style="position:relative">Você pediu para remarcar. ${AProf()} vai escolher um destes horários: <b>${rq.options.map(ts=>fDay.format(ts)+' '+fTime.format(ts)).join(', ')}</b>. <button class="link" data-act="req-cancel" data-id="${rq.id}">Desistir do pedido</button></div>` : ''}
     ${rq&&isT()? `<div class="next-note" style="position:relative">${esc(s.name.split(' ')[0])} pediu para remarcar esta aula. Responda em <a class="link" href="#inicio">Hoje</a>.</div>` : ''}
     ${s.kids&&s.place? `<p class="next-sub" style="position:relative">Aula presencial · ${esc(s.place)}</p>` : ''}
-    ${l.deckId||l.mats?.length? `<div style="position:relative;display:flex;flex-wrap:wrap;gap:6px">${deckChip(l)}${typeof matChips==='function'? matChips(l) : ''}</div>` : ''}
+    ${l.deckId||l.mats?.length? `<div style="position:relative;display:flex;flex-wrap:wrap;gap:6px">${deckChip(l)}${kMats(l)}</div>` : ''}
     <div class="row-btns" style="position:relative">${s.kids? '' : `<a class="btn primary big" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>`}
       ${isT()? `<button class="btn" data-act="lesson" data-id="${l.id}">Remarcar ou cancelar</button>` : rq? '' : `<button class="btn" data-act="cant" data-id="${l.id}" ${lead<24*HOUR? 'disabled title="Faltam menos de 24 horas"' : ''}>Não posso ir</button>`}</div>
     ${!isT()&&!rq&&lead<24*HOUR&&!live? `<p class="next-sub" style="position:relative;font-size:13px">Faltam menos de 24 horas. Para remarcar agora, fale direto com ${aProf()}.</p>` : ''}</div>`;
@@ -403,7 +407,7 @@ function timeline(s){
     return `<div class="tl-tasks"><small>${isT()? 'Tarefas enviadas' : 'Tarefas desta aula'}</small>${L.map(t=>`<a class="tl-task" href="#tarefa-${t.id}"><span>${esc(t.title)}</span>${pill(taskState(t))}</a>`).join('')}</div>`; };
   const item=(l,future)=>{ const st=lessonState(l), cls=future?'fut':l.status==='falta'?'miss':l.status==='cancelada'?'off':'';
     return `<li class="tl-i ${cls}"><span class="tl-dot"></span><div class="tl-c"><div class="tl-h"><b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>${pill(st)}${isT()&&!future? `<button class="link" data-act="lesson" data-id="${l.id}">${l.note? 'Editar resumo' : 'Escrever resumo'}</button>` : ''}</div>
-      ${deckChip(l)}${typeof matChips==='function'? matChips(l) : ''}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${future? '' : tasksOfL(l)}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
+      ${deckChip(l)}${kMats(l)}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${future? '' : tasksOfL(l)}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px;${isT()? 'margin-left:auto;margin-right:4px' : ''}">${past.filter(l=>l.status==='realizada').length} realizadas</span>${isT()? `<button class="btn small" data-act="lesson-add" data-id="${s.id}">+ Aula dada</button>` : ''}</div>
     ${fut.length? `<p class="eyebrow">Depois da próxima</p><ul class="tl">${fut.map(l=>item(l,true)).join('')}</ul>` : ''}
     <p class="eyebrow">Histórico</p>
@@ -438,7 +442,7 @@ function viewNotebook(s){
       <div class="banner-t" style="--bt:${dark? CREAM : p.c}"><h1>${title}</h1><p>${sub}</p></div></div>
     <div class="grid2">
       <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${isT()||K? '' : dailyCard(s)}${timeline(s)}</div>
-      <aside class="stack">${K? (typeof cadPanel==='function'? cadPanel(s) : '') : placePanel(s)+trailPanel(s)}${tasksPanel(s)}${K? '' : flashPanel(s)+dailyPanel(s)}${packagePanel(s)}
+      <aside class="stack">${K? (needKids()? cadPanel(s) : '') : placePanel(s)+trailPanel(s)}${tasksPanel(s)}${K? '' : flashPanel(s)+dailyPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
           <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd>${K? `${s.parent? `<dt>Responsável</dt><dd>${esc(s.parent)}</dd>` : ''}${s.phone? `<dt>WhatsApp</dt><dd><a class="link" href="https://wa.me/${esc(s.phone.replace(/\D/g,'').replace(/^(?!55)/,'55'))}" target="_blank" rel="noopener">${esc(s.phone)}</a></dd>` : ''}${s.place? `<dt>Local</dt><dd>${esc(s.place)}</dd>` : ''}${s.obs? `<dt>Observações</dt><dd>${esc(s.obs)}</dd>` : ''}` : `<dt>Sala online</dt><dd><a class="link" href="${esc(roomOf(s))}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd>`}<dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
@@ -1917,12 +1921,31 @@ function onDevInput(e){
 /* lembra quais seções o professor deixou abertas */
 document.addEventListener('toggle',e=>{ const k=e.target.dataset?.devSec; if (k){ (S.devOpen ||= {})[k]=e.target.open; } },true);
 
+/* ---------- Kids sob demanda ----------
+   A parte Kids (figuras, atividades, livrinhos, Aulas Kids, caderno digital) é ~1 MB de código.
+   Só baixa quando alguém abre uma tela Kids (ou, para quem tem aluno Kids, logo depois que o app fica parado). */
+const KIDS_JS=['vendor/perfect-freehand.js','vendor/emoji-kids.js','kids.js','kids-mais.js','kids-livros.js','kids-arquivos.js','kids-aulas.js','caderno.js'];
+const KIDS_SRC=(()=>{ try { const u=new URL(document.currentScript.src); return {base:new URL('.',u).href,v:u.search}; } catch { return {base:window.APP_BASE||'',v:''}; } })();
+let KIDS_P=null, KIDS_WAIT=false, KIDS_IDLE=false;
+const kidsReady=()=>typeof KIDS_ACT!=='undefined';
+function kidsLoad(){ if (kidsReady()) return Promise.resolve();
+  return KIDS_P ||= new Promise((ok,no)=>{ let n=KIDS_JS.length;
+    for (const f of KIDS_JS){ const el=document.createElement('script'); el.src=KIDS_SRC.base+f+KIDS_SRC.v; el.async=false;   /* baixam juntos, rodam na ordem */
+      el.onload=()=>{ if (--n===0) ok(); }; el.onerror=()=>no(new Error(f)); document.head.appendChild(el); }
+  }).then(()=>{ Object.assign(ACT,KIDS_ACT); }); }
+function needKids(){ if (kidsReady()) return true;
+  if (!KIDS_WAIT){ KIDS_WAIT=true; kidsLoad().then(()=>{ KIDS_WAIT=false; render(); },()=>toast('Não consegui abrir a parte Kids. Confira a internet e recarregue a página.')); }
+  return false; }
+const kMats=l=>l.mats?.length&&needKids()? matChips(l) : '';
+const KIDS_ROUTES=['kids','kidsSheet','livro','kaula','kfile','caderno'];
+
 /* ---------- render ---------- */
 function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='livro'? viewBook(r.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
+  if (KIDS_ROUTES.includes(r.name)&&!needKids()) main=`<div class="panel"><p class="meta">Abrindo a parte Kids…</p></div>`;
+  else if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='livro'? viewBook(r.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -1963,6 +1986,8 @@ function render(){
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
   if (isT()&&document.querySelector('[data-pdf-mount]')) mountPdfs();
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
+  if (!KIDS_IDLE&&!kidsReady()&&(isT()? students().some(s=>s.kids) : me.kids)){ KIDS_IDLE=true;
+    const go=()=>kidsLoad().catch(()=>{}); setTimeout(()=>{ if (window.requestIdleCallback) requestIdleCallback(go,{timeout:2500}); else go(); },1500); }
 }
 /* voltar para a tela anterior (botão voltar ou link "←") devolve a rolagem de onde a pessoa estava */
 const NAVSTACK=[];
@@ -2245,7 +2270,7 @@ ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
 ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT,SLIDE_ACT,KIDS_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT,SLIDE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');

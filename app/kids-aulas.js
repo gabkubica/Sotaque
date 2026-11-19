@@ -170,7 +170,8 @@ function kdeckPages(d){ const P=[{t:'capa'}];
   KDECK_ACTS[d.age].slice(0,3).forEach(k=>P.push({t:'sheet',k,o:d.th}));
   if (KDECK_SONG[d.th]) P.push({t:'song',op:KDECK_SONG[d.th]});
   P.push({t:'game'},{t:'tchau'}); return P; }
-function kdeckPageSvg(id,i){ const d=kdeckById(id); if (!d) return ''; const P=kdeckPages(d), p=P[Math.max(0,Math.min(P.length-1,i))], R=rng(hashStr(id+i)), T=d.th? KIDS_THEMES[d.th] : null, W=T? T.w : [];
+function kdeckPageSvg(id,i){ return kMemo(`d|${id}|${i}`,()=>kdeckPageSvg0(id,i)); }
+function kdeckPageSvg0(id,i){ const d=kdeckById(id); if (!d) return ''; const P=kdeckPages(d), p=P[Math.max(0,Math.min(P.length-1,i))], R=rng(hashStr(id+i)), T=d.th? KIDS_THEMES[d.th] : null, W=T? T.w : [];
   const num=kT(940,1392,`${i+1}/${P.length}`,{s:16,b:false,c:'#b2a7aa',a:'end',f:KFS});
   const slide=(title,body,o={})=>`<svg class="kp-svg" viewBox="0 0 1000 1414" xmlns="http://www.w3.org/2000/svg"><rect width="1000" height="1414" fill="${o.bg||'#fffaf2'}"/>${o.noTitle? '' : `<rect x="40" y="40" width="920" height="140" rx="40" fill="${o.band||'#fff3d6'}"/>${kT(500,135,title,{s:title.length>22? 52 : 64,a:'middle'})}`}${body}${kT(60,1392,'Sotaque Kids · Fluent Emoji (MIT)',{s:14,b:false,c:'#b2a7aa',f:KFS})}${num}</svg>`;
   if (p.t==='sheet') return kidsSheetSvg(p.k,p.o||'pets',{seed:i});
@@ -204,15 +205,15 @@ function viewKdeck(id){ const d=kdeckById(id); if (!d) return '<div class="panel
       <button class="btn small ghost" data-act="kd-fs">${S.kdFs? 'Sair da tela cheia' : 'Tela cheia'}</button><button class="btn small" data-act="kd-print">Imprimir a aula</button></div>
     ${K.length? `<div class="kp-tools no-print kp-use"><label>Para <select data-kstu="1">${K.map(s=>`<option value="${s.id}" ${s.id===(S.kstu||K[0].id)?'selected':''}>${esc(s.name)}</option>`).join('')}</select></label><button class="btn small primary" data-act="kd-cad">Colar a aula toda no caderno</button><button class="btn small" data-act="kd-cad1">Colar só esta página</button><button class="btn small" data-act="kd-use">Ligar à aula</button></div>` : ''}
     <div class="kb-page"><button class="kb-nav" data-act="kd-go" data-v="${i-1}" ${i? '' : 'disabled'} aria-label="Página anterior">‹</button><div class="kp-page kd-page">${kdeckPageSvg(id,i)}</div><button class="kb-nav" data-act="kd-go" data-v="${i+1}" ${i<P.length-1? '' : 'disabled'} aria-label="Próxima página">›</button></div>
-    <div class="kd-thumbs no-print">${P.map((_,k)=>`<button class="${k===i?'on':''}" data-act="kd-go" data-v="${k}" aria-label="Página ${k+1}"><span class="kd-th">${kdeckPageSvg(id,k)}</span><small>${k+1}</small></button>`).join('')}</div>
-    <div class="kd-print">${P.map((_,k)=>`<div class="kd-pp">${kdeckPageSvg(id,k)}</div>`).join('')}</div></div>`; }
+    <div class="kd-thumbs no-print">${P.map((_,k)=>`<button class="${k===i?'on':''}" data-act="kd-go" data-v="${k}" aria-label="Página ${k+1}"><span class="kd-th">${kThumb(`d|${id}|${k}`,()=>kdeckPageSvg(id,k))}</span><small>${k+1}</small></button>`).join('')}</div>
+    <div class="kd-print"></div></div>`; }
 function kidsDecksHtml(age){ const L=KIDS_DECKS.filter(d=>!age||d.age===age).filter(d=>!S.kq||d.title.toLowerCase().includes(S.kq.toLowerCase())||(d.th&&KIDS_THEMES[d.th].pt.toLowerCase().includes(S.kq.toLowerCase())));
   return `<p class="meta">Aulas prontas no formato de página de caderno: capa, vocabulário com áudio, “listen and point”, “what’s this?”, frases, atividades da idade, música, jogo e despedida. Apresente na tela ou cole a aula toda no caderno digital da criança.</p>
-    <div class="kids-grid">${L.map(d=>`<a class="kids-card" href="#kaula-${d.id}"><span class="kids-th-img">${kdeckPageSvg(d.id,0)}</span><b>${esc(d.title)}</b><small>${KIDS_AGES[d.age]} · ${kdeckPages(d).length} páginas</small></a>`).join('')}</div>`; }
+    <div class="kids-grid">${L.map(d=>`<a class="kids-card" href="#kaula-${d.id}"><span class="kids-th-img">${kThumb(`d|${d.id}|0`,()=>kdeckPageSvg(d.id,0))}</span><b>${esc(d.title)}</b><small>${KIDS_AGES[d.age]} · ${kdeckPages(d).length} páginas</small></a>`).join('')}</div>`; }
 Object.assign(KIDS_ACT,{
   'kd-go'(el){ const P=kdeckPages(kdeckById(S.kd.id)); S.kd.i=Math.max(0,Math.min(P.length-1,+el.dataset.v)); render(); },
   'kd-fs'(){ S.kdFs=!S.kdFs; if (S.kdFs) document.documentElement.requestFullscreen?.().catch(()=>{}); else document.exitFullscreen?.().catch(()=>{}); render(); },
-  'kd-print'(){ document.body.classList.add('kd-printing'); window.print(); setTimeout(()=>document.body.classList.remove('kd-printing'),500); },
+  'kd-print'(){ const box=$('.kd-print'), id=S.kd.id; if (box) box.innerHTML=kdeckPages(kdeckById(id)).map((_,k)=>`<div class="kd-pp">${kdeckPageSvg(id,k)}</div>`).join(''); document.body.classList.add('kd-printing'); window.print(); setTimeout(()=>document.body.classList.remove('kd-printing'),500); },
   'kd-use'(){ const sid=$('[data-kstu]')?.value, d=kdeckById(S.kd.id); if (sid) kidsUse(sid,{k:'kaula',t:d.id}); },
   'kd-cad'(){ const sid=$('[data-kstu]')?.value, d=kdeckById(S.kd.id); if (!sid) return; const c=cadOf(sid), P=kdeckPages(d), first=c.pages.length;
     P.forEach((_,k)=>{ const pg=cadNewPage(sid,'branca'); pg.items.push({id:'i'+uid(),t:'act',kind:'kdeck',theme:d.id,seed:k,x:0,y:0,w:CAD_W,h:CAD_H,r:0}); c.pages.push(pg.id); });

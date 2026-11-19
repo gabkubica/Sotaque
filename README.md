@@ -42,6 +42,20 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
 `aulas/index.html` é a mesma página de `app/index.html`, com `window.SOTAQUE_MODE='real'` e os arquivos em `../app/`.
 O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 
+### Desempenho (para abrir rápido no celular e no iPad)
+- **Kids sob demanda**: figuras, atividades, livrinhos, Aulas Kids e caderno digital (~1 MB de código) não entram na
+  abertura do app. Baixam quando alguém abre uma tela Kids; para quem tem aluno Kids, baixam sozinhos logo depois que o
+  app abriu, quando o aparelho está parado (`KIDS_JS`, `kidsLoad()` e `needKids()` em `main.js`).
+- **Service worker** (`app/sw.js`; o real usa `aulas/sw.js`, que importa o mesmo): código e estilo com `?v=` saem do
+  aparelho sem esperar a rede; a página busca a versão nova primeiro (com internet lenta, após 4 s usa a guardada).
+  Áudios, livrinhos e imagens ficam num cache à parte, que não é apagado a cada publicação.
+- **Áudio Kids**: um mp3 pequeno por fala (`audio/k/`), baixado só quando tocado (antes: 15 MB de uma vez).
+- **Listas de atividades e aulas**: só as miniaturas que aparecem na tela são desenhadas, e as folhas prontas ficam
+  guardadas na memória (abrir de novo é instantâneo).
+- **Nuvem** (`cloud.js`): a atualização a cada minuto pergunta só “id + data” de cada registro e baixa de novo apenas o
+  que mudou (antes baixava todos os dados da professora a cada minuto).
+- **Demonstração**: várias mudanças seguidas viram uma gravação só no navegador.
+
 ## app/ · Sotaque
 
 **Professor ou professora** (Hoje · Agenda · Alunos · Tarefas · Desenvolvimento)
@@ -215,7 +229,7 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 - **Meus materiais**: a professora envia PDFs e imagens (até 25 MB). A lista vai em `DB.kfiles` (registro `kfile`);
   o arquivo fica no aparelho (IndexedDB) e, no Sotaque com login, na nuvem em pedaços (`kblob`, fora do carregamento
   inicial e baixados só quando abertos). Imprimir, ligar à aula e colar qualquer página no caderno.
-- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.300 falas em `audio/kids.json`, voz neural; inclui as Aulas Kids);
+- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.300 falas com voz neural, inclusive nas Aulas Kids: cada fala é um mp3 pequeno em `audio/k/`, baixado só quando tocada; índice em `audio/kids-idx.json`);
   funciona na tela, no caderno digital (a criança toca e ouve) e some na impressão. Atividades de escuta:
   Listen and circle, Listen and colour, Listen and number (com o roteiro da professora no rodapé).
 - **Atividades mais completas** (`kids-mais.js`): Look and answer (Is it…? Yes, it is), cena da sala com perguntas

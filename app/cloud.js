@@ -77,13 +77,36 @@ const mineToSync=r=>isTeacherCloud()||(ST_KINDS.includes(r.kind)&&r.student_id==
 function snapOf(){ const m=new Map(); for (const r of recsFromDB()) if (mineToSync(r)) m.set(r.id,JSON.stringify([r.student_id,r.data])); return m; }
 
 /* ---------- carregar ---------- */
+/* CLOUD.ver guarda o updated_at de cada registro e CLOUD.rows o conteúdo (texto) como estava na nuvem.
+   Assim a atualização periódica pergunta só "id + updated_at" (leve) e baixa de novo só o que mudou. */
+CLOUD.ver=new Map(); CLOUD.rows=new Map();
+function keepRows(data){ for (const r of data){ CLOUD.ver.set(r.id,r.updated_at); CLOUD.rows.set(r.id,{id:r.id,kind:r.kind,student_id:r.student_id,json:JSON.stringify(r.data)}); } }
+const rowsNow=()=>[...CLOUD.rows.values()].map(r=>({id:r.id,kind:r.kind,student_id:r.student_id,data:JSON.parse(r.json)}));
 async function fetchRows(){
   const sb=cloudClient(), rows=[];
   for (let from=0;;from+=1000){
-    const {data,error}=await sb.from('sq_records').select('id,kind,student_id,data').eq('teacher_id',CLOUD.member.teacher_id).neq('kind','kblob').order('id').range(from,from+999);
+    const {data,error}=await sb.from('sq_records').select('id,kind,student_id,data,updated_at').eq('teacher_id',CLOUD.member.teacher_id).neq('kind','kblob').order('id').range(from,from+999);
     if (error) throw error; rows.push(...data); if (data.length<1000) break;
   }
+  CLOUD.ver=new Map(); CLOUD.rows=new Map(); keepRows(rows);
   return rows;
+}
+/* só o que mudou desde a última vez (novos, alterados e apagados) */
+async function fetchChanges(){
+  const sb=cloudClient(), T=CLOUD.member.teacher_id, heads=[];
+  for (let from=0;;from+=1000){
+    const {data,error}=await sb.from('sq_records').select('id,updated_at').eq('teacher_id',T).neq('kind','kblob').order('id').range(from,from+999);
+    if (error) throw error; heads.push(...data); if (data.length<1000) break;
+  }
+  const ids=new Set(heads.map(h=>h.id)), changed=heads.filter(h=>CLOUD.ver.get(h.id)!==h.updated_at).map(h=>h.id), gone=[...CLOUD.ver.keys()].filter(id=>!ids.has(id));
+  if (!changed.length&&!gone.length) return false;
+  const got=[];
+  for (let i=0;i<changed.length;i+=100){
+    const {data,error}=await sb.from('sq_records').select('id,kind,student_id,data,updated_at').eq('teacher_id',T).in('id',changed.slice(i,i+100));
+    if (error) throw error; got.push(...data);
+  }
+  gone.forEach(id=>{ CLOUD.ver.delete(id); CLOUD.rows.delete(id); }); keepRows(got);
+  return true;
 }
 async function cloudLoad(){
   const sb=cloudClient(), {data:{user}}=await sb.auth.getUser(); if (!user) return false;
@@ -106,8 +129,9 @@ async function cloudLoad(){
 async function cloudRefresh(){
   if (!CLOUD.member||CLOUD.syncing||CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) return;
   try {
-    const rows=await fetchRows(); if (CLOUD.pending||CLOUD.syncing) return;
-    const keep=DB, D=dbFromRecords(rows), snap=snapOf();
+    if (await fetchChanges()) CLOUD.stale=true;          /* mudou algo: aplica agora ou, se houver edição pendente, na próxima vez */
+    if (!CLOUD.stale||CLOUD.pending||CLOUD.syncing) return; CLOUD.stale=false;
+    const keep=DB, D=dbFromRecords(rowsNow()), snap=snapOf();
     const same=snap.size===CLOUD.snap.size&&[...snap].every(([k,v])=>CLOUD.snap.get(k)===v);
     if (same){ DB=keep; return; }
     CLOUD.snap=snap; DB=D; render();
@@ -168,7 +192,7 @@ async function cloudSignup(email,pass,meta){
   if (data?.session){ await cloudLoad(); return {logged:true}; }
   return {confirm:true};
 }
-async function cloudLogout(){ try { await cloudClient().auth.signOut(); } catch {} CLOUD.member=null; CLOUD.user=null; CLOUD.snap=new Map(); clearTimeout(CLOUD.timer); CLOUD.pending=false; baseDB(); }
+async function cloudLogout(){ try { await cloudClient().auth.signOut(); } catch {} CLOUD.member=null; CLOUD.user=null; CLOUD.snap=new Map(); CLOUD.ver=new Map(); CLOUD.rows=new Map(); clearTimeout(CLOUD.timer); CLOUD.pending=false; baseDB(); }
 async function cloudForgot(email){ const {error}=await cloudClient().auth.resetPasswordForEmail(email,{redirectTo:siteUrl()}); return error? AUTH_MSG(error) : null; }
 async function cloudNewPass(p){ const {error}=await cloudClient().auth.updateUser({password:p}); return error? AUTH_MSG(error) : null; }
 /* convite do aluno: o e-mail que ele vai usar no "Primeiro acesso" */
