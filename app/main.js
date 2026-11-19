@@ -64,6 +64,7 @@ function save(){ if (REAL){ if (typeof cloudQueue==='function') cloudQueue(); re
 
 /* ---------- dados de exemplo ---------- */
 const NOTES={
+  KIDS:['Animals! Cantamos Old MacDonald e ela fez todos os sons. Colou o gato no caderno.','Cores e números até 10. Jogamos bingo de figuras: ela ganhou duas vezes!','Começamos a traçar as letras A, B e C na pauta de caligrafia. Muito caprichosa.','Família: mommy, daddy, brother. Desenhou a família no caderno e disse os nomes.'],
   EN:['Revisamos o past simple com verbos irregulares. Ótima pronúncia hoje!','Conversa sobre viagens. Palavras novas: luggage, boarding pass, delay.','Começamos o present perfect. Ainda confunde com o passado; vamos reforçar.','Listening com um episódio do 6 Minute English. Entendeu quase tudo!','Role-play no restaurante: pedir, reclamar, pagar a conta.','Phrasal verbs do dia a dia: get up, look for, give up.'],
   FR:['Salutations et présentations. Très bien ! Treinar o “r” francês.','Os números de 1 a 20 e como dizer a idade.','Verbo être e as nacionalidades.','Passé composé com avoir: ótimo progresso, revisar os particípios irregulares.','Conversa sobre a rotina. Vocabulário novo: se lever, se coucher, prendre le petit-déjeuner.','Role-play no café: commander, payer, remercier.'],
 };
@@ -76,6 +77,7 @@ function seedData(){
     mk('s3','Beatriz Costa','beatriz@sotaque.app','FR','A1 · Iniciante',1,19,'ameixa','paris',1789,2,4,2,260,false,{teacherId:'prof2'}),
     mk('s4','Theo Ramos','theo@sotaque.app','EN','A2 · Básico',3,20,'menta','mar',770,5,8,4,480,true),
     mk('s5','Júlia Nunes','julia@sotaque.app','EN','C1 · Conversação',5,10,'lavanda','conversa',9031,6,12,7,690,true),
+    mk('s8','Lia Souza','lia.pais@sotaque.app','EN','Kids',6,10,'mostarda','gato',5150,3,8,6,400,true,{kids:true,age:6,parent:'Carla Souza',phone:'(11) 98888-1234',place:'Casa da família · Vila Madalena',obs:'Adora gatos e desenhar. Um pouco tímida no começo da aula.'}),
     mk('s6','Rafael Lima','rafael@sotaque.app','FR','A2 · Básico',4,20,'petroleo','uvas',3141,6,8,3,440,true,{teacherId:'prof2'}),
     mk('s7','Sofia Martins','sofia@sotaque.app','FR','B1 · Intermediário',2,18,'rosa','livro',2718,4,8,5,440,false,{teacherId:'prof2'}),
   ].map(s=>({teacherId:'prof',...s}));
@@ -83,7 +85,7 @@ function seedData(){
   studs.forEach((s,si)=>{
     const thisWeek=atTime(addDays(weekStart(T),(s.slot.wd+6)%7),s.slot.h);
     let first=thisWeek<T-HOUR? thisWeek : addDays(thisWeek,-7);
-    const notes=NOTES[s.lang]; let consumed=0;
+    const notes=NOTES[s.kids? 'KIDS' : s.lang]; let consumed=0;
     for (let k=s.weeks-1;k>=0;k--){
       const start=addDays(first,-7*k), idx=s.weeks-1-k;
       let status='realizada', note=notes[idx%notes.length];
@@ -211,6 +213,9 @@ function parseHash(){
   if ((m=h.match(/^aula-([a-z0-9]+)$/))) return {name:'aulaPlay',id:m[1]};
   if (h==='pdfs') return {name:'pdfs'};
   if (h==='slides') return {name:'slides'};
+  if ((m=h.match(/^caderno-([a-z0-9]+)$/))) return {name:'caderno',id:m[1]};
+  if (h==='kids') return {name:'kids'};
+  if ((m=h.match(/^kids-([a-z0-9]+)-([a-z0-9]+)-(\d+)$/))) return {name:'kidsSheet',kind:m[1],theme:m[2],seed:+m[3]};
   if (h==='ao-vivo') return {name:'aoVivo'};
   if ((m=h.match(/^slides-ed-([a-z0-9]+)$/))) return {name:'slidesEd',id:m[1]};
   if ((m=h.match(/^slides-pdf-([a-z0-9]+)$/))) return {name:'slidesPdf',id:m[1]};
@@ -258,6 +263,7 @@ function viewAuth(){
 
 /* ---------- barra ---------- */
 const NAV_IC={
+  kids:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.5l-5.2 2.7 1-5.8L3.6 9.3l5.8-.8z"/></svg>',
   aula:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2.5"/><path d="M8 20.5h8M12 16.5v4M10.3 8.3v4.4l3.9-2.2z"/></svg>',
   biblioteca:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5h3.5v15H4.5zM10 4.5h3.5v15H10z"/><path d="M15.6 5.4l3.3-.9 3.4 13.5-3.3.9z"/></svg>',
   flash:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="13" height="13" rx="2.5"/><path d="M7.5 7V5.5A2 2 0 0 1 9.5 3.5h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H16.5"/></svg>',
@@ -276,8 +282,8 @@ function topbar(){
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
   const HW=['tarefas','tarefa','nova'], LIB=['print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
-  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
-    : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
+  const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#kids',['kids','kidsSheet','caderno'].includes(r),'kids','Kids')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
+    : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${me.kids? '' : navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
   return `<header class="bar"><div class="bar-in">
     <a class="brand" href="#inicio">${logo()}<span>Sotaque</span>${REAL? '' : '<em class="mode-pill" title="Modo adm: demonstração com alunos de exemplo">demo</em>'}</a>${nav}
     <div class="bar-r">
@@ -361,7 +367,7 @@ function viewStudents(){
     ${classMap()}
     <div class="cards">${list.map(s=>{ const i=pkgInfo(s.id), n=nextLesson(s.id), rq=DB.requests.some(r=>r.studentId===s.id&&r.status==='pendente');
       return `<a class="scard" href="#aluno-${s.id}" style="${sVars(s)}">${quadro(s.palette,s.scene,s.seed,{w:320,h:150,frame:false})}
-        <div class="scard-b"><h3>${esc(s.name)}</h3><p class="meta">${langName(s.lang)} · ${esc(s.level)}</p><p class="meta muted">${slotLabel(s)}</p>
+        <div class="scard-b"><h3>${esc(s.name)}${s.kids? ' <span class="kids-tag">Kids</span>' : ''}</h3><p class="meta">${langName(s.lang)} · ${s.kids&&s.age? s.age+' anos' : esc(s.level)}</p><p class="meta muted">${slotLabel(s)}</p>
         <div class="scard-f">${s.trail?.on? (()=>{ const tp=trailProgress(s); return `<span class="st st-done">Trilha ${s.trail.level} · ${tp.done}/${tp.total}</span>`; })() : ''}${rq? '<span class="st st-sent">Pediu remarcação</span>' : ''}${i.unpaid.length? '<span class="st st-sent">Pagamento pendente</span>' : ''}<span class="st ${i.remaining<=1?'st-late':'st-pend'}">${i.remaining>0? `${i.remaining} ${i.remaining===1?'aula restante':'aulas restantes'}` : 'Pacote terminou'}</span></div>
         ${n? `<small class="muted" style="margin-top:6px">Próxima: ${esc(fDay.format(n.start))} · ${fTime.format(n.start)}</small>` : ''}</div></a>`; }).join('')}
       <button class="addcard" data-act="new-student"><b>+</b>Novo aluno</button></div>`;
@@ -377,7 +383,9 @@ function nextCard(s,l){
     <div style="position:relative;display:flex;flex-direction:column;gap:4px"><p class="next-when">${esc(fLong.format(l.start))}</p><p class="next-sub">${fTime.format(l.start)} às ${fTime.format(l.start+l.dur*MIN)} · ${live? 'comece agora' : rel(l.start)}${l.movedFrom? ' · remarcada' : ''}</p></div>
     ${rq&&!isT()? `<div class="next-note" style="position:relative">Você pediu para remarcar. ${AProf()} vai escolher um destes horários: <b>${rq.options.map(ts=>fDay.format(ts)+' '+fTime.format(ts)).join(', ')}</b>. <button class="link" data-act="req-cancel" data-id="${rq.id}">Desistir do pedido</button></div>` : ''}
     ${rq&&isT()? `<div class="next-note" style="position:relative">${esc(s.name.split(' ')[0])} pediu para remarcar esta aula. Responda em <a class="link" href="#inicio">Hoje</a>.</div>` : ''}
-    <div class="row-btns" style="position:relative"><a class="btn primary big" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>
+    ${s.kids&&s.place? `<p class="next-sub" style="position:relative">Aula presencial · ${esc(s.place)}</p>` : ''}
+    ${l.deckId||l.mats?.length? `<div style="position:relative;display:flex;flex-wrap:wrap;gap:6px">${deckChip(l)}${typeof matChips==='function'? matChips(l) : ''}</div>` : ''}
+    <div class="row-btns" style="position:relative">${s.kids? '' : `<a class="btn primary big" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>`}
       ${isT()? `<button class="btn" data-act="lesson" data-id="${l.id}">Remarcar ou cancelar</button>` : rq? '' : `<button class="btn" data-act="cant" data-id="${l.id}" ${lead<24*HOUR? 'disabled title="Faltam menos de 24 horas"' : ''}>Não posso ir</button>`}</div>
     ${!isT()&&!rq&&lead<24*HOUR&&!live? `<p class="next-sub" style="position:relative;font-size:13px">Faltam menos de 24 horas. Para remarcar agora, fale direto com ${aProf()}.</p>` : ''}</div>`;
 }
@@ -392,7 +400,7 @@ function timeline(s){
     return `<div class="tl-tasks"><small>${isT()? 'Tarefas enviadas' : 'Tarefas desta aula'}</small>${L.map(t=>`<a class="tl-task" href="#tarefa-${t.id}"><span>${esc(t.title)}</span>${pill(taskState(t))}</a>`).join('')}</div>`; };
   const item=(l,future)=>{ const st=lessonState(l), cls=future?'fut':l.status==='falta'?'miss':l.status==='cancelada'?'off':'';
     return `<li class="tl-i ${cls}"><span class="tl-dot"></span><div class="tl-c"><div class="tl-h"><b>${esc(fDay.format(l.start))} · ${fTime.format(l.start)}</b>${pill(st)}${isT()&&!future? `<button class="link" data-act="lesson" data-id="${l.id}">${l.note? 'Editar resumo' : 'Escrever resumo'}</button>` : ''}</div>
-      ${deckChip(l)}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${future? '' : tasksOfL(l)}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
+      ${deckChip(l)}${typeof matChips==='function'? matChips(l) : ''}${l.note? `<p class="tl-note">${esc(l.note)}</p>` : ''}${future? '' : tasksOfL(l)}${l.extra&&isT()? `<small>Aula extra, registrada à mão</small>` : ''}${l.movedFrom? `<small>Remarcada · o horário original era ${esc(fDay.format(l.movedFrom))} · ${fTime.format(l.movedFrom)}</small>` : ''}</div></li>`; };
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Aulas' : 'Suas aulas'}</h2><span class="muted" style="font-size:13px;${isT()? 'margin-left:auto;margin-right:4px' : ''}">${past.filter(l=>l.status==='realizada').length} realizadas</span>${isT()? `<button class="btn small" data-act="lesson-add" data-id="${s.id}">+ Aula dada</button>` : ''}</div>
     ${fut.length? `<p class="eyebrow">Depois da próxima</p><ul class="tl">${fut.map(l=>item(l,true)).join('')}</ul>` : ''}
     <p class="eyebrow">Histórico</p>
@@ -418,17 +426,18 @@ function notices(s){
 }
 function viewNotebook(s){
   const p=PAL[s.palette], dark=SCENES[s.scene]?.dark, first=s.name.split(' ')[0];
-  const title= isT()? esc(s.name) : (s.lang==='FR'? `Salut, ${esc(first)} !` : `Hi, ${esc(first)}!`);
-  const sub= isT()? `${langName(s.lang)} · ${esc(s.level)} · ${slotLabel(s)}` : `Seu caderno de ${langName(s.lang).toLowerCase()} · ${slotLabel(s)}`;
+  const K=!!s.kids;
+  const title= isT()? esc(s.name) : K? `Caderno de ${esc(first)}` : (s.lang==='FR'? `Salut, ${esc(first)} !` : `Hi, ${esc(first)}!`);
+  const sub= K? `${isT()? '' : langName(s.lang)+' · '}Kids${s.age? ' · '+s.age+' anos' : ''} · ${slotLabel(s)}` : isT()? `${langName(s.lang)} · ${esc(s.level)} · ${slotLabel(s)}` : `Seu caderno de ${langName(s.lang).toLowerCase()} · ${slotLabel(s)}`;
   return `<div style="${sVars(s)}">
     ${isT()? `<a class="link" href="#alunos" style="display:inline-block;margin-bottom:16px;text-decoration:none">← Alunos</a>` : ''}
     <div class="banner"><div class="banner-art">${quadro(s.palette,s.scene,s.seed,{w:1100,h:240,focus:[.64,.84],align:'xMaxYMid'})}</div>
       <div class="banner-t" style="--bt:${dark? CREAM : p.c}"><h1>${title}</h1><p>${sub}</p></div></div>
     <div class="grid2">
-      <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${isT()? '' : dailyCard(s)}${timeline(s)}</div>
-      <aside class="stack">${placePanel(s)}${trailPanel(s)}${tasksPanel(s)}${flashPanel(s)}${dailyPanel(s)}${packagePanel(s)}
+      <div class="stack">${isT()? '' : notices(s)}${nextCard(s,nextLesson(s.id))}${isT()||K? '' : dailyCard(s)}${timeline(s)}</div>
+      <aside class="stack">${K? (typeof cadPanel==='function'? cadPanel(s) : '') : placePanel(s)+trailPanel(s)}${tasksPanel(s)}${K? '' : flashPanel(s)+dailyPanel(s)}${packagePanel(s)}
         ${isT()? `<section class="panel"><div class="panel-h"><h2>Dados do aluno</h2><button class="btn small" data-act="edit-student" data-id="${s.id}">Editar</button></div>
-          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd><dt>Sala online</dt><dd><a class="link" href="${esc(roomOf(s))}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd><dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
+          <dl class="kv"><dt>E-mail</dt><dd>${esc(s.email)}</dd>${REAL? `<dt>Acesso</dt><dd>${(S.activated||[]).includes(s.id)? 'conta ativada ✓' : 'esperando o primeiro acesso'}</dd>` : ''}<dt>Horário fixo</dt><dd>${slotLabel(s)}</dd>${K? `${s.parent? `<dt>Responsável</dt><dd>${esc(s.parent)}</dd>` : ''}${s.phone? `<dt>WhatsApp</dt><dd><a class="link" href="https://wa.me/${esc(s.phone.replace(/\D/g,'').replace(/^(?!55)/,'55'))}" target="_blank" rel="noopener">${esc(s.phone)}</a></dd>` : ''}${s.place? `<dt>Local</dt><dd>${esc(s.place)}</dd>` : ''}${s.obs? `<dt>Observações</dt><dd>${esc(s.obs)}</dd>` : ''}` : `<dt>Sala online</dt><dd><a class="link" href="${esc(roomOf(s))}" target="_blank" rel="noopener">${esc(s.room.replace(/^https?:\/\//,''))}</a></dd>`}<dt>Desde</dt><dd>${fMonth.format(s.since)}</dd></dl></section>`
         : `<section class="panel"><div class="panel-h"><h2>${suaProf()}</h2></div><div class="row" style="padding:0;border-top:0">${avatar(teacher(),40)}<div class="row-m"><b>${esc(teacher().name)}</b><small>${esc(teacher().email)}</small></div></div></section>`}
       </aside></div></div>`;
 }
@@ -1911,7 +1920,7 @@ function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
+  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -1941,6 +1950,9 @@ function render(){
   else if ((r.name==='bancoNova'||r.name==='bancoEd')&&S.draft) main=viewEditor();
   else if (r.name==='alunos') main=viewStudents();
   else if (r.name==='aluno'&&user(r.id)?.teacherId===S.me) main=viewNotebook(user(r.id));
+  else if (r.name==='caderno'&&user(r.id)?.teacherId===S.me) main=viewCaderno(r.id);
+  else if (r.name==='kids') main=viewKids();
+  else if (r.name==='kidsSheet') main=viewKidsSheet(r.kind,r.theme,r.seed);
   else main=viewToday();
   document.documentElement.lang= uiLang()==='en'? 'en' : 'pt-BR';
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
@@ -1994,6 +2006,7 @@ function lessonModal(l){
       <fieldset><legend>Como foi?</legend><div class="chips"><label class="chip"><input type="radio" name="status" value="realizada" ${l.status!=='falta'?'checked':''}><span>Aula realizada</span></label><label class="chip"><input type="radio" name="status" value="falta" ${l.status==='falta'?'checked':''}><span>Aluno faltou</span></label></div><small class="muted" style="font-size:13px">As duas opções contam como uma aula do pacote.</small></fieldset>
       <label class="field" for="r-note">Resumo da aula <small>(o aluno vê no caderno dele)</small><textarea id="r-note" name="note" placeholder="O que vocês viram, o que treinar até a próxima…">${esc(l.note||'')}</textarea></label>
       ${deckField(l.deckId||deckRecent(l.studentId,l.start))}
+      ${l.mats?.length? `<div class="field">Materiais usados<div class="picked">${l.mats.map((m,k)=>`<span>📄 ${esc(m.title)}<button type="button" data-act="mat-rm" data-id="${l.id}" data-k="${k}" aria-label="Tirar">×</button></span>`).join('')}</div></div>` : ''}
       <div class="actions"><button type="button" class="btn" data-act="close">Fechar</button><button class="btn primary">Salvar</button></div></form>`
     : `<a class="btn primary" style="align-self:flex-start" href="${esc(roomOf(s))}" target="_blank" rel="noopener">Entrar na aula</a>
       <form data-form="move" data-id="${l.id}"><fieldset><legend>Remarcar para</legend><div class="two"><label class="field" for="m-date"><span class="sr">Data</span><input type="date" id="m-date" name="date" required value="${dd}"></label><label class="field" for="m-time"><span class="sr">Horário</span><input type="time" id="m-time" name="time" required value="${tt}"></label></div></fieldset>
@@ -2026,8 +2039,12 @@ function studentForm(s){
   const v=s||{name:'',email:'',lang:'EN',level:'',slot:{wd:2,h:19,m:0},room:'',palette:PKEYS[Math.floor(Math.random()*PKEYS.length)],scene:'amanhecer',seed:Math.floor(Math.random()*9999)};
   openModal(`<form data-form="student" data-id="${s?.id||''}">
     <h2>${s? 'Editar aluno' : 'Novo aluno'}</h2>
-    <div class="two"><label class="field" for="n-name">Nome<input type="text" id="n-name" name="name" required value="${esc(v.name)}"></label><label class="field" for="n-email">E-mail <small>(é o login dele)</small><input type="email" id="n-email" name="email" required value="${esc(v.email)}"></label></div>
+    <div class="two"><label class="field" for="n-name">Nome<input type="text" id="n-name" name="name" required value="${esc(v.name)}"></label><label class="field" for="n-email">E-mail <small>(é o login dele; no Kids, o e-mail dos pais)</small><input type="email" id="n-email" name="email" required value="${esc(v.email)}"></label></div>
     <div class="two"><div class="field">Idioma<span class="pill-lang">${langName(myLang())}</span></div><label class="field" for="n-level">Nível<input type="text" id="n-level" name="level" value="${esc(v.level)}" placeholder="ex.: B1 · Intermediário"></label></div>
+    <label class="ck kids-ck"><input type="checkbox" name="kids" ${v.kids?'checked':''}> <span><b>Aluno Kids</b> · criança, aula presencial. Os pais entram com o e-mail acima e acompanham as aulas e o caderno digital.</span></label>
+    <div class="kids-only"><div class="three"><label class="field" for="n-age">Idade<input type="number" id="n-age" name="age" min="1" max="17" value="${esc(v.age||'')}"></label><label class="field" for="n-parent">Nome do responsável<input type="text" id="n-parent" name="parent" value="${esc(v.parent||'')}"></label><label class="field" for="n-phone">WhatsApp do responsável<input type="tel" id="n-phone" name="phone" value="${esc(v.phone||'')}" placeholder="(11) 90000-0000"></label></div>
+      <label class="field" for="n-place">Onde é a aula <small>(endereço, escola…)</small><input type="text" id="n-place" name="place" value="${esc(v.place||'')}"></label>
+      <label class="field" for="n-obs">Observações <small>(alergias, do que gosta, como é…)</small><textarea id="n-obs" name="obs" rows="2">${esc(v.obs||'')}</textarea></label></div>
     <fieldset><legend>Horário fixo da aula (1 hora)</legend><div class="two"><label class="field" for="n-wd"><span class="sr">Dia</span><select id="n-wd" name="wd">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${v.slot.wd===d?'selected':''}>Toda ${WD[d]}</option>`).join('')}</select></label><label class="field" for="n-time"><span class="sr">Horário</span><input type="time" id="n-time" name="time" required value="${hhmm(v.slot.h,v.slot.m)}"></label></div></fieldset>
     <label class="field" for="n-room">Link da sala online <small>(Google Meet. Vazio = usa o link fixo das suas Configurações)</small><input type="url" id="n-room" name="room" value="${esc(v.room)}" placeholder="https://meet.google.com/..."></label>
     ${s? '' : `<fieldset><legend>Primeiro pacote</legend><div class="three"><label class="field" for="n-size">Aulas<input type="number" id="n-size" name="size" min="1" value="8"></label><label class="field" for="n-price">Valor (R$)<input type="number" id="n-price" name="price" min="0" step="1" value="480"></label><label class="field" for="n-paid">Pagamento<select id="n-paid" name="paid"><option value="0">Pendente</option><option value="1">Já pago</option></select></label></div></fieldset>`}
@@ -2088,6 +2105,7 @@ const ACT={
   copy(el){ copyText(el.dataset.v,'Chave PIX copiada'); },
   week(el){ const v=+el.dataset.v; S.week= v===0? weekStart(now()) : addDays(S.week??weekStart(now()),7*v); render(); },
   lesson(el){ lessonModal(getLesson(el.dataset.id)); },
+  'mat-rm'(el){ const l=getLesson(el.dataset.id); l.mats.splice(+el.dataset.k,1); if (!l.mats.length) delete l.mats; save(); lessonModal(l); render(); },
   'lesson-cancel'(el){ const l=getLesson(el.dataset.id), s=user(l.studentId); confirmBox(`Cancelar a aula de ${s.name.split(' ')[0]}?`,'Cancelar aula',()=>{ l.status='cancelada'; DB.requests.filter(r=>r.lessonId===l.id&&r.status==='pendente').forEach(r=>{ r.status='recusado'; r.answeredAt=now(); }); save(); render(); toast('Aula cancelada. Ela não conta no pacote.'); },'A aula some da agenda do aluno e não desconta do pacote.'); },
   'lesson-restore'(el){ const l=getLesson(el.dataset.id); l.status='agendada'; save(); closeModal(); render(); toast('Aula de volta na agenda'); },
   'show-all'(){ S.showAll=!S.showAll; render(); },
@@ -2185,13 +2203,14 @@ const FORMS={
     if (DB.users.some(u=>u.email.toLowerCase()===email&&u.id!==id)){ err.textContent='Já existe alguém com este e-mail.'; return; }
     const [h,m]=fd.get('time').split(':').map(Number);
     let room=fd.get('room').trim(); if (room&&!/^https?:\/\//i.test(room)) room='https://'+room;
-    const vals={name:fd.get('name').trim(),email,lang:myLang(),level:fd.get('level').trim(),slot:{wd:+fd.get('wd'),h,m},room:room||'https://meet.google.com/',palette:fd.get('palette'),scene:fd.get('scene'),seed:+fd.get('seed')};
+    const vals={name:fd.get('name').trim(),email,lang:myLang(),level:fd.get('level').trim(),slot:{wd:+fd.get('wd'),h,m},room:room||'https://meet.google.com/',palette:fd.get('palette'),scene:fd.get('scene'),seed:+fd.get('seed'),
+      kids:fd.get('kids')==='on',age:fd.get('kids')==='on'? (+fd.get('age')||'') : '',parent:String(fd.get('parent')||'').trim(),phone:String(fd.get('phone')||'').trim(),place:String(fd.get('place')||'').trim(),obs:String(fd.get('obs')||'').trim()};
     if (id){ const s=user(id), slotChanged=JSON.stringify(s.slot)!==JSON.stringify(vals.slot); if (REAL&&s.email!==vals.email) cloudInvite(vals.email,s.id); Object.assign(s,vals); if (slotChanged) regenFuture(s); save(); closeModal(); render(); toast(slotChanged? 'Aluno atualizado. As próximas aulas mudaram de horário.' : 'Aluno atualizado'); return; }
     const pw= REAL? '' : PASS;
     const s={id:'u'+uid(),role:'student',pass:pw,teacherId:S.me,since:dayStart(now()),...vals};
     DB.users.push(s); DB.packages.push({id:uid(),studentId:s.id,size:+fd.get('size')||8,price:+fd.get('price')||0,paid:fd.get('paid')==='1',createdAt:now(),paidAt:fd.get('paid')==='1'? now() : null});
     ensureLessons(); save(); S.keepModal=true; location.hash='aluno-'+s.id; render();
-    if (REAL){ cloudInvite(s.email,s.id); const link=siteUrl(), first=s.name.split(' ')[0], msg=`Oi, ${first}! Seu acesso ao Sotaque, onde ficam as nossas aulas, homeworks e flashcards: ${link} · Toque em “Primeiro acesso de aluno”, use este e-mail (${s.email}) e crie a sua senha.`;
+    if (REAL){ cloudInvite(s.email,s.id); const link=siteUrl(), first=s.name.split(' ')[0], msg= s.kids? `Oi${s.parent? ', '+s.parent.split(' ')[0] : ''}! Este é o acesso de vocês ao Sotaque, onde ficam as aulas de ${first}, o resumo de cada aula e o caderno digital: ${link} · Toque em “Primeiro acesso de aluno”, use este e-mail (${s.email}) e crie a senha.` : `Oi, ${first}! Seu acesso ao Sotaque, onde ficam as nossas aulas, homeworks e flashcards: ${link} · Toque em “Primeiro acesso de aluno”, use este e-mail (${s.email}) e crie a sua senha.`;
       openModal(`<h2>Caderno de ${esc(first)} criado</h2><p class="meta">As aulas de ${slotLabel(s).toLowerCase()} já estão na agenda. Agora mande o acesso:</p>
         <div class="cred"><span>Link: <b>${esc(link)}</b></span><span>E-mail: <b>${esc(s.email)}</b></span></div>
         <p class="meta muted">${esc(first)} toca em <b>Primeiro acesso de aluno</b>, usa este e-mail e cria a própria senha. Só e-mails que você cadastrou conseguem criar conta.</p>
@@ -2221,7 +2240,7 @@ ACT['print-key']=el=>{ S.printKey=el.checked; render(); };
 ACT['print-go']=()=>window.print();
 ACT['prac-check']=()=>{ S.prac.done=true; ttsStop(); render(); window.scrollTo(0,0); };
 ACT['prac-reset']=()=>{ if (S.prac){ S.prac.t.answers={}; S.prac.done=false; } ttsStop(); render(); window.scrollTo(0,0); };
-Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT,SLIDE_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
+Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_ACT,PLACE_ACT,FLASH_ACT,PDF_ACT,AULA_ACT,EXTRA_ACT,TIPO_ACT,SLIDE_ACT,KIDS_ACT); Object.assign(FORMS,TASK_FORMS,BANK_FORMS,TRAIL_FORMS,EXTRA_FORMS);
 
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
@@ -2254,4 +2273,4 @@ go();
 if (REAL) cloudStart();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo','caderno','kids','kidsSheet'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);

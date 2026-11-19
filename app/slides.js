@@ -145,6 +145,7 @@ function viewSlidesPlay(id){
   return `<div class="sl-wrap">
     <div class="sl-top"><a class="link" href="#aula">← Aulas</a><b class="grow">${esc(d.title)}</b>
       <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
+    ${S.slMsg&&S.slMsg.deck===d.id? `<p class="note sl-msg">${esc(S.slMsg.txt)}${S.slMsg.undo? ` <button class="link" data-act="sl-unauto">Desfazer</button>` : ''} <button class="link" data-act="sl-msgx" aria-label="Fechar aviso">✕</button></p>` : ''}
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
     <div class="sl-stage" id="sl-stage">${P.board? `<div class="sl sl-lousa"><span class="sl-brand"><b>Sotaque</b> · © Gabriel Kubica · Todos os direitos reservados</span></div>` : slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
       ${inkSvg(inkKey(),DB.ink?.[inkKey()],true)}${S.draw? slPalette() : ''}<div class="sl-nav"><button class="btn small sl-anot ${S.draw?'on':''}" data-act="sl-draw" title="Anotar no slide: caneta, marca-texto e texto">${SLI.pen} Anotar</button><button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button>${P.board? `<button class="btn small primary" data-act="sl-board">← Voltar ao slide ${P.i+1}</button>` : slNavRest(P,list,s)}</div></div>
@@ -273,6 +274,8 @@ const inkSvg=(key,list,edit)=>{ const L=list||[];
     +(L.some(st=>st.t==='tx')? `<div class="sl-txl ${edit&&S.draw&&S.inkT==='tx'?'on':''}" ${edit? `data-inkl="${key}"` : ''}>${L.map((st,k)=>st.t==='tx'? inkTx(st,k,edit) : '').join('')}</div>` : ''); };
 Object.assign(SLIDE_ACT,{
   'sl-draw'(){ S.draw=!S.draw; render(); },
+  'sl-unauto'(){ slUnauto(); S.slStu=''; render(); toast('Aula desfeita'); },
+  'sl-msgx'(){ S.slMsg=null; render(); },
   'sl-board'(){ S.sl.board=!S.sl.board; if (S.sl.board&&!S.draw){ S.draw=true; S.inkT='tx'; } ttsStop(); render(); },
   'sl-color'(el){ S.inkC=el.dataset.c; render(); },
   'sl-undo'(){ const k=inkKey(), L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
@@ -319,8 +322,18 @@ document.addEventListener('pointerup',inkEnd); document.addEventListener('pointe
    se a aula dele está acontecendo agora e ainda não tem apresentação, já fica ligada ao histórico */
 function slLink(d){ const sid=slStudent(); if (!sid) return;
   (S.slUsed ||= {})[sid]={id:d.id,at:now()};
-  const l=(DB.lessons||[]).find(x=>x.studentId===sid&&isLive(x));
-  if (l&&!l.deckId){ l.deckId=d.id; l.deckTitle=d.title; save(); } }
+  /* a aula do aluno que está acontecendo (ou marcada perto de agora) recebe a apresentação */
+  const near=(DB.lessons||[]).filter(x=>x.studentId===sid&&x.status!=='cancelada'&&(isLive(x)||Math.abs(x.start-now())<2*HOUR)).sort((a,b)=>Math.abs(a.start-now())-Math.abs(b.start-now()))[0];
+  if (near){ if (!near.deckId){ near.deckId=d.id; near.deckTitle=d.title; save(); S.slMsg={deck:d.id,txt:`Apresentação ligada à aula de ${user(sid).name.split(' ')[0]} no histórico.`}; } return; }
+  /* sem aula por perto: quando a professora escolhe o aluno, a aula de agora entra no histórico */
+  if (!S.slAutoOk) return; S.slAutoOk=false;
+  const l={id:uid(),studentId:sid,start:Math.floor(now()/(5*MIN))*5*MIN,dur:60,status:'agendada',note:'',extra:true,auto:true,deckId:d.id,deckTitle:d.title};
+  DB.lessons.push(l); save(); S.slAuto={id:l.id,sid};
+  S.slMsg={deck:d.id,txt:`Aula de agora criada no histórico de ${user(sid).name.split(' ')[0]}, com esta apresentação. Depois é só registrar como foi.`,undo:l.id};
+}
+/* desfaz a aula criada sozinha, se ela ainda não foi mexida */
+function slUnauto(){ const a=S.slAuto; if (!a) return; const l=getLesson(a.id); if (l&&l.auto&&l.status==='agendada'&&!l.note){ DB.lessons=DB.lessons.filter(x=>x.id!==l.id); save(); } S.slAuto=null; S.slMsg=null; }
+
 /* aluno que está recebendo a aula: o da aula marcada agora, ou o escolhido */
 function slStudent(){ if (S.slStu===undefined){ const l=(DB.lessons||[]).find(l=>isLive(l)&&user(l.studentId)?.teacherId===S.me); S.slStu=l? l.studentId : ''; } return S.slStu; }
-document.addEventListener('change',e=>{ const el=e.target; if (el.dataset?.slstu){ S.slStu=el.value; render(); } if (el.dataset?.sldue){ S.slDue=el.value==='7'; render(); } });
+document.addEventListener('change',e=>{ const el=e.target; if (el.dataset?.slstu){ slUnauto(); S.slStu=el.value; S.slAutoOk=!!el.value; render(); } if (el.dataset?.sldue){ S.slDue=el.value==='7'; render(); } });

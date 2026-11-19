@@ -192,6 +192,23 @@ Arquivos: `index.html` (o app), `banco.js` e `banco-fr.js` (bancos de tarefas), 
 Cada navegador guarda os próprios dados: o que a professora faz não chega ao aluno em outro aparelho.
 Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 
+### Kids
+- **Aluno Kids** (cadastro): criança com aula presencial; o e-mail é dos pais, que entram, veem as aulas, o resumo,
+  os materiais e o caderno digital (só leitura). Campos: idade, responsável, WhatsApp, local e observações.
+- **Caderno digital** (`caderno.js`, rota `#caderno-<aluno>`): caneta com pressão da Apple Pencil (contorno pelo
+  perfect-freehand, MIT, em `vendor/`), marca-texto, borracha, texto (fonte Andika), figurinhas com as ilustrações,
+  prêmios (Good job!, Super!…), foto, atividades coladas, páginas pautada/caligrafia/quadriculada/pontilhada/branca,
+  capa com cor, padrão e título. Com caneta, a palma e o dedo não riscam (o dedo move e dá zoom); sem caneta, o dedo
+  escreve e dois dedos movem/dão zoom. Fica fora do `#app` (os re-renders não apagam nada). Dados: `DB.cad` e
+  `DB.cadp` (registros `cad` e `cadp` na nuvem, com `student_id` da criança).
+- **Materiais para imprimir** (`kids.js`, aba Kids): 25 tipos × 9 temas gerados em SVG A4 (flashcards, colorir,
+  traçar, ligar, circular, letra que falta, bingo, memória, dominó, caça-palavras, labirinto, contar, mini-livro,
+  desenhe e escreva, dado, tabuleiro, recorte e separe, ligue os pontos, alfabeto, números, músicas tradicionais com
+  gestos, certificado e quadro de estrelas). “Ligar à aula” e “Colar no caderno” guardam o material em `lesson.mats`
+  e ele aparece no histórico e na próxima aula.
+- **Apresentação → aula**: ao escolher o aluno em “Aula para”, a apresentação vai para a aula marcada perto de agora,
+  ou uma aula de agora é criada no histórico (dá para desfazer).
+
 ## site/ · Teacher Lexi
 
 Página única: apresentação, formação (Letras Inglês-Português · PUCPR, 1 ano e meio nos EUA,

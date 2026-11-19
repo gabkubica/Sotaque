@@ -40,6 +40,8 @@ function recsFromDB(){
   (DB.bank||[]).filter(b=>b.mine).forEach(b=>add('bank',b.id,null,b));
   (DB.slides||[]).forEach(d=>add('slides',d.id,null,d));
   for (const [k,v] of Object.entries(DB.ink||{})) add('ink',k,null,{k,v});
+  for (const [k,v] of Object.entries(DB.cad||{})) add('cad',k,k,v);
+  for (const [k,v] of Object.entries(DB.cadp||{})) add('cadp',k,v.sid,v);
   return out;
 }
 function dbFromRecords(rows){
@@ -63,6 +65,8 @@ function dbFromRecords(rows){
       case 'bank': D.bank.push(d); break;
       case 'slides': (D.slides ||= []).push(d); break;
       case 'ink': (D.ink ||= {})[d.k]=d.v; break;
+      case 'cad': (D.cad ||= {})[d.sid]=d; break;
+      case 'cadp': (D.cadp ||= {})[d.id]=d; break;
     }
   }
   return D;
