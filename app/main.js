@@ -55,7 +55,7 @@ const MODE=window.SOTAQUE_MODE==='real'? 'real' : 'demo', REAL=MODE==='real';
 const KEY= REAL? 'sotaque:real' : 'sotaque:v2', ME_KEY= REAL? 'sotaque:real:me' : 'sotaque:me', PASS='sotaque123';
 const genPass=()=>{ const c='abcdefghjkmnpqrstuvwxyz23456789'; let x=''; for (let i=0;i<8;i++) x+=c[Math.floor(Math.random()*c.length)]; return x; };
 /* Sotaque real: sem alunos de exemplo; atividades, provas, flashcards e aulas prontas ficam */
-function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:16,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
+function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:17,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
 const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
@@ -101,7 +101,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:16,conq:[],certs:[],cando:{},settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:17,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -2241,7 +2241,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if 
 if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
 if (REAL){ baseDB(); S.cloudLoading=true; }
 else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==16){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=16; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==17){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=17; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
   if (!DB.decks){ ensureFlash(); seedFlashDemo(); }

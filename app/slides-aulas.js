@@ -4007,3 +4007,782 @@ Everyday phrasal verbs
 Phrasal verbs: fill and fix
 Phrasal verbs do dia a dia`],
 );
+/* ---------- leva caprichada: preposições, descrever pessoas, pedidos, zero conditional, au pair ---------- */
+SLIDES_SEED.push(
+['EN','A1','Prepositions of place: where’s the cat?',`# capa: Where’s the cat? | img:gato
+A1 · in, on, under, next to, behind, between
+# sobre: Sobre esta aula
+ver: as preposições de lugar **in, on, under, next to, behind, in front of, between, opposite**; perguntas com **Where is / Where are**; as respostas **It’s… / They’re…**; objetos da casa
+porque: Dizer **onde as coisas estão** é uma das primeiras necessidades reais: achar as chaves, explicar onde fica algo, entender uma instrução. Em português, “em” serve para in e on, e por isso essa diferença confunde muito.
+porque: As preposições voltam em tudo depois: direções na cidade, descrição de fotos, provas de nível. Aprender bem agora economiza muitos erros no futuro.
+meta: perguntar e dizer onde algo está; diferenciar in, on e under; descrever um cômodo e uma imagem
+nivel: Nível A1 · Quadro Europeu (CEFR): “descrever onde as coisas estão, com frases simples”
+nota: Antes de começar, esconda um objeto perto da câmera (uma caneta atrás da caneca, por exemplo). Você vai usar no jogo do warm-up.
+# aquecimento: Hide and seek
+musica: Where Is My Mind? — Pixies | Só o título: “Where **is** my mind?” A pergunta da aula de hoje!
+filme: Toy Story (1995) | Os brinquedos se escondem **under the bed**, **in the box**, **behind the door** quando o Andy entra. | busca: Toy Story Andy's coming scene
+jogo: Hot or cold | Esconda um objeto na sua casa. O aluno pergunta: “Is it on the table? Is it under the bed?” Responda só “Yes / No”.
+pergunta: Where is your phone right now?
+nota: No jogo, aceite respostas curtas (“On the table?”). A forma completa vem no slide da tabela.
+# imagem: Where are the things? | img:sofa
+Look at the room. Where is the picture? Where are the cushions? What is under the sofa?
+Use: on, under, next to, behind, in front of…
+nota: Deixe o aluno tentar antes da explicação. Anote os erros com in/on para retomar no slide “Cuidado!”.
+# explica: In, on, under
+**in** = dentro
+> The keys are **in** my bag.
+**on** = em cima, encostado na superfície
+> The book is **on** the table. · The picture is **on** the wall.
+**under** = embaixo
+> The cat is **under** the bed.
+# explica: Next to, behind, in front of
+**next to** = ao lado de
+> The lamp is **next to** the sofa.
+**behind** = atrás de · **in front of** = na frente de
+> The bike is **behind** the door. · The car is **in front of** the house.
+**between** = entre (duas coisas) · **opposite** = em frente, do outro lado
+> The bank is **between** the café and the park.
+# vocab: In the living room
+a sofa | um sofá | img:sofa
+a chair | uma cadeira | img:cadeira
+a bed | uma cama | img:cama
+a bag | uma bolsa | img:mochila
+a fridge | uma geladeira | img:geladeira
+a cupboard | um armário | img:armario
+# tabela: Where is it? Where are they?
+Question | Answer
+Where **is** the cat? | **It’s** under the table.
+Where **are** my keys? | **They’re** in your bag.
+**Is** the phone on the sofa? | Yes, it is. / No, it isn’t.
+**Are** the shoes next to the door? | Yes, they are. / No, they aren’t.
+# exercicio: Practice 1 · Look and choose
+! Choose the right preposition.
+escolha: The milk is [*in/on/under] the fridge.
+escolha: There’s a picture [*on/in/under] the wall.
+escolha: My shoes are [*under/on/in] the bed. I can’t see them!
+escolha: The sofa is [*between/next/behind] the lamp and the plant.
+nota: Se errar in/on, faça o gesto com as mãos: in = mão dentro do copo; on = mão em cima da mesa.
+# dica: Cuidado!
+x: The book is in the table.
+ok: The book is on the table.
+x: The cat is under of the bed.
+ok: The cat is under the bed.
+x: The bank is next the café.
+ok: The bank is next to the café.
+x: Where is my keys?
+ok: Where are my keys?
+# exercicio: Practice 2 · Is or are?
+! Complete with is or are, and choose the answer.
+escolha: Where [*are/is] my glasses? — [*They’re/It’s] on your head!
+escolha: Where [*is/are] the remote control? — [*It’s/They’re] behind the cushion.
+lacunas: The cat is [between] the chair [and] the sofa. || next, of
+erro: The pictures {is|are} on the wall.
+# dialogo: Where are my keys?
+A: Mum, where are my keys?
+B: Are they in your bag?
+A: No, they aren’t.
+B: Look on the table, next to the fruit bowl.
+A: No… Oh, wait! They’re under the newspaper!
+B: As always!
+# exercicio: Practice 3 · Listen
+! Listen to the dialogue and answer.
+The keys are in the bag. (f)
+The keys are under the newspaper. (v)
+1. Where does the mum say to look first?
+*a) In the bag.
+b) On the sofa.
+c) Behind the door.
+ditado: The keys are under the newspaper.
+# tirinha: Where’s Mimi?
+[gato]
+Ana: Where’s Mimi?
+Leo: Is she under the bed?
+---
+Ana (pensando): No. Is she in the cupboard?
+Leo: No, she isn’t…
+---
+Ana (surpreso): Look! She’s on the fridge!
+Leo (feliz): Clever cat!
+nota: Peça para o aluno criar o 4º quadrinho: onde a Mimi vai se esconder amanhã?
+# exercicio: Practice 4 · Your room
+! Rewrite or put in order.
+reescreva: The lamp is on the left of the sofa. | NEXT | The lamp is ___ the sofa. | next to
+ordem: My phone is on the table
+grupos: in: a bag, a box, the fridge / on: the wall, the table, the floor
+ditado: The bike is behind the door.
+# leitura: The cat who lived in a library | img:livro
+tipo: True story style
+In a small town in England, a cat called Browser lived **in** the public library for ten years. Every morning he slept **on** the front desk, **next to** the computer.
+In the afternoon, he sat **between** the children’s books and watched the readers. When it was cold, he hid **under** the heater, **behind** the big chairs.
+One day, the town council wanted to send him away. But the people of the town said no! Browser stayed **in** his library until he was very old.
+nota: Depois da leitura, peça: “Where did Browser sleep? Where did he sit?” Respostas com preposição.
+# pergunta: Quick check
+The keys are ___ the bag.
+*in
+on
+under of
+# conversa: Your home | img:casa
+Where do you usually leave your keys?
+What is next to your bed?
+What’s on the wall of your bedroom?
+Where do you study or work at home?
+nota: Peça para o aluno mostrar a câmera e descrever o lugar onde está agora: “There’s a plant next to the window…”
+# resumo: Summary
+- **in** (dentro) · **on** (em cima) · **under** (embaixo)
+- **next to · behind · in front of · between · opposite**
+- Where **is** the cat? It’s… · Where **are** the keys? They’re…
+- next **to** (com to!) · under the bed (sem of)
+# tarefas: Atividades recomendadas
+Prepositions: where is it?
+House and rooms
+At home: picture games`],
+['EN','A2','Describing people: looks and personality',`# capa: Describing people | img:oculos
+A2 · What does she look like? What is she like?
+# sobre: Sobre esta aula
+ver: aparência (altura, corpo, cabelo, olhos) e personalidade; a ordem dos adjetivos (long dark hair); **What does she look like?** × **What is she like?**; be × have got para descrever
+porque: Descrever pessoas é útil em conversas, em entrevistas (“How would you describe yourself?”), em séries e para falar de família e amigos. As duas perguntas parecidas (look like × be like) confundem quase todo aluno.
+porque: Também treina o uso de **be** e **have got**, que brasileiros trocam muito (“She has 30 years”, “He is long hair”).
+meta: descrever a aparência de alguém; falar da personalidade com adjetivos positivos e negativos; entender e responder look like × be like
+nivel: Nível A2 · Quadro Europeu (CEFR): “descrever pessoas, a aparência e o caráter”
+nota: Peça antes para o aluno ter uma foto de alguém da família à mão. Ela vai ser usada na conversa final.
+# aquecimento: Guess who?
+musica: Uptown Funk — Bruno Mars | “Too hot, hot damn… I’m too pretty!” Escute as palavras que descrevem pessoas.
+filme: The Devil Wears Prada (2006) | A primeira aparição da Miranda: como ela é? E como é a personalidade dela? | busca: Devil Wears Prada Miranda arrives scene
+jogo: Guess who | Descreva uma pessoa famosa sem dizer o nome: “She’s tall. She’s got long dark hair. She’s a singer.” O aluno adivinha.
+pergunta: Who do you look like in your family?
+nota: Se o aluno disser “I look like my mother”, já é o gancho para a primeira explicação.
+# explica: Two different questions
+**What does she look like?** = Como ela é **fisicamente**?
+> She’s tall and she’s got curly hair.
+**What is she like?** = Como ela é **de personalidade**?
+> She’s very funny and a bit shy.
+**Who does she look like?** = Com quem ela se parece?
+> She looks like her father.
+# vocab: Appearance
+tall / short | alto / baixo | img:arvore
+curly hair | cabelo cacheado | img:feliz
+straight hair | cabelo liso | img:chapeu
+a beard | uma barba | img:surpreso
+glasses | óculos | img:oculos
+blue eyes | olhos azuis | img:ceu
+# tabela: Be or have got?
+Use **be** | Use **have got**
+She’s tall. | She’s got long hair.
+He’s thin / slim. | He’s got a beard.
+They’re young. | They’ve got blue eyes.
+I’m 30 (years old). | I’ve got glasses. / I wear glasses.
+# explica: Adjective order
+Tamanho → forma/estilo → cor + hair/eyes
+> She’s got **long straight dark** hair.
+> He’s got **short curly** hair.
+> She’s got **big brown** eyes.
+Em inglês, o adjetivo vem **antes** do substantivo: dark hair (não “hair dark”).
+# exercicio: Practice 1 · Appearance
+! Choose the right option.
+escolha: My brother [*is/has got] very tall.
+escolha: She [*has got/is] long curly hair.
+escolha: He’s got [*short black/black short] hair.
+escolha: “What does he look like?” “[*He’s tall and slim./He’s very kind.]”
+erro: My grandmother has {hair white|white hair}.
+nota: Repare se o aluno usa “have” sem got no britânico (“She has long hair”). Está certo também, só não pode “She is long hair”.
+# vocab: Personality
+friendly | simpático | img:feliz
+shy | tímido | img:preocupado
+funny | engraçado | img:balao
+lazy | preguiçoso | img:sofa
+hard-working | trabalhador | img:lapis
+generous | generoso | img:presente
+# dica: Cuidado!
+x: She has 25 years.
+ok: She’s 25.
+x: He is blond hair.
+ok: He’s got blond hair. / He’s blond.
+x: What is she look like?
+ok: What does she look like?
+x: My father is very sympathetic. (= compreensivo)
+ok: My father is very nice / friendly. (= simpático)
+nota: “Sympathetic” é falso cognato. Vale contar que significa compreensivo, solidário.
+# exercicio: Practice 2 · Personality
+! Sort and choose.
+grupos: positive: friendly, generous, hard-working, funny / negative: lazy, rude, selfish, bossy
+escolha: She never helps at home. She’s very [*lazy/generous].
+escolha: He always pays for everyone’s coffee. He’s so [*generous/shy].
+lacunas: My best friend is very [funny]. She always makes me [laugh]. || lazy, cry
+# dialogo: The new boyfriend
+A: So, tell me about your new boyfriend! What’s he like?
+B: He’s really funny and very kind.
+A: And what does he look like?
+B: He’s quite tall, and he’s got short dark hair and a beard.
+A: Does he wear glasses?
+B: Yes, he does. He looks a bit like Clark Kent!
+# exercicio: Practice 3 · Listen
+! Listen and answer.
+The boyfriend is funny and kind. (v)
+He’s got long hair. (f)
+1. Who does he look like?
+a) Superman’s enemy
+*b) Clark Kent
+c) His father
+ditado: He’s got short dark hair and a beard.
+# tirinha: The lost friend
+[cidade]
+Tom: I’m looking for my friend. Have you seen her?
+Bia: What does she look like?
+---
+Tom: She’s short, with long red hair and glasses.
+Bia (pensando): Hmm… Is she wearing a yellow jacket?
+---
+Tom (feliz): Yes! Where is she?
+Bia (feliz): Behind you!
+# exercicio: Practice 4 · Rewrite
+! Same meaning, using the word given.
+reescreva: My sister and my mother are very similar. | LOOKS | My sister ___ my mother. | looks like
+reescreva: Describe his personality. | LIKE | What ___? | is he like/’s he like
+1. “What’s your boss like?”
+*a) She’s strict but fair.
+b) She’s got brown eyes.
+c) She likes pizza.
+ditado: What does your best friend look like?
+# leitura: The face you can’t remember | img:lupa
+tipo: Science curiosity
+Some people **can’t recognise faces**, not even their own mother’s. The condition is called **face blindness** (prosopagnosia), and about 1 in 50 people have a mild form of it.
+How do they know who is who? They use other details: “My husband **is tall**, he’s **got curly grey hair** and he **wears** a green jacket.” Personality helps too: “My friend Jo **is very loud** and always laughs.”
+Some famous people say they have face blindness, like the actor Brad Pitt. Imagine meeting a fan and not knowing if you have met them before!
+nota: Pergunte: “How would you describe yourself to a person with face blindness?”
+# conversa: People in your life | img:feliz
+Who do you look like in your family?
+Describe your best friend: what does he or she look like? What is he or she like?
+What personality do you like in a teacher? And in a boss?
+How would you describe yourself in three words?
+nota: Use a foto que o aluno trouxe. Peça descrição completa: aparência + personalidade.
+# resumo: Summary
+- **What does she look like?** (aparência) · **What is she like?** (personalidade)
+- **be**: tall, slim, 30 · **have got**: long hair, blue eyes, a beard
+- Ordem: **long straight dark** hair · adjetivo antes do substantivo
+- friendly, funny, shy, lazy, generous (sympathetic = compreensivo!)
+# tarefas: Atividades recomendadas
+Describing people: who is who?
+Feelings
+Have got and has got`],
+['EN','A2','Requests and offers: can, could, would',`# capa: Can you help me? | img:xicara
+A2 · Could you…? Would you like…? Shall I…?
+# sobre: Sobre esta aula
+ver: pedidos com **Can you…? / Could you…? / Would you mind…?**; pedir permissão com **Can I…? / Could I…? / May I…?**; ofertas com **Would you like…? / Shall I…? / I’ll…**; como responder com educação
+porque: Em inglês, a educação está muito na **forma do pedido**. “Give me a coffee” soa rude; “Could I have a coffee, please?” soa natural. Em viagens e no trabalho, isso faz toda a diferença.
+porque: São estruturas curtas e prontas, que o aluno já usa no mesmo dia em restaurantes, hotéis, reuniões e e-mails.
+meta: fazer pedidos educados; pedir permissão; oferecer ajuda; aceitar e recusar com educação
+nivel: Nível A2 · Quadro Europeu (CEFR): “fazer pedidos e ofertas simples, com educação”
+nota: Durante a aula, faça pedidos reais ao aluno (“Could you open the chat?”). Ajuda a ver a estrutura funcionando.
+# aquecimento: Please and thank you
+musica: Help! — The Beatles | “Help me if you **can**, I’m feeling down…” Um pedido de ajuda famoso.
+filme: Paddington (2014) | O Paddington é educadíssimo: “Would you like a marmalade sandwich?” | busca: Paddington marmalade sandwich scene
+jogo: Polite or rude? | Leia frases (“Give me the salt.” / “Could you pass the salt?”). O aluno diz “polite” ou “rude” e conserta as rudes.
+pergunta: What do you say when you need help from a stranger?
+nota: Comente que “please” sozinho não resolve: “Give me water, please” ainda soa seco. A forma da pergunta é o que suaviza.
+# tabela: From informal to very polite
+Level | Request | Example
+Informal (friends) | Can you…? | **Can you** pass the salt?
+Polite | Could you…? | **Could you** help me, please?
+Very polite | Would you mind + -ing? | **Would you mind opening** the window?
+Asking permission | Can I / Could I / May I…? | **Could I** use your phone?
+# explica: Asking for help
+> **Can you** help me with this box?
+> **Could you** speak more slowly, please?
+> **Would you mind** waiting a minute?
+Respostas:
+> **Sure! / Of course! / No problem.**
+> **I’m sorry, I can’t. I’m busy right now.**
+Atenção: **Would you mind…?** → “No, not at all” = **pode, sim**!
+# explica: Offers
+> **Would you like** a coffee? → Yes, please. / No, thanks.
+> **Shall I** open the window? → Yes, please, that would be great.
+> It’s heavy! **I’ll** help you.
+**Would you like** + substantivo ou **to** + verbo:
+> Would you like **some water**? · Would you like **to sit** down?
+# exercicio: Practice 1 · Polite or not?
+! Choose the most polite option.
+escolha: (to your boss) [*Could you send me the report, please?/Send me the report.]
+escolha: (at a restaurant) [*Could I have the bill, please?/I want the bill.]
+escolha: [*Would you mind closing/Would you mind to close] the door?
+escolha: [*Would you like/Do you like] a cup of tea? — Yes, please!
+erro: {Shall you|Shall I} carry your bag?
+nota: Explique o “Do you like…?” (gosto em geral) × “Would you like…?” (oferta agora). Erro muito comum!
+# dica: Cuidado!
+x: Would you mind to help me?
+ok: Would you mind helping me?
+x: Would you mind…? — Yes. (= quer dizer “me importo”!)
+ok: Would you mind…? — No, not at all. / Of course not.
+x: Do you want a coffee? (com um cliente)
+ok: Would you like a coffee?
+x: I want a water.
+ok: Could I have some water, please?
+# frase: Useful phrases
+Could you do me a favour?
+Can I ask you something?
+Would you like some help?
+Shall I call a taxi for you?
+Sure, no problem!
+I’m sorry, I’m afraid I can’t.
+# exercicio: Practice 2 · Requests and permission
+! Complete and order.
+lacunas: [Could] I use your charger? My phone is [dead]. || Would, empty
+lacunas: Would you mind [turning] down the music? || to turn, turn
+ordem: Could you speak more slowly please
+grupos: Request: Could you help me?, Can you open the door?, Would you mind waiting? / Offer: Shall I help you?, Would you like a drink?, I’ll carry it
+# dialogo: At the hotel
+A: Good evening. Can I help you?
+B: Yes, please. Could you call a taxi for me?
+A: Of course. Where would you like to go?
+B: To the airport. And could I leave my bags here for an hour?
+A: Sure, no problem. Would you like a coffee while you wait?
+B: Yes, please. That’s very kind of you!
+# exercicio: Practice 3 · Listen
+! Listen and answer.
+The guest wants a taxi to the station. (f)
+The guest wants to leave the bags for an hour. (v)
+1. What does the receptionist offer?
+a) A newspaper
+*b) A coffee
+c) A free room
+ditado: Could I leave my bags here for an hour?
+# tirinha: The heavy box
+[presente]
+Sam: This box is so heavy!
+Mia: Shall I help you?
+---
+Sam (feliz): Yes, please! Could you open the door?
+Mia: Sure. Would you like a drink after this?
+---
+Sam (cansado): Yes, please. A very big one!
+# exercicio: Practice 4 · Make it polite
+! Rewrite the sentences.
+reescreva: Close the window. | COULD | ___ the window, please? | could you close
+reescreva: Do you want something to eat? | LIKE | Would you ___ to eat? | like something
+reescreva: Wait here. | MIND | Would you ___ here? | mind waiting
+ditado: Would you like to sit down?
+nota: Desafio extra: o aluno transforma 3 “ordens” do dia a dia dele em pedidos educados.
+# leitura: The magic words | img:balao
+tipo: Opinion
+In British English, people say **please**, **thank you** and **sorry** all the time. Some studies say a British person says “sorry” about eight times a day, even when it isn’t their fault!
+A direct request like “Give me a coffee” can sound rude, so people prefer softer questions: “**Could I** have a coffee, please?” or “**Would you mind** helping me?”
+In my opinion, this is not just about language: it’s about respect. A polite request makes the other person **want** to help you. What do you think? Are people polite in your city?
+nota: Pergunte: “Is it the same in Portuguese? What are our ‘magic words’?”
+# pergunta: Quick check
+“Would you mind opening the window?” You want to say YES, I’ll do it:
+*No, not at all.
+Yes, I mind.
+Yes, open.
+# conversa: Your turn | img:xicara
+What do you ask your colleagues or family to do every day? Make it polite!
+When was the last time you offered help to a stranger?
+Is it easy for you to say “no” to a request? How do you say it?
+nota: Role-play final: o aluno é recepcionista e você é hóspede com 3 pedidos. Depois troquem.
+# resumo: Summary
+- Pedidos: **Can you…? → Could you…? → Would you mind + -ing?**
+- Permissão: **Can I / Could I / May I…?**
+- Ofertas: **Would you like…? · Shall I…? · I’ll…**
+- Would you mind? → **No, not at all** = pode sim!
+# tarefas: Atividades recomendadas
+Requests and offers: be polite!
+At the hotel
+At the restaurant`],
+['EN','B1','Zero conditional: facts and life hacks',`# capa: If you heat ice, it melts | img:sol
+B1 · Zero conditional: facts, rules and life hacks
+# sobre: Sobre esta aula
+ver: a forma **If + present, present**; quando usar (fatos, verdades científicas, rotinas e regras); **when** × **if**; a diferença para o **first conditional**; o imperativo com if (If you’re tired, rest!)
+porque: É a condicional mais simples e a base para entender as outras (first, second, third). Aparece em instruções, manuais, receitas, regras de trabalho e explicações científicas.
+porque: Também ajuda a falar de hábitos e reações pessoais: “If I drink coffee at night, I can’t sleep.” É uma forma muito natural de falar de si mesmo.
+meta: explicar fatos e regras com if; falar dos próprios hábitos e reações; diferenciar zero e first conditional; dar conselhos rápidos com if + imperativo
+nivel: Nível B1 · Quadro Europeu (CEFR): “explicar causas e consequências de forma simples”
+nota: Se o aluno já viu o first conditional, faça a ponte: hoje é “o que SEMPRE acontece”, não “o que vai acontecer”.
+# aquecimento: Life hacks
+musica: If You’re Happy and You Know It | A música infantil é um zero conditional: “If you’re happy and you know it, clap your hands!”
+filme: Gremlins (1984) | As regras do Gizmo: “If you get him wet, he multiplies.” | busca: Gremlins three rules scene
+jogo: Life hacks | Cada um diz uma dica da vida real: “If you put your phone in rice, it dries.” O outro diz se acredita ou não.
+pergunta: What happens if you drink coffee at night?
+nota: O jogo dos life hacks rende conversa; aceite erros de forma e anote para o slide da tabela.
+# explica: Always true
+**If + present simple, present simple**
+Usamos para coisas que **sempre** acontecem: fatos, ciência, regras, hábitos.
+> **If** you **heat** ice, it **melts**.
+> **If** I **drink** coffee at night, I **can’t** sleep.
+> **If** it **rains**, the match **is** cancelled.
+# tabela: The structure
+If clause | Main clause
+If you mix blue and yellow, | you get green.
+If water reaches 100°C, | it boils.
+If I’m stressed, | I eat chocolate.
+If you don’t water plants, | they die.
+A ordem pode mudar: **Plants die if you don’t water them.** (sem vírgula)
+# exercicio: Practice 1 · Science and facts
+! Choose the right form.
+escolha: If you [*heat/will heat] water to 100°C, it boils.
+escolha: If you mix red and white, you [*get/will get/got] pink.
+escolha: Plants die if they [*don’t get/won’t get] water.
+escolha: If I don’t sleep well, I [*feel/felt/am feel] terrible.
+erro: If you freeze water, it {will become|becomes} ice.
+nota: “Will” no zero conditional não é um erro grave, mas soa estranho para fatos. Mostre a diferença com calma.
+# explica: If or when?
+No zero conditional, **if** e **when** quase sempre significam o mesmo:
+> **If / When** I’m tired, I go to bed early.
+Mas **when** = com certeza vai acontecer · **if** = pode acontecer ou não
+> **When** I wake up, I drink water. (todo dia)
+> **If** I wake up early, I go running. (às vezes)
+# linha: Zero or first?
+faixa: 0.05-0.95 | Zero: always true
+ponto: 0.8 | First: one time
+agora: 0.55
+**Zero:** If you heat ice, it **melts**. (sempre)
+**First:** If it’s sunny tomorrow, we**’ll** go to the beach. (uma vez, no futuro)
+# exercicio: Practice 2 · Zero or first?
+! Is it always true, or one situation in the future?
+escolha: If it rains tomorrow, we [*’ll stay/stay] at home.
+escolha: If you press this button, the machine [*starts/will started].
+escolha: If I see Ana tonight, I [*’ll tell/tell] her the news.
+grupos: Zero (always): If you heat ice it melts, If I’m tired I sleep / First (one time): If it rains tomorrow we’ll stay in, If I see her I’ll tell her
+# dica: Cuidado!
+x: If you will heat ice, it melts.
+ok: If you heat ice, it melts.
+x: If I am drink coffee, I can’t sleep.
+ok: If I drink coffee, I can’t sleep.
+x: If you mix blue and yellow you get green, always will.
+ok: If you mix blue and yellow, you get green.
+# explica: If + imperative
+Para conselhos e instruções rápidas: **If + present, imperative**
+> **If** you’re tired, **take** a break.
+> **If** you don’t understand, **ask** me.
+> **If** the light is red, **don’t cross**.
+# exercicio: Practice 3 · Advice
+! Match the problem to the advice.
+1. If you have a headache, …
+*a) drink some water and rest.
+b) eat more sugar.
+c) you will have a headache.
+lacunas: If you feel cold, [put] on a jacket. If you’re hungry, [have] a snack. || puts, having
+reescreva: Always ask me when you have a question. | IF | ___ a question, ask me. | if you have
+nota: Peça para o aluno criar 3 conselhos com if para um amigo que vai viajar.
+# dialogo: Office rules
+A: Welcome to the team! Here are the basic rules.
+B: Great, thanks.
+A: If you arrive after nine, you sign this book.
+B: OK. And what happens if I need a day off?
+A: If you need a day off, you ask your manager a week before.
+B: Got it. And if the coffee machine breaks?
+A: If the coffee machine breaks, everybody panics!
+# exercicio: Practice 4 · Listen
+! Listen and answer.
+If you arrive after nine, you sign a book. (v)
+You ask for a day off one day before. (f)
+ditado: If you need a day off, ask your manager.
+# tirinha: The plant
+[planta]
+Leo (triste): My plant is dying!
+Bia: Do you water it?
+---
+Leo (pensando): Hmm… sometimes?
+Bia: If you don’t water plants, they die!
+---
+Leo (feliz): OK! From now on, every day!
+# leitura: Life hacks that really work | img:lampada
+tipo: Science curiosity
+Some life hacks are myths, but others are real science. **If you put** a wooden spoon on a pot of boiling pasta, the water **doesn’t boil** over. The spoon breaks the bubbles.
+**If** a banana **is** too green, **put** it in a paper bag with an apple. The apple releases a gas that makes fruit ripen faster.
+And the most famous one? **If** your phone **gets** wet, people say “put it in rice.” Scientists say this one doesn’t really work: if your phone **gets** wet, just **turn** it off and let it dry.
+nota: Pergunte: “Which hack do you want to try? Do you know any other?”
+# pergunta: Quick check
+Which sentence is a zero conditional?
+*If you heat chocolate, it melts.
+If it’s sunny tomorrow, I’ll go out.
+If I were rich, I’d buy a boat.
+# conversa: Your reactions | img:feliz
+What do you do if you can’t sleep?
+What happens if you don’t drink coffee in the morning?
+If you feel stressed, what helps you?
+What are the rules at your work or school? Use if!
+nota: Corrija só a forma do zero conditional. Homework sugerida: “Zero conditional: if it rains, it…”.
+# resumo: Summary
+- **If + present, present** → fatos, ciência, regras, hábitos
+- **if ≈ when** (when = com certeza; if = às vezes)
+- **Zero:** sempre verdade · **First:** uma situação futura (will)
+- Conselhos: **If you’re tired, rest!**
+# tarefas: Atividades recomendadas
+Zero conditional: if it rains, it…
+Zero conditional
+First conditional`],
+['EN','B1','Au Pair: a day with the kids',`# capa: A day with the kids | img:carrinho
+B1 · Au Pair English: routines, rules and care
+# sobre: Sobre esta aula
+ver: o vocabulário da rotina com crianças (school run, nap time, bath time, bedtime); como dar instruções gentis e firmes; como conversar com a host family (relatar o dia, pedir orientação); segurança e primeiros socorros básicos
+porque: Depois da entrevista, o desafio da au pair é a **vida real**: acordar as crianças, levar à escola, negociar o jantar, explicar um problema aos pais. São frases que ela vai usar todos os dias, muitas vezes sob pressão.
+porque: Saber falar com a host family com clareza (“Lucas didn’t eat much today, but he had a good nap”) cria confiança e evita mal-entendidos, que são a causa mais comum de “rematch”.
+meta: descrever a rotina das crianças; dar instruções para crianças com educação e firmeza; relatar o dia para os pais; lidar com pequenos problemas e emergências
+nivel: Nível B1 · objetivo específico: Au Pair
+nota: Pergunte antes qual a idade das crianças da host family (ou da família dos sonhos). Adapte os exemplos.
+# aquecimento: Life with kids
+musica: Baby Shark — Pinkfong | Toda au pair vai ouvir. Que palavras da família aparecem? (mommy, daddy, grandma…)
+filme: Mrs. Doubtfire (1993) | A “babá” chega e muda toda a rotina da casa, com regras novas. | busca: Mrs Doubtfire new rules dinner scene
+jogo: Kid’s day | Ponha a rotina na ordem: wake up, breakfast, school, snack, park, dinner, bath, story, bed. O aluno conta como é o dia.
+pergunta: What do you think is the hardest part of an au pair’s day?
+nota: Use a resposta do aluno para escolher em qual slide passar mais tempo.
+# vocab: The daily routine
+the school run | levar/buscar na escola | img:onibus
+nap time | hora da soneca | img:cama
+a snack | um lanchinho | img:banana
+bath time | hora do banho | img:banheira
+bedtime | hora de dormir | img:noite
+a playdate | encontro para brincar | img:bola
+# linha: A typical day
+ponto: 0.08 | 7:00 wake up
+ponto: 0.25 | 8:00 school run
+faixa: 0.4-0.55 | 12–2 lunch and nap
+ponto: 0.72 | 5:30 dinner
+ponto: 0.9 | 7:30 bedtime
+agora: não
+eixo: morning | night
+Um dia típico de au pair tem **picos** (manhã e fim de tarde) e um intervalo no meio, quando as crianças estão na escola ou na soneca.
+# explica: Instructions for kids
+Gentis, curtas e **positivas**:
+> **Let’s** brush our teeth! · **Time to** put your shoes on.
+> **Can you** help me tidy up the toys?
+Firmes, quando precisa:
+> **Please don’t** jump on the sofa. · **I need you to** hold my hand now.
+Dê escolhas (funciona muito!):
+> **Do you want** the red cup **or** the blue cup?
+# frase: Things you say every day
+Time to wake up, sleepyhead!
+Let’s put your shoes on.
+Wash your hands before lunch, please.
+Five more minutes, then it’s bath time.
+Inside voice, please.
+Good job! I’m proud of you.
+# exercicio: Practice 1 · Routine words
+! Choose the right word.
+escolha: After lunch, the baby has a [*nap/snack/bath] for two hours.
+escolha: I do the school [*run/walk/drive] at 8 am.
+escolha: [*Time to/Time for/It’s time] brush your teeth!
+escolha: At 4 pm, the kids have a [*snack/nap/bedtime]: some fruit and crackers.
+grupos: Morning: wake up, breakfast, school run / Evening: dinner, bath time, bedtime story
+nota: Pergunte quais atividades a au pair faria sozinha e quais com os pais.
+# dica: Cuidado!
+x: Take a shower, baby. (para criança pequena)
+ok: Time for your bath!
+x: Stop to cry!
+ok: It’s OK. Take a deep breath. Tell me what’s wrong.
+x: He didn’t want to eat nothing.
+ok: He didn’t want to eat anything.
+x: I gave a bath in the children.
+ok: I gave the children a bath. / I bathed the kids.
+# exercicio: Practice 2 · Talking to kids
+! Which is the best thing to say?
+1. The child is jumping on the sofa.
+a) Stop it now or I’ll tell your mom!
+*b) Please don’t jump on the sofa. Let’s jump on the trampoline outside!
+c) Jumping is bad.
+1. The child doesn’t want to get dressed.
+*a) Do you want the dinosaur T-shirt or the blue one?
+b) You have to. Now!
+c) OK, stay in your pajamas.
+lacunas: [Let’s] tidy up the toys [together]! || Lets, alone
+# dialogo: Reporting the day
+A: Hi! How was the day?
+B: It was good! Emma had a great nap, about two hours.
+A: Oh, nice. Did she eat her lunch?
+B: Not much, only some pasta. But she had a big snack at four.
+A: OK. Anything else?
+B: Lucas fell at the park and hurt his knee a little. I cleaned it and put a plaster on. He’s fine now.
+A: Thank you for telling me!
+# exercicio: Practice 3 · Listen
+! Listen to the au pair and the mom.
+Emma slept for about two hours. (v)
+Emma ate all her lunch. (f)
+1. What happened to Lucas?
+a) He was sick.
+*b) He fell and hurt his knee.
+c) He lost his shoe.
+ditado: He fell at the park, but he’s fine now.
+nota: Ressalte: relatar SEMPRE pequenos acidentes. Os pais valorizam muito a honestidade.
+# explica: Problems and emergencies
+Pedir orientação:
+> **What should I do if** he doesn’t want to eat?
+> **Is it OK if** they watch TV after dinner?
+Relatar um problema:
+> **I’m sorry, but** Emma broke a glass. Nobody got hurt.
+Emergência (nos EUA, ligue **911**):
+> **My child is not breathing. / There’s been an accident. The address is…**
+# exercicio: Practice 4 · Talking to the host family
+! Rewrite or correct.
+reescreva: Can the kids watch TV after dinner? | OK | Is it ___ watch TV after dinner? | ok if the kids
+reescreva: I want to know what to do if he cries. | SHOULD | What ___ he cries? | should I do if
+erro: She didn’t eat {nothing|anything} at lunch.
+ditado: Is it OK if they play outside?
+# tirinha: Bedtime
+[noite]
+Mia (feliz): Time for bed, Tom!
+Tom (bravo): No! One more story, please!
+---
+Mia (pensando): OK. One more story, then lights off.
+Tom (feliz): Deal!
+---
+Mia (feliz): The end. Good night!
+Tom (cansado): Good night…
+nota: Mostre a técnica: negociar com limite claro (“one more, then…”). Funciona com crianças de 3 a 8 anos.
+# leitura: Diary of an au pair | img:carrinho
+tipo: Blog post
+**Week 3 in Boston.** This week was hard but amazing. Every morning I **do the school run** with Lucas (6) and then I take Emma (2) to the park. Emma **naps** after lunch, and that’s my time to have a coffee and study English!
+Tuesday was difficult: Lucas didn’t want to do his homework. I remembered my training: **give choices**. “Do you want to do it at the table or on the floor?” He chose the floor, and he finished it!
+The best moment? When Emma said “I love you, Ana” at **bedtime**. I almost cried. My host mom says I’m doing a great job. I think I’m learning more than the kids!
+nota: Pergunte: “What strategy did Ana use? Would you do the same?”
+# pergunta: Quick check
+The child is crying because he wants a toy. What do you say?
+*It’s OK. Take a deep breath. Tell me what’s wrong.
+Stop to cry!
+Crying is not allowed.
+# conversa: Imagine your au pair life | img:casa
+What would a perfect day with the kids look like for you?
+What would you do if the kids didn’t want to sleep?
+What questions would you ask your host family on your first day?
+How would you tell the parents about a small accident?
+nota: Role-play final: você é a host mom chegando do trabalho; o aluno relata o dia com 3 informações (comida, soneca, um problema).
+# resumo: Summary
+- Rotina: **school run · nap time · snack · bath time · bedtime · playdate**
+- Para crianças: **Let’s… · Time to… · Do you want X or Y?**
+- Para os pais: **Is it OK if…? · What should I do if…? · I’m sorry, but…**
+- Relate sempre o dia: comida, soneca e qualquer acidente
+# tarefas: Atividades recomendadas
+Au Pair · A day with the kids
+Au Pair · The interview: all about you
+Au Pair · Lição de casa 2: situations and the USA`],
+);
+/* ---------- homeworks das aulas caprichadas + homeworks temáticas ---------- */
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Prepositions: where is it?',i:'Olhe as imagens e diga onde estão as coisas: in, on, under, next to, behind.',q:[
+    PICK('The cat is [*under/on/in] the bed. I can only see its tail!'),
+    PICK('The milk is [*in/on/at] the fridge.'),
+    PICK('There’s a clock [*on/in/under] the wall.'),
+    PICK('Where [*are/is] my glasses? — [*They’re/It’s] on your head!'),
+    LABEL('sofa | img:sofa\nfridge | img:geladeira\nbed | img:cama\nchair | img:cadeira','Write the name of each thing.'),
+    FIX('The keys are {in|on} the table.'),
+    SORT('in: the bag, the box, the fridge\non: the wall, the table, the floor\nunder: the bed, the sofa, the chair'),
+    CLOZE('My room is small. My bed is [next] to the window. There’s a lamp [on] the desk, and my shoes are [under] the bed.','in, behind'),
+    DIT('The book is on the table, next to the lamp.')]},
+  {l:'EN',lv:'A2',tp:'Vocabulário',t:'Describing people: who is who?',i:'Aparência e personalidade: leia, escolha e descreva.',q:[
+    ['“What does your sister look like?”',['She’s tall, with long curly hair.','She’s very friendly.','She likes music.'],0],
+    ['“What is your boss like?”',['He’s strict but fair.','He’s got a beard.','He looks like his father.'],0],
+    PICK('She [*’s got/is] blue eyes and she [*’s/has got] very tall.'),
+    PICK('He’s got [*short curly black/black curly short] hair.'),
+    SORT('Appearance: tall, curly hair, a beard, slim\nPersonality: friendly, lazy, generous, shy'),
+    ODD('Which one is NOT about personality?',['funny','shy','bald','kind'],2,[],'Bald (careca) is about appearance.'),
+    FIX('My father is {sympathetic|friendly}: he talks to everyone at the bakery.'),
+    KWT('My brother and my dad are very similar.','LOOKS','My brother ___ my dad.','looks like'),
+    COMIC('[cidade]\nTom: Have you seen my friend?\nBia: ___\n---\nTom: She’s short and she’s got red hair.\nBia (feliz): Oh, she’s behind you!',['What does she look like?','What does she like?','How is she?'],0)]},
+  {l:'EN',lv:'A2',tp:'Expressões',t:'Requests and offers: be polite!',i:'Peça, ofereça e responda com educação.',q:[
+    ['At a restaurant, the most polite way is:',['Could I have the menu, please?','Give me the menu.','I want the menu.'],0],
+    ['“Would you mind closing the door?” You say YES (you’ll do it):',['No, not at all.','Yes, I mind.','Yes, close.'],0],
+    PICK('[*Would you like/Do you like] a glass of water? — Yes, please.'),
+    PICK('Would you mind [*waiting/to wait/wait] a minute?'),
+    PICK('[*Shall I/Will you I/Shall you] open the window?'),
+    SORT('Requests: Could you help me?, Can you pass the salt?, Would you mind waiting?\nOffers: Shall I carry it?, Would you like a drink?, I’ll call a taxi'),
+    SEQ('A: Good morning. Can I help you?\nB: Yes, please. Could you call a taxi for me?\nA: Of course. Would you like a coffee while you wait?\nB: Yes, please. That’s very kind of you!','Put the conversation in order.'),
+    KWT('Please speak more slowly.','COULD','___ more slowly, please?','could you speak'),
+    DIT('Could I leave my bags here for an hour?')]},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Zero conditional: if it rains, it…',i:'Fatos, regras e hábitos com if + present, present.',q:[
+    PICK('If you heat ice, it [*melts/will melt/melted].'),
+    PICK('If I drink coffee at night, I [*can’t/won’t can/couldn’t] sleep.'),
+    PICK('If it rains tomorrow, we [*’ll stay/stay] at home.'),
+    FIX('If you {will mix|mix} red and white, you get pink.'),
+    SORT('Zero (always true): If you heat water it boils, If I’m tired I sleep early\nFirst (one future situation): If it rains tomorrow we’ll stay in, If I see Ana I’ll tell her'),
+    CLOZE('If you feel cold, [put] on a jacket. If you’re thirsty, [drink] some water.','puts, drinking'),
+    SEQ('If you want good bread, you need time.\nFirst, you mix flour, water and salt.\nIf the dough is too dry, you add more water.\nThen you wait, and if you wait long enough, it doubles in size.','Put the recipe tips in order.'),
+    KWT('When I don’t sleep, I feel terrible.','IF','I feel terrible ___ sleep.','if I don’t'),
+    DIT('If you need help, ask your manager.')]},
+  {l:'EN',lv:'B1',tp:'Au Pair',t:'Au Pair · A day with the kids',i:'Rotina com as crianças, instruções gentis e conversa com a host family.',q:[
+    SORT('Morning: wake up, breakfast, school run\nAfternoon: nap time, snack, playdate\nEvening: bath time, dinner, bedtime story'),
+    PICK('After lunch, the baby has a [*nap/snack/bath].'),
+    PICK('[*Let’s/Lets/Let] put your shoes on!'),
+    ['The child is jumping on the sofa. The best thing to say is:',['Please don’t jump on the sofa. Let’s jump outside!','Stop it now!','Jumping is bad.'],0],
+    ['The child doesn’t want to get dressed. You say:',['Do you want the dinosaur T-shirt or the blue one?','You have to. Now!','OK, stay in your pajamas.'],0],
+    FIX('He didn’t eat {nothing|anything} at lunch.'),
+    SEQ('A: Hi! How was the day?\nB: Good! Emma had a great nap.\nA: Did she eat her lunch?\nB: Not much, but she had a big snack at four.\nA: Thank you for telling me!','Put the conversation with the host mom in order.'),
+    KWT('Can the kids play outside?','OK','Is it ___ play outside?','ok if the kids'),
+    COMIC('[noite]\nMia (feliz): Time for bed, Tom!\nTom (bravo): One more story, please!\n---\nMia (pensando): ___\nTom (feliz): Deal!',['OK. One more story, then lights off.','No! Go to bed now!','I don’t care.'],0),
+    DIT('Lucas fell at the park, but he’s fine now.')]},
+  {l:'EN',lv:'A2',tp:'Cultura',t:'Theme · The World Cup',i:'Futebol em inglês: vocabulário, um texto curto e jogos.',q:[
+    PMATCH('a ball | img:bola\na ticket | img:ingresso\na flag | img:bandeirinhas\na stadium | img:cidade','Match each word to a picture.'),
+    SORT('People: the referee, the goalkeeper, the fans, the coach\nThings: the ball, the goal, the pitch, the whistle'),
+    CLOZE('Brazil [won] the World Cup five times. The [fans] sing and dance in the stadium, and everybody waits for the [goal].','lost, players'),
+    PICK('In British English, the game is called [*football/soccer/ball] and the field is the [*pitch/court/track].'),
+    ['“The match ended 0–0.” It was:',['a draw','a win','a penalty'],0],
+    ODD('Which one is NOT a football word?',['goal','referee','racket','penalty'],2,[],'A racket is for tennis.'),
+    HUNT('goal, ball, fans, coach, match, team','Find 6 football words.'),
+    FIX('Neymar {made|scored} a beautiful goal.'),
+    DIT('The final is on Sunday at eight o’clock.')]},
+  {l:'EN',lv:'B1',tp:'Cultura',t:'Theme · Movie night',i:'Gêneros, opiniões e vocabulário de cinema.',q:[
+    SORT('Genres: horror, comedy, sci-fi, romance\nPeople: the director, the actor, the audience, the critic'),
+    PICK('I loved the film! The [*plot/plate/plan] was amazing and the [*ending/end/final] was a surprise.'),
+    PICK('It was so [*boring/bored] that I fell asleep.'),
+    ['Your friend says: “Have you seen the new Batman film?” You haven’t. You answer:',['No, not yet. Is it good?','No, I didn’t.','Yes, I don’t.'],0],
+    CLOZE('Last night I [watched] a horror film. The [special] effects were great, but the story was a bit [scary] for me!','saw film, funny'),
+    FIX('The film {was based on|was based in} a true story.'),
+    SEQ('First, we chose a film on Netflix.\nThen we made some popcorn.\nAfter that, we turned off the lights.\nIn the end, we all fell asleep before the ending!','Put Ana’s movie night in order.'),
+    KWT('I have never seen such a funny film.','FUNNIEST','It’s the ___ seen.','funniest film I have ever/funniest film I’ve ever'),
+    DIT('The ending was a big surprise.')]},
+  {l:'EN',lv:'A2',tp:'Vocabulário',t:'Theme · Healthy habits',i:'Hábitos saudáveis: comida, sono, exercício e conselhos.',q:[
+    SORT('Healthy: drinking water, sleeping eight hours, walking every day, eating vegetables\nUnhealthy: skipping breakfast, eating fast food every day, staying up late, sitting all day'),
+    PMATCH('vegetables | img:legumes\nwater | img:agua\nan apple | img:maca\na bike | img:bicicleta','Match each word to a picture.'),
+    PICK('You [*should/should to/must to] drink more water.'),
+    PICK('I go to the gym [*three times/three time/third times] a week.'),
+    CLOZE('To be healthy, [try] to sleep eight hours, eat [less] sugar and [walk] every day.','more, drive'),
+    ODD('Which one is NOT a healthy habit?',['going to bed late every night','eating fruit','drinking water','walking'],0,[],'Going to bed late is not good for your health.'),
+    FIX('I need to {do|make} more exercise.'),
+    KWT('It’s a good idea to eat more vegetables.','SHOULD','You ___ more vegetables.','should eat'),
+    DIT('I try to walk for thirty minutes every day.')]},
+  {l:'EN',lv:'A2',tp:'Cultura',t:'Theme · A weekend in London',i:'Uma viagem de fim de semana: lugares, transporte e frases úteis.',q:[
+    PMATCH('London | img:londres\nthe Underground | img:trem\na double-decker bus | img:onibus\nan umbrella | img:chuva','Match each word to a picture.'),
+    PICK('In London, the metro is called [*the Tube/the Subway/the Metro].'),
+    PICK('Excuse me, how do I [*get to/go in/arrive to] Big Ben?'),
+    ['At a café: “What would you like?” You say:',['I’d like a tea and a scone, please.','Give me tea.','I like tea.'],0],
+    SEQ('On Saturday morning, we visited the British Museum.\nThen we had fish and chips for lunch.\nIn the afternoon, we took a boat on the Thames.\nOn Sunday, it rained, so we went shopping!','Put the weekend in order.'),
+    CLOZE('London is [famous] for its red buses, its parks and its [rain]. Always take an [umbrella]!','dangerous, sun'),
+    FIX('We {stayed in|stayed at} a small hotel near Hyde Park.'),
+    CROSS('tube = The London metro.\nbus = Red and with two floors.\nrain = Water from the sky.\nqueen = She lived in Buckingham Palace.\ntea = A hot drink with milk.','Complete the crossword about London.'),
+    DIT('Mind the gap between the train and the platform.')]},
+  {l:'EN',lv:'B1',tp:'Vocabulário',t:'Theme · Technology and social media',i:'Redes sociais, celular e opiniões sobre tecnologia.',q:[
+    SORT('Things you do: post, like, share, follow\nThings you have: a profile, followers, a password, notifications'),
+    PICK('I [*spend/pass/use] too much time on my phone.'),
+    PICK('She has a million [*followers/fans/friends] on Instagram.'),
+    CLOZE('Please [log] in with your email and [password]. Don’t forget to [turn] off notifications at night.','sign, key'),
+    ['Which is an opinion, not a fact?',['Social media makes people less happy.','Instagram was created in 2010.','Most phones have a camera.'],0],
+    FIX('I {download|downloaded} the app yesterday and I love it.'),
+    ODD('Which one is NOT something you do online?',['post','scroll','stream','knit'],3,[],'You knit with wool, not online!'),
+    KWT('I started using this app two years ago.','FOR','I have ___ two years.','used this app for/been using this app for'),
+    DIT('I turn off my phone an hour before bed.')]},
+  {l:'EN',lv:'A2',tp:'Cultura',t:'Theme · Halloween and Thanksgiving',i:'Duas festas americanas: o que se faz, se come e se diz.',q:[
+    SORT('Halloween: costumes, pumpkins, trick or treat, ghosts\nThanksgiving: turkey, family dinner, pie, saying thank you'),
+    PICK('On Halloween, children say [*“Trick or treat!”/“Merry Christmas!”/“Happy birthday!”].'),
+    PICK('Thanksgiving is in [*November/October/December] in the USA.'),
+    CLOZE('At Thanksgiving, families eat [turkey] and pumpkin [pie], and they say what they are [thankful] for.','chicken, cake'),
+    ODD('Which one is NOT about Halloween?',['a costume','a pumpkin','a turkey','a ghost'],2,[],'Turkey is for Thanksgiving.'),
+    COMIC('[noite]\nLeo (feliz): Trick or treat!\nAna: ___\n---\nLeo (feliz): Thank you! Happy Halloween!',['Here you are! Have some candy.','Merry Christmas!','I’m a ghost.'],0),
+    FIX('Kids {dress like|dress up as} witches and superheroes.'),
+    DIT('We always have pumpkin pie at Thanksgiving.')]},
+  {l:'EN',lv:'B1',tp:'Vocabulário',t:'Theme · Saving the planet',i:'Meio ambiente: problemas, soluções e o que cada um pode fazer.',q:[
+    SORT('Problems: pollution, plastic in the ocean, global warming, deforestation\nSolutions: recycling, solar energy, public transport, planting trees'),
+    PICK('We should [*recycle/recicle/recycling] glass, paper and plastic.'),
+    PICK('If we don’t protect the forests, many animals [*will disappear/disappear/disappeared].'),
+    CLOZE('I always take a [reusable] bag to the supermarket and I [turn] off the lights when I leave a room.','plastic, put'),
+    ['“I think governments should do more.” This is:',['an opinion','a fact','a question'],0],
+    FIX('There is too {many|much} plastic in the ocean.'),
+    PMATCH('a tree | img:arvore\nthe sun | img:sol\nthe sea | img:mar\na bike | img:bicicleta','Match each word to a picture.'),
+    KWT('Cars cause a lot of pollution in cities.','CAUSED','A lot of pollution in cities ___ cars.','is caused by'),
+    DIT('Small changes can make a big difference.')]},
+  {l:'EN',lv:'A2',tp:'Cultura',t:'Theme · Music and festivals',i:'Música, shows e festivais: vocabulário e conversa.',q:[
+    PMATCH('a guitar | img:violao\nheadphones | img:fones\na microphone | img:microfone\na ticket | img:ingresso','Match each word to a picture.'),
+    SORT('Instruments: guitar, drums, piano, violin\nPeople: singer, band, fans, DJ'),
+    PICK('I [*’ve been/’ve gone/went] to three concerts this year.'),
+    PICK('What kind of music [*do you like/are you liking/you like]?'),
+    CLOZE('Rock in Rio is a huge music [festival]. Thousands of [fans] go every year to see their favourite [bands].','party, singers'),
+    ODD('Which one is NOT a musical instrument?',['drums','piano','speaker','guitar'],2,[],'A speaker plays music, but it is not an instrument.'),
+    SEQ('First, we bought the tickets online.\nOn the day, we arrived early to get a good place.\nThe band played for two hours.\nAfter the show, we were tired but very happy.','Put the concert story in order.'),
+    FIX('She {plays|touches} the piano very well.'),
+    DIT('My favourite band is playing in São Paulo next month.')]},
+);
