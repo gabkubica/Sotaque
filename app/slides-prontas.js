@@ -5071,4 +5071,1221 @@ Everyday idioms
 Idioms about time
 Homework · Idioms in context`]
 );
+/* ---------- aulas para adultos · lote 2 (formatos variados: jogo de mistério, debate, pronúncia, quiz cultural, estudo de caso…) ---------- */
+SLIDES_SEED.push(
+/* ===================== A1 ===================== */
+['EN','A1','Nice to meet you: first conversations',`# capa: Nice to meet you | img:conversa
+Names, countries, jobs and how to keep talking
+# sobre: Sobre esta aula
+ver: cumprimentar e se apresentar; perguntar e dizer **nome, país, cidade e profissão**; o verbo **be** em perguntas curtas; como **devolver a pergunta** (And you?)
+porque: A primeira conversa é a mais importante: em viagens, no trabalho, numa chamada. Com 10 frases prontas, o aluno já consegue conversar por 2 minutos.
+meta: se apresentar em 4 frases; fazer 5 perguntas pessoais; manter a conversa com And you? e Nice!
+nivel: Nível A1 · CEFR: “apresentar-se e fazer perguntas sobre detalhes pessoais”
+# aquecimento: Hello!
+jogo: Name chain | A professora diz “I’m Alexia.” O aluno diz “She’s Alexia, and I’m…”. Depois, com nomes de famosos!
+pergunta: How many ways to say “Olá” in English do you know?
+video: Greetings in English | Procurem um vídeo curto de cumprimentos e contem: quantas formas de dizer hello aparecem? | busca: greetings in English for beginners
+# vocab: Countries and jobs
+Brazil | Brasil
+Portugal | Portugal
+the USA | Estados Unidos
+Canada | Canadá
+teacher | professor(a)
+engineer | engenheiro(a)
+nurse | enfermeiro(a)
+student | estudante
+# tirinha: At a conference
+[cidade]
+Ana (feliz): Hi! I’m Ana. Nice to meet you.
+Tom: Nice to meet you too. I’m Tom.
+---
+Ana: Where are you from, Tom?
+Tom (feliz): I’m from Canada. And you?
+---
+Ana (feliz): I’m from Brazil. I’m an engineer.
+Tom (surpreso): Me too!
+nota: Peça para o aluno ler cada personagem. Depois, troquem os papéis e os dados (país, profissão).
+# tabela: Questions and answers
+Question | Answer
+What’s your name? | I’m Carla. / My name’s Carla.
+Where are you from? | I’m from Brazil.
+Where do you live? | I live in Curitiba.
+What do you do? | I’m a nurse. / I work in a bank.
+How old are you? | I’m 32.
+Com profissão, use **a / an**: I’m **a** teacher. I’m **an** engineer.
+# frase: Keep the conversation going
+And you?
+Nice to meet you!
+Really? That’s cool!
+Me too!
+Sorry, can you repeat that?
+How do you spell that?
+# exercicio: Practice 1
+escolha: I [*’m/is/are] from Brazil.
+escolha: Where [*are/is/am] you from?
+escolha: She’s [*an/a] engineer.
+escolha: [*What/Where/Who] do you do? — I’m a teacher.
+ligue: Ligue a pergunta à resposta.
+What’s your name? = I’m Leo.
+Where are you from? = From Portugal.
+What do you do? = I’m a student.
+How old are you? = I’m 25.
+# dialogo: Listen: on the phone
+A: Hello, this is Mark from the hotel. What’s your name, please?
+B: It’s Fernanda Lima.
+A: How do you spell Lima?
+B: L-I-M-A.
+A: Thank you. And where are you from?
+B: I’m from São Paulo, Brazil.
+# exercicio: Practice 2 · Listen and write
+ditado: Nice to meet you. I’m from Brazil.
+ditado: What do you do?
+ordem: where are you from
+erro: My name {are|is} Pedro.
+# pergunta: Quick quiz
+“What do you do?” means…
+Como você está?
+*Qual é a sua profissão?
+O que você está fazendo?
+# conversa: Your turn | img:conversa
+Introduce yourself in 4 sentences: name, city, job, one thing you like.
+Ask the teacher 5 questions. Use “And you?” at least twice.
+Imagine you meet a famous person. What do you ask?
+# tarefas: Atividades recomendadas
+Greetings and introductions
+Countries and nationalities
+Homework · Hello, I’m…`],
+
+['EN','A1','At the supermarket: food and quantities',`# capa: At the supermarket | img:carrinho
+Food, some and any, How much is it?
+# sobre: Sobre esta aula
+ver: comida do dia a dia; **some** e **any**; **How much is it? / How much are they?**; números e preços; frases para fazer compras
+porque: Comprar comida é uma das primeiras situações reais numa viagem ou numa mudança para o exterior.
+meta: fazer uma lista de compras; perguntar preços; pedir no balcão (Can I have…?)
+nivel: Nível A1
+# aquecimento: Your fridge
+pergunta: What’s in your fridge right now?
+jogo: Memory list | A professora diz “I went to the supermarket and I bought apples.” O aluno repete e acrescenta um item. Quem esquecer, perde!
+# vocab: Food
+apple | maçã | img:maca
+banana | banana | img:banana
+bread | pão | img:pao
+cheese | queijo | img:queijo
+eggs | ovos | img:ovo
+chicken | frango | img:frango
+vegetables | legumes | img:legumes
+juice | suco | img:suco
+# imagem: What can you see? | img:geladeira
+What’s in the fridge? Say 5 things.
+Is there any milk? Are there any eggs?
+What do you need to buy?
+# explica: Some and any
+**some** em frases afirmativas:
+> I need **some** eggs. · There’s **some** cheese.
+**any** em perguntas e negativas:
+> Do we have **any** bread? · There isn’t **any** milk.
+Para oferecer, use **some** na pergunta:
+> Would you like **some** coffee?
+# tabela: Prices
+Question | Answer
+How much is the bread? | It’s two dollars.
+How much are the apples? | They’re three dollars a kilo.
+Can I have a kilo of chicken? | Sure. Here you are.
+**$2.50** = two dollars fifty · **£1.20** = one pound twenty
+# dialogo: At the market
+A: Good morning! Can I help you?
+B: Can I have six eggs, please?
+A: Sure. Anything else?
+B: How much are the bananas?
+A: One dollar fifty a kilo.
+B: A kilo, please. How much is that?
+# exercicio: Practice
+escolha: Do you have [*any/some] apples?
+escolha: I’d like [*some/any] cheese, please.
+escolha: How much [*are/is] the eggs?
+escolha: There isn’t [*any/some] juice in the fridge.
+grupos: Fruit: apple, banana, orange / Drinks: juice, water, coffee / Other: bread, cheese, eggs
+ditado: How much is the bread?
+# frase: Shopping phrases
+Can I have a bag, please?
+Can I pay by card?
+Where are the eggs?
+That’s all, thank you.
+Do you have any cheaper ones?
+# pergunta: Quiz
+You want to know the price of the apples. You say…
+How many is the apples?
+*How much are the apples?
+How much is apples?
+# conversa: Role-play | img:carrinho
+Make a shopping list for a birthday party (8 items).
+You are at a market in London. Buy 3 things and ask the prices.
+What do you always buy? What do you never buy?
+# tarefas: Atividades recomendadas
+Food and drinks
+Countable and uncountable nouns
+Homework · My shopping list`],
+
+/* ===================== A2 ===================== */
+['EN','A2','Invitations: would you like to…?',`# capa: Invitations | img:presente
+Inviting, accepting and saying no politely
+# sobre: Sobre esta aula
+ver: convidar (Would you like to…? Do you fancy…? How about…?); aceitar com entusiasmo; **recusar com educação** e dar uma desculpa; combinar dia e hora (present continuous para planos)
+porque: Em inglês, um “não” seco soa rude. Saber recusar com uma desculpa e sugerir outro dia é essencial para fazer amigos e manter boas relações no trabalho.
+meta: convidar alguém; aceitar ou recusar com uma desculpa; combinar dia, hora e lugar
+nivel: Nível A2
+# aquecimento: Plans
+pergunta: What are you doing this weekend?
+jogo: Yes or no? | A professora faz convites malucos (“Would you like to swim with sharks?”). O aluno aceita ou recusa com uma desculpa criativa.
+musica: Let’s Go to the Mall — Robin Sparkles (How I Met Your Mother) | Uma música inteira que é um convite! Como ela convida? | busca: Let's go to the mall Robin Sparkles
+# tabela: Inviting
+Invite | Accept | Refuse politely
+Would you like to come to my party? | I’d love to! | I’d love to, but I’m busy.
+Do you fancy a coffee? | Sounds great! | Sorry, I can’t. I’m working.
+How about a film on Friday? | Good idea! | Thanks, but maybe another time?
+Depois de **Would you like**: **to + verbo**. Depois de **Do you fancy / How about**: **-ing** ou substantivo.
+# tirinha: Saturday plans
+[sol]
+Leo (feliz): Do you fancy going to the beach on Saturday?
+Mia (triste): I’d love to, but I’m visiting my grandma.
+---
+Leo: Oh, OK. How about Sunday?
+Mia (feliz): Sunday sounds perfect!
+---
+Leo (feliz): Great! Let’s meet at 10.
+Mia: See you then!
+# explica: Plans with the present continuous
+Para planos já combinados, use **be + -ing**:
+> I**’m meeting** Ana on Friday.
+> We**’re having** a barbecue on Sunday.
+É a melhor desculpa:
+> Sorry, I can’t. I**’m working** late.
+# exercicio: Practice 1
+escolha: Would you like [*to come/coming/come] to dinner?
+escolha: How about [*watching/to watch/watch] a film?
+escolha: Sorry, I can’t. I [*’m working/work/worked] on Saturday.
+escolha: (aceitar) [*I’d love to!/I love./I’d like.]
+grupos: Accept: I’d love to, Sounds great, Good idea / Refuse: Sorry, I can’t, Maybe another time, I’m busy
+# dialogo: A work dinner
+A: Hi Paula. Would you like to come to dinner on Thursday?
+B: Oh, thanks! What time?
+A: At eight, at the Italian place.
+B: I’d love to, but I’m picking up my son. Can we make it 8:30?
+A: Sure. I’ll book a table for 8:30.
+B: Perfect. Thanks for inviting me!
+# exercicio: Practice 2
+What time can Paula go?
+a) at eight
+*b) at 8:30
+c) at nine
+Paula can’t go at eight because she’s picking up her son. (v)
+reescreva: Let’s go to the cinema. | FANCY | Do you ___ to the cinema? | fancy going
+erro: Would you like {go|to go} out tonight?
+# frase: Making arrangements
+What time is good for you?
+Where shall we meet?
+Let’s meet outside the station.
+Can we make it a bit later?
+See you on Friday!
+# conversa: Your turn | img:presente
+Invite the teacher to three different things. She will accept one and refuse two.
+Refuse an invitation from your boss politely and suggest another day.
+What’s the best invitation you’ve received this year?
+# tarefas: Atividades recomendadas
+Going to · plans
+Present continuous
+Homework · You’re invited!`],
+
+['EN','A2','My home: renting a flat',`# capa: My home | img:casa
+Describing a flat, asking questions, solving problems
+# sobre: Sobre esta aula
+ver: cômodos e móveis; **there is / there are** e preposições; perguntas para alugar um apartamento; comparar dois apartamentos; avisar um problema ao proprietário
+porque: Alugar um lugar para morar ou um Airbnb é uma situação real e cheia de vocabulário prático.
+meta: descrever a casa; fazer perguntas sobre um aluguel; comparar opções; explicar um problema simples
+nivel: Nível A2
+# aquecimento: Dream home
+pergunta: What’s your favourite room in your home? Why?
+jogo: Draw my flat | O aluno descreve a casa dele e a professora desenha (ou o contrário). Depois comparem o desenho com a realidade!
+# vocab: Rooms and furniture
+living room | sala
+bedroom | quarto
+kitchen | cozinha
+bathroom | banheiro
+sofa | sofá | img:sofa
+fridge | geladeira | img:geladeira
+wardrobe | guarda-roupa | img:armario
+bathtub | banheira | img:banheira
+# imagem: Describe the flat | img:casa
+How many rooms are there?
+Is there a garden?
+Would you like to live here? Why (not)?
+# tabela: Asking about a flat
+Question | Possible answer
+How much is the rent? | It’s 900 dollars a month.
+Are bills included? | Water is included, but not electricity.
+Is it furnished? | Yes, there’s a sofa, a bed and a fridge.
+Are pets allowed? | Sorry, no pets.
+When is it available? | From the first of March.
+# exercicio: Practice 1
+escolha: There [*are/is] two bedrooms.
+escolha: There [*is/are] a big sofa in the living room.
+escolha: [*Are/Is] bills included?
+lacunas: The flat has a [kitchen], a small [bathroom] and two [bedrooms]. The [rent] is 900 dollars. || garden, bill
+# explica: Comparing two flats
+Use **-er than** e **more … than**:
+> Flat A is **bigger than** Flat B, but it’s **more expensive**.
+> Flat B is **closer to** the station.
+E **too / not … enough**:
+> It’s **too small** for us. · It isn’t **big enough**.
+# texto: Flat A or Flat B?
+**Flat A**: 2 bedrooms, 70 m², city centre, $1,200, no pets, unfurnished.
+**Flat B**: 1 bedroom, 50 m², 20 minutes from the centre, $850, pets allowed, furnished, small garden.
+Which one is better for: a couple with a dog? A student? A family?
+# exercicio: Practice 2
+Flat A is ___ than Flat B. (big)
+= bigger
+Which flat is better for a person with a cat?
+a) Flat A
+*b) Flat B
+Flat B is more expensive than Flat A. (f)
+erro: The flat is {enough big|big enough} for two people.
+# tirinha: A problem in the flat
+[casa]
+Bia (preocupado): Hi, Mr Lee. There’s a problem with the shower.
+Sam: Oh no. What’s wrong?
+---
+Bia (triste): There isn’t any hot water.
+Sam: I’m sorry. I can send someone tomorrow morning.
+---
+Bia (feliz): Great, thank you!
+# conversa: Your turn | img:casa
+Describe your home in 6 sentences.
+You want to rent Flat B. Call the owner and ask 4 questions.
+What is more important for you: location, price or size?
+# tarefas: Atividades recomendadas
+House and rooms
+There is and there are
+Homework · Flat for rent`],
+
+['EN','A2','Pronunciation clinic: sounds that confuse us',`# capa: Pronunciation clinic | img:microfone
+-ed endings, the th sound and silent letters
+# sobre: Sobre esta aula
+ver: os 3 sons do **-ed** (/t/, /d/, /ɪd/); o **th** (think × this); letras mudas (**k**nife, Wedne**s**day); palavras que brasileiros pronunciam com sílaba extra (“fam-i-ly” → family)
+porque: Pronúncia é o que mais afeta a **compreensão**. Um erro como “work-ED” ou “tink” pode mudar o sentido ou deixar a fala difícil de entender.
+porque: Esta aula é para ouvir, repetir e gravar. Use o 🔊 de cada palavra quantas vezes quiser.
+meta: pronunciar o -ed corretamente; produzir os dois sons de th; reconhecer letras mudas comuns
+nivel: Nível A2 · pronúncia
+nota: Grave o aluno lendo as frases do slide “Tongue twisters” no começo e no fim da aula. A diferença costuma ser grande!
+# aquecimento: Tricky words
+jogo: Say it fast | Leiam em voz alta: “three free throws”. Depois “the thirty-three thieves”. Quem consegue sem errar?
+pergunta: Which English words are the hardest for you to pronounce?
+video: Rachel’s English | Uma professora americana mostra a boca em câmera lenta. Procurem o vídeo sobre o th. | busca: Rachel's English TH sound
+# tabela: The three -ed sounds
+Sound | When | Examples
+/t/ | depois de p, k, s, sh, ch, f | worked, stopped, watched, laughed
+/d/ | depois de sons “vozeados” (vogais, l, n, r, b, g, v…) | played, called, cleaned, lived
+/ɪd/ | só depois de **t** ou **d** | wanted, needed, decided, visited
+Só a terceira linha ganha uma **sílaba extra**: work**ed** = 1 sílaba; want**ed** = 2 sílabas.
+# vocab: Listen and repeat: -ed
+worked | /t/
+watched | /t/
+played | /d/
+called | /d/
+wanted | /ɪd/
+decided | /ɪd/
+# exercicio: Practice 1 · Sort the sounds
+grupos: /t/: worked, stopped, washed, liked / /d/: played, opened, lived, cleaned / /ɪd/: wanted, needed, started, visited
+How many syllables in “stopped”?
+*a) one
+b) two
+c) three
+How many syllables in “visited”?
+a) two
+*b) three
+c) four
+# explica: The two th sounds
+**th sem voz** (sopro, língua entre os dentes): **th**ink, **th**ree, ba**th**, mon**th**
+**th com voz** (vibra): **th**is, **th**e, mo**th**er, **th**ey
+Cuidado para não trocar por **t**, **f** ou **d**:
+> I **think** (não “tink”) · **three** (não “tree”) · **they** (não “dey”)
+# frase: Minimal pairs: listen carefully
+I think it’s a tree.
+They’re three years old.
+Thank you for the tea.
+This is my mother’s bath.
+# vocab: Silent letters
+knife | k mudo
+know | k mudo
+Wednesday | d mudo
+island | s mudo
+listen | t mudo
+comfortable | “comf-ta-ble”
+# exercicio: Practice 2 · Listen and write
+ditado: I worked all day and watched a film.
+ditado: They think the thirteenth is on Thursday.
+ditado: Do you know the island?
+Which letter is silent in “listen”?
+a) l
+*b) t
+c) n
+# frase: Tongue twisters
+Three free throws.
+I thought I thought of thinking of thanking you.
+She sells seashells by the seashore.
+Red lorry, yellow lorry.
+# conversa: Practise! | img:microfone
+Tell me what you did yesterday using 6 verbs with -ed.
+Read the tongue twisters again. Which one is the hardest?
+Record yourself saying 5 words from today and listen. What did you notice?
+# tarefas: Atividades recomendadas
+-ed endings
+The th sounds
+Homework · Sounds and spelling`],
+
+['EN','A2','Festivals around the world',`# capa: Festivals around the world | img:bandeirinhas
+Culture quiz, celebrations and traditions
+# sobre: Sobre esta aula
+ver: festas famosas pelo mundo (Thanksgiving, Diwali, Hanami, Día de Muertos, Notting Hill Carnival); vocabulário de celebrações; **present simple** para tradições (People wear… They eat…); um **quiz cultural**
+porque: Cultura é o assunto preferido de muita gente e o melhor jeito de praticar o present simple sem perceber.
+porque: Saber explicar as festas do Brasil (Festa Junina, Carnaval) em inglês é ótimo para conversar com estrangeiros.
+meta: descrever uma festa com o present simple; comparar tradições; explicar uma festa brasileira
+nivel: Nível A2 · cultura
+# aquecimento: Party time
+pergunta: What’s your favourite celebration of the year? Why?
+jogo: Guess the festival | A professora diz 3 pistas (“People eat turkey. It’s in November. Families get together.”). O aluno adivinha.
+musica: Feliz Navidad — José Feliciano | Uma música de festa em duas línguas! Que outras músicas de festa vocês conhecem em inglês?
+# vocab: Celebration words
+fireworks | fogos de artifício
+costume | fantasia
+parade | desfile
+decorations | enfeites
+lanterns | lanternas
+feast | banquete
+get together | se reunir
+celebrate | comemorar
+# pergunta: Quiz 1 · Where is it?
+Diwali, the festival of lights, is celebrated mainly in…
+Japan
+*India
+Mexico
+# pergunta: Quiz 2 · When is it?
+In the USA, Thanksgiving is in…
+*November
+December
+July
+# pergunta: Quiz 3 · What do people do?
+During Hanami in Japan, people…
+dance in the street all night
+*have picnics under cherry trees
+throw tomatoes
+# leitura: Día de Muertos | img:bandeirinhas
+tipo: Culture
+Every year, on the 1st and 2nd of November, families in Mexico **celebrate** the Day of the Dead. It isn’t a sad day: people **remember** their loved ones with music, food and colour.
+Families **build** altars at home with photos, candles and orange flowers called **marigolds**. They **prepare** the favourite food of the people who died, and many people **paint** their faces like skulls.
+In the evening, families **visit** the cemetery and **decorate** the graves. Children **eat** sugar skulls with their names on them!
+# exercicio: Practice
+When is Día de Muertos?
+a) in October
+*b) on the 1st and 2nd of November
+c) in December
+It’s a very sad day in Mexico. (f)
+People put photos and candles on altars. (v)
+escolha: In Brazil, people [*wear/wears/wearing] costumes at Carnival.
+escolha: At Festa Junina, we [*eat/eats/are eat] corn and dance quadrilha.
+lacunas: At New Year, people watch the [fireworks], [wear] white and jump seven waves. || lanterns, eat
+# frase: Describing a tradition
+It takes place in June.
+People usually get together with their families.
+The most typical food is…
+Everybody wears…
+It’s my favourite time of the year.
+# conversa: Tell me about it | img:bandeirinhas
+Explain Festa Junina to a foreign friend: when, food, clothes, music.
+Which festival from today would you like to go to? Why?
+Do you prefer big parties or small celebrations?
+# tarefas: Atividades recomendadas
+Holidays
+Theme · Music and festivals
+Homework · A festival in Brazil`],
+
+/* ===================== B1 ===================== */
+['EN','B1','Mystery night: who took the painting?',`# capa: Mystery night | img:lupa
+A detective game with past continuous and questions
+# sobre: Sobre esta aula
+ver: um **jogo de detetive**: o aluno lê pistas, interroga suspeitos e descobre o culpado; **past continuous × past simple** (álibis: What were you doing at 9 p.m.?); perguntas no passado
+porque: Um jogo faz o aluno usar a gramática **sem perceber**: para descobrir o culpado, ele precisa perguntar e responder no passado o tempo todo.
+meta: perguntar e dar álibis com o past continuous; ordenar acontecimentos; justificar uma conclusão (It must be… because…)
+nivel: Nível B1 · aula-jogo
+nota: Você é o detetive-chefe. Leia os slides de pistas com suspense. O culpado é a Ms Gray (a chave estava no bolso do casaco dela e a história dela tem uma contradição).
+# aquecimento: Detectives
+filme: Knives Out (2019) | Um detetive interroga uma família inteira. Que perguntas ele faz? | busca: Knives Out interrogation scene
+pergunta: Are you good at solving mysteries? Do you like crime series?
+# texto: The case
+Last Saturday, there was a party at the Blackwood House.
+At **10 p.m.**, the lights went out for five minutes.
+When they came back on, the famous painting **“The Blue Lady”** was gone!
+Four people were in the house. One of them is the thief.
+# linha: The night | eixo: 8 p.m. | midnight
+agora: não
+ponto: 0.1 | 8:00 guests arrive
+ponto: 0.45 | 10:00 lights go out
+ponto: 0.55 | 10:05 painting gone
+ponto: 0.9 | 11:30 police arrive
+Tudo aconteceu entre **10:00 e 10:05**. O que cada suspeito **estava fazendo** nesse momento?
+# tabela: The suspects
+Suspect | Says…
+Mr Black (the owner) | “I **was talking** to my wife in the garden.”
+Mrs Black (his wife) | “I **was making** tea in the kitchen.”
+Ms Gray (the art expert) | “I **was reading** in the library. I didn’t hear anything.”
+Tom (the gardener) | “I **was sleeping** in my house, outside.”
+# explica: Interviewing a suspect
+Perguntas com **past continuous** (ação em andamento num momento):
+> What **were** you **doing** at 10 o’clock?
+> **Were** you **talking** to anyone?
+Perguntas com **past simple** (ações completas):
+> What **did** you **see** when the lights went out?
+> **Did** you **hear** anything?
+# texto: Clues
+🔎 Mrs Black says her husband was **not** in the garden. She was alone in the kitchen.
+🔎 The library has a big window. It was **raining**, but Ms Gray’s shoes were **wet**.
+🔎 Tom’s lights were off, and his dog was barking all night.
+🔎 The police found the **key** of the painting’s room in a coat. The coat was **grey**.
+# exercicio: Practice · Detective questions
+escolha: What [*were you doing/did you do/you were doing] when the lights went out?
+escolha: I [*was reading/read/am reading] when I heard a noise.
+escolha: [*Did/Were/Was] you see anyone in the corridor?
+ordem: what were you doing at ten o’clock
+erro: While I {read|was reading}, the lights went out.
+# pergunta: Who took the painting?
+Vote! Who is the thief?
+Mr Black
+Mrs Black
+*Ms Gray
+Tom
+nota: Revele: Ms Gray disse que estava lendo na biblioteca, mas os sapatos estavam molhados (ela saiu na chuva para esconder o quadro) e a chave estava no casaco cinza dela.
+# frase: Explaining your theory
+It must be Ms Gray, because her shoes were wet.
+It can’t be Tom. He was sleeping.
+Mr Black was lying. He wasn’t in the garden.
+I think she was hiding the painting when…
+# conversa: Your turn | img:lupa
+Tell the story of the night from the thief’s point of view.
+Where were you and what were you doing at 10 p.m. last Saturday?
+Invent a new mystery for the teacher to solve: 3 suspects and 3 clues.
+# tarefas: Atividades recomendadas
+Past continuous or past simple?
+Past continuous
+Homework · The missing ring`],
+
+['EN','B1','Living green: the environment',`# capa: Living green | img:planta
+Small changes, big difference
+# sobre: Sobre esta aula
+ver: vocabulário de meio ambiente (waste, recycle, carbon footprint); **should / shouldn’t / could** para dar conselhos; **if + present, will** para consequências; números e porcentagens
+porque: É um dos temas mais comuns em conversas, provas (IELTS, TOEFL) e no trabalho (ESG, sustentabilidade).
+meta: falar dos próprios hábitos; dar conselhos práticos; discutir soluções e consequências
+nivel: Nível B1
+# aquecimento: How green are you?
+pergunta: What do you do to help the environment? Be honest!
+jogo: True or false? | A professora lê fatos curiosos (“A plastic bottle takes 450 years to decompose.”). O aluno adivinha se é verdade.
+filme: WALL-E (2008) | Um planeta coberto de lixo. Quanto disso já é realidade? | busca: WALL-E opening scene
+# vocab: The environment
+waste | lixo, desperdício
+recycle | reciclar
+reusable | reutilizável
+carbon footprint | pegada de carbono
+pollution | poluição
+renewable energy | energia renovável
+plastic packaging | embalagem plástica
+climate change | mudança climática
+# pergunta: How much do you know?
+Which uses the most water?
+a 5-minute shower
+*producing 1 kg of beef
+washing the dishes by hand
+nota: Produzir 1 kg de carne bovina usa cerca de 15 mil litros de água.
+# explica: Giving advice
+**should / shouldn’t** = conselho:
+> You **should** take shorter showers. · We **shouldn’t** waste food.
+**could** = sugestão mais suave, uma opção:
+> You **could** use a reusable bag.
+**If + present, will** = consequência:
+> **If** we **recycle** more, there **will be** less waste.
+# exercicio: Practice 1
+escolha: You [*should/shouldn’t] leave the lights on when you leave the room. (conselho contra)
+escolha: If we [*use/will use/used] public transport, the air will be cleaner.
+escolha: We [*could/couldn’t/shouldn’t] try a vegetarian day once a week.
+grupos: Good for the planet: recycling, cycling, reusable bottles / Bad for the planet: plastic bags, wasting food, long showers
+# leitura: The zero-waste family | img:planta
+tipo: Article
+The Johnsons, a family of four from Bristol, produce only **one jar** of rubbish a year. How? They buy food without packaging, take their own containers to the shop and **compost** everything they can.
+“At first it was hard,” says Emma Johnson. “But now it saves us money. We **buy less** and we **waste less**.” Their advice? “Don’t try to change everything at once. You **should** start with one thing, like a **reusable** water bottle.”
+Not everyone agrees. Some experts say that **big companies**, not families, **should** change the most.
+# exercicio: Practice 2 · The text
+How much rubbish do the Johnsons produce?
+a) one bag a week
+*b) one jar a year
+c) nothing
+Being zero-waste costs the family more money. (f)
+What’s Emma’s advice?
+a) change everything at once
+*b) start with one thing
+c) stop buying food
+reescreva: It’s a good idea to recycle glass. | SHOULD | You ___ glass. | should recycle
+# frase: Talking about solutions
+In my opinion, the government should…
+One simple thing we could do is…
+If everybody…, it will…
+I try to…, but it’s difficult because…
+# conversa: Debate | img:planta
+Who should do more for the planet: people, companies or governments?
+Give the teacher 3 pieces of advice to be greener.
+Would you pay more for a product with no plastic?
+# tarefas: Atividades recomendadas
+The environment
+Theme · Saving the planet
+Homework · Green challenge`],
+
+['EN','B1','Screen time: technology in our lives',`# capa: Screen time | img:celular
+Are we addicted to our phones?
+# sobre: Sobre esta aula
+ver: vocabulário de tecnologia (scroll, notification, app, offline); **too much / too many / not enough**; **quantifiers** (a lot of, a few, a little); fazer e responder a uma **pesquisa**
+porque: Tecnologia é assunto de todo dia. E “too much / too many” são dos erros mais comuns de brasileiros (“too much people”).
+meta: descrever os próprios hábitos digitais; usar quantificadores corretamente; dar opinião sobre tecnologia
+nivel: Nível B1
+# aquecimento: Your phone
+pergunta: How many hours a day do you spend on your phone? Check your screen time!
+jogo: Without my phone | Cada um completa: “Without my phone, I couldn’t…” Quem disser mais coisas em 1 minuto ganha.
+video: The Social Dilemma (trailer) | Um documentário sobre redes sociais. O que mais assusta vocês? | busca: The Social Dilemma trailer
+# vocab: Digital life
+scroll | rolar a tela
+notification | notificação
+screen time | tempo de tela
+log off | sair, desconectar
+addicted | viciado
+charger | carregador
+offline | desconectado
+streaming | streaming
+# explica: Too much, too many, enough
+**too much** + incontável · **too many** + contável no plural:
+> I spend **too much time** online. · I get **too many notifications**.
+**not enough** = menos do que o necessário:
+> I don’t get **enough sleep**.
+**a lot of** serve para os dois: a lot of apps, a lot of time.
+# exercicio: Practice 1
+escolha: There are [*too many/too much] apps on my phone.
+escolha: I spend [*too much/too many] money on games.
+escolha: I don’t have [*enough time/time enough] to read.
+escolha: I only have [*a few/a little] friends on social media.
+grupos: much / little: time, money, sleep / many / few: apps, messages, notifications
+# imagem: What’s happening? | img:celular
+Describe the person. What are they doing?
+Is this a good habit? Why (not)?
+How often do you do this?
+# texto: Screen time survey
+1. How many times a day do you check your phone?
+2. Do you use your phone in bed?
+3. Which app do you use the most?
+4. Have you ever tried a “digital detox”?
+5. Do you think you use your phone too much?
+nota: Façam a pesquisa um com o outro. Depois o aluno resume: “I check my phone about 80 times a day…”
+# leitura: My week without a smartphone | img:celular
+tipo: Personal story
+Last month, I switched my smartphone for an old phone that can only make **calls** and send **texts**. The first two days were terrible: I felt **anxious** and kept looking for my phone.
+But then something changed. I read **two books**, I slept better and I actually talked to people on the bus. I realised I was spending **too much time** scrolling and **not enough time** living.
+Now I’m back to my smartphone, but with a rule: **no phone after 9 p.m.** It’s not perfect, but it’s a start.
+# exercicio: Practice 2
+How did the writer feel at first?
+*a) anxious
+b) relaxed
+c) bored
+The writer stopped using a smartphone forever. (f)
+erro: There are too {much|many} people on social media.
+reescreva: I don’t sleep enough because of my phone. | ENOUGH | I don’t get ___ because of my phone. | enough sleep
+# frase: Giving your opinion
+To be honest, I think I…
+The problem is that…
+On the positive side, technology…
+I could never live without…
+# conversa: Let’s talk | img:celular
+What are the best and worst things about smartphones?
+Should children have smartphones? From what age?
+Would you try a week without your phone?
+# tarefas: Atividades recomendadas
+Technology
+Theme · Technology and social media
+Homework · Digital detox`],
+
+['EN','B1','Your CV and LinkedIn in English',`# capa: Your CV and LinkedIn | img:envelope
+Talking about your experience and achievements
+# sobre: Sobre esta aula
+ver: as partes de um CV em inglês; **verbos de ação** (managed, led, improved, created); **present perfect × past simple** para experiência; escrever um resumo profissional de 3 linhas
+porque: Um CV em inglês **não é uma tradução** do CV em português: ele é mais curto, sem foto, sem idade e cheio de resultados com números.
+meta: descrever experiências profissionais com verbos fortes; falar de conquistas com números; escrever o “About” do LinkedIn
+nivel: Nível B1 · inglês para o trabalho
+nota: Se possível, peça ao aluno para trazer o CV ou o perfil do LinkedIn. Vamos reescrever uma parte juntos.
+# aquecimento: Your career
+pergunta: What has been your biggest achievement at work (or at school)?
+jogo: 30-second pitch | O aluno se apresenta profissionalmente em 30 segundos, como num elevador. A professora cronometra!
+# vocab: Action verbs
+managed | gerenciou
+led | liderou
+improved | melhorou
+created | criou
+reduced | reduziu
+increased | aumentou
+trained | treinou
+achieved | alcançou
+# tabela: CV: Brazil × UK/USA
+Brazil | UK / USA
+photo, age, marital status | **no** photo, age or marital status
+long, with everything | 1–2 pages, only what’s relevant
+lists of tasks | **achievements with numbers**
+“Objetivo” | **Profile / Summary** (3 lines)
+# explica: Tasks × achievements
+Uma tarefa diz o que você fazia. Uma conquista diz o **resultado**:
+> ✗ I was responsible for sales.
+> ✓ I **increased** sales **by 20%** in one year.
+> ✓ I **trained** a team of 8 people.
+> ✓ I **reduced** costs **by** 15,000 dollars.
+# explica: Present perfect or past simple?
+**Present perfect**: experiência total, sem data, ou emprego atual:
+> I**’ve worked** in marketing **for** 6 years. · I**’ve led** 3 big projects.
+**Past simple**: emprego antigo, com data, terminado:
+> In 2019, I **managed** a team of 10 at XYZ.
+# exercicio: Practice 1
+escolha: I [*have worked/worked] at this company since 2020.
+escolha: In 2018, I [*led/have led] the launch of a new app.
+escolha: I increased sales [*by/in/with] 30%.
+reescreva: I was responsible for training new employees. | TRAINED | I ___ new employees. | trained
+lacunas: I [managed] a team of 5, [reduced] delivery time by 2 days and [created] a new process. || responsible, did
+# texto: Write your profile
+**Example:** Marketing manager with 8 years of experience in retail. I have led campaigns that increased online sales by 40%. Passionate about data, creativity and building strong teams.
+Structure: **who you are** + **years / area** → **one big result** → **what you love / your strengths**.
+# exercicio: Practice 2 · Fix the CV
+erro: I am {responsible of|responsible for} the finance team.
+erro: I have {experience in work|experience working} with clients.
+ordem: I have worked in sales for five years
+What should you NOT include in an American CV?
+a) your achievements
+*b) your photo and age
+c) your email
+# frase: Talking about your experience
+I’m currently working as…
+I’ve been in this area for…
+One of my biggest achievements was…
+I’m particularly good at…
+I’m looking for a new challenge in…
+# conversa: Your turn | img:envelope
+Present your career in 1 minute using 5 action verbs.
+Write your LinkedIn “About” in 3 lines and read it to the teacher.
+What would you like to be doing in 5 years?
+# tarefas: Atividades recomendadas
+Job interviews
+Present perfect or past simple?
+Homework · My professional profile`],
+
+/* ===================== B2 ===================== */
+['EN','B2','Breaking news: headlines and media',`# capa: Breaking news | img:globo
+Understanding headlines and talking about the news
+# sobre: Sobre esta aula
+ver: a **gramática das manchetes** (sem artigos, presente para o passado, infinitivo para o futuro); vocabulário de mídia; **passiva** nas notícias (Two people were injured); **fake news** e como checar
+porque: Manchetes em inglês parecem frases “quebradas”: entender as regras delas abre a porta para ler jornais e portais internacionais.
+meta: entender e reescrever manchetes; contar uma notícia com passiva e reported speech; discutir confiabilidade das fontes
+nivel: Nível B2
+# aquecimento: The news
+pergunta: Where do you get your news? Do you trust it?
+jogo: Real or fake? | A professora lê 4 manchetes estranhas. Uma é falsa. Qual? (Ex.: “Man finds wedding ring inside carrot after 13 years.” é real!)
+video: BBC News | Abram a página da BBC e escolham uma manchete. Conseguem entender sem ler o texto? | busca: BBC News headlines today
+# tabela: Headline grammar
+Rule | Headline | Full sentence
+present simple = past | PM **resigns** | The Prime Minister has resigned.
+to + verb = future | Queen **to visit** Brazil | The Queen will visit Brazil.
+past participle = passive | Two **injured** in crash | Two people were injured in a crash.
+no articles, no “be” | Storm **hits** coast | A storm has hit the coast.
+# vocab: Headline words
+bid | tentativa
+row | briga, polêmica
+slash | cortar (preços)
+vow | prometer
+quit | deixar, renunciar
+probe | investigação
+boost | impulso, aumento
+clash | confronto
+# exercicio: Practice 1 · What does it mean?
+“Minister to quit” means…
+a) The minister quit.
+*b) The minister will quit.
+c) The minister quits every year.
+“Prices slashed in summer sale” means…
+*a) Prices were cut a lot.
+b) Prices went up.
+c) The sale was cancelled.
+ligue: Ligue a manchete ao significado.
+Police probe bank fraud = The police are investigating.
+Star in row with director = The star had an argument.
+Team vows to win = The team promises to win.
+# explica: Telling the news
+Nas notícias, usamos muito a **passiva** (quem fez não importa ou não se sabe):
+> Two people **were injured**. · The road **has been closed**.
+E **reported speech** para citar pessoas:
+> The police **said** the driver **had been** speeding.
+> Experts **warned** that prices **would rise**.
+# exercicio: Practice 2 · Rewrite the headlines
+reescreva: FIRE DESTROYS SCHOOL | DESTROYED | A school ___ by a fire. | has been destroyed/was destroyed
+reescreva: CEO TO STEP DOWN | WILL | The CEO ___ down. | will step
+erro: The road {has closed|has been closed} because of the flood.
+# leitura: How to spot fake news | img:globo
+tipo: Guide
+Fake news **spreads six times faster** than true stories on social media, according to a study by MIT. So how can you protect yourself?
+First, **check the source**: is it a real news site? Second, **read beyond the headline**: many headlines are designed to make you angry, not informed. Third, **look for the date**: old stories are often shared as if they were new.
+Finally, ask yourself: **does this story make me feel very emotional?** If it does, stop and check before you share it.
+# pergunta: What would you do?
+Your uncle sends you a shocking news story on WhatsApp. What’s the best first step?
+Share it with your friends quickly
+*Check if a reliable source has published it
+Reply “Wow!” and ignore it
+# conversa: Discuss | img:globo
+Tell me about a news story from this week. Use the passive and reported speech.
+Should social media companies remove fake news? Who decides what’s fake?
+Write a headline about your life this week, in headline grammar!
+# tarefas: Atividades recomendadas
+News and media
+Passive voice
+Homework · Read all about it`],
+
+['EN','B2','The art of persuasion: advertising',`# capa: The art of persuasion | img:camera
+How ads convince us (and how to convince people)
+# sobre: Sobre esta aula
+ver: técnicas de publicidade (escassez, prova social, emoção); **linguagem persuasiva** (adjetivos fortes, perguntas retóricas, imperativos); comparativos e superlativos para vender; criar e apresentar um anúncio
+porque: Persuadir é útil em vendas, entrevistas, apresentações e até para convencer a família a viajar. E entender as técnicas protege a gente das propagandas.
+meta: identificar técnicas de persuasão; usar adjetivos fortes e perguntas retóricas; criar e apresentar um pitch de um produto
+nivel: Nível B2
+# aquecimento: Ads you remember
+pergunta: What’s an advert you remember from your childhood? Why do you remember it?
+jogo: Slogan match | A professora lê slogans famosos (“Just do it”, “I’m lovin’ it”, “Think different”). O aluno diz a marca.
+video: Famous ads | Procurem a propaganda de Natal de uma loja britânica (John Lewis). Por que ela emociona tanto? | busca: John Lewis Christmas advert
+# tabela: Persuasion techniques
+Technique | Example
+scarcity (escassez) | Only 3 left! Offer ends tonight!
+social proof | Over 1 million happy customers.
+authority | Recommended by dentists.
+emotion | Because family comes first.
+rhetorical question | Tired of waking up exhausted?
+# vocab: Powerful adjectives
+effortless | sem esforço
+stunning | deslumbrante
+irresistible | irresistível
+life-changing | transformador
+exclusive | exclusivo
+hassle-free | sem complicação
+brand-new | novinho em folha
+eco-friendly | ecológico
+# explica: The language of ads
+**Imperativos** diretos: **Discover** the new… · **Don’t miss** it!
+**Perguntas retóricas**: **Want** to save time? **Who** says healthy can’t be delicious?
+**Comparativos e superlativos**: **faster than ever** · **the best** coffee in town
+**Palavras pequenas, efeito grande**: **new**, **free**, **now**, **you**
+# exercicio: Practice 1 · Name the technique
+“Hurry! Only 2 rooms left at this price.”
+*a) scarcity
+b) authority
+c) emotion
+“9 out of 10 dentists recommend it.”
+a) scarcity
+*b) authority
+c) social proof
+grupos: Scarcity: limited edition, last chance, only today / Social proof: best-seller, 5-star reviews, everyone’s talking about it
+# imagem: Sell it! | img:camera
+Invent a name and slogan for this product.
+Who is it for? Why do they need it?
+Use one rhetorical question and two powerful adjectives.
+# tirinha: The salesman
+[cidade]
+Sam (feliz): Tired of slow phones? Meet the brand-new Zoom X!
+Ana (pensando): Hmm, how much is it?
+---
+Sam (feliz): Today only, 50% off! It’s faster than ever!
+Ana: And why do I need a new phone?
+---
+Sam (surpreso): Because… everyone has one?
+Ana (feliz): Nice try!
+# exercicio: Practice 2 · Make it persuasive
+reescreva: This product is good and cheap. | EVER | It’s the ___ deal! | best ever
+erro: It’s the {more|most} comfortable sofa in the world.
+lacunas: [Discover] our new coffee. It’s [stunning], [eco-friendly] and only available this week! || boring, cheaply
+# leitura: Why we buy | img:camera
+tipo: Psychology
+Studies show that most buying decisions are **emotional**, not logical. We buy a car because it makes us feel **free**, not because of its engine.
+Advertisers know this. That’s why ads rarely show the product first: they show **people** — happy, successful, in love. They also use **scarcity**: when something seems rare, we want it more.
+So next time you see “Last chance!”, ask yourself: do I **need** this, or do I just want to **feel** something?
+# conversa: Your pitch | img:camera
+Create an ad for a strange product (a smart umbrella, a dog translator…). Present it in 1 minute!
+What was the last thing you bought because of an ad?
+Is advertising to children ethical?
+# tarefas: Atividades recomendadas
+Comparatives and superlatives
+Suffixes
+Homework · Write an advert`],
+
+['EN','B2','Relationships: phrasal verbs of love and friendship',`# capa: Relationships | img:coracao
+get on, fall out, make up, break up
+# sobre: Sobre esta aula
+ver: phrasal verbs de relacionamentos (get on with, fall out, make up, ask out, break up, split up, get over, look up to, put up with); separáveis e inseparáveis; contar uma história de amor (ou de amizade)
+porque: Esses phrasal verbs aparecem **em toda série, filme e conversa** sobre pessoas. Sem eles, é difícil acompanhar uma fofoca em inglês!
+meta: usar 10 phrasal verbs de relacionamento; saber quais se separam; contar a história de um relacionamento
+nivel: Nível B2
+# aquecimento: Friends and family
+pergunta: Who do you get on with best in your family?
+musica: We Are Never Ever Getting Back Together — Taylor Swift | O título já tem um phrasal verb (get back together). O que aconteceu com o casal?
+filme: (500) Days of Summer | A história de um relacionamento fora de ordem. Como começou e como acabou? | busca: 500 Days of Summer trailer
+# vocab: Relationship phrasal verbs
+get on (well) with | se dar bem com
+fall out (with) | brigar, se desentender
+make up | fazer as pazes
+ask someone out | chamar para sair
+break up / split up | terminar
+get over | superar
+look up to | admirar
+put up with | aguentar, tolerar
+# linha: A love story | eixo: 2018 | today
+agora: 0.95
+ponto: 0.08 | met
+ponto: 0.2 | asked her out
+faixa: 0.25-0.55 | going out
+ponto: 0.6 | fell out
+ponto: 0.7 | made up
+ponto: 0.88 | got married
+**Leo met Mia** at a party, **asked her out** a week later and they **went out** for two years.
+Then they **fell out** about moving cities, but they **made up** and finally **got married**.
+# explica: Separable or not?
+Alguns aceitam o objeto **no meio** (separáveis):
+> He **asked** her **out**. · He **asked out** Mia.
+Com pronome, o objeto **sempre** vai no meio: He asked **her** out. (não: asked out her)
+Outros **nunca** se separam:
+> I **look up to** my mother. · I can’t **put up with** the noise. · She **got over** him.
+# exercicio: Practice 1
+escolha: I really [*get on with/get with/get on] my colleagues.
+escolha: They had a big fight, but they [*made up/made it/made out] the next day.
+escolha: It took her months to [*get over/get through/get on] the break-up.
+escolha: He finally asked [*her out/out her/her off].
+escolha: I can’t [*put up with/put with/put up] my neighbour’s dog anymore.
+# tirinha: The fight
+[xicara]
+Bia (bravo): I can’t put up with Tom anymore!
+Mia (surpreso): What? I thought you got on really well.
+---
+Bia (triste): We fell out about the holiday. He wants the beach, I want the mountains.
+---
+Mia (feliz): Just make up and go to both!
+Bia (pensando): Hmm… good idea.
+# exercicio: Practice 2
+reescreva: They ended their relationship last year. | SPLIT | They ___ last year. | split up
+reescreva: I really admire my grandfather. | LOOK | I really ___ my grandfather. | look up to
+erro: She broke {up him|up with him} by text message!
+grupos: Separable: ask out, bring up, cheer up / Not separable: get over, look up to, put up with
+# leitura: Can men and women be just friends? | img:coracao
+tipo: Opinion
+It’s the question that **When Harry Met Sally** asked in 1989, and people still **fall out** about it. A recent survey found that **62%** of adults have a close friend of the opposite sex.
+Psychologists say these friendships work when both people **get on** without expectations. Problems usually start when one person secretly wants to **ask the other out**.
+And if it goes wrong? Most people say they **got over** it, and many even **made up** and stayed friends.
+# conversa: Let’s talk | img:coracao
+Tell the story of how a couple you know met (use 5 phrasal verbs).
+Have you ever fallen out with a friend? Did you make up?
+Who do you look up to? Why?
+What can’t you put up with in other people?
+# tarefas: Atividades recomendadas
+Phrasal verbs for relationships
+Personality
+Homework · A love story`],
+
+['EN','B2','The four-day week: a structured debate',`# capa: The four-day week | img:relogio
+Debate: arguments, counterarguments and evidence
+# sobre: Sobre esta aula
+ver: como funciona um **debate estruturado** (abertura, argumentos, réplica, conclusão); linguagem para argumentar, contra-argumentar e apresentar dados; conectores (moreover, nevertheless, on the contrary)
+porque: Debater desenvolve **fluência sob pressão**: pensar rápido, organizar ideias e reagir ao outro. É uma das melhores práticas para o B2.
+meta: construir um argumento com evidência; rebater com educação; resumir a posição no final
+nivel: Nível B2 · aula-debate
+nota: Sorteiem os lados (a favor × contra), mesmo que o aluno não concorde. Defender a posição contrária é o melhor exercício.
+# aquecimento: Your week
+pergunta: If you had one extra day off every week, what would you do?
+jogo: Just a minute | O aluno fala por 1 minuto sobre “work” sem parar e sem repetir palavras. A professora interrompe se ele hesitar.
+# texto: The motion
+**“This house believes that all companies should adopt a four-day working week.”**
+Team A: **for** the motion · Team B: **against** the motion
+Each side: 1 minute opening → 2 arguments → 1 rebuttal → 30-second conclusion.
+# tabela: Arguments for and against
+For | Against
+better mental health and less burnout | some jobs need people every day (hospitals, shops)
+same productivity in less time | longer, more stressful days
+attracts and keeps talent | harder for customers and clients
+less commuting, less pollution | small companies can’t afford it
+# frase: Debate language
+Firstly, I’d like to argue that…
+There is strong evidence that…
+Moreover, studies have shown that…
+I see your point, but on the contrary…
+That may be true; nevertheless,…
+To sum up, the evidence clearly shows that…
+# explica: Making a strong argument
+Uma boa estrutura é **P.E.E.**: **Point, Evidence, Explanation**:
+> **Point:** A four-day week improves productivity.
+> **Evidence:** In a UK trial, 92% of companies kept the four-day week.
+> **Explanation:** This shows that people work better when they are less tired.
+# exercicio: Practice 1 · Linkers
+escolha: The trial was successful. [*Moreover/However/On the contrary], employees reported less stress.
+escolha: It sounds great. [*Nevertheless/Moreover/Therefore], it might not work for hospitals.
+escolha: [*On the contrary/Moreover/Similarly], I believe it would increase stress.
+grupos: Adding: moreover, furthermore, in addition / Contrasting: nevertheless, however, on the contrary
+# leitura: What happened in the UK trial? | img:relogio
+tipo: Report
+In 2022, **61 companies** in the UK tried a four-day week for six months with no loss of pay. At the end, **56** decided to continue, and **18** made it permanent.
+Revenue stayed **roughly the same**, while sick days fell by **65%**. Employees said they slept better and had more time for their families.
+**Critics**, however, point out that most companies in the trial were small offices, and that the results may not apply to factories, hospitals or schools.
+# exercicio: Practice 2
+How many companies continued after the trial?
+a) 18
+*b) 56
+c) 61
+Revenue fell a lot during the trial. (f)
+What do critics say?
+*a) The results may not work for every type of job.
+b) Employees were unhappy.
+c) The trial was too long.
+reescreva: The trial was positive, but critics still have doubts. | NEVERTHELESS | The trial was positive. ___ still have doubts. | Nevertheless, critics
+# pergunta: Vote!
+After the debate, what do you think?
+Yes, all companies should try it.
+Only some jobs should have it.
+No, five days is better.
+nota: Peça para o aluno justificar o voto usando uma frase de debate.
+# resumo: Your conclusion
+Retome a sua posição: **To sum up, we believe that…**
+Lembre os 2 melhores argumentos com evidência.
+Mostre que considerou o outro lado: **Although some say…, …**
+Termine com uma frase forte: **The future of work is…**
+# conversa: The debate | img:relogio
+Run the debate! Opening, two arguments, rebuttal, conclusion.
+Swap sides and debate again for 3 minutes.
+Which argument from the other side was the strongest?
+# tarefas: Atividades recomendadas
+Linking words
+Writing · An opinion paragraph
+Homework · For and against`],
+
+/* ===================== C1 ===================== */
+['EN','C1','AI and us: an ethics discussion',`# capa: AI and us | img:lampada
+Speculating, hedging and discussing ethical dilemmas
+# sobre: Sobre esta aula
+ver: vocabulário avançado de tecnologia e ética; linguagem para **especular** sobre o futuro (is likely to, is bound to, could well); **hedging** (arguably, to some extent); discutir **dilemas** sem soar radical
+porque: Inteligência artificial é um dos temas mais discutidos do momento, no trabalho e na vida pessoal. No C1, o aluno precisa sustentar uma opinião complexa com nuance.
+meta: especular sobre o impacto da IA com graus de certeza; defender uma posição com nuance; reagir a dilemas éticos
+nivel: Nível C1
+# aquecimento: You and AI
+pergunta: How have you used AI tools this month? For what?
+filme: Her (2013) | Um homem se apaixona por um sistema operacional. Isso ainda é ficção? | busca: Her movie trailer
+jogo: Human or AI? | A professora lê dois pequenos poemas ou e-mails. Um foi escrito por IA. Qual?
+# vocab: Talking about AI
+algorithm | algoritmo
+bias | viés
+accountability | responsabilização
+to automate | automatizar
+privacy | privacidade
+deepfake | vídeo falso realista
+to outperform | superar o desempenho de
+unprecedented | sem precedentes
+# tabela: How certain are you?
+Certainty | Language
+very likely | AI **is bound to** change education. · It **will almost certainly**…
+likely | It **is likely to** replace some jobs. · It **could well** become…
+possible | It **might conceivably** help… · There’s **a chance that**…
+unlikely | It **is unlikely to** replace teachers. · I **doubt whether**…
+# explica: Hedging: sounding thoughtful
+No C1, opiniões fortes demais soam ingênuas. Use **suavizadores**:
+> **Arguably**, AI is the biggest change since the internet.
+> **To some extent**, the fears are justified.
+> It **seems to me that** regulation is inevitable.
+> **There is a case for** limiting AI in schools.
+# exercicio: Practice 1
+escolha: AI [*is bound to/is bound/bounds to] affect almost every profession.
+escolha: It [*is unlikely to/is unlikely that/unlikely] replace doctors completely.
+escolha: [*Arguably/Argue/Arguing], the biggest risk is misinformation.
+reescreva: It’s very probable that AI will change how we work. | LIKELY | AI ___ how we work. | is likely to change/is very likely to change
+erro: There is {an unprecedent|an unprecedented} amount of data online.
+# texto: Dilemma 1 · The self-driving car
+A self-driving car’s brakes fail. It can either hit **three pedestrians** crossing illegally or swerve and **kill its passenger**.
+Who should decide what the car does: the **programmer**, the **owner** or the **government**?
+Who is **accountable** if something goes wrong?
+# texto: Dilemma 2 · The perfect essay
+A student uses AI to write an essay. It’s brilliant, and the teacher can’t tell.
+Is it **cheating**, or is it like using a calculator?
+Should schools **ban** AI or **teach** students to use it well?
+# leitura: The jobs question | img:lampada
+tipo: Analysis
+Every technological revolution has destroyed some jobs and created others. The question is whether AI will be **different**. Unlike machines in factories, AI can **automate** tasks that require language, analysis and even creativity.
+Some economists argue that AI **is likely to** boost productivity and create **unprecedented** wealth. Others warn that the benefits **could well** be concentrated in the hands of a few companies.
+**Arguably**, the real issue is not technology but **policy**: who owns the tools, who is retrained, and who is protected.
+# pergunta: Your view
+Which statement is closest to your opinion?
+AI will create more jobs than it destroys.
+It depends on how governments regulate it.
+AI will be a disaster for most workers.
+nota: Não há resposta certa. Peça ao aluno para justificar com hedging.
+# frase: Discussing sensitive topics
+I can see both sides of the argument.
+That’s a valid concern, but…
+I’m in two minds about this.
+It’s not as black and white as it seems.
+Where do we draw the line?
+# conversa: Discussion | img:lampada
+Discuss the two dilemmas. Use at least three hedging expressions.
+What job is AI unlikely to replace? Why?
+Should AI-generated content always be labelled?
+# tarefas: Atividades recomendadas
+Hedging and softening
+Bound to, about to and on the verge of
+Homework · The AI debate`],
+
+['EN','C1','Telling anecdotes like a native',`# capa: Telling anecdotes | img:conversa
+Natural spoken English: fillers, vague language and storytelling
+# sobre: Sobre esta aula
+ver: como nativos contam histórias informais: **marcadores do discurso** (so, anyway, I mean, you know), **linguagem vaga** (sort of, and stuff, or something), **exagero** (I’ve told you a million times), **present simple narrativo** (So I’m walking down the street…)
+porque: O inglês dos livros é “arrumado” demais. No C1, soar natural numa conversa informal faz muita diferença: menos robótico, mais próximo.
+meta: contar uma história curta de forma envolvente; usar marcadores e linguagem vaga; reagir às histórias dos outros
+nivel: Nível C1 · inglês falado
+# aquecimento: Funny stories
+pergunta: What’s the funniest thing that has happened to you on public transport?
+jogo: Fortunately, unfortunately | Contem uma história juntos: um diz uma frase com “Fortunately…”, o outro continua com “Unfortunately…”.
+video: Stand-up comedy | Procurem um trecho de stand-up de um comediante britânico ou americano. Como ele conta histórias? | busca: Michael McIntyre stand up
+# tabela: Spoken English toolkit
+Function | Expressions
+start a story | You won’t believe what happened… · So, the other day…
+keep it going | Anyway,… · So then… · And guess what?
+be vague | sort of / kind of · and stuff like that · or something
+exaggerate | I’ve told you a million times · I was starving · It took forever
+react | No way! · You’re kidding! · Then what happened?
+# explica: The narrative present
+Em histórias informais, muita gente usa o **presente** para dar vida à cena:
+> So **I’m** walking home, right, and this guy **comes up** to me and **says**…
+E **“be like”** para reproduzir falas (bem informal):
+> And **I was like**, “Seriously?” And **she was like**, “Yes!”
+# dialogo: The worst flight ever
+A: You won’t believe what happened on my flight.
+B: Go on!
+A: So I’m sitting there, and this guy starts eating, like, a whole fish.
+B: No way! A fish?
+A: I mean, a sort of fish sandwich. It smelled terrible!
+B: That’s hilarious! Then what happened?
+A: Anyway, they moved me to business class. Best flight ever!
+# exercicio: Practice 1
+escolha: [*Anyway/However/Furthermore], to cut a long story short, we missed the train.
+escolha: It was [*sort of/sort/kind] strange, you know?
+escolha: (exagero) I was [*starving/a bit hungry/hungry enough] — I hadn’t eaten all day!
+grupos: Starting: You won’t believe…, So the other day… / Reacting: No way!, You’re kidding!, Then what happened? / Vague: sort of, and stuff, or something
+# tirinha: Guess what?
+[cidade]
+Leo (surpreso): Guess what? I bumped into our old teacher yesterday!
+Ana (feliz): No way! Mr Smith?
+---
+Leo: Yeah! And he was like, “Leo! Still late for everything?”
+Ana (feliz): That’s hilarious!
+---
+Leo (feliz): Anyway, he invited us for coffee or something next week.
+# exercicio: Practice 2
+reescreva: I was very, very hungry. | STARVING | I ___ . | was starving
+erro: It was {kind|kind of} weird, to be honest.
+What does “to cut a long story short” mean?
+a) to tell more details
+*b) to get to the end quickly
+c) to forget the story
+“I’ve told you a million times” is an exaggeration. (v)
+# leitura: Why we love stories | img:conversa
+tipo: Science
+Neuroscientists have found that when we listen to a good story, our brains **sync** with the storyteller’s. Our hearts beat faster at the tense moments, and we remember the details for much longer than facts or figures.
+Good storytellers don’t tell everything. They **set the scene** quickly, build **tension**, and save the best part for the end. They also **react** to their listeners: a raised eyebrow or a “No way!” keeps them going.
+So, **anyway**, next time you tell a story, remember: it’s not what happened, it’s **how** you tell it.
+# conversa: Story time | img:conversa
+Tell an anecdote about a travel disaster using at least 6 expressions from today.
+Listen to the teacher’s story and react naturally.
+Retell a famous film plot as if it happened to you.
+# tarefas: Atividades recomendadas
+Discourse markers
+Everyday idioms
+Homework · You won’t believe it`],
+
+['EN','C1','Case study: the crisis meeting',`# capa: Case study: the crisis meeting | img:cidade
+Problem-solving, proposing solutions and managing conflict
+# sobre: Sobre esta aula
+ver: um **estudo de caso** de negócios: uma empresa em crise; analisar o problema, propor soluções, avaliar riscos e decidir; linguagem de **propostas** (I’d suggest that…, What if we were to…), **avaliação** (The upside is…, The main drawback is…) e **consenso**
+porque: Simular uma reunião real com um problema concreto é o treino mais próximo do inglês do trabalho no nível C1: pensar, argumentar e negociar ao mesmo tempo.
+meta: analisar um caso; propor e avaliar soluções com linguagem formal; chegar a uma decisão em conjunto
+nivel: Nível C1 · inglês para o trabalho · estudo de caso
+nota: Divida os papéis: o aluno é o CEO; você faz os diretores (financeiro, marketing, RH), cada um com uma opinião diferente.
+# aquecimento: Crisis!
+pergunta: Have you ever worked on a project that went badly wrong? What happened?
+filme: The Social Network (2010) | Reuniões tensas sobre o futuro da empresa. Como as decisões são tomadas? | busca: The Social Network meeting scene
+# texto: The case: FreshBox
+**FreshBox** delivers healthy meal kits in Brazil. Last month, a batch of salads made **200 customers sick**.
+The story went **viral**: #FreshBoxPoisoned trended for two days. Orders have fallen by **45%**.
+The supplier was at fault, but customers blame FreshBox. The board meets **tomorrow**.
+# tabela: The options
+Option | Upside | Drawback
+A. Public apology + full refunds | rebuilds trust quickly | expensive (≈ R$2m)
+B. Change supplier quietly | cheap and fast | looks like hiding the problem
+C. Pause deliveries for 2 weeks | shows responsibility | lose more customers to competitors
+D. Influencer campaign | reaches young customers | may look insincere
+# frase: Proposing and evaluating
+I’d suggest that we issue a public apology.
+What if we were to offer a free week to everyone affected?
+The upside of this approach is that…
+The main drawback, as I see it, is…
+Let’s weigh up the pros and cons.
+# explica: Formal proposals
+Estruturas que soam profissionais e diplomáticas:
+> **I’d suggest that** we **(should) offer** refunds. (subjuntivo: suggest that + verbo base)
+> **It’s essential that** the CEO **speak** publicly.
+> **What if we were to** pause deliveries?
+> **Wouldn’t it make sense to** change the supplier first?
+# exercicio: Practice 1
+escolha: I’d suggest that the company [*apologise/apologises/to apologise] publicly.
+escolha: What if we [*were to offer/would offer/offered to] a discount?
+escolha: The main [*drawback/backdraw/withdraw] is the cost.
+reescreva: We should pause deliveries, in my opinion. | SUGGEST | I’d ___ deliveries. | suggest that we pause/suggest pausing
+erro: It’s essential that he {speaks|speak} to the press today.
+# dialogo: The board meeting
+A: Orders are down 45%. We need a decision today.
+B: I’d suggest that we apologise and refund everyone.
+A: That’s expensive. What’s the upside?
+B: It shows responsibility. Trust is worth more.
+A: Fair point. What if we were to announce a new supplier too?
+B: That could work. Shall we vote?
+# exercicio: Practice 2
+What does B suggest first?
+*a) a public apology and refunds
+b) changing the supplier quietly
+c) an influencer campaign
+Why does B think it’s worth it?
+a) It’s cheap.
+*b) Trust is worth more than the cost.
+c) Customers forget quickly.
+grupos: Proposing: I’d suggest that, What if we were to, Wouldn’t it make sense to / Evaluating: The upside is, The main drawback is, On balance
+# leitura: Lessons from real crises | img:cidade
+tipo: Business history
+In 1982, seven people in Chicago died after taking Tylenol capsules that someone had poisoned. Johnson & Johnson was not to blame, yet it **recalled 31 million bottles** and spoke openly to the press.
+It cost the company over **100 million dollars**, but within a year its market share had **recovered**. Today, the case is taught in business schools as a model of crisis management.
+The lesson? **Speed, honesty and empathy** matter more than who was at fault.
+# resumo: Making the decision
+Resuma o problema em **uma frase**.
+Apresente a solução escolhida e **por quê**.
+Reconheça o **risco** principal e como reduzir.
+Defina **próximos passos**: quem faz o quê e até quando.
+# conversa: Run the meeting | img:cidade
+Lead the crisis meeting as the CEO. Hear the directors and make a decision.
+Write the first two sentences of FreshBox’s public apology.
+Which real company crisis do you remember? How did they handle it?
+# tarefas: Atividades recomendadas
+Negotiating
+The subjunctive
+Homework · The crisis statement`]
+);
+
 var SLIDES_LOADED=true;

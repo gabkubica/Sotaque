@@ -744,7 +744,7 @@ if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
     CLOZE('Rock in Rio is a huge music [festival]. Thousands of [fans] go every year to see their favourite [bands].','party, singers'),
     ODD('Which one is NOT a musical instrument?',['drums','piano','speaker','guitar'],2,[],'A speaker plays music, but it is not an instrument.'),
     SEQ('First, we bought the tickets online.\nOn the day, we arrived early to get a good place.\nThe band played for two hours.\nAfter the show, we were tired but very happy.','Put the concert story in order.'),
-    FIX('She {plays|touches} the piano very well.'),
+    FIX('She {touches|plays} the piano very well.'),
     DIT('My favourite band is playing in São Paulo next month.')]},
 );
 
@@ -848,4 +848,160 @@ CONT_HW.push(
     ['We need to start. Let’s ___.',['get the ball rolling','sit on the fence','break a leg'],0],['I see him ___. He lives abroad.',['once in a blue moon','under the weather','on the same page'],0],
     GAP('I sent the offer. Now the ball is in their ___.','court'),
     'Write about a crazy week (100–120 words) using at least five idioms from the lesson.']}
+);
+
+/* ---------- homeworks do lote 2 de aulas para adultos ----------
+   Metade com áudio (texto ouvido + questões + escrita) e metade interativa (tirinha, ordem da história,
+   cruzadinha, caça-palavras, ditado, corrigir o erro, separar em grupos…). */
+CONT_HW.push(
+  {l:'EN',lv:'A2',t:'Homework · You’re invited!',i:'Lição de casa: ouça a mensagem de voz, responda e escreva a sua resposta ao convite.',a:`Hi Carla, it's Daniel! I hope you're well. Listen, it's my birthday next Saturday, and I'm having a small party at my flat. Would you like to come? It starts at eight, and there will be pizza and music. My flat is on Green Street, number 25, near the park. Oh, and do you fancy coming to the cinema with us on Sunday afternoon too? We're watching the new James Bond film. Let me know by Thursday, OK? Bye!`,q:[
+    ['Why is Daniel having a party?',['it’s his birthday','he has a new job','it’s Christmas'],0],['When is the party?',['next Friday','next Saturday','next Sunday'],1],
+    ['What time does it start?',['at seven','at eight','at nine'],1],TF('The party is at a restaurant.',false),['What is Daniel doing on Sunday?',['going to the cinema','going to the beach','working'],0],
+    GAP('Would you like ___ come to my party?','to'),['Sorry, I can’t. I ___ my parents on Saturday.',['’m visiting','visit','visited'],0],
+    MAT('Ligue.',[['I’d love to!','Eu adoraria!'],['Do you fancy…?','Você está a fim de…?'],['Let me know','Me avise'],['another time','outro dia']]),
+    'Reply to Daniel (40–60 words): accept the party, but refuse the cinema politely and give a reason.']},
+  {l:'EN',lv:'A2',t:'Homework · Flat for rent',i:'Lição de casa: ouça o anúncio do apartamento e responda.',a:`Flat for rent in the city centre! This bright, modern flat has two bedrooms, a big living room, a kitchen with a new fridge and a small bathroom with a shower. There is a balcony with a beautiful view of the river. The flat is furnished, so you only need your clothes! The rent is one thousand dollars a month, and water is included, but electricity isn't. It's five minutes from the underground station. Sorry, no pets. Available from the first of May. Call Mrs Brown on 555-0192.`,q:[
+    ['How many bedrooms are there?',['one','two','three'],1],['What’s special about the balcony?',['a view of the river','a garden','a barbecue'],0],
+    TF('The flat is furnished.',true),['What is included in the rent?',['electricity','water','internet'],1],TF('You can live there with a cat.',false),
+    ['When is it available?',['from the first of May','from the first of March','now'],0],GAP('There ___ a balcony with a view.','is|’s'),
+    GAP('The flat is ___ than my house. (big)','bigger'),
+    'Describe your home or your dream flat in an advert (50–70 words): rooms, furniture, location and price.']},
+  {l:'EN',lv:'A2',t:'Homework · A festival in Brazil',i:'Lição de casa: ouça sobre uma festa brasileira e depois explique outra em inglês.',a:`Festa Junina is one of the most popular celebrations in Brazil. It takes place in June, and it celebrates the countryside and Saint John. People dress up as farmers: men wear checked shirts and straw hats, and women wear colourful dresses. Everybody dances the quadrilha, a traditional group dance. The food is delicious: there is corn on the cob, popcorn, paçoca and a sweet called pé de moleque. People also drink quentão, a hot drink with ginger. At night, there is usually a big bonfire. It's my favourite time of the year!`,q:[
+    ['When is Festa Junina?',['in June','in December','in February'],0],['What do men usually wear?',['suits','checked shirts and straw hats','costumes of animals'],1],
+    ['What is the quadrilha?',['a drink','a group dance','a type of corn'],1],TF('Quentão is a cold drink.',false),['What is there at night?',['fireworks only','a big bonfire','a parade'],1],
+    GAP('People ___ (wear) colourful dresses.','wear'),GAP('It ___ (take) place in June.','takes'),
+    MAT('Ligue.',[['bonfire','fogueira'],['straw hat','chapéu de palha'],['corn on the cob','milho na espiga'],['dress up','se fantasiar']]),
+    'Explain another Brazilian celebration to a foreign friend (60–80 words): when, what people do, wear and eat.']},
+  {l:'EN',lv:'B1',t:'Homework · Green challenge',i:'Lição de casa: ouça o podcast, responda e escreva o seu desafio verde.',a:`Welcome back to Green Minutes. This week, I tried a challenge: one month without buying anything in plastic. It was harder than I thought! In the first week, I realised that almost everything in the supermarket comes in plastic. So I started going to the local market with my own bags and containers. I also made my own cleaning products with vinegar and lemon. The hardest part? Coffee! My favourite café uses plastic cups, so I took my own mug. At the end of the month, my rubbish was half the size. My advice? You shouldn't try to be perfect. If everyone makes one small change, it will make a big difference.`,q:[
+    ['What was the challenge?',['one month without plastic','one month without meat','one month without a car'],0],['What did the speaker realise in the first week?',['plastic is everywhere','markets are expensive','it was easy'],0],
+    ['How did the speaker clean the house?',['with normal products','with vinegar and lemon','with only water'],1],['What was the hardest part?',['coffee','food','clothes'],0],
+    TF('At the end, the rubbish was half the size.',true),['You ___ leave the tap running while you brush your teeth.',['shouldn’t','should','could'],0],
+    GAP('If we all ___ (recycle), there will be less waste.','recycle'),GAP('You ___ take your own bag. (sugestão suave)','could'),
+    'Create your own 1-week green challenge (80–100 words): what you will do, why, and what will happen if everyone does it.']},
+  {l:'EN',lv:'B1',t:'Homework · My professional profile',i:'Lição de casa: ouça um perfil profissional e escreva o seu.',a:`Hi, I'm Renata. I'm a project manager with ten years of experience in technology companies. I've worked in Brazil and in Portugal, and I've led teams of up to fifteen people. In my last job, I managed the launch of a banking app that reached one million users in six months. I also reduced project delays by thirty percent by creating a new planning system. I'm passionate about clear communication and building happy, productive teams. At the moment, I'm looking for a new challenge in an international company.`,q:[
+    ['What is Renata’s job?',['a designer','a project manager','a banker'],1],['Where has she worked?',['Brazil and Portugal','Brazil and Spain','only Brazil'],0],
+    ['How many users did the app reach?',['one hundred thousand','one million','ten million'],1],['How did she reduce delays?',['by hiring more people','by creating a new planning system','by working weekends'],1],
+    TF('She is happy in her current job and isn’t looking for a change.',false),['I ___ in marketing since 2018.',['have worked','worked','work'],0],
+    GAP('In 2020, I ___ (lead) a team of ten people.','led'),GAP('I increased sales ___ 25%.','by'),
+    'Write your LinkedIn “About” section (80–100 words): who you are, your experience, one achievement with a number and what you’re looking for.']},
+  {l:'EN',lv:'B2',t:'Homework · Write an advert',i:'Lição de casa: ouça o anúncio de rádio, identifique as técnicas e crie o seu.',a:`Tired of waking up tired? Meet DreamCloud, the pillow that thinks for you. Using brand-new smart foam, DreamCloud adapts to your head and neck while you sleep. Over two hundred thousand happy customers can't be wrong: ninety-four percent say they sleep better in the first week. Recommended by sleep experts across the country. And for this week only, get fifty percent off plus free delivery. But hurry: only five hundred pillows are left at this price! DreamCloud. Because you deserve to wake up happy.`,q:[
+    ['What is the product?',['a mattress','a pillow','a bed'],1],['What technique is “Tired of waking up tired?”',['a rhetorical question','scarcity','authority'],0],
+    ['What technique is “Over two hundred thousand happy customers”?',['social proof','scarcity','emotion'],0],['What technique is “only five hundred pillows are left”?',['authority','scarcity','emotion'],1],
+    TF('The discount is available all month.',false),['It’s the ___ comfortable pillow ever!',['most','more','much'],0],
+    MAT('Ligue.',[['brand-new','novinho em folha'],['hassle-free','sem complicação'],['stunning','deslumbrante'],['effortless','sem esforço']]),
+    'Write a radio advert (80–100 words) for an invented product. Use a rhetorical question, two powerful adjectives, social proof and scarcity.']},
+  {l:'EN',lv:'B2',t:'Homework · For and against',i:'Lição de casa: ouça o debate, responda e escreva um parágrafo argumentativo.',a:`Host: Today's question: should schools ban mobile phones? Sarah, you're in favour. Sarah: Absolutely. Firstly, there is strong evidence that phones distract students. A study in England found that test scores improved by six percent after phones were banned. Moreover, children talk to each other more at break time. Host: James, you disagree. James: I see Sarah's point, but on the contrary, I think we should teach children to use phones responsibly. Banning them doesn't prepare them for real life. Nevertheless, I agree that phones shouldn't be used during lessons. Host: So there's some common ground. Thank you both.`,q:[
+    ['What is the debate about?',['banning phones in schools','homework','school uniforms'],0],['What happened to test scores in the study?',['they fell','they improved by 6%','they stayed the same'],1],
+    ['What is James’s main argument?',['phones are dangerous','children should learn to use phones responsibly','phones are too expensive'],1],
+    TF('James and Sarah agree on nothing.',false),['___ , children talk to each other more. (adicionando)',['Moreover','Nevertheless','On the contrary'],0],
+    ['I see your point. ___ , I disagree.',['Nevertheless','Moreover','Furthermore'],0],
+    GAP('There is strong ___ that phones distract students.','evidence'),
+    'Write a for-and-against paragraph (120–150 words): “Should schools ban mobile phones?” Use P.E.E. (point, evidence, explanation) and three linkers.']},
+  {l:'EN',lv:'C1',t:'Homework · The AI debate',i:'Lição de casa: ouça o podcast, responda e escreva a sua opinião com nuance.',a:`Welcome to Tech Talk. Today, a question that divides experts: will artificial intelligence be good for workers? Some economists argue that AI is bound to increase productivity, just like electricity did a century ago. In their view, new jobs we can't even imagine are likely to appear. Others are more cautious. They point out that, unlike previous technologies, AI can automate tasks that require language and creativity, so the impact could well be unprecedented. Arguably, the real question is not the technology itself, but who benefits from it. If governments invest in retraining, the transition might conceivably be smooth. If not, inequality is likely to grow.`,q:[
+    ['What do optimistic economists compare AI to?',['electricity','the printing press','cars'],0],['Why are other experts cautious?',['AI is too expensive','AI can automate language and creative tasks','AI is too slow'],1],
+    ['According to the speaker, what is arguably the real question?',['who benefits from AI','how fast AI is','which company is best'],0],
+    TF('The speaker is completely sure that AI will be bad for workers.',false),['AI ___ change education in the next decade. (muito provável)',['is bound to','is unlikely to','might conceivably'],0],
+    ['The fears are, ___ , justified. (até certo ponto)',['to some extent','to some extend','at some extent'],0],GAP('It’s ___ to replace teachers completely. (improvável)','unlikely'),
+    'Write a nuanced opinion (150–180 words): “AI will do more good than harm.” Use at least four expressions of certainty and two hedging expressions.']},
+  {l:'EN',lv:'C1',t:'Homework · The crisis statement',i:'Lição de casa: ouça o comunicado da empresa, avalie e escreva o seu.',a:`Statement from the CEO of FreshBox. Last week, a number of our customers became ill after eating salads delivered by FreshBox. First and foremost, I want to say how deeply sorry we are. No one should ever feel unsafe eating our food. Although the problem was caused by one of our suppliers, we take full responsibility. We have taken three immediate steps. We have stopped working with the supplier. Every affected customer will receive a full refund and a free month of meals. And from today, an independent laboratory will test every batch before delivery. We know that trust has to be earned again, and we are committed to doing exactly that.`,q:[
+    ['What is the main purpose of the statement?',['to apologise and explain the actions','to blame the supplier','to announce new products'],0],['Who caused the problem?',['FreshBox staff','a supplier','the customers'],1],
+    ['What will affected customers receive?',['a discount','a full refund and a free month','a letter'],1],['What will an independent laboratory do?',['test every batch','cook the meals','visit customers'],0],
+    TF('The CEO says FreshBox is not responsible at all.',false),['I’d suggest that the company ___ publicly.',['apologise','apologises','to apologise'],0],
+    GAP('It is essential that every batch ___ tested. (be)','be'),
+    'Write a short crisis statement (120–150 words) for a company whose app leaked customer data. Apologise, take responsibility, explain three actions and end with a commitment.']}
+);
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Expressões',t:'Homework · Hello, I’m…',i:'Lição de casa: apresentações, perguntas pessoais e um pouco de escuta.',q:[
+    COMIC(`[cidade]
+Ana: Hi! I’m Ana. What’s your name?
+Leo: ___
+---
+Ana (feliz): Nice to meet you, Leo!
+Leo (feliz): Nice to meet you too.`,['I’m fine, thanks.','I’m Leo.','I’m from Canada.'],1),
+    PICK('I [*’m/is/are] from Brazil. Where [*are/is/am] you from? She [*’s/are/am] an engineer.'),
+    SEQ('Hi! My name’s Pedro.\nI’m from Recife, in Brazil.\nI’m a nurse and I work in a hospital.\nNice to meet you!','Put Pedro’s introduction in order.'),
+    CLOZE('My [name] is Julia. I’m [from] Portugal and I [live] in Lisbon. I’m a [teacher].','work, old'),
+    MAT('Ligue a pergunta à resposta.',[['What do you do?','I’m a student.'],['Where are you from?','From Italy.'],['How old are you?','I’m 28.'],['How do you spell it?','L-U-C-A.']]),
+    DIT('What’s your name?'),DIT('I live in São Paulo.'),
+    'Write 5 sentences to introduce yourself: name, country, city, job and one thing you like.']},
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · My shopping list',i:'Lição de casa: comida, some e any, e preços.',q:[
+    HUNT('apple, bread, cheese, eggs, juice, chicken, banana','Find 7 food words.'),
+    CROSS(`cheese = It’s yellow and it comes from milk. | img:queijo
+banana = A long yellow fruit. | img:banana
+bread = You make sandwiches with it. | img:pao
+eggs = Chickens give us these. | img:ovo`,'Complete the crossword.'),
+    SORT(`Fruit: apple, banana, orange
+Drinks: juice, water, milk
+Other: bread, cheese, chicken`),
+    PICK('We need [*some/any] eggs. Do we have [*any/some] milk? There isn’t [*any/some] bread.'),
+    ['How much ___ the apples?',['is','are','am'],1],['How much ___ the cheese?',['is','are'],0],
+    DIT('Can I have six eggs, please?'),
+    'Write your shopping list for the week (8 items) and one sentence with some and one with any.']},
+  {l:'EN',lv:'A2',tp:'Pronúncia',t:'Homework · Sounds and spelling',i:'Lição de casa: sons do -ed, th e letras mudas. Ouça e escreva!',q:[
+    SORT(`/t/: worked, watched, stopped, laughed
+/d/: played, called, lived, cleaned
+/ɪd/: wanted, needed, decided, visited`,'Separe pelo som do -ed.'),
+    ODD('Which -ed ending has a different sound?',['worked','stopped','wanted','watched'],2,[],'Wanted has an extra syllable: /ɪd/.'),
+    ODD('Which word has a silent letter?',['know','now','new','no'],0,[],'Know: the k is silent.'),
+    DIT('I think the thirteenth is on Thursday.'),DIT('They wanted to visit their mother.'),DIT('Listen to the knife on the island.'),
+    ['How many syllables are there in “decided”?',['two','three','four'],1],TF('In “Wednesday”, we pronounce the first d.',false),
+    'Write 5 sentences about last weekend using verbs with -ed. Then record yourself reading them.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · The missing ring',i:'Lição de casa: um mistério com past continuous e past simple.',q:[
+    COMIC(`[casa]
+Mia (preocupado): My ring is gone! What were you doing at 9 p.m.?
+Tom: ___
+---
+Mia (pensando): Hmm… but the TV was off at nine!
+Tom (surpreso): Oh no.`,['I watch TV.','I was watching TV.','I have watched TV.'],1),
+    SEQ('Grandma was washing the dishes when she took off her ring.\nShe left it next to the sink.\nWhile she was talking on the phone, the cat jumped on the table.\nThe ring fell into the dog’s bowl.\nThe next morning, they found it under the dog’s blanket!','Put the story in order.'),
+    PICK('While I [*was cooking/cooked], the phone rang. I [*answered/was answering] it immediately. When I came back, the cat [*was eating/ate/eats] my dinner!'),
+    KWT('I was sleeping. Then the alarm went off.','WHILE','The alarm went off ___ .','while I was sleeping'),
+    FIX('What {did you do|were you doing} at ten o’clock last night? I was at home.'),
+    TF('“I was reading when the lights went out” has two actions: one in progress and one short.',true),
+    'Write a short mystery (80–100 words): something disappeared at a party. Describe what three people were doing when it happened.']},
+  {l:'EN',lv:'B1',tp:'Vocabulário',t:'Homework · Digital detox',i:'Lição de casa: tecnologia, too much / too many e enough.',q:[
+    PICK('I spend [*too much/too many] time on my phone. I get [*too many/too much] notifications. I don’t get [*enough sleep/sleep enough].'),
+    SORT(`too much: time, money, sleep
+too many: apps, messages, notifications`,'Too much or too many?'),
+    FIX('There are too {much|many} people online at night.'),
+    CLOZE('Last week I tried a digital [detox]. I turned off my [notifications], deleted two [apps] and read a book instead of [scrolling].','charger, offline'),
+    ODD('Which one is NOT related to phones?',['charger','notification','screen','fridge'],3),
+    KWT('I don’t have time to read because of social media.','ENOUGH','I don’t have ___ to read because of social media.','enough time'),
+    'Describe your digital habits (80–100 words). What do you do too much? What would you like to change?']},
+  {l:'EN',lv:'B2',tp:'Leitura',t:'Homework · Read all about it',i:'Lição de casa: manchetes, passiva nas notícias e fake news.',q:[
+    ['“President to visit Japan” means…',['The president visited Japan.','The president will visit Japan.','The president lives in Japan.'],1],
+    ['“Three injured in train crash” means…',['Three people were injured.','Three people injured others.','Three trains crashed.'],0],
+    ['“Star in row with neighbours” means the star…',['moved house','had an argument with neighbours','sat with neighbours'],1],
+    MAT('Ligue a palavra de manchete ao significado.',[['probe','investigation'],['slash','cut a lot'],['vow','promise'],['quit','leave a job']]),
+    KWT('The storm closed all the schools.','WERE','All the schools ___ the storm.','were closed by'),
+    FIX('The bridge {has closed|has been closed} since Monday because of the floods.'),
+    SORT(`Check before sharing: look at the source, check the date, read beyond the headline
+Warning signs: very emotional headline, no author, unknown website`),
+    'Choose a real news story from this week. Write a headline in headline grammar and a short summary (80–100 words) using the passive and reported speech.']},
+  {l:'EN',lv:'B2',tp:'Phrasal verbs',t:'Homework · A love story',i:'Lição de casa: phrasal verbs de relacionamentos.',q:[
+    SEQ('Leo and Mia met at a friend’s party.\nA week later, Leo asked her out.\nThey went out for two years and got on really well.\nThen they fell out about moving to another city.\nAfter a month, they made up and decided to move together.','Put the love story in order.'),
+    PICK('I really [*get on with/get on/get with] my sister. They had a fight, but they [*made up/made out/made off] the next day. It took him a year to [*get over/get through/get on] the break-up.'),
+    KWT('I really admire my grandmother.','LOOK','I really ___ my grandmother.','look up to'),
+    KWT('I can’t tolerate the noise anymore.','PUT','I can’t ___ the noise anymore.','put up with'),
+    COMIC(`[xicara]
+Bia (triste): Tom and I fell out yesterday.
+Ana: ___
+---
+Bia (feliz): Yes, we made up this morning!`,['Did you make up?','Did you break up?','Did you look up?'],0),
+    FIX('He asked {out her|her out} and she said yes!'),
+    'Write the story of a couple or two friends (100–120 words) using at least six phrasal verbs from the lesson.']},
+  {l:'EN',lv:'C1',tp:'Expressões',t:'Homework · You won’t believe it',i:'Lição de casa: contar histórias como um nativo.',q:[
+    COMIC(`[cidade]
+Leo (surpreso): You won’t believe who I saw at the airport!
+Ana: ___
+---
+Leo (feliz): Taylor Swift! Well… someone who looked like her.`,['No way! Who?','I agree with you.','Nevertheless, I disagree.'],0),
+    PICK('So, the other day, I’m [*walking/walk/walked] to work, right? And this guy was [*like/as/so], “Is this your wallet?” It was [*sort of/sort/kind] embarrassing.'),
+    SORT(`Starting a story: You won’t believe…, So the other day…
+Reacting: No way!, You’re kidding!, Then what happened?
+Vague language: sort of, and stuff like that, or something`),
+    KWT('I was extremely hungry.','STARVING','I ___ .','was starving'),
+    FIX('It was {kind|kind of} weird, to be honest.'),
+    ['“To cut a long story short” means…',['to add more details','to get to the end quickly','to start again'],1],
+    'Write an anecdote (150–180 words) in informal spoken English: a travel disaster or an embarrassing moment. Use the narrative present, two exaggerations and three discourse markers.']}
 );

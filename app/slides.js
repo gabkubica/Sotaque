@@ -42,7 +42,7 @@ function slideHtml(s,o={}){
     return `<button type="button" class="sl-op ${o.pick===k?'on':''} ${o.rev&&!o.print&&right?'right':''} ${o.rev&&!o.print&&o.pick===k&&!right?'wrong':''}" ${o.live? `data-act="sl-ans" data-k="${k}"` : 'tabindex="-1"'}><span>${LT[k]}</span>${esc(txt)}</button>`; }).join('')}</div>${o.counts? `<div class="sl-counts">${ops.map((_,k)=>`<span>${LT[k]}: <b>${o.counts[k]||0}</b></span>`).join('')}</div>` : ''}`; }
   if (s.t==='conversa') b=`${T}<div class="sl-conv">${s.img? `<span class="sl-art">${slImg(s.img,480,360)}</span>` : ''}<ol>${s.body.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>`;
   if (s.t==='imagem') b=`${T}<div class="sl-imgs"><span class="sl-big">${slImg(s.img,960,540)}</span>${s.body.length? `<div>${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}</div>`;
-  if (s.t==='texto') b=`${T}<div class="sl-text">${s.body.map(x=>`<p>${esc(x)}</p>`).join('')}</div>`;
+  if (s.t==='texto') b=`${T}<div class="sl-text">${s.body.map(x=>`<p>${esc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</p>`).join('')}</div>`;
   const md=x=>esc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
   if (s.t==='explica') b=`${T}<div class="sl-exp">${s.body.map(x=>x.startsWith('>')? `<p class="sl-eg">${slSay(x.slice(1).replace(/\*\*/g,'').trim(),L)}<span>${md(x.slice(1).trim())}</span></p>` : x.startsWith('- ')? `<p class="sl-li">${md(x.slice(2))}</p>` : `<p>${md(x)}</p>`).join('')}</div>${s.img? `<span class="sl-corner">${slImg(s.img,320,220)}</span>` : ''}`;
   if (s.t==='tabela'){ const rows=s.body.filter(x=>x.includes('|')).map(x=>x.split('|').map(c=>c.trim())), extra=s.body.filter(x=>!x.includes('|'));

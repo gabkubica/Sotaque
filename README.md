@@ -144,7 +144,17 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   Future in 2035 (will be doing / will have done), Meetings, Used to / be used to / get used to, Negotiating.
   C1: Inversion, Cleft sentences, Mixed conditionals, Presentations, Idioms. Cada uma tem warm-up, explicação, tabela,
   “cuidado”, 2 exercícios, leitura, conversa e 3 atividades recomendadas, incluindo uma **homework temática nova**
-  (“Homework · …”: texto com áudio, 9–10 questões e escrita) que entra no banco de atividades. 71 aulas no total.
+  (“Homework · …”: texto com áudio, 9–10 questões e escrita) que entra no banco de atividades.
+- **Lote 2 de aulas para adultos** (17 aulas, A1 a C1, formatos variados): Nice to meet you, At the supermarket (A1);
+  Invitations, My home: renting a flat, **Pronunciation clinic** (-ed, th, letras mudas, trava-línguas), **Festivals
+  around the world** (quiz cultural em 3 perguntas) (A2); **Mystery night** (jogo de detetive com pistas, linha do tempo
+  da noite e votação do culpado), Living green, Screen time (com pesquisa entre aluno e professora), Your CV and
+  LinkedIn (B1); Breaking news (gramática das manchetes e fake news), The art of persuasion (criar um anúncio),
+  Relationships (phrasal verbs numa história de amor), **The four-day week** (debate estruturado com moção, P.E.E. e
+  votação) (B2); **AI and us** (dilemas éticos e hedging), **Telling anecdotes** (inglês falado: marcadores, linguagem
+  vaga, exagero), **Case study: the crisis meeting** (estudo de caso de negócios com opções, prós e contras) (C1).
+  Cada uma tem homework nova: metade com áudio e escrita, metade interativa (tirinha, ordem da história, cruzadinha,
+  caça-palavras, ditado, corrigir o erro, separar em grupos). O slide “texto” agora aceita **negrito**. 88 aulas.
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
