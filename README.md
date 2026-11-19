@@ -201,11 +201,14 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   capa com cor, padrão e título. Com caneta, a palma e o dedo não riscam (o dedo move e dá zoom); sem caneta, o dedo
   escreve e dois dedos movem/dão zoom. Fica fora do `#app` (os re-renders não apagam nada). Dados: `DB.cad` e
   `DB.cadp` (registros `cad` e `cadp` na nuvem, com `student_id` da criança).
-- **Materiais para imprimir** (`kids.js`, aba Kids): 25 tipos × 9 temas gerados em SVG A4 (flashcards, colorir,
-  traçar, ligar, circular, letra que falta, bingo, memória, dominó, caça-palavras, labirinto, contar, mini-livro,
-  desenhe e escreva, dado, tabuleiro, recorte e separe, ligue os pontos, alfabeto, números, músicas tradicionais com
-  gestos, certificado e quadro de estrelas). “Ligar à aula” e “Colar no caderno” guardam o material em `lesson.mats`
-  e ele aparece no histórico e na próxima aula.
+- **Materiais para imprimir** (`kids.js`, aba **Kids** dentro da Biblioteca): 42 tipos × 22 temas, separados por idade
+  (3–4 anos sem leitura, 5–6 letras, 7–8 palavras, 9–10 frases), gerados em SVG A4 com as ilustrações do **Fluent Emoji**
+  (Microsoft, licença MIT; subconjunto de 296 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e
+  sombra. Inclui: ligue à sombra, encontre o igual, pré-escrita, big and small, quebra-cabeça, máscaras, primeira letra,
+  pinte pela bolinha, cruzadinha, desembaralhe, monte a frase, leitura com V/F, pesquisa “Do you like…?”, cartões e mais.
+  “Ligar à aula” e “Colar no caderno” guardam o material em `lesson.mats` (histórico e próxima aula).
+- **Capa do caderno**: botão “Capa” na barra; 16 cores, 18 fundos (espaço, fundo do mar, dinossauros, unicórnio, arco-íris,
+  confete…), 6 etiquetas, 3 letras, título com sugestões, linha de baixo, lombada, nome e personagem principal.
 - **Apresentação → aula**: ao escolher o aluno em “Aula para”, a apresentação vai para a aula marcada perto de agora,
   ou uma aula de agora é criada no histórico (dá para desfazer).
 

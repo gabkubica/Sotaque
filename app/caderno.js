@@ -18,7 +18,14 @@ const CAD_W=1000, CAD_H=1414;
 const CAD_BG={pautada:'Pautada',caligrafia:'Caligrafia',quadriculada:'Quadriculada',pontilhada:'Pontilhada',branca:'Branca'};
 const CAD_COLORS=['#221c1e','#d63b3b','#2b6cb0','#1f8a4c','#f0a020','#8e44ad','#e76f9a','#8a5a2b'];
 const CAD_SIZES={pen:[3.5,6.5,12],hl:[20,30,44]};
-const CAD_PATS={bolinhas:'Bolinhas',listras:'Listras',estrelas:'Estrelas',coracoes:'Corações',xadrez:'Xadrez',liso:'Liso'};
+const CAD_PATS={bolinhas:'Bolinhas',listras:'Listras',estrelas:'Estrelas',coracoes:'Corações',xadrez:'Xadrez',confete:'Confete',nuvens:'Nuvens',ondas:'Ondas',arcoiris:'Arco-íris',espaco:'Espaço',oceano:'Fundo do mar',dinos:'Dinossauros',unicornio:'Unicórnio',bichinhos:'Bichinhos',frutas:'Frutas',flores:'Flores',futebol:'Futebol',liso:'Liso'};
+const CAD_XPAL={chiclete:{nome:'Chiclete',bg:'#ffd6e8',a:'#d6337a',b:'#ff8fbf',c:'#7a1f4a'},limao:{nome:'Limão',bg:'#ecf8c8',a:'#5c8a12',b:'#b6e04a',c:'#2f4a08'},turquesa:{nome:'Turquesa',bg:'#cdf3ef',a:'#0f8b82',b:'#5fd3c8',c:'#0a4a45'},sol:{nome:'Sol',bg:'#fff1b8',a:'#e08a00',b:'#ffd23f',c:'#7a4a00'},uva:{nome:'Uva',bg:'#e6dcff',a:'#6a3fd1',b:'#a98bf5',c:'#3a1f7a'},noite:{nome:'Noite',bg:'#1f2a4d',a:'#f6c344',b:'#3a4a7d',c:'#ffffff'}};
+const cadPalOf=k=>CAD_XPAL[k]||PAL[k]||PAL.menta;
+const CAD_LABELS={classico:'Clássica',nuvem:'Nuvem',redondo:'Redonda',faixa:'Faixa',escolar:'Etiqueta escolar',nenhum:'Sem etiqueta'};
+const CAD_FONTS={andika:['Andika','Andika, Figtree, sans-serif'],display:['Divertida','"Bricolage Grotesque", Figtree, sans-serif'],simples:['Simples','Figtree, system-ui, sans-serif']};
+const CAD_TITLES=['My English Notebook','My English Book','English is fun!','Super English','My Book of Words','English with Teacher'];
+const CAD_HEROES=['unicorn','t-rex','sauropod','cat','dog','rabbit','panda','fox','penguin','butterfly','rocket','soccer-ball','crown','rainbow','teddy-bear','dragon','castle','woman-fairy','robot','astronaut','dolphin','octopus','strawberry','balloon'];
+const cadEmo=(n,x,y,s,rot=0,op=1)=>{ const e=typeof EMOJI!=='undefined'&&EMOJI[n]; return e? `<g transform="rotate(${rot} ${x+s/2} ${y+s/2})" opacity="${op}"><svg x="${x}" y="${y}" width="${s}" height="${s}" viewBox="0 0 ${e[0]} ${e[1]}">${e[2]}</svg></g>` : ''; };
 const CD={sid:null,pi:0,cam:{x:0,y:0,z:1},tool:'pen',color:'#221c1e',size:1,penSeen:false,finger:true,sel:null,hist:{},fut:{},ptr:new Map(),act:null,gest:null,ro:false,raf:0,saveT:0,el:null};
 const CD_PATH=new WeakMap(), CD_BOX=new WeakMap();
 
@@ -26,8 +33,8 @@ const CD_PATH=new WeakMap(), CD_BOX=new WeakMap();
 function cadOf(sid){ DB.cad ||= {}; DB.cadp ||= {};
   let c=DB.cad[sid]; if (c) return c;
   const s=user(sid), cover=cadNewPage(sid,'capa'), p1=cadNewPage(sid,'caligrafia');
-  cover.items.push({id:'i'+uid(),t:'sticker',k:s?.scene&&SCENES[s.scene]? s.scene : 'balao',x:350,y:300,w:300,h:300,r:-4});
-  c=DB.cad[sid]={sid,cover:{pal:s?.palette||'menta',pat:'bolinhas',title:'My English Notebook'},pages:[cover.id,p1.id]};
+  cover.items.push({id:'i'+uid(),t:'emo',k:'unicorn',x:330,y:260,w:340,h:340,r:-6,hero:true});
+  c=DB.cad[sid]={sid,cover:{pal:s?.palette||'menta',pat:'estrelas',title:'My English Notebook',label:'classico',font:'andika',spine:true,name:true,sub:''},pages:[cover.id,p1.id]};
   return c; }
 function cadNewPage(sid,bg){ const p={id:'cp'+uid(),sid,bg,strokes:[],items:[]}; (DB.cadp ||= {})[p.id]=p; return p; }
 const cadPages=sid=>cadOf(sid).pages.map(id=>DB.cadp[id]).filter(Boolean);
@@ -79,19 +86,38 @@ const cadToPage=(sx,sy)=>[CD.cam.x+sx/CD.cam.z, CD.cam.y+sy/CD.cam.z];
 
 /* ---------- fundo da página e capa ---------- */
 function cadBgSvg(p){ const W=CAD_W, H=CAD_H; let g='';
-  if (p.bg==='capa'){ const c=cadOf(p.sid).cover, P=PAL[c.pal]||PAL.menta, pat=c.pat; let pt='';
-    const R=rng(hashStr(p.sid+pat));
+  if (p.bg==='capa'){ const c0=cadOf(p.sid).cover, c=p._pat? {...c0,pat:p._pat,label:'nenhum',title:'',name:false,sub:''} : c0, P=cadPalOf(c.pal), pat=c.pat, R=rng(hashStr(p.sid+pat)), dark=c.pal==='noite'||pat==='espaco'; let pt='';
+    const scat=(L,n,s0,s1,op=1)=>{ for (let i=0;i<n;i++){ const s=s0+R.r()*(s1-s0); pt+=cadEmo(L[i%L.length],R.r()*(W-s)+10,R.r()*(H-s),s,R.r()*40-20,op); } };
     if (pat==='bolinhas') for (let y=40;y<H;y+=90) for (let x=(y/90%2)*45+30;x<W;x+=90) pt+=`<circle cx="${x}" cy="${y}" r="16" fill="${P.b}" opacity=".55"/>`;
     if (pat==='listras') for (let x=-H;x<W;x+=90) pt+=`<path d="M${x} 0l${H} ${H}" stroke="${P.b}" stroke-width="34" opacity=".45"/>`;
     if (pat==='xadrez') for (let y=0;y<H;y+=100) for (let x=((y/100)%2)*100;x<W;x+=200) pt+=`<rect x="${x}" y="${y}" width="100" height="100" fill="${P.b}" opacity=".4"/>`;
-    if (pat==='estrelas') for (let i=0;i<46;i++){ const x=R.r()*W, y=R.r()*H, s=14+R.r()*22; pt+=`<path d="M${x} ${y-s}L${x+s*.3} ${y-s*.3}L${x+s} ${y}L${x+s*.3} ${y+s*.3}L${x} ${y+s}L${x-s*.3} ${y+s*.3}L${x-s} ${y}L${x-s*.3} ${y-s*.3}Z" fill="${i%3? P.b : P.c}" opacity=".6"/>`; }
+    if (pat==='estrelas'||pat==='espaco') for (let i=0;i<(pat==='espaco'? 90 : 46);i++){ const x=R.r()*W, y=R.r()*H, s=(pat==='espaco'? 5 : 14)+R.r()*(pat==='espaco'? 12 : 22); pt+=`<path d="M${x} ${y-s}L${x+s*.3} ${y-s*.3}L${x+s} ${y}L${x+s*.3} ${y+s*.3}L${x} ${y+s}L${x-s*.3} ${y+s*.3}L${x-s} ${y}L${x-s*.3} ${y-s*.3}Z" fill="${pat==='espaco'? '#fff6c8' : i%3? P.b : P.c}" opacity="${pat==='espaco'? .9 : .6}"/>`; }
+    if (pat==='espaco') pt+=cadEmo('ringed-planet',650,90,230,-10)+cadEmo('rocket',110,520,170,30)+cadEmo('crescent-moon',120,120,140)+cadEmo('comet',700,600,140,10);
     if (pat==='coracoes') for (let i=0;i<40;i++){ const x=R.r()*W, y=R.r()*H, s=12+R.r()*16; pt+=`<path d="M${x} ${y+s}C${x-s*2} ${y-s*.2} ${x-s} ${y-s*1.6} ${x} ${y-s*.5}C${x+s} ${y-s*1.6} ${x+s*2} ${y-s*.2} ${x} ${y+s}Z" fill="${i%3? P.b : P.c}" opacity=".55"/>`; }
-    const s=user(p.sid), nm=esc((s?.name||'').split(' ')[0]);
-    g=`<rect width="${W}" height="${H}" fill="${P.bg}"/>${pt}<rect x="0" y="0" width="56" height="${H}" fill="${P.a}" opacity=".9"/>
-      <g transform="translate(150 830)"><rect width="700" height="330" rx="40" fill="#fffaf2" stroke="${P.a}" stroke-width="8"/>
-      <text x="350" y="120" text-anchor="middle" font-family="Andika, Figtree, sans-serif" font-size="58" font-weight="700" fill="${P.a}">${esc(c.title||'')}</text>
-      <line x1="80" y1="170" x2="620" y2="170" stroke="${P.b}" stroke-width="4" stroke-dasharray="10 12"/>
-      <text x="350" y="262" text-anchor="middle" font-family="Andika, Figtree, sans-serif" font-size="80" font-weight="700" fill="#221c1e">${nm}</text></g>`; }
+    if (pat==='confete') for (let i=0;i<120;i++){ const x=R.r()*W, y=R.r()*H, col=['#ff6b6b','#ffd23f','#4dabf7','#69db7c','#b197fc','#ff8fbf'][i%6]; pt+= i%2? `<circle cx="${x}" cy="${y}" r="${5+R.r()*7}" fill="${col}"/>` : `<rect x="${x}" y="${y}" width="${10+R.r()*12}" height="6" rx="3" fill="${col}" transform="rotate(${R.r()*180} ${x} ${y})"/>`; }
+    if (pat==='nuvens') for (let i=0;i<14;i++){ const x=R.r()*W, y=R.r()*H, s=40+R.r()*40; pt+=`<g fill="#fff" opacity=".85"><circle cx="${x}" cy="${y}" r="${s}"/><circle cx="${x+s}" cy="${y+s*.2}" r="${s*.8}"/><circle cx="${x-s}" cy="${y+s*.25}" r="${s*.7}"/><rect x="${x-s*1.6}" y="${y+s*.2}" width="${s*3.3}" height="${s*.75}" rx="${s*.37}"/></g>`; }
+    if (pat==='ondas'||pat==='oceano') for (let k=0;k<9;k++){ const y=k*170+60; pt+=`<path d="M0 ${y}`+[...Array(8)].map((_,j)=>`q62.5 ${j%2? 40 : -40} 125 0`).join('')+`V${y+90}H0Z" fill="${pat==='oceano'? ['#bfe6ff','#9fd4fb','#7cc2f2'][k%3] : P.b}" opacity="${pat==='oceano'? .9 : .35}"/>`; }
+    if (pat==='oceano') scat(['tropical-fish','spouting-whale','octopus','crab','dolphin','spiral-shell','jellyfish','fish'],14,70,130);
+    if (pat==='arcoiris') ['#ff6b6b','#ffa94d','#ffd43b','#69db7c','#4dabf7','#9775fa'].forEach((col,i)=>{ pt+=`<path d="M${-120+i*45} ${H+60}A${620-i*45} ${620-i*45} 0 0 1 ${1120-i*45} ${H+60}" fill="none" stroke="${col}" stroke-width="46" opacity=".9"/>`; });
+    if (pat==='dinos') scat(['t-rex','sauropod','dragon','egg','cactus'],18,80,130,.9);
+    if (pat==='unicornio') scat(['unicorn','rainbow','sparkles','star','cloud'],18,70,120,.9);
+    if (pat==='bichinhos') scat(['cat-face','dog-face','rabbit-face','panda','fox','pig-face','monkey-face','koala'],20,70,110,.9);
+    if (pat==='frutas') scat(['strawberry','cherries','watermelon','banana','tangerine','red-apple','grapes','pineapple'],20,70,110,.95);
+    if (pat==='flores') scat(['tulip','sunflower','cherry-blossom','hibiscus','rose','butterfly'],20,70,110,.95);
+    if (pat==='futebol') scat(['soccer-ball','1st-place-medal','trophy','goal-net'],18,70,120,.9);
+    const s=user(p.sid), nm=esc((s?.name||'').split(' ')[0]), F=(CAD_FONTS[c.font]||CAD_FONTS.andika)[1], lb=c.label||'classico', tc=dark&&lb==='nenhum'? '#fff' : P.a;
+    const T=esc(c.title||''), ts=T.length>22? 50 : T.length>16? 58 : 66, sub=c.sub? `<text x="0" y="SUBY" text-anchor="middle" font-family="${F}" font-size="34" fill="${dark&&lb==='nenhum'? '#fff' : '#5a4f52'}">${esc(c.sub)}</text>` : '';
+    const words=(y1,y2,y3)=>`<text x="0" y="${y1}" text-anchor="middle" font-family="${F}" font-size="${ts}" font-weight="700" fill="${tc}">${T}</text>${c.name!==false&&nm? `<text x="0" y="${y2}" text-anchor="middle" font-family="${F}" font-size="84" font-weight="700" fill="${dark&&lb==='nenhum'? '#fff' : '#221c1e'}">${nm}</text>` : ''}${sub.replace('SUBY',y3)}`;
+    let label='';
+    if (lb==='classico') label=`<g transform="translate(500 990)"><rect x="-360" y="-170" width="720" height="${c.sub? 380 : 330}" rx="40" fill="#fffaf2" stroke="${P.a}" stroke-width="8"/><line x1="-270" y1="-25" x2="270" y2="-25" stroke="${P.b}" stroke-width="4" stroke-dasharray="10 12"/>${words(-60,70,150)}</g>`;
+    if (lb==='nuvem') label=`<g transform="translate(500 1000)"><g fill="#fff" stroke="${P.a}" stroke-width="7"><path d="M-340 170C-450 170 -450 -10 -340 -20C-360 -150 -190 -190 -130 -110C-90 -210 90 -210 130 -110C190 -190 360 -150 340 -20C450 -10 450 170 340 170Z"/></g>${words(-30,70,135)}</g>`;
+    if (lb==='redondo') label=`<g transform="translate(500 1000)"><circle r="270" fill="#fff" stroke="${P.a}" stroke-width="10"/><circle r="240" fill="none" stroke="${P.b}" stroke-width="4" stroke-dasharray="8 10"/>${words(-50,60,130).replace(/font-size="(\d+)"/,(m,n)=>`font-size="${Math.min(+n,46)}"`)}</g>`;
+    if (lb==='faixa') label=`<g transform="translate(500 1010)"><path d="M-470 -90H470L430 0L470 90H-470L-430 0Z" fill="${P.a}"/><path d="M-470 90L-420 140V90ZM470 90L420 140V90Z" fill="${P.c}"/><text x="0" y="${Math.round(ts*.35)}" text-anchor="middle" font-family="${F}" font-size="${Math.min(ts,60)}" font-weight="700" fill="#fff">${T}</text>${c.name!==false&&nm? `<text x="0" y="230" text-anchor="middle" font-family="${F}" font-size="84" font-weight="700" fill="${dark? '#fff' : '#221c1e'}">${nm}</text>` : ''}${c.sub? `<text x="0" y="300" text-anchor="middle" font-family="${F}" font-size="34" fill="${dark? '#fff' : '#5a4f52'}">${esc(c.sub)}</text>` : ''}</g>`;
+    if (lb==='escolar') label=`<g transform="translate(500 1010)"><rect x="-330" y="-190" width="660" height="400" rx="26" fill="#fff" stroke="#221c1e" stroke-width="5"/><rect x="-330" y="-190" width="660" height="90" rx="26" fill="${P.a}"/><rect x="-330" y="-130" width="660" height="30" fill="${P.a}"/><text x="0" y="-128" text-anchor="middle" font-family="${F}" font-size="44" font-weight="700" fill="#fff">${T}</text>
+      <text x="-290" y="-20" font-family="Figtree, sans-serif" font-size="28" fill="#8a7e80">Name</text><text x="-160" y="-20" font-family="${F}" font-size="56" font-weight="700" fill="#221c1e">${c.name!==false? nm : ''}</text><line x1="-170" y1="0" x2="290" y2="0" stroke="#b9aea4" stroke-width="2"/>
+      <text x="-290" y="90" font-family="Figtree, sans-serif" font-size="28" fill="#8a7e80">Class</text><text x="-160" y="90" font-family="${F}" font-size="40" fill="#221c1e">${esc(c.sub||'English')}</text><line x1="-170" y1="110" x2="290" y2="110" stroke="#b9aea4" stroke-width="2"/></g>`;
+    if (lb==='nenhum') label=`<g transform="translate(500 1040)">${words(-60,60,130)}</g>`;
+    g=`<rect width="${W}" height="${H}" fill="${pat==='espaco'? '#1f2a4d' : pat==='oceano'? '#dff3ff' : P.bg}"/>${pt}${c.spine!==false? `<rect x="0" y="0" width="56" height="${H}" fill="${P.a}" opacity=".92"/><rect x="56" y="0" width="6" height="${H}" fill="#000" opacity=".08"/>` : ''}${label}`; }
   else { g=`<rect width="${W}" height="${H}" fill="#fffdf8"/>`;
     if (p.bg==='pautada'){ for (let y=180;y<H-60;y+=64) g+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#9cc3e6" stroke-width="2"/>`; g+=`<line x1="110" y1="0" x2="110" y2="${H}" stroke="#ef8f8f" stroke-width="2.5"/>`; }
     if (p.bg==='caligrafia') for (let y=150;y<H-150;y+=180){ g+=`<line x1="40" y1="${y}" x2="${W-40}" y2="${y}" stroke="#9cc3e6" stroke-width="2"/><line x1="40" y1="${y+50}" x2="${W-40}" y2="${y+50}" stroke="#9cc3e6" stroke-width="2" stroke-dasharray="14 12"/><line x1="40" y1="${y+100}" x2="${W-40}" y2="${y+100}" stroke="#e07b7b" stroke-width="3"/><line x1="40" y1="${y+140}" x2="${W-40}" y2="${y+140}" stroke="#cfe0f0" stroke-width="2"/>`; }
@@ -104,6 +130,7 @@ const CAD_BADGES={star:['#f6c344','★'],heart:['#ef5b7a','♥'],good:['#3aa36b'
 function cadBadge(k){ const [c,t]=CAD_BADGES[k]||CAD_BADGES.star, big=t.length<=2;
   return `<svg viewBox="0 0 200 200" class="cd-badge"><circle cx="100" cy="100" r="92" fill="#fff"/><circle cx="100" cy="100" r="80" fill="${c}"/>${[...Array(12)].map((_,i)=>`<circle cx="${100+86*Math.cos(i*Math.PI/6)}" cy="${100+86*Math.sin(i*Math.PI/6)}" r="7" fill="${c}"/>`).join('')}<text x="100" y="${big? 128 : 112}" text-anchor="middle" font-family="Andika, Figtree, sans-serif" font-weight="700" font-size="${big? 88 : t.length>6? 34 : 44}" fill="#fff">${esc(t)}</text></svg>`; }
 function cadItemInner(it){
+  if (it.t==='emo'){ const e=typeof EMOJI!=='undefined'&&EMOJI[it.k]; return e? `<svg class="cd-emo" viewBox="0 0 ${e[0]} ${e[1]}">${e[2]}</svg>` : ''; }
   if (it.t==='sticker') return CAD_BADGES[it.k]? cadBadge(it.k) : `<div class="cd-stk">${quadro(imgPal(it.k),it.k,hashStr(it.k)%97,{w:300,h:300,frame:false})}</div>`;
   if (it.t==='text') return `<div class="cd-txt" style="font-size:${it.fs||44}px;color:${it.c||'#221c1e'}">${esc(it.txt||'')}</div>`;
   if (it.t==='img') return `<img src="${it.src}" alt="" draggable="false">`;
@@ -238,6 +265,7 @@ const CDI={pen:'<svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z" fill
   plus:'<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
   pages:'<svg viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h10a2 2 0 002-2V7" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
   finger:'<svg viewBox="0 0 24 24"><path d="M10 12V5a1.5 1.5 0 013 0v6m0-1.5a1.5 1.5 0 013 0V12m0-1a1.5 1.5 0 013 0v4a6 6 0 01-6 6h-1a6 6 0 01-5-3l-2-4a1.5 1.5 0 012.5-1.5L10 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  cover:'<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 3v18" stroke="currentColor" stroke-width="2"/><path d="M12 9l1 2 2 .3-1.5 1.4.4 2.1-1.9-1-1.9 1 .4-2.1L9 11.3l2-.3z" fill="currentColor"/></svg>',
   fit:'<svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'};
 function cadBar(){ const bar=CD.el?.bar; if (!bar) return; const s=user(CD.sid), P=cadPages(CD.sid), p=cadPage(), H=CD.hist[p?.id]||[], F=CD.fut[p?.id]||[];
   const tb=(k,l)=>`<button class="cd-b ${CD.tool===k?'on':''}" data-cd="tool" data-v="${k}" aria-pressed="${CD.tool===k}" title="${l}">${CDI[k]}<span>${l}</span></button>`;
@@ -246,7 +274,8 @@ function cadBar(){ const bar=CD.el?.bar; if (!bar) return; const s=user(CD.sid),
     ${CD.ro? '' : `<div class="cd-grp">${tb('pen','Caneta')}${tb('hl','Marca-texto')}${tb('eraser','Borracha')}${tb('text','Texto')}${tb('move','Mover')}</div>
     <button class="cd-b cd-cur" data-cd="pal" title="Cor e espessura"><i style="--c:${CD.tool==='hl'&&CD.color==='#221c1e'? '#f6d32d' : CD.color};--s:${[10,16,24][CD.size]}px"></i><span>Cor</span></button>
     <div class="cd-grp"><button class="cd-b" data-cd="undo" ${H.length? '' : 'disabled'} title="Desfazer">${CDI.undo}</button><button class="cd-b" data-cd="redo" ${F.length? '' : 'disabled'} title="Refazer">${CDI.redo}</button></div>
-    <button class="cd-b cd-ins" data-cd="insert" title="Inserir figurinha, atividade ou foto">${CDI.plus}<span>Inserir</span></button>`}
+    <button class="cd-b cd-ins" data-cd="insert" title="Inserir figurinha, atividade ou foto">${CDI.plus}<span>Inserir</span></button>
+    <button class="cd-b" data-cd="cover" title="Personalizar a capa">${CDI.cover}<span>Capa</span></button>`}
     <span class="cd-sp"></span>
     <div class="cd-grp"><button class="cd-b" data-cd="prev" ${CD.pi? '' : 'disabled'} aria-label="Página anterior">‹</button><button class="cd-b cd-pn" data-cd="pages" title="Todas as páginas">${CD.pi? `${CD.pi} / ${P.length-1}` : 'Capa'}</button><button class="cd-b" data-cd="next" ${CD.pi<P.length-1? '' : 'disabled'} aria-label="Próxima página">›</button>${CD.ro? '' : `<button class="cd-b" data-cd="newpage" title="Nova página">${CDI.plus}</button>`}</div>
     ${CD.ro? '' : `<button class="cd-b ${CD.penSeen? '' : CD.finger? 'on' : ''}" data-cd="finger" title="${CD.penSeen? 'Com a caneta, o dedo só move a página' : CD.finger? 'O dedo escreve (toque para o dedo só mover)' : 'O dedo só move (toque para o dedo escrever)'}">${CDI.finger}<span>${CD.penSeen? 'Caneta' : CD.finger? 'Dedo escreve' : 'Dedo move'}</span></button>`}
@@ -260,22 +289,41 @@ function cadPal(open){ let el=CD.el.root.querySelector('.cd-pal2'); if (!open){ 
     <div class="cd-szs">${[0,1,2].map(k=>`<button class="cd-b cd-sz ${CD.size===k?'on':''}" data-cd="size" data-v="${k}" aria-label="Espessura ${k+1}"><i style="width:${6+k*6}px;height:${6+k*6}px"></i></button>`).join('')}</div>`; }
 function cadSheet(html){ CD.el.sheet.innerHTML=html? `<div class="cd-sheet-in">${html}</div>` : ''; CD.el.sheet.classList.toggle('on',!!html); }
 const CAD_STK=['gato','cachorro','passaro','coelho','peixes','cavalo','vaca','macaco','rato','maca','banana','sorvete','bolo','pizza','sol','arvore','flor','nuvem','balao','bola','bicicleta','presente','coracao','carro','onibus','aviao','trem','casa','livro','lapis','mochila','chapeu','camiseta','sapato','oculos','violao','feliz','triste','surpreso','bravo'];
-function cadInsertSheet(tab='stk'){ const tabs=`<div class="cd-tabs">${[['stk','Figurinhas'],['badge','Prêmios'],['act','Atividades'],['photo','Foto']].map(([k,l])=>`<button class="${tab===k?'on':''}" data-cd="itab" data-v="${k}">${l}</button>`).join('')}<button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>`;
+const CAD_EMO={
+  bichos:['cat','dog','rabbit','hamster','mouse','fox','panda','koala','lion','tiger','elephant','monkey','giraffe','zebra','bear','penguin','unicorn','t-rex','sauropod','dragon','owl','parrot','flamingo','peacock','hedgehog','sloth','otter','raccoon','kangaroo','crocodile','snake','frog','turtle','butterfly','honeybee','lady-beetle','snail','tropical-fish','spouting-whale','dolphin','octopus','crab','shark','cow','pig','horse','ewe','chicken','duck','baby-chick','hatching-chick'],
+  comida:['red-apple','banana','grapes','strawberry','watermelon','tangerine','cherries','pineapple','peach','kiwi-fruit','mango','coconut','carrot','broccoli','ear-of-corn','tomato','pizza','hamburger','french-fries','hot-dog','sandwich','bread','cheese-wedge','egg','cookie','birthday-cake','cupcake','doughnut','soft-ice-cream','lollipop','candy','popcorn','glass-of-milk','beverage-box'],
+  natureza:['sun','cloud','cloud-with-rain','snowflake','rainbow','umbrella','sunflower','tulip','rose','hibiscus','cherry-blossom','four-leaf-clover','maple-leaf','deciduous-tree','cactus','mountain','crescent-moon','star','glowing-star','ringed-planet','comet','globe-showing-americas','fire','droplet'],
+  diversao:['teddy-bear','kite','balloon','yo-yo','puzzle-piece','robot','nesting-dolls','video-game','racing-car','soccer-ball','basketball','tennis','skateboard','guitar','drum','trumpet','violin','musical-keyboard','microphone','musical-notes','automobile','bus','airplane','locomotive','bicycle','rocket','helicopter','sailboat','castle','tent','crown','gem-stone','ribbon','wrapped-gift','party-popper','jack-o-lantern','ghost','christmas-tree','santa-claus','woman-fairy','astronaut','alien'],
+  rostos:['grinning-face','smiling-face-with-heart-eyes','zany-face','smiling-face-with-sunglasses','astonished-face','crying-face','pouting-face','sleeping-face','fearful-face','face-with-thermometer','hot-face','cold-face','baby-medium-light','boy-medium-dark','girl-medium','man-medium','woman-medium-light','old-man-light','old-woman-medium','thumbs-up','clapping-hands','raised-hand'],
+  premios:['trophy','1st-place-medal','glowing-star','star','sparkles','crown','thumbs-up','clapping-hands','party-popper','red-heart','orange-heart','yellow-heart','green-heart','blue-heart','purple-heart','rainbow','gem-stone','four-leaf-clover'],
+};
+const CAD_EMO_N={bichos:'Bichos',comida:'Comida',natureza:'Natureza',diversao:'Diversão',rostos:'Rostos',premios:'Prêmios'};
+function cadInsertSheet(tab='bichos'){ const tabs=`<div class="cd-tabs">${[...Object.entries(CAD_EMO_N),['badge','Selos'],['stk','Ilustrações'],['act','Atividades'],['photo','Foto']].map(([k,l])=>`<button class="${tab===k?'on':''}" data-cd="itab" data-v="${k}">${l}</button>`).join('')}<button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>`;
   let body='';
+  if (CAD_EMO[tab]) body=`<div class="cd-grid cd-egrid">${CAD_EMO[tab].filter(k=>typeof EMOJI!=='undefined'&&EMOJI[k]).map(k=>`<button class="cd-gi" data-cd="addemo" data-v="${k}" aria-label="${k}">${kEsvg(k)}</button>`).join('')}</div>`;
   if (tab==='stk') body=`<div class="cd-grid">${CAD_STK.filter(k=>SCENES[k]).map(k=>`<button class="cd-gi" data-cd="addstk" data-v="${k}" aria-label="${esc(SCENES[k].nome||k)}"><span class="cd-stk">${quadro(imgPal(k),k,hashStr(k)%97,{w:140,h:140,frame:false})}</span></button>`).join('')}</div>`;
   if (tab==='badge') body=`<div class="cd-grid">${Object.keys(CAD_BADGES).map(k=>`<button class="cd-gi" data-cd="addstk" data-v="${k}">${cadBadge(k)}</button>`).join('')}</div>`;
   if (tab==='act') body= typeof KIDS_SHEETS!=='undefined'? kidsPickerHtml('cad') : '<p class="meta">Em breve.</p>';
   if (tab==='photo') body=`<p class="meta">Tire uma foto ou escolha uma imagem (uma atividade feita no papel, um desenho…). Ela entra na página e você pode mover, girar e escrever por cima.</p><label class="btn primary">Escolher foto<input type="file" accept="image/*" data-cdfile="1" hidden></label>`;
   cadSheet(tabs+body); }
+/* personalizar a capa */
+function cadCoverSheet(tab='cor'){ const c=cadOf(CD.sid).cover;
+  const tabs=`<div class="cd-tabs"><b>Capa</b>${[['cor','Cor e fundo'],['etq','Etiqueta e título'],['heroi','Personagem']].map(([k,l])=>`<button class="${tab===k?'on':''}" data-cd="ctab" data-v="${k}">${l}</button>`).join('')}<button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>`;
+  let body='';
+  if (tab==='cor') body=`<div class="cd-bgs"><b>Cor</b><div class="cd-pals">${[...PKEYS,...Object.keys(CAD_XPAL)].map(k=>{ const P=cadPalOf(k); return `<button class="cd-pal ${c.pal===k?'on':''}" data-cd="cpal" data-v="${k}" style="background:${P.bg};--a:${P.a}" aria-label="${esc(P.nome||k)}"><i></i></button>`; }).join('')}</div></div>
+    <div class="cd-bgs"><b>Fundo</b><div class="cd-cvgrid">${Object.entries(CAD_PATS).map(([k,l])=>`<button class="cd-cv ${c.pat===k?'on':''}" data-cd="cpat" data-v="${k}"><svg viewBox="0 0 ${CAD_W} ${CAD_H}">${cadBgSvg({bg:'capa',sid:CD.sid,_pat:k})}</svg><small>${l}</small></button>`).join('')}</div></div>
+    <div class="cd-bgs"><b>Lombada</b><button class="${c.spine!==false?'on':''}" data-cd="cspine" data-v="1">Com lombada</button><button class="${c.spine===false?'on':''}" data-cd="cspine" data-v="0">Sem lombada</button></div>`;
+  if (tab==='etq') body=`<div class="cd-bgs"><b>Etiqueta</b>${Object.entries(CAD_LABELS).map(([k,l])=>`<button class="${(c.label||'classico')===k?'on':''}" data-cd="clabel" data-v="${k}">${l}</button>`).join('')}</div>
+    <div class="cd-bgs"><b>Título</b><label class="field"><input type="text" data-cdtitle="1" value="${esc(c.title||'')}" maxlength="28" placeholder="My English Notebook"></label>${CAD_TITLES.map(t=>`<button data-cd="ctitle" data-v="${esc(t)}">${esc(t)}</button>`).join('')}</div>
+    <div class="cd-bgs"><b>Linha de baixo</b> <small class="muted">(opcional: “2026”, “with Alexia”, a turma…)</small><label class="field"><input type="text" data-cdsub="1" value="${esc(c.sub||'')}" maxlength="30" placeholder="ex.: with Teacher Alexia"></label></div>
+    <div class="cd-bgs"><b>Letra</b>${Object.entries(CAD_FONTS).map(([k,[l,f]])=>`<button class="${(c.font||'andika')===k?'on':''}" data-cd="cfont" data-v="${k}" style="font-family:${f}">${l}</button>`).join('')}<b>Nome da criança</b><button class="${c.name!==false?'on':''}" data-cd="cname" data-v="1">Mostrar</button><button class="${c.name===false?'on':''}" data-cd="cname" data-v="0">Esconder</button></div>`;
+  if (tab==='heroi') body=`<p class="meta">Toque para trocar o personagem grande da capa. Depois use “Mover” para posicionar, aumentar ou girar. Em “Inserir” há muitas outras figurinhas.</p><div class="cd-grid cd-egrid">${CAD_HEROES.filter(k=>typeof EMOJI!=='undefined'&&EMOJI[k]).map(k=>`<button class="cd-gi" data-cd="chero" data-v="${k}">${kEsvg(k)}</button>`).join('')}</div>`;
+  cadSheet(tabs+body); }
 function cadPagesSheet(){ const P=cadPages(CD.sid);
   cadSheet(`<div class="cd-tabs"><b>Páginas</b><button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>
     <div class="cd-pgrid">${P.map((p,i)=>`<button class="cd-pthumb ${i===CD.pi?'on':''}" data-cd="goto" data-v="${i}"><svg viewBox="0 0 ${CAD_W} ${CAD_H}">${cadSvgInner(p)}</svg><small>${i? 'Página '+i : 'Capa'}</small></button>`).join('')}</div>
-    ${CD.ro? '' : `<div class="cd-bgs"><b>Fundo desta página</b>${cadPage().bg==='capa'? cadCoverOpts() : Object.entries(CAD_BG).map(([k,l])=>`<button class="${cadPage().bg===k?'on':''}" data-cd="bg" data-v="${k}">${l}</button>`).join('')}</div>
+    ${CD.ro? '' : `<div class="cd-bgs"><b>Fundo desta página</b>${cadPage().bg==='capa'? `<button class="on" data-cd="cover">Personalizar a capa</button>` : Object.entries(CAD_BG).map(([k,l])=>`<button class="${cadPage().bg===k?'on':''}" data-cd="bg" data-v="${k}">${l}</button>`).join('')}</div>
     ${CD.pi? `<button class="btn small danger" data-cd="delpage">Apagar esta página</button>` : ''}`}`); }
-function cadCoverOpts(){ const c=cadOf(CD.sid).cover;
-  return `<label class="field">Título<input type="text" data-cdtitle="1" value="${esc(c.title||'')}" maxlength="28"></label>
-    <div class="cd-pals">${PKEYS.map(k=>`<button class="cd-pal ${c.pal===k?'on':''}" data-cd="cpal" data-v="${k}" style="background:${PAL[k].bg};--a:${PAL[k].a}" aria-label="${PAL[k].nome}"><i></i></button>`).join('')}</div>
-    <div class="cd-pats">${Object.entries(CAD_PATS).map(([k,l])=>`<button class="${c.pat===k?'on':''}" data-cd="cpat" data-v="${k}">${l}</button>`).join('')}</div>`; }
 /* página como SVG estático (miniaturas e visualização) */
 function cadSvgInner(p){ return cadBgSvg(p)+p.items.map(it=>{ const cx=it.x+it.w/2, cy=it.y+it.h/2, tr=`rotate(${it.r||0} ${cx} ${cy})`;
     if (it.t==='img') return `<image href="${it.src}" x="${it.x}" y="${it.y}" width="${it.w}" height="${it.h}" transform="${tr}" preserveAspectRatio="xMidYMid meet"/>`;
@@ -298,11 +346,20 @@ const CAD_ACT={
   delpage(){ const c=cadOf(CD.sid), p=cadPage(); if (!CD.pi||!confirm('Apagar esta página do caderno?')) return; c.pages=c.pages.filter(x=>x!==p.id); delete DB.cadp[p.id]; cadSave(); cadGo(CD.pi-1); },
   pages(){ cadPagesSheet(); }, sheetx(){ cadSheet(''); },
   bg(el){ const p=cadPage(); cadPush(p); p.bg=el.dataset.v; cadSave(); cadPaintAll(); cadPagesSheet(); },
-  cpal(el){ cadOf(CD.sid).cover.pal=el.dataset.v; cadSave(); cadPaintAll(); cadPagesSheet(); },
-  cpat(el){ cadOf(CD.sid).cover.pat=el.dataset.v; cadSave(); cadPaintAll(); cadPagesSheet(); },
+  cover(){ if (CD.pi!==0) cadGo(0); cadCoverSheet('cor'); }, ctab(el){ cadCoverSheet(el.dataset.v); },
+  cpal(el){ cadOf(CD.sid).cover.pal=el.dataset.v; cadSave(); cadPaintAll(); cadCoverSheet('cor'); },
+  cpat(el){ cadOf(CD.sid).cover.pat=el.dataset.v; cadSave(); cadPaintAll(); cadCoverSheet('cor'); },
+  cspine(el){ cadOf(CD.sid).cover.spine=el.dataset.v==='1'; cadSave(); cadPaintAll(); cadCoverSheet('cor'); },
+  clabel(el){ cadOf(CD.sid).cover.label=el.dataset.v; cadSave(); cadPaintAll(); cadCoverSheet('etq'); },
+  cfont(el){ cadOf(CD.sid).cover.font=el.dataset.v; cadSave(); cadPaintAll(); cadCoverSheet('etq'); },
+  cname(el){ cadOf(CD.sid).cover.name=el.dataset.v==='1'; cadSave(); cadPaintAll(); cadCoverSheet('etq'); },
+  ctitle(el){ cadOf(CD.sid).cover.title=el.dataset.v; cadSave(); cadPaintAll(); cadCoverSheet('etq'); },
+  chero(el){ const p=cadPage(), old=p.items.find(i=>i.hero); if (old){ cadPush(p); old.k=el.dataset.v; old.t='emo'; cadSave(); cadPaintAll(); cadCoverSheet('heroi'); return; } cadSheet(''); cadAdd({t:'emo',k:el.dataset.v,w:340,h:340,x:330,y:250,r:Math.round(Math.random()*14-7),hero:true}); },
+  addemo(el){ cadSheet(''); cadAdd({t:'emo',k:el.dataset.v,w:200,h:200,r:Math.round(Math.random()*16-8)}); },
+  kage(el){ S.kpage=el.dataset.v; cadInsertSheet('act'); },
   finger(){ if (CD.penSeen){ CD.penSeen=false; CD.finger=true; toast('O dedo voltou a escrever.'); } else CD.finger=!CD.finger; cadBar(); },
   fit(){ cadFit(Math.abs(CD.cam.z-Math.min(CD.el.view.clientWidth/(CAD_W+60),CD.el.view.clientHeight/(CAD_H+60)))<.01? 'width' : 'page'); cadPaintAll(); },
-  insert(){ cadInsertSheet('stk'); }, itab(el){ cadInsertSheet(el.dataset.v); },
+  insert(){ cadInsertSheet('bichos'); }, itab(el){ cadInsertSheet(el.dataset.v); },
   kth(el){ S.kth=el.dataset.v; cadInsertSheet('act'); },
   addstk(el){ cadSheet(''); cadAdd({t:'sticker',k:el.dataset.v,w:220,h:220,r:Math.round(Math.random()*16-8)}); },
   addact(el){ cadSheet(''); const seed=Math.floor(Math.random()*999); cadAdd({t:'act',kind:el.dataset.k,theme:el.dataset.t,seed,w:900,h:1272,x:50,y:70}); if (isT()&&typeof kidsUse==='function') kidsUse(CD.sid,{k:el.dataset.k,t:el.dataset.t,s:seed},true); toast('Atividade colada e ligada à aula. Use “Mover” para ajustar.'); },
@@ -327,7 +384,7 @@ function cadMount(sid,ro){ if (CD.el&&CD.sid===sid) return; cadUnmount(); cadOf(
   v.addEventListener('wheel',cadWheel,{passive:false}); v.addEventListener('contextmenu',e=>e.preventDefault());
   root.addEventListener('click',e=>{ const b=e.target.closest('[data-cd]'); if (b&&!b.disabled) CAD_ACT[b.dataset.cd]?.(b); });
   root.addEventListener('change',e=>{ if (e.target.dataset.cdfile&&e.target.files[0]) cadPhoto(e.target.files[0]); });
-  root.addEventListener('input',e=>{ if (e.target.dataset.cdtitle!=null){ cadOf(CD.sid).cover.title=e.target.value; cadSave(); cadPageDom(); } });
+  root.addEventListener('input',e=>{ if (e.target.dataset.cdtitle!=null){ cadOf(CD.sid).cover.title=e.target.value; cadSave(); cadPageDom(); } if (e.target.dataset.cdsub!=null){ cadOf(CD.sid).cover.sub=e.target.value; cadSave(); cadPageDom(); } });
   CD.onResize=()=>{ cadClamp(); cadPaintAll(); }; window.addEventListener('resize',CD.onResize);
   CD.onGesture=e=>e.preventDefault(); document.addEventListener('gesturestart',CD.onGesture);
   CD.onKey=e=>{ if (e.target.closest?.('input,textarea')) return; if ((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); cadUndo(e.shiftKey); } if ((e.key==='Delete'||e.key==='Backspace')&&CD.sel){ const p=cadPage(); cadPush(p); p.items=p.items.filter(x=>x.id!==CD.sel); CD.sel=null; cadSave(); cadPaintAll(); } };
