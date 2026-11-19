@@ -1478,3 +1478,4 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
 
 /* listas longas: o navegador só desenha os cartões que estão na tela */
 .bgrid>.bcard,.kids-grid>.kids-card{content-visibility:auto;contain-intrinsic-size:auto 340px}
+.lazy-ph{display:block;width:100%;background:var(--line,#eee);opacity:.35}

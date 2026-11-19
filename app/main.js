@@ -138,11 +138,14 @@ function seedRequest(){
 const S={me:null,route:{name:'inicio'},menu:false,week:null,modal:null,showAll:false,tf:null,draft:null,fb:{}};
 const ME=()=>DB.users.find(u=>u.id===S.me)||null;
 const isT=()=>ME()?.role==='teacher';
-const user=id=>DB.users.find(u=>u.id===id);
+const USERIX={arr:null,n:-1,m:null};
+const user=id=>{ const A=DB.users; if (USERIX.arr!==A||USERIX.n!==A.length){ USERIX.arr=A; USERIX.n=A.length; USERIX.m=new Map(A.map(u=>[u.id,u])); }
+  const u=USERIX.m.get(id); if (u&&u.id===id) return u; USERIX.n=-1; return A.find(x=>x.id===id); };
 /* o professor da sessão (ou, para um aluno, o professor dele) */
 const teacher=()=>{ const me=ME(); return me?.role==='student'? user(me.teacherId) : me; };
 const myLang=()=>teacher()?.lang||'EN';
-const allStudents=()=>DB.users.filter(u=>u.role==='student').sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+const COLL_PT=new Intl.Collator('pt');
+const allStudents=()=>DB.users.filter(u=>u.role==='student').sort((a,b)=>COLL_PT.compare(a.name,b.name));
 const students=()=>allStudents().filter(u=>u.teacherId===S.me);
 const teacherOfStudent=id=>user(user(id)?.teacherId);
 const mine=x=>user(x.studentId)?.teacherId===S.me;
@@ -870,7 +873,7 @@ function bankArt(b,o){ const h=hashStr(b.title); return quadro(LV_PAL[b.level]||
 function bankCard(b){
   const open=b.questions.some(q=>q.type==='open');
   const on=(S.combo||[]).includes(b.id);
-  return `<div class="bwrap"><button class="bk-pick ${on?'on':''}" data-act="combo" data-id="${b.id}" aria-pressed="${on}" title="${on? 'Tirar da homework' : 'Juntar numa homework'}">${on? '✓' : '+'}</button><a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${bankArt(b,{w:320,h:110,frame:false})}<span class="lvl">${b.level}</span></div>
+  return `<div class="bwrap"><button class="bk-pick ${on?'on':''}" data-act="combo" data-id="${b.id}" aria-pressed="${on}" title="${on? 'Tirar da homework' : 'Juntar numa homework'}">${on? '✓' : '+'}</button><a class="bcard" href="#banco-${b.id}"><div class="bcard-art">${lazyArt('bk|'+b.id,()=>bankArt(b,{w:320,h:110,frame:false}),320,110)}<span class="lvl">${b.level}</span></div>
     <div class="bcard-b"><b>${esc(b.title)}</b><small>${esc(b.topic)} · ${b.questions.length} questões</small><span class="typechips">${hasAudio(b)? '<span class="aud-chip">♪ Áudio</span>' : ''}${[...new Set(b.questions.map(q=>q.type))].map(k=>`<span>${QT_SHORT[k]}</span>`).join('')}</span><small class="muted">${b.uses? `lançada ${b.uses} ${b.uses===1?'vez':'vezes'}` : 'ainda não lançada'}${b.mine? ' · criada por você' : ''}</small></div></a></div>`;
 }
 /* juntar várias atividades numa homework só */
@@ -1921,30 +1924,54 @@ function onDevInput(e){
 /* lembra quais seções o professor deixou abertas */
 document.addEventListener('toggle',e=>{ const k=e.target.dataset?.devSec; if (k){ (S.devOpen ||= {})[k]=e.target.open; } },true);
 
-/* ---------- Kids sob demanda ----------
-   A parte Kids (figuras, atividades, livrinhos, Aulas Kids, caderno digital) é ~1 MB de código.
-   Só baixa quando alguém abre uma tela Kids (ou, para quem tem aluno Kids, logo depois que o app fica parado). */
-const KIDS_JS=['vendor/perfect-freehand.js','vendor/emoji-kids.js','kids.js','kids-mais.js','kids-livros.js','kids-arquivos.js','kids-aulas.js','caderno.js'];
-const KIDS_SRC=(()=>{ try { const u=new URL(document.currentScript.src); return {base:new URL('.',u).href,v:u.search}; } catch { return {base:window.APP_BASE||'',v:''}; } })();
-let KIDS_P=null, KIDS_WAIT=false, KIDS_IDLE=false;
-const kidsReady=()=>typeof KIDS_ACT!=='undefined';
-function kidsLoad(){ if (kidsReady()) return Promise.resolve();
-  return KIDS_P ||= new Promise((ok,no)=>{ let n=KIDS_JS.length;
-    for (const f of KIDS_JS){ const el=document.createElement('script'); el.src=KIDS_SRC.base+f+KIDS_SRC.v; el.async=false;   /* baixam juntos, rodam na ordem */
+/* ---------- ilustrações das listas só quando aparecem na tela ----------
+   Listas grandes (aulas, flashcards, banco) mostram um espaço do mesmo tamanho e desenham a ilustração
+   quando o cartão chega perto da tela. Depois de desenhada uma vez, ela já vem pronta nas próximas telas. */
+const LAZY={fn:new Map(),done:new Set(),io:null,t:0};
+function lazyArt(key,fn,w,h){ if (LAZY.done.has(key)) return fn(); LAZY.fn.set(key,fn); clearTimeout(LAZY.t); LAZY.t=setTimeout(lazyWatch,0);
+  return `<i class="lazy-ph" style="aspect-ratio:${w}/${h}" data-lz="${esc(key)}"></i>`; }
+function lazyFill(el){ const key=el.dataset.lz, fn=LAZY.fn.get(key); if (!fn||!el.isConnected) return; const t=document.createElement('template'); t.innerHTML=fn(); LAZY.done.add(key); el.replaceWith(t.content); }
+function lazyWatch(){ const els=[...document.querySelectorAll('[data-lz]:not([data-lzw])')]; if (!els.length) return;
+  if (!('IntersectionObserver' in window)){ els.forEach(lazyFill); return; }
+  LAZY.io ||= new IntersectionObserver(es=>es.forEach(e=>{ if (e.isIntersecting){ LAZY.io.unobserve(e.target); lazyFill(e.target); } }),{rootMargin:'400px'});
+  els.forEach(el=>{ el.dataset.lzw=1; LAZY.io.observe(el); }); }
+
+/* ---------- partes do app sob demanda ----------
+   Duas partes grandes só baixam quando alguém abre uma tela delas (ou logo depois que o app abriu, quando o
+   aparelho está parado): a parte Kids (figuras, atividades, livrinhos, Aulas Kids e caderno digital, ~1 MB)
+   e as aulas prontas em slides (~270 KB de texto). A abertura do app fica bem mais leve. */
+const PACK_SRC=(()=>{ try { const u=new URL(document.currentScript.src); return {base:new URL('.',u).href,v:u.search}; } catch { return {base:window.APP_BASE||'',v:''}; } })();
+const PACKS={
+  kids:{js:['vendor/perfect-freehand.js','vendor/emoji-kids.js','kids.js','kids-mais.js','kids-livros.js','kids-arquivos.js','kids-aulas.js','caderno.js'],
+    ready:()=>typeof KIDS_ACT!=='undefined', after:()=>Object.assign(ACT,KIDS_ACT), nome:'a parte Kids',
+    routes:['kids','kidsSheet','livro','kaula','kfile','caderno']},
+  aulas:{js:['slides-prontas.js'], ready:()=>typeof SLIDES_LOADED!=='undefined', after:()=>{}, nome:'as aulas',
+    routes:['aula','slides','slidesEd','slidesPlay','slidesPdf','aoVivo']},
+};
+function packLoad(k){ const P=PACKS[k]; if (P.ready()) return Promise.resolve();
+  return P.p ||= new Promise((ok,no)=>{ let n=P.js.length;
+    for (const f of P.js){ const el=document.createElement('script'); el.src=PACK_SRC.base+f+PACK_SRC.v; el.async=false;   /* baixam juntos, rodam na ordem */
       el.onload=()=>{ if (--n===0) ok(); }; el.onerror=()=>no(new Error(f)); document.head.appendChild(el); }
-  }).then(()=>{ Object.assign(ACT,KIDS_ACT); }); }
-function needKids(){ if (kidsReady()) return true;
-  if (!KIDS_WAIT){ KIDS_WAIT=true; kidsLoad().then(()=>{ KIDS_WAIT=false; render(); },()=>toast('Não consegui abrir a parte Kids. Confira a internet e recarregue a página.')); }
+  }).then(()=>P.after()); }
+function needPack(k){ const P=PACKS[k]; if (P.ready()) return true;
+  if (!P.wait){ P.wait=true; packLoad(k).then(()=>{ P.wait=false; render(); },()=>toast(`Não consegui abrir ${P.nome}. Confira a internet e recarregue a página.`)); }
   return false; }
+const kidsReady=()=>PACKS.kids.ready(), kidsLoad=()=>packLoad('kids'), needKids=()=>needPack('kids'), slidesLoad=()=>packLoad('aulas');
 const kMats=l=>l.mats?.length&&needKids()? matChips(l) : '';
-const KIDS_ROUTES=['kids','kidsSheet','livro','kaula','kfile','caderno'];
+let PACK_IDLE=false;
+function packsIdle(me){ if (PACK_IDLE) return; PACK_IDLE=true;
+  const want=isT()? ['aulas',...(students().some(s=>s.kids)? ['kids'] : [])] : me.kids? ['kids'] : [];
+  if (!want.length) return;
+  const go=()=>want.reduce((p,k)=>p.then(()=>packLoad(k)).catch(()=>{}),Promise.resolve());
+  setTimeout(()=>{ if (window.requestIdleCallback) requestIdleCallback(go,{timeout:2500}); else go(); },1500); }
 
 /* ---------- render ---------- */
 function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (KIDS_ROUTES.includes(r.name)&&!needKids()) main=`<div class="panel"><p class="meta">Abrindo a parte Kids…</p></div>`;
+  const pk=Object.keys(PACKS).find(k=>PACKS[k].routes.includes(r.name));
+  if (pk&&!needPack(pk)) main=`<div class="panel"><p class="meta">Abrindo ${PACKS[pk].nome}…</p></div>`;
   else if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='livro'? viewBook(r.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
@@ -1986,8 +2013,7 @@ function render(){
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
   if (isT()&&document.querySelector('[data-pdf-mount]')) mountPdfs();
   const wkb=$('#wkb'); if (wkb&&!S.scrolled){ wkb.scrollTop=Math.max(0,(new Date().getHours()-9)*52); S.scrolled=true; }
-  if (!KIDS_IDLE&&!kidsReady()&&(isT()? students().some(s=>s.kids) : me.kids)){ KIDS_IDLE=true;
-    const go=()=>kidsLoad().catch(()=>{}); setTimeout(()=>{ if (window.requestIdleCallback) requestIdleCallback(go,{timeout:2500}); else go(); },1500); }
+  packsIdle(me);
 }
 /* voltar para a tela anterior (botão voltar ou link "←") devolve a rolagem de onde a pessoa estava */
 const NAVSTACK=[];
@@ -2019,7 +2045,7 @@ const fromInputs=(d,t)=>new Date(`${d}T${t||'19:00'}`).getTime();
 
 /* apresentação de slides ligada à aula (fica no histórico) */
 function deckRecent(sid,ts){ const u=S.slUsed?.[sid]; return u&&Math.abs(u.at-(ts||now()))<8*HOUR? u.id : ''; }
-function deckField(cur){
+function deckField(cur){ needPack('aulas');
   const L=slDecks(), lv=[...new Set(L.map(d=>d.level))];
   return `<label class="field" for="r-deck">Apresentação usada <small>(opcional · aparece no histórico)</small><select id="r-deck" name="deck"><option value="">Nenhuma</option>${lv.map(v=>`<optgroup label="${esc(v)}">${L.filter(d=>d.level===v).map(d=>`<option value="${d.id}" ${d.id===cur?'selected':''}>${esc(d.title)}</option>`).join('')}</optgroup>`).join('')}${cur&&!L.some(d=>d.id===cur)? `<option value="${esc(cur)}" selected>${esc(slById(cur)?.title||'(apresentação removida)')}</option>` : ''}</select></label>`;
 }

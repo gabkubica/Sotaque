@@ -82,6 +82,18 @@ function snapOf(){ const m=new Map(); for (const r of recsFromDB()) if (mineToSy
 CLOUD.ver=new Map(); CLOUD.rows=new Map();
 function keepRows(data){ for (const r of data){ CLOUD.ver.set(r.id,r.updated_at); CLOUD.rows.set(r.id,{id:r.id,kind:r.kind,student_id:r.student_id,json:JSON.stringify(r.data)}); } }
 const rowsNow=()=>[...CLOUD.rows.values()].map(r=>({id:r.id,kind:r.kind,student_id:r.student_id,data:JSON.parse(r.json)}));
+/* cópia local dos registros (IndexedDB, por conta): na próxima visita o Sotaque abre na hora com ela e depois
+   confere na nuvem só o que mudou. Sai do aparelho quando a pessoa clica em Sair. */
+function snapIdb(){ return CLOUD.idb ||= new Promise((ok,no)=>{ const r=indexedDB.open('sotaque-nuvem',1); r.onupgradeneeded=()=>r.result.createObjectStore('s'); r.onsuccess=()=>ok(r.result); r.onerror=()=>no(r.error); }); }
+async function snapGet(uid){ try { const d=await snapIdb(); return await new Promise(ok=>{ const q=d.transaction('s').objectStore('s').get(uid); q.onsuccess=()=>ok(q.result||null); q.onerror=()=>ok(null); }); } catch { return null; } }
+function snapPutSoon(){ clearTimeout(CLOUD.snapT); CLOUD.snapT=setTimeout(snapPut,1500); }
+async function snapPut(){ if (!CLOUD.user||!CLOUD.member||CLOUD.warm) return;
+  try { const d=await snapIdb(), rows=[...CLOUD.rows.values()].map(r=>[r.id,r.kind,r.student_id,CLOUD.ver.get(r.id)??null,r.json]);
+    d.transaction('s','readwrite').objectStore('s').put({v:1,t:Date.now(),member:CLOUD.member,rows},CLOUD.user.id); } catch {} }
+async function snapDel(uid){ try { const d=await snapIdb(); d.transaction('s','readwrite').objectStore('s').delete(uid); } catch {} }
+function snapUse(sn,uid){ CLOUD.user={id:uid}; CLOUD.member=sn.member; CLOUD.ver=new Map(); CLOUD.rows=new Map();
+  for (const [id,kind,student_id,ver,json] of sn.rows){ CLOUD.ver.set(id,ver); CLOUD.rows.set(id,{id,kind,student_id,json}); }
+  DB=dbFromRecords(rowsNow()); CLOUD.snap=snapOf(); S.me=sn.member.app_id; if (sn.member.role==='teacher') ensureLessons(); }
 async function fetchRows(){
   const sb=cloudClient(), rows=[];
   for (let from=0;;from+=1000){
@@ -108,13 +120,19 @@ async function fetchChanges(){
   gone.forEach(id=>{ CLOUD.ver.delete(id); CLOUD.rows.delete(id); }); keepRows(got);
   return true;
 }
-async function cloudLoad(){
-  const sb=cloudClient(), {data:{user}}=await sb.auth.getUser(); if (!user) return false;
+async function cloudLoad(warm){
+  const sb=cloudClient(), {data:{user},error:ue}=await sb.auth.getUser();
+  if (ue&&/fetch|network|Failed/i.test(ue.message||'')) throw ue;          /* sem internet: não é "sem login" */
+  if (!user) return false;
   const {data:m,error}=await sb.from('sq_members').select('*').eq('uid',user.id).maybeSingle();
   if (error) throw error;
   if (!m){ await sb.auth.signOut(); return 'nomember'; }
+  const same=warm&&CLOUD.user?.id===user.id&&CLOUD.member?.app_id===m.app_id;
   CLOUD.user=user; CLOUD.member=m;
-  DB=dbFromRecords(await fetchRows()); CLOUD.snap=snapOf();
+  if (same){ /* abriu com a cópia local: traz só o que mudou na nuvem enquanto o aparelho estava fechado */
+    if (await fetchChanges()){ if (CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) CLOUD.stale=true; else { DB=dbFromRecords(rowsNow()); CLOUD.snap=snapOf(); } }
+  } else { DB=dbFromRecords(await fetchRows()); CLOUD.snap=snapOf(); }
+  CLOUD.warm=false; snapPutSoon();
   if (m.role==='teacher'&&!DB.users.some(u=>u.id===m.app_id)){
     const md=user.user_metadata||{};
     DB.users.push({id:m.app_id,name:md.name||m.email.split('@')[0],email:m.email,role:'teacher',lang:md.lang||'EN',fem:md.fem!==false});
@@ -127,14 +145,14 @@ async function cloudLoad(){
 }
 /* recarrega quando a aba volta a ficar visível (ex.: a professora vê a homework que o aluno acabou de entregar) */
 async function cloudRefresh(){
-  if (!CLOUD.member||CLOUD.syncing||CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) return;
+  if (!CLOUD.member||CLOUD.warm||CLOUD.syncing||CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) return;
   try {
     if (await fetchChanges()) CLOUD.stale=true;          /* mudou algo: aplica agora ou, se houver edição pendente, na próxima vez */
     if (!CLOUD.stale||CLOUD.pending||CLOUD.syncing) return; CLOUD.stale=false;
     const keep=DB, D=dbFromRecords(rowsNow()), snap=snapOf();
     const same=snap.size===CLOUD.snap.size&&[...snap].every(([k,v])=>CLOUD.snap.get(k)===v);
     if (same){ DB=keep; return; }
-    CLOUD.snap=snap; DB=D; render();
+    CLOUD.snap=snap; DB=D; render(); snapPutSoon();
   } catch {}
 }
 
@@ -142,6 +160,7 @@ async function cloudRefresh(){
 function cloudQueue(){ if (!CLOUD.member) return; CLOUD.pending=true; clearTimeout(CLOUD.timer); CLOUD.timer=setTimeout(cloudSync,600); }
 async function cloudSync(){
   if (!CLOUD.member) return;
+  if (CLOUD.warm){ CLOUD.pending=true; return; }   /* ainda conferindo a nuvem: salva logo depois */
   if (CLOUD.syncing){ CLOUD.again=true; return; }
   CLOUD.syncing=true;
   const sb=cloudClient(), T=CLOUD.member.teacher_id;
@@ -156,6 +175,8 @@ async function cloudSync(){
     }
     for (let i=0;i<del.length;i+=100){ const {error}=await sb.from('sq_records').delete().eq('teacher_id',T).in('id',del.slice(i,i+100)); if (error) throw error; }
     up.forEach(r=>CLOUD.snap.set(r.id,cur.get(r.id))); del.forEach(id=>CLOUD.snap.delete(id));
+    up.forEach(r=>{ CLOUD.rows.set(r.id,{id:r.id,kind:r.kind,student_id:r.student_id,json:JSON.stringify(r.data)}); CLOUD.ver.set(r.id,null); });
+    del.forEach(id=>{ CLOUD.rows.delete(id); CLOUD.ver.delete(id); }); snapPutSoon();
     if (CLOUD.failed){ CLOUD.failed=false; toast('Conexão de volta. Tudo salvo.'); }
   } catch (e){
     if (!CLOUD.failed) toast('Sem conexão com a nuvem. Suas mudanças ficam aqui e são salvas quando a internet voltar.');
@@ -192,7 +213,7 @@ async function cloudSignup(email,pass,meta){
   if (data?.session){ await cloudLoad(); return {logged:true}; }
   return {confirm:true};
 }
-async function cloudLogout(){ try { await cloudClient().auth.signOut(); } catch {} CLOUD.member=null; CLOUD.user=null; CLOUD.snap=new Map(); CLOUD.ver=new Map(); CLOUD.rows=new Map(); clearTimeout(CLOUD.timer); CLOUD.pending=false; baseDB(); }
+async function cloudLogout(){ const uid=CLOUD.user?.id; if (uid) snapDel(uid); clearTimeout(CLOUD.snapT); try { await cloudClient().auth.signOut(); } catch {} CLOUD.member=null; CLOUD.user=null; CLOUD.snap=new Map(); CLOUD.ver=new Map(); CLOUD.rows=new Map(); clearTimeout(CLOUD.timer); CLOUD.pending=false; baseDB(); }
 async function cloudForgot(email){ const {error}=await cloudClient().auth.resetPasswordForEmail(email,{redirectTo:siteUrl()}); return error? AUTH_MSG(error) : null; }
 async function cloudNewPass(p){ const {error}=await cloudClient().auth.updateUser({password:p}); return error? AUTH_MSG(error) : null; }
 /* convite do aluno: o e-mail que ele vai usar no "Primeiro acesso" */
@@ -211,14 +232,32 @@ async function cloudActivated(){ if (!isTeacherCloud()) return []; const {data}=
 async function cloudStart(){
   const sb=cloudClient();
   sb.auth.onAuthStateChange(ev=>{ if (ev==='PASSWORD_RECOVERY') setTimeout(()=>ACT['new-pass']?.(),50); });
-  try { const r=await cloudLoad(); if (r==='nomember') toast('Esta conta não é do Sotaque.'); }
-  catch { toast('Sem conexão com a nuvem. Confira a internet e recarregue a página.'); }
+  /* abre na hora com a cópia local (se houver), antes de falar com a nuvem */
+  let warm=false;
+  if (!/access_token|type=/.test(location.hash)){
+    try { const uid=JSON.parse(localStorage.getItem('sotaque-auth')||'null')?.user?.id, sn=uid? await snapGet(uid) : null;
+      if (sn?.member&&Array.isArray(sn.rows)&&sn.rows.length){ snapUse(sn,uid); CLOUD.warm=warm=true; S.cloudLoading=false;
+        if (!/^#./.test(location.hash)) location.hash='inicio'; S.route=parseHash(); render(); } } catch { CLOUD.warm=warm=false; }
+  }
+  await cloudConnect(warm);
+  cloudActivated().then(a=>{ S.activated=a; }).catch(()=>{});
+}
+async function cloudConnect(warm){
+  try { const r=await cloudLoad(warm);
+    if (r==='nomember') toast('Esta conta não é do Sotaque.');
+    if (r!==true&&warm){ const uid=CLOUD.user?.id; if (uid) snapDel(uid); CLOUD.warm=false; CLOUD.member=null; CLOUD.user=null; CLOUD.snap=new Map(); S.me=null; baseDB(); }
+    if (r===true&&CLOUD.pending) cloudQueue();
+  } catch {
+    if (warm){ toast('Sem conexão com a nuvem: você está vendo o que estava salvo neste aparelho. As mudanças vão para a nuvem quando a internet voltar.');
+      clearTimeout(CLOUD.retryT); CLOUD.retryT=setTimeout(()=>cloudConnect(true),20000); }
+    else toast('Sem conexão com a nuvem. Confira a internet e recarregue a página.');
+  }
   S.cloudLoading=false;
   if (/access_token|type=/.test(location.hash)) history.replaceState(null,'',location.pathname+'#inicio');
   if (S.me&&!/^#./.test(location.hash)) location.hash='inicio';
-  S.route=parseHash(); render();
-  cloudActivated().then(a=>{ S.activated=a; }).catch(()=>{});
+  S.route=parseHash(); if (!warm||!(S.modal||document.activeElement?.matches('input,textarea,select'))) render();
 }
+window.addEventListener('online',()=>{ if (CLOUD.warm){ clearTimeout(CLOUD.retryT); cloudConnect(true); } });
 document.addEventListener('visibilitychange',()=>{ if (document.visibilityState==='visible') cloudRefresh(); });
 setInterval(()=>{ if (document.visibilityState==='visible') cloudRefresh(); },60000);
 window.addEventListener('beforeunload',e=>{ if (CLOUD.pending||CLOUD.syncing){ e.preventDefault(); e.returnValue=''; } });

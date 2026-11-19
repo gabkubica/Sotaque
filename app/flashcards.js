@@ -134,7 +134,7 @@ function flashAnswer(v){
 /* ---------- telas ---------- */
 function deckCard(d,T){
   const me=ME(), n=d.cards.length, due=T? 0 : Math.min(FLASH_MAX,dueCards(me.id,d).length);
-  return `<article class="bcard"><a class="bcard-art" href="#flash-${d.id}">${flashArt(d,{w:420,h:150,frame:false})}<span class="lvl">${d.level}</span></a>
+  return `<article class="bcard"><a class="bcard-art" href="#flash-${d.id}">${lazyArt('fl|'+d.id+'|'+d.cards.length,()=>flashArt(d,{w:420,h:150,frame:false}),420,150)}<span class="lvl">${d.level}</span></a>
     <div class="bcard-b"><b>${esc(d.title)}</b><small>${n} ${n===1?'cartão':'cartões'}${T? ` · ${d.students.length? `com ${d.students.length} ${d.students.length===1?'aluno':'alunos'}` : 'ainda com nenhum aluno'}` : ` · ${learned(me.id,d)} aprendidos`}</small>
       <div class="row-btns" style="margin-top:6px">${T? `<a class="btn small primary" href="#flash-${d.id}">Estudar</a><a class="btn small" href="#flash-ed-${d.id}">Editar e mandar</a>` : `<a class="btn small ${due?'primary':''}" href="#flash-${d.id}">${due? `Estudar ${due}` : 'Revisar'}</a>`}</div></div></article>`;
 }

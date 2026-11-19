@@ -14,7 +14,9 @@
    Aula ao vivo: a professora apresenta e o aluno acompanha no aparelho dele (o áudio toca lá, sem compartilhar a tela).
    ========================================================= */
 const SL_TYPES={sobre:'Sobre a aula',leitura:'Leitura',aquecimento:'Warm-up',linha:'Linha do tempo',tarefas:'Atividades recomendadas',explica:'Explicação',tabela:'Tabela',dica:'Cuidado',exercicio:'Exercício',resumo:'Resumo',capa:'Capa',vocab:'Vocabulário',frase:'Frases',dialogo:'Diálogo',tirinha:'Tirinha',pergunta:'Pergunta',conversa:'Conversa',imagem:'Imagem',texto:'Texto'};
-function slidesParse(src){
+const SLP=new Map();
+function slidesParse(src){ src=String(src||''); let v=SLP.get(src); if (v) return v; v=slidesParse0(src); SLP.set(src,v); if (SLP.size>150) SLP.delete(SLP.keys().next().value); return v; }
+function slidesParse0(src){
   const out=[]; let cur=null;
   for (const raw of String(src||'').split('\n')){ const l=raw.replace(/\s+$/,''), m=l.match(/^#\s*([a-zç]+)\s*:?\s*(.*)$/i);
     if (m&&SL_TYPES[m[1].toLowerCase()]){ const parts=m[2].split('|').map(x=>x.trim()), im=parts.find(x=>/^img:/.test(x));
@@ -109,7 +111,8 @@ const AUD_LOADED={};
 function slAudio(d){ if (!d?.seed||AUD_LOADED[d.id]) return; AUD_LOADED[d.id]=1;
   fetch(AUD_BASE+d.id+'.json').then(r=>r.ok? r.json() : {}).then(j=>{ for (const [k,v] of Object.entries(j)) CLIPS[k]='data:audio/mpeg;base64,'+v; }).catch(()=>{ AUD_LOADED[d.id]=0; }); }
 /* ---------- aulas prontas e as da professora ---------- */
-const slSeed=()=>(typeof SLIDES_SEED!=='undefined'? SLIDES_SEED : []).map(([lang,level,title,src])=>({id:'sd'+hashStr(lang+title).toString(36),lang,level,title,src,seed:true}));
+const SLSEED={n:-1,v:[]};
+const slSeed=()=>{ const A=typeof SLIDES_SEED!=='undefined'? SLIDES_SEED : []; if (SLSEED.n!==A.length){ SLSEED.n=A.length; SLSEED.v=A.map(([lang,level,title,src])=>({id:'sd'+hashStr(lang+title).toString(36),lang,level,title,src,seed:true})); } return SLSEED.v; };
 const slDecks=()=>slSeed().concat((DB.slides||[]).filter(d=>d.teacherId===S.me)).filter(d=>d.lang===myLang());
 const slById=id=>slSeed().find(d=>d.id===id)||(DB.slides||[]).find(d=>d.id===id);
 const slCover=d=>{ const c=slidesParse(d.src).find(s=>s.img)?.img; return c? slImg(c,420,150) : quadro(LV_PAL[d.level]||'menta','conversa',hashStr(d.title)%97,{w:420,h:150,frame:false}); };
@@ -119,7 +122,7 @@ function viewSlidesLib(){
   const lv=S.slLv||'todos', shown=list.filter(d=>lv==='todos'||d.level===lv);
   return `<div class="hello"><div class="panel-h" style="align-items:flex-start"><div><h1>Aulas</h1><p class="meta">Apresentações completas para dar a aula: warm-up, explicação, exercícios, conversa e homework recomendada. Apresente com a tela compartilhada ou ligue a <b>aula ao vivo</b> (o aluno acompanha no aparelho dele).</p></div><button class="btn primary big" data-act="sl-new">+ Nova aula</button></div>
     <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" data-act="sl-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div></div>
-    <div class="bgrid">${shown.map(d=>{ const n=slidesParse(d.src).length; return `<article class="bcard"><a class="bcard-art" href="#slides-${d.id}">${slCover(d)}<span class="lvl">${d.level}</span></a>
+    <div class="bgrid">${shown.map(d=>{ const n=slidesParse(d.src).length; return `<article class="bcard"><a class="bcard-art" href="#slides-${d.id}">${lazyArt('sl|'+d.id+'|'+d.src.length,()=>slCover(d),420,150)}<span class="lvl">${d.level}</span></a>
       <div class="bcard-b"><b>${esc(d.title)}</b><small>${n} slides${d.seed? '' : ' · criada por você'}</small><div class="row-btns" style="margin-top:6px"><a class="btn small primary" href="#slides-${d.id}">Apresentar</a><a class="btn small" href="#slides-ed-${d.id}">${d.seed? 'Copiar e editar' : 'Editar'}</a></div></div></article>`; }).join('')}</div>`;
 }
 /* barra de anotação: ferramenta, cor, desfazer, limpar e pronto, tudo junto */

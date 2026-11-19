@@ -5,10 +5,10 @@
    dicionário (frases inteiras e modelos com números, datas e nomes). Conteúdo das atividades
    (enunciados, textos da professora) não é traduzido.
    ========================================================= */
-const UI_KEY='sotaque:ui';
+const UI_KEY='sotaque:ui'; let UI_LAST=null;
 function uiLang(){
   try { const me=S.me&&DB&&DB.users.find(u=>u.id===S.me); if (!me) return localStorage.getItem(UI_KEY)||'pt';
-    const tid= me.role==='teacher'? me.id : me.teacherId, v=DB.settings?.[tid]?.ui||'pt'; localStorage.setItem(UI_KEY,v); return v; } catch { return 'pt'; }
+    const tid= me.role==='teacher'? me.id : me.teacherId, v=DB.settings?.[tid]?.ui||'pt'; if (v!==UI_LAST){ UI_LAST=v; localStorage.setItem(UI_KEY,v); } return v; } catch { return 'pt'; }
 }
 const LOC=()=>uiLang()==='en'? 'en-US' : 'pt-BR';
 const WD_EN={'domingo':'Sunday','segunda-feira':'Monday','terça-feira':'Tuesday','quarta-feira':'Wednesday','quinta-feira':'Thursday','sexta-feira':'Friday','sábado':'Saturday'};

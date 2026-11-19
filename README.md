@@ -43,9 +43,14 @@ com ícone próprio, e funciona sem internet com o que já foi aberto (`sw.js`, 
 O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 
 ### Desempenho (para abrir rápido no celular e no iPad)
-- **Kids sob demanda**: figuras, atividades, livrinhos, Aulas Kids e caderno digital (~1 MB de código) não entram na
-  abertura do app. Baixam quando alguém abre uma tela Kids; para quem tem aluno Kids, baixam sozinhos logo depois que o
-  app abriu, quando o aparelho está parado (`KIDS_JS`, `kidsLoad()` e `needKids()` em `main.js`).
+- **Partes sob demanda** (`PACKS`, `packLoad()` e `needPack()` em `main.js`): a parte Kids (~1 MB: figuras, atividades,
+  livrinhos, Aulas Kids e caderno digital) e as aulas prontas em slides (`slides-prontas.js`, ~270 KB) não entram na
+  abertura do app. Baixam quando alguém abre uma tela delas ou sozinhas logo depois que o app abriu, com o aparelho
+  parado. As atividades recomendadas das aulas ficam no banco (`slides-aulas.js`), que carrega sempre.
+  A abertura caiu de 902 KB para 429 KB de código (gzip).
+- **Sotaque real abre na hora**: uma cópia dos registros da nuvem fica no aparelho (IndexedDB `sotaque-nuvem`, por conta).
+  Na próxima visita o app abre com ela e depois confere na nuvem só o que mudou; o que for editado nesse meio-tempo
+  espera e é salvo logo depois. Sem internet, abre com a cópia e salva quando a conexão voltar. “Sair” apaga a cópia.
 - **Service worker** (`app/sw.js`; o real usa `aulas/sw.js`, que importa o mesmo): código e estilo com `?v=` saem do
   aparelho sem esperar a rede; a página busca a versão nova primeiro (com internet lenta, após 4 s usa a guardada).
   Áudios, livrinhos e imagens ficam num cache à parte, que não é apagado a cada publicação.
@@ -55,6 +60,9 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - **Nuvem** (`cloud.js`): a atualização a cada minuto pergunta só “id + data” de cada registro e baixa de novo apenas o
   que mudou (antes baixava todos os dados da professora a cada minuto).
 - **Demonstração**: várias mudanças seguidas viram uma gravação só no navegador.
+- **Telas mais leves**: ilustrações das listas de aulas, flashcards e banco só desenhadas quando aparecem (`lazyArt`);
+  leitura das aulas e lista de aulas guardadas na memória; busca de aluno por id com índice; o idioma do sistema não é
+  mais gravado no navegador a cada data mostrada na tela.
 
 ## app/ · Sotaque
 
