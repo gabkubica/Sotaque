@@ -131,6 +131,12 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   "Compartilhar áudio da guia". Aulas novas: `node scripts/audios-lista.js` e
   `python scripts/audios.py` (instruções no próprio script). Sem o áudio gravado, a voz do navegador lê como antes, salvo à parte por aula e slide, fora da apostila; na aula ao vivo o aluno vê o desenho.
   Tela cheia da página inteira (trocar de slide não sai mais dela).
+- **Mais aulas para adultos** (`slides-adultos.js`): 15 aulas novas, agora com B2 e C1 fortes e inglês para o trabalho.
+  B1: Emails at work, Making complaints, Films and series. B2: Narrative tenses, Wish and if only, Linking words,
+  Future in 2035 (will be doing / will have done), Meetings, Used to / be used to / get used to, Negotiating.
+  C1: Inversion, Cleft sentences, Mixed conditionals, Presentations, Idioms. Cada uma tem warm-up, explicação, tabela,
+  “cuidado”, 2 exercícios, leitura, conversa e 3 atividades recomendadas, incluindo uma **homework temática nova**
+  (“Homework · …”: texto com áudio, 9–10 questões e escrita) que entra no banco de atividades. 71 aulas no total.
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
