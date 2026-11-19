@@ -1168,3 +1168,192 @@ des: œufs, pommes, légumes`,'Classez avec le bon article.'),
     DIT('Prenez la première rue à droite.','Écoutez et écrivez la phrase.'),
     'Expliquez le chemin de chez vous jusqu’à la boulangerie ou au supermarché (60–80 mots), avec l’impératif.']}
 );
+
+/* ---------- homeworks do lote 4 (gramática e fonética) ---------- */
+CONT_HW.push(
+  {l:'EN',lv:'A2',t:'Homework · Have you ever…?',i:'Lição de casa: ouça as experiências, responda e escreva as suas.',a:`Hi, I'm Lucy. I'm thirty, and I love new experiences. I've been to twelve countries, but I've never been to Asia. I've eaten some strange food, like crocodile in Australia! I've also met a famous actor: I sat next to him on a plane in 2019. He was very nice. I've never ridden a horse, because I'm scared of them, and I've never sung karaoke. Maybe one day! Have you ever done anything crazy?`,q:[
+    ['How many countries has Lucy been to?',['ten','twelve','twenty'],1],['Has she been to Asia?',['Yes, she has.','No, she hasn’t.'],1],
+    ['What strange food has she eaten?',['snails','crocodile','insects'],1],['When did she meet the actor?',['in 2019','last week','in 2009'],0],
+    TF('Lucy has ridden a horse.',false),['Have you ever ___ to Japan?',['been','went','go'],0],
+    GAP('I’ve never ___ (see) snow.','seen'),GAP('I ___ (meet) my best friend in 2015.','met'),
+    'Write about 3 things you’ve done and 2 things you’ve never done (present perfect). Then say when one of them happened (past simple).']},
+  {l:'EN',lv:'A2',t:'Homework · Follow the route',i:'Lição de casa: ouça as instruções e responda.',a:`OK, here's how to get to my house from the station. Go out of the station and walk along the main road for about five minutes. Go past the supermarket and the bank. Then go across the bridge over the river. After the bridge, go through the small park. When you come out of the park, you'll see a yellow house in front of you. Go up the stairs to the second floor. That's my flat, number 21. Don't worry, it's easy!`,q:[
+    ['Where does the route start?',['at the bank','at the station','at the park'],1],['What do you go past?',['the supermarket and the bank','the school','the hospital'],0],
+    ['How do you cross the river?',['by boat','across the bridge','through a tunnel'],1],['What do you go through?',['a small park','a shopping centre','a forest'],0],
+    TF('The flat is on the ground floor.',false),['She walked ___ the room and sat down.',['into','in','at'],0],
+    GAP('The train goes ___ a long tunnel. (por dentro)','through'),GAP('We walked ___ the river at sunset. (ao longo)','along'),
+    'Write the route from your home to a place you like (60–80 words) using at least 5 prepositions of movement.']},
+  {l:'EN',lv:'B1',t:'Homework · Excuse me, could you…?',i:'Lição de casa: ouça as perguntas educadas e responda.',a:`Receptionist: Good morning, how can I help you? Guest: Hi. Could you tell me what time the swimming pool opens? Receptionist: It opens at seven and closes at nine in the evening. Guest: Great. And do you know if there's a bus to the city centre? Receptionist: Yes, there's one every twenty minutes, just outside the hotel. Guest: Perfect. I was wondering whether I could leave my suitcase here after checkout. Receptionist: Of course, no problem. Guest: And one last thing: do you have any idea where I can buy a SIM card? Receptionist: There's a shop at the train station.`,q:[
+    ['What time does the pool open?',['at six','at seven','at nine'],1],['How often is there a bus to the centre?',['every ten minutes','every twenty minutes','every hour'],1],
+    ['What does the guest want to do after checkout?',['leave the suitcase','swim','have lunch'],0],['Where can the guest buy a SIM card?',['at the hotel','at the train station','at the airport'],1],
+    ['Could you tell me where ___?',['the lift is','is the lift'],0],['Do you know what time ___?',['the shop opens','does the shop open'],0],
+    GAP('Do you know ___ the museum is open on Mondays? (sim/não)','if|whether'),
+    'You are in a new city. Write 5 polite indirect questions you could ask at a tourist office.']},
+  {l:'EN',lv:'B1',t:'Homework · I managed it!',i:'Lição de casa: ouça a história e conte uma conquista sua.',a:`When I was a child, I couldn't swim. I was afraid of water, and my friends could all swim very well. When I was twenty-five, I decided to change that. The first lessons were terrible: I couldn't put my face in the water. But my teacher was very patient. After three months, I managed to swim one length of the pool. I was so proud! Last year, I was able to swim across a lake with my friends. It took two hours, but we all managed to finish. Now I swim three times a week.`,q:[
+    ['Why couldn’t the speaker swim as a child?',['afraid of water','no pool','no time'],0],['How old was the speaker when they started lessons?',['fifteen','twenty-five','thirty'],1],
+    ['What did the speaker manage to do after three months?',['swim one length of the pool','swim across a lake','teach swimming'],0],TF('The swim across the lake took two hours.',true),
+    ['When I was young, I ___ run very fast. (habilidade geral)',['could','managed to'],0],['The exam was hard, but I ___ pass it.',['managed to','could'],0],
+    GAP('I ___ (not) sleep last night because of the noise.','couldn’t|could not'),
+    'Write about something difficult you managed to do (80–100 words). Use could, couldn’t, managed to and was able to.']},
+  {l:'EN',lv:'B2',t:'Homework · Get it done',i:'Lição de casa: ouça a conversa e use o causative.',a:`A: You look different! Have you had your hair cut? B: Yes, I had it done yesterday at a new salon. And I'm getting my nails done on Friday. A: Wow, special occasion? B: My sister's wedding! We're having the garden decorated, and we're getting the cake made by a famous baker. A: Sounds amazing. Is everything ready? B: Almost. Mum still needs to have her dress altered, and Dad has to get his suit cleaned. Oh, and last week someone broke into our car and we had the radio stolen! A: Oh no! B: Don't worry, we've already had it replaced.`,q:[
+    ['When did B have her hair cut?',['yesterday','last week','on Friday'],0],['What is the special occasion?',['a birthday','her sister’s wedding','a graduation'],1],
+    ['Who is making the cake?',['B’s mother','a famous baker','B'],1],['What happened to the car?',['the radio was stolen','it was painted','it was sold'],0],
+    TF('They haven’t replaced the radio yet.',false),['I need to get my passport ___.',['renewed','renew','renewing'],0],
+    GAP('We’re having the roof ___ (repair) next week.','repaired'),
+    'Write about 5 things you have done for you regularly or will have done soon (60–80 words). Include one bad experience with had … stolen / cancelled.']},
+  {l:'EN',lv:'C1',t:'Homework · It is said that…',i:'Lição de casa: ouça a notícia e transforme as frases.',a:`A rare painting that is believed to have been stolen in 1987 has been found in a farmhouse in the north of Italy. The work is thought to be by a student of Leonardo da Vinci, and it is estimated to be worth around five million euros. According to police, the farmer is said to have bought it at a local market in the 1990s for just fifty euros, without knowing what it was. Experts are expected to examine the painting next month. It is reported that the original owners, a family from Milan, have already been contacted.`,q:[
+    ['Where was the painting found?',['in a museum','in a farmhouse','at a market'],1],['When is it believed to have been stolen?',['1987','1990','2007'],0],
+    ['How much did the farmer pay for it?',['five million euros','fifty euros','five hundred euros'],1],TF('Experts have already examined the painting.',false),
+    ['The painting is thought ___ by a student of Leonardo.',['to be','being','be'],0],['The farmer is said ___ it in the 1990s.',['to have bought','to buy','having bought'],0],
+    GAP('It is ___ that the family has been contacted. (reported)','reported'),
+    'Write a short news story (120–150 words) about a mystery or a discovery, using at least four advanced passive structures.']}
+);
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · This or that?',i:'Lição de casa: this, that, these e those.',q:[
+    PICK('[*This/These] shirt is nice. [*Those/That] shoes over there are cheap. [*These/This] glasses are mine.'),
+    SORT(`Singular: this, that
+Plural: these, those`),
+    COMIC(`[cidade]
+Ana: How much is this hat?
+Leo: ___
+---
+Ana (feliz): Great! I’ll take it.`,['That one? It’s ten dollars.','Those are ten dollars.','These is ten dollars.'],0),
+    FIX('{This|These} apples are delicious.'),FIX('Who are {that|those} people?'),
+    DIT('I like that jacket, the black one.'),
+    'Look around your room. Write 2 sentences with this, 2 with these, 1 with that and 1 with those.']},
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · Whose is it?',i:'Lição de casa: ’s, whose e mine / yours.',q:[
+    PICK('This is [*Maria’s/Maria/of Maria] car. That’s my [*parents’/parent’s/parents] house. [*Whose/Who’s] bag is this?'),
+    MAT('Ligue.',[['my','mine'],['your','yours'],['her','hers'],['his','his']]),
+    KWT('The bike of my brother is new.','BROTHER’S','My ___ new.','brother’s bike is'),
+    FIX('{Who’s|Whose} phone is ringing?'),
+    ['— Is this your pen? — Yes, it’s ___.',['mine','my','me'],0],
+    DIT('Whose keys are these?'),
+    'Write 5 sentences about things in your house and whose they are (use ’s and mine / yours / hers / his).']},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · By myself',i:'Lição de casa: pronomes reflexivos e each other.',q:[
+    PICK('Be careful! Don’t cut [*yourself/you/yours]. The children cleaned the room by [*themselves/theirselves]. Ana and Leo help [*each other/themselves] with homework.'),
+    SORT(`Use a reflexive: hurt, enjoy, teach
+No reflexive in English: wake up, get dressed, relax`),
+    FIX('I {woke myself up|woke up} at seven this morning.'),
+    KWT('I made this cake. Nobody helped me.','MYSELF','I made this cake ___ .','by myself|myself'),
+    COMIC(`[bandeirinhas]
+Bia (feliz): Help yourselves to the food!
+Tom: ___
+---
+Bia (feliz): Yes, I did it all by myself!`,['Did you cook it by yourself?','Did you cook it by yourselves?','Did you cook it by itself?'],0),
+    'Write about 4 things you do by yourself and 2 things you and a friend do for each other.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · So good!',i:'Lição de casa: so, such, so many e so much.',q:[
+    PICK('The film was [*so/such] funny! It was [*such a/so a] funny film. There were [*so many/so much] people at the party.'),
+    SORT(`so: so tired, so fast, so many
+such: such a mess, such nice people, such good news`),
+    KWT('The weather was very hot, so we went to the beach.','SUCH','It was ___ that we went to the beach.','such hot weather'),
+    KWT('The book was very boring. I stopped reading it.','SO','The book was ___ I stopped reading it.','so boring that|so boring'),
+    FIX('It was {so a|such a} beautiful day!'),
+    'Describe the best day of your last holiday (80–100 words) using so and such at least five times.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Not yet!',i:'Lição de casa: already, yet e just.',q:[
+    PICK('I’ve [*just/yet] arrived. Have you finished [*yet/just]? She’s [*already/yet] left — she was so fast!'),
+    COMIC(`[relogio]
+Mia: Have you sent the report yet?
+Sam: ___
+---
+Mia (feliz): Great, thanks! That was quick.`,['Yes, I’ve just sent it.','Yes, I’ve sent it yet.','No, I’ve already sent it.'],0),
+    SEQ('Have you packed your suitcase yet?\nYes, I’ve already packed it.\nHave you called the taxi?\nNot yet. I’ll do it now.\nOK, I’ve just called it!','Put the dialogue in order.'),
+    FIX('I haven’t {yet finished|finished} the book yet.'),
+    KWT('The train left one minute ago.','JUST','The train ___ .','has just left|’s just left'),
+    'Write your to-do list for this week: 3 things you’ve already done, 3 you haven’t done yet and 1 you’ve just done.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · House rules',i:'Lição de casa: make, let, get e allow.',q:[
+    PICK('My parents made me [*study/to study] every night. They let me [*go/to go] out on Saturdays. We weren’t allowed [*to use/use] phones at dinner.'),
+    SORT(`No “to”: make me study, let me go
+With “to”: allow me to go, get him to help, be made to wait`),
+    KWT('My boss forced me to work late.','MADE','My boss ___ late.','made me work'),
+    KWT('They didn’t allow us to take photos.','LET','They didn’t ___ photos.','let us take'),
+    FIX('The teacher let us {to leave|leave} early.'),
+    COMIC(`[casa]
+Leo: Mum, will you let me have a party?
+Ana: ___
+---
+Leo (feliz): Deal! I’ll get Tom to help me clean.`,['Only if you clean the house after.','Only if you to clean the house.','I make you clean.'],0),
+    'Write about the rules in your house when you were a teenager (100–120 words): what your parents made you do, let you do and didn’t allow you to do.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · Both or neither?',i:'Lição de casa: both, either e neither.',q:[
+    PICK('[*Both/Either/Neither] my sisters live in Rio. You can pay [*either/both/neither] by card or in cash. [*Neither/Both/Either] of my parents can swim — they’ve never learned.'),
+    KWT('Ana doesn’t like horror films. Leo doesn’t like horror films.','NEITHER','___ likes horror films.','Neither Ana nor Leo'),
+    KWT('You can take the bus or the train.','EITHER','You can take ___ the train.','either the bus or'),
+    FIX('{Both of|Both} us were tired after the trip.'),
+    ['— I don’t eat meat. — ___',['Me neither.','Me too.','So do I.'],0],
+    'Compare two places, two jobs or two people (100–120 words) using both, either and neither at least five times.']},
+  {l:'EN',lv:'C1',tp:'Gramática',t:'Homework · Short and elegant',i:'Lição de casa: participle clauses.',q:[
+    KWT('After she had finished the report, she went home.','HAVING','___ the report, she went home.','Having finished'),
+    KWT('Because I didn’t know the way, I used my phone.','KNOWING','___ the way, I used my phone.','Not knowing'),
+    KWT('The castle, which was built in 1200, is now a hotel.','BUILT','The castle, ___ , is now a hotel.','built in 1200'),
+    PICK('[*Having seen/Seeing/Seen] the film twice, I knew the ending. [*Written/Writing] in 1949, the novel is still relevant. [*Walking/Walked] home, I saw an old friend.'),
+    FIX('{Being|Having been} a teacher for 30 years, she retired last month.'),
+    ['Which sentence has a dangling participle (a mistake)?',['Walking into the room, the lights went off.','Walking into the room, I turned on the lights.','Having eaten, we left.'],0],
+    'Rewrite a paragraph you wrote recently (or the news) in a more concise style using at least four participle clauses.']},
+  {l:'EN',lv:'A2',tp:'Pronúncia',t:'Homework · Ship or sheep?',i:'Lição de casa: vogais curtas e longas. Ouça e escreva!',q:[
+    SORT(`/ɪ/ short: ship, sit, live, fill
+/iː/ long: sheep, seat, leave, feel`,'Separe pelo som da vogal.'),
+    SORT(`/æ/: bad, man, sad, cat
+/e/: bed, men, said, set`,'Separe pelo som da vogal.'),
+    ODD('Which word has a different vowel sound?',['ship','sit','sheep','live'],2,[],'Sheep has a long /iː/.'),
+    DIT('The sheep is on the ship.'),DIT('Please leave the seat for her.'),DIT('The man and the men are sad.'),
+    'Record yourself reading the 3 dictation sentences. Then write 3 new sentences with minimal pairs.']},
+  {l:'EN',lv:'A2',tp:'Pronúncia',t:'Homework · Find the stress',i:'Lição de casa: sílaba tônica.',q:[
+    SORT(`1st syllable: table, happy, doctor, water
+2nd syllable: relax, begin, decide, hotel`,'Onde está a sílaba tônica?'),
+    ['Where is the stress in “comfortable”?',['COM-for-ta-ble','com-FOR-ta-ble','com-for-TA-ble'],0],
+    ['Where is the stress in “information”?',['IN-for-ma-tion','in-FOR-ma-tion','in-for-MA-tion'],2],
+    ['“I want to ___ a video.” (verb)',['REcord','reCORD'],1],
+    ODD('Which word has the stress on the 2nd syllable?',['photograph','hotel','water','happy'],1),
+    DIT('The photographer took a fantastic photograph.'),
+    'Write 6 words from your job or studies. Mark the stressed syllable in CAPITALS (ex.: com-PU-ter) and check in a dictionary.']},
+  {l:'EN',lv:'B1',tp:'Pronúncia',t:'Homework · Say it fast',i:'Lição de casa: fala encadeada. Ouça e escreva a forma completa.',q:[
+    MAT('Ligue a forma rápida à completa.',[['gonna','going to'],['wanna','want to'],['gotta','got to'],['dunno','don’t know']]),
+    DIT('What are you going to do this weekend?'),DIT('Can I have a cup of tea, please?'),DIT('Turn it off and pick it up.'),
+    SORT(`Linking: an apple, turn off, pick it up
+Elision: next week, last night, sandwich`),
+    ['In fast speech, “can” in “I can swim” usually sounds like…',['/kæn/','/kən/'],1],
+    'Watch 1 minute of a series in English. Write down 3 phrases you heard in fast speech and their full forms.']},
+  {l:'EN',lv:'B1',tp:'Pronúncia',t:'Homework · Up or down?',i:'Lição de casa: entonação.',q:[
+    SORT(`Falling ↘: Where do you live?, I’m a teacher., What time is it?
+Rising ↗: Are you tired?, Can you help me?, Really?`,'A entonação sobe ou desce?'),
+    ['“You’re a doctor, aren’t you ↘?” The speaker is…',['almost sure','asking a real question'],0],
+    ['In a list (apples, bananas and grapes), the last item goes…',['up ↗','down ↘'],1],
+    TF('Wh- questions usually have falling intonation.',true),
+    DIT('Would you like tea or coffee?'),DIT('It’s a lovely day, isn’t it?'),
+    'Record yourself asking 3 wh- questions and 3 yes/no questions. Listen: does your voice go down and up in the right places?']},
+  {l:'EN',lv:'B1',tp:'Pronúncia',t:'Homework · Clear consonants',i:'Lição de casa: consoantes finais, h e r.',q:[
+    SORT(`Silent h: hour, honest, honour
+Pronounced h: house, happy, hotel`,'O h é pronunciado?'),
+    ['Which is clearer English?',['“I likei it.”','“I like it.”'],1],
+    ODD('Which word starts with a silent letter?',['house','hour','happy','hotel'],1),
+    DIT('Harry has a happy horse.'),DIT('The red car is on the right.'),DIT('I had a big breakfast at the hotel.'),
+    'Write 10 words you use every day that end in a consonant. Say each one 3 times without the extra “i”.']},
+  {l:'EN',lv:'B2',tp:'Pronúncia',t:'Homework · Feel the rhythm',i:'Lição de casa: palavras fortes, ritmo e ênfase.',q:[
+    SORT(`Content words: London, quickly, never, beautiful
+Function words: of, the, can, them`,'Palavra forte ou fraca?'),
+    ['Which words are stressed? “She’s going to the beach on Sunday.”',['She’s, to, the, on','going, beach, Sunday'],1],
+    ['“I didn’t say SHE stole the money.” This means…',['someone else stole it','she stole something else','I only suggested it'],0],
+    ['“Is it on Thursday?” — “No, it’s on ___.” Which word gets the stress?',['TUESDAY','on','it’s'],0],
+    DIT('I want to go to the beach this weekend.'),
+    'Write 4 versions of the sentence “I didn’t buy a new car” with different stressed words and explain the meaning of each one.']},
+  {l:'FR',lv:'B1',tp:'Gramática',t:'Devoirs · Y ou en ?',i:'Devoirs : les pronoms y et en.',q:[
+    PICK('Tu vas à Paris ? — Oui, j’[*y/en] vais demain. Tu veux du thé ? — Oui, j’[*en/y] veux bien. Combien de frères tu as ? — J’[*en/y] ai deux.'),
+    SORT(`y: aller à la plage, penser à son voyage, habiter à Lyon
+en: manger du pain, avoir trois enfants, parler de son travail`,'Y ou en ?'),
+    COMIC(`[mala]
+Leo: Tu es déjà allée au Canada ?
+Ana: ___
+---
+Leo (feliz): Moi aussi, j’y suis allé l’année dernière !`,['Oui, j’y suis allée deux fois.','Oui, j’en suis allée deux fois.','Oui, je suis allée y.'],0),
+    FIX('Du sucre ? Non merci, je n’{y|en} prends pas.'),
+    ['Je ne vais pas ___ aller.',['y','en'],0],
+    'Répondez à 5 questions sur vos habitudes avec y ou en : Tu vas souvent au cinéma ? Tu bois du café ? Tu penses à tes vacances ? Tu as des frères ? Tu habites à São Paulo ?']},
+  {l:'FR',lv:'A2',tp:'Pronúncia',t:'Devoirs · Les sons nasals',i:'Devoirs : les voyelles nasales et les liaisons. Écoutez et écrivez.',q:[
+    SORT(`[ɑ̃]: enfant, temps, vent
+[ɔ̃]: bon, maison, pont
+[ɛ̃]: vin, pain, lundi`,'Classez selon le son.'),
+    ODD('Quel mot n’a pas de voyelle nasale ?',['bon','bonne','pont','vent'],1,[],'Dans « bonne », le n est suivi d’un autre n : la voyelle n’est pas nasale.'),
+    DIT('Le vin blanc est bon.','Écoutez et écrivez la phrase.'),DIT('Mes enfants ont un an.','Écoutez et écrivez la phrase.'),
+    ['Dans « les amis », on fait la liaison ?',['oui : [lezami]','non : [le ami]'],0],
+    TF('Dans « et un ami », on fait la liaison après « et ».',false),
+    'Enregistrez-vous en lisant les virelangues de la leçon. Écrivez cinq mots avec chaque voyelle nasale.']}
+);

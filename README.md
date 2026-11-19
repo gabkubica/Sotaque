@@ -163,7 +163,14 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   **Why we make bad decisions** (experimentos de vieses feitos ao vivo com o aluno, com a explicação nas notas), **Irony,
   sarcasm and British humour** (“what they say × what they mean”) (C1). **Francês**: Au café (A1), Au marché: les partitifs
   e En ville: demander son chemin (A2), Souvenirs d’enfance: l’imparfait (B1), Donner son avis: le subjonctif (B2).
-  18 homeworks novas (13 “Homework · …” e 5 “Devoirs · …”), com áudio ou interativas. 106 aulas no total.
+  18 homeworks novas (13 “Homework · …” e 5 “Devoirs · …”), com áudio ou interativas.
+- **Lote 4 · gramática e fonética** (22 aulas): gramática em inglês: This/that/these/those, Possessive ’s and whose (A1);
+  Present perfect with ever/never, Reflexive pronouns, Prepositions of movement (A2); Indirect questions, So and such,
+  Could / was able to / managed to, Already, yet and just (B1); Have something done, Make/let/get/allow, Both/either/neither
+  (B2); Participle clauses, The advanced passive (C1). **Fonética**: Ship or sheep? (vogais curtas e longas, pares mínimos),
+  Word stress (A2); Connected speech (linking, weak forms, schwa), Intonation, Don’t add an “i”! (consoantes finais, h e r)
+  (B1); Sentence stress and rhythm (B2). **Francês**: Les pronoms y et en (B1) e Phonétique: voyelles nasales et liaisons
+  (A2). 22 homeworks novas (as de fonética com ditado, separar sons e achar a sílaba tônica). 128 aulas no total.
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).

@@ -7524,4 +7524,1247 @@ Le vocabulaire de l’argumentation
 Devoirs · Je ne pense pas que…`]
 );
 
+/* ---------- lote 4: gramática e fonética ---------- */
+SLIDES_SEED.push(
+/* ===================== GRAMMAR · A1 ===================== */
+['EN','A1','This, that, these, those: at the flea market',`# capa: This, that, these, those | img:camiseta
+Near or far? One or many?
+# sobre: Sobre esta aula
+ver: **this / these** (perto) e **that / those** (longe); singular × plural; **this one / that one**; perguntar preços apontando (How much is this?)
+porque: São palavras que usamos o tempo todo para apontar e escolher coisas. Em português temos “este, esse, aquele”; em inglês a regra é só **perto × longe**.
+meta: apontar para objetos perto e longe; usar singular e plural corretamente; comprar numa feira escolhendo “this one” ou “that one”
+nivel: Nível A1 · gramática
+# aquecimento: Point and say
+jogo: What’s this? | A professora aponta para objetos na sala (ou na câmera). O aluno diz: “This is a pen. Those are books.”
+pergunta: Do you like flea markets (feiras de usados)? What do you buy there?
+# tabela: Near and far
+ | Near (perto) | Far (longe)
+one (singular) | **this** bag | **that** bag
+many (plural) | **these** bags | **those** bags
+Pergunta: **What’s this?** · **What are those?**
+# explica: The rules
+**this / that** + singular · **these / those** + plural
+> **This** shirt is nice. · **These** shoes are cheap.
+> **That** house is old. · **Those** people are my neighbours.
+Para não repetir o substantivo: **this one / that one**
+> I like **that one**, the red one.
+# vocab: At the flea market
+shirt | camisa | img:camisa
+shoes | sapatos | img:sapato
+hat | chapéu | img:chapeu
+glasses | óculos | img:oculos
+jacket | jaqueta | img:jaqueta
+bag | bolsa | img:mochila
+# exercicio: Practice 1
+escolha: (perto, um) [*This/These/Those] hat is beautiful.
+escolha: (longe, muitos) Look at [*those/that/these] birds!
+escolha: (perto, muitos) [*These/This/Those] glasses are expensive.
+escolha: (longe, um) Is [*that/those/these] your car?
+grupos: Singular: this, that / Plural: these, those
+# dialogo: How much is this?
+A: Excuse me, how much is this hat?
+B: That one? It’s ten dollars.
+A: And these sunglasses?
+B: Those are fifteen.
+A: Hmm. Can I see that jacket, please?
+B: Sure. Here you are!
+# exercicio: Practice 2
+erro: {This|These} shoes are very comfortable.
+erro: Who are {that|those} people?
+ordem: how much are these shoes
+ditado: I like that one, the blue one.
+# pergunta: Choose
+You’re holding one apple. You say…
+*This is my apple.
+That are my apple.
+These is my apple.
+# conversa: Your turn | img:camiseta
+Look around you. Say 3 sentences with this/these and 3 with that/those.
+Role-play: buy 2 things at a flea market. Use “this one” and “that one”.
+# tarefas: Atividades recomendadas
+This, that, these, those
+Colours and clothes
+Homework · This or that?`],
+
+['EN','A1','Possessive ’s and whose: whose is it?',`# capa: Whose is it? | img:chave
+Ana’s bag, my parents’ house, whose phone?
+# sobre: Sobre esta aula
+ver: o **’s** para posse (Ana’s car); **s’** no plural (my parents’ house); a pergunta **Whose…?**; pronomes possessivos (mine, yours, his, hers)
+porque: Em português dizemos “o carro da Ana”. Em inglês, a ordem muda: **Ana’s car**. É um dos primeiros “nós” na cabeça de quem começa.
+meta: dizer de quem é algo com ’s; perguntar com whose; responder com mine / yours / his / hers
+nivel: Nível A1 · gramática
+# aquecimento: Lost and found
+jogo: Whose is this? | A professora mostra (ou desenha) objetos. O aluno inventa o dono: “It’s Tom’s phone. It’s Maria’s bag.”
+pergunta: What’s your favourite thing that belongs to someone in your family?
+# explica: The ’s
+A ordem é **dono + ’s + coisa**:
+> **Ana’s** car = o carro da Ana · **my brother’s** room = o quarto do meu irmão
+No **plural com s**, só o apóstrofo:
+> my **parents’** house = a casa dos meus pais
+Plurais irregulares voltam a ter ’s: the **children’s** toys
+# tabela: Whose…? / Possessive pronouns
+Whose is it? | Answer | Possessive pronoun
+Whose phone is this? | It’s my phone. | It’s **mine**.
+Whose keys are these? | They’re your keys. | They’re **yours**.
+Whose bag is that? | It’s her bag. | It’s **hers**.
+Whose car is it? | It’s his car. | It’s **his**.
+**Whose** = de quem. Não confunda com **Who’s** (= who is).
+# exercicio: Practice 1
+escolha: This is [*Maria’s/Maria/of Maria] bike.
+escolha: That’s my [*parents’/parent’s/parents] car. (dos meus pais)
+escolha: [*Whose/Who’s/Who] jacket is this?
+escolha: — Is this your pen? — Yes, it’s [*mine/my/me].
+grupos: Possessive adjectives: my, your, her / Possessive pronouns: mine, yours, hers
+# tirinha: Whose is it?
+[casa]
+Mia (pensando): Whose keys are these?
+Leo: They’re not mine. Maybe they’re Tom’s?
+---
+Tom (surpreso): Not mine! Mine are in my pocket.
+---
+Mia (feliz): Oh… wait. They’re mine!
+# exercicio: Practice 2
+reescreva: The car of my sister is red. | SISTER’S | My ___ red. | sister’s car is
+reescreva: This is my phone. | MINE | This phone ___ . | is mine
+erro: {Who’s|Whose} bag is this?
+ditado: Whose umbrella is this?
+# conversa: Your turn | img:chave
+Describe 4 things in your house and whose they are.
+Ask the teacher 3 questions with whose.
+# tarefas: Atividades recomendadas
+Possessive ’s
+Possessive adjectives
+Homework · Whose is it?`],
+
+/* ===================== GRAMMAR · A2 ===================== */
+['EN','A2','Present perfect: ever and never',`# capa: Have you ever…? | img:aviao
+Life experiences with ever and never
+# sobre: Sobre esta aula
+ver: o primeiro uso do **present perfect**: experiências de vida, sem dizer quando; **Have you ever…?** e **I’ve never…**; particípios irregulares mais comuns (been, eaten, seen, done); quando mudar para o past simple
+porque: “Have you ever…?” é uma das perguntas mais comuns em conversas para conhecer alguém. É a porta de entrada do present perfect.
+meta: perguntar sobre experiências; responder com I’ve / I’ve never; contar quando aconteceu usando o past simple
+nivel: Nível A2 · gramática
+# aquecimento: Never have I ever
+jogo: Never have I ever | Cada um diz “I’ve never…”. Se o outro já fez, levanta a mão e diz “I have!”.
+pergunta: What’s the most exciting thing you’ve done in your life?
+# tabela: How to form it
+ | Structure | Example
+Positive | have / has + participle | I**’ve been** to Chile. She**’s eaten** sushi.
+Negative | haven’t / never + participle | I**’ve never seen** snow.
+Question | Have / Has + you + ever + participle? | **Have** you **ever been** to Rio?
+Short answer | Yes, I have. / No, I haven’t. | **Has** she **ever** flown? — Yes, she has.
+# vocab: Irregular participles
+be → been | ser/estar
+eat → eaten | comer
+see → seen | ver
+do → done | fazer
+fly → flown | voar
+meet → met | conhecer
+# explica: Experience or specific time?
+Experiência, **sem quando** → present perfect:
+> I**’ve been** to London. · Have you **ever eaten** sushi?
+Com **quando** (yesterday, in 2019, last year) → past simple:
+> I **went** to London **in 2019**. · I **ate** sushi **last week**.
+Na conversa, é comum começar com um e continuar com o outro!
+# exercicio: Practice 1
+escolha: Have you ever [*been/went/go] to Argentina?
+escolha: I’ve never [*seen/saw/see] a whale.
+escolha: She [*has/have] tried Japanese food.
+escolha: I [*went/have been] to Paris last year.
+ligue: Ligue o verbo ao particípio.
+eat = eaten
+fly = flown
+see = seen
+meet = met
+# dialogo: Have you ever…?
+A: Have you ever been to the USA?
+B: Yes, I have. I went to New York in 2022.
+A: Cool! Did you like it?
+B: I loved it. Have you ever been there?
+A: No, I’ve never been to the USA.
+B: You should go!
+# exercicio: Practice 2
+erro: Have you ever {ate|eaten} snails?
+erro: I {have visited|visited} Rome two years ago.
+ordem: have you ever met a famous person
+ditado: I’ve never flown in a helicopter.
+# conversa: Find someone who… | img:aviao
+Ask the teacher: Have you ever… (ridden a horse / sung karaoke / lost your phone)?
+Tell me 3 things you’ve done and 3 things you’ve never done.
+Choose one experience and tell me when it happened (past simple).
+# tarefas: Atividades recomendadas
+Present perfect: ever and never
+Past simple · irregular verbs
+Homework · Have you ever…?`],
+
+['EN','A2','Reflexive pronouns: by myself',`# capa: Reflexive pronouns | img:feliz
+myself, yourself, themselves… and each other
+# sobre: Sobre esta aula
+ver: **myself, yourself, himself, herself, itself, ourselves, yourselves, themselves**; quando usar (o sujeito faz a ação nele mesmo); **by myself** = sozinho; **each other** × **themselves**; verbos que NÃO são reflexivos em inglês
+porque: Em português temos muitos verbos com “se” (me levantei, se vestiu). Em inglês, muitos deles **não** levam reflexivo: “I got up”, não “I got myself up”.
+meta: usar os pronomes reflexivos corretamente; diferenciar each other e themselves; evitar o reflexivo onde o inglês não usa
+nivel: Nível A2 · gramática
+# aquecimento: Do it yourself
+pergunta: What do you like doing by yourself? What do you prefer doing with other people?
+jogo: Selfie quiz | A professora pergunta: “Do you cut your hair yourself? Do you cook for yourself?” O aluno responde com frase completa.
+# tabela: The pronouns
+Subject | Reflexive
+I | myself
+you | yourself (um) / yourselves (vários)
+he / she / it | himself / herself / itself
+we | ourselves
+they | themselves
+# explica: When do we use them?
+Quando **sujeito e objeto são a mesma pessoa**:
+> I cut **myself**. · She taught **herself** English. · Enjoy **yourselves**!
+**by + reflexivo** = sozinho:
+> He lives **by himself**. · I did it **by myself**!
+**each other** = um ao outro (ação mútua):
+> They love **each other**. × They love **themselves**. (cada um ama a si mesmo)
+# dica: Cuidado!
+x: I woke myself up at 7.
+ok: I woke up at 7.
+x: She dressed herself and left.
+ok: She got dressed and left.
+x: We met ourselves at the party.
+ok: We met at the party.
+# exercicio: Practice 1
+escolha: Be careful! Don’t hurt [*yourself/you/yours].
+escolha: The children did their homework by [*themselves/theirselves/themself].
+escolha: Ana and Leo text [*each other/themselves] every day.
+escolha: I usually get up [*at 6/myself at 6].
+grupos: Use a reflexive: hurt, enjoy, teach, cut / Don’t use a reflexive: wake up, get dressed, relax, meet
+# tirinha: The party
+[bandeirinhas]
+Bia (feliz): Help yourselves to the food!
+Tom (feliz): Thanks! Did you cook all this by yourself?
+---
+Bia (feliz): Yes, I did it myself!
+Tom (surpreso): Wow! You should be proud of yourself.
+# exercicio: Practice 2
+reescreva: I travelled alone. | MYSELF | I travelled ___ . | by myself
+erro: They looked at {themselves|each other} and smiled. (um ao outro)
+lacunas: My grandmother taught [herself] to use a smartphone. Now we send [each] other messages every day. || itself, ourself
+# conversa: Your turn | img:feliz
+What have you taught yourself to do?
+Do you prefer to travel by yourself or with friends?
+Tell me about two people who help each other.
+# tarefas: Atividades recomendadas
+Reflexive pronouns
+Object pronouns
+Homework · By myself`],
+
+['EN','A2','Prepositions of movement: across, through, along',`# capa: Prepositions of movement | img:bicicleta
+Go across the bridge, through the park, along the river
+# sobre: Sobre esta aula
+ver: preposições de movimento (**across, through, along, past, over, under, into, out of, up, down, around, towards**); a diferença entre **in × into**, **across × through**; dar e entender um caminho
+porque: Diferente das preposições de lugar (onde algo está), estas mostram **para onde** algo se move. Elas aparecem em direções, histórias e esportes.
+meta: usar 10 preposições de movimento; descrever um percurso; entender instruções de caminho
+nivel: Nível A2 · gramática
+# aquecimento: The route
+pergunta: How do you get from your home to work or school? Describe the route.
+jogo: Simon says | A professora dá ordens com a mão ou um objeto: “Move the pen across the table! Put it into the box!”
+# tabela: Movement prepositions
+Preposition | Example
+across | Walk **across** the bridge. (de um lado ao outro, superfície)
+through | Go **through** the park. (por dentro)
+along | Walk **along** the river. (ao longo)
+past | Go **past** the bank. (passar por)
+into / out of | She went **into** the shop. He ran **out of** the house.
+# explica: Pairs that confuse us
+**in** = posição · **into** = movimento para dentro
+> The cat is **in** the box. · The cat jumped **into** the box.
+**across** = superfície (ponte, rua) · **through** = espaço com volume (túnel, floresta)
+> Swim **across** the river. · Drive **through** the tunnel.
+**up / down**: **up** the stairs (subindo) · **down** the hill (descendo)
+# exercicio: Practice 1
+escolha: The train goes [*through/across/along] a long tunnel.
+escolha: We walked [*along/through/into] the beach at sunset.
+escolha: She jumped [*into/in/at] the pool.
+escolha: Go [*past/through/into] the supermarket and turn left.
+grupos: Up and down: up, down, over, under / In and out: into, out of, through
+# leitura: The race | img:bicicleta
+tipo: Sports
+The cyclists start in the town square. They ride **along** the river for ten kilometres, then go **across** the old bridge and **through** a small forest.
+After that, they go **up** a steep hill and **down** the other side. They ride **past** the castle, **around** the lake and **into** the stadium.
+The winner crosses the finish line **towards** the cheering crowd!
+# exercicio: Practice 2
+Where do the cyclists start?
+*a) in the town square
+b) at the stadium
+c) next to the castle
+They go through the old bridge. (f)
+erro: He walked {in|into} the room and sat down.
+ditado: Go across the bridge and through the park.
+# imagem: Describe the route | img:cidade
+Start at the station. Go… (use 5 prepositions of movement)
+Where do you arrive?
+# conversa: Your turn | img:bicicleta
+Describe your route to work using at least 5 prepositions of movement.
+Give the teacher directions from your home to your favourite café.
+# tarefas: Atividades recomendadas
+Prepositions of movement
+Directions in the city
+Homework · Follow the route`],
+
+/* ===================== GRAMMAR · B1 ===================== */
+['EN','B1','Indirect questions: could you tell me…?',`# capa: Indirect questions | img:conversa
+Could you tell me where the station is?
+# sobre: Sobre esta aula
+ver: perguntas **diretas × indiretas**; a ordem de palavras muda (**where the station is**, não “where is the station”); sem do/does/did; **if / whether** para sim ou não
+porque: Perguntas indiretas são **mais educadas** e muito usadas com desconhecidos, no trabalho e em atendimento. E o erro de ordem (“Do you know where is…?”) é dos mais comuns de brasileiros.
+meta: transformar perguntas diretas em indiretas; usar if/whether; soar educado em situações formais
+nivel: Nível B1 · gramática
+# aquecimento: Polite or direct?
+jogo: Make it polite | A professora faz perguntas diretas e meio rudes (“Where’s the toilet?”). O aluno reformula de forma educada.
+pergunta: In which situations do you need to be very polite in English?
+# tabela: Direct → indirect
+Direct | Indirect
+Where is the station? | Could you tell me **where the station is**?
+What time does the shop open? | Do you know **what time the shop opens**?
+How much did it cost? | Can I ask **how much it cost**?
+Is the museum open? | Do you know **if / whether the museum is open**?
+# explica: Two rules
+**1. Ordem de afirmação** depois da expressão inicial:
+> Do you know where **she lives**? (não: where does she live)
+**2. Sem do / does / did**:
+> What time **does the train leave**? → Do you know what time **the train leaves**?
+Perguntas de **sim / não** usam **if** ou **whether**:
+> Is it far? → Do you know **if it’s** far?
+# frase: Polite openers
+Could you tell me…?
+Do you know…?
+I was wondering…
+Do you have any idea…?
+Would you mind telling me…?
+# exercicio: Practice 1
+escolha: Could you tell me where [*the bank is/is the bank]?
+escolha: Do you know what time [*the film starts/does the film start]?
+escolha: I wonder [*if/that/what] they’re coming.
+escolha: Can you tell me how much [*this costs/does this cost]?
+reescreva: Where does Ana work? | KNOW | Do you ___ ? | know where Ana works
+reescreva: Is the restaurant open on Mondays? | IF | Could you tell me ___ on Mondays? | if the restaurant is open
+# dialogo: At the hotel reception
+A: Good evening. How can I help you?
+B: Hi. Could you tell me what time breakfast is served?
+A: From seven to ten.
+B: And do you know if there’s a pharmacy near here?
+A: Yes, there’s one across the street.
+B: Great. I was wondering whether I could have a late checkout.
+# exercicio: Practice 2
+erro: Do you know where {is the toilet|the toilet is}?
+erro: Can you tell me what time {does the shop close|the shop closes}?
+Which question is the most polite?
+a) Where is the lift?
+*b) Could you tell me where the lift is?
+c) Lift where?
+# conversa: Role-play | img:conversa
+You’re at a tourist office. Ask 5 indirect questions about the city.
+You’re in a job interview. Ask the interviewer 3 polite questions about the job.
+# tarefas: Atividades recomendadas
+Indirect questions
+Question words
+Homework · Excuse me, could you…?`],
+
+['EN','B1','So and such: it was such a good day!',`# capa: So and such | img:sol
+It was so good! It was such a good film!
+# sobre: Sobre esta aula
+ver: **so + adjetivo/advérbio** e **such (a/an) + (adjetivo) + substantivo**; **so … that / such … that** para resultado; **so many / so much**
+porque: São palavras que dão **ênfase e emoção** à fala. Brasileiros costumam usar só “very”: aprender so e such deixa o inglês mais natural e expressivo.
+meta: escolher entre so e such; usar so … that para dar consequência; reagir com ênfase a histórias
+nivel: Nível B1 · gramática
+# aquecimento: React!
+jogo: Exaggerate it | A professora diz algo simples (“The film was good.”). O aluno exagera: “It was SO good! It was SUCH a good film!”
+pergunta: What was the best day of your last holiday?
+# tabela: So or such?
+Structure | Example
+so + adjective | The film was **so** funny.
+so + adverb | She speaks **so** fast!
+such a/an + adjective + singular noun | It was **such a** funny film.
+such + adjective + plural / uncountable | They’re **such** nice people. · It’s **such** good weather.
+**so many** + plural · **so much** + incontável: There were **so many** people!
+# explica: Results with that
+Para dizer a **consequência**:
+> It was **so** cold **that** we stayed home.
+> It was **such** a cold day **that** we stayed home.
+Na fala, o **that** muitas vezes some: It was so cold we stayed home.
+# exercicio: Practice 1
+escolha: The concert was [*so/such] amazing!
+escolha: It was [*such an/so an/such] amazing concert!
+escolha: They are [*such/so] friendly people.
+escolha: I have [*so much/so many/such] work this week.
+grupos: so: so tired, so fast, so many / such: such a mess, such nice people, such good news
+# leitura: The best wedding ever | img:coracao
+tipo: Story
+My cousin’s wedding was **such** a beautiful day! The weather was **so** perfect that they had the ceremony outside, by the lake.
+There were **so many** guests that they needed two tents. The food was **so** good I had three desserts. And the band? They were **such** good musicians that nobody sat down all night.
+I was **so** tired the next day, but it was worth it.
+# exercicio: Practice 2
+Why did they have the ceremony outside?
+*a) because the weather was so perfect
+b) because there were no tents
+c) because it was cheap
+reescreva: The day was very hot, so we went to the beach. | SUCH | It was ___ that we went to the beach. | such a hot day
+reescreva: The test was very difficult. Nobody passed. | SO | The test was ___ nobody passed. | so difficult that
+erro: It was {so a|such a} long journey!
+# conversa: Tell me! | img:sol
+Describe your best holiday using so and such at least 5 times.
+Tell me about a person who is so…, or such a… that…
+What was the worst day of your week? Exaggerate!
+# tarefas: Atividades recomendadas
+So and such
+Too and enough
+Homework · So good!`],
+
+['EN','B1','Could, was able to, managed to',`# capa: Could, was able to, managed to | img:montanha
+Talking about ability in the past
+# sobre: Sobre esta aula
+ver: **could** para habilidade geral no passado; **was able to / managed to** para conseguir algo **numa situação específica**; **couldn’t** serve para os dois casos
+porque: Em português usamos só “conseguir / podia”. Em inglês, “I could open the door” numa situação específica soa estranho: o certo é **I managed to open it**. É um ponto clássico do B1.
+meta: falar de habilidades do passado; contar conquistas específicas com managed to / was able to; usar couldn’t corretamente
+nivel: Nível B1 · gramática
+# aquecimento: When I was a child…
+pergunta: What could you do as a child that you can’t do now?
+jogo: Mission impossible | Cada um conta algo difícil que conseguiu fazer (passar numa prova, chegar a tempo…). Use “I managed to…”.
+# tabela: Ability in the past
+Meaning | Use | Example
+habilidade geral | could | I **could** swim when I was five.
+conseguiu numa ocasião | was able to / managed to | The fire was big, but everyone **managed to** escape.
+não conseguiu (geral ou ocasião) | couldn’t / wasn’t able to | I **couldn’t** find my keys this morning.
+**managed to** sugere que foi **difícil**: After 3 hours, I **managed to** fix the computer.
+# explica: The key difference
+Habilidade que durava um tempo → **could**:
+> My grandmother **could** speak four languages.
+Um **sucesso específico**, uma vez → **was able to / managed to** (não could):
+> ✗ The exam was hard, but I could pass it.
+> ✓ The exam was hard, but I **managed to** pass it.
+Na **negativa**, couldn’t serve sempre: I **couldn’t** sleep last night.
+# exercicio: Practice 1
+escolha: When I was young, I [*could/managed to] run very fast.
+escolha: The traffic was terrible, but we [*managed to/could] arrive on time.
+escolha: I [*couldn’t/didn’t manage] open the jar. It was too tight.
+escolha: After many tries, she [*was able to/could] get the job.
+grupos: General ability: could swim as a child, could read at four / Specific success: managed to escape, was able to fix it
+# leitura: Lost in the mountains | img:montanha
+tipo: True story
+Last winter, two hikers got lost in the mountains during a storm. They **couldn’t** see the path, and their phones had no signal.
+Luckily, one of them **could** read a map very well. After walking for six hours, they **managed to** find an old hut. They **were able to** make a fire and wait for the storm to pass.
+The next morning, a helicopter **managed to** spot their smoke. Both hikers were rescued.
+# exercicio: Practice 2
+What could one of the hikers do well?
+*a) read a map
+b) fly a helicopter
+c) climb trees
+They could use their phones. (f)
+reescreva: In the end, I succeeded in finding a taxi. | MANAGED | In the end, I ___ a taxi. | managed to find
+erro: The door was locked, but we {could get|managed to get} in through the window.
+# conversa: Your stories | img:montanha
+What’s something difficult you managed to do last year?
+What could you do as a child that you can’t do now?
+Tell me about a time when you couldn’t do something important.
+# tarefas: Atividades recomendadas
+Could, was able to and managed to
+Can and can’t
+Homework · I managed it!`],
+
+['EN','B1','Already, yet and just',`# capa: Already, yet and just | img:relogio
+Have you finished yet? I’ve just arrived!
+# sobre: Sobre esta aula
+ver: **just** (acabou de), **already** (já, antes do esperado), **yet** (ainda / já, em perguntas e negativas); a posição de cada um na frase; com o present perfect
+porque: Essas três palavrinhas aparecem em toda mensagem de trabalho e do dia a dia (“Have you sent it yet?”, “I’ve just arrived”). A posição na frase é o que mais confunde.
+meta: usar just, already e yet no lugar certo; perguntar sobre tarefas; responder sobre o que já foi feito
+nivel: Nível B1 · gramática
+# aquecimento: To-do list
+pergunta: What have you already done today? What haven’t you done yet?
+jogo: Checklist | A professora lê uma lista (have breakfast, check emails, call mum…). O aluno responde: “I’ve already…” ou “I haven’t … yet.”
+# tabela: Meaning and position
+Word | Meaning | Position | Example
+just | acabou de | entre have e o verbo | I**’ve just** finished.
+already | já (antes do esperado) | entre have e o verbo (ou no fim) | She**’s already** left.
+yet (negativa) | ainda não | no fim | I **haven’t** eaten **yet**.
+yet (pergunta) | já? | no fim | Have you finished **yet**?
+# explica: Already or yet in questions?
+**yet** = pergunta neutra:
+> Have you called him **yet**?
+**already** = surpresa, foi mais rápido do que o esperado:
+> Have you **already** finished?! That was fast!
+No inglês americano, também se ouve o **past simple**: Did you eat yet? I already did it.
+# exercicio: Practice 1
+escolha: I’ve [*just/yet] seen your message. Sorry!
+escolha: Have you booked the hotel [*yet/just/already]?
+escolha: We haven’t decided [*yet/already/just].
+escolha: She’s [*already/yet] finished the report, and it’s only 9 a.m.!
+ordem: I have already sent the email
+# dialogo: Before the trip
+A: Have you packed your suitcase yet?
+B: Yes, I’ve already done it.
+A: Great. Have you checked in online?
+B: Not yet. I’ll do it now.
+A: And the taxi?
+B: I’ve just called it. It’s on its way!
+# exercicio: Practice 2
+Has B packed the suitcase?
+*a) Yes, already.
+b) Not yet.
+Has B checked in online?
+a) Yes.
+*b) Not yet.
+erro: I haven’t finished {yet the project|the project yet}.
+reescreva: The bus left one minute ago. | JUST | The bus ___ . | has just left
+# conversa: Your turn | img:relogio
+What have you just done before this class?
+Tell me 3 things you’ve already done this year and 3 you haven’t done yet.
+Ask the teacher about her week using yet and already.
+# tarefas: Atividades recomendadas
+Already, yet and just
+Present perfect · for and since
+Homework · Not yet!`],
+
+/* ===================== GRAMMAR · B2 ===================== */
+['EN','B2','Have something done: the causative',`# capa: Have something done | img:carro
+I had my hair cut. I’m getting my car fixed.
+# sobre: Sobre esta aula
+ver: o **causative**: **have / get + objeto + particípio** (quando outra pessoa faz o serviço); em vários tempos; **get** mais informal; o uso para **coisas ruins** que nos acontecem (I had my phone stolen)
+porque: Em português dizemos “cortei o cabelo” mesmo quando foi o cabeleireiro! Em inglês, “I cut my hair” significa que **você** cortou. O causative evita esse mal-entendido.
+meta: falar de serviços que outras pessoas fazem para nós; usar o causative em diferentes tempos; contar algo ruim que aconteceu (had … stolen)
+nivel: Nível B2 · gramática
+# aquecimento: Who did it?
+pergunta: Do you cut your own hair? Who fixes things in your house?
+jogo: DIY or not? | A professora lista serviços (paint the house, clean the car, fix the computer). O aluno diz se faz sozinho ou paga alguém: “I have it done.”
+# explica: The structure
+**have / get + objeto + particípio passado**
+> I **had my hair cut** yesterday. (o cabeleireiro cortou)
+> We**’re getting the kitchen painted**. (alguém está pintando)
+> You should **have your eyes tested**.
+Compare: I **cut my hair** = eu mesmo cortei!
+# tabela: In different tenses
+Tense | Example
+present simple | I **have** my car **washed** every month.
+present continuous | We**’re having** the roof **repaired**.
+past simple | She **had** her nails **done**.
+future (going to) | I**’m going to get** my teeth **whitened**.
+present perfect | Have you **had** your phone **fixed** yet?
+# exercicio: Practice 1
+escolha: I [*had my hair cut/cut my hair/had cut my hair] at the new salon. (o cabeleireiro cortou)
+escolha: We’re having our house [*painted/paint/painting].
+escolha: You need to get your passport [*renewed/renew/to renew].
+escolha: Have you [*had/got had/did] your car serviced?
+grupos: You do it: I painted my room, I fixed my bike / Someone does it for you: I had my room painted, I got my bike fixed
+# explica: Bad experiences
+O causative também serve para coisas ruins **feitas por outras pessoas** contra nós:
+> He **had his wallet stolen** on the bus.
+> They **had their flight cancelled**.
+> I **had my bag searched** at the airport.
+# exercicio: Practice 2
+reescreva: A mechanic is repairing my car. | HAVING | I’m ___ . | having my car repaired
+reescreva: Someone stole her bike last week. | HAD | She ___ last week. | had her bike stolen
+erro: I need to {cut my hair|get my hair cut}. The hairdresser is free at 3.
+lacunas: Before the wedding, she [had] her nails [done] and [got] her dress [altered]. || did, made
+# leitura: The busy life of the outsourcing generation | img:carro
+tipo: Trend
+Busy professionals today **have** almost everything **done** for them. They **get** their groceries **delivered**, **have** their dogs **walked** and even **get** their furniture **assembled** by someone from an app.
+Some critics say we are losing basic skills. A survey found that a third of young adults can’t change a light bulb. Others argue that it’s simply a smart use of time.
+Either way, “**I’ll get it done**” has become one of the most common phrases of modern life.
+# conversa: Your turn | img:carro
+What do you have done regularly (hair, nails, car…)?
+What would you never pay someone to do for you?
+Tell me about something bad that happened to you (had … stolen / cancelled).
+# tarefas: Atividades recomendadas
+Have something done
+Passive voice and causative
+Homework · Get it done`],
+
+['EN','B2','Make, let, get and allow',`# capa: Make, let, get and allow | img:cachorro
+My parents made me study. They let me go out.
+# sobre: Sobre esta aula
+ver: **make + objeto + verbo** (obrigar / fazer alguém sentir); **let + objeto + verbo** (deixar); **allow + objeto + to + verbo** (permitir, mais formal); **get + objeto + to + verbo** (convencer); **be made to** na passiva
+porque: Esses verbos aparecem sempre que falamos de regras, infância, trabalho e relações. O erro mais comum: “they let me **to** go” ou “made me **to** study”.
+meta: falar de regras e permissões com a estrutura certa; contar como era a infância; usar get para convencer alguém
+nivel: Nível B2 · gramática
+# aquecimento: Childhood rules
+pergunta: What did your parents make you do when you were a teenager? What did they let you do?
+jogo: Strict or cool? | A professora descreve regras (“They made me go to bed at 8.”). O aluno diz se os pais eram rígidos ou tranquilos.
+# tabela: The structures
+Verb | Structure | Example
+make | make + someone + **verb** | My mum **made me tidy** my room.
+let | let + someone + **verb** | They **let me stay** up late.
+allow | allow + someone + **to + verb** | We aren’t **allowed to use** phones in class.
+get | get + someone + **to + verb** | I **got my brother to help** me.
+Sem “to” com **make** e **let**. Com **allow** e **get**, sempre **to**.
+# explica: Make in the passive and with feelings
+Na **passiva**, make ganha **to**:
+> I **was made to** wear a uniform.
+**make** também = causar um sentimento:
+> This song **makes me** happy. · He **made me** laugh.
+**let** não tem passiva: use **be allowed to**.
+# exercicio: Practice 1
+escolha: My boss made me [*work/to work/working] on Saturday.
+escolha: Will you let me [*use/to use/using] your laptop?
+escolha: Students aren’t allowed [*to eat/eat/eating] in the library.
+escolha: I finally got my son [*to clean/clean/cleaning] his room.
+escolha: We were made [*to wait/wait/waiting] for two hours.
+grupos: No “to”: make me study, let me go / With “to”: allow me to go, get him to help, be made to wait
+# tirinha: The new dog
+[casa]
+Leo (feliz): Mum, will you let me keep the dog?
+Ana (pensando): Only if you walk him every day.
+---
+Leo (feliz): I’ll get Tom to help me!
+---
+Tom (bravo): Nobody can make me walk a dog at 6 a.m.!
+# exercicio: Practice 2
+reescreva: My parents didn’t allow me to watch TV at night. | LET | My parents didn’t ___ TV at night. | let me watch
+reescreva: The teacher forced us to rewrite the essay. | MADE | The teacher ___ the essay. | made us rewrite
+erro: They let us {to leave|leave} early on Friday.
+reescreva: They made me sign a contract. | WAS | I ___ a contract. | was made to sign
+# conversa: Let’s talk | img:cachorro
+What were the rules in your house when you were a teenager?
+Should parents let children have smartphones at 10?
+What makes you laugh? What makes you angry?
+How do you get people to do things for you?
+# tarefas: Atividades recomendadas
+Make, let and get
+Gerund or infinitive?
+Homework · House rules`],
+
+['EN','B2','Both, either and neither',`# capa: Both, either and neither | img:conversa
+Both are great. Neither is cheap. Either is fine.
+# sobre: Sobre esta aula
+ver: **both (and)** = os dois; **either (or)** = um ou outro / qualquer um; **neither (nor)** = nenhum dos dois; com **of** (both of them); concordância verbal; respostas curtas (Me neither / So do I)
+porque: Comparar duas opções é algo que fazemos o tempo todo: escolher hotel, restaurante, candidato. E a concordância com neither confunde até nativos.
+meta: comparar duas opções com both, either e neither; usar as estruturas com and, or, nor; reagir com me neither / me too
+nivel: Nível B2 · gramática
+# aquecimento: This or that?
+jogo: Would you rather | “Beach or mountains? Cats or dogs? Coffee or tea?” O aluno responde: “Both!”, “Neither!” ou “Either is fine.”
+pergunta: Do you have two friends who are very similar? How are they similar?
+# tabela: Meaning and structure
+Word | Meaning | Example
+both … and | os dois | **Both** Ana **and** Leo speak French.
+either … or | um ou outro | You can pay **either** by card **or** in cash.
+neither … nor | nenhum dos dois | **Neither** the hotel **nor** the hostel had rooms.
+both / either / neither **of** | + the / my / them | **Neither of them** came. · **Both of us** agree.
+# explica: Agreement and short answers
+**both** → verbo no **plural**: Both hotels **are** expensive.
+**either / neither** → verbo no **singular** (formal): Neither option **is** perfect.
+Respostas curtas:
+> — I don’t like horror films. — **Me neither.** / **Neither do I.**
+> — I love jazz. — **Me too.** / **So do I.**
+# exercicio: Practice 1
+escolha: [*Both/Either/Neither] my parents are teachers.
+escolha: You can have [*either/both/neither] tea or coffee.
+escolha: [*Neither/Either/Both] of the answers is correct. They’re both wrong.
+escolha: — I can’t swim. — Me [*neither/too/either].
+escolha: Neither the bus nor the train [*was/were] on time.
+# texto: Hotel A or Hotel B?
+**Hotel Sol**: near the beach, pool, breakfast included, no parking, $150
+**Hotel Mar**: near the beach, no pool, breakfast included, no parking, $140
+Compare them! Use both, neither and either.
+nota: Respostas possíveis: Both are near the beach. Both include breakfast. Neither has parking. Only Hotel Sol has a pool. Either would be fine for a weekend.
+# exercicio: Practice 2
+reescreva: Ana doesn’t eat meat. Leo doesn’t eat meat. | NEITHER | ___ eats meat. | Neither Ana nor Leo
+reescreva: You can take the bus or the metro. | EITHER | You can take ___ the metro. | either the bus or
+erro: {Both of|Both} us are tired.
+erro: Neither of my brothers {are|is} married. (formal)
+# conversa: Compare! | img:conversa
+Compare two cities, two jobs or two people you know using both, either and neither.
+Tell me 3 things you and the teacher both like (So do I / Me too).
+Is there something neither of your parents can do?
+# tarefas: Atividades recomendadas
+Both, either and neither
+So do I and neither do I
+Homework · Both or neither?`],
+
+/* ===================== GRAMMAR · C1 ===================== */
+['EN','C1','Participle clauses: having finished the report…',`# capa: Participle clauses | img:livro
+Walking home, I saw… · Having finished, she left.
+# sobre: Sobre esta aula
+ver: orações com **-ing** (ação simultânea ou causa), **having + particípio** (ação anterior) e **particípio passado** (sentido passivo); como encurtar frases longas; o erro do **sujeito “pendurado”** (dangling participle)
+porque: As participle clauses deixam a escrita **mais concisa e elegante**: são muito usadas em textos formais, notícias e literatura, e aparecem em provas de nível C1.
+meta: transformar orações com when, because, after em participle clauses; escolher entre -ing, having done e done; evitar o dangling participle
+nivel: Nível C1 · gramática
+# aquecimento: Make it shorter
+jogo: Headline challenge | A professora lê uma frase longa (“The man who was arrested yesterday…”). O aluno tenta dizer o mesmo com menos palavras.
+pergunta: Do you prefer writing in a simple style or a sophisticated one?
+# tabela: Three types
+Type | Meaning | Example
+-ing (present participle) | ao mesmo tempo / porque | **Feeling** tired, I went to bed early.
+having + participle | antes | **Having finished** the report, she went home.
+past participle | sentido passivo | **Built** in 1850, the house is very old.
+O sujeito das duas partes precisa ser **o mesmo**.
+# explica: From long to short
+> **Because I didn’t know** the answer, I stayed quiet. → **Not knowing** the answer, I stayed quiet.
+> **After she had read** the email, she called me. → **Having read** the email, she called me.
+> The book, **which was written** in 1949, … → The book, **written** in 1949, …
+> **While I was walking** home, I saw a fox. → **Walking** home, I saw a fox.
+# exercicio: Practice 1
+escolha: [*Having finished/Finishing/Finished] her homework, she went out with friends.
+escolha: [*Written/Writing/Having writing] in simple English, the book is easy to read.
+escolha: [*Not having/Having not/Not had] a car, I take the bus everywhere.
+escolha: [*Opening/Opened/Having opened] the door, I saw a strange man. (ao mesmo tempo)
+grupos: Before the main action: having finished, having seen / Passive meaning: built in 1900, written by Orwell / At the same time: walking home, looking out of the window
+# dica: The dangling participle
+x: Walking into the room, the lights went off. (as luzes entraram na sala?)
+ok: Walking into the room, I noticed the lights went off.
+x: Having eaten lunch, the bus left. (o ônibus almoçou?)
+ok: Having eaten lunch, we got on the bus.
+# exercicio: Practice 2
+reescreva: After he had saved enough money, he bought a house. | HAVING | ___ enough money, he bought a house. | Having saved
+reescreva: The painting, which was stolen in 1990, was never found. | STOLEN | The painting, ___ , was never found. | stolen in 1990
+reescreva: Because she felt nervous, she practised all night. | FEELING | ___ , she practised all night. | Feeling nervous
+erro: {Being|Having been} a doctor for 30 years, he retired last month.
+# leitura: The lost manuscript | img:livro
+tipo: News
+**Discovered** in an old suitcase in Lisbon, a manuscript by a famous Portuguese poet has been sold for two million euros. **Having belonged** to the poet’s nephew, the suitcase had been forgotten in an attic for decades.
+**Opening** it last year, the new owners found more than 200 handwritten pages. **Realising** their importance, they contacted the national library.
+**Written** between 1920 and 1925, the poems will now be published for the first time.
+# conversa: Your turn | img:livro
+Summarise your last weekend in 3 sentences using participle clauses.
+Rewrite the first lines of a news story you read this week in a more concise way.
+Why are participle clauses more common in writing than in speech?
+# tarefas: Atividades recomendadas
+Participle clauses
+Nominalisation
+Homework · Short and elegant`],
+
+['EN','C1','The advanced passive: it is said that…',`# capa: The advanced passive | img:globo
+It is said that… · He is believed to have…
+# sobre: Sobre esta aula
+ver: a **passiva impessoal** para relatar opiniões e boatos (It is said / believed / thought / reported that…); a estrutura **sujeito + is said to + infinitivo** (He is said to be…); o **infinitivo perfeito** (to have done) para o passado
+porque: É a linguagem das **notícias, relatórios e textos acadêmicos**: permite dizer o que “dizem” sem afirmar que é verdade. Essencial para ler e escrever no C1.
+meta: transformar frases ativas em passiva impessoal; usar is said to be / is believed to have done; ler notícias percebendo o grau de certeza
+nivel: Nível C1 · gramática
+# aquecimento: Rumours
+jogo: They say… | A professora conta um “boato” sobre uma celebridade. O aluno reconta como jornalista: “It is reported that…”.
+pergunta: Do you believe what you read in the news? How do you know if something is a fact or a rumour?
+# tabela: Two structures
+Active | It + passive + that | Subject + passive + to-infinitive
+People say he is rich. | **It is said that** he is rich. | He **is said to be** rich.
+Experts believe the painting is fake. | **It is believed that** the painting is fake. | The painting **is believed to be** fake.
+Police think he left the country. | **It is thought that** he left the country. | He **is thought to have left** the country.
+Verbos comuns: say, believe, think, report, know, expect, consider, claim, estimate.
+# explica: Present or past?
+O **infinitivo** mostra o tempo do fato:
+> He **is said to live** in Paris. (agora)
+> He **is said to have lived** in Paris. (no passado)
+> She **is believed to be working** on a new album. (em andamento)
+> The castle **is thought to have been built** in the 12th century. (passado + passiva)
+# exercicio: Practice 1
+escolha: It [*is said/says/is saying] that the company will close.
+escolha: The singer is believed [*to be/being/be] in hospital.
+escolha: The thief is thought [*to have escaped/to escape/having escaped] through the window yesterday.
+escolha: The pyramids are estimated [*to have been built/to build/to be building] over 4,500 years ago.
+grupos: It + passive + that: It is said that, It is reported that / Subject + to-infinitive: He is said to be, She is known to have
+# exercicio: Practice 2
+reescreva: People say that the hotel is haunted. | SAID | The hotel ___ haunted. | is said to be
+reescreva: Experts believe the fire started in the kitchen. | BELIEVED | The fire ___ in the kitchen. | is believed to have started
+reescreva: Everyone knows he is a generous man. | KNOWN | He ___ a generous man. | is known to be
+erro: The minister is reported {to resign|to have resigned} last night.
+# leitura: The mystery of the Voynich manuscript | img:livro
+tipo: Mystery
+The Voynich manuscript **is believed to have been written** in the 15th century. It **is thought to contain** information about plants, astronomy and medicine, but nobody has ever been able to read it.
+The book **is said to have belonged** to Emperor Rudolf II, who **is reported to have paid** 600 gold coins for it. Some researchers claim it is a hoax; others **are convinced** it is written in a lost language.
+Today, it **is considered to be** one of the most mysterious books in the world.
+# exercicio: Practice 3
+When is the manuscript believed to have been written?
+*a) in the 15th century
+b) in the 20th century
+c) nobody knows
+Researchers have finally read the manuscript. (f)
+# conversa: Your turn | img:globo
+Tell me 3 “facts” about your city that people say are true (It is said that…).
+Report a news story from this week using the advanced passive.
+Why do journalists use these structures so often?
+# tarefas: Atividades recomendadas
+Advanced passive
+Reported speech
+Homework · It is said that…`],
+
+/* ===================== PHONETICS ===================== */
+['EN','A2','Phonetics: ship or sheep? Short and long vowels',`# capa: Ship or sheep? | img:feliz
+Short and long vowels that change meaning
+# sobre: Sobre esta aula
+ver: vogais **curtas × longas** que mudam o sentido: /ɪ/ × /iː/ (ship × sheep), /ʊ/ × /uː/ (full × fool), /æ/ × /e/ (bad × bed), /ʌ/ × /ɑː/ (cut × cart); **pares mínimos**; os símbolos do alfabeto fonético (IPA)
+porque: O português tem menos vogais que o inglês. Por isso, “I want to sit” e “I want to eat” podem soar parecidos demais. Treinar o ouvido evita mal-entendidos (e alguns constrangimentos famosos: **beach** × **b*tch**, **sheet** × **sh*t**!).
+meta: ouvir e produzir a diferença entre vogais curtas e longas; reconhecer os símbolos /ɪ/ /iː/ /æ/ /e/; ler pares mínimos com clareza
+nivel: Nível A2 · fonética
+nota: Use o botão 🔊 de cada palavra e peça para o aluno repetir em seguida. Grave o aluno lendo os pares mínimos no começo e no fim.
+# aquecimento: Listen!
+jogo: Which one? | A professora diz uma palavra de cada par (ship / sheep). O aluno levanta 1 dedo para a primeira e 2 para a segunda.
+pergunta: Which English words do you find hardest to pronounce?
+video: Ship or Sheep? | Procurem vídeos de minimal pairs para treinar o ouvido. | busca: minimal pairs ship sheep pronunciation
+# tabela: The vowel pairs
+Short | Long | Dica
+/ɪ/ sh**i**p, s**i**t, l**i**ve | /iː/ sh**ee**p, s**ea**t, l**ea**ve | /iː/ é longo e com sorriso
+/ʊ/ f**u**ll, p**u**ll, l**oo**k | /uː/ f**oo**l, p**oo**l, L**u**ke | /uː/ com lábios bem redondos
+/æ/ b**a**d, m**a**n, s**a**t | /e/ b**e**d, m**e**n, s**e**t | /æ/ boca bem aberta
+/ʌ/ c**u**t, h**u**t, c**u**p | /ɑː/ c**ar**t, h**ear**t, c**ar**p | /ɑː/ longo e do fundo da boca
+# vocab: Listen and repeat: /ɪ/ × /iː/
+ship | /ɪ/ navio
+sheep | /iː/ ovelha
+sit | /ɪ/ sentar
+seat | /iː/ assento
+live | /ɪ/ morar
+leave | /iː/ sair
+# vocab: Listen and repeat: /æ/ × /e/
+bad | /æ/ ruim
+bed | /e/ cama
+man | /æ/ homem
+men | /e/ homens
+sad | /æ/ triste
+said | /e/ disse
+# frase: Minimal pairs in sentences
+Is that a ship or a sheep?
+Please sit in this seat.
+I live here, but I leave tomorrow.
+The man and the men are sad.
+Look, the pool is full!
+# exercicio: Practice 1 · Sort the sounds
+grupos: /ɪ/ (short): sit, ship, live, fill / /iː/ (long): seat, sheep, leave, feel
+Which word has a LONG vowel?
+a) ship
+*b) sheep
+c) chip
+Which word has the same vowel as “bad”?
+*a) cat
+b) bed
+c) bird
+# exercicio: Practice 2 · Listen and write
+ditado: The sheep is on the ship.
+ditado: My bed is not bad.
+ditado: Please leave the seat for him.
+# dica: Cuidado!
+Algumas trocas mudam muito o sentido. Pratique com calma:
+x: “Can I have a sh*t of paper?” (vogal curta)
+ok: Can I have a sheet of paper? /ʃiːt/ (longa)
+x: “Let’s go to the b*tch!” (vogal curta)
+ok: Let’s go to the beach! /biːtʃ/ (longa)
+# conversa: Practise! | img:feliz
+Read the minimal pairs again. The teacher points, you say.
+Make 3 funny sentences with pairs (e.g., “The fat cat sat on the hat”).
+Which pair was the hardest? Record it 3 times.
+# tarefas: Atividades recomendadas
+Sounds and rhymes
+The th sounds
+Homework · Ship or sheep?`],
+
+['EN','A2','Phonetics: word stress',`# capa: Word stress | img:microfone
+PHOtograph · phoTOgraphy · photoGRAphic
+# sobre: Sobre esta aula
+ver: o que é **sílaba tônica** em inglês e por que ela muda tudo; padrões comuns (substantivos de 2 sílabas: **TA**ble; verbos de 2 sílabas: re**LAX**); palavras que mudam de tônica (**RE**cord × re**CORD**); sufixos que puxam a tônica (-tion, -ic)
+porque: Um nativo entende uma palavra com o som meio errado, mas **não entende** se a tônica estiver no lugar errado. “de-VE-lop” falado “DE-ve-lop” vira outra palavra no ouvido.
+meta: identificar a sílaba tônica; conhecer os padrões principais; pronunciar palavras longas e “traiçoeiras” corretamente
+nivel: Nível A2 · fonética
+# aquecimento: Where’s the stress?
+jogo: Clap it | A professora diz palavras e o aluno bate palma forte na sílaba tônica: ba-NA-na, HO-tel, com-PU-ter.
+pergunta: Which English words do Brazilians often pronounce with the wrong stress?
+# tabela: Common patterns
+Pattern | Examples
+2-syllable nouns and adjectives: 1st syllable | **TA**ble, **HAP**py, **WA**ter, **DOC**tor
+2-syllable verbs: 2nd syllable | re**LAX**, be**GIN**, de**CIDE**, for**GET**
+words ending in -tion / -sion: before it | in**FOR**mation, de**CI**sion, **STA**tion
+words ending in -ic: before it | eco**NO**mic, fan**TAS**tic, **MU**sic
+# vocab: Listen: tricky words
+comfortable | COM-fta-ble
+vegetable | VEG-ta-ble
+develop | de-VE-lop
+hotel | ho-TEL
+event | e-VENT
+interesting | IN-tres-ting
+# explica: Same word, different stress
+Algumas palavras mudam a tônica conforme a função:
+> a **RE**cord (substantivo) · to re**CORD** (verbo)
+> a **PRE**sent (presente) · to pre**SENT** (apresentar)
+> an **OB**ject (objeto) · to ob**JECT** (objetar)
+E famílias de palavras “pulam” a tônica:
+> **PHO**tograph · pho**TO**grapher · photo**GRA**phic
+# exercicio: Practice 1
+Where is the stress in “hotel”?
+a) HO-tel
+*b) ho-TEL
+Where is the stress in “comfortable”?
+*a) COM-for-ta-ble
+b) com-FOR-ta-ble
+c) com-for-TA-ble
+grupos: Stress on the 1st syllable: table, happy, doctor, water / Stress on the 2nd syllable: relax, begin, decide, hotel
+# exercicio: Practice 2
+Which one is a verb? “I want to ___ a song.”
+a) REcord
+*b) reCORD
+Where’s the stress in “information”?
+a) IN-for-ma-tion
+b) in-FOR-ma-tion
+*c) in-for-MA-tion
+ditado: The photographer took a fantastic photograph.
+# frase: Listen and repeat
+I’d like to present you with a present.
+Can you record a new record?
+It’s an interesting and comfortable hotel.
+The economy is developing fast.
+# conversa: Practise! | img:microfone
+Say 5 words from your job. Where’s the stress? Check in a dictionary.
+Read the sentences again and clap on the stressed syllables.
+# tarefas: Atividades recomendadas
+Word stress
+Sounds and rhymes
+Homework · Find the stress`],
+
+['EN','B1','Phonetics: connected speech',`# capa: Connected speech | img:fones
+Why native speakers seem to talk so fast
+# sobre: Sobre esta aula
+ver: como as palavras se **juntam** na fala natural: **linking** (an_apple), **weak forms** (/ə/ em to, for, of, can), **elision** (sons que somem: nex(t) week), **assimilation** (would you → “wudju”); gonna, wanna, gotta
+porque: O problema de entender nativos quase nunca é o vocabulário: é que **as palavras não aparecem separadas**. Conhecer esses fenômenos melhora a compreensão auditiva imediatamente.
+meta: reconhecer linking, weak forms e elision; entender frases rápidas; produzir uma fala mais natural e fluida
+nivel: Nível B1 · fonética
+nota: Leia cada frase primeiro devagar, palavra por palavra, e depois rápido e natural. Peça para o aluno notar o que “desaparece”.
+# aquecimento: How many words?
+jogo: Count the words | A professora diz rápido: “Whaddaya wanna do?” O aluno tenta contar as palavras (What do you want to do? = 5).
+pergunta: When you watch series, do you understand better with or without subtitles?
+# tabela: Four tricks of fast speech
+Phenomenon | What happens | Example
+linking | consoante + vogal se juntam | an_apple → “a-napple” · turn_off → “tur-noff”
+weak forms | palavras pequenas viram /ə/ | for /fə/ · to /tə/ · can /kən/
+elision | sons somem | nex(t) week · las(t) night · san(d)wich
+assimilation | sons se misturam | would you → “wudju” · don’t you → “donchu”
+# explica: The schwa /ə/
+O **schwa** /ə/ é o som mais comum do inglês: um “â” bem fraquinho nas **sílabas fracas**:
+> a banana
+banana = /bəˈnɑːnə/ (o primeiro e o último **a** são schwa)
+> I can swim. Yes, I can!
+can = /kən/ na frase · /kæn/ na resposta curta
+> a cup of tea
+cup of = /kʌp əv/ → “a cuppa tea”
+# frase: Listen: slow and fast
+What do you want to do?
+I’m going to call her.
+Did you eat yet?
+Give me a cup of tea.
+I don’t know.
+nota: Versões rápidas: “Whaddaya wanna do?” · “I’m gonna call her.” · “Jeet yet?” · “Gimme a cuppa tea.” · “I dunno.”
+# exercicio: Practice 1
+“Gonna” means…
+*a) going to
+b) got to
+c) want to
+“I dunno” means…
+a) I do now.
+*b) I don’t know.
+c) I didn’t know.
+ligue: Ligue a forma rápida à completa.
+wanna = want to
+gotta = got to
+gimme = give me
+lemme = let me
+# exercicio: Practice 2 · Listen and write the full form
+ditado: What are you going to do next week?
+ditado: Can I have a cup of coffee?
+ditado: Turn it off and put it away.
+grupos: Linking: an apple, turn off, pick it up / Elision: next week, last night, sandwich
+# dica: Cuidado!
+Formas como **gonna, wanna, gotta** são normais na fala, mas **nunca** em textos formais:
+x: I’m gonna send the report tomorrow. (e-mail ao chefe)
+ok: I’m going to send the report tomorrow.
+# conversa: Practise! | img:fones
+Read the sentences in slow and fast versions.
+Watch 30 seconds of a series without subtitles and write down what you hear.
+Tell the teacher your plans for the weekend using natural connected speech.
+# tarefas: Atividades recomendadas
+-ed endings
+Silent letters
+Homework · Say it fast`],
+
+['EN','B1','Phonetics: intonation',`# capa: Intonation | img:balao
+It’s not what you say, it’s how you say it
+# sobre: Sobre esta aula
+ver: entonação **descendente** ↘ (afirmações, wh- questions) e **ascendente** ↗ (perguntas de sim/não, surpresa); listas; **question tags** (confirmar ↘ × perguntar ↗); a entonação que soa interessada × entediada
+porque: A entonação muda o sentido e, principalmente, a **emoção**. Uma entonação “reta” em inglês pode soar entediada ou até rude, mesmo com as palavras certas.
+meta: usar entonação descendente e ascendente; fazer listas naturais; soar interessado e educado
+nivel: Nível B1 · fonética
+# aquecimento: Same words, different meaning
+jogo: Say it with feeling | O aluno diz “Really?” de 4 jeitos: surpreso, entediado, irritado e animado. A professora adivinha a emoção.
+pergunta: Do people say you sound different when you speak English?
+# tabela: Rising or falling?
+Type | Intonation | Example
+statements | ↘ falling | I live in Brazil. ↘
+wh- questions | ↘ falling | Where do you live? ↘
+yes/no questions | ↗ rising | Do you live here? ↗
+surprise / checking | ↗ rising | You live here? ↗ · Really? ↗
+lists | ↗ ↗ ↘ | I bought apples ↗, bananas ↗ and grapes ↘.
+# explica: Question tags
+A mesma frase, dois sentidos:
+> It’s a nice day, **isn’t it** ↘? (tenho certeza, só quero concordância)
+> You’re coming, **aren’t you** ↗? (não tenho certeza, é uma pergunta real)
+Dica: na dúvida, perguntas **wh-** descem e perguntas de **sim/não** sobem.
+# frase: Listen and repeat
+Where are you from?
+Are you from Brazil?
+You’re from Brazil?
+I’d like coffee, cake and water.
+It’s cold today, isn’t it?
+# exercicio: Practice 1
+In “What’s your name?”, the intonation goes…
+*a) down ↘
+b) up ↗
+In “Do you like pizza?”, the intonation goes…
+a) down ↘
+*b) up ↗
+grupos: Falling ↘: Where do you work?, I’m a teacher., What time is it? / Rising ↗: Are you tired?, Can you help me?, Really?
+# explica: Sounding interested
+Em inglês, uma **variação grande** de tom mostra interesse e simpatia:
+> “Oh, **really**? ↗ That’s **amazing**! ↘”
+Uma entonação **reta** pode soar fria ou entediada:
+> “Oh. Really. That’s amazing.” 😐
+Brasileiros costumam ter uma melodia boa: só cuidado para não subir no fim de **todas** as frases.
+# exercicio: Practice 2
+ditado: Would you like tea or coffee?
+“You’re a doctor, aren’t you ↘?” The speaker is…
+*a) almost sure and wants agreement
+b) asking a real question
+Rising intonation can show surprise. (v)
+# conversa: Practise! | img:balao
+Tell the teacher about your weekend. She will react with interested intonation. Then swap!
+Ask 3 wh- questions and 3 yes/no questions with the right intonation.
+Read a shopping list of 6 items with list intonation.
+# tarefas: Atividades recomendadas
+Question tags
+Agreeing and disagreeing
+Homework · Up or down?`],
+
+['EN','B1','Phonetics: don’t add an “i”! Final consonants',`# capa: Don’t add an “i”! | img:lapis
+Final consonants, h and r: the classic Brazilian accent
+# sobre: Sobre esta aula
+ver: o “i” extra no fim das palavras (Facebook**i**, McDonald’s**i**, I like**i**); consoantes finais (d, t, k, g, p, b); o **h** aspirado (house, not “rouse”); o **r** em início de palavra (red ≠ “héd”); o **l** final (feel, milk)
+porque: São os traços mais fortes do sotaque brasileiro. Não há nada de errado em ter sotaque, mas alguns deles **mudam palavras**: “I like**i** it” confunde, e “rouse” não é house.
+meta: terminar palavras em consoante sem vogal extra; pronunciar h e r iniciais; ser mais claro sem perder a naturalidade
+nivel: Nível B1 · fonética
+nota: O objetivo não é “apagar” o sotaque, e sim a clareza. Deixe isso claro para o aluno: sotaque faz parte da identidade.
+# aquecimento: Brazilian English
+pergunta: What do you think about your accent in English? Do you want to change it?
+jogo: Spot the extra sound | A professora fala palavras com e sem o “i” extra (“bookie” × “book”). O aluno diz qual é a versão “nativa”.
+video: Brazilian accent in English | Procurem vídeos sobre os erros de pronúncia mais comuns de brasileiros. | busca: common pronunciation mistakes Brazilian English speakers
+# tabela: The four classic traps
+Trap | Brazilian way | Clearer way
+extra “i” | “bookie”, “Facebooki”, “I likei” | book, Facebook, I like
+initial h | “rouse”, “rappy” | house, happy (só um sopro)
+initial r | “héd” (r forte) | red (r com a língua para trás, sem vibrar)
+final l | “feeu”, “miuk” | feel, milk (língua no céu da boca)
+# vocab: Listen and repeat: final consonants
+book | sem “i” no fim
+dog | sem “i” no fim
+big | sem “i” no fim
+stop | sem “i” no fim
+Facebook | sem “i” no fim
+weekend | sem “i” no fim
+# vocab: Listen and repeat: h and r
+house | h = sopro
+happy | h = sopro
+hotel | h = sopro
+red | r sem vibrar
+rice | r sem vibrar
+right | r sem vibrar
+# frase: Listen and repeat
+I like big dogs.
+Harry has a happy horse.
+The red car is on the right.
+I feel well. I drink milk.
+Stop at the next stop.
+# exercicio: Practice 1
+Which sounds right in English?
+a) “I likei pizza.”
+*b) “I like pizza.” (no extra sound)
+In “house”, the h sounds like…
+a) the Portuguese “r” in “rato”
+*b) a soft breath of air
+grupos: Silent h: hour, honest, honour / Pronounced h: house, happy, hotel
+# exercicio: Practice 2 · Listen and write
+ditado: The hotel is on the right.
+ditado: I had a big breakfast.
+ditado: Help me with this bag, please.
+# conversa: Practise! | img:lapis
+Read the tongue twister “Harry has a happy horse” 3 times, faster each time.
+Say 10 words from your daily life that end in a consonant, without the extra “i”.
+Record yourself reading a paragraph and listen for the extra sounds.
+# tarefas: Atividades recomendadas
+Silent letters
+-ed endings
+Homework · Clear consonants`],
+
+['EN','B2','Phonetics: sentence stress and rhythm',`# capa: Sentence stress and rhythm | img:disco
+English is a stress-timed language
+# sobre: Sobre esta aula
+ver: palavras de **conteúdo** (fortes) × palavras **gramaticais** (fracas); o **ritmo** do inglês (stress-timed); **ênfase contrastiva** (I said **TUESDAY**, not Thursday); como a ênfase muda o sentido da frase
+porque: O português tem um ritmo de “metralhadora” (cada sílaba com o mesmo peso). O inglês tem um ritmo de **batidas**: algumas palavras fortes e o resto rápido. Pegar esse ritmo deixa a fala muito mais natural e fácil de entender.
+meta: identificar as palavras fortes de uma frase; falar com o ritmo do inglês; usar a ênfase para corrigir e contrastar
+nivel: Nível B2 · fonética
+# aquecimento: Beat it!
+jogo: Clap the beat | Batam palmas no ritmo: **CATS** chase **MICE** → the **CATS** will chase the **MICE** → the **CATS** will have chased the **MICE**. Leva o mesmo tempo!
+pergunta: Do you think English sounds “musical”? Why?
+# tabela: Strong and weak words
+Content words (stressed) | Function words (unstressed)
+nouns: **car**, **house** | articles: a, an, the
+main verbs: **go**, **eat** | auxiliaries: is, are, have, can
+adjectives: **big**, **red** | prepositions: to, of, at, for
+adverbs: **quickly**, **never** | pronouns: he, it, them
+negatives: **can’t**, **don’t** | conjunctions: and, but
+# frase: Listen to the rhythm
+I want to go to the beach.
+She’s been working in London for years.
+What do you want to eat tonight?
+I can’t believe it’s Friday.
+nota: Marque as palavras fortes: I **WANT** to **GO** to the **BEACH**. As outras ficam rápidas e reduzidas.
+# explica: Contrastive stress
+Mudar a palavra mais forte **muda o sentido**:
+> **I** didn’t say she stole the money. (outra pessoa disse)
+> I didn’t **SAY** she stole the money. (eu insinuei)
+> I didn’t say **SHE** stole the money. (foi outra pessoa)
+> I didn’t say she stole the **MONEY**. (ela roubou outra coisa)
+# exercicio: Practice 1
+Which word is usually NOT stressed?
+a) house
+*b) the
+c) beautiful
+Which words are stressed? “I’m going to the cinema tonight.”
+a) I’m, to, the
+*b) going, cinema, tonight
+grupos: Content words: London, quickly, never, beautiful / Function words: of, the, can, them
+# exercicio: Practice 2 · Correct the information
+“Is the meeting on Thursday?” — “No, it’s on ___.” Which word gets the stress?
+*a) TUESDAY
+b) on
+c) it’s
+“Did you buy the red car?” — “No, I bought the BLUE car.” The stress shows…
+*a) a contrast with “red”
+b) that the car is new
+ditado: I didn’t say she stole the money.
+# conversa: Practise! | img:disco
+Read the four “I didn’t say she stole the money” sentences and explain each meaning.
+The teacher will say false information about you. Correct it with contrastive stress.
+Read a short paragraph marking only the content words, then read it with rhythm.
+# tarefas: Atividades recomendadas
+Word stress
+Discourse markers
+Homework · Feel the rhythm`],
+
+/* ===================== FRANÇAIS ===================== */
+['FR','B1','Les pronoms y et en',`# capa: Les pronoms y et en | img:mala
+J’y vais ! J’en veux !
+# sobre: Sobre esta aula
+ver: **y** substitui lugares (à Paris → **y**) e coisas com **à** (penser à → **y** penser); **en** substitui quantidades e partitivos (du pain → **en**) e coisas com **de** (parler de → **en** parler); a posição antes do verbo; expressões fixas (il y a, on y va, je m’en vais)
+porque: Y e en não existem em português, e por isso brasileiros evitam usá-los, repetindo palavras demais. Os franceses usam y e en o tempo todo: sem eles, a fala soa pesada.
+meta: substituir lugares e complementos com y; substituir quantidades com en; usar as expressões fixas mais comuns
+nivel: Nível B1 · gramática francesa
+# aquecimento: On y va !
+pergunta: Vous allez souvent au cinéma ? Et à la plage ?
+jogo: Questions rapides | A professora pergunta: “Tu vas à Paris ? Tu manges du chocolat ?” O aluno responde só com y ou en: “Oui, j’y vais ! Oui, j’en mange !”
+# tabela: Y ou en ?
+Pronom | Remplace | Exemple
+y | un lieu (à, en, chez, dans) | Je vais **à Lyon**. → J’**y** vais.
+y | à + chose | Je pense **à mon voyage**. → J’**y** pense.
+en | du, de la, des + nom | Je mange **du pain**. → J’**en** mange.
+en | une quantité | J’ai **deux frères**. → J’**en** ai **deux**.
+en | de + chose / lieu | Je viens **de Paris**. → J’**en** viens.
+# explica: La place du pronom
+Antes do verbo conjugado:
+> J’**y** vais. · Je n’**y** vais pas.
+Com dois verbos, antes do infinitivo:
+> Je vais **en** acheter. · Je veux **y** aller.
+Na quantidade, o número fica **no fim**:
+> Tu as des enfants ? — Oui, j’**en** ai **trois**.
+# exercicio: Practice 1
+escolha: Tu vas à la plage ? — Oui, j’[*y/en] vais demain.
+escolha: Tu veux du café ? — Oui, j’[*en/y] veux bien.
+escolha: Il pense à ses vacances ? — Oui, il [*y/en] pense tout le temps.
+escolha: Combien de livres tu as ? — J’[*en/y] ai dix.
+escolha: Je ne [*vais pas y/y vais pas/vais y pas] aller. → Je ne vais pas y aller.
+# dialogo: Au téléphone
+A: Tu es allé au marché ce matin ?
+B: Oui, j’y suis allé à huit heures.
+A: Tu as acheté des tomates ?
+B: Oui, j’en ai acheté deux kilos.
+A: Et du fromage ?
+B: Non, je n’en ai pas acheté. Il n’y en avait plus !
+# exercicio: Practice 2
+Combien de kilos de tomates il a acheté ?
+a) un kilo
+*b) deux kilos
+c) trois kilos
+erro: Tu connais Lisbonne ? — Oui, j’{en|y} suis allé l’année dernière.
+erro: Du sucre ? Non merci, je n’{y|en} prends pas.
+lacunas: Le cinéma ? J’[y] vais tous les samedis. Des films français ? J’[en] regarde beaucoup ! || le, la
+# frase: Expressions fixes
+Il y a un problème.
+On y va !
+Je m’en vais.
+Ça y est !
+Je n’en peux plus.
+# conversa: À vous ! | img:mala
+Parlez de vos voyages : Tu es déjà allé(e) à… ? — Oui, j’y suis allé(e)…
+Qu’est-ce que vous avez dans votre frigo ? (J’en ai…)
+Utilisez trois expressions fixes dans une petite histoire.
+# tarefas: Atividades recomendadas
+Les pronoms y et en
+Les pronoms COD et COI
+Devoirs · Y ou en ?`],
+
+['FR','A2','Phonétique : les voyelles nasales et les liaisons',`# capa: Les voyelles nasales | img:microfone
+vin, vent, bon, brun… et les liaisons
+# sobre: Sobre esta aula
+ver: as **vogais nasais** do francês (**an/en** [ɑ̃], **on** [ɔ̃], **in/ain/ein** [ɛ̃]); a diferença para o português; quando o **n** se pronuncia (bon × bonne); as **liaisons** obrigatórias (les_amis, vous_avez) e proibidas (et / un)
+porque: Os brasileiros têm vantagem: o português também tem vogais nasais! Mas elas não são iguais, e confundir **vin / vent / vont** muda totalmente a palavra.
+meta: distinguir e produzir as três vogais nasais; saber quando o n soa; fazer as liaisons obrigatórias
+nivel: Nível A2 · fonética francesa
+nota: O som de cada palavra usa a voz do navegador em francês. Repitam juntos várias vezes.
+# aquecimento: Écoutez !
+jogo: Vin, vent ou vont ? | A professora diz uma das três palavras. O aluno levanta 1, 2 ou 3 dedos.
+pergunta: Quel son du français est le plus difficile pour vous ?
+musica: La Vie en rose — Édith Piaf | Escutem o título: “la vie **en** rose”. Que vogal nasal aparece ?
+# tabela: Les trois voyelles nasales
+Son | Écritures | Exemples
+[ɑ̃] | an, am, en, em | enfant, temps, chambre, vent
+[ɔ̃] | on, om | bon, nom, maison, vont
+[ɛ̃] | in, im, ain, ein, un | vin, pain, plein, lundi
+Dica: no francês, a vogal nasal **não termina** com um “m” ou “n” como no português (“bom” × **bon**).
+# vocab: Écoutez et répétez
+vin | [ɛ̃] vinho
+vent | [ɑ̃] vento
+vont | [ɔ̃] vão
+pain | [ɛ̃] pão
+pont | [ɔ̃] ponte
+temps | [ɑ̃] tempo
+# explica: Nasale ou pas ?
+Se depois do **n / m** vem uma **vogal** ou outro **n / m**, a vogal **não** é nasal:
+> **bon** [bɔ̃] × **bonne** [bɔn]
+> **an** [ɑ̃] × **année** [ane]
+> **fin** [fɛ̃] × **fine** [fin]
+Isso explica muitos masculinos × femininos: brésili**en** × brésili**enne**.
+# tabela: Les liaisons
+Obligatoire | Interdite
+les_amis [lezami] | et ‿ un ami (nunca depois de « et »)
+vous_avez [vuzave] | un garçon ‿ intelligent (substantivo singular)
+un_enfant [œ̃nɑ̃fɑ̃] | les ‿ héros (h aspirado)
+# exercicio: Practice 1
+grupos: [ɑ̃]: enfant, temps, vent / [ɔ̃]: bon, maison, pont / [ɛ̃]: vin, pain, lundi
+Quel mot a le son [ɔ̃] ?
+a) vin
+*b) vont
+c) vent
+« Bonne » a une voyelle nasale. (f)
+# exercicio: Practice 2 · Dictée
+ditado: Le vin blanc est bon.
+ditado: Mes enfants ont un an.
+ditado: Vous avez du pain ?
+# frase: Virelangues
+Un grand plat plein de pain blanc.
+Le vent vient vite.
+Ton thé t’a-t-il ôté ta toux ?
+Les amis arrivent en avion.
+# conversa: À vous ! | img:microfone
+Lisez les phrases et les virelangues trois fois, de plus en plus vite.
+Dites cinq mots avec chaque voyelle nasale.
+Enregistrez-vous et comparez avec l’audio.
+# tarefas: Atividades recomendadas
+Les voyelles nasales
+Liaisons et lettres muettes
+Devoirs · Les sons nasals`]
+);
+
 var SLIDES_LOADED=true;
