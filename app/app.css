@@ -1445,3 +1445,32 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
   body.kf-printing .kf-pg{break-after:page;max-width:none}body.kf-printing .kf-img{box-shadow:none}body.kf-printing .kf-pg .btn{display:none}
   body.modal-printing #app{display:none!important}body.modal-printing .scrim{position:static;background:none;padding:0}body.modal-printing .modal{box-shadow:none;max-width:none;width:100%;padding:0}body.modal-printing .actions{display:none}
 }
+/* Kids: barra de filtros */
+.kf-bar{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px;position:sticky;top:70px;z-index:5;box-shadow:0 6px 18px rgba(34,28,30,.06)}
+.ktabs{display:flex;gap:6px;flex-wrap:wrap}
+.ktabs button{border:0;background:var(--surface-2);color:var(--ink);border-radius:12px;padding:10px 16px;font:700 15px var(--body);cursor:pointer}
+.ktabs button span{font-weight:600;color:var(--ink-3);font-size:13px;margin-left:2px}
+.ktabs button.on{background:var(--ink);color:var(--paper)}.ktabs button.on span{color:var(--paper);opacity:.75}
+.kf-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.kseg{display:flex;background:var(--surface-2);border-radius:12px;padding:3px}
+.kseg button{border:0;background:none;border-radius:9px;padding:8px 12px;font:700 14px var(--body);color:var(--ink);cursor:pointer}
+.kseg button small{font-weight:500;font-size:11px}
+.kseg button.on{background:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.ksearch{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--paper);border-radius:12px;padding:0 12px}
+.ksearch svg{width:18px;height:18px;color:var(--ink-3);flex:none}.ksearch input{border:0!important;background:none!important;padding:10px 0!important;outline:none;width:100%}
+.kchk{display:flex;gap:6px;align-items:center;font-weight:600;font-size:14px}
+.kaud{font-size:12px}
+@media (max-width:720px){.kf-bar{position:static}.kseg button{padding:7px 8px;font-size:13px}}
+/* Aulas Kids */
+.kd{display:flex;flex-direction:column;gap:12px}
+.kd-page{max-width:600px;width:100%}
+.kd-thumbs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px}
+.kd-thumbs button{flex:none;border:0;background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;font:600 11px var(--body);color:var(--ink-3)}
+.kd-th{display:block;width:84px;aspect-ratio:1000/1414;border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.14);background:#fff}.kd-th svg{width:100%;height:100%;display:block}
+.kd-thumbs button.on .kd-th{outline:3px solid #7a1f35;outline-offset:2px}
+.kd-print{display:none}
+.kd.kb-fs .kd-page{max-width:min(600px,62vh)}
+@media print{
+  body.kd-printing #app>*:not(main),body.kd-printing .kd>*:not(.kd-print){display:none!important}
+  body.kd-printing .kd-print{display:block}.kd-pp{break-after:page;width:210mm;height:297mm}.kd-pp svg{width:210mm;height:297mm}
+}

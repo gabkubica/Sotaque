@@ -55,7 +55,7 @@ function kPage(th,title,sub,body,o={}){ const T=KIDS_THEMES[th]||{ic:o.ic||'star
   return `<svg class="kp-svg" viewBox="0 0 1000 1414" xmlns="http://www.w3.org/2000/svg"><rect width="1000" height="1414" fill="#fff"/>
     ${o.noHead? '' : `<rect x="36" y="32" width="928" height="168" rx="40" fill="${c}"/>
       <circle cx="878" cy="116" r="74" fill="#fff" opacity=".7"/>${kE(ic,818,56,120)}
-      ${kT(78,114,title,{s:title.length>24? 46 : 58})}${kT(80,160,sub,{s:23,b:false,c:'#6a5e61',f:KFS})}`}
+      ${kT(78,114,title,{s:title.length>28? 40 : title.length>19? 46 : 58})}${kT(80,160,sub,{s:23,b:false,c:'#6a5e61',f:KFS})}`}
     ${o.name===false||o.noHead? '' : `<text x="560" y="244" font-family="${KFS}" font-size="22" fill="#6a5e61">Name:</text><line x1="632" y1="248" x2="958" y2="248" stroke="#a99fa3" stroke-width="2"/>`}
     ${body}${kT(500,1394,'Sotaque Kids · ilustrações Fluent Emoji (Microsoft, MIT) · © Gabriel Kubica',{s:14,b:false,c:'#b2a7aa',a:'middle',f:KFS})}</svg>`; }
 const kShuf=(a,R)=>{ a=a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(R.r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
@@ -313,28 +313,33 @@ const kidsTitle=(kind,theme)=>{ const S=KIDS_SHEETS[kind]; return S? `${S.n} · 
 function kidsLessonFor(sid){ const L=(DB.lessons||[]).filter(l=>l.studentId===sid&&l.status!=='cancelada');
   return L.filter(l=>isLive(l)||Math.abs(l.start-now())<2*HOUR)[0] || L.filter(l=>l.status==='agendada'&&l.start>now()).sort((a,b)=>a.start-b.start)[0] || L.filter(l=>l.start<=now()).sort((a,b)=>b.start-a.start)[0] || null; }
 function kidsUse(sid,mat,quiet){ const l=kidsLessonFor(sid); if (!l){ if (!quiet) toast('Este aluno ainda não tem aula na agenda.'); return null; }
-  const title= mat.k==='livro'? 'Livrinho: '+(kbookById(mat.t)?.title||'') : mat.k==='file'? (kfileById(mat.t)?.name||'Material') : kidsTitle(mat.k,mat.t);
+  const title= mat.k==='kaula'? 'Aula Kids: '+(kdeckById(mat.t)?.title||'') : mat.k==='livro'? 'Livrinho: '+(kbookById(mat.t)?.title||'') : mat.k==='file'? (kfileById(mat.t)?.name||'Material') : kidsTitle(mat.k,mat.t);
   l.mats ||= []; if (!l.mats.some(m=>m.k===mat.k&&m.t===mat.t)) l.mats.push({k:mat.k,t:mat.t,s:mat.s||0,title}); save();
   if (!quiet) toast(`Ligado à aula de ${fDay.format(l.start)} de ${user(sid).name.split(' ')[0]}`); return l; }
-function matChips(l){ if (!l.mats?.length) return ''; const href=m=>m.k==='livro'? '#livro-'+m.t : m.k==='file'? '#kfile-'+m.t : `#kids-${m.k}-${m.t}-${m.s||0}`;
+function matChips(l){ if (!l.mats?.length) return ''; const href=m=>m.k==='kaula'? '#kaula-'+m.t : m.k==='livro'? '#livro-'+m.t : m.k==='file'? '#kfile-'+m.t : `#kids-${m.k}-${m.t}-${m.s||0}`;
   return `<div class="tl-mats">${l.mats.map(m=>{ const ic=m.k==='livro'? '📖' : '📄'; return isT()||m.k==='livro'? `<a class="tl-deck tl-mat" href="${href(m)}">${ic} ${esc(m.title)}</a>` : `<span class="tl-deck tl-mat">${ic} ${esc(m.title)}</span>`; }).join('')}</div>`; }
 
 /* ---------- telas (aba Kids da Biblioteca) ---------- */
 const kidsStudents=()=>students().filter(s=>s.kids);
-const kidsList=(age,cat)=>Object.entries(KIDS_SHEETS).filter(([,S])=>(!age||S.ages.includes(age))&&(!cat||S.c===cat)).sort((a,b)=>(b[1].ages.includes('a9')+b[1].ages.includes('a7'))-(a[1].ages.includes('a9')+a[1].ages.includes('a7'))||0);
+const kidsList=(age,cat,q,aud)=>Object.entries(KIDS_SHEETS).filter(([,S])=>!S.hidden&&(!age||S.ages.includes(age))&&(!cat||S.c===cat)&&(!aud||S.audio)&&(!q||(S.n+' '+S.d).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes(q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')))).sort((a,b)=>(b[1].ages.includes('a9')+b[1].ages.includes('a7'))-(a[1].ages.includes('a9')+a[1].ages.includes('a7'))||0);
 function viewKids(){ if (!isT()) return '';
-  const cat=S.kcat||'', age=S.kage||'', th=S.kth||'pets', K=kidsStudents(), list=kidsList(age,cat);
+  const tab=S.ktab||'ativ', cat=S.kcat||'', age=S.kage||'', th=S.kth||'pets', q=S.kq||'', aud=!!S.kaud, K=kidsStudents(), list=kidsList(age,cat,q,aud);
+  const nB=(typeof KIDS_BOOKS!=='undefined'? KIDS_BOOKS : []).filter(b=>!age||b.age===age).length, nD=(typeof KIDS_DECKS!=='undefined'? KIDS_DECKS : []).filter(d=>!age||d.age===age).length, nF=typeof kfilesMine==='function'? kfilesMine().length : 0;
+  const tabs=[['ativ','Atividades',kidsList(age,'','',false).length],['aulas','Aulas Kids',nD],['livros','Livrinhos',nB],['meus','Meus materiais',nF]];
   return `${libHeader('kids')}<div class="kids">
     ${K.length? `<section class="kids-alunos"><div class="kids-al">${K.map(s=>`<a class="kids-a" href="#caderno-${s.id}" style="${sVars(s)}">${avatar(s,44)}<span><b>${esc(s.name.split(' ')[0])}${s.age? ` · ${s.age} anos` : ''}</b><small>Abrir o caderno digital</small></span></a>`).join('')}</div></section>`
       : `<div class="notice"><div>Para usar o caderno digital, cadastre uma criança em <b>Alunos → + Novo aluno</b> e marque <b>Aluno Kids</b>.</div></div>`}
-    <div class="kids-f">
-      <div class="chips" role="group" aria-label="Idade">${[['','Todas as idades'],...Object.entries(KIDS_AGES)].map(([k,l])=>`<button class="chip-b ${age===k?'on':''}" data-act="k-age" data-v="${k}">${l}</button>`).join('')}</div>
-      <div class="chips" role="group" aria-label="Tipo">${[['','Todos os tipos'],...Object.entries(KIDS_CATS)].map(([k,l])=>`<button class="chip-b sm ${cat===k?'on':''}" data-act="k-cat" data-v="${k}">${l}</button>`).join('')}</div></div>
-    ${age? `<p class="meta">${KIDS_AGES[age]}: ${KIDS_AGES_D[age]}.</p>` : ''}
-    ${typeof kidsBooksShelf==='function'? kidsBooksShelf(age) : ''}${typeof kidsFilesHtml==='function'? kidsFilesHtml() : ''}
-    <div class="panel-h"><h2>Atividades para imprimir e colar no caderno</h2></div>
-    <p class="meta muted">${list.length} tipos de material · as ilustrações são do Fluent Emoji (Microsoft, licença livre MIT).</p>
-    <div class="kids-grid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<a class="kids-card" href="#kids-${k}-${t}-0"><span class="kids-th-img">${kidsSheetSvg(k,t)}</span><b>${esc(S0.n)}</b><small>${S0.ages.map(a=>KIDS_AGES[a].replace(' anos','')).join(' · ')} anos · ${esc(S0.d)}</small></a>`; }).join('')}</div></div>`; }
+    <div class="kf-bar">
+      <nav class="ktabs" aria-label="Seção Kids">${tabs.map(([k,l,n])=>`<button class="${tab===k?'on':''}" data-act="k-tab" data-v="${k}">${l} <span>${n}</span></button>`).join('')}</nav>
+      <div class="kf-row"><div class="kseg" role="group" aria-label="Idade">${[['','Todas'],...Object.entries(KIDS_AGES)].map(([k,l])=>`<button class="${age===k?'on':''}" data-act="k-age" data-v="${k}">${l.replace(' anos','')}${k? ' <small>anos</small>' : ''}</button>`).join('')}</div>
+        ${tab==='ativ'||tab==='aulas'? `<label class="ksearch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" data-ksearch="1" value="${esc(q)}" placeholder="${tab==='ativ'? 'Buscar: rimas, relógio, bingo…' : 'Buscar tema…'}"></label>` : ''}</div>
+      ${tab==='ativ'? `<div class="kf-row"><div class="chips" role="group" aria-label="Tipo">${[['','Todos os tipos'],...Object.entries(KIDS_CATS)].map(([k,l])=>`<button class="chip-b sm ${cat===k?'on':''}" data-act="k-cat" data-v="${k}">${l}</button>`).join('')}</div>
+        <label class="kchk"><input type="checkbox" data-kaud="1" ${aud?'checked':''}> Só com áudio 🔈</label>
+        <label class="kids-th">Figuras de <select data-kth="1">${Object.entries(KIDS_THEMES).map(([k,t])=>`<option value="${k}" ${th===k?'selected':''}>${esc(t.pt)}</option>`).join('')}</select></label></div>` : ''}
+      ${age? `<p class="meta" style="margin:0">${KIDS_AGES[age]}: ${KIDS_AGES_D[age]}.</p>` : ''}</div>
+    ${tab==='livros'? (typeof kidsBooksShelf==='function'? kidsBooksShelf(age) : '') : tab==='meus'? (typeof kidsFilesHtml==='function'? kidsFilesHtml() : '') : tab==='aulas'? (typeof kidsDecksHtml==='function'? kidsDecksHtml(age) : '')
+      : `<p class="meta muted">${list.length} ${list.length===1? 'atividade' : 'atividades'}${q? ` para “${esc(q)}”` : ''} · ilustrações do Fluent Emoji (Microsoft, MIT)</p>
+    <div class="kids-grid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<a class="kids-card" href="#kids-${k}-${t}-0"><span class="kids-th-img">${kidsSheetSvg(k,t)}</span><b>${esc(S0.n)}${S0.audio? ' <span class="kaud" title="Tem áudio">🔈</span>' : ''}</b><small>${S0.ages.map(a=>KIDS_AGES[a].replace(' anos','')).join(' · ')} anos · ${esc(S0.d)}</small></a>`; }).join('')}</div>`}</div>`; }
 function viewKidsSheet(kind,theme,seed){ const S0=KIDS_SHEETS[kind]; if (!S0) return `${libHeader('kids')}<div class="panel"><p>Material não encontrado.</p></div>`;
   const opts=S0.opts||Object.fromEntries(Object.entries(KIDS_THEMES).map(([k,t])=>[k,t.pt])), K=kidsStudents(), sid=S.kstu&&user(S.kstu)? S.kstu : K[0]?.id||'';
   const song=kind==='musica'? KIDS_SONGS[theme]||KIDS_SONGS.head : null;
@@ -348,19 +353,20 @@ function viewKidsSheet(kind,theme,seed){ const S0=KIDS_SHEETS[kind]; if (!S0) re
       ${song? `<a class="btn small ghost" href="https://www.youtube.com/results?search_query=${encodeURIComponent(song.busca)}" target="_blank" rel="noopener">Ouvir no YouTube ↗</a>` : ''}</div>
     <div class="kp-page">${kidsSheetSvg(kind,theme,{seed:+seed||0})}</div></div>`; }
 /* escolher atividade dentro do caderno: já filtra pela idade da criança */
-function kidsPickerHtml(){ const s=user(CD.sid), age=S.kpage!==undefined? S.kpage : kidsAgeOf(s), th=S.kth||'pets', list=kidsList(age,'').filter(([k])=>!['bingo','memoria','domino','tabuleiro','separar','flash','minilivro','cartao','mascara','quebra','certificado','estrelas'].includes(k));
+function kidsPickerHtml(){ const s=user(CD.sid), age=S.kpage!==undefined? S.kpage : kidsAgeOf(s), th=S.kth||'pets', list=kidsList(age,'','',false).filter(([k])=>!['bingo','memoria','domino','tabuleiro','separar','flash','minilivro','cartao','mascara','quebra','certificado','estrelas'].includes(k));
   return `<div class="cd-bgs"><b>Idade</b>${[['','Todas'],...Object.entries(KIDS_AGES)].map(([k,l])=>`<button class="${age===k?'on':''}" data-cd="kage" data-v="${k}">${l}</button>`).join('')}</div>
     <div class="cd-bgs"><b>Tema</b>${Object.entries(KIDS_THEMES).map(([k,t])=>`<button class="${th===k?'on':''}" data-cd="kth" data-v="${k}">${esc(t.pt)}</button>`).join('')}</div>
     <div class="cd-grid cd-agrid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<button class="cd-gi cd-ai" data-cd="addact" data-k="${k}" data-t="${t}"><span>${kidsSheetSvg(k,t)}</span><small>${esc(S0.n)}</small></button>`; }).join('')}</div>
     <div class="cd-bgs"><b>Alfabeto: traçar a letra</b>${Object.keys(KIDS_ABCW).map(l=>`<button data-cd="addact" data-k="letra" data-t="${l}">${l.toUpperCase()} ${l}</button>`).join('')}</div>`; }
 const KIDS_ACT={
-  'k-cat'(el){ S.kcat=el.dataset.v; render(); }, 'k-age'(el){ S.kage=el.dataset.v; render(); }, 'k-th'(el){ S.kth=el.dataset.v; render(); },
+  'k-cat'(el){ S.kcat=el.dataset.v; render(); }, 'k-age'(el){ S.kage=el.dataset.v; render(); }, 'k-th'(el){ S.kth=el.dataset.v; render(); }, 'k-tab'(el){ S.ktab=el.dataset.v; render(); },
   'k-seed'(){ const r=S.route; location.hash=`kids-${r.kind}-${r.theme}-${(+r.seed||0)+1}`; },
   'k-use'(el){ const sid=$('[data-kstu]')?.value; if (sid) kidsUse(sid,{k:el.dataset.k,t:el.dataset.t,s:+el.dataset.s}); },
   'k-cad'(el){ const sid=$('[data-kstu]')?.value; if (!sid) return; const c=cadOf(sid), p=cadNewPage(sid,'branca');
     p.items.push({id:'i'+uid(),t:'act',kind:el.dataset.k,theme:el.dataset.t,seed:+el.dataset.s||0,x:0,y:0,w:CAD_W,h:CAD_H,r:0}); c.pages.push(p.id);
     kidsUse(sid,{k:el.dataset.k,t:el.dataset.t,s:+el.dataset.s},true); save(); toast('Colado numa página nova do caderno'); location.hash='caderno-'+sid; setTimeout(()=>{ if (CD.sid===sid) cadGo(cadPages(sid).length-1); },60); },
 };
-document.addEventListener('change',e=>{ const el=e.target;
+document.addEventListener('input',e=>{ const el=e.target; if (el.dataset?.ksearch){ S.kq=el.value; const pos=el.selectionStart; render(); const n=$('[data-ksearch]'); if (n){ n.focus(); try { n.setSelectionRange(pos,pos); } catch {} } } });
+document.addEventListener('change',e=>{ const el=e.target; if (el.dataset?.kaud!=null){ S.kaud=el.checked; render(); } if (el.dataset?.kth){ S.kth=el.value; render(); }
   if (el.dataset?.kopt){ const r=S.route; location.hash=`kids-${r.kind}-${el.value}-${r.seed||0}`; }
   if (el.dataset?.kstu){ S.kstu=el.value; } });

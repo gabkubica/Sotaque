@@ -221,7 +221,18 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 - **Atividades mais completas** (`kids-mais.js`): Look and answer (Is it…? Yes, it is), cena da sala com perguntas
   (where/how many), jogo dos erros, ficha do animal com leitura e perguntas (16 animais), charadas, Can or can’t,
   rotina com relógios, compras com preços, tempo da semana, leia e desenhe o monstro, história em sequência,
-  quiz com figuras, All about me, árvore da família, descreva a figura, a/an/some. 61 tipos no total.
+  quiz com figuras, All about me, árvore da família, descreva a figura, a/an/some.
+- **Mais 30 atividades** (`kids-aulas.js`): rimas, som inicial, padrões, gráfico de figuras, formas e cores das formas,
+  opostos, sentimentos, Simon says (comandos), comida saudável, onde vive o animal, roupa e tempo, letrinhas, números por
+  extenso, monte o rosto, jogo da velha, roleta, fantoches de dedo, marcador de página, plural, preposições (in/on/under),
+  que horas são, dias da semana, estações, alfabeto, leia e desenhe, entrevista, diário, o que está errado, adjetivos.
+  91 tipos no total.
+- **Filtros da aba Kids**: abas Atividades · Aulas Kids · Livrinhos · Meus materiais, idade, busca (rimas, relógio,
+  bingo…), tipo (vocabulário, escrever e traçar, jogos, músicas, arte e prêmios, ler e entender), “Só com áudio” e tema.
+- **Aulas Kids** (slides de apresentação, rota `#kaula-<id>`): 69 aulas prontas (cada tema em 3 idades + Hello,
+  cores, números, formas e ABC), com capa, vocabulário com áudio, “point to…”, sombra, frase modelo, música, jogo,
+  atividade e tchau. Apresentar em tela cheia, imprimir, ligar à aula e **colar a aula toda (ou só uma página) no
+  caderno digital** (no caderno: Inserir → Aulas Kids).
 - **Capa do caderno**: botão “Capa” na barra; 16 cores, 18 fundos (espaço, fundo do mar, dinossauros, unicórnio, arco-íris,
   confete…), 6 etiquetas, 3 letras, título com sugestões, linha de baixo, lombada, nome e personagem principal.
 - **Apresentação → aula**: ao escolher o aluno em “Aula para”, a apresentação vai para a aula marcada perto de agora,

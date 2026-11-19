@@ -216,6 +216,7 @@ function parseHash(){
   if ((m=h.match(/^caderno-([a-z0-9]+)$/))) return {name:'caderno',id:m[1]};
   if (h==='kids') return {name:'kids'};
   if ((m=h.match(/^livro-(\d+)$/))) return {name:'livro',id:m[1]};
+  if ((m=h.match(/^kaula-([a-z0-9]+)$/))) return {name:'kaula',id:m[1]};
   if ((m=h.match(/^kfile-([a-z0-9]+)$/))) return {name:'kfile',id:m[1]};
   if ((m=h.match(/^kids-([a-z0-9]+)-([a-z0-9]+)-(\d+)$/))) return {name:'kidsSheet',kind:m[1],theme:m[2],seed:+m[3]};
   if (h==='ao-vivo') return {name:'aoVivo'};
@@ -282,7 +283,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['kids','kidsSheet','livro','kfile','print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
+  const HW=['tarefas','tarefa','nova'], LIB=['kids','kidsSheet','livro','kfile','kaula','print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${me.kids? '' : navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -1955,6 +1956,7 @@ function render(){
   else if (r.name==='kids') main=viewKids();
   else if (r.name==='kidsSheet') main=viewKidsSheet(r.kind,r.theme,r.seed);
   else if (r.name==='livro') main=viewBook(r.id);
+  else if (r.name==='kaula') main=viewKdeck(r.id);
   else if (r.name==='kfile') main=viewKfile(r.id);
   else main=viewToday();
   document.documentElement.lang= uiLang()==='en'? 'en' : 'pt-BR';
@@ -2276,4 +2278,4 @@ go();
 if (REAL) cloudStart();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo','caderno','kids','kidsSheet','livro','kfile'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo','caderno','kids','kidsSheet','livro','kfile','kaula'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
