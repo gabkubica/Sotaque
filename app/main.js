@@ -55,7 +55,7 @@ const MODE=window.SOTAQUE_MODE==='real'? 'real' : 'demo', REAL=MODE==='real';
 const KEY= REAL? 'sotaque:real' : 'sotaque:v2', ME_KEY= REAL? 'sotaque:real:me' : 'sotaque:me', PASS='sotaque123';
 const genPass=()=>{ const c='abcdefghjkmnpqrstuvwxyz23456789'; let x=''; for (let i=0;i<8;i++) x+=c[Math.floor(Math.random()*c.length)]; return x; };
 /* Sotaque real: sem alunos de exemplo; atividades, provas, flashcards e aulas prontas ficam */
-function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:14,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
+function seedReal(){ return {users:[],lessons:[],packages:[],requests:[],tasks:[],bank:seedBank(),bankV:15,conq:[],certs:[],cando:{},settings:{},trailV:TRAIL_V,placeV:1,contV:1,flashp:{},aulas:[],pdfs:[],dev:{}}; }
 const lsGet=k=>{ try { return localStorage.getItem(k); } catch { return null; } };
 const lsSet=(k,v)=>{ try { localStorage.setItem(k,v); return true; } catch { return false; } };
 const lsDel=k=>{ try { localStorage.removeItem(k); } catch {} };
@@ -101,7 +101,7 @@ function seedData(){
     packages.push({id:uid(),studentId:s.id,size:s.pkgSize,price:s.price,paid:s.paid,createdAt:T-DAY*(3+si*4),paidAt:s.paid? T-DAY*(2+si*4) : null});
   });
   const users=[{id:'prof',name:'Professora',email:'professora@sotaque.app',pass:PASS,role:'teacher',lang:'EN',fem:true},{id:'prof2',name:'Professor',email:'professor@sotaque.app',pass:PASS,role:'teacher',lang:'FR',fem:false},...studs.map(({weeks,pkgSize,left,price,paid,...s})=>s)];
-  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:14,conq:[],certs:[],cando:{},settings:{
+  return {users,lessons,packages,requests,tasks:seedTasks(),bank:seedBank(),bankV:15,conq:[],certs:[],cando:{},settings:{
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
@@ -565,28 +565,47 @@ function ttsVoices(lang){
   const pre=lang==='FR'? 'fr' : 'en', best=lang==='FR'? ['fr-FR','fr-CA'] : ['en-GB','en-US'];
   return speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().replace('_','-').startsWith(pre)).sort((a,b)=>(best.indexOf(a.lang)+1||9)-(best.indexOf(b.lang)+1||9));
 }
-function ttsStop(){ if (ttsOk()) speechSynthesis.cancel(); ttsCur=null; document.querySelectorAll('.aud.on').forEach(e=>e.classList.remove('on')); }
+function ttsStop(){ if (ttsOk()) speechSynthesis.cancel(); if (AUDEL){ AUDEL.onended=null; AUDEL.pause(); } clearTimeout(AUDGAP); ttsCur=null; document.querySelectorAll('.aud.on').forEach(e=>e.classList.remove('on')); }
+/* áudios gravados (voz neural, arquivos mp3): tocam dentro da página, então entram no compartilhamento
+   de tela do Meet quando a professora compartilha a guia com "Compartilhar áudio da guia".
+   CLIPS[chave] = endereço do mp3; quando falta algum pedaço, o navegador lê em voz alta como antes. */
+const CLIPS={};
+let AUDEL=null, AUDGAP=0;
+const clipKey=(lang,who,ch)=>'c'+hashStr(lang+'|'+who+'|'+ch.trim()).toString(36);
+function audParts(text){ const parts=[];
+  for (const ln of String(text).split('\n').map(x=>x.trim()).filter(Boolean)){ const m=ln.match(/^([AB]):\s*(.+)$/), who=m&&m[1]==='B'? 1 : 0;
+    for (const ch of (m? m[2] : ln).split(/(?<=[.!?…»”])\s+/)) if (ch.trim()) parts.push([who,ch]); }
+  return parts; }
 /* velocidade: vale para todos os áudios e dá para mudar no meio, que a fala recomeça da frase em que estava */
 const RATE_KEY='sotaque:rate', RATES=[.75,1,1.5];
 let ttsRate=RATES.includes(+lsGet(RATE_KEY))? +lsGet(RATE_KEY) : 1;
 /* linhas "A:" e "B:" viram duas vozes; frases longas vão em pedaços (alguns navegadores cortam falas longas) */
 function speak(key,from=0){
   const a=AUD[key]; if (!a) return;
-  if (!ttsOk()){ toast('Este navegador não lê em voz alta. Tente no Chrome, no Edge ou no Safari.'); return; }
+  const parts=audParts(a.text), clips=parts.map(([who,ch])=>CLIPS[clipKey(a.lang,who,ch)]);
+  if (!clips.every(Boolean)&&!ttsOk()){ toast('Este navegador não lê em voz alta. Tente no Chrome, no Edge ou no Safari.'); return; }
   ttsStop();
-  const vs=ttsVoices(a.lang), run={key,i:from}, parts=[];
-  for (const ln of a.text.split('\n').map(x=>x.trim()).filter(Boolean)){ const m=ln.match(/^([AB]):\s*(.+)$/), who=m&&m[1]==='B'? 1 : 0;
-    for (const ch of (m? m[2] : ln).split(/(?<=[.!?…»”])\s+/)) if (ch.trim()) parts.push([who,ch]); }
+  const run={key,i:from}, done=()=>{ if (ttsCur===run){ ttsCur=null; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.remove('on')); } };
   ttsCur=run; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.add('on'));
-  parts.forEach(([who,ch],i)=>{ if (i<from) return;
-    const u=new SpeechSynthesisUtterance(ch);
-    u.lang= a.lang==='FR'? 'fr-FR' : 'en-GB';
-    if (vs.length) u.voice=vs[Math.min(who,vs.length-1)];
-    u.pitch= who&&vs.length<2? 1.3 : 1; u.rate=ttsRate*.95;
-    u.onstart=()=>{ if (ttsCur===run) run.i=i; };
-    if (i===parts.length-1) u.onend=()=>{ if (ttsCur===run){ ttsCur=null; document.querySelectorAll(`.aud[data-k="${key}"]`).forEach(e=>e.classList.remove('on')); } };
-    speechSynthesis.speak(u);
-  });
+  if (parts.length&&clips.every(Boolean)){
+    AUDEL ||= new Audio();
+    const play=i=>{ if (ttsCur!==run) return; if (i>=parts.length){ done(); return; }
+      run.i=i; AUDEL.src=clips[i]; AUDEL.playbackRate=ttsRate; AUDEL.preservesPitch=true;
+      AUDEL.onended=()=>{ AUDGAP=setTimeout(()=>play(i+1), parts[i+1]&&parts[i+1][0]!==parts[i][0]? 350 : 180); };
+      AUDEL.play().catch(()=>{ if (ttsCur===run){ done(); toast('Não consegui tocar o áudio. Clique de novo.'); } }); };
+    play(from);
+  } else {
+    const vs=ttsVoices(a.lang);
+    parts.forEach(([who,ch],i)=>{ if (i<from) return;
+      const u=new SpeechSynthesisUtterance(ch);
+      u.lang= a.lang==='FR'? 'fr-FR' : 'en-GB';
+      if (vs.length) u.voice=vs[Math.min(who,vs.length-1)];
+      u.pitch= who&&vs.length<2? 1.3 : 1; u.rate=ttsRate*.95;
+      u.onstart=()=>{ if (ttsCur===run) run.i=i; };
+      if (i===parts.length-1) u.onend=done;
+      speechSynthesis.speak(u);
+    });
+  }
   if (from) return;
   a.plays=(a.plays||0)+1; document.querySelectorAll(`.aud[data-k="${key}"] .aud-n`).forEach(e=>e.textContent=`ouvido ${a.plays}×`);
 }
@@ -2222,7 +2241,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if 
 if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
 if (REAL){ baseDB(); S.cloudLoading=true; }
 else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
-else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==14){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=14; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
+else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==15){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=15; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
   if (!DB.decks){ ensureFlash(); seedFlashDemo(); }

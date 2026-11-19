@@ -2913,3 +2913,504 @@ At the doctor: symptoms and advice
 At the doctor
 Should, must, have to`],
 );
+/* ---------- leva: A1 / A2 (frequência, horas, direções, roupas, pronomes, futuro) ---------- */
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'How often? Adverbs in sentences',i:'Advérbios de frequência: a posição certa na frase.',q:[
+    PICK('I [*always get up/get always up/get up always] at seven.'),
+    PICK('She is [*never late/late never/never is late] for work.'),
+    PICK('How often [*do you go/you go/are you go] to the gym?'),
+    FIX('He {goes never|never goes} to the cinema.'),
+    FIX('We {usually are|are usually} tired on Mondays.'),
+    SEQ('I usually wake up at 7.\nThen I have a quick shower.\nI often eat bread for breakfast.\nI always take the bus to work.','Put Lia’s morning in order.'),
+    KWT('I go swimming on Monday, Wednesday and Friday.','TIMES','I go swimming three ___ a week.','times')]},
+  {l:'EN',lv:'A2',tp:'Vocabulário',t:'Directions: follow the map',i:'Peça e dê direções na cidade.',q:[
+    PICK('Go [*straight on/straight in/right on] until the traffic lights.'),
+    PICK('The bank is [*next to/next/near of] the post office.'),
+    PICK('Turn [*left/to left/at left] at the corner.'),
+    ['A tourist asks: “Excuse me, where’s the station?” You answer:',['Go down this street and turn right. It’s on your left.','Yes, I’m a station.','It’s ten o’clock.'],0],
+    CLOZE('The café is [between] the bank and the pharmacy, [opposite] the park.','under, inside'),
+    FIX('Excuse me, {where is the museum, please|where the museum is, please}?'),
+    DIT('Take the second street on the left.')]},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Will or going to? Choose and explain',i:'Planos, decisões na hora e previsões.',q:[
+    PICK('Look at those clouds! It’s [*going to rain/will rain/rains].'),
+    PICK('“The phone is ringing.” “I [*’ll answer/’m going to answer/answer] it!”'),
+    PICK('I’ve bought the tickets. We [*’re going to see/’ll see/see] a concert on Friday.'),
+    SORT('Plans (going to): I’m going to study medicine, We’re going to move in May\nInstant decisions (will): I’ll have the soup, I’ll help you with that'),
+    FIX('Maybe it {is going to be|will be} sunny next week. I hope so!'),
+    KWT('My plan is to visit my aunt on Sunday.','GOING','I ___ my aunt on Sunday.','am going to visit/’m going to visit')]},
+);
+SLIDES_SEED.push(
+['EN','A1','Adverbs of frequency: how often?',`# capa: How often? | img:relogio
+A1 · always, usually, sometimes, never
+# sobre: Sobre esta aula
+ver: os advérbios **always, usually, often, sometimes, rarely, never**; a posição na frase; a pergunta **How often…?**; once, twice, three times a week
+porque: Falar da **rotina e dos hábitos** é uma das primeiras conversas reais em inglês. A posição do advérbio é diferente do português e é um erro muito comum (“I go always…”).
+meta: dizer com que frequência faz as coisas; perguntar How often…?; colocar o advérbio no lugar certo
+nivel: Nível A1
+# aquecimento: My week
+musica: Every Breath You Take — The Police | “Every breath you take, every move you make…” Uma música inteira sobre hábitos!
+filme: Groundhog Day (1993) | Phil vive o mesmo dia sempre. “He always wakes up at 6 am.” | busca: Groundhog Day alarm clock scene
+jogo: True or false? | Diga 3 hábitos seus com always, sometimes e never. Um deles é mentira. O outro adivinha!
+pergunta: What do you always do in the morning?
+# explica: From 100% to 0%
+**always** (100%) → **usually** → **often** → **sometimes** → **rarely** → **never** (0%)
+> I **always** brush my teeth before bed.
+> She **sometimes** works on Saturdays.
+> We **never** eat meat.
+# tabela: Where does it go?
+Rule | Position | Example
+Most verbs | **before** the verb | I **usually** drink coffee.
+Verb to be | **after** be | She **is** always happy.
+Questions | How often + do/does…? | **How often** do you cook?
+# exercicio: Practice 1 · Position
+escolha: I [*often play/play often] football with my friends.
+escolha: They [*are never/never are] at home on Sundays.
+escolha: He [*sometimes watches/watches sometimes] TV after dinner.
+erro: My mother {cooks always|always cooks} on Sundays.
+# vocab: Expressions of frequency
+once a week | uma vez por semana | img:relogio
+twice a month | duas vezes por mês | img:relogio
+every day | todos os dias | img:sol
+on weekends | nos fins de semana | img:bicicleta
+# dica: Cuidado!
+x: I go always to the gym.
+ok: I always go to the gym.
+x: She never is late.
+ok: She is never late.
+x: How many times you go?
+ok: How often do you go?
+# dialogo: A healthy life?
+A: How often do you exercise?
+B: I usually go running three times a week.
+A: Wow! I rarely exercise. I’m always tired after work.
+B: Do you ever walk to work?
+A: Sometimes, when it isn’t raining.
+# exercicio: Practice 2 · How often?
+lacunas: I go to the dentist [twice] a year. || two, second
+lacunas: We visit our grandma [once] a month. || one, first
+grupos: always or usually: every day, almost every day / rarely or never: once a year, not at all
+ditado: How often do you go to the cinema?
+# tirinha: Every morning
+[relogio]
+Ana: I always wake up at six.
+Leo (surpreso): Six? Every day?
+---
+Ana (feliz): Yes! I never sleep late.
+Leo (pensando): I usually wake up at ten…
+# leitura: The world’s most regular man | img:relogio
+tipo: Curiosity
+The philosopher Immanuel Kant was famous for his routine. He **always** woke up at 5 am, he **always** drank tea and he **never** missed his afternoon walk.
+His walk was so regular that people in his town **often** set their clocks by it! He **rarely** travelled and **never** left his home region.
+Are you like Kant? What do you do **every day** at the same time?
+# pergunta: Quick check
+Which sentence is correct?
+I go never to parties.
+*I never go to parties.
+I never am going to parties.
+# conversa: How often? | img:relogio
+How often do you check your phone?
+What do you never do on weekends?
+What do you usually eat for breakfast?
+# resumo: Summary
+- **always, usually, often, sometimes, rarely, never**
+- Before most verbs: I **usually** walk. · After **be**: I’m **always** late.
+- **How often** do you…? → once / twice / three times a week
+# tarefas: Atividades recomendadas
+Adverbs of frequency
+How often? Adverbs in sentences
+Dictation: my daily routine`],
+['EN','A1','What time is it? Telling the time',`# capa: What time is it? | img:relogio
+A1 · o’clock, half past, quarter to
+# sobre: Sobre esta aula
+ver: perguntar e dizer as horas; **o’clock, half past, quarter past/to**; o jeito digital (7:45 = seven forty-five); **at** + hora; am e pm
+porque: Marcar compromissos, pegar transporte e combinar encontros dependem de entender as horas, e o inglês “conta” os minutos de um jeito diferente do português.
+meta: dizer as horas dos dois jeitos; perguntar a hora com educação; combinar um horário
+nivel: Nível A1
+# aquecimento: Rock around the clock
+musica: Rock Around the Clock — Bill Haley | “One, two, three o’clock, four o’clock rock!” Conte as horas com a música.
+filme: Back to the Future (1985) | O relógio da torre: “10:04 pm!” Tudo depende da hora certa. | busca: Back to the Future clock tower scene
+jogo: Clock race | Um diz uma hora no relógio digital (8:15), o outro fala do jeito tradicional (quarter past eight).
+pergunta: What time do you usually get up?
+# explica: Asking the time
+> **What time is it?** / **What’s the time?**
+> Excuse me, **do you have the time?**
+> **It’s** three o’clock.
+Para um evento: **What time** does the film start? It starts **at** 8 pm.
+# tabela: Two ways to say it
+Time | Traditional | Digital
+7:00 | seven o’clock | seven
+7:15 | quarter past seven | seven fifteen
+7:30 | half past seven | seven thirty
+7:45 | quarter to eight | seven forty-five
+7:10 | ten past seven | seven ten
+7:50 | ten to eight | seven fifty
+# exercicio: Practice 1 · Say the time
+escolha: 9:30 = [*half past nine/half past ten/half to nine]
+escolha: 4:45 = [*quarter to five/quarter past four/quarter to four]
+escolha: 11:15 = [*quarter past eleven/quarter to eleven/fifteen to eleven]
+escolha: 6:00 = [*six o’clock/six hours/six clock]
+# dica: Cuidado!
+x: It’s 8 hours.
+ok: It’s eight o’clock.
+x: The class starts in 7 pm.
+ok: The class starts at 7 pm.
+x: What hours are they?
+ok: What time is it?
+# vocab: Parts of the day
+in the morning | de manhã | img:amanhecer
+at noon | ao meio-dia | img:sol
+in the afternoon | à tarde | img:xicara
+in the evening | no começo da noite | img:noite
+at night | à noite | img:cama
+# dialogo: Making plans
+A: What time does the film start?
+B: At half past seven.
+A: OK. Let’s meet at quarter past seven, in front of the cinema.
+B: Perfect. See you there!
+# exercicio: Practice 2 · Complete
+lacunas: The bus leaves [at] ten past nine [in] the morning. || on, to
+lacunas: It’s seven thirty. = It’s [half] [past] seven. || quarter, to
+ditado: The meeting starts at quarter to ten.
+# tirinha: Late again
+[relogio]
+Leo: What time is it?
+Ana: It’s quarter to nine.
+---
+Leo (surpreso): Quarter to nine? My class starts at nine!
+Ana (feliz): Run!
+# leitura: Time around the world | img:globo
+tipo: Curiosity
+When it’s **twelve o’clock** in London, it’s **nine in the morning** in São Paulo and **nine at night** in Tokyo.
+China is a very big country, but it uses only one time zone. In the far west, the sun sometimes rises at **ten o’clock**!
+And Spain? Many people have lunch at **half past two** and dinner at **ten at night**.
+# conversa: Your day | img:relogio
+What time do you get up on weekdays? And on weekends?
+What time do you usually have dinner?
+What is your favourite time of the day? Why?
+# resumo: Summary
+- **What time is it?** → **It’s** half past six.
+- **past** (minutos depois) · **to** (minutos antes) · **o’clock** (hora cheia)
+- Digital: 6:45 = six forty-five · **at** + hora: at 7 pm
+# tarefas: Atividades recomendadas
+Telling the time
+In, on, at · time`],
+['EN','A2','Directions: getting around town',`# capa: Getting around town | img:cidade
+A2 · Excuse me, where’s the station?
+# sobre: Sobre esta aula
+ver: lugares da cidade; **preposições de lugar** (next to, opposite, between); imperativos para direções (**go straight on, turn left**); como pedir ajuda com educação
+porque: Em viagem, a primeira conversa “de verdade” com um desconhecido costuma ser pedir uma direção. Entender a resposta, rápida e cheia de preposições, é o grande desafio.
+meta: perguntar onde fica um lugar; entender e dar direções simples; descrever onde um lugar fica
+nivel: Nível A2
+# aquecimento: Lost in the city
+musica: Where the Streets Have No Name — U2 | Uma cidade sem nomes de rua: como pedir direção?
+filme: Home Alone 2 (1992) | Kevin sozinho em Nova York pede ajuda para chegar ao hotel. | busca: Home Alone 2 Kevin arrives in New York scene
+jogo: Guide me! | Um fecha os olhos e o outro dá direções pela sala: “Go straight on. Stop! Turn left.”
+pergunta: Do you use a map app or do you ask people for directions?
+# vocab: Places in town
+the station | a estação | img:trem
+the bank | o banco | img:envelope
+the pharmacy | a farmácia | img:planta
+the bus stop | o ponto de ônibus | img:onibus
+the museum | o museu | img:arcos
+the supermarket | o supermercado | img:legumes
+# explica: Where is it?
+> The bank is **next to** the café.
+> The museum is **opposite** the park. (do outro lado, em frente)
+> The pharmacy is **between** the bank and the school.
+> The bus stop is **on the corner**.
+> It’s **near** here. / It’s **far from** here.
+# tabela: Giving directions
+Instruction | Meaning
+Go straight on / along this street | Siga reto
+Turn left / turn right | Vire à esquerda / à direita
+Take the second street on the right | Pegue a segunda rua à direita
+Go past the church | Passe a igreja
+It’s on your left | Fica à sua esquerda
+# exercicio: Practice 1 · Directions
+escolha: Go [*straight on/straight in/right on] for two blocks.
+escolha: Turn right [*at/in/on] the traffic lights.
+escolha: The café is [*opposite/opposite of/in front] the station.
+erro: The hotel is {next of|next to} the museum.
+# dialogo: Excuse me!
+A: Excuse me, how do I get to the museum?
+B: Go along this street and turn left at the bank.
+A: Turn left at the bank. OK.
+B: Then go past the park. The museum is on your right, opposite the café.
+A: Is it far?
+B: No, it’s about five minutes on foot.
+# dica: Cuidado!
+x: Where is the station, please, you know?
+ok: Excuse me, do you know where the station is?
+x: Turn in the left.
+ok: Turn left.
+x: It’s in front of the park. (= do outro lado da rua)
+ok: It’s opposite the park.
+# exercicio: Practice 2 · Polite questions
+reescreva: Where is the bank? | KNOW | Excuse me, do you ___ the bank is? | know where
+lacunas: The pharmacy is [between] the bank [and] the school. || next, of
+ditado: Take the second street on the left.
+# tirinha: Lost tourist
+[cidade]
+Leo: Excuse me, where’s the station?
+Bia: Go straight on and turn right.
+---
+Leo (pensando): Straight on… and right?
+Bia (feliz): Yes! It’s opposite the bank.
+---
+Leo (feliz): Thank you so much!
+# leitura: A city without street names | img:cidade
+tipo: Curiosity
+In Tokyo, most streets **don’t have names**! Addresses use numbered areas and blocks, so even taxi drivers **often** need a map.
+Japanese people usually give directions with **landmarks**: “Go past the convenience store, turn left **at** the temple, and it’s **next to** the ramen shop.”
+How do people give directions in your city? With street names or with landmarks?
+# conversa: Your neighbourhood | img:casa
+What’s next to your house or building?
+How do you get from your home to the nearest supermarket?
+What’s the best place to visit in your city? How do I get there?
+# resumo: Summary
+- **Excuse me, how do I get to…? / where is…?**
+- **go straight on · turn left/right · go past · take the second street**
+- **next to · opposite · between · on the corner · near**
+# tarefas: Atividades recomendadas
+Directions in the city
+Directions: follow the map
+Places in town
+Word games: around town`],
+['EN','A2','Shopping for clothes',`# capa: Shopping for clothes | img:camiseta
+A2 · Can I try it on?
+# sobre: Sobre esta aula
+ver: roupas e acessórios; frases da loja (**Can I try it on? Do you have it in a medium?**); **How much is it / are they?**; this/that/these/those; it × them
+porque: Comprar roupa é uma situação muito comum em viagens e no dia a dia, com frases prontas que, uma vez aprendidas, resolvem quase tudo.
+meta: pedir um tamanho ou uma cor; perguntar o preço; experimentar e decidir
+nivel: Nível A2
+# aquecimento: What are you wearing?
+musica: Thrift Shop — Macklemore | Uma música inteira sobre comprar roupas baratas (versão “clean”).
+filme: Pretty Woman (1990) | Vivian volta à loja que a tratou mal: “Big mistake. Huge!” | busca: Pretty Woman big mistake huge scene
+jogo: I spy clothes | “I spy something blue…” Descreva uma roupa de alguém na chamada; o outro adivinha.
+pergunta: Do you prefer shopping online or in a store?
+# vocab: Clothes
+a jacket | uma jaqueta | img:jaqueta
+a dress | um vestido | img:vestido
+a skirt | uma saia | img:saia
+trousers / jeans | calça | img:calca
+a T-shirt | uma camiseta | img:camiseta
+shoes | sapatos | img:sapato
+# frase: In the shop
+Can I help you?
+I’m just looking, thanks.
+Do you have this in a medium?
+Can I try it on?
+Where are the changing rooms?
+I’ll take it.
+# explica: It or them? How much?
+Uma peça → **it** · Duas partes ou plural → **them** (trousers, jeans, shoes)
+> I like this jacket. Can I try **it** on?
+> These jeans are nice. Can I try **them** on?
+> How much **is** this dress? · How much **are** these shoes?
+# tabela: This, that, these, those
+ | Near (here) | Far (there)
+One thing | **this** shirt | **that** shirt
+Many things | **these** shoes | **those** shoes
+# exercicio: Practice 1 · In the shop
+escolha: How much [*are/is] these trousers?
+escolha: I love [*those/that] shoes over there!
+escolha: These boots are nice. Can I try [*them/it] on?
+erro: Can I {prove|try on} this dress?
+# dialogo: At the shop
+A: Hi! Can I help you?
+B: Yes, please. Do you have this shirt in a large?
+A: Yes, here you are. The changing rooms are over there.
+B: Thanks. … It’s perfect! How much is it?
+A: It’s thirty-five dollars.
+B: Great, I’ll take it.
+# dica: Cuidado!
+x: I want to prove this jacket.
+ok: I want to try on this jacket.
+x: How much is these shoes?
+ok: How much are these shoes?
+x: This jeans are cheap.
+ok: These jeans are cheap.
+# exercicio: Practice 2 · Complete
+lacunas: Excuse me, do you have [this] skirt in a [small]? || these, little
+grupos: it: a dress, a coat, a hat / them: jeans, shoes, trousers
+ditado: Can I pay by card?
+# tirinha: The right size
+[camiseta]
+Mia: Can I try this T-shirt on?
+Tom: Sure. The changing rooms are there.
+---
+Mia (triste): It’s too small. Do you have it in a medium?
+Tom (feliz): Yes, here you are!
+# leitura: The little black dress | img:vestido
+tipo: Fashion story
+In 1926, the French designer Coco Chanel made a **simple black dress**. People said it was too plain, but soon everybody wanted one!
+Today, the “little black dress” is a classic. You can wear **it** to work, to a party or to dinner. Change the **shoes** and the bag, and it’s a new look.
+Is there a piece of clothing you can wear everywhere?
+# conversa: You and fashion | img:camiseta
+What are you wearing right now?
+What was the last thing you bought? Where did you buy it?
+Do you like going shopping? Why or why not?
+# resumo: Summary
+- **Can I try it/them on? · Do you have it in a medium? · I’ll take it.**
+- **How much is** (one) / **How much are** (plural)
+- **this/that** (one) · **these/those** (many) · trousers, jeans, shoes = plural
+# tarefas: Atividades recomendadas
+Clothes and shopping
+Colours and clothes
+Shopping`],
+['EN','A2','Object pronouns: me, him, her, them',`# capa: Object pronouns | img:coracao
+A2 · I love her. She loves me.
+# sobre: Sobre esta aula
+ver: **me, you, him, her, it, us, them**; sujeito × objeto (I/me, she/her…); pronomes depois de verbos e de preposições (with me, for her)
+porque: Em português dizemos “eu vi ela”, mas em inglês o pronome muda de forma depois do verbo. É um erro que aparece em quase toda conversa (“I saw she”).
+meta: usar o pronome certo depois do verbo e da preposição; não repetir nomes; entender frases de músicas e filmes
+nivel: Nível A2
+# aquecimento: Love songs
+musica: I Want It That Way — Backstreet Boys | Procure os pronomes: “Tell **me** why…”, “I want **it** that way”.
+filme: Notting Hill (1999) | “I’m also just a girl, standing in front of a boy, asking **him** to love **her**.” | busca: Notting Hill just a girl standing in front of a boy scene
+jogo: Who is it? | Descreva alguém sem dizer o nome: “I see **him** every day. I work with **him**.” O outro adivinha.
+pergunta: Who do you call when you have a problem?
+# tabela: Subject and object
+Subject (antes do verbo) | Object (depois do verbo)
+I | me
+you | you
+he | him
+she | her
+it | it
+we | us
+they | them
+# explica: After verbs and prepositions
+Depois do **verbo**:
+> I love **her**. She calls **me** every day.
+Depois de **preposições** (with, for, to, about…):
+> Come **with us**! · This gift is **for him**. · Talk **to them**.
+Não repita o nome:
+> I met Ana yesterday. I like **her** a lot.
+# exercicio: Practice 1 · Choose
+escolha: Can you help [*me/I] with this box?
+escolha: I don’t know Tom. Who is [*he/him]?
+escolha: My parents are great. I talk to [*them/they] every day.
+escolha: Listen to [*us/we]!
+erro: I saw {she|her} at the supermarket.
+# dica: Cuidado!
+x: Me and my sister live in Rio.
+ok: My sister and I live in Rio.
+x: She sent a message to I.
+ok: She sent a message to me.
+x: I love she.
+ok: I love her.
+# dialogo: Gossip at work
+A: Do you know the new manager?
+B: Yes! I had lunch with him yesterday.
+A: Really? What do you think of him?
+B: I like him. He gave us a day off on Friday!
+A: Wow. Tell me more!
+# exercicio: Practice 2 · Rewrite
+reescreva: I gave the book to Maria. | HER | I gave the book to ___. | her
+reescreva: We play football with Leo and Tom. | THEM | We play football with ___. | them
+lacunas: My brother and [I] love pizza. Mom makes it for [us] every Friday. || me, we
+ditado: Can you call me tomorrow?
+# tirinha: The present
+[presente]
+Ana: Is this present for me?
+Leo (feliz): Yes, it’s for you!
+---
+Ana (surpreso): Oh, I love it! Thank you!
+Leo (feliz): My sister helped me. Thank her too!
+# leitura: The letter that waited 50 years | img:envelope
+tipo: True story style
+In 1970, a young soldier wrote a love letter to his girlfriend. He sent **it**, but the letter never arrived. Fifty years later, a postman found **it** behind an old wall.
+The postman looked for the woman and finally found **her**. She opened the letter and smiled: “He wrote **me** a poem!” The soldier was now her husband, and they read **it** together.
+Have you ever received a letter or a message that surprised **you**?
+# conversa: People in your life | img:coracao
+Who do you talk to every day? What do you talk about?
+Who taught you to cook, to swim or to drive?
+Which famous person would you like to meet? What would you ask him or her?
+# resumo: Summary
+- **me, you, him, her, it, us, them** → depois do verbo e da preposição
+- I love **her** · Come with **us** · It’s for **them**
+- Sujeito: **My friend and I**… (não “me and my friend”)
+# tarefas: Atividades recomendadas
+Object pronouns
+Subject pronouns
+Possessive pronouns`],
+['EN','A2','Will or going to? Plans and predictions',`# capa: Will or going to? | img:balao
+A2+ · I’m going to travel. I’ll help you!
+# sobre: Sobre esta aula
+ver: **going to** para planos e para previsões com evidência; **will** para decisões na hora, promessas, ofertas e opiniões sobre o futuro; I think / probably
+porque: O português usa uma forma só (“vou viajar”, “eu te ajudo”), mas o inglês escolhe entre will e going to pela **intenção**. Escolher certo deixa o inglês muito mais natural.
+meta: falar de planos; fazer previsões; oferecer ajuda e decidir na hora
+nivel: Nível A2+
+# aquecimento: The future
+musica: I Will Always Love You — Whitney Houston | Uma promessa: “I **will** always love you.”
+filme: Back to the Future Part II (1989) | Marty vai para 2015. Quais previsões deram certo? | busca: Back to the Future 2 2015 hoverboard scene
+jogo: Fortune teller | Leia a “mão” do colega e faça previsões: “You’ll travel to Japan. You’ll meet someone famous.”
+pergunta: What are you going to do this weekend?
+# explica: Going to
+**Planos** (já decidi antes):
+> I’m **going to** study medicine next year.
+> We’re **going to** visit Grandma on Sunday.
+**Previsão com evidência** (estou vendo):
+> Look at the sky! It’s **going to** rain.
+# explica: Will
+**Decisão na hora:**
+> “The phone’s ringing.” “I’**ll** get it!”
+**Oferta e promessa:**
+> I’**ll** help you with your bags. · I **won’t** tell anyone.
+**Opinião sobre o futuro** (I think, probably):
+> I think robots **will** do most jobs in 2050.
+# tabela: Will × going to
+Situation | Form | Example
+Plan | going to | I’m going to buy a car.
+Prediction (I can see it) | going to | Careful! You’re going to fall!
+Instant decision | will | I’ll have the chicken, please.
+Promise / offer | will | I’ll call you tonight.
+Opinion (I think…) | will | I think it’ll be fun.
+# exercicio: Practice 1 · Choose
+escolha: I’m hungry. I think I [*’ll make/’m going to make] a sandwich.
+escolha: She has bought a guitar. She [*’s going to learn/’ll learn] to play it.
+escolha: Watch out! That glass [*is going to fall/will fall]!
+escolha: Don’t worry, I [*won’t forget/’m not going to forget] your birthday. I promise!
+# dica: Cuidado!
+x: I will to travel next month.
+ok: I’m going to travel next month.
+x: “It’s cold.” “I’m going to close the window.” (decidiu agora)
+ok: “It’s cold.” “I’ll close the window.”
+x: She wills come.
+ok: She will come.
+# dialogo: Weekend plans
+A: What are you going to do this weekend?
+B: I’m going to visit my parents in the countryside.
+A: Nice! Are you going to drive?
+B: No, I’m going to take the bus. I think it’ll be quicker.
+A: Have fun! I’ll send you the photos from the party.
+# exercicio: Practice 2 · Plans and decisions
+grupos: going to: I’m going to move in May, We’re going to get married / will: I’ll answer the door, I’ll have a coffee
+reescreva: My plan is to paint the kitchen. | GOING | I ___ the kitchen. | am going to paint/’m going to paint
+ditado: I think it will be a great year.
+# tirinha: Dark clouds
+[nuvem]
+Tom: Look at those clouds!
+Mia (preocupado): It’s going to rain.
+---
+Tom (pensando): I don’t have an umbrella…
+Mia (feliz): Don’t worry. I’ll share mine!
+# leitura: Predictions that went wrong | img:lampada
+tipo: Curiosity
+In 1943, a famous businessman said: “I think there **will** be a world market for maybe five computers.” Today, there are billions!
+In 1977, another said people **wouldn’t** want a computer at home. And many experts thought the internet **was going to** be just a passing fad.
+What do you think **will** happen in the next twenty years? Be careful, you may be wrong too!
+# conversa: Your future | img:balao
+What are you going to do next year?
+Do you think people will live on Mars one day?
+What will be different in your city in ten years?
+# resumo: Summary
+- **going to** → planos e previsões com evidência
+- **will** → decisões na hora, ofertas, promessas, opiniões (I think…)
+- **will/won’t + verbo** (sem to): I’ll help · She won’t come
+# tarefas: Atividades recomendadas
+Will or going to?
+Will or going to? Choose and explain
+Will: predictions, offers and decisions
+Going to · plans`],
+);

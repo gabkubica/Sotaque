@@ -103,6 +103,11 @@ function viewSlidesPrint(id){
     <p class="no-print meta muted" style="margin:0 0 14px">A apostila tem um slide por página. Para salvar em PDF, escolha “Salvar como PDF” no lugar da impressora (de preferência na horizontal).</p>
     <div class="sl-book">${list.map((x,i)=>`<div class="sl-page"><div class="sl-stage">${slideHtml(x,{lang:d.lang,level:d.level,rev:x.t!=='pergunta',key:'pdf'+d.id+i,print:true,prof:ME()?.name})}</div></div>`).join('')}</div>`;
 }
+/* ---------- áudios gravados de cada aula pronta (app/audio/<id>.json, gerados por scripts/audios.py) ---------- */
+const AUD_BASE=(()=>{ try { return new URL('audio/',document.currentScript.src).href; } catch { return 'audio/'; } })();
+const AUD_LOADED={};
+function slAudio(d){ if (!d?.seed||AUD_LOADED[d.id]) return; AUD_LOADED[d.id]=1;
+  fetch(AUD_BASE+d.id+'.json').then(r=>r.ok? r.json() : {}).then(j=>{ for (const [k,v] of Object.entries(j)) CLIPS[k]='data:audio/mpeg;base64,'+v; }).catch(()=>{ AUD_LOADED[d.id]=0; }); }
 /* ---------- aulas prontas e as da professora ---------- */
 const slSeed=()=>(typeof SLIDES_SEED!=='undefined'? SLIDES_SEED : []).map(([lang,level,title,src])=>({id:'sd'+hashStr(lang+title).toString(36),lang,level,title,src,seed:true}));
 const slDecks=()=>slSeed().concat((DB.slides||[]).filter(d=>d.teacherId===S.me)).filter(d=>d.lang===myLang());
@@ -117,19 +122,20 @@ function viewSlidesLib(){
     <div class="bgrid">${shown.map(d=>{ const n=slidesParse(d.src).length; return `<article class="bcard"><a class="bcard-art" href="#slides-${d.id}">${slCover(d)}<span class="lvl">${d.level}</span></a>
       <div class="bcard-b"><b>${esc(d.title)}</b><small>${n} slides${d.seed? '' : ' · criada por você'}</small><div class="row-btns" style="margin-top:6px"><a class="btn small primary" href="#slides-${d.id}">Apresentar</a><a class="btn small" href="#slides-ed-${d.id}">${d.seed? 'Copiar e editar' : 'Editar'}</a></div></div></article>`; }).join('')}</div>`;
 }
+function slNavRest(P,list,s){ return `<button class="btn small" data-act="sl-board" title="Lousa: página em branco para escrever">Lousa</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button>`; }
 function viewSlidesPlay(id){
   const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#aula">Aulas</a></div>';
   const list=slidesParse(d.src); if (!S.sl||S.sl.id!==id) S.sl={id,i:0,rev:false,live:S.sl?.live&&S.sl.id===id};
   const P=S.sl; P.i=Math.max(0,Math.min(P.i,list.length-1)); const s=list[P.i]; if (!s) return '<div class="panel"><p>Esta aula ainda não tem slides.</p></div>';
-  slLink(d);
+  slLink(d); slAudio(d);
   const counts=P.live&&s.t==='pergunta'? Object.values(LIVE.ans[P.i]||{}).reduce((a,x)=>{ a[x.v]=(a[x.v]||0)+1; return a; },{}) : null;
   const ansList=P.live? Object.values(LIVE.ans[P.i]||{}) : [];
   return `<div class="sl-wrap">
     <div class="sl-top"><a class="link" href="#aula">← Aulas</a><b class="grow">${esc(d.title)}</b>
-      <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
+      <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-som" title="Como o aluno ouve os áudios pelo Meet">🔊 Som no Meet</button><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
-    <div class="sl-stage" id="sl-stage">${slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
-      ${inkSvg(d.id+':'+P.i,DB.ink?.[d.id+':'+P.i],true)}<div class="sl-nav"><button class="btn small sl-tool ${S.draw?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button>${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small ${S.inkT==='hl'||S.inkT==='tx'?'':'on'}" data-act="sl-tool" data-t="pen" title="Caneta">Caneta</button><button class="btn small ${S.inkT==='hl'?'on':''}" data-act="sl-tool" data-t="hl" title="Marca-texto">Marca-texto</button><button class="btn small ${S.inkT==='tx'?'on':''}" data-act="sl-tool" data-t="tx" title="Escrever: clique no slide onde quer o texto">Texto</button><button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}<button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button></div></div>
+    <div class="sl-stage" id="sl-stage">${P.board? `<div class="sl sl-lousa"><span class="sl-brand"><b>Sotaque</b> · © Gabriel Kubica · Todos os direitos reservados</span></div>` : slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
+      ${inkSvg(inkKey(),DB.ink?.[inkKey()],true)}<div class="sl-tools">${S.draw? `${INK_COLORS.map(c=>`<button class="sl-dot ${(S.inkC||INK_COLORS[0])===c?'on':''}" style="background:${c}" data-act="sl-color" data-c="${c}" aria-label="Cor"></button>`).join('')}<button class="btn small ${S.inkT==='hl'||S.inkT==='tx'?'':'on'}" data-act="sl-tool" data-t="pen" title="Caneta">Caneta</button><button class="btn small ${S.inkT==='hl'?'on':''}" data-act="sl-tool" data-t="hl" title="Marca-texto">Marca-texto</button><button class="btn small" data-act="sl-undo" title="Desfazer">↶</button><button class="btn small" data-act="sl-clear">Limpar</button>` : ''}</div><div class="sl-nav"><button class="btn small sl-tool ${S.draw&&S.inkT!=='tx'?'on':''}" data-act="sl-draw" title="Desenhar no slide">✎</button><button class="btn small sl-tool sl-tw ${S.draw&&S.inkT==='tx'?'on':''}" data-act="sl-write" title="Escrever no slide: clique onde quer o texto">T</button><button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button>${P.board? `<button class="btn small primary" data-act="sl-board">← Voltar ao slide ${P.i+1}</button>` : slNavRest(P,list,s)}</div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
     <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
@@ -213,9 +219,9 @@ function viewLive(){
     ${p.slide.t==='pergunta'&&!p.rev? `<p class="meta muted">${pick!=null? 'Resposta enviada. Dá para trocar até a professora mostrar a certa.' : 'Toque na sua resposta.'}</p>` : ''}</div>`;
 }
 const SLIDE_ACT={
-  'sl-next'(){ const n=slidesParse(slById(S.sl.id).src).length; if (S.sl.i<n-1){ S.sl.i++; S.sl.rev=false; ttsStop(); render(); liveSlide(); } },
-  'sl-prev'(){ if (S.sl.i>0){ S.sl.i--; S.sl.rev=false; ttsStop(); render(); liveSlide(); } },
-  'sl-go'(el){ S.sl.i=+el.dataset.k; S.sl.rev=false; ttsStop(); render(); liveSlide(); },
+  'sl-next'(){ const n=slidesParse(slById(S.sl.id).src).length; if (S.sl.i<n-1){ S.sl.i++; S.sl.board=false; S.sl.rev=false; ttsStop(); render(); liveSlide(); } },
+  'sl-prev'(){ if (S.sl.i>0){ S.sl.i--; S.sl.board=false; S.sl.rev=false; ttsStop(); render(); liveSlide(); } },
+  'sl-go'(el){ S.sl.i=+el.dataset.k; S.sl.board=false; S.sl.rev=false; ttsStop(); render(); liveSlide(); },
   'sl-rev'(){ S.sl.rev=!S.sl.rev; render(); liveSlide(); },
   'sl-live'(){ S.sl.live=!S.sl.live; if (S.sl.live){ LIVE.ans={}; liveEnsure(); liveSlide(); toast('Aula ao vivo ligada'); } else LIVE.send?.({k:'end'}); render(); },
   'sl-full'(){ if (document.fullscreenElement||document.body.classList.contains('sl-fs')){ document.exitFullscreen?.().catch(()=>{}); document.body.classList.remove('sl-fs'); } else { document.body.classList.add('sl-fs'); const R=document.documentElement; try { const f=R.requestFullscreen||R.webkitRequestFullscreen; const p=f&&f.call(R); p?.catch?.(()=>{}); } catch {} } },
@@ -245,6 +251,7 @@ document.addEventListener('fullscreenchange',()=>{ if (!document.fullscreenEleme
 window.addEventListener('hashchange',()=>{ if (!/^#slides-[a-z0-9]+$/.test(location.hash)&&document.body.classList.contains('sl-fs')){ document.body.classList.remove('sl-fs'); document.exitFullscreen?.().catch(()=>{}); } });
 
 /* ---------- desenho por cima do slide (fica salvo à parte, não entra na apostila) ---------- */
+const inkKey=()=>S.sl.id+':'+(S.sl.board? 'lousa' : S.sl.i);
 const INK_COLORS=['#c0392b','#2b6cb0','#1f6440','#e0a020','#221c1e'];
 const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-opacity="${st.o||1}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
 /* textos digitados ficam numa camada HTML (o SVG estica e deformaria as letras) */
@@ -253,10 +260,19 @@ const inkSvg=(key,list,edit)=>{ const L=list||[];
   return `<svg class="sl-ink ${edit&&S.draw?'on':''} ${edit&&S.draw&&S.inkT==='tx'?'tx':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${L.filter(st=>st.t!=='tx').map(inkPath).join('')}</svg>`
     +(L.some(st=>st.t==='tx')? `<div class="sl-txl ${edit&&S.draw&&S.inkT==='tx'?'on':''}" ${edit? `data-inkl="${key}"` : ''}>${L.map((st,k)=>st.t==='tx'? inkTx(st,k,edit) : '').join('')}</div>` : ''); };
 Object.assign(SLIDE_ACT,{
-  'sl-draw'(){ S.draw=!S.draw; render(); },
+  'sl-draw'(){ if (S.draw&&S.inkT==='tx') S.inkT='pen'; else S.draw=!S.draw; render(); },
+  'sl-write'(){ if (S.draw&&S.inkT==='tx') S.draw=false; else { S.draw=true; S.inkT='tx'; } render(); },
+  'sl-board'(){ S.sl.board=!S.sl.board; if (S.sl.board&&!S.draw){ S.draw=true; S.inkT='tx'; } ttsStop(); render(); },
+  'sl-som'(){ openModal(`<h2>Para o aluno ouvir os áudios pelo Meet</h2>
+    <ol class="sl-somlist"><li>No Meet, clique em <b>Apresentar agora</b> e escolha <b>Uma guia</b> (no Chrome: “Guia do Chrome”), não a tela inteira.</li>
+      <li>Escolha a guia do Sotaque e deixe ligado <b>Compartilhar áudio da guia</b>.</li>
+      <li>Pronto: quando você clicar em ▶ Ouvir, o áudio toca para você e para o aluno.</li></ol>
+    <p class="meta">As aulas prontas em inglês têm áudios gravados com voz neural, que vão junto no compartilhamento da guia. O som não vai quando você compartilha a <b>tela inteira</b> no Mac; no Windows, só vai se marcar “Compartilhar áudio do sistema”.</p>
+    <p class="meta muted">Nas aulas que você criou e nas de francês, quem lê é a voz do navegador, que fica fora da guia. Nesses casos, se precisar, leia em voz alta ou peça para o aluno abrir a tarefa no aparelho dele.</p>
+    <div class="actions"><button class="btn primary" data-act="close">Entendi</button></div>`); },
   'sl-color'(el){ S.inkC=el.dataset.c; render(); },
-  'sl-undo'(){ const k=S.sl.id+':'+S.sl.i, L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
-  'sl-clear'(){ const k=S.sl.id+':'+S.sl.i; if (DB.ink?.[k]?.length&&confirm('Apagar os desenhos e textos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
+  'sl-undo'(){ const k=inkKey(), L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
+  'sl-clear'(){ const k=inkKey(); if (DB.ink?.[k]?.length&&confirm(S.sl.board? 'Apagar tudo o que está na lousa?' : 'Apagar os desenhos e textos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
 });
 let SLINK=null;
 /* ferramenta Texto: clique no slide abre uma caixa; Enter salva, Shift+Enter quebra a linha, Esc cancela.
