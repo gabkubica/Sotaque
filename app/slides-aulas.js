@@ -1357,3 +1357,173 @@ Leo (feliz): Moi aussi, j’y suis allé l’année dernière !`,['Oui, j’y su
     TF('Dans « et un ami », on fait la liaison après « et ».',false),
     'Enregistrez-vous en lisant les virelangues de la leçon. Écrivez cinq mots avec chaque voyelle nasale.']}
 );
+
+/* ---------- homeworks do lote 5 (gramática, fonética e temas) ---------- */
+CONT_HW.push(
+  {l:'EN',lv:'B1',t:'Homework · As soon as…',i:'Lição de casa: ouça a mensagem de voz e responda.',a:`Hi Marta, it's Jo. Just a quick message about the trip. I'll call you as soon as I land in Lisbon, probably around eight. When I get to the hotel, I'll send you the address. Please don't leave home until I call, because the traffic near the airport is terrible in the evening. Before you come, could you buy some water? Oh, and once we've had dinner, let's go and see the old town. I'll book the restaurant when I know what time you can arrive. See you soon!`,q:[
+    ['When will Jo call Marta?',['as soon as Jo lands','before the trip','at midnight'],0],['What will Jo send when they get to the hotel?',['a photo','the address','the bill'],1],
+    ['Why shouldn’t Marta leave home before the call?',['the traffic is terrible','it’s raining','the hotel is closed'],0],TF('They will see the old town before dinner.',false),
+    ['I’ll call you when I ___ home.',['get','will get','got'],0],['Please send the report ___ Friday.',['by','until'],0],
+    GAP('Don’t go out until it ___ (stop) raining.','stops'),
+    'Write a message to a friend about your plans for tomorrow (60–80 words) using when, as soon as, before and until.']},
+  {l:'EN',lv:'B2',t:'Homework · I should have known',i:'Lição de casa: ouça a história e escreva sobre um arrependimento.',a:`Last summer, I planned a surprise trip to Paris for my partner's birthday. I should have checked the passports before booking, but I didn't. Two days before the trip, we discovered that my partner's passport had expired. We could have paid for an emergency passport, but it was too expensive. In the end, we went to a lovely hotel in the countryside instead. Honestly, it was a great weekend. But I would have saved a lot of money if I had checked first. And my partner? Well, they said I shouldn't have planned a surprise without asking!`,q:[
+    ['What was the plan?',['a surprise trip to Paris','a party at home','a trip to London'],0],['What was the problem?',['the passport had expired','the flight was cancelled','the hotel was full'],0],
+    ['Why didn’t they get an emergency passport?',['it was too expensive','it was impossible','they forgot'],0],TF('The weekend in the countryside was a disaster.',false),
+    ['I ___ the passports before booking. (crítica)',['should have checked','should check','could checked'],0],['We ___ a taxi, but we walked. (possibilidade)',['could have taken','should take','would take'],0],
+    GAP('You should ___ told me earlier!','have'),
+    'Write about a decision you regret (100–120 words) using should have, shouldn’t have, could have and would have.']},
+  {l:'EN',lv:'B2',t:'Homework · She asked me…',i:'Lição de casa: ouça a entrevista e relate as perguntas.',a:`Interviewer: Good morning. So, why do you want to work for us? Candidate: I really admire your products, and I'd like to work in an international team. Interviewer: Have you ever managed a team? Candidate: Yes, I managed a team of five people at my last job. Interviewer: Can you start next month? Candidate: I need to give two weeks' notice, so yes. Interviewer: Great. Please send us your references by Friday, and don't forget to include your portfolio.`,q:[
+    ['What was the first question?',['why the candidate wanted to work there','how old the candidate was','where the candidate lived'],0],['Has the candidate managed a team?',['Yes, of five people.','No, never.'],0],
+    ['What must the candidate send by Friday?',['references and portfolio','a photo','a video'],0],
+    ['She asked me why ___ to work there.',['I wanted','did I want','do I want'],0],['He asked ___ I had ever managed a team.',['if','that','what'],0],
+    ['She told me ___ my portfolio.',['not to forget','to not forgetting','don’t forget'],0],GAP('He asked me if I ___ (can) start next month.','could'),
+    'Report a real conversation (an interview, a call or a meeting) in 100–120 words using reported questions and requests.']},
+  {l:'EN',lv:'A2',t:'Homework · Five stars',i:'Lição de casa: ouça a reclamação no chat e escreva uma avaliação.',a:`Customer service: Hello, this is Max from ShopNow. How can I help you? Customer: Hi. I ordered a pair of running shoes ten days ago, but they haven't arrived yet. Customer service: I'm sorry about that. Can I have your order number? Customer: Sure, it's 4-7-2-8-1. Customer service: Thank you. I can see your order was delayed at the warehouse. It's out for delivery now and will arrive today. As an apology, we'll give you free shipping on your next order. Customer: Oh, great. Thank you!`,q:[
+    ['What did the customer order?',['running shoes','a jacket','a phone'],0],['When did they order?',['yesterday','ten days ago','last month'],1],
+    ['Why was the order late?',['it was delayed at the warehouse','the address was wrong','it was lost'],0],['When will it arrive?',['today','tomorrow','next week'],0],
+    TF('The customer will get free shipping on the next order.',true),
+    MAT('Ligue.',[['refund','reembolso'],['shipping','frete'],['review','avaliação'],['out for delivery','saiu para entrega']]),
+    GAP('My order ___ arrived yet.','hasn’t|has not'),
+    'Write a review (50–70 words) of something you bought online: what it is, the delivery, the quality and how many stars you give.']},
+  {l:'EN',lv:'B1',t:'Homework · When in Rome',i:'Lição de casa: ouça as dicas de etiqueta e responda.',a:`Welcome to Travel Smart! Today, some quick tips for business travellers. In Japan, you should exchange business cards with both hands and take a moment to read the card. It's rude to put it in your pocket immediately. In Germany, you're expected to be on time, and it's common to use surnames until people suggest otherwise. In the United States, small talk is very normal, even with strangers, and you're expected to tip around twenty percent in restaurants. And in Brazil? Don't be surprised if people greet you with a kiss on the cheek and if parties start a little late!`,q:[
+    ['How should you exchange business cards in Japan?',['with both hands','with one hand','you shouldn’t'],0],['What is rude in Japan?',['putting the card in your pocket immediately','reading the card','bowing'],0],
+    ['In Germany, you’re expected to…',['be on time','arrive late','use first names'],0],['How much should you tip in the USA?',['around 5%','around 20%','nothing'],1],
+    TF('In Brazil, parties usually start exactly on time.',false),['It’s rude ___ late in Germany.',['to be','being','be'],0],
+    GAP('You’re expected ___ tip in American restaurants.','to'),
+    'Write tips for a foreigner visiting Brazil (80–100 words) using should, it’s polite / rude to and you’re expected to.']},
+  {l:'EN',lv:'B2',t:'Homework · Feedback that works',i:'Lição de casa: ouça a conversa de feedback e escreva o seu.',a:`Manager: Thanks for coming, Lucas. I wanted to talk about last week's client presentation. First, the research was excellent. The clients loved the market analysis. Lucas: Thanks! I worked hard on that. Manager: It showed. One thing I'd suggest is to manage the time better. In the presentation, you spent twenty minutes on the introduction, so we didn't have time for questions. Lucas: That's fair. I hadn't realised it took so long. Manager: Next time, maybe you could practise with a timer? Lucas: Good idea. I'll do that. Could we check in after the next presentation? Manager: Of course.`,q:[
+    ['What was excellent?',['the research','the slides','the timing'],0],['What was the problem?',['time management','the data','the clients'],0],
+    ['How long was the introduction?',['five minutes','ten minutes','twenty minutes'],2],['What does the manager suggest?',['practise with a timer','cancel the presentation','speak faster'],0],
+    TF('Lucas reacts defensively to the feedback.',false),['You ___ to send the email earlier.',['might want','must want','should want'],0],
+    GAP('Thanks for ___ (tell) me.','telling'),
+    'Write feedback (100–120 words) to a colleague using the SBI model: one specific piece of praise and one constructive suggestion.']}
+);
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · One, two, many',i:'Lição de casa: plurais e a / an.',q:[
+    PICK('I have [*an/a] apple and [*a/an] banana. It’s [*an/a] hour. She works at [*a/an] university.'),
+    SORT(`+ s: cars, books, apples
++ es: boxes, buses, watches
+ies: cities, babies, parties`,'Como se forma o plural?'),
+    MAT('Ligue o singular ao plural.',[['child','children'],['man','men'],['foot','feet'],['person','people']]),
+    FIX('There are three {childs|children} in the garden.'),
+    CLOZE('In my bag I have two [pens], three [books] and an [apple].','child, box'),
+    DIT('I have two boxes and three knives.'),
+    'Describe your kitchen or your bedroom: how many things are there? Write 5 sentences with plurals.']},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · I’ll do it!',i:'Lição de casa: will para ofertas, promessas e decisões.',q:[
+    COMIC(`[casa]
+Ana (cansado): These bags are so heavy!
+Leo: ___
+---
+Ana (feliz): Thanks, Leo! You’re so kind.`,['I’ll carry them for you.','I carry them for you.','I’m going to carry them yesterday.'],0),
+    PICK('— The phone’s ringing! — [*I’ll get/I get/I’m getting] it! [*Shall/Will/Do] I open the window? I promise I [*won’t/don’t] be late again.'),
+    SORT(`Offer: I’ll help you, Shall I carry it?
+Promise: I’ll call you, I won’t forget
+Decision: I’ll have the pasta, I’ll take this one`),
+    FIX('— Someone’s at the door! — {I open|I’ll open} it.'),
+    KWT('Do you want me to call a taxi?','SHALL','___ a taxi?','Shall I call'),
+    'Write 3 offers, 3 promises and 2 quick decisions in a short dialogue at home or at a restaurant.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Just a little',i:'Lição de casa: a few, a little, few, little.',q:[
+    PICK('Can I ask you [*a few/a little] questions? Add [*a little/a few] sugar. The film was boring, so [*few/a few] people stayed.'),
+    SORT(`a few: questions, friends, apples
+a little: time, money, sugar`),
+    ['“I have a few close friends” sounds…',['positive','negative'],0],['“Few people came to the party” sounds…',['positive','negative'],1],
+    FIX('I need {a few|a little} help with this.'),
+    KWT('I don’t have much time today.','LITTLE','I have very ___ today.','little time'),
+    'Describe your week (80–100 words) using a few, a little, few, little, plenty of and hardly any.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · It depends on…',i:'Lição de casa: verbos com preposição.',q:[
+    PICK('It depends [*on/of] the weather. I’m waiting [*for/–] the bus. She married [*–/with] a doctor. What are you worried [*about/of]?'),
+    SORT(`on: depend, rely, concentrate
+for: wait, look, apply
+about: worry, dream, complain`),
+    FIX('Let’s discuss {about the problem|the problem} tomorrow.'),
+    FIX('This bag belongs {at|to} my sister.'),
+    CLOZE('I applied [for] a new job. It depends [on] the interview. I’m a bit worried [about] it.','of, in'),
+    ORD('Who are you talking to'),
+    'Write 8 sentences about yourself using: depend on, worry about, listen to, wait for, agree with, dream about, rely on, complain about.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · You’d better…',i:'Lição de casa: it’s time, would rather e had better.',q:[
+    PICK('It’s high time you [*found/find] a new job. I’d rather [*stay/to stay] at home. You’d better [*hurry/to hurry]!'),
+    KWT('You should take an umbrella. It’s going to rain.','BETTER','You ___ an umbrella.','’d better take|had better take'),
+    KWT('I prefer that you don’t call me late at night.','RATHER','I’d ___ me late at night.','rather you didn’t call'),
+    KWT('We should have left already!','TIME','It’s ___ .','time we left|time to leave'),
+    FIX('We’d better {not to be|not be} late for the meeting.'),
+    COMIC(`[relogio]
+Leo (cansado): I’m so tired. I think I’ll stay up and watch another episode.
+Ana: ___
+---
+Leo: OK, OK. You’re right.`,['You’d better go to bed. You have work tomorrow!','You’d better to go to bed.','You better going to bed.'],0),
+    'Play “Would you rather…?”: write 5 questions and your answers with reasons (I’d rather… because…).']},
+  {l:'EN',lv:'C1',tp:'Escrita',t:'Homework · The formal version',i:'Lição de casa: nominalização.',q:[
+    KWT('We analysed the data carefully.','ANALYSIS','A careful ___ was carried out.','analysis of the data'),
+    KWT('Sales fell, and this worried investors.','FALL','The ___ worried investors.','fall in sales'),
+    KWT('They refused to negotiate, so the talks failed.','REFUSAL','Their ___ led to the failure of the talks.','refusal to negotiate'),
+    SORT(`-tion or -sion: decision, introduction, discussion
+-ment: improvement, development, achievement
+-ity: ability, possibility, complexity`),
+    FIX('The {develop|development} of the new system took two years.'),
+    ['Which sentence is the most formal?',['We decided to expand, which surprised everyone.','The decision to expand came as a surprise to everyone.','We were like, let’s expand!'],1],
+    'Rewrite an informal update about a project (real or invented) as a formal 120-word report paragraph, using at least five nominalisations.']},
+  {l:'EN',lv:'C1',tp:'Expressões',t:'Homework · Short and natural',i:'Lição de casa: elipse e substituição.',q:[
+    PICK('— Will it rain tomorrow? — I [*hope not/don’t hope so]. — Is the shop still open? — I’m afraid [*not/no]. — Has she finished? — Yes, she [*has/finished].'),
+    SORT(`Positive: I think so, I hope so, I’m afraid so
+Negative: I don’t think so, I hope not, I’m afraid not`),
+    KWT('— Are you coming to the party? — Yes, I think that I am coming.','SO','— Yes, I ___ .','think so'),
+    KWT('I haven’t been to Japan, but my sister has been to Japan.','HAS','I haven’t been to Japan, but my sister ___ .','has'),
+    FIX('— Is he coming? — I {don’t hope so|hope not}.'),
+    ['“Can’t complain” means…',['Things are OK.','I’m not allowed to complain.','I can’t speak.'],0],
+    'Rewrite a long, repetitive dialogue (8 lines) in a natural way, using ellipsis and substitution.']},
+  {l:'EN',lv:'A2',tp:'Pronúncia',t:'Homework · Numbers, numbers',i:'Lição de casa: números, preços e datas. Ouça e escreva!',q:[
+    DIT('The meeting is on the thirteenth at three thirty.'),DIT('It costs fifteen dollars and fifty cents.'),DIT('My flight leaves at seven fifteen from gate eighteen.'),
+    ['In “thirteen”, the stress is on…',['THIR','TEEN'],1],['In “forty”, the stress is on…',['FOR','TY'],0],
+    ['How do you say 2008?',['twenty eight','two thousand and eight','twenty zero eight'],1],
+    MAT('Ligue.',[['$4.99','four ninety-nine'],['1998','nineteen ninety-eight'],['44 (phone)','double four'],['0 (phone, UK)','oh']]),
+    'Write and record: your birthday, your phone number (real or invented), the year you started working and 3 prices from a receipt.']},
+  {l:'EN',lv:'A2',tp:'Pronúncia',t:'Homework · S sounds',i:'Lição de casa: os três sons do -s.',q:[
+    SORT(`/s/: cats, books, works, stops
+/z/: dogs, plays, lives, goes
+/ɪz/: buses, watches, boxes, washes`,'Separe pelo som do -s.'),
+    ODD('Which word has an extra syllable?',['likes','lives','kisses','plays'],2,[],'Kisses: /ɪz/ after s.'),
+    ['How many syllables are there in “watches”?',['one','two','three'],1],
+    DIT('She watches films and plays tennis.'),DIT('He fixes cars and drives buses.'),
+    'Write about the routine of someone you know (8 sentences with he/she + -s). Read it aloud and record yourself.']},
+  {l:'EN',lv:'B1',tp:'Escrita',t:'Homework · Same sound, different word',i:'Lição de casa: homófonos. Ouça e escreva!',q:[
+    PICK('[*They’re/Their/There] coming at 8. Is this [*your/you’re] bag? The company changed [*its/it’s] logo. I want to go [*too/to/two]!'),
+    MAT('Ligue.',[['hear','ouvir'],['here','aqui'],['write','escrever'],['right','certo']]),
+    FIX('I think {their|they’re} going to be late.'),
+    DIT('Their car is over there.'),DIT('You’re right, it’s too late.'),DIT('I don’t know whether the weather will be good.'),
+    'Write 6 sentences, each with at least two homophones (ex.: Their dog is over there).']},
+  {l:'EN',lv:'B1',tp:'Pronúncia',t:'Homework · Glide!',i:'Lição de casa: ditongos.',q:[
+    SORT(`/eɪ/: day, name, great
+/aɪ/: my, time, light
+/aʊ/: now, house, out
+/əʊ/: go, phone, road`,'Separe pelo ditongo.'),
+    ODD('Which word has a different vowel sound?',['great','late','eat','name'],2,[],'Eat has /iː/; the others have /eɪ/.'),
+    ['Which word rhymes with “know”?',['now','go','how'],1],
+    DIT('I know my phone is at home.'),DIT('Wait for me by the gate at eight.'),
+    'Write 6 words for each diphthong /eɪ/, /aɪ/ and /əʊ/. Record yourself saying them.']},
+  {l:'EN',lv:'B2',tp:'Cultura',t:'Homework · Two Englishes',i:'Lição de casa: inglês britânico e americano.',q:[
+    MAT('Ligue o britânico ao americano.',[['flat','apartment'],['lift','elevator'],['holiday','vacation'],['trousers','pants']]),
+    SORT(`British spelling: colour, centre, organise
+American spelling: color, center, organize`),
+    ['In American English, “water” often sounds like…',['“wa-ter” with a clear t','“wader”, with a soft d'],1],
+    FIX('(American English) Let’s take the {lift|elevator} to the 10th floor.'),
+    ODD('Which word is British English?',['cookie','vacation','biscuit','apartment'],2),
+    'Rewrite this text in American English and then in British English: “I left my trousers in the flat before the holiday, so I went to the shop in the city centre.”']},
+  {l:'EN',lv:'B1',tp:'Trabalho',t:'Homework · Would you mind…?',i:'Lição de casa: pedidos e favores no trabalho.',q:[
+    SEQ('Send me the file.\nCan you send me the file?\nCould you send me the file, please?\nWould you mind sending me the file?\nI was wondering if you could send me the file.','Do mais direto ao mais educado.'),
+    PICK('Would you mind [*helping/to help] me? I was wondering if you [*could/can] check this. — Would you mind waiting? — [*Not at all./Yes, I mind.]'),
+    KWT('Can you close the door?','MIND','Would you ___ the door?','mind closing'),
+    FIX('Would you mind {to call|calling} the client?'),
+    COMIC(`[envelope]
+Sam: Would you mind preparing the slides for Monday?
+Mia: ___
+---
+Sam (feliz): Perfect, thanks!`,['Not at all. I’ll send them on Friday.','Yes, I mind.','No, I mind.'],0),
+    'Write an email (60–80 words) delegating a task to a colleague: polite request, deadline and thanks.']},
+  {l:'EN',lv:'C1',tp:'Escrita',t:'Homework · Dear hiring manager',i:'Lição de casa: escreva a sua cover letter.',q:[
+    ['Which opening is the best?',['I am writing to apply for the position of…','When I read that your company is expanding into Mexico, I knew I wanted to be part of it.','I am a hard-working team player.'],1],
+    ['Which sentence shows a result?',['I was responsible for sales.','I increased sales by 25% in one year.','I am good at sales.'],1],
+    MAT('Ligue.',[['spearheaded','liderou'],['streamlined','otimizou'],['track record','histórico'],['align with','estar alinhado com']]),
+    FIX('I am looking forward to {hear|hearing} from you.'),
+    SEQ('When I saw your search for a product manager, I knew I had to apply.\nIn my current role, I led a team that cut costs by 18%.\nI’m particularly drawn to your work on financial inclusion.\nI’d welcome the opportunity to discuss how I could contribute.','Put the paragraphs of the letter in order.'),
+    'Write a cover letter (200–250 words) for a real or dream job: hook, two achievements with numbers, why the company, confident close.']}
+);

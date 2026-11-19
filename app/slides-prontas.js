@@ -4891,7 +4891,7 @@ escolha: If I had saved more money, I [*would be/would have been/will be] on hol
 escolha: If he [*were/had been/is] more organised, he wouldn’t have lost the documents.
 escolha: She wouldn’t be so tired now if she [*had gone/went/goes] to bed earlier.
 escolha: If I didn’t love you, I [*wouldn’t have married/wouldn’t marry/won’t marry] you!
-grupos: Past → present: If I had moved, I’d be living abroad / If I’d listened, I wouldn’t be lost / Present → past: If I were taller, I’d have played basketball / If she spoke English, she’d have understood
+grupos: Past → present: If I had moved I’d be rich now, If I’d studied I’d be a doctor / Present → past: If I were braver I’d have said yes, If she spoke English she’d have understood
 # tabela: Beyond if
 Expression | Example
 But for + noun | **But for** your help, I would have failed. (se não fosse)
@@ -5676,7 +5676,7 @@ escolha: There are [*too many/too much] apps on my phone.
 escolha: I spend [*too much/too many] money on games.
 escolha: I don’t have [*enough time/time enough] to read.
 escolha: I only have [*a few/a little] friends on social media.
-grupos: much / little: time, money, sleep / many / few: apps, messages, notifications
+grupos: much or little: time, money, sleep / many or few: apps, messages, notifications
 # imagem: What’s happening? | img:celular
 Describe the person. What are they doing?
 Is this a good habit? Why (not)?
@@ -8765,6 +8765,1098 @@ Enregistrez-vous et comparez avec l’audio.
 Les voyelles nasales
 Liaisons et lettres muettes
 Devoirs · Les sons nasals`]
+);
+
+/* ---------- lote 5: gramática, fonética e temas (inglês) ---------- */
+SLIDES_SEED.push(
+/* ===================== GRAMMAR ===================== */
+['EN','A1','Plurals and a / an: one box, two boxes',`# capa: Plurals and a / an | img:presente
+one apple, two apples · one box, two boxes · one child, two children
+# sobre: Sobre esta aula
+ver: **a** × **an** (pelo som, não pela letra: **an** hour, **a** university); plurais regulares (-s, -es, -ies, -ves); os irregulares mais comuns (men, women, children, people, feet, teeth, mice)
+porque: São erros que aparecem desde o primeiro dia: “a apple”, “two childs”, “three peoples”. Corrigir cedo evita que virem hábito.
+meta: escolher entre a e an; formar plurais regulares e irregulares; contar objetos e pessoas
+nivel: Nível A1 · gramática
+# aquecimento: How many?
+jogo: Count it! | A professora mostra (ou desenha) grupos de objetos. O aluno conta: “Three bananas! Two boxes!”
+pergunta: How many people are there in your family? How many rooms in your house?
+# explica: A or an?
+Use **an** antes de **som** de vogal e **a** antes de **som** de consoante:
+> **an** apple · **an** egg · **an** hour (o h é mudo!)
+> **a** banana · **a** university (/juː/) · **a** European city
+O que importa é o **som**, não a letra.
+# tabela: Regular plurals
+Rule | Singular → plural
+most nouns: + s | book → books · car → cars
+-s, -sh, -ch, -x, -o: + es | bus → buses · box → boxes · potato → potatoes
+consonant + y: y → ies | city → cities · baby → babies
+-f / -fe: → ves | knife → knives · wife → wives · leaf → leaves
+# vocab: Irregular plurals
+man → men | homem → homens
+woman → women | mulher → mulheres
+child → children | criança → crianças
+person → people | pessoa → pessoas
+foot → feet | pé → pés
+tooth → teeth | dente → dentes
+mouse → mice | rato → ratos
+fish → fish | peixe → peixes
+# exercicio: Practice 1
+escolha: I have [*an/a] orange and [*a/an] banana.
+escolha: She’s [*an/a] English teacher.
+escolha: It’s [*a/an] university in London.
+escolha: There are three [*children/childs/childrens] in the park.
+grupos: + s: cars, books, apples / + es: boxes, buses, watches / ies: cities, babies, parties
+# exercicio: Practice 2
+erro: I brush my {tooths|teeth} twice a day.
+erro: There are a lot of {peoples|people} here.
+lacunas: In my street there are two [buses], three [shops] and lots of [children]. || child, box
+ditado: I have two boxes and three knives.
+# pergunta: Quick quiz
+Which is correct?
+a hour
+*an hour
+an house
+# conversa: Your turn | img:presente
+Describe your kitchen: How many cups, knives and plates are there?
+Count the people in your family: men, women and children.
+# tarefas: Atividades recomendadas
+Plurals
+A or an?
+Homework · One, two, many`],
+
+['EN','A2','Will: offers, promises and quick decisions',`# capa: Will: offers and promises | img:presente
+I’ll help you! I promise I’ll call. I’ll have the soup.
+# sobre: Sobre esta aula
+ver: **will** para **ofertas** (I’ll carry that), **promessas** (I’ll call you), **decisões na hora** (I’ll have the fish) e **pedidos** (Will you…?); **Shall I…?** para oferecer ajuda; will × going to
+porque: Muitos alunos só aprendem will para previsões. Mas no dia a dia, o uso mais comum é oferecer ajuda e decidir na hora: “I’ll get it!”.
+meta: oferecer ajuda; fazer promessas; decidir na hora; diferenciar will (agora) e going to (plano)
+nivel: Nível A2 · gramática
+# aquecimento: Can I help?
+jogo: Problem → offer | A professora diz um problema (“It’s so hot in here.”). O aluno oferece ajuda: “I’ll open the window!”
+pergunta: What’s the last promise you made? Did you keep it?
+# tabela: Four uses of will
+Use | Example
+offers | It’s heavy? **I’ll carry** it for you.
+promises | **I’ll call** you tomorrow, I promise.
+instant decisions | The fish looks good. **I’ll have** the fish.
+requests | **Will you** help me, please?
+**Shall I / we…?** para oferecer ou sugerir: **Shall I** open the window? **Shall we** go?
+# explica: Will or going to?
+**will** = decisão **agora**, no momento em que falo:
+> — The phone’s ringing! — **I’ll get** it!
+**going to** = plano **já decidido** antes:
+> I**’m going to** visit my mum on Sunday. (já combinei)
+# dialogo: At the restaurant
+A: Are you ready to order?
+B: Yes. I’ll have the chicken salad, please.
+A: And to drink?
+B: I’ll have an orange juice.
+A: Shall I bring some bread?
+B: Yes, please. Thank you!
+# exercicio: Practice 1
+escolha: — I’m cold. — [*I’ll close/I’m closing/I close] the window.
+escolha: [*Shall/Will/Do] I help you with your bags?
+escolha: I promise I [*won’t/don’t/am not] be late again.
+escolha: (plano) I [*’m going to/’ll] start a new course next month.
+grupos: Offer: I’ll help you, Shall I carry it? / Promise: I’ll call you, I won’t forget / Decision: I’ll have the pasta, I’ll take this one
+# tirinha: The promise
+[casa]
+Mia (bravo): You forgot to buy milk again!
+Leo (triste): Sorry! I’ll go now.
+---
+Mia: And the bread?
+Leo (feliz): I’ll buy that too. I promise I won’t forget!
+# exercicio: Practice 2
+erro: — The doorbell! — {I open|I’ll open} it!
+reescreva: Do you want me to call a taxi? | SHALL | ___ a taxi? | Shall I call
+ditado: Don’t worry, I’ll help you.
+# conversa: Your turn | img:presente
+The teacher has 5 problems. Offer to help with each one.
+Make 3 promises for this month.
+Order a meal at a restaurant using I’ll have…
+# tarefas: Atividades recomendadas
+Will: predictions, offers and decisions
+Will or going to?
+Homework · I’ll do it!`],
+
+['EN','B1','Future time clauses: when, as soon as, until',`# capa: Future time clauses | img:relogio
+I’ll call you when I arrive. (not: when I will arrive)
+# sobre: Sobre esta aula
+ver: depois de **when, as soon as, before, after, until, once** falando do futuro, usamos o **presente**, não will; **until** × **by**; present perfect depois de when/as soon as para ações completas
+porque: Em português dizemos “quando eu **chegar**”. A tradução direta (“when I will arrive”) é um dos erros mais comuns e mais fáceis de corrigir.
+meta: usar o presente depois de when, as soon as, until e before; dar instruções e fazer planos encadeados
+nivel: Nível B1 · gramática
+# aquecimento: Plans
+pergunta: What will you do as soon as you get home today?
+jogo: Chain of plans | “When I finish this class, I’ll have lunch.” → “When I have lunch, I’ll…” Quem trava perde.
+# explica: The rule
+Na oração com **when / as soon as / before / after / until / once**, use o **presente**, mesmo falando do futuro:
+> I’ll call you **when** I **arrive**. (não: when I will arrive)
+> **As soon as** she **gets** the results, she’ll tell us.
+> We’ll wait **until** you **’re** ready.
+A outra parte da frase continua com **will** (ou imperativo).
+# tabela: The linkers
+Linker | Meaning | Example
+when | quando | When I see him, I’ll tell him.
+as soon as | assim que | I’ll text you as soon as I land.
+until | até (que) | Don’t leave until I come back.
+before / after | antes / depois | Have breakfast before you go.
+once | uma vez que, assim que | Once you finish, send it to me.
+# explica: Until or by?
+**until** = a ação **continua** até aquele momento:
+> I’ll work **until** 6 p.m.
+**by** = prazo, **no máximo** até:
+> Please send the report **by** 6 p.m.
+Com ação **completa**, use present perfect: I’ll call you when I**’ve finished**.
+# exercicio: Practice 1
+escolha: I’ll call you when I [*get/will get/got] home.
+escolha: As soon as the meeting [*finishes/will finish], we’ll have lunch.
+escolha: Don’t go out until it [*stops/will stop] raining.
+escolha: Please send it [*by/until] Friday.
+escolha: I’ll stay here [*until/by] you come back.
+# dialogo: Before the trip
+A: What time does your flight land?
+B: At ten. I’ll text you as soon as I land.
+A: OK. I’ll wait at home until you call.
+B: And when I get to the hotel, I’ll send you a photo.
+A: Perfect. Don’t forget your charger before you leave!
+B: Don’t worry, I’ll pack it when I finish this.
+# exercicio: Practice 2
+erro: I’ll tell her when she {will arrive|arrives}.
+reescreva: I’ll finish the report. Then I’ll go home. | AS SOON AS | I’ll go home ___ the report. | as soon as I finish/as soon as I’ve finished
+reescreva: Wait here. Come back at 5. | UNTIL | Wait here ___ back. | until I come
+ditado: I’ll call you as soon as I get home.
+# conversa: Your turn | img:relogio
+Tell me your plans for tomorrow using when, before, after and as soon as.
+What will you do when you retire?
+Give a friend instructions for looking after your plants while you travel.
+# tarefas: Atividades recomendadas
+Future time clauses
+Will or going to?
+Homework · As soon as…`],
+
+['EN','B1','Quantifiers: a few, a little, few, little',`# capa: Quantifiers | img:ovo
+a few friends · a little time · few people · little hope
+# sobre: Sobre esta aula
+ver: **a few** (+ contável) e **a little** (+ incontável) = alguns, um pouco (positivo); **few / little** sem “a” = poucos (negativo); **plenty of, a lot of, hardly any, none**
+porque: A diferença entre **a few** e **few** muda o tom da frase: “I have a few friends” (tenho alguns 🙂) × “I have few friends” (tenho poucos 😕). É sutil e muito usada.
+meta: escolher entre a few e a little; perceber o tom de few / little; usar outros quantificadores comuns
+nivel: Nível B1 · gramática
+# aquecimento: How much? How many?
+pergunta: How much free time do you have this week? How many friends do you see often?
+jogo: More or less | A professora diz um item (money, friends, sleep, coffee). O aluno responde com a few / a little / a lot of.
+# tabela: Countable or uncountable?
+ | Countable (friends, apples) | Uncountable (time, money)
+positivo (alguns / um pouco) | a few friends | a little time
+negativo (poucos / pouco) | few friends | little time
+muito | a lot of / many friends | a lot of / much time
+quase nenhum | hardly any friends | hardly any time
+# explica: The “a” changes everything
+Com **a** = suficiente, positivo:
+> I have **a few** close friends. (e estou feliz)
+> There’s **a little** milk left. (dá para um café)
+Sem **a** = quase nada, negativo:
+> **Few** people came to the party. (que pena!)
+> There’s **little** hope of finding it.
+# exercicio: Practice 1
+escolha: Can I ask you [*a few/a little] questions?
+escolha: Add [*a little/a few] salt.
+escolha: The film was boring. [*Few/A few] people stayed until the end.
+escolha: Don’t worry, we have [*plenty of/a few] time.
+grupos: a few: questions, friends, apples / a little: time, money, sugar
+# leitura: Minimalism: less is more | img:planta
+tipo: Lifestyle
+Minimalists try to live with **few** possessions. They believe that people with **a little** money and **a few** good friends can be happier than people with **a lot of** things and **little** free time.
+Marie, a minimalist from Lyon, owns **only a few** clothes and **hardly any** furniture. “I have **little** to clean and **plenty of** time for what I love,” she says.
+Critics say minimalism is easy when you’re rich. But **a few** small changes, like buying **fewer** things, can help anyone.
+# exercicio: Practice 2
+How many clothes does Marie have?
+a) a lot of clothes
+*b) only a few clothes
+c) no clothes
+Marie has a lot of furniture. (f)
+erro: I need {a few|a little} help with my homework.
+reescreva: I don’t have much time today. | LITTLE | I have very ___ today. | little time
+# conversa: Let’s talk | img:planta
+What do you have a lot of? What do you have only a few of?
+Could you live as a minimalist? Why (not)?
+Describe your fridge right now using quantifiers.
+# tarefas: Atividades recomendadas
+A few, a little, few, little
+Countable and uncountable
+Homework · Just a little`],
+
+['EN','B1','Verbs and prepositions: depend on, worry about',`# capa: Verbs and prepositions | img:lampada
+depend on · listen to · worry about · agree with
+# sobre: Sobre esta aula
+ver: verbos que pedem uma preposição fixa (depend **on**, listen **to**, wait **for**, worry **about**, belong **to**, agree **with**); diferenças com o português (“depende **de**” → depend **on**; “casar **com**” → marry **sem** preposição); a preposição no fim da pergunta
+porque: Não há regra lógica: é preciso **memorizar os mais comuns**. E muitos erros vêm da tradução direta do português.
+meta: usar 15 verbos com a preposição certa; não colocar preposição onde não precisa; fazer perguntas com a preposição no fim
+nivel: Nível B1 · gramática
+# aquecimento: It depends!
+pergunta: What do you usually worry about? What do you dream about?
+jogo: Quick match | A professora diz o verbo, o aluno diz a preposição o mais rápido possível: listen… to! wait… for!
+# tabela: Common verb + preposition
+Preposition | Verbs
+on | depend on, rely on, concentrate on, insist on
+to | listen to, belong to, talk to, apologise to
+for | wait for, look for, pay for, apply for
+about | worry about, think about, dream about, complain about
+with | agree with, deal with, argue with
+# dica: Cuidado com o português!
+x: It depends of the weather.
+ok: It depends on the weather.
+x: She married with a doctor.
+ok: She married a doctor. (sem preposição)
+x: I’m waiting the bus.
+ok: I’m waiting for the bus.
+# explica: Prepositions at the end
+Nas perguntas, a preposição costuma ir para o **fim**:
+> **Who** are you talking **to**? · **What** are you worried **about**?
+> **What** does it depend **on**? · **Who** does this bag belong **to**?
+# exercicio: Practice 1
+escolha: It depends [*on/of/from] the price.
+escolha: Can you wait [*for/–/to] me?
+escolha: I don’t agree [*with/to/–] you.
+escolha: She married [*–/with/to] her best friend.
+escolha: What are you thinking [*about/on/–]?
+grupos: on: depend, rely, concentrate / for: wait, look, apply / about: worry, dream, complain
+# exercicio: Practice 2
+erro: Let’s discuss {about the plan|the plan} tomorrow.
+erro: This phone belongs {at|to} my brother.
+ordem: who are you waiting for
+lacunas: I applied [for] a new job. It depends [on] the interview. I’m a bit worried [about] it. || of, in
+# conversa: Your turn | img:lampada
+What do you worry about? What do you never worry about?
+Who do you rely on when you have a problem?
+Complete: “My happiness depends on…”
+# tarefas: Atividades recomendadas
+Verbs with prepositions
+Prepositions after adjectives
+Homework · It depends on…`],
+
+['EN','B2','Should have, could have, would have',`# capa: Should have, could have, would have | img:chuva
+Regrets, criticism and missed chances
+# sobre: Sobre esta aula
+ver: **should have** (deveria ter: arrependimento, crítica), **could have** (poderia ter: possibilidade que não aconteceu), **would have** (teria: resultado imaginário); as formas negativas; pronúncia rápida (“shoulda”, “coulda”)
+porque: Falar sobre o que **poderia ter sido** é muito comum: arrependimentos, críticas, conselhos tarde demais. Essas formas aparecem o tempo todo em séries e conversas.
+meta: expressar arrependimento e crítica; falar de possibilidades perdidas; reagir a histórias com should have / could have
+nivel: Nível B2 · gramática
+# aquecimento: What went wrong?
+pergunta: What’s something you should have done last week but didn’t?
+jogo: Hindsight | A professora conta pequenas desgraças (“I missed my flight.”). O aluno comenta: “You should have left earlier!”
+# tabela: Three modals in the past
+Modal | Meaning | Example
+should have + participle | deveria ter (crítica, arrependimento) | I **should have studied** more.
+shouldn’t have + participle | não deveria ter | You **shouldn’t have said** that.
+could have + participle | poderia ter (mas não fez) | We **could have taken** a taxi.
+would have + participle | teria (resultado imaginário) | I **would have called**, but I had no signal.
+# explica: In fast speech
+Na fala rápida, **have** vira um som fraco /əv/:
+> should have → “**shoulda**” · could have → “**coulda**” · would have → “**woulda**”
+Por isso muita gente escreve errado “should **of**”. Na escrita, é sempre **should have**.
+# exercicio: Practice 1
+escolha: I’m so tired. I [*should have gone/should go/should went] to bed earlier.
+escolha: You [*shouldn’t have/should have/couldn’t have] told her! It was a secret.
+escolha: Why did you walk? You [*could have asked/could ask/would asked] me for a lift.
+escolha: I [*would have come/will have come/would came], but nobody invited me!
+# tirinha: The missed train
+[trem]
+Tom (triste): I missed the last train home.
+Bia (pensando): You should have left the party earlier.
+---
+Tom (bravo): I know! I shouldn’t have had that last dance.
+---
+Bia (feliz): Well, you could have called me. I would have picked you up!
+# exercicio: Practice 2
+reescreva: It was a mistake to buy that car. | SHOULDN’T | I ___ that car. | shouldn’t have bought
+reescreva: It was possible for us to win, but we didn’t. | COULD | We ___ . | could have won
+erro: You should {of|have} told me earlier!
+grupos: Regret: I should have studied, I shouldn’t have eaten so much / Missed chance: We could have won, You could have asked me
+# leitura: The one that got away | img:chuva
+tipo: Story
+In 1999, a young man was offered shares in a small company called Google for a few thousand dollars. He said no. “I **should have** listened to my friend,” he says today. “I **could have** been a millionaire.”
+Stories like this are common. One of the Beatles’ first record labels rejected them. “Guitar groups are on the way out,” they said. They **should** probably **have** listened to the music more carefully.
+But psychologists warn: thinking too much about what **could have** happened makes us unhappy. Learn the lesson, then move on.
+# conversa: Let’s talk | img:chuva
+Tell me about a decision you regret. What should you have done?
+What could you have done differently last year?
+Your friend tells you a disaster story. React with should have / could have.
+# tarefas: Atividades recomendadas
+Should have and shouldn’t have
+Third conditional
+Homework · I should have known`],
+
+['EN','B2','Reported questions and requests',`# capa: Reported questions and requests | img:conversa
+She asked me where I lived. He told me to wait.
+# sobre: Sobre esta aula
+ver: **perguntas relatadas** (asked + wh- / if + ordem de afirmação, sem do/did); **pedidos e ordens** (told / asked + objeto + to + verbo); mudanças de tempo e de referências (tomorrow → the next day)
+porque: Contar o que alguém perguntou é muito comum: entrevistas de emprego, conversas com o chefe, fofocas. É também um ponto clássico de provas B2.
+meta: relatar perguntas abertas e de sim/não; relatar pedidos e ordens com to / not to; contar uma entrevista ou conversa
+nivel: Nível B2 · gramática
+# aquecimento: The interview
+pergunta: What questions did they ask you in your last job interview?
+jogo: Chinese whispers | A professora faz uma pergunta. O aluno conta para uma “terceira pessoa”: “She asked me what…”.
+# tabela: Reported questions
+Direct question | Reported question
+“Where do you live?” | She asked me **where I lived**.
+“What are you doing?” | He asked **what I was doing**.
+“Have you finished?” | She asked **if / whether I had finished**.
+“Can you swim?” | He asked **if I could swim**.
+Sem do/does/did e **sem ponto de interrogação**.
+# tabela: Requests and orders
+Direct | Reported
+“Please wait here.” | She **asked me to wait** there.
+“Close the door.” | He **told me to close** the door.
+“Don’t be late!” | My boss **told me not to be** late.
+“Could you help me?” | She **asked me to help** her.
+# exercicio: Practice 1
+escolha: She asked me where [*I worked/did I work/I work].
+escolha: He asked [*if/that/what] I was hungry.
+escolha: The doctor told me [*to rest/rest/resting] for a week.
+escolha: They told us [*not to touch/to not touching/don’t touch] the paintings.
+escolha: She asked me what time [*the train left/did the train leave].
+# dialogo: The job interview
+A: How did the interview go?
+B: Well, first she asked me why I wanted the job.
+A: Normal question. What else?
+B: She asked if I had ever worked abroad.
+A: And at the end?
+B: She told me to send my portfolio by Friday!
+# exercicio: Practice 2
+reescreva: “Do you speak French?” she asked me. | IF | She asked me ___ French. | if I spoke
+reescreva: “Don’t open the window,” he said to me. | TOLD | He ___ the window. | told me not to open
+reescreva: “Where did you buy it?” she asked. | WHERE | She asked ___ it. | where I had bought
+erro: He asked me where {was the station|the station was}.
+# conversa: Your turn | img:conversa
+Report 4 questions someone asked you this week.
+Report 3 things your boss or teacher told you to do.
+Tell the story of a conversation with a stranger.
+# tarefas: Atividades recomendadas
+Reported speech
+Reporting verbs
+Homework · She asked me…`],
+
+['EN','B2','It’s time, I’d rather, I’d better',`# capa: It’s time, I’d rather, I’d better | img:relogio
+It’s time we left. I’d rather stay. You’d better hurry!
+# sobre: Sobre esta aula
+ver: **It’s (high) time + past simple** (já passou da hora); **would rather + verbo** (preferência) e **would rather + sujeito + past** (preferir que outra pessoa…); **had better + verbo** (conselho forte, aviso)
+porque: São estruturas muito naturais e frequentes na fala, mas com um “passado que não é passado” que confunde. Dominá-las deixa o aluno com um inglês mais idiomático.
+meta: dizer que já passou da hora de algo; expressar preferências; dar conselhos fortes e avisos
+nivel: Nível B2 · gramática
+# aquecimento: Preferences
+jogo: Would you rather…? | “Would you rather live in the city or the countryside?” O aluno responde com I’d rather… because…
+pergunta: What’s something you think it’s time you changed in your life?
+# tabela: The three structures
+Structure | Meaning | Example
+It’s (high) time + subject + past | já passou da hora | **It’s time we went** home.
+would rather + verb | eu preferiria | **I’d rather stay** in tonight.
+would rather + subject + past | preferiria que alguém… | **I’d rather you didn’t smoke** here.
+had better + verb | é melhor (aviso) | **You’d better take** an umbrella.
+# explica: Watch the forms
+**It’s time + to** também existe, mais neutro: It’s time **to go**.
+**I’d better** = I **had** better (e não would!). Negativa: **You’d better not** be late.
+**I’d rather** = I **would** rather. Negativa: **I’d rather not**.
+> — Do you want to come? — **I’d rather not**, thanks.
+# exercicio: Practice 1
+escolha: It’s high time you [*found/find/will find] a new job.
+escolha: I’d rather [*stay/to stay/staying] at home tonight.
+escolha: I’d rather you [*didn’t tell/don’t tell/not tell] anyone.
+escolha: You’d better [*hurry/to hurry/hurrying]. The train leaves in 5 minutes.
+escolha: We’d better [*not be/don’t be/not to be] late.
+# tirinha: Late again
+[relogio]
+Ana (bravo): It’s time you bought an alarm clock!
+Leo (cansado): I’d rather sleep a bit more…
+---
+Ana: You’d better hurry, or you’ll miss the meeting!
+---
+Leo (preocupado): OK, OK! I’d rather you didn’t tell the boss.
+# exercicio: Practice 2
+reescreva: You should take a jacket. It’s cold. | BETTER | You ___ a jacket. | ’d better take/had better take
+reescreva: I prefer to walk. | RATHER | I’d ___ . | rather walk
+reescreva: You should have gone to the doctor already! | TIME | It’s ___ to the doctor. | time you went
+erro: I’d rather you {don’t|didn’t} call me after 10 p.m.
+# conversa: Let’s talk | img:relogio
+Play “Would you rather…?” with 5 questions.
+What is it high time your city did?
+Give the teacher 3 warnings with you’d better.
+# tarefas: Atividades recomendadas
+It’s time, I’d rather and I’d better
+Second conditional
+Homework · You’d better…`],
+
+['EN','C1','Nominalisation: writing like a professional',`# capa: Nominalisation | img:envelope
+“We decided to expand” → “The decision to expand”
+# sobre: Sobre esta aula
+ver: transformar **verbos e adjetivos em substantivos** (decide → decision, improve → improvement, able → ability); por que textos formais e acadêmicos usam tantos substantivos; sufixos (-tion, -ment, -ance, -ity, -al); evitar exageros
+porque: A nominalização é a marca da escrita **formal, acadêmica e corporativa**: relatórios, e-mails executivos, artigos. É uma das diferenças mais claras entre B2 e C1 na escrita.
+meta: reescrever frases com nominalização; reconhecer o registro formal; equilibrar clareza e formalidade
+nivel: Nível C1 · gramática e escrita
+# aquecimento: Formal or informal?
+jogo: Translate to “corporate” | A professora diz algo informal (“We’re going to cut costs.”). O aluno deixa formal: “A reduction in costs is planned.”
+pergunta: Do you write formal reports or emails at work? What makes them difficult?
+# tabela: Common suffixes
+Verb / adjective | Noun
+decide, discuss, introduce | decision, discussion, introduction
+improve, develop, achieve | improvement, development, achievement
+perform, appear, accept | performance, appearance, acceptance
+able, possible, complex | ability, possibility, complexity
+arrive, refuse, approve | arrival, refusal, approval
+# explica: From verbs to nouns
+> Prices **increased** sharply, which **worried** investors. → **The sharp increase** in prices **caused concern** among investors.
+> We **failed** to communicate, so the project was **delayed**. → **A failure** in communication **led to a delay** in the project.
+> Customers were **satisfied**. → **Customer satisfaction** was high.
+# exercicio: Practice 1
+escolha: The [*decision/decide/deciding] to close the factory surprised everyone.
+escolha: There has been a significant [*improvement/improve/improving] in sales.
+escolha: The [*arrival/arrive/arriving] of the new CEO changed everything.
+escolha: Her [*ability/able/enable] to stay calm impressed the board.
+grupos: -tion or -sion: decision, discussion, introduction / -ment: improvement, development, achievement / -ity: ability, possibility, complexity
+# exercicio: Practice 2
+reescreva: We analysed the data carefully. | ANALYSIS | A careful ___ was carried out. | analysis of the data
+reescreva: Sales fell, and this worried the managers. | FALL | The ___ worried the managers. | fall in sales
+reescreva: They refused to negotiate, so the talks failed. | REFUSAL | Their ___ led to the failure of the talks. | refusal to negotiate
+erro: The {develop|development} of the app took two years.
+# dica: Don’t overdo it!
+Nominalização demais deixa o texto pesado e confuso:
+x: The implementation of the utilisation of the new system is in a state of completion.
+ok: The new system is almost ready.
+Regra: use nominalização para **resumir e conectar ideias**, não para complicar.
+# leitura: Quarterly report | img:envelope
+tipo: Business report
+**The introduction** of the new app in March led to **a significant increase** in online sales. **Customer satisfaction** reached 92%, and **the reduction** in delivery times was widely praised.
+However, **the expansion** into new markets caused **a rise** in costs. **The decision** to hire 40 new employees also had **an impact** on profits.
+For the next quarter, **our priority** will be **the improvement** of efficiency and **the consolidation** of our position in Brazil.
+# conversa: Your turn | img:envelope
+Rewrite 3 sentences from a real email or report from your work using nominalisation.
+Describe the results of a project (real or invented) in formal English.
+When is nominalisation a bad idea?
+# tarefas: Atividades recomendadas
+Nominalisation
+Formal business writing
+Homework · The formal version`],
+
+['EN','C1','Ellipsis and substitution: so, not, do so',`# capa: Ellipsis and substitution | img:conversa
+I think so. I hope not. — Have you? — I have.
+# sobre: Sobre esta aula
+ver: **substituição** com so / not (I think so, I hope not, I’m afraid not), one / ones, do so; **elipse** (omitir o que é óbvio: “Want a coffee?”, “— Have you finished? — I have.”); respostas curtas naturais
+porque: Nativos **não repetem** o que já foi dito: cortam e substituem. Quem repete tudo (“Yes, I think that it will rain”) soa robótico. É um traço marcante do inglês fluente.
+meta: usar so e not depois de think, hope, suppose, afraid; responder com auxiliares; omitir palavras com naturalidade
+nivel: Nível C1 · gramática da fala
+# aquecimento: Don’t repeat!
+jogo: Short answers only | A professora faz perguntas rápidas. O aluno só pode responder com 2 ou 3 palavras: “I hope so.” “I’m afraid not.” “She has.”
+pergunta: Do you think it will rain tomorrow?
+# tabela: so and not
+Verb | Positive | Negative
+think | I think so. | I don’t think so.
+hope | I hope so. | I hope not.
+suppose / guess | I suppose so. | I suppose not.
+be afraid | I’m afraid so. | I’m afraid not.
+**I hope not** (não “I don’t hope so”) · **I’m afraid not** (infelizmente não)
+# explica: Substitution and ellipsis
+**one / ones** no lugar de um substantivo:
+> I don’t like this shirt. Can I see the blue **one**?
+**do so** (formal) no lugar de uma ação: They asked us to leave, and we **did so**.
+**Elipse com auxiliares**:
+> — Have you been to Japan? — I **have**. / I **haven’t**, but my sister **has**.
+**Elipse informal**: **Want** a coffee? **Sounds** good.
+# dialogo: Monday morning
+A: Coming to the meeting?
+B: I suppose so. Is it going to be long?
+A: I hope not. Have you read the report?
+B: I haven’t, but Ana has.
+A: Will the boss be there?
+B: I’m afraid so!
+# exercicio: Practice 1
+escolha: — Will it rain? — I [*hope not/don’t hope so/hope no].
+escolha: — Is the shop still open? — I’m afraid [*not/no/don’t].
+escolha: — Has he finished? — Yes, he [*has/finished/has finished it].
+escolha: These shoes are too small. Do you have bigger [*ones/one/them]?
+grupos: Positive: I think so, I hope so, I’m afraid so / Negative: I don’t think so, I hope not, I’m afraid not
+# exercicio: Practice 2
+erro: — Is she coming? — I {don’t hope so|hope not}.
+reescreva: — Are you going to the party? — Yes, I think that I am going. | SO | — Yes, I ___ . | think so
+reescreva: I haven’t seen the film, but my brother has seen the film. | HAS | I haven’t seen the film, but my brother ___ . | has
+What does “Can’t complain” mean?
+*a) Things are OK.
+b) I’m not allowed to complain.
+c) I can’t speak.
+# conversa: Your turn | img:conversa
+Answer 10 quick questions from the teacher using only short forms.
+Rewrite a long, repetitive dialogue in a natural way.
+Why do learners often repeat too much?
+# tarefas: Atividades recomendadas
+Ellipsis and substitution
+Discourse markers
+Homework · Short and natural`],
+
+/* ===================== PHONETICS ===================== */
+['EN','A2','Phonetics: thirteen or thirty? Numbers and dates',`# capa: Thirteen or thirty? | img:relogio
+Numbers, prices, dates and phone numbers
+# sobre: Sobre esta aula
+ver: a tônica que diferencia **thir**TEEN × **THIR**ty; como falar preços ($4.99), datas (the 3rd of May / May 3rd), anos (1998, 2025), números de telefone (double, oh) e números grandes (and depois de hundred)
+porque: Confundir números é um dos problemas mais comuns e mais caros: preço, horário, endereço, voo. E falar datas e anos em inglês tem regras próprias.
+meta: distinguir -teen e -ty pela tônica; falar preços, datas, anos e telefones com naturalidade
+nivel: Nível A2 · fonética
+# aquecimento: Listen carefully
+jogo: Number bingo | A professora fala números (13, 30, 15, 50, 18, 80). O aluno marca o que ouviu.
+pergunta: What’s your phone number? (pode ser inventado!) Say it in English.
+# tabela: -teen or -ty?
+-teen (tônica no fim) | -ty (tônica no começo)
+thir**TEEN** (13) | **THIR**ty (30)
+four**TEEN** (14) | **FOR**ty (40)
+fif**TEEN** (15) | **FIF**ty (50)
+eigh**TEEN** (18) | **EIGH**ty (80)
+Dica: no **-teen**, o “n” final é claro e longo. No **-ty**, o “t” é leve (nos EUA soa quase como “d”: “thirdy”).
+# vocab: Listen and repeat
+thirteen | 13
+thirty | 30
+fifteen | 15
+fifty | 50
+eighteen | 18
+eighty | 80
+# tabela: How to say it
+Written | Say
+$4.99 | four ninety-nine / four dollars ninety-nine
+3/5 (UK) · 5/3 (US) | the third of May (UK) · May third (US)
+1998 · 2025 | nineteen ninety-eight · twenty twenty-five
+0 in phone numbers | oh (UK) / zero
+44 in phone numbers | double four
+# frase: Listen and repeat
+The flight leaves at 7:15 from gate 13.
+It costs thirty-nine ninety-nine.
+My birthday is on the twenty-first of August.
+I was born in nineteen ninety-two.
+My number is oh-seven-seven, double five, three-oh.
+# exercicio: Practice 1
+In “thirteen”, the stress is on…
+a) THIR
+*b) TEEN
+In “fifty”, the stress is on…
+*a) FIF
+b) TY
+How do you say 2008?
+a) twenty eight
+*b) two thousand and eight
+c) twenty zero eight
+# exercicio: Practice 2 · Listen and write
+ditado: The meeting is on the thirteenth at three thirty.
+ditado: It costs fifteen dollars and fifty cents.
+ditado: I was born on the second of June, two thousand.
+# conversa: Practise! | img:relogio
+Say your birthday, your phone number and the year you started working.
+Read 5 prices from a real shopping receipt.
+The teacher says numbers fast. Write them down and check.
+# tarefas: Atividades recomendadas
+Numbers and age
+Days, months and dates
+Homework · Numbers, numbers`],
+
+['EN','A2','Phonetics: -s endings: /s/, /z/, /ɪz/',`# capa: -s endings | img:onibus
+cats /s/ · dogs /z/ · buses /ɪz/
+# sobre: Sobre esta aula
+ver: os 3 sons do **-s** final em plurais, verbos (he works) e possessivos (Ana’s); quando aparece a sílaba extra /ɪz/ (watches, buses, Alice’s); o erro brasileiro de pronunciar “-es” sempre como sílaba
+porque: É igual ao -ed: só **um** dos três sons ganha sílaba extra. Errar isso (“work-es”, “live-es”) é muito comum e deixa a fala pesada.
+meta: pronunciar /s/, /z/ e /ɪz/; saber quando há sílaba extra; aplicar em plurais, verbos e possessivos
+nivel: Nível A2 · fonética
+# aquecimento: Plurals race
+jogo: One, two! | A professora diz um substantivo no singular. O aluno diz o plural com o som certo: cat → cats /s/, bus → buses /ɪz/!
+pergunta: What does your best friend do every day? (He works, she watches, he goes…)
+# tabela: The three sounds
+Sound | When | Examples
+/s/ | depois de p, t, k, f, th (sem voz) | cats, books, works, laughs
+/z/ | depois de vogais e sons com voz (b, d, g, l, m, n, r, v) | dogs, lives, plays, goes
+/ɪz/ (sílaba extra!) | depois de s, z, sh, ch, j, x | buses, watches, washes, boxes
+# vocab: Listen and repeat
+cats | /s/
+books | /s/
+dogs | /z/
+plays | /z/
+buses | /ɪz/ (2 sílabas)
+watches | /ɪz/ (2 sílabas)
+# frase: Listen and repeat
+She works in a bank and lives in London.
+He watches TV and washes the dishes.
+My dog plays with the cats.
+Ana’s brother teaches English.
+# exercicio: Practice 1
+grupos: /s/: cats, books, works, stops / /z/: dogs, plays, lives, goes / /ɪz/: buses, watches, boxes, washes
+How many syllables in “works”?
+*a) one
+b) two
+How many syllables in “watches”?
+a) one
+*b) two
+# exercicio: Practice 2 · Listen and write
+ditado: She watches films and plays tennis.
+ditado: He fixes cars and drives buses.
+Which word has an extra syllable?
+a) likes
+b) lives
+*c) kisses
+# conversa: Practise! | img:onibus
+Describe the daily routine of someone in your family (he/she + -s).
+Say 10 plurals of things in your house with the right sound.
+# tarefas: Atividades recomendadas
+Present simple · he, she, it
+Plurals
+Homework · S sounds`],
+
+['EN','B1','Phonetics: homophones and spelling traps',`# capa: Homophones | img:lapis
+there, their, they’re · your, you’re · its, it’s
+# sobre: Sobre esta aula
+ver: **homófonos** (mesmo som, escrita e sentido diferentes): there / their / they’re, your / you’re, its / it’s, to / too / two, hear / here, write / right, buy / by / bye, whole / hole; armadilhas de ortografia comuns
+porque: Esses erros aparecem até em textos de nativos, mas num e-mail profissional passam má impressão. E entender homófonos ajuda a não se confundir ao ouvir.
+meta: escrever corretamente os homófonos mais comuns; reconhecer o sentido pelo contexto; fazer um ditado sem erros
+nivel: Nível B1 · fonética e escrita
+# aquecimento: Same sound
+jogo: Write what you hear | A professora diz uma palavra isolada (“there”). O aluno pergunta: “Which one?” e ela dá o contexto. Quantos homófonos o aluno já conhece?
+pergunta: Which English words do you always confuse when you write?
+# tabela: The big three
+Word | Meaning | Example
+there | lá / há | **There** are two cats over **there**.
+their | deles / delas | **Their** house is big.
+they’re | they are | **They’re** my neighbours.
+your / you’re | seu / you are | **You’re** late! Where’s **your** bag?
+its / it’s | dele (coisa) / it is | **It’s** a nice city. **Its** beaches are amazing.
+# vocab: More homophones
+to · too · two | para · também · dois
+hear · here | ouvir · aqui
+write · right | escrever · certo, direita
+buy · by · bye | comprar · por · tchau
+know · no | saber · não
+weather · whether | tempo · se
+# exercicio: Practice 1
+escolha: [*They’re/Their/There] coming at 8.
+escolha: Is this [*your/you’re] phone?
+escolha: The company changed [*its/it’s] logo.
+escolha: I want to go [*too/to/two]!
+escolha: I don’t know [*whether/weather] she’s coming.
+# exercicio: Practice 2 · Dictation
+ditado: Their car is over there.
+ditado: You’re right, it’s too late.
+ditado: I can hear you, but I don’t know where you are.
+erro: I think {their|they’re} going to be late.
+# frase: Funny sentences to remember
+They’re putting their coats over there.
+You’re going to love your new job.
+Two people wanted to go to the beach too.
+Write the right answer.
+# conversa: Practise! | img:lapis
+Write 5 sentences using as many homophones as possible. The teacher dictates them back.
+Which homophone pair is the most confusing for you?
+# tarefas: Atividades recomendadas
+Silent letters
+Spell the word
+Homework · Same sound, different word`],
+
+['EN','B1','Phonetics: diphthongs: say, my, boy, now, go',`# capa: Diphthongs | img:balao
+Two vowels in one: /eɪ/ /aɪ/ /ɔɪ/ /aʊ/ /əʊ/
+# sobre: Sobre esta aula
+ver: os **ditongos** do inglês (a vogal “desliza” para outra): /eɪ/ day, /aɪ/ my, /ɔɪ/ boy, /aʊ/ now, /əʊ/ go, /ɪə/ here, /eə/ hair; a dificuldade com /eɪ/ e /əʊ/ (brasileiros dizem “dei” e “gô”); a mesma letra com sons diferentes
+porque: Muitas palavras básicas têm ditongos (name, go, phone, late). Pronunciar “gô” e “nêim” atrapalha pouco, mas fazer o deslize certo deixa a fala muito mais clara e natural.
+meta: reconhecer e produzir os 5 ditongos principais; pronunciar /eɪ/ e /əʊ/ com o deslize; ler palavras comuns com o som certo
+nivel: Nível B1 · fonética
+# aquecimento: Sing it
+musica: Say My Name — Destiny’s Child | O título tem dois ditongos: s**ay** /eɪ/ e n**a**me /eɪ/. Cantem o refrão!
+pergunta: Can you think of English words that sound different from how they are written?
+# tabela: The five main diphthongs
+Sound | Examples | Dica
+/eɪ/ | day, name, late, great | “ê” deslizando para “i”
+/aɪ/ | my, time, buy, light | como o “ai” do português
+/ɔɪ/ | boy, toy, enjoy, noise | como “ói”
+/aʊ/ | now, house, down, out | como “au” de “mau”
+/əʊ/ (UK) · /oʊ/ (US) | go, phone, know, road | “ô” deslizando para “u”
+# vocab: Listen and repeat
+name | /eɪ/
+time | /aɪ/
+boy | /ɔɪ/
+house | /aʊ/
+phone | /əʊ/
+hair | /eə/
+# frase: Listen and repeat
+My name is Jane and I’m late again.
+The boy enjoys his noisy toys.
+How about going out now?
+I know the road home.
+# exercicio: Practice 1
+grupos: /eɪ/: day, name, great / /aɪ/: my, time, light / /aʊ/: now, house, out / /əʊ/: go, phone, road
+Which word has the same sound as “go”?
+a) got
+*b) know
+c) now
+Which word has a different vowel sound?
+a) great
+b) late
+*c) eat
+# exercicio: Practice 2 · Listen and write
+ditado: I know my phone is at home.
+ditado: Wait for me by the gate at eight.
+# dica: Same letters, different sounds
+x: “now” and “know” rhyme.
+ok: now /aʊ/ × know /əʊ/
+x: “great” sounds like “greet”.
+ok: great /eɪ/ (rima com “late”)
+# conversa: Practise! | img:balao
+Say your name, your city and your job. Which diphthongs do you hear?
+Read the sentences again. The teacher marks the diphthongs you need to practise.
+# tarefas: Atividades recomendadas
+Sounds and rhymes
+Word stress
+Homework · Glide!`],
+
+['EN','B2','British or American? Accents and words',`# capa: British or American? | img:londres
+tomato /tɑːˈmɑːtəʊ/ or /təˈmeɪtoʊ/?
+# sobre: Sobre esta aula
+ver: as principais diferenças de **pronúncia** (o r depois de vogal, o t entre vogais, o a de “bath”, o o de “hot”); diferenças de **vocabulário** (flat × apartment, lift × elevator); de **ortografia** (colour × color); qual escolher
+porque: Os alunos ouvem os dois sotaques em séries, músicas e no trabalho. Conhecer as diferenças melhora muito a compreensão e evita mal-entendidos (“pants” no Reino Unido é cueca!).
+meta: reconhecer o sotaque britânico e o americano; conhecer 10 diferenças de vocabulário; saber que os dois estão certos
+nivel: Nível B2 · fonética e cultura
+nota: Deixe claro que nenhum é “mais correto”. O importante é ser consistente e entender os dois.
+# aquecimento: Which accent?
+video: British vs American accent | Procurem um vídeo comparando os dois sotaques. Qual vocês acham mais fácil de entender? | busca: British vs American accent comparison
+pergunta: Which accent do you hear more: British or American? Which do you prefer?
+# tabela: Pronunciation differences
+Feature | UK (RP) | US (General American)
+r after vowels | not pronounced: car /kɑː/ | pronounced: car /kɑːr/
+t between vowels | clear t: water /ˈwɔːtə/ | soft “d”: water /ˈwɑːɾɚ/ (“wader”)
+a in bath, can’t, dance | long /ɑː/: “bahth” | short /æ/: “bæth”
+o in hot, stop | rounded /ɒ/ | open /ɑː/ (“haht”)
+# tabela: Vocabulary differences
+UK | US | Português
+flat | apartment | apartamento
+lift | elevator | elevador
+holiday | vacation | férias
+trousers | pants | calça
+biscuit | cookie | biscoito
+# tabela: Spelling differences
+UK | US
+colour, favourite | color, favorite
+centre, theatre | center, theater
+organise, realise | organize, realize
+travelled, cancelled | traveled, canceled
+# exercicio: Practice 1
+In the UK, “I’m going on holiday.” In the US, people say…
+a) on vocation
+*b) on vacation
+c) on travel
+Which is American spelling?
+a) colour
+*b) color
+grupos: UK: flat, lift, trousers, biscuit / US: apartment, elevator, pants, cookie
+# dica: Cuidado!
+x: (in London) “I like your pants!” (= cueca no Reino Unido 😳)
+ok: I like your trousers!
+x: (in the US) “Can I have a rubber?” (= camisinha nos EUA!)
+ok: Can I have an eraser?
+# exercicio: Practice 2
+erro: (American English) I live on the 5th floor, so I take the {lift|elevator}.
+erro: (British English) What’s your favourite {color|colour}?
+ditado: I’m going to the theatre with my flatmate.
+# conversa: Let’s talk | img:londres
+Which accent do you want to have? Why?
+Name 3 British and 3 American actors and describe their accents.
+Rewrite this sentence in American English: “I put my trousers in the boot of the car before the holiday.”
+# tarefas: Atividades recomendadas
+British or American English?
+Word stress
+Homework · Two Englishes`],
+
+/* ===================== THEMES ===================== */
+['EN','A2','Shopping online: orders, returns and reviews',`# capa: Shopping online | img:celular
+Add to cart, track your order, leave a review
+# sobre: Sobre esta aula
+ver: vocabulário de compras online (cart, checkout, shipping, tracking number, refund, return); escrever uma mensagem simples para o atendimento; ler e escrever avaliações (reviews) com adjetivos e opinião
+porque: Comprar em sites internacionais é cada vez mais comum, e quase todo o processo é em inglês: do carrinho à devolução.
+meta: entender um site de compras; reclamar de um pedido por mensagem; escrever uma avaliação curta
+nivel: Nível A2
+# aquecimento: Your shopping
+pergunta: What was the last thing you bought online? Was it a good experience?
+jogo: Five-star review | A professora lê uma avaliação engraçada. O aluno adivinha quantas estrelas o cliente deu.
+# vocab: Online shopping
+add to cart | colocar no carrinho
+checkout | finalizar a compra
+shipping | frete, envio
+delivery | entrega
+tracking number | código de rastreio
+return | devolver, devolução
+refund | reembolso
+review | avaliação
+# tabela: The order journey
+Step | What you see
+1. browse | Search · Filter by price · Size guide
+2. buy | Add to cart · Proceed to checkout · Pay now
+3. wait | Order confirmed · Shipped · Out for delivery
+4. problem? | Return item · Request a refund · Contact us
+# dialogo: Chat with customer service
+A: Hi! How can I help you today?
+B: Hi. My order hasn’t arrived yet. It’s been two weeks.
+A: I’m sorry. Can you give me the order number?
+B: Sure, it’s 58-3291.
+A: Thank you. It’s delayed, but it will arrive tomorrow.
+B: OK, thanks for your help!
+# exercicio: Practice 1
+escolha: I’d like to [*return/give back/turn] these shoes. They’re too small.
+escolha: Can I have a [*refund/refunds/refunding]?
+escolha: What’s the [*tracking number/tracking code number/number track]?
+ligue: Ligue.
+add to cart = colocar no carrinho
+checkout = finalizar a compra
+review = avaliação
+# texto: Reviews
+⭐⭐⭐⭐⭐ “Amazing headphones! The sound is great and delivery was fast.”
+⭐⭐⭐ “Nice jacket, but the size is small. Order one size bigger.”
+⭐ “Terrible! The phone case broke after two days. I want a refund.”
+# exercicio: Practice 2
+Which review is negative?
+a) the headphones
+b) the jacket
+*c) the phone case
+The jacket is bigger than normal. (f)
+erro: My order {didn’t arrive yet|hasn’t arrived yet}.
+ditado: I’d like to return this item, please.
+# conversa: Your turn | img:celular
+Write a 3-line review of something you bought recently.
+Write a message to customer service: your order arrived damaged.
+Do you prefer shopping online or in shops? Why?
+# tarefas: Atividades recomendadas
+Shopping
+Clothes and shopping
+Homework · Five stars`],
+
+['EN','B1','Etiquette around the world',`# capa: Etiquette around the world | img:globo
+Tipping, greetings and table manners
+# sobre: Sobre esta aula
+ver: costumes de outros países (gorjeta nos EUA, cumprimentos no Japão, pontualidade na Alemanha, comer com a mão na Índia); **should / shouldn’t, it’s polite / rude to, you’re expected to**; comparar com o Brasil
+porque: Viajar e trabalhar com estrangeiros exige mais do que inglês: exige saber o que é educado e o que é ofensivo em cada cultura.
+meta: falar de regras de etiqueta com should, be expected to, it’s rude to; comparar culturas; dar conselhos para um estrangeiro no Brasil
+nivel: Nível B1 · cultura
+# aquecimento: Polite or rude?
+jogo: Polite or rude? | A professora diz uma ação (“Blow your nose at the table in Japan”). O aluno decide: polite or rude?
+pergunta: What should a foreigner know before visiting Brazil?
+# tabela: Talking about customs
+Structure | Example
+it’s polite / rude to + verb | It’s **rude to** be late in Germany.
+you’re (not) expected to + verb | In the US, you’re **expected to** tip 15–20%.
+you should / shouldn’t | You **shouldn’t** wear shoes inside a Japanese home.
+it’s common / normal to | It’s **common to** greet with a kiss in Brazil.
+# pergunta: Quiz 1 · Tipping
+In the USA, how much should you tip in a restaurant?
+nothing
+5%
+*15–20%
+# pergunta: Quiz 2 · Japan
+In Japan, what should you do before entering a house?
+*take off your shoes
+shake hands with everyone
+bring flowers
+# pergunta: Quiz 3 · Germany
+In Germany, a meeting at 10:00 means…
+come between 10:00 and 10:30
+*be there at 10:00 (or a bit earlier)
+start whenever everyone arrives
+# exercicio: Practice
+escolha: In Japan, it’s rude [*to blow/blowing/blow] your nose in public.
+escolha: You’re expected [*to bring/bring/bringing] a gift when you visit someone in China.
+escolha: You [*shouldn’t/don’t should/not should] point at people with your finger in many Asian countries.
+grupos: Polite in Brazil: greet with a kiss, arrive a bit late to parties / Polite in Japan: bow, take off your shoes / Polite in the USA: tip 15–20%, small talk with strangers
+# leitura: Culture shock | img:globo
+tipo: Personal story
+When I moved from Brazil to Germany, my first dinner invitation was a disaster. They said 7 p.m., so I arrived at 7:40, like in Brazil. Everyone **was** already eating!
+I also learnt that you **shouldn’t** call people by their first name until they invite you to. And at work, it’s **normal to** say exactly what you think, even to your boss. At first, it felt **rude**. Now I find it efficient.
+My German friends visited me in Rio last year. They were shocked that people kiss strangers on the cheek!
+# exercicio: Practice 2
+What happened at the first dinner?
+*a) She arrived late and everyone was eating.
+b) She forgot the gift.
+c) She didn’t eat anything.
+In Germany, it’s common to use first names immediately. (f)
+reescreva: People think it’s impolite to be late. | RUDE | It’s ___ late. | rude to be
+# conversa: Let’s talk | img:globo
+Give 5 tips to a foreigner visiting Brazil.
+Which custom from another country would you like Brazil to adopt?
+Tell me about a time you experienced culture shock.
+# tarefas: Atividades recomendadas
+Politeness in English
+Should, must, have to
+Homework · When in Rome`],
+
+['EN','B1','At work: requests, favours and delegating',`# capa: Requests and favours at work | img:envelope
+Could you possibly…? Would you mind…? I was wondering if…
+# sobre: Sobre esta aula
+ver: pedidos com níveis de formalidade (Can you… × Could you possibly… × I was wondering if you could…); **Would you mind + -ing**; aceitar e recusar com educação; delegar tarefas com clareza
+porque: No trabalho, o tom do pedido importa muito. Um “Send me the file” pode soar rude em inglês, mesmo sem intenção.
+meta: fazer pedidos com o nível certo de formalidade; responder a “Would you mind…?” sem se confundir; delegar com prazos claros
+nivel: Nível B1 · inglês para o trabalho
+# aquecimento: How polite?
+jogo: Polite-o-meter | A professora lê pedidos de 1 a 5 (“Give me the report.” → “I was wondering if you could possibly send me the report.”). O aluno dá nota de educação.
+pergunta: Who do you ask for favours at work? How do you ask?
+# tabela: From direct to very polite
+Level | Request
+😐 direct | Send me the file.
+🙂 neutral | Can you send me the file?
+😊 polite | Could you send me the file, please?
+😊😊 very polite | Would you mind sending me the file?
+🎩 extra formal | I was wondering if you could send me the file.
+# explica: Would you mind…?
+**Would you mind + -ing**: atenção à resposta!
+> — Would you mind closing the window? — **Not at all.** (= tudo bem, eu fecho)
+> — Would you mind if I left early? — **No, go ahead.** (= pode ir)
+Responder “**Yes**” significa “sim, eu me importo” = **não**!
+# frase: Accepting and refusing
+Sure, no problem.
+I’d be happy to.
+I’m afraid I can’t right now, but I can do it this afternoon.
+I’d love to help, but I’m snowed under today.
+# dialogo: Delegating a task
+A: Hi Rafa. Have you got a minute?
+B: Sure. What’s up?
+A: Would you mind preparing the slides for Thursday?
+B: Not at all. When do you need them?
+A: By Wednesday at noon, if possible.
+B: No problem. I’ll send them to you on Wednesday morning.
+# exercicio: Practice 1
+escolha: Would you mind [*helping/to help/help] me with this?
+escolha: I was wondering if you [*could/can/would can] check my email.
+escolha: — Would you mind waiting a moment? — [*Not at all./Yes, I mind./Yes, of course.]
+escolha: [*Could you possibly/You could possibly/Could you possible] send it today?
+grupos: Accept: No problem, I’d be happy to, Not at all / Refuse: I’m afraid I can’t, I’m snowed under, Maybe later?
+# exercicio: Practice 2
+When does A need the slides?
+a) on Thursday
+*b) by Wednesday at noon
+c) next week
+reescreva: Send me the report. | WONDERING | I was ___ send me the report. | wondering if you could
+reescreva: Can you close the door? | MIND | Would you ___ the door? | mind closing
+erro: Would you mind {to call|calling} the client?
+# conversa: Role-play | img:envelope
+Ask the teacher 3 favours with different levels of politeness.
+Delegate 2 tasks with clear deadlines.
+Refuse a request from your boss politely and offer an alternative.
+# tarefas: Atividades recomendadas
+Requests and offers: be polite!
+Writing work emails
+Homework · Would you mind…?`],
+
+['EN','B2','Giving feedback at work',`# capa: Giving feedback | img:conversa
+Praise, criticism and the art of saying it well
+# sobre: Sobre esta aula
+ver: dar **feedback positivo** com detalhes; dar **feedback negativo** de forma construtiva (o modelo SBI: situação, comportamento, impacto); suavizadores (slightly, a bit, might want to); **receber** feedback com maturidade
+porque: Dar e receber feedback é uma das tarefas mais delicadas no trabalho, e em inglês o tom é ainda mais importante. Diretas demais, as palavras podem soar ofensivas.
+meta: elogiar com detalhes; criticar de forma construtiva com o modelo SBI; responder a um feedback sem ficar na defensiva
+nivel: Nível B2 · inglês para o trabalho
+# aquecimento: Your experience
+pergunta: What’s the best feedback you’ve ever received? And the worst?
+jogo: Too direct! | A professora lê feedbacks diretos demais (“Your presentation was boring.”). O aluno reescreve de forma construtiva.
+# tabela: The SBI model
+Step | Question | Example
+Situation | quando e onde? | In yesterday’s meeting with the client,…
+Behaviour | o que a pessoa fez? (fato, não opinião) | …you interrupted them three times…
+Impact | qual foi o efeito? | …and they seemed a bit frustrated.
+Next step | e agora? | Next time, maybe you could let them finish first?
+# frase: Softening criticism
+You might want to…
+It would be even better if…
+Have you thought about…?
+I wonder if we could…
+One thing I’d suggest is…
+# frase: Specific praise
+I really liked the way you handled the client’s questions.
+Your report was very clear, especially the summary.
+That was a great idea. It saved us a lot of time.
+Thank you for staying late. It made a big difference.
+# exercicio: Practice 1
+Which feedback is the most constructive?
+a) Your report was bad.
+b) I don’t like your report.
+*c) The report was clear, but it would be even better with more data in section 2.
+escolha: You [*might want to/must to/should to] check the numbers again.
+escolha: It would be [*even better/more better/very better] if you added a summary.
+grupos: Praise: I really liked…, Great job on…, That made a big difference / Suggestion: You might want to…, Have you thought about…?, It would be even better if…
+# explica: Receiving feedback
+Não se defenda imediatamente. Agradeça, pergunte e combine o próximo passo:
+> **Thanks for telling me.** Could you give me an example?
+> **That’s helpful.** I hadn’t realised that.
+> **I’ll work on that.** Can we check in again next month?
+# dialogo: The feedback meeting
+A: Do you have a minute to talk about the presentation?
+B: Sure.
+A: First, the slides were great. The clients loved the charts.
+B: Thanks! Anything I could improve?
+A: Maybe slow down a bit. In the Q&A, you spoke very fast.
+B: That’s helpful. I’ll work on that.
+# exercicio: Practice 2
+reescreva: Your emails are too long. | MIGHT | You ___ your emails a bit shorter. | might want to make
+reescreva: You didn’t send the file on time. | EVEN | It ___ if you sent the file on time. | would be even better
+erro: Thank you for {to tell|telling} me.
+# conversa: Role-play | img:conversa
+Give the teacher positive feedback and one suggestion about a (real or invented) project.
+Use the SBI model to give feedback on a colleague who is always late to meetings.
+Receive the teacher’s feedback without being defensive.
+# tarefas: Atividades recomendadas
+Meetings
+Hedging and softening
+Homework · Feedback that works`],
+
+['EN','C1','Cover letters that get interviews',`# capa: Cover letters that get interviews | img:envelope
+Structure, tone and powerful language
+# sobre: Sobre esta aula
+ver: a estrutura de uma **cover letter** em inglês (gancho, por que eu, por que vocês, fechamento); linguagem formal mas pessoal; verbos de impacto e números; frases batidas que devemos **evitar**; diferenças entre Brasil e mercados anglo-saxões
+porque: Uma cover letter boa é curta, específica e mostra **resultados**. Muitos candidatos brasileiros escrevem textos genéricos, longos demais ou formais demais.
+meta: escrever uma cover letter de 4 parágrafos; abrir com um gancho; conectar experiências às necessidades da empresa
+nivel: Nível C1 · escrita profissional
+nota: Se o aluno estiver procurando emprego, use uma vaga real. Vale mais do que qualquer exemplo.
+# aquecimento: First impressions
+pergunta: Have you ever written a cover letter? What did you write?
+jogo: Cliché alarm | A professora lê aberturas de cartas (“I am writing to apply for…”, “I’m a hard-working team player…”). O aluno aperta o “alarme” quando ouvir um clichê.
+# tabela: The four paragraphs
+Paragraph | Purpose | Example opening
+1. Hook | por que esta vaga, com energia | When I saw that Nubank is expanding into Mexico, I knew…
+2. Why me | 2 conquistas com números | In my current role, I led a team that cut costs by 18%…
+3. Why you | o que admira na empresa | I’ve followed your work on financial inclusion…
+4. Close | próximo passo, confiante | I’d welcome the opportunity to discuss how I could contribute…
+# dica: Avoid clichés
+x: I am a hard-working team player with excellent communication skills.
+ok: I led a team of six across three countries and delivered the project two weeks early.
+x: I am writing to apply for the position of…
+ok: Your search for a product manager caught my attention because…
+x: I look forward to hearing from you at your earliest convenience.
+ok: I’d welcome the chance to discuss how I could help your team grow.
+# vocab: Powerful phrases
+spearheaded | liderou (uma iniciativa)
+streamlined | simplificou, otimizou
+a proven track record | um histórico comprovado
+cross-functional | entre áreas
+to drive growth | impulsionar o crescimento
+to align with | estar alinhado com
+I’m drawn to | me atrai
+to contribute to | contribuir com
+# exercicio: Practice 1
+escolha: I [*spearheaded/spearheading/was spearhead] a project that increased sales by 25%.
+escolha: Your company’s values [*align with/align to/are aligning] my own.
+escolha: I have a proven track [*record/registry/history] in project management.
+reescreva: I am a very organised person. | STREAMLINED | I ___ , reducing approval time by 30%. | streamlined the approval process
+# leitura: An example | img:envelope
+tipo: Cover letter
+Dear Ms Taylor,
+When I read that GreenWay is opening its first office in Latin America, I knew I wanted to be part of it. As a logistics manager with eight years’ experience in Brazil, I have **spearheaded** two regional expansions and **streamlined** delivery routes, cutting fuel costs by **22%**.
+I’m particularly **drawn to** GreenWay’s commitment to electric fleets, which **aligns with** my own work on sustainable transport. I’d welcome the opportunity to discuss how I could **contribute to** your growth in the region.
+# exercicio: Practice 2
+What is the hook of the letter?
+*a) GreenWay is opening an office in Latin America.
+b) The candidate is a hard-working person.
+c) The candidate wants a higher salary.
+The letter includes a specific number to show results. (v)
+erro: I am {looking forward to hear|looking forward to hearing} from you.
+# conversa: Your turn | img:envelope
+Choose a job (real or dream). Write the hook paragraph and read it to the teacher.
+Turn 3 of your job tasks into achievements with numbers.
+What do you think employers in your area value most?
+# tarefas: Atividades recomendadas
+Formal business writing
+Formal or informal?
+Homework · Dear hiring manager`]
 );
 
 var SLIDES_LOADED=true;

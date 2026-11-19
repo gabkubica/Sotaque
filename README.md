@@ -170,7 +170,13 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   (B2); Participle clauses, The advanced passive (C1). **Fonética**: Ship or sheep? (vogais curtas e longas, pares mínimos),
   Word stress (A2); Connected speech (linking, weak forms, schwa), Intonation, Don’t add an “i”! (consoantes finais, h e r)
   (B1); Sentence stress and rhythm (B2). **Francês**: Les pronoms y et en (B1) e Phonétique: voyelles nasales et liaisons
-  (A2). 22 homeworks novas (as de fonética com ditado, separar sons e achar a sílaba tônica). 128 aulas no total.
+  (A2). 22 homeworks novas (as de fonética com ditado, separar sons e achar a sílaba tônica).
+- **Lote 5 · inglês** (20 aulas): gramática: Plurals and a/an (A1); Will for offers, promises and decisions (A2); Future
+  time clauses, Quantifiers (a few/a little), Verbs and prepositions (B1); Should/could/would have, Reported questions and
+  requests, It’s time / I’d rather / I’d better (B2); Nominalisation, Ellipsis and substitution (C1). Fonética: Thirteen
+  or thirty? (números, preços e datas), -s endings (A2); Homophones, Diphthongs (B1); British or American? (B2). Temas:
+  Shopping online (A2); Etiquette around the world (quiz de gorjeta, Japão e Alemanha), Requests and delegating (B1);
+  Giving feedback (modelo SBI) (B2); Cover letters (C1). 20 homeworks novas. 148 aulas no total.
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).
