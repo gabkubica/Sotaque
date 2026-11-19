@@ -3414,3 +3414,596 @@ Will or going to? Choose and explain
 Will: predictions, offers and decisions
 Going to · plans`],
 );
+/* ---------- leva: perguntas, have got, simple × continuous, advérbios, telefone, artigos, phrasal verbs ---------- */
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Wh- questions: ask the right question',i:'Escolha a palavra de pergunta certa e monte perguntas completas.',q:[
+    PICK('[*Where/What/Who] do you live? — In Recife.'),
+    PICK('[*Who/What/When] is your favourite singer? — Anitta.'),
+    PICK('[*When/Where/Why] is your birthday? — In May.'),
+    PICK('[*Why/How/What] are you sad? — Because I lost my phone.'),
+    FIX('Where {you work|do you work}?'),
+    PMATCH('How old are you? | img:bolo\nWhat time is it? | img:relogio\nWhere is the station? | img:trem\nHow much is it? | img:camiseta','Match each question to a picture.'),
+    KWT('I want to know your name.','WHAT','___ your name?','what’s/what is')]},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Simple or continuous: right now or usually?',i:'Rotina (present simple) ou agora (present continuous)?',q:[
+    PICK('Shh! The baby [*is sleeping/sleeps].'),
+    PICK('I [*work/am working] in a bank. It’s my job.'),
+    PICK('Look! It [*’s snowing/snows]!'),
+    PICK('She usually [*takes/is taking] the bus, but today she [*’s walking/walks].'),
+    SORT('Routine (simple): every day, usually, on Mondays, never\nNow (continuous): right now, at the moment, look!, today'),
+    FIX('I {am knowing|know} the answer.'),
+    KWT('My job is teaching English.','TEACH','I ___ English.','teach')]},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Adverbs: how do you do it?',i:'Adjetivo descreve a pessoa ou a coisa; advérbio descreve a ação.',q:[
+    PICK('She speaks English very [*well/good].'),
+    PICK('He is a [*careful/carefully] driver. He drives [*carefully/careful].'),
+    PICK('Please talk [*quietly/quiet]. The baby is sleeping.'),
+    FIX('You did the test {perfect|perfectly}!'),
+    SORT('Adjective: happy, fast, good, hard\nAdverb: happily, slowly, well, quietly'),
+    KWT('He is a fast runner.','RUNS','He ___.','runs fast')]},
+  {l:'EN',lv:'A2',tp:'Expressões',t:'Phone calls: leave a message',i:'Frases para ligar, atender e deixar recado.',q:[
+    ['You call a company. The receptionist says “Good morning, Lima Design.” You say:',['Hello, could I speak to Mr Lima, please?','Who are you?','Give me Mr Lima.'],0],
+    PICK('Hold [*on/up/in], please. I’ll put you through.'),
+    PICK('Can I [*take/do/make] a message?'),
+    SEQ('A: Good morning, Blue Sky Travel.\nB: Hi, could I speak to Paula, please?\nA: I’m sorry, she’s in a meeting. Can I take a message?\nB: Yes, please ask her to call me back.','Put the phone call in order.'),
+    FIX('Hello, {I am Carlos|this is Carlos} speaking.'),
+    DIT('Could you ask her to call me back?')]},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Articles: a, an or the?',i:'A, an, the ou nada? Pratique os casos mais comuns.',q:[
+    PICK('I have [*a/an/the] brother and [*an/a/the] uncle.'),
+    PICK('Can you close [*the/a/an] door, please?'),
+    PICK('[*–/The/A] dogs are friendly animals.'),
+    PICK('She’s [*an/a/the] engineer.'),
+    FIX('I play {the football|football} on Saturdays.'),
+    FIX('My father is {doctor|a doctor}.'),
+    CLOZE('I saw [a] cat and [a] dog. [The] cat was black.','an, some')]},
+);
+SLIDES_SEED.push(
+['EN','A1','Wh- questions: who, what, where?',`# capa: Wh- questions | img:lupa
+A1 · Who? What? Where? When? Why? How?
+# sobre: Sobre esta aula
+ver: as palavras de pergunta **who, what, where, when, why, how** (e how old, how much, what time); a ordem da pergunta com **do/does** e com **be**
+porque: Fazer perguntas é o que mantém uma conversa viva. Em português basta mudar a entonação, mas em inglês a **ordem** muda, e é aí que quase todo iniciante tropeça.
+meta: fazer perguntas pessoais simples; usar a ordem certa (question word + do/does + subject + verb); responder com frases curtas
+nivel: Nível A1
+# aquecimento: 20 questions
+musica: Who Are You — The Who | A pergunta mais famosa do rock: “Who are you? Who, who, who, who?”
+filme: Mean Girls (2004) | Cady chega à escola nova e todo mundo pergunta: “Where are you from? Why are you here?” | busca: Mean Girls Cady first day of school scene
+jogo: 20 questions | Pense numa pessoa famosa. O outro faz perguntas: “Is it a man? Where is she from? What does she do?”
+pergunta: What’s the first question you ask a new friend?
+# vocab: Question words
+who | quem | img:conversa
+what | o que / qual | img:lupa
+where | onde | img:globo
+when | quando | img:relogio
+why | por que | img:lampada
+how | como | img:balao
+# explica: The order
+**Com o verbo be:** question word + **be** + sujeito
+> **Where are** you from? · **Who is** she?
+**Com outros verbos:** question word + **do/does** + sujeito + verbo
+> **What do** you **do**? · **Where does** he **live**?
+Combinações: **how old, how much, how many, what time**
+> **How old** are you? · **What time** do you get up?
+# tabela: Ask and answer
+Question | Answer
+Where do you live? | In Curitiba.
+What do you do? | I’m a nurse.
+When is your birthday? | In July.
+Why are you studying English? | Because I want to travel.
+How do you go to work? | By bus.
+# exercicio: Practice 1 · Choose
+escolha: [*Where/Who/When] are you from? — From Brazil.
+escolha: [*What/How/Where] does she do? — She’s a lawyer.
+escolha: [*How/What/Who] old is your son? — He’s seven.
+escolha: [*Who/Why/What] is that man? — He’s my teacher.
+# dica: Cuidado!
+x: Where you live?
+ok: Where do you live?
+x: What she does?
+ok: What does she do?
+x: How many years do you have?
+ok: How old are you?
+# dialogo: First day
+A: Hi! What’s your name?
+B: I’m Lucas. And you?
+A: I’m Sara. Where are you from, Lucas?
+B: I’m from Salvador. What do you do?
+A: I’m a designer. Why are you in this course?
+B: Because I want to work abroad!
+# exercicio: Practice 2 · Make questions
+erro: What {you like|do you like} to eat?
+lacunas: [Where] does your sister [live]? — In Porto Alegre. || what, lives
+reescreva: I want to know her age. | OLD | How ___ she? | old is
+ditado: What time do you have lunch?
+# tirinha: The new neighbour
+[casa]
+Bia: Hi! Who are you?
+Sam: I’m Sam, your new neighbour!
+---
+Bia (feliz): Welcome! Where are you from?
+Sam: From Canada. And why is your dog looking at me?
+---
+Bia (surpreso): Because you have his ball!
+# leitura: The five Ws of journalism | img:envelope
+tipo: Curiosity
+Journalists learn a simple rule: a good news story answers five questions, the **five Ws**: **Who? What? Where? When? Why?** Many add a sixth one: **How?**
+“**Who** was there? **What** happened? **Where** and **when** did it happen? **Why**?” If a story doesn’t answer these questions, it isn’t finished.
+Try it: tell your teacher about your last weekend using the five Ws!
+# conversa: Ask me! | img:conversa
+Make 3 questions for your teacher. Use where, what and why.
+What do you usually do on Sunday?
+Why do you want to learn English?
+# resumo: Summary
+- **who · what · where · when · why · how** (+ how old, how much, what time)
+- be: **Where are** you from? · other verbs: **Where do** you live?
+- he/she/it: **does** → What **does** she **do**?
+# tarefas: Atividades recomendadas
+Question words
+Wh- questions: ask the right question
+Do and does: questions`],
+['EN','A1','Have got: family and pets',`# capa: Have got | img:cachorro
+A1 · I’ve got two brothers and a cat
+# sobre: Sobre esta aula
+ver: **have got / has got** para família, posses e características; negativas (haven’t got) e perguntas (Have you got…?); membros da família
+porque: “Have got” é muito usado no inglês britânico para falar de família, objetos e aparência. Também ajuda a entender o **has** da 3ª pessoa, um ponto que confunde muito no começo.
+meta: falar da família e dos bichos de estimação; perguntar o que a pessoa tem; descrever pessoas (She’s got long hair)
+nivel: Nível A1
+# aquecimento: My family
+musica: We Are Family — Sister Sledge | “We are family, I’ve got all my sisters with me!”
+filme: Coco (2017) | Miguel apresenta a família inteira na ofrenda. | busca: Coco Miguel family ofrenda scene
+jogo: Family photo | Mostre (ou descreva) uma foto da família: “This is my aunt. She’s got two kids.”
+pergunta: Have you got any brothers or sisters?
+# vocab: Family
+mother / father | mãe / pai | img:coracao
+brother / sister | irmão / irmã | img:conversa
+grandmother / grandfather | avó / avô | img:casa
+aunt / uncle | tia / tio | img:presente
+cousin | primo / prima | img:bola
+a pet | um bicho de estimação | img:gato
+# tabela: The form
+ | Positive | Negative | Question
+I / you / we / they | **’ve got** (have got) | **haven’t got** | **Have** you **got**…?
+he / she / it | **’s got** (has got) | **hasn’t got** | **Has** she **got**…?
+# explica: Use it for…
+**Família e posses:**
+> I**’ve got** two sisters. · She**’s got** a new car.
+**Aparência:**
+> He**’s got** blue eyes. · My cat **has got** a long tail.
+Respostas curtas: **Yes, I have. / No, she hasn’t.**
+# exercicio: Practice 1 · Have or has?
+escolha: My brother [*has got/have got] three children.
+escolha: [*Have/Has] you got a pet?
+escolha: We [*haven’t got/hasn’t got] a car.
+escolha: Has she got a bike? — Yes, she [*has/have/got].
+erro: She {have got|has got} long hair.
+# dialogo: Pets
+A: Have you got any pets?
+B: Yes, I have. I’ve got a dog and two cats.
+A: Wow! What’s your dog’s name?
+B: Thor. He’s got big ears and a very long tail.
+A: I haven’t got a pet, but my sister has got a rabbit.
+# dica: Cuidado!
+x: I have got 30 years.
+ok: I’m 30 (years old).
+x: Do you have got a car?
+ok: Have you got a car? / Do you have a car?
+x: He have got a sister.
+ok: He has got a sister.
+# exercicio: Practice 2 · Your family
+lacunas: My aunt [has] got two [sons]. They are my [cousins]. || have, sisters
+grupos: have got: I, you, we, they / has got: he, she, it
+reescreva: My house has a garden. | GOT | My house ___ a garden. | has got/’s got
+ditado: I’ve got two brothers and a sister.
+# tirinha: Pet show
+[cachorro]
+Leo: Have you got a pet?
+Ana (feliz): Yes! I’ve got a dog. He’s got a red ball.
+---
+Leo (surpreso): And what has he got in his mouth?
+Ana (triste): Oh no! My shoe!
+# leitura: The biggest family in the world | img:casa
+tipo: Curiosity
+Some families are really big! In India, a man called Ziona lived with his **very** big family in a 100-room house: he had dozens of children and more than 30 grandchildren.
+The family **has got** a huge kitchen. They cook about 30 chickens and 60 kilos of potatoes every day!
+And your family? How many cousins **have** you **got**?
+# conversa: Tell me about your family | img:coracao
+How many people have you got in your family?
+Have you got a favourite cousin? Why?
+Has anyone in your family got a pet? What’s its name?
+# resumo: Summary
+- I/you/we/they **have got** · he/she/it **has got**
+- Negative: **haven’t got / hasn’t got** · Question: **Have you got…? Has she got…?**
+- Age uses **be**: I’m 30. (not “I have 30”)
+# tarefas: Atividades recomendadas
+Have got and has got
+Family members
+Find the mistake: to be and have got`],
+['EN','A2','Present simple or continuous?',`# capa: Simple or continuous? | img:celular
+A2 · I usually work… but today I’m relaxing!
+# sobre: Sobre esta aula
+ver: present simple (rotina, fatos) × present continuous (agora, temporário); palavras-sinal; verbos de estado (know, like, want) que não usam -ing
+porque: Em português usamos o presente para tudo, mas em inglês a escolha muda o sentido: “I work” é a profissão, “I’m working” é o que está acontecendo agora. É uma das trocas mais frequentes de alunos brasileiros.
+meta: falar da rotina e do que está acontecendo agora; perceber as palavras-sinal; evitar -ing com verbos de estado
+nivel: Nível A2
+# aquecimento: What are they doing?
+musica: Happy — Pharrell Williams | No clipe, cada pessoa está fazendo algo: “She’s dancing. He’s jumping.”
+filme: The Truman Show (1998) | Truman faz as mesmas coisas todo dia… mas hoje algo diferente está acontecendo. | busca: Truman Show good morning in case I don't see ya scene
+jogo: Video call | Descreva o que você vê agora na sua casa: “My cat is sleeping. My neighbour is playing music.”
+pergunta: What do you usually do on Saturday? And what are you doing now?
+# tabela: Two presents
+Present simple | Present continuous
+Routines and facts | Now and temporary
+I **work** in an office. | I**’m working** from home this week.
+She **plays** tennis on Fridays. | She**’s playing** tennis right now.
+every day, usually, never | now, at the moment, today, look!
+# explica: Signal words
+**Simple** → always, usually, every day, on Mondays, never
+> I **usually drink** coffee in the morning.
+**Continuous** → now, right now, at the moment, this week, Look! Listen!
+> Listen! Someone **is knocking** at the door.
+# explica: State verbs
+Alguns verbos são **estados**, não ações, e quase nunca usam -ing:
+**know, like, love, hate, want, need, understand, believe**
+> I **know** the answer. (não “I’m knowing”)
+> She **wants** a coffee. (não “She’s wanting”)
+# exercicio: Practice 1 · Choose
+escolha: Paulo [*works/is working] in a hospital. He’s a nurse.
+escolha: Be quiet! I [*’m talking/talk] on the phone.
+escolha: We [*don’t eat/aren’t eating] meat. We’re vegetarians.
+escolha: I [*understand/am understanding] you now.
+grupos: simple: every day, usually, on Fridays / continuous: right now, at the moment, today
+# dica: Cuidado!
+x: I am liking this song.
+ok: I like this song.
+x: Every Sunday I am visiting my grandma.
+ok: Every Sunday I visit my grandma.
+x: Look! The bus come.
+ok: Look! The bus is coming.
+# dialogo: On the phone
+A: Hi! What are you doing?
+B: I’m cooking dinner. I usually cook on Fridays.
+A: What are you making?
+B: Pasta! I love Italian food. And you?
+A: I’m waiting for the bus. It’s raining a lot!
+# exercicio: Practice 2 · Complete
+lacunas: Today I [’m wearing] a suit because I [have] a meeting. || wear, having
+erro: She {is having|has} two sons.
+reescreva: Right now, my job is teaching online. | AT | I ___ online at the moment. | am teaching/’m teaching
+ditado: What are you doing at the moment?
+# tirinha: Working from home
+[celular]
+Tom: Are you working today?
+Mia: Yes, I’m working from home.
+---
+Tom (pensando): So why are you watching TV?
+Mia (feliz): I always watch the news at lunchtime!
+# leitura: A day in the life of a lighthouse keeper | img:mar
+tipo: Profile
+Every morning, Hugh **wakes up** at five and **climbs** the 120 steps of his lighthouse in Scotland. He **checks** the light, **writes** in his diary and **watches** the sea.
+But this week is different. A big storm **is coming**, so Hugh **is sleeping** in the tower and **is sending** messages to the boats every hour.
+“I **love** my job,” he says. “Today the sea **is getting** angry, but I **know** it very well.”
+# conversa: Now and usually | img:celular
+What do you usually do after work or school?
+What are you learning at the moment, besides English?
+Is anything different in your life this month?
+# resumo: Summary
+- **Simple:** rotina e fatos → I **work** here. · every day, usually
+- **Continuous:** agora e temporário → I**’m working** now. · now, today, look!
+- **State verbs** (know, like, want…) → sem -ing
+# tarefas: Atividades recomendadas
+Present simple or continuous?
+Simple or continuous: right now or usually?
+Present continuous`],
+['EN','A2','Adjectives or adverbs? Quick or quickly',`# capa: Quick or quickly? | img:bicicleta
+A2 · She’s a quick runner. She runs quickly.
+# sobre: Sobre esta aula
+ver: adjetivo (descreve a pessoa/coisa) × advérbio de modo (descreve a ação); a regra do **-ly**; irregulares (**good → well, fast, hard, late**); posição na frase
+porque: É um erro clássico dizer “She speaks English very good”. Saber escolher entre adjetivo e advérbio deixa as descrições mais precisas e corrige um erro que soa muito estranho para nativos.
+meta: transformar adjetivo em advérbio; usar well, fast e hard corretamente; descrever como alguém faz as coisas
+nivel: Nível A2
+# aquecimento: How do you do it?
+musica: Killing Me Softly — Fugees | “Killing me **softly** with his song”: um advérbio no título!
+filme: Zootopia (2016) | O bicho-preguiça do Detran trabalha **very slowly**. | busca: Zootopia sloth DMV scene
+jogo: Act it out | Faça uma ação de um jeito (“walk slowly”, “eat noisily”). O outro adivinha o advérbio.
+pergunta: What do you do quickly? And slowly?
+# explica: Adjective or adverb?
+**Adjetivo** → descreve a **pessoa ou coisa** (depois de be, antes do substantivo)
+> She’s a **careful** driver. · The test was **easy**.
+**Advérbio** → descreve a **ação** (como alguém faz)
+> She drives **carefully**. · I did the test **easily**.
+# tabela: Making adverbs
+Adjective | Adverb | Rule
+slow | slowly | + ly
+careful | carefully | + ly
+easy | easily | y → ily
+good | **well** | irregular!
+fast | **fast** | igual
+hard | **hard** | igual
+# exercicio: Practice 1 · Choose
+escolha: My grandma cooks very [*well/good].
+escolha: He’s a [*good/well] cook.
+escolha: The children are playing [*quietly/quiet] in their room.
+escolha: She works [*hard/hardly] every day.
+erro: Please drive {slow|slowly}. There are kids here.
+# dica: Cuidado!
+x: You speak English very good!
+ok: You speak English very well!
+x: He runs very fastly.
+ok: He runs very fast.
+x: I work hardly.
+ok: I work hard. (hardly = quase não)
+# dialogo: The driving test
+A: How was your driving test?
+B: Terrible! I was so nervous.
+A: Oh no! What happened?
+B: I drove too fast, and then I parked very badly.
+A: Don’t worry. You’ll do it better next time. Just drive slowly and carefully!
+# exercicio: Practice 2 · Rewrite
+reescreva: She is a beautiful singer. | SINGS | She ___. | sings beautifully
+reescreva: He is a bad dancer. | DANCES | He ___. | dances badly
+lacunas: The exam was [easy]. I answered the questions [easily]. || easier, easyly
+ditado: She speaks English really well.
+# tirinha: The race
+[bicicleta]
+Leo: You ride very fast!
+Bia (feliz): Thanks! I practise hard.
+---
+Leo (cansado): I’m a slow rider…
+Bia (feliz): But you ride carefully. That’s good!
+# leitura: Slow food, happy people | img:pizza
+tipo: Opinion
+In 1986, people in Rome protested **angrily** when a fast-food restaurant opened near the Spanish Steps. That was the start of the **Slow Food** movement.
+Its idea is **simple**: eat **slowly**, cook **carefully** and buy **local** food. Fans say that when we eat **calmly**, we feel **better** and enjoy our food more.
+I think they’re right. Do you eat **quickly** or **slowly**? Do you think a **slow** meal is a **good** meal?
+# conversa: How do you do it? | img:balao
+What do you do really well?
+Do you drive or cook carefully, or quickly?
+Who in your family speaks very loudly?
+# resumo: Summary
+- Adjetivo → pessoa/coisa: a **careful** driver · Advérbio → ação: drive **carefully**
+- **-ly**: slow → slowly · easy → easily
+- Irregulares: **good → well** · fast → fast · hard → hard (hardly = quase não)
+# tarefas: Atividades recomendadas
+Adjectives or adverbs?
+Adverbs: how do you do it?
+Adjectives before nouns`],
+['EN','A2','Phone calls in English',`# capa: Phone calls | img:celular
+A2 · Hello, this is Carla speaking
+# sobre: Sobre esta aula
+ver: como atender e se apresentar (**This is… speaking**); pedir para falar com alguém; **hold on, call back, take a message**; soletrar nomes e números
+porque: Ligações são difíceis porque não vemos o rosto da pessoa nem temos gestos para ajudar. Com algumas frases prontas, o aluno consegue marcar consultas, falar com empresas e deixar recados em inglês.
+meta: começar e terminar uma ligação; pedir para falar com alguém; deixar e anotar um recado; soletrar o nome e o número
+nivel: Nível A2
+# aquecimento: Hello?
+musica: Hello — Adele | “Hello, it’s me…” A ligação mais famosa da música!
+filme: Home Alone (1990) | Kevin atende o telefone e finge ser o pai. | busca: Home Alone Kevin phone call pizza scene
+jogo: Spell it! | Soletre seu nome e seu e-mail em inglês; o outro anota. Depois, troquem.
+pergunta: Do you prefer calling or sending messages? Why?
+# frase: Useful phrases
+Hello, this is Carla speaking.
+Could I speak to Mr Silva, please?
+Hold on, please.
+I’m sorry, he’s not available right now.
+Can I take a message?
+Could you ask her to call me back?
+Could you spell that, please?
+# explica: Who’s calling?
+Ao telefone, **não** dizemos “I am Carla”:
+> Hello, **this is** Carla. · Carla **speaking**.
+Para perguntar quem é:
+> **Who’s calling, please?** · **Who’s speaking?**
+Para pedir para repetir:
+> **Sorry, could you say that again?** · **Could you speak more slowly?**
+# tabela: Phone verbs
+Phrase | Meaning
+call (someone) back | retornar a ligação
+hang up | desligar
+hold on | aguardar na linha
+put (someone) through | transferir a ligação
+leave a message | deixar recado
+pick up | atender
+# exercicio: Practice 1 · On the phone
+escolha: Hello, [*this is/I am/here is] Pedro from Sunny Tours.
+escolha: Could you ask him to call me [*back/again/return]?
+escolha: Please hold [*on/in/at]. I’ll put you through.
+erro: Can I {leave|let} a message?
+# dialogo: Booking a table
+A: Good evening, Bella Vista restaurant.
+B: Hi! I’d like to book a table for Saturday, please.
+A: Sure. For how many people?
+B: For four, at eight o’clock.
+A: Perfect. Can I have your name, please?
+B: Yes, it’s Moreira. M-O-R-E-I-R-A.
+# dica: Cuidado!
+x: Hello, I am Carla.
+ok: Hello, this is Carla.
+x: Wait a moment, I will pass the call.
+ok: Hold on, I’ll put you through.
+x: Can you turn me the call?
+ok: Can you call me back?
+# exercicio: Practice 2 · Messages
+lacunas: I’m sorry, Ms Rocha isn’t [available]. Can I [take] a message? || free, do
+ordem: Could I speak to Ana please
+ditado: Could you spell your surname, please?
+# tirinha: Wrong number
+[celular]
+Sam: Hello, is this Pizza Express?
+Mia (surpreso): No, this is Mia speaking.
+---
+Sam (triste): Oh, sorry! Wrong number.
+Mia (feliz): No problem. But now I want pizza too!
+# leitura: The first phone call | img:celular
+tipo: Curiosity
+On March 10, 1876, Alexander Graham Bell made the first phone call. His words were simple: “Mr Watson, come here. I want to see you.” Watson was in the next room!
+Today, many young people **hardly ever** make phone calls. They send messages and voice notes instead. Some even feel nervous when the phone rings!
+Are phone calls a problem for you, or do you like talking on the phone?
+# conversa: Your phone habits | img:celular
+Who do you call most often?
+What was the last important phone call you made?
+Have you ever made a phone call in English? How was it?
+# resumo: Summary
+- **This is** Carla (speaking). · **Could I speak to…?**
+- **hold on · put through · call back · take/leave a message**
+- **Could you spell that? · Could you say that again?**
+# tarefas: Atividades recomendadas
+On the phone
+Phone calls: leave a message
+Listening · A voicemail`],
+['EN','A2','Articles: a, an, the or nothing?',`# capa: A, an, the… or nothing? | img:livro
+A2 · a cat, an apple, the moon, cats
+# sobre: Sobre esta aula
+ver: **a / an** (uma coisa qualquer, primeira vez, profissões); **the** (algo já conhecido ou único); **sem artigo** para generalizar, esportes, refeições e idiomas
+porque: Artigos aparecem em quase toda frase, e as regras do português são diferentes (“O café é bom” = “Coffee is good”). Erros de artigo são os mais comuns mesmo em alunos avançados.
+meta: escolher entre a e an pelo som; usar the para coisas já conhecidas; deixar sem artigo quando falamos em geral
+nivel: Nível A2
+# aquecimento: The famous ones
+musica: The Final Countdown — Europe | “It’s **the** final countdown!” Única, especial, conhecida: the.
+filme: The Lion King (1994) | “**The** circle of life”. Por que é the e não a? | busca: The Lion King circle of life opening scene
+jogo: A or an? | Diga uma palavra (umbrella, hour, uniform, egg). O outro responde rápido com a ou an.
+pergunta: Do you prefer cats or dogs?
+# explica: A or an?
+Depende do **som**, não da letra:
+> **a** book · **a** university (som de “iu”)
+> **an** apple · **an** hour (o h não é pronunciado)
+Usamos a/an para **uma coisa qualquer**, **a primeira vez** que falamos dela, e **profissões**:
+> I’ve got **a** car. · She’s **an** engineer.
+# explica: The
+**the** = a coisa que já sabemos qual é, ou que é **única**
+> I’ve got a car and a bike. **The** car is red.
+> **The** sun · **the** moon · **the** internet
+> Can you close **the** door? (a porta desta sala)
+# tabela: No article
+When | Example
+Things in general (plural) | **Dogs** are friendly.
+Uncountable in general | **Coffee** is good for you.
+Sports and games | I play **football**.
+Meals | We have **lunch** at 1.
+Languages | She speaks **English**.
+# exercicio: Practice 1 · Choose
+escolha: She’s [*a/an/the] nurse.
+escolha: I need [*an/a] umbrella. It’s raining.
+escolha: [*The/A] moon is beautiful tonight.
+escolha: I love [*–/the] chocolate.
+grupos: a: book, uniform, house / an: hour, apple, egg
+# dica: Cuidado!
+x: My sister is doctor.
+ok: My sister is a doctor.
+x: The life is beautiful.
+ok: Life is beautiful.
+x: I play the tennis.
+ok: I play tennis.
+# dialogo: In the kitchen
+A: Is there an apple in the fridge?
+B: No, but there’s a banana and an orange.
+A: OK. Where’s the knife?
+B: It’s on the table, next to the bread.
+A: Thanks. I love fruit for breakfast!
+# exercicio: Practice 2 · Fix it
+erro: I have {the|–} breakfast at seven.
+erro: He’s {a|an} honest man.
+lacunas: I bought [a] dress and [a] hat. [The] dress is blue. || an, some
+ditado: The book on the table is mine.
+# tirinha: The best pizza
+[pizza]
+Leo: I want a pizza!
+Ana: There’s a pizza place near the park.
+---
+Leo (feliz): Is it the place with the red door?
+Ana (feliz): Yes! It has the best pizza in town.
+# leitura: The world’s most expensive coffee | img:xicara
+tipo: Curiosity
+**Coffee** is one of **the** most popular drinks in **the** world. But there is **a** very strange coffee from Indonesia called kopi luwak.
+**The** beans are eaten by **an** animal called **a** civet, and then collected from… its droppings! **The** coffee is very rare, and **a** cup can cost more than 50 dollars.
+Would you try **a** cup? Is **coffee** important in your life?
+# conversa: You and things | img:livro
+Do you have a car, a bike or neither?
+What’s the best restaurant in your city?
+Do you think money is important? Why?
+# resumo: Summary
+- **a** + som de consoante · **an** + som de vogal (an hour, a university)
+- **the** → algo conhecido ou único (the sun, the door)
+- **nada** → geral (Dogs are…), esportes, refeições, idiomas
+# tarefas: Atividades recomendadas
+Articles: a, an or the?
+Articles · a, an, the or nothing`],
+['EN','B1','Everyday phrasal verbs',`# capa: Everyday phrasal verbs | img:casa
+B1 · wake up, turn off, find out…
+# sobre: Sobre esta aula
+ver: phrasal verbs da rotina (**wake up, get up, turn on/off, put on, take off, look for, find out, give up**); separáveis e inseparáveis; o objeto pronome no meio (turn **it** off)
+porque: Nativos usam phrasal verbs o tempo todo, no lugar de verbos “formais” (find out em vez de discover). Sem eles, é difícil entender filmes, séries e conversas do dia a dia.
+meta: descrever a rotina com phrasal verbs; entender quando o verbo pode ser separado; trocar verbos formais por phrasal verbs
+nivel: Nível B1
+# aquecimento: Get up!
+musica: Wake Me Up — Avicii | “So **wake me up** when it’s all over…” Repare: o pronome fica no meio!
+filme: Friends — “Pivot!” (1999) | Ross tenta **carry** o sofá **up** a escada. | busca: Friends pivot couch scene
+jogo: Mime a phrasal verb | Faça a mímica (put on a jacket, turn off the light). O outro adivinha.
+pergunta: What time do you usually wake up? And get up?
+# vocab: My morning
+wake up | acordar | img:relogio
+get up | levantar da cama | img:cama
+turn on / turn off | ligar / desligar | img:lampada
+put on | vestir, colocar | img:jaqueta
+take off | tirar (roupa) | img:sapato
+look for | procurar | img:lupa
+# explica: Separable or not?
+**Separáveis** (o objeto pode ir no meio):
+> Turn **off** the TV. = Turn the TV **off**.
+Com pronome, **sempre no meio**:
+> Turn **it** off. (não “turn off it”)
+**Inseparáveis** (o objeto vem depois):
+> I’m **looking for** my keys. (não “looking my keys for”)
+# tabela: Formal or everyday?
+Formal | Phrasal verb
+discover | find out
+stop (a habit) | give up
+continue | carry on
+tolerate | put up with
+return | come back
+# exercicio: Practice 1 · Choose
+escolha: It’s cold. [*Put on/Put off/Take on] your jacket.
+escolha: I’m looking [*for/at/after] my glasses. Have you seen them?
+escolha: The TV is too loud. Can you turn [*it down/down it]?
+escolha: She gave [*up/in/out] smoking last year.
+erro: I’ll {pick up you|pick you up} at eight.
+# dica: Cuidado!
+x: Turn off it, please.
+ok: Turn it off, please.
+x: I’m looking my phone for.
+ok: I’m looking for my phone.
+x: Put off your shoes, please.
+ok: Take off your shoes, please.
+# dialogo: A bad morning
+A: You look tired. What happened?
+B: My alarm didn’t go off, so I woke up late.
+A: Oh no!
+B: Then I couldn’t find my keys. I looked for them everywhere!
+A: Where were they?
+B: In my jacket. I put it on and found them in the pocket!
+# exercicio: Practice 2 · Rewrite
+reescreva: I discovered the truth yesterday. | FOUND | I ___ the truth yesterday. | found out
+reescreva: Please continue with your work. | CARRY | Please ___ with your work. | carry on
+lacunas: Take [off] your shoes and turn [on] the light. || in, up
+ditado: Don’t give up. You can do it!
+# tirinha: Monday morning
+[cama]
+Tom (cansado): I don’t want to get up…
+Mia: Come on! Turn off the alarm and get up!
+---
+Tom (pensando): Where are my glasses? I’m looking for them…
+Mia (feliz): You’re wearing them!
+# leitura: Why phrasal verbs? | img:livro
+tipo: Opinion
+Many students hate phrasal verbs. “Why say **find out** if I can say **discover**?” they ask. But native speakers **pick up** these verbs as children and use them all the time.
+If you **look up** a word in the dictionary, you learn it. But if you **come across** it in a song or a series, you remember it. My advice: don’t **give up**! Learn them in context, a few at a time.
+Do you think phrasal verbs are difficult? Which one do you use the most?
+# conversa: Your routine | img:casa
+What do you do right after you wake up?
+What is a habit you want to give up?
+What do you do when you can’t find something? Where do you look for it?
+# resumo: Summary
+- Rotina: **wake up, get up, put on, take off, turn on/off**
+- Separáveis: turn the TV off · com pronome **no meio**: turn **it** off
+- Inseparáveis: **look for** my keys · formais → find out, give up, carry on
+# tarefas: Atividades recomendadas
+Everyday phrasal verbs
+Phrasal verbs: fill and fix
+Phrasal verbs do dia a dia`],
+);

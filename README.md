@@ -110,11 +110,11 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - A aba Aula agora são as apresentações de slides (filtro por nível). Cada aula começa com um warm-up
   (música, cena de filme com link de busca no YouTube, jogo e pergunta), tem linha do tempo para a gramática e
   termina com atividades recomendadas do banco, que a professora manda como pacote. Desenho por cima do slide
-  (5 cores, caneta, marca-texto e **T** para escrever: clique no slide e digite, clique num texto para editar; desfazer, limpar).
+  (botão **Anotar** abre uma barra só: caneta, marca-texto e texto, 5 cores, desfazer, limpar e pronto; no texto, clique no slide e digite, clique num texto para editar).
   **Lousa**: página em branco pautada para escrever e desenhar no meio da aula (fica salva por aula).
   **Áudios gravados**: as aulas prontas em inglês têm as falas em mp3 com voz neural (Kokoro-82M, Apache-2.0) em
   `app/audio/<id>.json`, que tocam dentro da página e entram no Meet quando a professora compartilha a guia com
-  "Compartilhar áudio da guia" (o botão "🔊 Som no Meet" explica). Aulas novas: `node scripts/audios-lista.js` e
+  "Compartilhar áudio da guia". Aulas novas: `node scripts/audios-lista.js` e
   `python scripts/audios.py` (instruções no próprio script). Sem o áudio gravado, a voz do navegador lê como antes, salvo à parte por aula e slide, fora da apostila; na aula ao vivo o aluno vê o desenho.
   Tela cheia da página inteira (trocar de slide não sai mais dela).
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
