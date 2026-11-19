@@ -105,7 +105,7 @@ const KIDS_SHEETS={
   colorir:S0('Pinte o desenho','arte',['a3','a5'],'Uma figura grande para pintar, com a palavra.',(th,R)=>{ const [w,n]=kW(th,1,R)[0];
     return kPage(th,`Colour the ${w}!`,'Pinte a figura do jeito que quiser',`${kBox(90,280,820,820,0,{fill:'#fff',stroke:'#efe6dc',sw:4})}${kE(n,170,350,660,'line')}${kTrace(500,1250,w,120,'middle')}${kRule(150,850,1250,120)}`); }),
   sombra:S0('Ligue à sombra','voc',['a3','a5'],'4 figuras coloridas e 4 sombras para ligar.',(th,R)=>{ const W=kW(th,4,R), S=kShuf(W,R); let b='';
-    W.forEach(([w,n],i)=>{ const y=290+i*265; b+=kCardE(n,90,y,250,230,i)+`<circle cx="372" cy="${y+115}" r="13" fill="#2a2326"/>`+kT(215,y+262,w,{s:24,a:'middle',c:'#8a7e80',f:KFS}); });
+    W.forEach(([w,n],i)=>{ const y=290+i*265; b+=kCardE(n,90,y,250,230,i)+`<circle cx="372" cy="${y+115}" r="13" fill="#2a2326"/>`+kT(215,y+262,w,{s:24,a:'middle',c:'#8a7e80',f:KFS})+kSpk(80,y+20,w,40); });
     S.forEach(([w,n],i)=>{ const y=290+i*265; b+=`<circle cx="628" cy="${y+115}" r="13" fill="#2a2326"/>`+kBox(660,y,250,230,0,{fill:'#f4f1ee'})+kE(n,700,y+20,180,'shadow'); });
     return kPage(th,'Find the shadow','Ligue cada figura à sua sombra',b); }),
   igual:S0('Encontre o igual','voc',['a3'],'Circule a figura igual à primeira.',(th,R)=>{ const all=KIDS_THEMES[th].w, rows=kW(th,5,R); let b='';
@@ -139,7 +139,7 @@ const KIDS_SHEETS={
       <circle cx="140" cy="600" r="16" fill="none" stroke="#2a2326" stroke-width="3"/><circle cx="860" cy="600" r="16" fill="none" stroke="#2a2326" stroke-width="3"/>${kT(500,110,`I’m a ${op}!`,{s:64,a:'middle'})}${kT(500,1130,'Pinte, recorte, faça os furos dos olhos e amarre um elástico nos dois círculos.',{s:22,b:false,c:'#6a5e61',a:'middle',f:KFS})}`,{noHead:true}); },Object.fromEntries(Object.keys(KIDS_MASKS).map(k=>[k,k[0].toUpperCase()+k.slice(1)]))),
   /* ---- 5 a 6 anos ---- */
   flash:S0('Flashcards para recortar','voc',['a3','a5','a7'],'6 cartões com figura e palavra.',(th,R)=>{ const W=kW(th,6,R); let b='';
-    W.forEach(([w,n],i)=>{ const x=60+(i%2)*450, y=280+Math.floor(i/2)*355; b+=kBox(x+15,y+10,410,325,i)+kE(n,x+120,y+30,200)+kT(x+220,y+300,w,{s:w.length>9? 40 : 50,a:'middle'}); });
+    W.forEach(([w,n],i)=>{ const x=60+(i%2)*450, y=280+Math.floor(i/2)*355; b+=kBox(x+15,y+10,410,325,i)+kE(n,x+120,y+30,200)+kT(x+220,y+300,w,{s:w.length>9? 40 : 50,a:'middle'})+kSpk(x+390,y+45,w,44); });
     b+=kCut(500,270,500,1350)+kCut(50,630,950,630)+kCut(50,985,950,985);
     return kPage(th,`${KIDS_THEMES[th].n} flashcards`,'Recorte · jogue “What’s this?”, memória e esconde-esconde',b,{name:false}); }),
   letra:S0('Alfabeto: traçar a letra','esc',['a5'],'Letra grande para traçar + “a is for apple”.',(op,R)=>{ const l=KIDS_ABCW[op]? op : 'a', [w,n]=KIDS_ABCW[l];
@@ -147,13 +147,13 @@ const KIDS_SHEETS={
       ${kRule(90,560,1190,110)}${[...Array(4)].map((_,i)=>kTrace(120+i*115,1190,l,110)).join('')}${kRule(90,920,1325,100)}`,{ic:n}); },Object.fromEntries(Object.keys(KIDS_ABCW).map(l=>[l,l.toUpperCase()+' '+l]))),
   primeira:S0('Primeira letra','esc',['a5'],'Circule a letra que começa a palavra.',(th,R)=>{ const W=kW(th,6,R).filter(([w])=>/^[a-z]/i.test(w)); let b=''; const AZ='abcdefghijklmnoprstuw';
     W.forEach(([w,n],i)=>{ const x=60+(i%2)*450, y=280+Math.floor(i/2)*360, f=w[0].toLowerCase(); const ops=kShuf([f,...kShuf(AZ.split('').filter(c=>c!==f),R).slice(0,2)],R);
-      b+=kBox(x+15,y,410,320,i)+kE(n,x+140,y+20,160)+ops.map((o,k)=>`<circle cx="${x+95+k*125}" cy="${y+250}" r="44" fill="#fff" stroke="#2a2326" stroke-width="3"/>${kT(x+95+k*125,y+270,o,{s:56,a:'middle'})}`).join(''); });
+      b+=kBox(x+15,y,410,320,i)+kE(n,x+140,y+20,160)+kSpk(x+395,y+35,w,40)+ops.map((o,k)=>`<circle cx="${x+95+k*125}" cy="${y+250}" r="44" fill="#fff" stroke="#2a2326" stroke-width="3"/>${kT(x+95+k*125,y+270,o,{s:56,a:'middle'})}`).join(''); });
     return kPage(th,'First letter','Diga o nome da figura e circule a primeira letra',b); }),
   tracar:S0('Trace as palavras','esc',['a5','a7'],'Traçar e copiar 4 palavras na pauta de caligrafia.',(th,R)=>{ const W=kW(th,4,R); let b='';
-    W.forEach(([w,n],i)=>{ const y=280+i*270; b+=kBox(50,y,230,230,i)+kE(n,75,y+25,180)+kTrace(320,y+120,w,w.length>8? 80 : 100)+kRule(310,955,y+120,100)+kRule(310,955,y+232,90); });
+    W.forEach(([w,n],i)=>{ const y=280+i*270; b+=kBox(50,y,230,230,i)+kE(n,75,y+25,180)+kSpk(70,y+22,w,38)+kTrace(320,y+120,w,w.length>8? 80 : 100)+kRule(310,955,y+120,100)+kRule(310,955,y+232,90); });
     return kPage(th,'Trace and write','Passe o lápis por cima e copie embaixo',b); }),
   ligar:S0('Ligue a figura à palavra','voc',['a5','a7'],'5 figuras e 5 palavras para ligar.',(th,R)=>{ const W=kW(th,5,R), S=kShuf(W,R); let b='';
-    W.forEach(([w,n],i)=>{ const y=280+i*212; b+=kCardE(n,90,y,240,185,i)+`<circle cx="365" cy="${y+92}" r="13" fill="#2a2326"/>`; });
+    W.forEach(([w,n],i)=>{ const y=280+i*212; b+=kCardE(n,90,y,240,185,i)+`<circle cx="365" cy="${y+92}" r="13" fill="#2a2326"/>`+kSpk(80,y+20,w,40); });
     S.forEach(([w],i)=>{ const y=280+i*212; b+=`<circle cx="600" cy="${y+92}" r="13" fill="#2a2326"/>`+kT(640,y+110,w,{s:w.length>9? 40 : 52}); });
     return kPage(th,'Match!','Ligue cada figura à palavra certa',b); }),
   cores:S0('Pinte com as cores','voc',['a5','a7'],'“Colour the cat red”: cores + vocabulário.',(th,R)=>{ const W=kW(th,4,R), C=kShuf(Object.keys(KCOL),R); let b='';
@@ -313,13 +313,15 @@ const kidsTitle=(kind,theme)=>{ const S=KIDS_SHEETS[kind]; return S? `${S.n} · 
 function kidsLessonFor(sid){ const L=(DB.lessons||[]).filter(l=>l.studentId===sid&&l.status!=='cancelada');
   return L.filter(l=>isLive(l)||Math.abs(l.start-now())<2*HOUR)[0] || L.filter(l=>l.status==='agendada'&&l.start>now()).sort((a,b)=>a.start-b.start)[0] || L.filter(l=>l.start<=now()).sort((a,b)=>b.start-a.start)[0] || null; }
 function kidsUse(sid,mat,quiet){ const l=kidsLessonFor(sid); if (!l){ if (!quiet) toast('Este aluno ainda não tem aula na agenda.'); return null; }
-  l.mats ||= []; if (!l.mats.some(m=>m.k===mat.k&&m.t===mat.t)) l.mats.push({k:mat.k,t:mat.t,s:mat.s||0,title:kidsTitle(mat.k,mat.t)}); save();
+  const title= mat.k==='livro'? 'Livrinho: '+(kbookById(mat.t)?.title||'') : mat.k==='file'? (kfileById(mat.t)?.name||'Material') : kidsTitle(mat.k,mat.t);
+  l.mats ||= []; if (!l.mats.some(m=>m.k===mat.k&&m.t===mat.t)) l.mats.push({k:mat.k,t:mat.t,s:mat.s||0,title}); save();
   if (!quiet) toast(`Ligado à aula de ${fDay.format(l.start)} de ${user(sid).name.split(' ')[0]}`); return l; }
-function matChips(l){ if (!l.mats?.length) return ''; return `<div class="tl-mats">${l.mats.map(m=>isT()? `<a class="tl-deck tl-mat" href="#kids-${m.k}-${m.t}-${m.s||0}">📄 ${esc(m.title)}</a>` : `<span class="tl-deck tl-mat">📄 ${esc(m.title)}</span>`).join('')}</div>`; }
+function matChips(l){ if (!l.mats?.length) return ''; const href=m=>m.k==='livro'? '#livro-'+m.t : m.k==='file'? '#kfile-'+m.t : `#kids-${m.k}-${m.t}-${m.s||0}`;
+  return `<div class="tl-mats">${l.mats.map(m=>{ const ic=m.k==='livro'? '📖' : '📄'; return isT()||m.k==='livro'? `<a class="tl-deck tl-mat" href="${href(m)}">${ic} ${esc(m.title)}</a>` : `<span class="tl-deck tl-mat">${ic} ${esc(m.title)}</span>`; }).join('')}</div>`; }
 
 /* ---------- telas (aba Kids da Biblioteca) ---------- */
 const kidsStudents=()=>students().filter(s=>s.kids);
-const kidsList=(age,cat)=>Object.entries(KIDS_SHEETS).filter(([,S])=>(!age||S.ages.includes(age))&&(!cat||S.c===cat));
+const kidsList=(age,cat)=>Object.entries(KIDS_SHEETS).filter(([,S])=>(!age||S.ages.includes(age))&&(!cat||S.c===cat)).sort((a,b)=>(b[1].ages.includes('a9')+b[1].ages.includes('a7'))-(a[1].ages.includes('a9')+a[1].ages.includes('a7'))||0);
 function viewKids(){ if (!isT()) return '';
   const cat=S.kcat||'', age=S.kage||'', th=S.kth||'pets', K=kidsStudents(), list=kidsList(age,cat);
   return `${libHeader('kids')}<div class="kids">
@@ -327,9 +329,10 @@ function viewKids(){ if (!isT()) return '';
       : `<div class="notice"><div>Para usar o caderno digital, cadastre uma criança em <b>Alunos → + Novo aluno</b> e marque <b>Aluno Kids</b>.</div></div>`}
     <div class="kids-f">
       <div class="chips" role="group" aria-label="Idade">${[['','Todas as idades'],...Object.entries(KIDS_AGES)].map(([k,l])=>`<button class="chip-b ${age===k?'on':''}" data-act="k-age" data-v="${k}">${l}</button>`).join('')}</div>
-      <div class="chips" role="group" aria-label="Tipo">${[['','Todos os tipos'],...Object.entries(KIDS_CATS)].map(([k,l])=>`<button class="chip-b sm ${cat===k?'on':''}" data-act="k-cat" data-v="${k}">${l}</button>`).join('')}</div>
-      <div class="kids-ths" role="group" aria-label="Tema">${Object.entries(KIDS_THEMES).map(([k,t])=>`<button class="kids-thb ${th===k?'on':''}" data-act="k-th" data-v="${k}"><span>${kEsvg(t.ic)}</span>${esc(t.pt)}</button>`).join('')}</div></div>
+      <div class="chips" role="group" aria-label="Tipo">${[['','Todos os tipos'],...Object.entries(KIDS_CATS)].map(([k,l])=>`<button class="chip-b sm ${cat===k?'on':''}" data-act="k-cat" data-v="${k}">${l}</button>`).join('')}</div></div>
     ${age? `<p class="meta">${KIDS_AGES[age]}: ${KIDS_AGES_D[age]}.</p>` : ''}
+    ${typeof kidsBooksShelf==='function'? kidsBooksShelf(age) : ''}${typeof kidsFilesHtml==='function'? kidsFilesHtml() : ''}
+    <div class="panel-h"><h2>Atividades para imprimir e colar no caderno</h2></div>
     <p class="meta muted">${list.length} tipos de material · as ilustrações são do Fluent Emoji (Microsoft, licença livre MIT).</p>
     <div class="kids-grid">${list.map(([k,S0])=>{ const t=S0.opts? Object.keys(S0.opts)[0] : th; return `<a class="kids-card" href="#kids-${k}-${t}-0"><span class="kids-th-img">${kidsSheetSvg(k,t)}</span><b>${esc(S0.n)}</b><small>${S0.ages.map(a=>KIDS_AGES[a].replace(' anos','')).join(' · ')} anos · ${esc(S0.d)}</small></a>`; }).join('')}</div></div>`; }
 function viewKidsSheet(kind,theme,seed){ const S0=KIDS_SHEETS[kind]; if (!S0) return `${libHeader('kids')}<div class="panel"><p>Material não encontrado.</p></div>`;

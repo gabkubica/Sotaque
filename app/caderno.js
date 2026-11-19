@@ -168,6 +168,7 @@ function cadTextEdit(it){ const v=CD.el.view; CD.el.ui.innerHTML=''; v.querySele
 /* ---------- entrada: caneta, dedo, mouse ---------- */
 const cadFingerDraws=()=>CD.finger&&!CD.penSeen;
 function cadDown(e){ if (!CD.el||e.target.closest('.cd-tin')) return; const L=cadLocal(e); cadPal(false);
+  const sp=e.target.closest?.('[data-say]'); if (sp&&CD.tool!=='eraser'&&CD.tool!=='move'&&typeof kidsSay==='function'){ e.preventDefault(); kidsSay(sp.getAttribute('data-say')); return; }
   if (e.target.closest('.cd-h')){ cadHandleDown(e,e.target.closest('.cd-h').dataset.h); return; }
   e.preventDefault(); try { CD.el.view.setPointerCapture(e.pointerId); } catch {}
   CD.ptr.set(e.pointerId,{x:L[0],y:L[1],type:e.pointerType,t:performance.now()});
@@ -298,12 +299,15 @@ const CAD_EMO={
   premios:['trophy','1st-place-medal','glowing-star','star','sparkles','crown','thumbs-up','clapping-hands','party-popper','red-heart','orange-heart','yellow-heart','green-heart','blue-heart','purple-heart','rainbow','gem-stone','four-leaf-clover'],
 };
 const CAD_EMO_N={bichos:'Bichos',comida:'Comida',natureza:'Natureza',diversao:'Diversão',rostos:'Rostos',premios:'Prêmios'};
-function cadInsertSheet(tab='bichos'){ const tabs=`<div class="cd-tabs">${[...Object.entries(CAD_EMO_N),['badge','Selos'],['stk','Ilustrações'],['act','Atividades'],['photo','Foto']].map(([k,l])=>`<button class="${tab===k?'on':''}" data-cd="itab" data-v="${k}">${l}</button>`).join('')}<button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>`;
+function cadInsertSheet(tab='bichos'){ const tabs=`<div class="cd-tabs">${[['act','Atividades'],['livro','Livrinhos'],['meus','Meus materiais'],...Object.entries(CAD_EMO_N),['badge','Selos'],['stk','Ilustrações'],['photo','Foto']].map(([k,l])=>`<button class="${tab===k?'on':''}" data-cd="itab" data-v="${k}">${l}</button>`).join('')}<button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div>`;
   let body='';
   if (CAD_EMO[tab]) body=`<div class="cd-grid cd-egrid">${CAD_EMO[tab].filter(k=>typeof EMOJI!=='undefined'&&EMOJI[k]).map(k=>`<button class="cd-gi" data-cd="addemo" data-v="${k}" aria-label="${k}">${kEsvg(k)}</button>`).join('')}</div>`;
   if (tab==='stk') body=`<div class="cd-grid">${CAD_STK.filter(k=>SCENES[k]).map(k=>`<button class="cd-gi" data-cd="addstk" data-v="${k}" aria-label="${esc(SCENES[k].nome||k)}"><span class="cd-stk">${quadro(imgPal(k),k,hashStr(k)%97,{w:140,h:140,frame:false})}</span></button>`).join('')}</div>`;
   if (tab==='badge') body=`<div class="cd-grid">${Object.keys(CAD_BADGES).map(k=>`<button class="cd-gi" data-cd="addstk" data-v="${k}">${cadBadge(k)}</button>`).join('')}</div>`;
   if (tab==='act') body= typeof KIDS_SHEETS!=='undefined'? kidsPickerHtml('cad') : '<p class="meta">Em breve.</p>';
+  if (tab==='livro') body= S.cbook&&KBOOK[S.cbook]? `<div class="cd-bgs"><button data-cd="cbook" data-v="">← Livros</button><b>${esc(kbookById(S.cbook).title)}: toque numa página</b></div><div class="cd-pgrid">${KBOOK[S.cbook].p.map((p,i)=>`<button class="cd-pthumb" data-cd="cbpage" data-v="${i}"><img src="data:image/jpeg;base64,${p.i}" alt="" style="width:100%;border-radius:8px"><small>${esc((p.t||'').slice(0,40))}</small></button>`).join('')}</div>`
+    : `<div class="cd-pgrid">${(typeof KIDS_BOOKS!=='undefined'? KIDS_BOOKS : []).map(b=>`<button class="cd-pthumb" data-cd="cbook" data-v="${b.id}"><img src="data:image/jpeg;base64,${b.th}" alt="" style="width:100%;border-radius:8px"><small>${esc(b.title)}</small></button>`).join('')}</div>`;
+  if (tab==='meus'){ const F=typeof kfilesMine==='function'? kfilesMine() : []; body= F.length? `<div class="cd-pgrid">${F.map(f=>`<button class="cd-pthumb" data-cd="cfile" data-v="${f.id}">${f.thumb? `<img src="${f.thumb}" alt="" style="width:100%;border-radius:8px">` : `<span class="kf-ph">${/pdf/.test(f.type)? 'PDF' : 'IMG'}</span>`}<small>${esc(f.name)}</small></button>`).join('')}</div>` : '<p class="meta">Envie PDFs e imagens na Biblioteca → Kids → Meus materiais. Eles aparecem aqui para colar no caderno.</p>'; }
   if (tab==='photo') body=`<p class="meta">Tire uma foto ou escolha uma imagem (uma atividade feita no papel, um desenho…). Ela entra na página e você pode mover, girar e escrever por cima.</p><label class="btn primary">Escolher foto<input type="file" accept="image/*" data-cdfile="1" hidden></label>`;
   cadSheet(tabs+body); }
 /* personalizar a capa */
@@ -357,6 +361,11 @@ const CAD_ACT={
   chero(el){ const p=cadPage(), old=p.items.find(i=>i.hero); if (old){ cadPush(p); old.k=el.dataset.v; old.t='emo'; cadSave(); cadPaintAll(); cadCoverSheet('heroi'); return; } cadSheet(''); cadAdd({t:'emo',k:el.dataset.v,w:340,h:340,x:330,y:250,r:Math.round(Math.random()*14-7),hero:true}); },
   addemo(el){ cadSheet(''); cadAdd({t:'emo',k:el.dataset.v,w:200,h:200,r:Math.round(Math.random()*16-8)}); },
   kage(el){ S.kpage=el.dataset.v; cadInsertSheet('act'); },
+  cbook(el){ S.cbook=el.dataset.v; if (!S.cbook){ cadInsertSheet('livro'); return; } kbookLoad(S.cbook).then(()=>cadInsertSheet('livro')).catch(()=>toast('Não consegui abrir o livro.')); },
+  cbpage(el){ const b=kbookById(S.cbook), p=KBOOK[S.cbook].p[+el.dataset.v]; cadSheet(''); const im=new Image(); im.onload=()=>{ const k=Math.min(860/im.width,700/im.height); cadAdd({t:'img',src:'data:image/jpeg;base64,'+p.i,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:60}); if (p.t) cadAdd({t:'text',txt:p.t,w:860,h:120,x:70,y:im.height*k+90,fs:44,c:'#221c1e'}); if (isT()) kidsUse(CD.sid,{k:'livro',t:S.cbook},true); }; im.src='data:image/jpeg;base64,'+p.i; },
+  cfile(el){ const f=kfileById(el.dataset.v); cadSheet(''); toast('Abrindo o material…'); kfilePages(f).then(D=>{ if (D.n===1) return kfilePageImg(f,0,1400).then(src=>CAD_ACT.cfpage({dataset:{f:f.id,i:0,src}}));
+    cadSheet(`<div class="cd-tabs"><b>${esc(f.name)}: toque numa página</b><button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div><div class="cd-pgrid">${[...Array(D.n)].map((_,i)=>`<button class="cd-pthumb" data-cd="cfpage" data-f="${f.id}" data-i="${i}"><span class="kf-ph">${i+1}</span><small>Página ${i+1}</small></button>`).join('')}</div>`); }).catch(()=>toast('Não encontrei este arquivo.')); },
+  cfpage(el){ const f=kfileById(el.dataset.f); cadSheet(''); (el.dataset.src? Promise.resolve(el.dataset.src) : kfilePageImg(f,+el.dataset.i,1400)).then(src=>{ const im=new Image(); im.onload=()=>{ const k=Math.min(900/im.width,1300/im.height), data=src.startsWith('blob:')? kfToData(im) : src; cadAdd({t:'img',src:data,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:(CAD_H-im.height*k)/2}); if (isT()) kidsUse(CD.sid,{k:'file',t:f.id},true); }; im.src=src; }); },
   finger(){ if (CD.penSeen){ CD.penSeen=false; CD.finger=true; toast('O dedo voltou a escrever.'); } else CD.finger=!CD.finger; cadBar(); },
   fit(){ cadFit(Math.abs(CD.cam.z-Math.min(CD.el.view.clientWidth/(CAD_W+60),CD.el.view.clientHeight/(CAD_H+60)))<.01? 'width' : 'page'); cadPaintAll(); },
   insert(){ cadInsertSheet('bichos'); }, itab(el){ cadInsertSheet(el.dataset.v); },
@@ -389,7 +398,7 @@ function cadMount(sid,ro){ if (CD.el&&CD.sid===sid) return; cadUnmount(); cadOf(
   CD.onGesture=e=>e.preventDefault(); document.addEventListener('gesturestart',CD.onGesture);
   CD.onKey=e=>{ if (e.target.closest?.('input,textarea')) return; if ((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); cadUndo(e.shiftKey); } if ((e.key==='Delete'||e.key==='Backspace')&&CD.sel){ const p=cadPage(); cadPush(p); p.items=p.items.filter(x=>x.id!==CD.sel); CD.sel=null; cadSave(); cadPaintAll(); } };
   document.addEventListener('keydown',CD.onKey);
-  cadBar(); requestAnimationFrame(()=>{ cadFit(CD.pi? 'width' : 'page'); cadPaintAll(); });
+  cadBar(); requestAnimationFrame(()=>{ cadFit(CD.pi? 'width' : 'page'); cadPaintAll(); }); if (typeof kidsAudioLoad==='function') kidsAudioLoad();
   if (document.fonts?.load) document.fonts.load('700 40px Andika').then(()=>cadPageDom()).catch(()=>{}); }
 function cadUnmount(){ if (!CD.el) return; clearTimeout(CD.saveT); save(); window.removeEventListener('resize',CD.onResize); document.removeEventListener('gesturestart',CD.onGesture); document.removeEventListener('keydown',CD.onKey);
   CD.el.root.remove(); CD.el=null; CD.sid=null; document.body.classList.remove('cd-on'); }

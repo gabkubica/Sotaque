@@ -42,6 +42,7 @@ function recsFromDB(){
   for (const [k,v] of Object.entries(DB.ink||{})) add('ink',k,null,{k,v});
   for (const [k,v] of Object.entries(DB.cad||{})) add('cad',k,k,v);
   for (const [k,v] of Object.entries(DB.cadp||{})) add('cadp',k,v.sid,v);
+  (DB.kfiles||[]).forEach(f=>add('kfile',f.id,null,f));
   return out;
 }
 function dbFromRecords(rows){
@@ -67,6 +68,7 @@ function dbFromRecords(rows){
       case 'ink': (D.ink ||= {})[d.k]=d.v; break;
       case 'cad': (D.cad ||= {})[d.sid]=d; break;
       case 'cadp': (D.cadp ||= {})[d.id]=d; break;
+      case 'kfile': (D.kfiles ||= []).push(d); break;
     }
   }
   return D;
@@ -78,7 +80,7 @@ function snapOf(){ const m=new Map(); for (const r of recsFromDB()) if (mineToSy
 async function fetchRows(){
   const sb=cloudClient(), rows=[];
   for (let from=0;;from+=1000){
-    const {data,error}=await sb.from('sq_records').select('id,kind,student_id,data').eq('teacher_id',CLOUD.member.teacher_id).order('id').range(from,from+999);
+    const {data,error}=await sb.from('sq_records').select('id,kind,student_id,data').eq('teacher_id',CLOUD.member.teacher_id).neq('kind','kblob').order('id').range(from,from+999);
     if (error) throw error; rows.push(...data); if (data.length<1000) break;
   }
   return rows;

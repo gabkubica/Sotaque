@@ -1410,3 +1410,38 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
 .cd-cv svg{width:100%;aspect-ratio:1000/1414;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,.15)}
 .cd-cv.on svg{outline:3px solid #221c1e;outline-offset:2px}
 .cd-bgs small{font-size:12px}
+/* =========== Kids: livrinhos e meus materiais =========== */
+.kb-shelf{display:flex;flex-direction:column;gap:10px}
+.kb-shelf .panel-h h2 small{font-size:14px;font-weight:600}
+.kb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.kb-card{display:flex;flex-direction:column;gap:5px;text-decoration:none;color:inherit}
+.kb-card img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;box-shadow:0 5px 14px rgba(34,28,30,.15);background:#fff}
+.kb-card b{font-size:14px;line-height:1.25}.kb-card small{color:var(--ink-3);font-size:12px}
+.kf-ph{display:grid;place-items:center;width:100%;aspect-ratio:1;border-radius:14px;background:var(--surface-2);font:800 22px var(--body);color:var(--ink-3)}
+.kb{display:flex;flex-direction:column;gap:12px}
+.kb-page{display:flex;align-items:center;gap:10px;justify-content:center}
+.kb-page figure{margin:0;flex:1;max-width:820px;background:#fff;border-radius:20px;box-shadow:0 10px 34px rgba(34,28,30,.16);overflow:hidden}
+.kb-page img{display:block;width:100%;max-height:62vh;object-fit:contain;background:#fff}
+.kb-page figcaption{display:flex;gap:14px;align-items:center;padding:18px 22px;font:700 clamp(20px,2.4vw,30px)/1.35 Andika,Figtree,sans-serif;color:#221c1e;background:#fffaf2}
+.kb-say{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:#7a1f35;color:#fff;font-size:24px;cursor:pointer}
+.kb-nav{flex:none;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:30px;cursor:pointer;color:var(--ink)}
+.kb-nav:disabled{opacity:.3}
+.kb-dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}.kb-dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line-2);cursor:pointer;padding:0}.kb-dots button.on{background:#7a1f35}
+.kb-credit{font-size:12px;color:var(--ink-3);text-align:center;margin:0}
+.kb-print{display:none}
+.kb.kb-fs{position:fixed;inset:0;z-index:150;background:#fffaf2;padding:16px;overflow:auto}.kb.kb-fs .kb-page img{max-height:70vh}
+.kf-pages{display:flex;flex-direction:column;gap:16px;align-items:center}
+.kf-pg{display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;max-width:820px}
+.kf-img{width:100%;min-height:200px;background:#fff;border-radius:6px;box-shadow:0 8px 26px rgba(34,28,30,.14);display:grid;place-items:center}
+.kf-img img{display:block;width:100%;height:auto;border-radius:6px}
+.kb-sheetm svg{display:block;width:100%;height:auto}
+@media print{
+  .k-spk{display:none!important}
+  body.kb-printing #app>*:not(main),body.kb-printing .kb>*:not(.kb-print){display:none!important}
+  body.kb-printing .kb-print{display:block}
+  .kb-pp{break-after:page;display:flex;flex-direction:column;align-items:center;gap:8mm;padding:12mm}
+  .kb-pp img{width:170mm;max-height:200mm;object-fit:contain}.kb-pp p{font:700 18pt/1.35 Andika,Figtree,sans-serif;text-align:center;margin:0}.kb-pp small{color:#999}
+  body.kf-printing header.bar,body.kf-printing .kp-tools{display:none!important}
+  body.kf-printing .kf-pg{break-after:page;max-width:none}body.kf-printing .kf-img{box-shadow:none}body.kf-printing .kf-pg .btn{display:none}
+  body.modal-printing #app{display:none!important}body.modal-printing .scrim{position:static;background:none;padding:0}body.modal-printing .modal{box-shadow:none;max-width:none;width:100%;padding:0}body.modal-printing .actions{display:none}
+}

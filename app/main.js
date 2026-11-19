@@ -215,6 +215,8 @@ function parseHash(){
   if (h==='slides') return {name:'slides'};
   if ((m=h.match(/^caderno-([a-z0-9]+)$/))) return {name:'caderno',id:m[1]};
   if (h==='kids') return {name:'kids'};
+  if ((m=h.match(/^livro-(\d+)$/))) return {name:'livro',id:m[1]};
+  if ((m=h.match(/^kfile-([a-z0-9]+)$/))) return {name:'kfile',id:m[1]};
   if ((m=h.match(/^kids-([a-z0-9]+)-([a-z0-9]+)-(\d+)$/))) return {name:'kidsSheet',kind:m[1],theme:m[2],seed:+m[3]};
   if (h==='ao-vivo') return {name:'aoVivo'};
   if ((m=h.match(/^slides-ed-([a-z0-9]+)$/))) return {name:'slidesEd',id:m[1]};
@@ -280,7 +282,7 @@ function topbar(){
   const me=ME(), r=S.route.name;
   const reqs=DB.requests.filter(x=>mine(x)&&x.status==='pendente').length+toRecord().length;
   const toCorrect=DB.tasks.filter(t=>mine(t)&&t.status==='entregue').length, todoS=isT()? 0 : tasksOf(me.id).filter(t=>t.status==='pendente').length;
-  const HW=['tarefas','tarefa','nova'], LIB=['kids','kidsSheet','print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
+  const HW=['tarefas','tarefa','nova'], LIB=['kids','kidsSheet','livro','kfile','print','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf'], AULA=['aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','slidesPdf'];
   const flashDue=isT()? 0 : flashDueCount(me.id);
   const nav= isT()? `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio'||r==='agenda','hoje','Hoje',reqs)}${navA('#alunos',r==='alunos'||r==='aluno'||r==='trilhaAluno','alunos','Alunos')}${navA('#aula',AULA.includes(r),'aula','Aula')}${navA('#tarefas',HW.includes(r),'tarefas','Homework',toCorrect)}${navA('#banco',LIB.includes(r),'biblioteca','Biblioteca')}</nav>`
     : `<nav class="nav" aria-label="Principal">${navA('#inicio',r==='inicio','caderno','Hoje')}${navA('#tarefas',['tarefas','tarefa'].includes(r),'tarefas','Homework',todoS)}${me.kids? '' : navA('#flash',['flash','flashPlay'].includes(r),'flash','Flashcards',flashDue)}${me.trail?.on? navA('#trilha',r==='trilha','trilha','Trilha') : ''}</nav>`;
@@ -895,7 +897,6 @@ function viewBank(){
   const pre=S.preStudent&&user(S.preStudent), lv=S.blv||'todos', tp=S.btp||'todos', ty=S.bty||'todos';
   return `${tasksHeader('banco')}
     ${pre? `<div class="notice ok" style="margin-bottom:18px"><div>Escolhendo uma tarefa para <b>${esc(pre.name)}</b>${levelOf(pre)? ` · filtrando pelo nível ${levelOf(pre)}` : ''}.</div><button class="btn small ghost" data-act="bk-nopre">Cancelar</button></div>` : ''}
-    ${packsHtml()}
     <div class="bk-tools"><label class="sr" for="bk-q">Buscar no banco</label><input type="text" id="bk-q" data-bk="q" value="${esc(S.bq||'')}" placeholder="${myLang()==='FR'? 'Buscar: passé composé, famille, expressions…' : 'Buscar: past simple, travel, idioms…'}" autocomplete="off">
       <div class="filt" role="group" aria-label="Nível">${['todos',...LEVELS].map(k=>`<button class="${lv===k?'on':''}" aria-pressed="${lv===k}" data-act="bk-lv" data-v="${k}">${k==='todos'? 'Todos os níveis' : k}</button>`).join('')}</div>
       <div class="filt" role="group" aria-label="Tema">${['todos',...topicsFor(myLang())].map(k=>`<button class="${tp===k?'on':''}" aria-pressed="${tp===k}" data-act="bk-tp" data-v="${k}">${k==='todos'? 'Todos os temas' : k}</button>`).join('')}</div>
@@ -1920,7 +1921,7 @@ function render(){
   const app=$('#app'), me=ME();
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
-  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
+  if (!isT()){ const t=r.name==='tarefa'&&getTask(r.id); main= r.name==='caderno'&&r.id===me.id? viewCaderno(me.id) : r.name==='livro'? viewBook(r.id) : r.name==='aoVivo'? viewLive() : r.name==='trilha'&&me.trail?.on? viewTrail(me) : r.name==='tarefas'? viewTasksS(me) : r.name==='flash'? viewFlashStudent(me) : r.name==='dia'? viewDaily(me) : r.name==='flashPlay'&&deckById(r.id)?.students.includes(me.id)? viewFlashPlay(r.id) : t&&t.studentId===me.id&&released(t)? viewTaskS(t) : viewNotebook(me); }
   else if (r.name==='agenda') main=viewAgenda();
   else if (r.name==='dev') main=viewDev();
   else if (r.name==='missao') main=viewMissao(r.id);
@@ -1953,6 +1954,8 @@ function render(){
   else if (r.name==='caderno'&&user(r.id)?.teacherId===S.me) main=viewCaderno(r.id);
   else if (r.name==='kids') main=viewKids();
   else if (r.name==='kidsSheet') main=viewKidsSheet(r.kind,r.theme,r.seed);
+  else if (r.name==='livro') main=viewBook(r.id);
+  else if (r.name==='kfile') main=viewKfile(r.id);
   else main=viewToday();
   document.documentElement.lang= uiLang()==='en'? 'en' : 'pt-BR';
   app.innerHTML=`${topbar()}<main class="page ${S.enter?'enter':''}">${main}</main>`; S.enter=false;
@@ -2273,4 +2276,4 @@ go();
 if (REAL) cloudStart();
 /* app instalável: guarda os arquivos no aparelho para abrir rápido (só no endereço próprio, fora do claude.ai) */
 if ('serviceWorker' in navigator&&location.protocol==='https:'&&window.self===window.top) navigator.serviceWorker.register('sw.js').catch(()=>{});
-setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo','caderno','kids','kidsSheet'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);
+setInterval(()=>{ if (!S.modal&&!['nova','tarefa','banco','bancoItem','bancoNova','bancoEd','nivel','nivelPrev','praticar','flash','flashEd','flashPlay','pdfs','pdf','aula','aulaEd','aulaPlay','slides','slidesEd','slidesPlay','aoVivo','caderno','kids','kidsSheet','livro','kfile'].includes(S.route.name)&&!document.activeElement?.matches('input,textarea,select')) render(); },60000);

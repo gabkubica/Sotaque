@@ -207,6 +207,21 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   sombra. Inclui: ligue à sombra, encontre o igual, pré-escrita, big and small, quebra-cabeça, máscaras, primeira letra,
   pinte pela bolinha, cruzadinha, desembaralhe, monte a frase, leitura com V/F, pesquisa “Do you like…?”, cartões e mais.
   “Ligar à aula” e “Colar no caderno” guardam o material em `lesson.mats` (histórico e próxima aula).
+- **Livrinhos** (`kids-arquivos.js`, `kids-livros.js`, `livros/<id>.json`): 46 histórias ilustradas em inglês do African
+  Storybook (africanstorybook.org, licença **CC BY 4.0**, fonte: Global African Storybook Project no GitHub), separadas
+  por idade, com narração gerada pelo Sotaque (Kokoro) em cada página. Leitor com “ler o livro todo”, tela cheia,
+  impressão, colar a página no caderno, ligar à aula e atividades do livro (ordem da história, parte favorita).
+  Os créditos (texto, ilustração, licença) aparecem no leitor, na impressão e nas atividades. Os pais também leem.
+- **Meus materiais**: a professora envia PDFs e imagens (até 25 MB). A lista vai em `DB.kfiles` (registro `kfile`);
+  o arquivo fica no aparelho (IndexedDB) e, no Sotaque com login, na nuvem em pedaços (`kblob`, fora do carregamento
+  inicial e baixados só quando abertos). Imprimir, ligar à aula e colar qualquer página no caderno.
+- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (430 falas em `audio/kids.json`, voz neural);
+  funciona na tela, no caderno digital (a criança toca e ouve) e some na impressão. Atividades de escuta:
+  Listen and circle, Listen and colour, Listen and number (com o roteiro da professora no rodapé).
+- **Atividades mais completas** (`kids-mais.js`): Look and answer (Is it…? Yes, it is), cena da sala com perguntas
+  (where/how many), jogo dos erros, ficha do animal com leitura e perguntas (16 animais), charadas, Can or can’t,
+  rotina com relógios, compras com preços, tempo da semana, leia e desenhe o monstro, história em sequência,
+  quiz com figuras, All about me, árvore da família, descreva a figura, a/an/some. 61 tipos no total.
 - **Capa do caderno**: botão “Capa” na barra; 16 cores, 18 fundos (espaço, fundo do mar, dinossauros, unicórnio, arco-íris,
   confete…), 6 etiquetas, 3 letras, título com sugestões, linha de baixo, lombada, nome e personagem principal.
 - **Apresentação → aula**: ao escolher o aluno em “Aula para”, a apresentação vai para a aula marcada perto de agora,
