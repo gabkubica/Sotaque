@@ -63,6 +63,10 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - **Telas mais leves**: ilustrações das listas de aulas, flashcards e banco só desenhadas quando aparecem (`lazyArt`);
   leitura das aulas e lista de aulas guardadas na memória; busca de aluno por id com índice; o idioma do sistema não é
   mais gravado no navegador a cada data mostrada na tela.
+- **Caderno digital leve**: ao arrastar ou dar zoom, os traços viram uma imagem pronta (não são redesenhados a cada
+  quadro) e voltam nítidos ao soltar; o salvamento espera o fim do traço/gesto e a nuvem compara as páginas do caderno
+  por uma versão (`v`), sem transformar o caderno inteiro em texto a cada gravação. As atividades coladas nas páginas
+  vizinhas são preparadas com o aparelho parado.
 
 ## app/ · Sotaque
 
@@ -270,6 +274,13 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   capa com cor, padrão e título. Com caneta, a palma e o dedo não riscam (o dedo move e dá zoom); sem caneta, o dedo
   escreve e dois dedos movem/dão zoom. Fica fora do `#app` (os re-renders não apagam nada). Dados: `DB.cad` e
   `DB.cadp` (registros `cad` e `cadp` na nuvem, com `student_id` da criança).
+- **Mexer no caderno**: ferramentas grandes numa barra própria (embaixo; à esquerda com o iPad deitado), páginas com
+  ‹ “Página N de M” › + logo acima. Com a caneta, **segurar o dedo/caneta numa figurinha** seleciona e já arrasta; um
+  toque rápido continua escrevendo. A figura escolhida ganha uma barra de botões grandes: Menor, Maior, Girar, Editar
+  (texto), Duplicar, Frente, Travar, Apagar e **Pronto** (volta para a caneta). As atividades coladas vêm **travadas**:
+  arrastar por cima move a página, não a folha; segurar mostra “🔒 Travada” com Destravar. **Inserir** tem 3 abas
+  (Figurinhas e prêmios · Atividades · Foto) e fica aberto para colocar várias figurinhas seguidas; cada uma entra na
+  folha visível, sem cair uma em cima da outra. Delete apaga e Esc termina no teclado.
 - **Materiais para imprimir** (`kids.js`, aba **Kids** dentro da Biblioteca): 42 tipos × 22 temas, separados por idade
   (3–4 anos sem leitura, 5–6 letras, 7–8 palavras, 9–10 frases), gerados em SVG A4 com as ilustrações do **Fluent Emoji**
   (Microsoft, licença MIT; subconjunto de 296 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e

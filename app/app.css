@@ -1299,7 +1299,9 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
 .cd-sp{flex:1;min-width:8px}
 .cd-flag{flex:none;font-size:12px;color:#8a7e80;padding:0 6px;min-width:62px;text-align:right}
 .cd-view{position:relative;flex:1;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:crosshair}
-.cd-world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.cd-world{position:absolute;left:0;top:0;transform-origin:0 0}
+/* só durante arrastar/zoom vira camada (fica liso); ao soltar, o navegador redesenha nítido */
+.cd-moving .cd-world{will-change:transform}
 .cd-pg{position:relative;width:1000px;height:1414px;background:#fffdf8;border-radius:8px;overflow:hidden;box-shadow:0 14px 50px rgba(34,28,30,.22)}
 .cd-bg{position:absolute;inset:0;display:block}
 .cd-items{position:absolute;inset:0}
@@ -1479,3 +1481,40 @@ body.cd-on{overflow:hidden;overscroll-behavior:none}
 /* listas longas: o navegador só desenha os cartões que estão na tela */
 .bgrid>.bcard,.kids-grid>.kids-card{content-visibility:auto;contain-intrinsic-size:auto 340px}
 .lazy-ph{display:block;width:100%;background:var(--line,#eee);opacity:.35}
+
+/* ---------- caderno: ferramentas flutuantes, páginas e figura selecionada ---------- */
+.cd-dock,.cd-pager{position:absolute;z-index:6;display:flex;align-items:center;gap:3px;padding:5px;background:#fffaf2;border:1px solid #e3d9cc;border-radius:20px;box-shadow:0 10px 30px rgba(34,28,30,.22)}
+.cd-dock[hidden]{display:none}
+.cd-dock{left:50%;transform:translateX(-50%);bottom:max(12px,env(safe-area-inset-bottom))}
+.cd-dock .cd-b{min-width:54px;height:54px}
+.cd-pager{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom))}
+.cd-pager .cd-b{min-width:48px;height:48px;font-size:26px;font-weight:600}
+.cd-pager .cd-pn{flex-direction:row;gap:5px;font:700 15px Figtree,system-ui,sans-serif;min-width:104px;padding:0 10px}
+.cd-pn small{font-weight:500;color:#8a7e80;font-size:13px}
+/* iPad deitado: ferramentas na lateral esquerda, páginas embaixo à direita */
+@media (orientation:landscape) and (min-width:700px){ .cd-dock{left:max(12px,env(safe-area-inset-left));top:50%;bottom:auto;transform:translateY(-50%);flex-direction:column} }
+/* em pé (iPad ou celular): ferramentas embaixo e as páginas logo acima */
+@media (orientation:portrait),(max-width:699px){ .cd-pager{right:50%;transform:translateX(50%);bottom:calc(max(12px,env(safe-area-inset-bottom)) + 76px)} }
+@media (max-width:420px){ .cd-dock .cd-b{min-width:48px;height:50px}.cd-dock .cd-b span{display:block;font-size:9px} .cd-pager .cd-b{min-width:44px;height:44px} }
+.cd-sel.lk{border:2px dotted #8a7e80}
+.cd-acts{position:absolute;pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:3px;padding:6px;background:#221c1e;border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.3);max-width:calc(100% - 16px);touch-action:manipulation}
+.cd-acts button{border:0;background:transparent;color:#fff;min-width:56px;height:56px;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:700 11px/1 Figtree,system-ui,sans-serif;cursor:pointer;padding:0 6px}
+.cd-acts button i{font-style:normal;font-size:22px;line-height:1}
+.cd-acts button:active{background:rgba(255,255,255,.16)}
+.cd-acts [data-cd=sdone]{background:#3aa36b}
+.cd-acts [data-cd=sdel] i{color:#ff9b9b}
+.cd-lk{color:#f1e7da;font:700 13px Figtree,system-ui,sans-serif;padding:0 8px}
+.cd-h{width:46px;height:46px;font-size:21px}
+.cd-rot{margin-left:-23px;top:-64px}.cd-rs{right:-23px;bottom:-23px}
+/* Inserir: Figurinhas / Atividades / Foto */
+.cd-seg{display:flex;gap:4px;background:#f1ebe2;border-radius:999px;padding:4px}
+.cd-tabs .cd-seg button{border:0;background:transparent;padding:10px 18px;font-size:15px}
+.cd-tabs .cd-seg button.on{background:#221c1e;color:#fff}
+.cd-tabs .cd-ok{margin-left:auto;background:#3aa36b;border-color:#3aa36b;color:#fff;padding:10px 20px}
+.cd-sub{width:100%;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:2px}
+.cd-sub::-webkit-scrollbar{display:none}
+.cd-sub button{flex:none;padding:7px 14px!important;font-size:13.5px!important}
+.cd-tip{width:100%;margin:0;font-size:13px;color:#8a7e80}
+.cd-gi.cd-added{animation:cdAdded .45s ease}
+@keyframes cdAdded{0%{transform:scale(1)}40%{transform:scale(1.18);background:#e6f4ec}100%{transform:scale(1)}}
+@media (orientation:landscape) and (max-height:520px){ .cd-dock .cd-b{min-width:44px;height:44px}.cd-dock .cd-b span{display:none} .cd-pager .cd-b{min-width:42px;height:42px} }

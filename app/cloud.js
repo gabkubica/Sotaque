@@ -73,8 +73,13 @@ function dbFromRecords(rows){
   }
   return D;
 }
+/* assinatura de cada registro para saber o que mudou. As páginas do caderno digital podem ter milhares de pontos:
+   em vez de transformar tudo em texto a cada traço, comparam a versão da página (cadSave soma 1 a cada mudança). */
+function recSig(r){ if (r.kind==='cadp'){ const d=r.data, L=d.strokes?.[d.strokes.length-1];
+    return '#'+(d.v||0)+'|'+(d.strokes?.length||0)+'|'+(d.items?.length||0)+'|'+d.bg+'|'+r.student_id+'|'+(L? L.pts[0]+','+L.pts[1]+','+L.pts.length : ''); }
+  return JSON.stringify([r.student_id,r.data]); }
 const mineToSync=r=>isTeacherCloud()||(ST_KINDS.includes(r.kind)&&r.student_id===CLOUD.member?.app_id);
-function snapOf(){ const m=new Map(); for (const r of recsFromDB()) if (mineToSync(r)) m.set(r.id,JSON.stringify([r.student_id,r.data])); return m; }
+function snapOf(){ const m=new Map(); for (const r of recsFromDB()) if (mineToSync(r)) m.set(r.id,recSig(r)); return m; }
 
 /* ---------- carregar ---------- */
 /* CLOUD.ver guarda o updated_at de cada registro e CLOUD.rows o conteúdo (texto) como estava na nuvem.
@@ -166,7 +171,7 @@ async function cloudSync(){
   const sb=cloudClient(), T=CLOUD.member.teacher_id;
   try {
     const cur=new Map(), up=[];
-    for (const r of recsFromDB()){ if (!mineToSync(r)) continue; const s=JSON.stringify([r.student_id,r.data]); cur.set(r.id,s); if (CLOUD.snap.get(r.id)!==s) up.push(r); }
+    for (const r of recsFromDB()){ if (!mineToSync(r)) continue; const s=recSig(r); cur.set(r.id,s); if (CLOUD.snap.get(r.id)!==s) up.push(r); }
     const del=[...CLOUD.snap.keys()].filter(id=>!cur.has(id)&&(isTeacherCloud()||id.startsWith('request:')));
     const stamp=new Date().toISOString();
     for (let i=0;i<up.length;i+=200){
