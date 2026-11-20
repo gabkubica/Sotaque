@@ -683,7 +683,7 @@ if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
     PICK('It was so [*boring/bored] that I fell asleep.'),
     ['Your friend says: “Have you seen the new Batman film?” You haven’t. You answer:',['No, not yet. Is it good?','No, I didn’t.','Yes, I don’t.'],0],
     CLOZE('Last night I [watched] a horror film. The [special] effects were great, but the story was a bit [scary] for me!','saw film, funny'),
-    FIX('The film {was based on|was based in} a true story.'),
+    FIX('The film {was based in|was based on} a true story.'),
     SEQ('First, we chose a film on Netflix.\nThen we made some popcorn.\nAfter that, we turned off the lights.\nIn the end, we all fell asleep before the ending!','Put Ana’s movie night in order.'),
     KWT('I have never seen such a funny film.','FUNNIEST','It’s the ___ seen.','funniest film I have ever/funniest film I’ve ever'),
     DIT('The ending was a big surprise.')]},
@@ -694,7 +694,7 @@ if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
     PICK('I go to the gym [*three times/three time/third times] a week.'),
     CLOZE('To be healthy, [try] to sleep eight hours, eat [less] sugar and [walk] every day.','more, drive'),
     ODD('Which one is NOT a healthy habit?',['going to bed late every night','eating fruit','drinking water','walking'],0,[],'Going to bed late is not good for your health.'),
-    FIX('I need to {do|make} more exercise.'),
+    FIX('I need to {make|do} more exercise.'),
     KWT('It’s a good idea to eat more vegetables.','SHOULD','You ___ more vegetables.','should eat'),
     DIT('I try to walk for thirty minutes every day.')]},
   {l:'EN',lv:'A2',tp:'Cultura',t:'Theme · A weekend in London',i:'Uma viagem de fim de semana: lugares, transporte e frases úteis.',q:[
@@ -704,7 +704,7 @@ if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
     ['At a café: “What would you like?” You say:',['I’d like a tea and a scone, please.','Give me tea.','I like tea.'],0],
     SEQ('On Saturday morning, we visited the British Museum.\nThen we had fish and chips for lunch.\nIn the afternoon, we took a boat on the Thames.\nOn Sunday, it rained, so we went shopping!','Put the weekend in order.'),
     CLOZE('London is [famous] for its red buses, its parks and its [rain]. Always take an [umbrella]!','dangerous, sun'),
-    FIX('We {stayed in|stayed at} a small hotel near Hyde Park.'),
+    FIX('We {arrived to|arrived at} a small hotel near Hyde Park.'),
     CROSS('tube = The London metro.\nbus = Red and with two floors.\nrain = Water from the sky.\nqueen = She lived in Buckingham Palace.\ntea = A hot drink with milk.','Complete the crossword about London.'),
     DIT('Mind the gap between the train and the platform.')]},
   {l:'EN',lv:'B1',tp:'Vocabulário',t:'Theme · Technology and social media',i:'Redes sociais, celular e opiniões sobre tecnologia.',q:[
@@ -1234,7 +1234,7 @@ Ana (feliz): Great! I’ll take it.`,['That one? It’s ten dollars.','Those are
     SORT(`Use a reflexive: hurt, enjoy, teach
 No reflexive in English: wake up, get dressed, relax`),
     FIX('I {woke myself up|woke up} at seven this morning.'),
-    KWT('I made this cake. Nobody helped me.','MYSELF','I made this cake ___ .','by myself|myself'),
+    KWT('I made this cake. Nobody helped me.','MYSELF','I made this cake ___ .','by myself/myself'),
     COMIC(`[bandeirinhas]
 Bia (feliz): Help yourselves to the food!
 Tom: ___
@@ -1246,7 +1246,7 @@ Bia (feliz): Yes, I did it all by myself!`,['Did you cook it by yourself?','Did 
     SORT(`so: so tired, so fast, so many
 such: such a mess, such nice people, such good news`),
     KWT('The weather was very hot, so we went to the beach.','SUCH','It was ___ that we went to the beach.','such hot weather'),
-    KWT('The book was very boring. I stopped reading it.','SO','The book was ___ I stopped reading it.','so boring that|so boring'),
+    KWT('The book was very boring. I stopped reading it.','SO','The book was ___ I stopped reading it.','so boring that/so boring'),
     FIX('It was {so a|such a} beautiful day!'),
     'Describe the best day of your last holiday (80–100 words) using so and such at least five times.']},
   {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Not yet!',i:'Lição de casa: already, yet e just.',q:[
@@ -1258,7 +1258,7 @@ Sam: ___
 Mia (feliz): Great, thanks! That was quick.`,['Yes, I’ve just sent it.','Yes, I’ve sent it yet.','No, I’ve already sent it.'],0),
     SEQ('Have you packed your suitcase yet?\nYes, I’ve already packed it.\nHave you called the taxi?\nNot yet. I’ll do it now.\nOK, I’ve just called it!','Put the dialogue in order.'),
     FIX('I haven’t {yet finished|finished} the book yet.'),
-    KWT('The train left one minute ago.','JUST','The train ___ .','has just left|’s just left'),
+    KWT('The train left one minute ago.','JUST','The train ___ .','has just left/’s just left'),
     'Write your to-do list for this week: 3 things you’ve already done, 3 you haven’t done yet and 1 you’ve just done.']},
   {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · House rules',i:'Lição de casa: make, let, get e allow.',q:[
     PICK('My parents made me [*study/to study] every night. They let me [*go/to go] out on Saturdays. We weren’t allowed [*to use/use] phones at dinner.'),
@@ -1442,9 +1442,9 @@ about: worry, dream, complain`),
     'Write 8 sentences about yourself using: depend on, worry about, listen to, wait for, agree with, dream about, rely on, complain about.']},
   {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · You’d better…',i:'Lição de casa: it’s time, would rather e had better.',q:[
     PICK('It’s high time you [*found/find] a new job. I’d rather [*stay/to stay] at home. You’d better [*hurry/to hurry]!'),
-    KWT('You should take an umbrella. It’s going to rain.','BETTER','You ___ an umbrella.','’d better take|had better take'),
+    KWT('You should take an umbrella. It’s going to rain.','BETTER','You ___ an umbrella.','’d better take/had better take'),
     KWT('I prefer that you don’t call me late at night.','RATHER','I’d ___ me late at night.','rather you didn’t call'),
-    KWT('We should have left already!','TIME','It’s ___ .','time we left|time to leave'),
+    KWT('We should have left already!','TIME','It’s ___ .','time we left/time to leave'),
     FIX('We’d better {not to be|not be} late for the meeting.'),
     COMIC(`[relogio]
 Leo (cansado): I’m so tired. I think I’ll stay up and watch another episode.

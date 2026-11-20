@@ -176,7 +176,16 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   requests, It’s time / I’d rather / I’d better (B2); Nominalisation, Ellipsis and substitution (C1). Fonética: Thirteen
   or thirty? (números, preços e datas), -s endings (A2); Homophones, Diphthongs (B1); British or American? (B2). Temas:
   Shopping online (A2); Etiquette around the world (quiz de gorjeta, Japão e Alemanha), Requests and delegating (B1);
-  Giving feedback (modelo SBI) (B2); Cover letters (C1). 20 homeworks novas. 148 aulas no total.
+  Giving feedback (modelo SBI) (B2); Cover letters (C1). 20 homeworks novas.
+- **Lote 6 · inglês** (13 aulas): Transport, Birthdays and ordinal numbers (A1); Housework (have to / don’t have to /
+  mustn’t), Jobs, Hotel problems (A2); Dreams and goals, Music in our lives (relative clauses), Phrasal verbs for travel
+  (B1); Introverts and extroverts (prefixos negativos), Fast fashion (passiva para processos), Collocations with
+  make/do/take/have (B2); Register: formal or informal?, Leadership styles (C1). 161 aulas no total.
+- **Banco de homeworks extras** (`homeworks.js`, carregado com o banco): 87 homeworks novas de A1 a C1, com o tema certo
+  (Escuta, Leitura, Gramática, Vocabulário, Escrita, Trabalho, Phrasal verbs, Expressões). As com áudio ou leitura ficam em
+  `CONT_ATIV`; as interativas (tirinha, escolha no texto, transformação, ordem, cruzadinha, caça-palavras, ditado,
+  corrigir o erro) em `CONT_TIPOS`. Cobrem os tópicos de gramática de cada nível, escuta (podcasts, entrevistas,
+  mensagens de voz, palestras), leitura e escrita (e-mail formal, op-ed, cover letter).
 - O tema "Completa" saiu do filtro (as homeworks completas foram para Vocabulário). Prévia e gabarito das provas
   mostram o player de áudio.
 - Link fixo do Google Meet nas Configurações da professora (vale para os alunos sem link próprio).

@@ -4723,7 +4723,7 @@ ok: Your price is very high. / The product is very expensive.
 reescreva: We’ll lower the price only if you buy 200. | PROVIDED | We’ll lower the price ___ 200. | provided that you buy
 reescreva: If you don’t pay in advance, we can’t deliver. | UNLESS | We can’t deliver ___ in advance. | unless you pay
 erro: That price is too {expensive|high} for us.
-erro: Let’s {make|do} a deal.
+erro: We {did|made} a lot of money last year.
 # leitura: The orange story | img:presente
 tipo: Business classic
 Two sisters are fighting over one orange. Finally, they **agree to** cut it in half. One sister eats the fruit and throws the peel away. The other throws the fruit away and uses the peel to bake a cake.
@@ -9857,6 +9857,806 @@ What do you think employers in your area value most?
 Formal business writing
 Formal or informal?
 Homework · Dear hiring manager`]
+);
+
+/* ---------- lote 6 (inglês) ---------- */
+SLIDES_SEED.push(
+['EN','A1','Transport: how do you get to work?',`# capa: Transport | img:onibus
+by bus, by train, on foot · How long does it take?
+# sobre: Sobre esta aula
+ver: meios de transporte; **by** + transporte (by bus, by car) e **on foot**; **How do you get to…?**; **How long does it take? — It takes 20 minutes.**; take the bus / catch the train
+porque: Falar do caminho para o trabalho ou a escola é uma conversa muito comum, e “It takes…” é uma estrutura que não existe igual em português (“leva 20 minutos”).
+meta: dizer como vai ao trabalho; perguntar e responder quanto tempo leva; comparar transportes de forma simples
+nivel: Nível A1
+# aquecimento: Your journey
+pergunta: How do you get to work or school? Do you like it?
+jogo: Sound effects | A professora imita o som de um transporte (piiii, vrum, tchu-tchu). O aluno diz: “By train!”
+# vocab: Transport
+bus | ônibus | img:onibus
+train | trem | img:trem
+car | carro | img:carro
+bike | bicicleta | img:bicicleta
+plane | avião | img:aviao
+on foot | a pé
+taxi | táxi
+underground / subway | metrô
+# tabela: How do you get there?
+Question | Answer
+How do you get to work? | I go **by bus**. / I **walk**. / I go **on foot**.
+Do you drive? | Yes, I drive to work. / No, I take the train.
+How long does it take? | **It takes** 20 minutes.
+Is it far? | No, it’s near. / Yes, it’s about 10 km.
+Diga **by** bus, **by** car, **by** train, mas **on** foot.
+# exercicio: Practice 1
+escolha: I go to work [*by/in/with] bus.
+escolha: She goes to school [*on/by/in] foot.
+escolha: How long [*does it take/it takes/does take] to get there?
+escolha: It [*takes/take/is take] 30 minutes by car.
+grupos: by: bus, train, car, plane / on: foot
+# dialogo: Getting to work
+A: How do you get to work, Paulo?
+B: I take the bus and then the underground.
+A: How long does it take?
+B: About an hour. And you?
+A: I walk. It only takes ten minutes!
+B: Lucky you!
+# leitura: Commuting around the world | img:cidade
+tipo: Fun facts
+In Amsterdam, many people go to work **by bike**. There are more bikes than people in the city!
+In Tokyo, millions of people take the **train** every day. It’s very fast and always on time.
+In Los Angeles, most people **drive**. It can **take** two hours because of the traffic.
+And in Venice? Some people go to work **by boat**!
+# exercicio: Practice 2
+How do many people go to work in Amsterdam?
+a) by car
+*b) by bike
+c) by boat
+In Los Angeles, most people take the train. (f)
+ditado: I go to work by bus. It takes twenty minutes.
+ordem: how do you get to work
+# pergunta: Quick quiz
+Which one is correct?
+I go to work by foot.
+*I go to work on foot.
+I go to work with foot.
+# conversa: Your turn | img:onibus
+How do you get to work or school? How long does it take?
+What’s the best way to travel in your city?
+Which transport do you never use? Why?
+# tarefas: Atividades recomendadas
+Transport
+Present simple · I, you, we, they
+Homework · My journey to work`],
+
+['EN','A1','Birthdays: dates and ordinal numbers',`# capa: Birthdays | img:bolo
+When’s your birthday? It’s on the 21st of May!
+# sobre: Sobre esta aula
+ver: números ordinais (first, second, third… twenty-first); os meses; **When’s your birthday? — It’s on the…**; **in** + mês, **on** + data; frases de festa (Happy birthday!, Make a wish!)
+porque: Datas aparecem em tudo: aniversários, consultas, reuniões, documentos. E os ordinais têm formas irregulares (first, second, third) que confundem.
+meta: dizer e perguntar datas; usar in e on corretamente; desejar feliz aniversário e falar de festas
+nivel: Nível A1
+# aquecimento: Birthday time
+pergunta: When’s your birthday? How do you usually celebrate?
+musica: Happy Birthday to You | A música mais cantada do mundo! Cantem juntos em inglês.
+jogo: Birthday line | Coloquem as pessoas da família do aluno em ordem de aniversário: “My mum’s birthday is in March, my brother’s is in…”
+# tabela: Ordinal numbers
+Number | Ordinal | Written
+1 | first | 1st
+2 | second | 2nd
+3 | third | 3rd
+4, 5, 20 | fourth, fifth, twentieth | 4th, 5th, 20th
+21, 22, 23 | twenty-first, twenty-second, twenty-third | 21st, 22nd, 23rd
+# vocab: Birthday words
+birthday | aniversário | img:bolo
+cake | bolo | img:bolo
+candles | velas
+present | presente | img:presente
+party | festa | img:bandeirinhas
+balloons | balões | img:balao
+# explica: In or on?
+**in** + mês ou ano:
+> My birthday is **in** May. · I was born **in** 1995.
+**on** + data ou dia:
+> My birthday is **on** the 21st of May. · The party is **on** Saturday.
+Escrevemos “21st May” ou “May 21st”, mas falamos “the twenty-first of May”.
+# exercicio: Practice 1
+escolha: My birthday is [*in/on/at] June.
+escolha: The party is [*on/in/at] the 3rd of July.
+escolha: 2nd = [*second/twoth/secondth]
+escolha: 3rd = [*third/threeth/thirth]
+ligue: Ligue o número ao ordinal.
+1st = first
+5th = fifth
+12th = twelfth
+22nd = twenty-second
+# dialogo: Birthday plans
+A: When’s your birthday, Mia?
+B: It’s on the 15th of August. And yours?
+A: Mine is in December, on the 3rd.
+B: Are you having a party?
+A: Yes! On Saturday. Would you like to come?
+B: Of course! Happy birthday in advance!
+# exercicio: Practice 2
+When is Mia’s birthday?
+a) the 3rd of December
+*b) the 15th of August
+c) the 5th of August
+ditado: My birthday is on the third of March.
+erro: My birthday is {in|on} the 10th of April.
+# frase: Party phrases
+Happy birthday!
+Make a wish!
+Blow out the candles!
+How old are you today?
+This is for you. I hope you like it!
+# conversa: Your turn | img:bolo
+Say the birthdays of 4 people in your family.
+What’s the best birthday present you’ve received?
+Describe your perfect birthday party.
+# tarefas: Atividades recomendadas
+Days, months and dates
+Numbers and age
+Homework · When’s your birthday?`],
+
+['EN','A2','Housework: have to, don’t have to',`# capa: Housework | img:panela
+Who does the dishes in your house?
+# sobre: Sobre esta aula
+ver: tarefas de casa (do the dishes, make the bed, do the laundry, take out the rubbish, vacuum, iron); **have to** (obrigação), **don’t have to** (não precisa), **mustn’t** (proibido); falar de quem faz o quê
+porque: “Don’t have to” e “mustn’t” parecem iguais em português (“não precisa” × “não pode”), mas têm sentidos opostos. E falar de rotina em casa é muito comum.
+meta: falar de tarefas domésticas com as collocations certas; usar have to e don’t have to; diferenciar don’t have to e mustn’t
+nivel: Nível A2
+# aquecimento: Chores
+pergunta: Which housework do you hate? Which one don’t you mind?
+jogo: Mime the chore | Um faz mímica de uma tarefa de casa. O outro diz a frase completa: “You’re doing the dishes!”
+# vocab: Housework
+do the dishes | lavar a louça
+make the bed | arrumar a cama
+do the laundry | lavar a roupa
+take out the rubbish | levar o lixo
+vacuum | passar aspirador
+iron | passar roupa
+cook dinner | fazer o jantar
+tidy up | arrumar, organizar
+# tabela: Have to, don’t have to, mustn’t
+Structure | Meaning | Example
+have to / has to | é obrigação | I **have to** do the dishes every night.
+don’t have to | não precisa (é opcional) | I **don’t have to** cook on Sundays. We go out!
+mustn’t | é proibido | You **mustn’t** touch the oven. It’s hot!
+Pergunta: **Do** you **have to**…? · **Does** she **have to**…?
+# exercicio: Practice 1
+escolha: My son [*has to/have to/must to] make his bed every morning.
+escolha: It’s Saturday! I [*don’t have to/mustn’t] get up early.
+escolha: You [*mustn’t/don’t have to] put metal in the microwave!
+escolha: [*Do/Does/Have] you have to iron your clothes?
+grupos: do: the dishes, the laundry, the ironing / make: the bed, dinner, a mess / take out: the rubbish
+# leitura: Who does what? | img:casa
+tipo: Survey
+A survey in the UK asked couples who does the housework. In most homes, women still do more: they **cook**, **do the laundry** and **clean the bathroom** more often than men.
+Men usually **take out the rubbish** and do small repairs. But things are changing: young couples share the chores more equally.
+And children? Most parents say their kids **have to** tidy their rooms, but they **don’t have to** cook or iron.
+# exercicio: Practice 2
+In most homes, who does more housework?
+*a) women
+b) men
+c) children
+Children usually have to cook. (f)
+erro: You {don’t have to|mustn’t} smoke in the kitchen. It’s dangerous!
+reescreva: It isn’t necessary for you to cook tonight. | HAVE | You ___ cook tonight. | don’t have to
+# tirinha: The rota
+[casa]
+Mia (bravo): Leo, you have to take out the rubbish today!
+Leo (cansado): But I did the dishes yesterday!
+---
+Mia: And I made dinner and did the laundry.
+---
+Leo (feliz): OK, OK. At least I don’t have to iron!
+# conversa: Let’s talk | img:panela
+Who does what in your house?
+What did you have to do at home when you were a child?
+Make a fair chore rota for a family of four.
+# tarefas: Atividades recomendadas
+Have to and don’t have to
+Make or do: word games
+Homework · Who does the dishes?`],
+
+['EN','A2','Jobs: what does a nurse do?',`# capa: Jobs | img:cidade
+She’s a nurse. She works in a hospital.
+# sobre: Sobre esta aula
+ver: profissões e lugares de trabalho; **present simple** com he/she (works, looks after, helps); **What does she do?** × **What is she doing?**; descrever um trabalho (wear a uniform, work shifts, work from home)
+porque: “What do you do?” é a pergunta mais comum depois do nome. E descrever o trabalho de alguém pratica o -s da terceira pessoa, o erro mais comum do inglês básico.
+meta: dizer a profissão e o local de trabalho; descrever o que uma pessoa faz; jogar “Guess my job”
+nivel: Nível A2
+# aquecimento: Dream jobs
+pergunta: What did you want to be when you were a child?
+jogo: Guess my job | A professora dá pistas: “I work at night. I wear a uniform. I help people.” O aluno adivinha.
+# vocab: Jobs
+nurse | enfermeiro(a)
+chef | chef de cozinha
+lawyer | advogado(a)
+mechanic | mecânico(a)
+accountant | contador(a)
+firefighter | bombeiro(a)
+software developer | desenvolvedor(a)
+shop assistant | vendedor(a)
+# tabela: Talking about jobs
+Question | Answer
+What does she do? | She’s **a** nurse. (com a / an!)
+Where does she work? | She works **in** a hospital / **at** home / **for** a bank.
+What does she do at work? | She **looks after** patients.
+Does she like it? | Yes, she **loves** it. / No, she doesn’t.
+# explica: Do or doing?
+**What do you do?** = Qual é a sua profissão?
+> — What does Ana do? — She’s an accountant.
+**What are you doing?** = O que você está fazendo agora?
+> — What’s Ana doing? — She’s having lunch.
+Lembre o **-s**: she **works**, he **teaches**, she **studies**.
+# exercicio: Practice 1
+escolha: My sister is [*a/an/–] lawyer.
+escolha: He [*works/work/working] for a big company.
+escolha: — What [*does/is/do] your father do? — He’s a mechanic.
+escolha: A chef [*cooks/cook/is cook] food in a restaurant.
+ligue: Ligue a profissão ao lugar.
+nurse = hospital
+chef = restaurant
+mechanic = garage
+shop assistant = shop
+# texto: Who am I?
+1. I work at night and at weekends. I help sick people. I wear a uniform.
+2. I work with numbers. I help companies with their taxes.
+3. I fix cars. My hands are often dirty!
+4. I write code. I often work from home.
+nota: Respostas: nurse, accountant, mechanic, software developer. Depois, o aluno cria 2 charadas para a professora.
+# exercicio: Practice 2
+erro: She {work|works} in a school.
+erro: — What do you do? — I {am working|am} a teacher.
+ditado: My brother is a chef. He works in a hotel.
+# conversa: Your turn | img:cidade
+Describe your job (or a job you’d like) in 5 sentences.
+Describe the job of someone in your family.
+What job would you never do? Why?
+# tarefas: Atividades recomendadas
+Jobs and workplaces
+Present simple · he, she, it
+Homework · Guess the job`],
+
+['EN','A2','Hotel problems: there’s no hot water!',`# capa: Hotel problems | img:cama
+Complaining at reception, simply and politely
+# sobre: Sobre esta aula
+ver: vocabulário de hotel (reception, key card, towel, air conditioning, Wi-Fi password); explicar problemas simples (**There’s no…**, **The … doesn’t work**, **There isn’t any…**); pedir com **Could I have…? / Could you…?**; entender a resposta da recepção
+porque: Problemas no hotel acontecem em quase toda viagem. Com poucas estruturas, o aluno resolve sozinho sem ficar nervoso.
+meta: explicar um problema no quarto; fazer pedidos educados; entender as soluções oferecidas
+nivel: Nível A2
+# aquecimento: Hotel stories
+pergunta: Have you ever had a problem in a hotel? What happened?
+jogo: Quick complaints | A professora mostra um problema (desenho de chuveiro, ar-condicionado, TV). O aluno diz: “The shower doesn’t work!”
+# vocab: In the hotel room
+key card | cartão do quarto | img:chave
+towel | toalha
+pillow | travesseiro | img:cama
+air conditioning | ar-condicionado
+Wi-Fi password | senha do Wi-Fi | img:celular
+remote control | controle remoto
+safe | cofre
+minibar | frigobar | img:geladeira
+# tabela: Explaining the problem
+Problem | Example
+There’s no… | There’s no hot water.
+There isn’t any… / aren’t any… | There aren’t any towels.
+The … doesn’t work. | The air conditioning doesn’t work.
+The … is broken / dirty / noisy. | The room is very noisy.
+# dialogo: At reception
+A: Good evening. How can I help you?
+B: Hi, I’m in room 304. The air conditioning doesn’t work.
+A: Oh, I’m sorry. I’ll send someone right away.
+B: Thanks. And could I have some more towels?
+A: Of course. Anything else?
+B: Yes, what’s the Wi-Fi password?
+# exercicio: Practice 1
+escolha: The TV [*doesn’t work/don’t work/not work].
+escolha: There [*aren’t any/isn’t any/is no] towels in the bathroom.
+escolha: [*Could I have/Can I has/I could have] an extra pillow, please?
+escolha: The room next to mine is very [*noisy/noise/noises].
+grupos: Problems: The shower doesn’t work, There’s no soap, The room is dirty / Requests: Could I have a towel?, Could you send someone?, Can I change rooms?
+# leitura: A hotel review | img:cama
+tipo: Online review
+⭐⭐ “The location is great, near the beach. But our first night was terrible. The air conditioning **didn’t work** and the room was very hot.
+There **weren’t any** towels in the bathroom and the Wi-Fi was very slow. The staff were friendly and they **changed our room** the next day.
+The new room was much better. Breakfast was good, but expensive.”
+# exercicio: Practice 2
+What was the problem on the first night?
+*a) The air conditioning didn’t work.
+b) The room was cold.
+c) The staff were rude.
+The staff changed their room. (v)
+reescreva: I want another towel. | COULD | ___ another towel, please? | Could I have
+ditado: There’s no hot water in my room.
+# conversa: Role-play | img:cama
+You’re at reception. Complain about 3 problems in your room.
+Now you’re the receptionist. Offer solutions.
+Write a short review of a hotel you stayed in.
+# tarefas: Atividades recomendadas
+At the hotel
+Listening · At the hotel
+Homework · Room 304`],
+
+['EN','B1','Dreams and goals: hope to, plan to, would like to',`# capa: Dreams and goals | img:montanha
+I’m hoping to… I’m planning to… One day I’d like to…
+# sobre: Sobre esta aula
+ver: verbos para planos e sonhos seguidos de **to + verbo** (hope to, plan to, want to, would like to, intend to); **be thinking of + -ing**; **be going to** para planos decididos; níveis de certeza; metas SMART
+porque: Falar de planos e sonhos com variedade (e não só “I want”) deixa a conversa mais rica, e é muito comum em entrevistas de emprego e em conversas pessoais.
+meta: falar de planos com graus de certeza; usar verbo + to e be thinking of + -ing; escrever metas claras
+nivel: Nível B1
+# aquecimento: Your bucket list
+pergunta: What’s one thing you’d like to do before you’re 50?
+filme: The Bucket List (2007) | Dois homens fazem uma lista do que querem fazer antes de morrer. O que estaria na sua lista? | busca: The Bucket List trailer
+# tabela: How sure are you?
+Certainty | Structure | Example
+decided | be going to + verb | I**’m going to** start a course in March.
+planned | plan to / intend to + verb | I **plan to** move next year.
+hoped | hope to + verb | I**’m hoping to** get a promotion.
+considering | be thinking of + -ing | I**’m thinking of** learning Japanese.
+dream | would like to / would love to | One day, I**’d love to** see the Northern Lights.
+# explica: To or -ing?
+Depois de **hope, plan, want, would like, intend, decide**: **to + verbo**
+> She **hopes to** travel more. · We**’ve decided to** buy a house.
+Depois de **thinking of / about** (preposição): **-ing**
+> I’m **thinking of changing** jobs.
+# exercicio: Practice 1
+escolha: I’m hoping [*to find/finding/find] a new job this year.
+escolha: We’re thinking of [*moving/to move/move] to the coast.
+escolha: (decidido) I [*’m going to/’d like to] start running on Monday. I bought the shoes!
+escolha: One day, I’d love [*to visit/visiting/visit] Japan.
+grupos: + to: hope, plan, want, would like / + -ing: be thinking of, look forward to, dream of
+# leitura: SMART goals | img:montanha
+tipo: Self-improvement
+Most New Year’s resolutions fail by February. Why? Because they’re too vague. “I want to get fit” is a dream, not a plan.
+Experts recommend **SMART** goals: **S**pecific, **M**easurable, **A**chievable, **R**elevant and **T**ime-bound. So instead of “I want to learn English”, try: “I **plan to** study English for 20 minutes a day and **I’m hoping to** pass the B2 exam in December.”
+Writing your goals down and telling a friend also helps. You’re more likely to keep them if someone is watching!
+# exercicio: Practice 2
+Why do most resolutions fail?
+a) They’re too difficult.
+*b) They’re too vague.
+c) People forget them.
+“I want to get fit” is a SMART goal. (f)
+reescreva: I’m considering a career change. | THINKING | I’m ___ careers. | thinking of changing
+erro: I’m planning {going|to go} to the gym three times a week.
+# frase: Talking about the future
+I’m hoping to…
+I’m planning to…
+I’m thinking of…
+My goal for this year is to…
+One day, I’d really love to…
+# conversa: Your goals | img:montanha
+Tell me your goals for this year using 5 different structures.
+Make one of your goals SMART.
+What’s on your bucket list?
+# tarefas: Atividades recomendadas
+Will or going to?
+Gerund or infinitive?
+Homework · My bucket list`],
+
+['EN','B1','Music in our lives',`# capa: Music in our lives | img:fones
+Tastes, concerts and songs that tell stories
+# sobre: Sobre esta aula
+ver: vocabulário de música (genre, lyrics, catchy, live, gig, playlist, tune); falar de gostos com nuance (I’m really into…, It’s not my cup of tea); **orações relativas** para descrever (a song **that** makes me cry, a singer **who**…, the place **where**…)
+porque: Música é um dos assuntos favoritos para conversar e o jeito mais gostoso de aprender inglês. Descrever músicas e artistas pratica relative clauses de forma natural.
+meta: falar de gostos musicais; descrever músicas, shows e artistas com who / which / that / where; recomendar uma música
+nivel: Nível B1
+# aquecimento: Your soundtrack
+pergunta: What song are you listening to a lot these days?
+jogo: Name that tune | A professora cantarola o começo de músicas famosas. O aluno diz o nome e o artista.
+musica: Bohemian Rhapsody — Queen | Uma música com vários estilos dentro. Quantos gêneros vocês reconhecem?
+# vocab: Music words
+lyrics | letra
+catchy | chiclete, fácil de lembrar
+gig | show (informal)
+live | ao vivo
+playlist | playlist
+tune | melodia
+cover | regravação
+band | banda
+# frase: Talking about tastes
+I’m really into jazz at the moment.
+I can’t stand heavy metal.
+It’s not really my cup of tea.
+This song always reminds me of my childhood.
+You’ve got to listen to this album!
+# explica: Describing with relative clauses
+**who** para pessoas · **which / that** para coisas · **where** para lugares:
+> She’s the singer **who** wrote my favourite song.
+> It’s a song **that** always makes me cry.
+> That’s the bar **where** I saw my first gig.
+# exercicio: Practice 1
+escolha: He’s the drummer [*who/which/where] plays in two bands.
+escolha: It’s an album [*that/who/where] changed my life.
+escolha: This is the stadium [*where/which/who] they played last year.
+escolha: The song is so [*catchy/catch/catching]! I can’t stop singing it.
+grupos: who: the singer, my friend, the drummer / which or that: the song, the album, the concert / where: the bar, the festival, the stadium
+# leitura: Why music brings back memories | img:fones
+tipo: Science
+Scientists have discovered that music activates more parts of the brain than almost anything else. That’s why a song **that** you loved at 15 can bring back a memory in seconds.
+In fact, the songs **which** we hear in our teens and early twenties often stay our favourites for life. Researchers call this the “reminiscence bump”.
+Music is even used with patients **who** have Alzheimer’s: some people **who** can’t remember their family’s names can still sing every word of an old song.
+# exercicio: Practice 2
+Which songs often stay our favourites for life?
+a) songs we hear as small children
+*b) songs we hear in our teens and early twenties
+c) songs we hear at work
+Music can help some patients with Alzheimer’s. (v)
+reescreva: I met the singer. She wrote this song. | WHO | I met the singer ___ this song. | who wrote
+erro: That’s the festival {which|where} I met my wife.
+# conversa: Let’s talk | img:fones
+Describe a song that reminds you of a special moment.
+Tell me about the best gig you’ve ever been to.
+Make a 5-song playlist for the teacher and explain each choice.
+# tarefas: Atividades recomendadas
+Who, which or where?
+Theme · Music and festivals
+Homework · The soundtrack of my life`],
+
+['EN','B1','Phrasal verbs for travel',`# capa: Phrasal verbs for travel | img:aviao
+set off, check in, get on, look around
+# sobre: Sobre esta aula
+ver: phrasal verbs de viagem: **set off** (partir), **check in / check out**, **get on / get off**, **pick up / drop off**, **take off**, **look around**, **get away**, **stop over**; separáveis × inseparáveis; contar uma viagem
+porque: Em viagens, os nativos quase não usam “depart” ou “board”: usam phrasal verbs. Entendê-los é essencial em aeroportos, hotéis e conversas.
+meta: usar 10 phrasal verbs de viagem; saber quais separam; contar uma viagem com eles
+nivel: Nível B1
+# aquecimento: Your last trip
+pergunta: Where did you go on your last trip? How did you get there?
+jogo: Act it out | A professora faz mímica (fazer check-in, entrar no ônibus, olhar em volta). O aluno diz o phrasal verb.
+# vocab: Travel phrasal verbs
+set off | partir, sair de viagem
+check in / check out | fazer check-in / check-out
+get on / get off | entrar / sair (ônibus, trem, avião)
+pick up | buscar alguém
+drop off | deixar alguém
+take off | decolar
+look around | dar uma volta, explorar
+get away | tirar uns dias de folga
+# linha: A weekend in Lisbon | eixo: Friday | Sunday
+agora: não
+ponto: 0.08 | set off at 6
+ponto: 0.25 | plane took off
+ponto: 0.45 | checked in
+faixa: 0.5-0.85 | looked around
+ponto: 0.95 | checked out
+We **set off** early on Friday. The plane **took off** at 9, and we **checked in** at the hotel at 2.
+We **looked around** the city all weekend and **checked out** on Sunday.
+# explica: Separable or not?
+**Separáveis** (objeto pode ir no meio; pronome sempre no meio):
+> I’ll **pick** you **up** at the airport. · Can you **drop** me **off** here?
+**Inseparáveis** (objeto sempre depois):
+> We **got on** the train. · Let’s **look around** the market.
+**Sem objeto**: The plane **took off**. · We **set off** at dawn.
+# exercicio: Practice 1
+escolha: What time do we need to [*check in/check on/check up] at the airport?
+escolha: Can you pick [*me up/up me/me on] at the station?
+escolha: We [*set off/set out off/set up] at 5 a.m. to avoid the traffic.
+escolha: Get [*off/out/down] the bus at the next stop.
+ligue: Ligue o phrasal verb ao sentido.
+take off = decolar
+look around = explorar
+drop off = deixar alguém
+get away = tirar uns dias de folga
+# dialogo: Airport pick-up
+A: Hi! I’m landing at 6. Can you pick me up?
+B: Sure. Text me when you get off the plane.
+A: Great. Then can you drop me off at the hotel?
+B: Of course. Are you checking in tonight?
+A: Yes. And tomorrow I want to look around the old town.
+B: Perfect. I’ll show you the best places!
+# exercicio: Practice 2
+reescreva: The plane left the ground at 9. | TOOK | The plane ___ at 9. | took off
+reescreva: I’ll collect you from the airport. | PICK | I’ll ___ at the airport. | pick you up
+erro: Can you drop {off me|me off} at the corner?
+grupos: Separable: pick up, drop off, check out the room / Not separable: get on, look around, get off
+# conversa: Your trip | img:aviao
+Tell me about your last trip using at least 6 phrasal verbs.
+What do you like doing when you look around a new city?
+Where would you go if you could get away for a week?
+# tarefas: Atividades recomendadas
+Phrasal verbs: travel
+Travel and airports
+Homework · Off we go!`],
+
+['EN','B2','Introverts and extroverts',`# capa: Introverts and extroverts | img:conversa
+Personality, energy and the power of quiet
+# sobre: Sobre esta aula
+ver: adjetivos de personalidade com nuance (outgoing, reserved, assertive, sensitive, laid-back, self-conscious); **prefixos negativos** (un-, in-, im-, ir-, dis-); introversão × timidez; um quiz de personalidade
+porque: Descrever pessoas com precisão é essencial em entrevistas, no trabalho e nas relações. E os prefixos negativos multiplicam o vocabulário do aluno.
+meta: descrever a própria personalidade com nuance; formar opostos com prefixos; discutir introversão e extroversão
+nivel: Nível B2
+# aquecimento: Party or book?
+pergunta: Friday night: a big party or a quiet night with a book? Why?
+jogo: This or that | “Phone call or text? Big group or one friend? Talk or listen?” O aluno escolhe rápido e explica.
+# vocab: Personality
+outgoing | extrovertido, sociável
+reserved | reservado
+assertive | assertivo
+sensitive | sensível
+laid-back | tranquilo, relaxado
+self-conscious | inseguro, que se preocupa com o que pensam
+talkative | falante
+thoughtful | atencioso, reflexivo
+# tabela: Negative prefixes
+Prefix | Examples
+un- | unfriendly, unreliable, unpredictable
+in- | insensitive, inconsiderate, insecure
+im- (before p, m) | impatient, immature, impolite
+ir- (before r) | irresponsible, irrational
+dis- | dishonest, disorganised, disloyal
+# exercicio: Practice 1
+escolha: He never keeps his promises. He’s so [*unreliable/disreliable/inreliable].
+escolha: Don’t be so [*impatient/unpatient/inpatient]! The bus will come.
+escolha: She forgets meetings and loses documents. She’s very [*disorganised/unorganised/inorganised].
+escolha: He always talks to everyone at parties. He’s really [*outgoing/reserved/self-conscious].
+grupos: un-: unfriendly, unkind, unreliable / im-: impatient, impolite, immature / dis-: dishonest, disloyal, disorganised
+# explica: Introvert ≠ shy
+**Introvertido** = recupera energia sozinho. Pode ser muito sociável!
+**Tímido (shy)** = sente ansiedade em situações sociais.
+> She’s an **introvert**, but she isn’t **shy**: she loves giving presentations.
+**Ambivert** = um pouco dos dois (a maioria das pessoas!).
+# leitura: Quiet: the power of introverts | img:livro
+tipo: Book review
+In her best-seller **Quiet**, Susan Cain argues that schools and offices are designed for extroverts: open-plan offices, group work, endless meetings. Yet a third to a half of people are introverts.
+Introverts are often **thoughtful**, good listeners and excellent at deep, focused work. Many great leaders, from Abraham Lincoln to Bill Gates, have described themselves as introverts.
+Cain doesn’t say introverts are better. She says we need both: the **outgoing** energy of extroverts and the careful thinking of introverts.
+# exercicio: Practice 2
+According to Cain, offices are designed for…
+a) introverts
+*b) extroverts
+c) ambiverts
+Cain says introverts are better than extroverts. (f)
+reescreva: He isn’t honest. | DISHONEST | He’s ___ . | dishonest
+erro: She gets angry in traffic. She’s very {unpatient|impatient}.
+# pergunta: Are you an introvert?
+After a long, busy day with lots of people, you feel…
+energised and ready for more
+*tired and in need of quiet time
+it depends on the people
+nota: Quiz de personalidade: a resposta marcada indica tendência introvertida. Não há resposta certa! Peça para o aluno explicar.
+# conversa: Let’s talk | img:conversa
+Describe your personality using 5 adjectives from today.
+Are you an introvert, an extrovert or an ambivert? Give examples.
+Should offices have more quiet spaces? Why (not)?
+# tarefas: Atividades recomendadas
+Personality
+Prefixes
+Homework · Quiet power`],
+
+['EN','B2','Fast fashion and ethical shopping',`# capa: Fast fashion | img:camiseta
+Who made my clothes?
+# sobre: Sobre esta aula
+ver: vocabulário de moda e sustentabilidade (supply chain, garment workers, second-hand, sustainable, fair trade, landfill); a **voz passiva** para processos (clothes are made, cotton is grown); debater consumo consciente
+porque: Fast fashion é um tema atual em notícias, provas e no trabalho (ESG). A passiva aparece naturalmente para descrever como as coisas são produzidas.
+meta: descrever a produção de uma roupa com a passiva; discutir prós e contras da fast fashion; falar dos próprios hábitos de consumo
+nivel: Nível B2
+# aquecimento: Your wardrobe
+pergunta: How many clothes do you buy a year? Do you wear all of them?
+jogo: Label detective | O aluno olha a etiqueta da roupa que está usando: “It was made in…”. Onde foram feitas as roupas de vocês?
+# vocab: Fashion and sustainability
+fast fashion | moda rápida, descartável
+garment worker | trabalhador(a) da confecção
+supply chain | cadeia de produção
+second-hand | de segunda mão
+sustainable | sustentável
+fair trade | comércio justo
+landfill | aterro sanitário
+to recycle | reciclar
+# linha: The life of a T-shirt | eixo: cotton field | landfill
+agora: não
+ponto: 0.08 | cotton is grown
+ponto: 0.3 | fabric is dyed
+ponto: 0.5 | T-shirt is sewn
+ponto: 0.7 | shipped and sold
+ponto: 0.95 | thrown away
+O algodão **is grown** na Índia, o tecido **is dyed** na China, a camiseta **is sewn** em Bangladesh e **sold** na Europa. Muitas vezes ela **is thrown away** depois de poucos usos.
+# explica: The passive for processes
+Quando o processo importa mais do que quem faz, use a **passiva**:
+> About 100 billion garments **are produced** every year.
+> Most clothes **are made** in Asia.
+> In 2013, more than 1,100 workers **were killed** when a factory collapsed in Bangladesh.
+# exercicio: Practice 1
+escolha: Most cotton [*is grown/grows/is grow] in China, India and the USA.
+escolha: Thousands of tonnes of clothes [*are thrown/throw/are throwing] away every day.
+escolha: This jacket [*was made/made/is make] from recycled plastic bottles.
+grupos: Problems: cheap labour, landfill, water pollution / Solutions: second-hand shops, fair trade, repairing clothes
+# leitura: The true cost | img:camiseta
+tipo: Article
+The fashion industry is one of the biggest polluters in the world. It takes about **2,700 litres** of water to produce one cotton T-shirt, enough for one person to drink for two and a half years.
+Fast fashion brands release new collections every week, so clothes **are designed** to be cheap and to be replaced quickly. Many garment workers **are paid** less than a living wage.
+Consumers are starting to react: **second-hand** apps are booming, and some brands now offer to **repair** clothes for free.
+# exercicio: Practice 2
+How much water does it take to make one cotton T-shirt?
+a) 27 litres
+b) 270 litres
+*c) about 2,700 litres
+Fast fashion clothes are designed to last for many years. (f)
+reescreva: Workers sew the clothes in Bangladesh. | ARE | The clothes ___ in Bangladesh. | are sewn
+erro: Many clothes {are throwing|are thrown} away after just a few uses.
+# pergunta: Your choice
+Which would you be most likely to do?
+buy only second-hand clothes
+pay more for fair-trade clothes
+buy fewer clothes and repair them
+nota: Sem resposta certa: o aluno justifica e discute se é realista.
+# conversa: Debate | img:camiseta
+Is fast fashion good because it makes clothes affordable for everyone?
+Who should change: consumers, brands or governments?
+What’s the oldest piece of clothing you still wear?
+# tarefas: Atividades recomendadas
+Reading · The cost of fast fashion
+Passive voice
+Homework · Who made my clothes?`],
+
+['EN','B2','Collocations: make, do, take, have',`# capa: Collocations | img:lapis
+make a mistake, do homework, take a break, have a look
+# sobre: Sobre esta aula
+ver: **collocations**: palavras que “andam juntas” com make, do, take e have; por que não dá para traduzir (fazer um erro ✗ → **make** a mistake; tomar banho → **have/take** a shower); os grupos mais úteis no trabalho e no dia a dia
+porque: Collocations são o que faz o inglês soar **natural**. Um erro de gramática atrapalha pouco, mas “do a mistake” ou “make a photo” denunciam o estrangeiro na hora.
+meta: usar 30 collocations comuns; entender a lógica geral de make × do; evitar traduções do português
+nivel: Nível B2
+# aquecimento: Translate it
+jogo: Don’t translate! | A professora diz em português: “fazer uma pausa, tirar uma foto, tomar uma decisão, fazer uma pergunta”. O aluno tenta dizer em inglês.
+pergunta: Which mistakes do you think Brazilians make most often in English?
+# tabela: Make or do?
+make (criar, produzir) | do (tarefas, trabalho, atividades)
+make a mistake, make a decision | do homework, do the shopping
+make money, make a plan | do business, do a course
+make friends, make noise | do exercise, do your best
+make an effort, make a phone call | do someone a favour, do the dishes
+# tabela: Take or have?
+take | have
+take a break, take a photo | have a shower, have breakfast
+take a risk, take notes | have a look, have a chat
+take part in, take a seat | have a good time, have an argument
+take time, take care | have a baby, have a go (tentar)
+# dica: Don’t translate!
+x: I did a mistake.
+ok: I made a mistake.
+x: Can you make me a favour?
+ok: Can you do me a favour?
+x: Let’s make a photo!
+ok: Let’s take a photo!
+# exercicio: Practice 1
+escolha: Sorry, I [*made/did/took] a mistake in the report.
+escolha: Could you [*do/make/have] me a favour?
+escolha: Let’s [*take/make/do] a break. We’ve been working for hours.
+escolha: Can I [*have/make/do] a look at your notes?
+escolha: She [*does/makes/takes] yoga three times a week.
+grupos: make: a decision, friends, money / do: homework, business, your best / take: a photo, a risk, notes / have: a shower, a chat, a look
+# texto: A busy day
+I **had** breakfast at 7, **did** some exercise and **took** the train to work. In the morning, I **made** three phone calls and **took** notes in a long meeting.
+At lunch, I **had** a chat with a colleague, and in the afternoon we **made** an important decision. I **made** a small mistake in a report, but I **did** my best to fix it.
+In the evening, I **did** the shopping and **had** a great time with friends.
+# exercicio: Practice 2
+reescreva: I decided quickly. | MADE | I ___ quickly. | made a decision
+reescreva: Can you help me? | FAVOUR | Can you ___ ? | do me a favour
+erro: I always {make|do} my best at work.
+lacunas: Let’s [take] a photo and [have] a look at it later. Don’t [make] so much noise! || do, give
+# conversa: Your turn | img:lapis
+Tell me about your day using 10 collocations from today.
+What’s the biggest decision you’ve made this year?
+What risks have you taken in your life?
+# tarefas: Atividades recomendadas
+Collocations: make and do
+Collocations with have, take and pay
+Homework · Make it, do it, take it`],
+
+['EN','C1','Register: formal or informal?',`# capa: Register | img:envelope
+get → obtain · ask → enquire · need → require
+# sobre: Sobre esta aula
+ver: o que é **registro**; vocabulário formal × informal (phrasal verbs × verbos de origem latina: find out → discover, put off → postpone); contrações, voz passiva e impessoalidade; reescrever textos mudando o registro
+porque: No C1, não basta estar certo: é preciso usar o **tom certo**. Um e-mail formal demais para um colega soa frio; informal demais para um cliente soa pouco profissional.
+meta: reconhecer o registro de um texto; trocar entre formal e informal; escolher o tom certo para cada situação
+nivel: Nível C1 · escrita
+# aquecimento: Same message, different tone
+jogo: Three versions | A professora diz uma ideia (“I can’t come tomorrow.”). O aluno diz para um amigo, para o chefe e num e-mail para um cliente.
+pergunta: Do you change the way you speak with different people? How?
+# tabela: Informal → formal
+Informal | Formal
+get | obtain, receive
+ask (about) | enquire (about)
+need | require
+find out | discover, ascertain
+put off | postpone
+help | assist
+# explica: Other features of formal English
+**Sem contrações**: I’m → I am · don’t → do not
+**Passiva e impessoalidade**: We’ll send it → It will be sent
+**Frases mais longas, com conectores**: However, Furthermore, Consequently
+**Pedidos indiretos**: Can you…? → I would be grateful if you could…
+# exercicio: Practice 1
+escolha: (formal) We would like to [*enquire/ask/find out] about your prices.
+escolha: (formal) The meeting has been [*postponed/put off/pushed] until Friday.
+escolha: (formal) Applicants are [*required/needed/wanted] to submit a CV.
+escolha: (informal) Can you [*find out/ascertain/discover] what time it starts?
+grupos: Formal: assist, obtain, require, postpone / Informal: help, get, need, put off
+# texto: Two emails, one message
+**To a colleague:** Hi Tom, just checking: can you send me the numbers by Friday? Thanks a lot!
+**To a client:** Dear Mr Evans, I would be grateful if you could send us the figures by Friday. Thank you in advance for your assistance.
+nota: Peça para o aluno apontar todas as diferenças: saudação, contrações, vocabulário, pedido direto × indireto, fechamento.
+# exercicio: Practice 2
+reescreva: We’ll let you know soon. | INFORMED | You will ___ in due course. | be informed
+reescreva: Can you help me? | GRATEFUL | I would ___ assist me. | be grateful if you could
+reescreva: We need to put off the launch. | POSTPONE | It is necessary ___ the launch. | to postpone
+erro: (formal email) {Hey|Dear} Ms Silva, I am writing to enquire about the position.
+# dica: Too formal is also a problem
+x: (para um amigo) I would be grateful if you could inform me whether you are available for dinner.
+ok: Are you free for dinner?
+x: (para um cliente) Hey! Got your email, will sort it asap.
+ok: Thank you for your email. We will deal with this as soon as possible.
+# conversa: Your turn | img:envelope
+Rewrite a real WhatsApp message from your work in formal English.
+Rewrite a formal paragraph from a contract in plain, informal English.
+Which register do you find more difficult? Why?
+# tarefas: Atividades recomendadas
+Formal or informal?
+Formal business writing
+Homework · Say it formally`],
+
+['EN','C1','Leadership styles',`# capa: Leadership styles | img:montanha
+Bosses, leaders and the people who follow them
+# sobre: Sobre esta aula
+ver: estilos de liderança (autocratic, democratic, laissez-faire, servant, transformational); vocabulário de gestão (empower, delegate, micromanage, accountability, buy-in); discutir casos e dilemas; linguagem para avaliar com nuance
+porque: Liderança é tema central em entrevistas, treinamentos e na vida profissional. No C1, o aluno precisa discutir estilos e situações com vocabulário preciso e opiniões equilibradas.
+meta: descrever e comparar estilos de liderança; analisar um caso com nuance; falar do próprio estilo e do de líderes que conhece
+nivel: Nível C1 · inglês para o trabalho
+# aquecimento: Best and worst boss
+pergunta: Describe the best boss you’ve ever had. What made them good?
+jogo: Boss or leader? | A professora lê frases (“Do it because I said so.” × “What do you think we should do?”). O aluno classifica: boss or leader?
+# tabela: Five styles
+Style | In one sentence | Risk
+autocratic | the leader decides alone | low motivation
+democratic | the team is consulted | slow decisions
+laissez-faire | the team decides, little guidance | lack of direction
+servant | the leader serves the team’s needs | can seem weak
+transformational | inspires change and growth | burnout
+# vocab: Management vocabulary
+to empower | dar autonomia, fortalecer
+to delegate | delegar
+to micromanage | microgerenciar
+accountability | responsabilização
+buy-in | adesão, apoio
+to lead by example | liderar pelo exemplo
+to step up | assumir a responsabilidade
+morale | moral, ânimo da equipe
+# exercicio: Practice 1
+escolha: A good leader [*empowers/micromanages/forbids] the team to make decisions.
+escolha: Nobody likes a boss who [*micromanages/delegates/empowers] every detail.
+escolha: To get [*buy-in/buy-up/buy-on] from the team, involve them early.
+escolha: When the manager left, Ana [*stepped up/stepped in up/stepped over] and led the project.
+grupos: Good signs: leads by example, delegates, gives credit / Warning signs: micromanages, takes credit, blames others
+# texto: Case study: the crisis
+A software company has just lost its biggest client. Morale is low and two senior developers are thinking of leaving.
+The CEO has three options: **A)** take control and make all the decisions herself; **B)** hold a meeting and let the team propose a recovery plan; **C)** focus on supporting the two developers individually.
+Which leadership style does each option represent? What would you do?
+nota: A = autocratic, B = democratic, C = servant. Peça uma resposta com nuance: “It depends on…”, “In the short term… whereas in the long term…”.
+# leitura: Leading from behind | img:montanha
+tipo: Business
+Nelson Mandela once compared a good leader to a shepherd: he stays **behind the flock**, letting the most nimble go out ahead, while the others follow, not realising that all along they are being directed from behind.
+Modern research supports the idea. Teams **perform better** when leaders ask questions rather than give orders, and when people feel safe to admit mistakes, something Google’s research called **psychological safety**.
+Yet in a crisis, many teams want a **decisive** leader. Arguably, the best leaders are not loyal to one style, but know **when** to switch.
+# exercicio: Practice 2
+What did Google’s research call it when people feel safe to admit mistakes?
+a) team spirit
+*b) psychological safety
+c) servant leadership
+According to the text, the best leaders always use the same style. (f)
+reescreva: She sets an example through her own behaviour. | EXAMPLE | She ___ . | leads by example
+# frase: Discussing leadership with nuance
+It depends largely on the context.
+In the short term…, whereas in the long term…
+There’s a fine line between… and…
+I’d argue that the most effective leaders…
+# conversa: Discussion | img:montanha
+What would you do in the case study? Justify your choice.
+Which style do you naturally use? Which would you like to develop?
+Can leadership be learnt, or are some people born leaders?
+# tarefas: Atividades recomendadas
+Business idioms
+Hedging and softening
+Homework · Lead the way`]
 );
 
 var SLIDES_LOADED=true;
