@@ -1,7 +1,7 @@
 /* Layout: aulas particulares · cada aluno tem um "caderno" com a sua paleta · professora: Hoje / Agenda / Alunos. */
 :root{
   --paper:#f8f3ec; --surface:#fffcf7; --surface-2:#f1ebe2; --line:#e7ddd1; --line-2:#d6c9ba;
-  --ink:#221c1e; --ink-2:#5a4f52; --ink-3:#8a7e80;
+  --ink:#221c1e; --ink-2:#5a4f52; --ink-3:#706568;
   --wine:#7a1f35; --wine-soft:#f3e1e5; --on-wine:#fffaf2;
   --pend-bg:#efe8de; --pend-fg:#5a4f52;
   --sent-bg:#f7e9c6; --sent-fg:#7a5410;
@@ -14,14 +14,14 @@
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --paper:#161113; --surface:#201a1c; --surface-2:#2a2225; --line:#342a2e; --line-2:#4a3d42;
-  --ink:#f4ece6; --ink-2:#c6bab6; --ink-3:#928689;
+  --ink:#f4ece6; --ink-2:#c6bab6; --ink-3:#a09497;
   --wine:#e88ea4; --wine-soft:#3c2129; --on-wine:#221c1e;
   --pend-bg:#2f272a; --pend-fg:#c6bab6; --sent-bg:#3a2f17; --sent-fg:#ecc77d;
   --done-bg:#1a3123; --done-fg:#8fd4ab; --late-bg:#45231c; --late-fg:#f5a48d; --live:#6fd39a;
   --qframe-o:.12; color-scheme:dark }}
 :root[data-theme="dark"]{
   --paper:#161113; --surface:#201a1c; --surface-2:#2a2225; --line:#342a2e; --line-2:#4a3d42;
-  --ink:#f4ece6; --ink-2:#c6bab6; --ink-3:#928689;
+  --ink:#f4ece6; --ink-2:#c6bab6; --ink-3:#a09497;
   --wine:#e88ea4; --wine-soft:#3c2129; --on-wine:#221c1e;
   --pend-bg:#2f272a; --pend-fg:#c6bab6; --sent-bg:#3a2f17; --sent-fg:#ecc77d;
   --done-bg:#1a3123; --done-fg:#8fd4ab; --late-bg:#45231c; --late-fg:#f5a48d; --live:#6fd39a;

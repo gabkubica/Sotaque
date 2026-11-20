@@ -75,7 +75,7 @@ function slideHtml(s,o={}){
   if (s.t==='exercicio'){ const ins=s.body.filter(x=>x.startsWith('!')).map(x=>`<p class="sl-ins">${md(x.slice(1).trim())}</p>`).join('');
     if (o.thumb){ const n=exParse(s.body.filter(x=>!x.startsWith('!'))).length; b=`${T}${ins}<p class="sl-exsum">✎ ${n} ${n===1?'questão':'questões'}</p>`; }
     else { const t=exTask(o.key||s.title,s); if (!o.print) S.slxT=t; const sc=scoreOf(t);
-      b=`${T}${ins}<div class="sl-exq">${t.done&&!o.print? t.questions.map((q,i)=>qResult(t,q,i,'student')).join('') : t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}</div>${o.print? '' : `<div class="sl-exbar">${t.done? `<b>${fmtNum(sc.got)} de ${sc.total} certas</b><button class="btn small" data-act="slx-reset">Fazer de novo</button>` : `<button class="btn small primary" data-act="slx-check">Corrigir</button>`}</div>`}`; } }
+      b=`${T}${ins}<div class="sl-exq"${o.print? ' inert' : ''}>${t.done&&!o.print? t.questions.map((q,i)=>qResult(t,q,i,'student')).join('') : t.questions.map((q,i)=>qAnswer(t,q,i)).join('')}</div>${o.print? '' : `<div class="sl-exbar">${t.done? `<b>${fmtNum(sc.got)} de ${sc.total} certas</b><button class="btn small" data-act="slx-reset">Fazer de novo</button>` : `<button class="btn small primary" data-act="slx-check">Corrigir</button>`}</div>`}`; } }
   return `<div class="sl sl-${s.t}">${b}${o.thumb? '' : `<span class="sl-brand"><b>Sotaque</b> · © Gabriel Kubica · Todos os direitos reservados</span>`}</div>`;
 }
 /* exercícios dentro do slide: o formato de "Colar várias questões" e mais estes prefixos:
@@ -108,7 +108,7 @@ function viewSlidesPrint(id){
 /* ---------- áudios gravados de cada aula pronta (app/audio/<id>.json, gerados por scripts/audios.py) ---------- */
 const AUD_BASE=(()=>{ try { return new URL('audio/',document.currentScript.src).href; } catch { return 'audio/'; } })();
 const AUD_LOADED={};
-function slAudio(d){ if (!d?.seed||AUD_LOADED[d.id]) return; AUD_LOADED[d.id]=1;
+function slAudio(d){ if (!d?.seed||d.lang!=='EN'||AUD_LOADED[d.id]) return; AUD_LOADED[d.id]=1;   /* só as aulas de inglês têm áudio gravado */
   fetch(AUD_BASE+d.id+'.json').then(r=>r.ok? r.json() : {}).then(j=>{ for (const [k,v] of Object.entries(j)) CLIPS[k]='data:audio/mpeg;base64,'+v; }).catch(()=>{ AUD_LOADED[d.id]=0; }); }
 /* ---------- aulas prontas e as da professora ---------- */
 const SLSEED={n:-1,v:[]};

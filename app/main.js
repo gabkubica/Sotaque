@@ -37,10 +37,13 @@ function rel(ts){
   if (n===1) return 'amanhã'; if (n===-1) return 'ontem';
   return n>0? `em ${n} dias` : `há ${-n} dias`;
 }
+/* letra legível sobre a cor do aluno: escura nas cores claras (ex.: mostarda), creme nas outras */
+const lum=h=>{ const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(x=>x<=.03928? x/12.92 : ((x+.055)/1.055)**2.4); return .2126*c[0]+.7152*c[1]+.0722*c[2]; };
+const inkOn=bg=>(lum('#fffaf2')+.05)/(lum(bg)+.05)<3? '#221c1e' : '#fffaf2';
 function avatar(u,size=34){
   const p=PAL[u.palette]||PAL[PKEYS[hashStr(u.id)%PKEYS.length]];
   const ini=u.name.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  return `<span class="avatar" style="width:${size}px;height:${size}px;background:${p.a};font-size:${Math.round(size*.4)}px" aria-hidden="true">${esc(ini)}</span>`;
+  return `<span class="avatar" style="width:${size}px;height:${size}px;background:${p.a};color:${inkOn(p.a)};font-size:${Math.round(size*.4)}px" aria-hidden="true">${esc(ini)}</span>`;
 }
 function logo(size=32){
   return `<svg width="${size}" height="${size}" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7a1f35"/><path d="M8 11.5a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-5.5L10 24.5v-4.3A4 4 0 0 1 8 16.5z" fill="#fffaf2"/><path d="M17.5 3.5l-3 3" stroke="#e88ea4" stroke-width="2.4" stroke-linecap="round"/><circle cx="13" cy="14" r="1.4" fill="#7a1f35"/><circle cx="16.5" cy="14" r="1.4" fill="#7a1f35"/><circle cx="20" cy="14" r="1.4" fill="#7a1f35"/></svg>`;
@@ -359,7 +362,7 @@ function viewAgenda(){
   const nowTs=now(), nowY=((nowTs-dayStart(nowTs))/HOUR-H0)*RH;
   const blk=l=>{ const s=user(l.studentId), p=PAL[s.palette], d=new Date(l.start), y=(d.getHours()+d.getMinutes()/60-H0)*RH;
     const cls=l.status==='cancelada'?'cancel':['realizada','falta'].includes(l.status)?'done':'';
-    return `<button class="blk ${cls} ${pendingReq(l)?'ask':''}" style="top:${y+2}px;height:${l.dur/60*RH-4}px;background:${l.status==='falta'? p.c : p.a}" data-act="lesson" data-id="${l.id}"><b>${esc(s.name.split(' ')[0])}</b><span>${fTime.format(l.start)}${l.status==='falta'?' · falta':pendingReq(l)?' · pedido':''}</span></button>`; };
+    return `<button class="blk ${cls} ${pendingReq(l)?'ask':''}" style="top:${y+2}px;height:${l.dur/60*RH-4}px;background:${l.status==='falta'? p.c : p.a};color:${inkOn(l.status==='falta'? p.c : p.a)}" data-act="lesson" data-id="${l.id}"><b>${esc(s.name.split(' ')[0])}</b><span>${fTime.format(l.start)}${l.status==='falta'?' · falta':pendingReq(l)?' · pedido':''}</span></button>`; };
   return `<div class="wk-top"><h1>Agenda</h1><button class="btn small" data-act="week" data-v="-1" aria-label="Semana anterior">←</button><button class="btn small" data-act="week" data-v="0">Esta semana</button><button class="btn small" data-act="week" data-v="1" aria-label="Próxima semana">→</button></div>
     <p class="meta" style="margin:-8px 0 16px">${title} · as aulas fixas de cada aluno aparecem sozinhas. Clique numa aula para registrar, remarcar ou cancelar.</p>
     <div class="wk" style="--rh:${RH}px">
@@ -420,7 +423,7 @@ function packagePanel(s){
   const i=pkgInfo(s.id), c=i.current;
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Pacote' : 'Seu pacote'}</h2>${isT()? `<button class="btn small" data-act="new-package" data-id="${s.id}">+ Novo pacote</button>` : ''}</div>
     ${c? `<div class="big-num">${Math.max(0,i.remaining)}<span>${Math.max(0,i.remaining)===1?'aula restante':'aulas restantes'}</span>${isT()? `<button class="link" data-act="pkg-adjust" data-id="${s.id}">Ajustar</button>` : ''}</div>
-      <div class="dots" aria-label="${c.used} de ${c.size} aulas usadas">${[...Array(c.size)].map((_,k)=>`<i class="${k<c.used?'u':''}"></i>`).join('')}</div>
+      <div class="dots" role="img" aria-label="${c.used} de ${c.size} aulas usadas">${[...Array(c.size)].map((_,k)=>`<i class="${k<c.used?'u':''}"></i>`).join('')}</div>
       <p class="meta">Pacote de ${c.size} aulas · ${c.used} ${c.used===1?'usada':'usadas'} · ${money(c.price)}</p>
       ${i.remaining<0? `<div class="notice"><div>${-i.remaining} ${-i.remaining===1?'aula foi dada':'aulas foram dadas'} além do pacote.</div></div>` : i.remaining<=1? `<div class="notice"><div>${i.remaining===1? 'Esta é a última aula do pacote.' : 'O pacote terminou.'} ${isT()? 'Hora de renovar.' : `Fale com ${aProf()} para renovar.`}</div></div>` : ''}
       ${i.unpaid.map(p=>`<div class="notice"><div>Pagamento pendente: ${money(p.price)} <small style="font-weight:500">(pacote de ${p.size} aulas)</small>${isT()? '' : `<br><span style="font-weight:500">Pague pelo PIX e ${aProf()} confirma por aqui.</span>`}</div>${isT()? `<button class="btn small" data-act="mark-paid" data-id="${p.id}">Marcar como pago</button>` : ''}</div>`).join('')}
@@ -476,12 +479,15 @@ function shuffled(n,key){
   return a;
 }
 /* nota de 0 a 1 de cada questão; null = escrita ainda sem correção */
+/* ligar pares: vale o texto escolhido (dois pares podem ter a mesma resposta, ex.: "incontável"), e a lista não repete opções */
+const matchOk=(q,a,i)=>Number.isInteger(a?.[i])&&!!q.pairs[a[i]]&&norm(q.pairs[a[i]][1])===norm(q.pairs[i][1]);
+const matchOpts=q=>{ const seen=new Set(); return shuffled(q.pairs.length,q.id+'m').filter(j=>{ const k=norm(q.pairs[j][1]); if (seen.has(k)) return false; seen.add(k); return true; }); };
 function gradeQ(t,q){
   const a=t.answers[q.id];
   switch (q.type){
     case 'mc': case 'tf': return a===q.correct? 1 : 0;
     case 'gap': return q.answers.some(x=>norm(x)===norm(a))? 1 : 0;
-    case 'match': return Array.isArray(a)? q.pairs.filter((_,i)=>a[i]===i).length/q.pairs.length : 0;
+    case 'match': return Array.isArray(a)? q.pairs.filter((p,i)=>matchOk(q,a,i)).length/q.pairs.length : 0;
     case 'order': { const w=words(q); return Array.isArray(a)&&norm(a.map(k=>w[k]).join(' '))===norm(w.join(' '))? 1 : 0; }
     case 'open': break;
     default: if (TIPOS[q.type]) return TIPOS[q.type].grade(q,a); { const m=t.marks[q.id]; return m==null? null : m; }
@@ -514,7 +520,7 @@ function qAnswer(t,q,i){
   if (q.type==='mc') body=`<div class="opts-col ${q.options.every(o=>o.length<=18)? 'short' : ''}" role="radiogroup" aria-label="Questão ${i+1}">${q.options.map((o,k)=>`<label class="ans ${q.part&&o==='Não sei'? 'idk' : ''}"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${data} ${a===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`;
   if (q.type==='tf') body=`<div class="tf-row" role="radiogroup" aria-label="Questão ${i+1}">${[[true,'Verdadeiro','V'],[false,'Falso','F']].map(([v,l,s])=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${v?1:0}" data-ans-tf="${q.id}" ${data} ${a===v?'checked':''}><span class="lt">${s}</span><span class="tx">${l}</span></label>`).join('')}</div>`;
   if (q.type==='gap'){ const [x,y]=gapParts(q); body=`<p class="gapline">${esc(x)}<input type="text" class="gapin" data-ans-gap="${q.id}" ${data} value="${esc(a||'')}" aria-label="Lacuna da questão ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false">${esc(y)}</p>`; }
-  if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m');
+  if (q.type==='match'){ const ord=matchOpts(q);
     body=`<div class="mrows">${q.pairs.map((p,k)=>`<div class="mline"><span>${esc(p[0])}</span><label class="sr" for="m-${q.id}-${k}">Par de ${esc(p[0])}</label><select id="m-${q.id}-${k}" data-ans-match="${q.id}" data-i="${k}" ${data}><option value="">Escolha…</option>${ord.map(j=>`<option value="${j}" ${Array.isArray(a)&&a[k]===j?'selected':''}>${esc(q.pairs[j][1])}</option>`).join('')}</select></div>`).join('')}</div>`; }
   if (q.type==='order'){ const w=words(q), ord=shuffled(w.length,q.id+'o'), ch=Array.isArray(a)? a : [];
     body=`<div class="ord-line" aria-label="Sua frase">${ch.length? ch.map((k,pos)=>`<button class="wchip on" data-act="ord-rm" ${data} data-q="${q.id}" data-pos="${pos}" aria-label="Tirar ${esc(w[k])}">${esc(w[k])}</button>`).join('') : '<span class="muted">Toque nas palavras abaixo, na ordem certa.</span>'}</div>
@@ -553,7 +559,7 @@ function qResult(t,q,i,mode){
     body=`<p class="gapline">${esc(x)}<mark class="fill ${cls}">${esc(fill)}</mark>${esc(y)}</p>${(key&&q.answers.length>1)||(reveal&&g===0)? `<p class="meta">${key? 'Também vale' : 'Resposta certa'}: <b>${esc((key? q.answers.slice(1) : q.answers).join(' / '))}</b></p>` : ''}`;
   }
   if (q.type==='match'){
-    body=`<div class="mrows">${q.pairs.map((p,k)=>{ const pick=Array.isArray(a)? a[k] : null, ok=pick===k;
+    body=`<div class="mrows">${q.pairs.map((p,k)=>{ const pick=Array.isArray(a)? a[k] : null, ok=matchOk(q,a,k);
       const right= key? `<b>${esc(p[1])}</b>` : pick==null? '<span class="muted">sem resposta</span>' : `<mark class="fill ${reveal? (ok?'right':'wrong') : 'chosen'}">${esc(q.pairs[pick][1])}</mark>${reveal&&!ok? ` <small class="muted">certo: ${esc(p[1])}</small>` : ''}`;
       return `<div class="mres"><span>${esc(p[0])}</span><span class="muted" aria-hidden="true">→</span><span>${right}</span></div>`; }).join('')}</div>`;
   }
@@ -1138,7 +1144,7 @@ function viewPrint(id){
     if (q.type==='mc') body=`<ul class="pr-opts">${q.options.map((o,k)=>`<li><span class="pr-box"></span>${LT[k]}) ${esc(o)}</li>`).join('')}</ul>`;
     if (q.type==='tf') body=`<p class="pr-tf"><span class="pr-box"></span>${tfL[0]} <span class="pr-box" style="margin-left:22px"></span>${tfL[1]}</p>`;
     if (q.type==='gap'){ const [x,y]=gapParts(q); head=`${esc(x)}<span class="pr-gap"></span>${esc(y)}`; }
-    if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m');
+    if (q.type==='match'){ const ord=matchOpts(q);
       body=`<div class="pr-match"><ol>${q.pairs.map(p=>`<li>${esc(p[0])} <span class="pr-gap short"></span></li>`).join('')}</ol><ul>${ord.map((j,k)=>`<li><b>${LT[k]}</b> ${esc(q.pairs[j][1])}</li>`).join('')}</ul></div>`; }
     if (q.type==='order'){ const w=words(q), ord=shuffled(w.length,q.id+'o'); body=`<p class="pr-words">${ord.map(k=>`<span>${esc(w[k])}</span>`).join(' / ')}</p>${line(1)}`; }
     if (TIPOS[q.type]) body=TIPOS[q.type].print(q);
@@ -1148,7 +1154,7 @@ function viewPrint(id){
     if (q.type==='mc') a=`${LT[q.correct]}) ${esc(q.options[q.correct])}`;
     if (q.type==='tf') a=q.correct? tfL[0] : tfL[1];
     if (q.type==='gap') a=esc(q.answers.join(' / '));
-    if (q.type==='match'){ const ord=shuffled(q.pairs.length,q.id+'m'); a=q.pairs.map((p,k)=>`${k+1}–${LT[ord.indexOf(k)]}`).join(' · '); }
+    if (q.type==='match'){ const ord=matchOpts(q); a=q.pairs.map((p,k)=>`${k+1}–${LT[ord.findIndex(j=>norm(q.pairs[j][1])===norm(p[1]))]}`).join(' · '); }
     if (q.type==='order') a=esc(q.sentence);
     if (q.type==='open') a= FR? '(réponse personnelle)' : '(resposta pessoal)';
     if (TIPOS[q.type]) a=TIPOS[q.type].key(q);
@@ -1434,7 +1440,7 @@ function trailPanel(s){
   }
   const {ms,done,total}=trailProgress(s), cur=ms.find(m=>!conqOf(s.id,m.id)), pf=skillProfile(s);
   return `<section class="panel"><div class="panel-h"><h2>${isT()? 'Trilha' : `Sua trilha`}</h2><span class="count">${s.trail.level}</span></div>
-    <div class="dots" aria-label="${done} de ${total} marcos">${ms.map(m=>`<i class="${conqOf(s.id,m.id)?'u':''}"></i>`).join('')}</div>
+    <div class="dots" role="img" aria-label="${done} de ${total} marcos">${ms.map(m=>`<i class="${conqOf(s.id,m.id)?'u':''}"></i>`).join('')}</div>
     <p class="meta">${done} de ${total} marcos conquistados${cur? ` · agora: <b>${esc(cur.title)}</b>` : ' · nível completo!'}</p>
     <div class="mini-prof">${SKILL_KEYS.map(k=>`<span><small>${SKILLS[k]}</small><b>${pf[k].label==='começando'? '·' : pf[k].label}</b></span>`).join('')}</div>
     <a class="btn small" style="align-self:flex-start" href="#${isT()? 'trilha-'+s.id : 'trilha'}">${isT()? 'Abrir trilha' : 'Ver minha trilha'}</a></section>`;
@@ -2301,7 +2307,8 @@ Object.assign(ACT,TASK_ACT,BANK_ACT,THEME_ACT,TYPE_ACT,TRAIL_ACT,AUDIO_ACT,DEV_A
 document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]');
   if (S.menu&&!e.target.closest('.menu')&&el?.dataset.act!=='menu'){ S.menu=false; if (!el){ render(); return; } }
-  if (!el||el.disabled) return;
+  if (!el||el.disabled||el.closest('[inert]')) return;
+  if (el.dataset.task&&!getTask(el.dataset.task)) return;   /* exercício sem tarefa (ex.: na apostila para imprimir) */
   const fn=ACT[el.dataset.act]; if (fn){ if (el.tagName==='A') e.preventDefault(); fn(el,e); }
 });
 document.addEventListener('submit',e=>{ const f=e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); FORMS[f.dataset.form]?.(f,new FormData(f)); });

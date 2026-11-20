@@ -32,7 +32,8 @@ function lcsMark(exp,got){
 const clozeParse=q=>{ const parts=String(q.text||'').split(/\[([^\]]+)\]/); const segs=[], ans=[]; parts.forEach((p,k)=>{ if (k%2) ans.push(alts(p)); else segs.push(p); }); return {segs,ans}; };
 const clozeBank=q=>{ const {ans}=clozeParse(q); return tpShuffle([...ans.map(a=>a[0]),...String(q.extra||'').split(',').map(x=>x.trim()).filter(Boolean)],q.id+'cz'); };
 /* ---------- encontre o erro: "She {don't|doesn't} like coffee." ---------- */
-const fixParse=q=>{ const out=[]; let wrong=-1, right=[]; String(q.text||'').replace(/\{([^}|]+)\|([^}]+)\}|(\S+)/g,(m,w,r,plain)=>{ if (w){ wrong=out.length; right=alts(r); out.push(w.trim()); } else out.push(plain); return m; }); return {words:out,wrong,right}; };
+/* o erro pode vir grudado no começo da palavra (francês: n’{y|en}, j’{en|y}): a palavra inteira é a errada */
+const fixParse=q=>{ const out=[]; let wrong=-1, right=[]; String(q.text||'').replace(/([^\s{]*?)\{([^}|]+)\|([^}]+)\}|(\S+)/g,(m,pre,w,r,plain)=>{ if (w){ wrong=out.length; const R=alts(r); right=pre? [...R.map(x=>pre+x.trim()),...R] : R; out.push(pre+w.trim()); } else out.push(plain); return m; }); return {words:out,wrong,right}; };
 /* ---------- separar em grupos: "Contável: apple, chair\nIncontável: water, money" ---------- */
 const sortParse=q=>{ const groups=[], items=[]; String(q.groups||'').split('\n').map(l=>l.trim()).filter(Boolean).forEach(l=>{ const k=l.indexOf(':'); if (k<0) return; const g=groups.length; groups.push(l.slice(0,k).trim()); l.slice(k+1).split(',').map(x=>x.trim()).filter(Boolean).forEach(it=>items.push({it,g})); }); return {groups,items}; };
 /* ---------- caça-palavras ---------- */
