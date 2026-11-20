@@ -1167,7 +1167,7 @@ body.sl-fs .sl-stage:has(.sl-exq){max-height:100vh;overflow:auto;width:min(100vw
 .sl-ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .sl-ink.on{pointer-events:auto;cursor:crosshair;touch-action:none}
 .sl-tool.on{background:#221c1e;color:#fff;border-color:#221c1e}
-.sl-dot{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #d6c9ba;cursor:pointer;padding:0}.sl-dot.on{box-shadow:0 0 0 2px #221c1e}
+.sl-dot{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #d6c9ba;cursor:pointer;padding:0}.sl-dot.on{box-shadow:0 0 0 2px #221c1e}
 .sl-nav{flex-wrap:wrap}
 .sl-aquecimento,.sl-tarefas{background:linear-gradient(135deg,#fffaf2 60%,#f6e3d3)}
 .sl-warm{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6cqw;align-content:start}
@@ -1236,12 +1236,29 @@ body.sl-fs .sl-exercicio .sl-brand{position:fixed;left:calc(2.4vw / 1.25);bottom
 .sl-sbn{margin:0;font-size:1.5cqw;color:#8a7e80}
 @media (max-width:720px){.sl-sbg{grid-template-columns:1fr}.sl-sb{font-size:3.4cqw}.sl-sb > b{font-size:4cqw}.sl-sbi{width:6cqw;height:6cqw;font-size:3cqw}}
 /* texto digitado por cima do slide */
-.sl-ink.on.tx{cursor:text}
 .sl-txl{position:absolute;inset:0;pointer-events:none;z-index:1}
-.sl-tx{position:absolute;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;white-space:pre-wrap;transform:translateY(-.6em);text-shadow:0 0 .25em #fffaf2,0 0 .25em #fffaf2,0 0 .12em #fffaf2}
-.sl-txl.on .sl-tx{pointer-events:auto;cursor:text;outline:1px dashed rgba(34,28,30,.25);outline-offset:.2em;border-radius:3px}
+.sl-tx{position:absolute;width:max-content;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;white-space:pre-wrap;transform:translateY(-.6em);text-shadow:0 0 .25em #fffaf2,0 0 .25em #fffaf2,0 0 .12em #fffaf2}
 .sl-tx.editing{visibility:hidden}
-.sl-txin{position:absolute;z-index:3;min-width:18cqw;max-width:60%;font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif;transform:translateY(-.6em);background:rgba(255,250,242,.94);border:2px dashed currentColor;border-radius:6px;padding:.1em .3em;margin:-.2em 0 0 -.35em;resize:none;overflow:hidden;outline:none;field-sizing:content}
+.sl-ink.on.t-tx{cursor:text}.sl-ink.on.t-er{cursor:cell}
+.sl-txl.on .sl-tx{pointer-events:auto;border-radius:4px}
+.sl-txl.on.t-tx .sl-tx{cursor:grab;outline:1.5px dashed rgba(34,28,30,.28);outline-offset:.15em;touch-action:none}
+.sl-txl.on.t-tx .sl-tx:hover{outline-color:currentColor}
+.sl-txl.on.t-er .sl-tx{cursor:cell}
+.sl-tx.moving{cursor:grabbing;outline:2px solid currentColor!important;z-index:2}
+/* caixa de texto: escreve no lugar, do tamanho que vai ficar */
+.sl-txed{position:absolute;z-index:3;width:max-content;max-width:calc(60% + .2em + 2px);transform:translateY(-.6em);font:700 2.6cqw/1.25 Figtree,system-ui,sans-serif}
+.sl-txin{display:block;min-width:4.5em;white-space:pre-wrap;overflow-wrap:anywhere;outline:none;background:rgba(255,250,242,.95);border:2px dashed currentColor;border-radius:6px;padding:.05em .2em;margin:calc(-.05em - 2px) 0 0 calc(-.2em - 2px);caret-color:currentColor;box-shadow:0 4px 18px rgba(34,28,30,.14);cursor:text;-webkit-user-select:text;user-select:text}
+.sl-txin:empty::before{content:attr(data-ph);opacity:.42;pointer-events:none}
+.sl-txbar{position:absolute;bottom:100%;left:-8px;margin-bottom:12px;display:flex;gap:3px;background:#221c1e;border-radius:12px;padding:4px;font:600 14px/1 Figtree,system-ui,sans-serif;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.22);transform:none}
+.sl-txed.low .sl-txbar{bottom:auto;top:100%;margin:12px 0 0}
+.sl-txed.rt .sl-txbar{left:auto;right:-8px}
+.sl-txbar button{border:0;background:none;color:#fffaf2;border-radius:9px;min-height:40px;min-width:44px;padding:0 11px;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:5px}
+.sl-txbar button:hover{background:rgba(255,255,255,.13)}.sl-txbar button:disabled{opacity:.35;cursor:default;background:none}
+.sl-txbar [data-txb="-"]{font-size:13px;font-weight:800}.sl-txbar [data-txb="+"]{font-size:18px;font-weight:800}
+.sl-txbar .ok{background:#1f6440;padding:0 16px;font-weight:700}.sl-txbar .ok:hover{background:#277a4f}
+.sl-txbar svg{width:16px;height:16px}
+.sl-hint{flex:1 1 160px;margin:0 6px;font:500 13px/1.35 Figtree,system-ui,sans-serif;color:#5a4f52}
+.sl-bpg{display:flex;align-items:center;gap:6px}
 .big-num .link{float:right;font:600 13px/1 var(--body);margin-top:14px}
 /* apresentação ligada à aula, no histórico */
 .tl-deck{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--k-a,#7a1f35);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px 11px;text-decoration:none}
@@ -1261,16 +1278,19 @@ a.tl-deck:hover{border-color:currentColor}
 /* anotar: uma barra só, no alto do slide */
 .sl-anot svg,.sl-nav .btn svg{width:15px;height:15px;vertical-align:-3px;margin-right:4px}
 .sl-anot.on{background:var(--k-a,#7a1f35);color:#fff;border-color:transparent}
-.sl-pal{position:absolute;top:1.2cqw;right:1.2cqw;z-index:2;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 2.4cqw);background:#fffaf2;border:1px solid #e7ddd1;border-radius:14px;padding:6px 8px;box-shadow:0 6px 20px rgba(34,28,30,.14);font:600 13px/1 Figtree,system-ui,sans-serif;color:#221c1e}
+.sl-pal{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fffaf2;border:1px solid #e7ddd1;border-radius:14px;padding:6px 8px;box-shadow:0 4px 14px rgba(34,28,30,.08);font:600 13px/1 Figtree,system-ui,sans-serif;color:#221c1e}
+body.sl-fs .sl-pal{position:fixed;top:10px;left:0;right:0;margin:0 auto;width:max-content;z-index:5;max-width:calc(100vw - 20px);justify-content:center;box-shadow:0 8px 26px rgba(0,0,0,.3)}
+body.sl-fs .sl-hint{display:none}
 .sl-pal button{font:inherit;color:inherit;cursor:pointer}
 .sl-seg{display:flex;background:#f1ebe2;border-radius:10px;padding:2px}
-.sl-seg button{display:flex;align-items:center;gap:5px;border:0;background:none;border-radius:8px;padding:6px 10px}
+.sl-seg button{display:flex;align-items:center;gap:6px;border:0;background:none;border-radius:8px;padding:0 12px;min-height:38px}
 .sl-seg button.on{background:#221c1e;color:#fffaf2}
 .sl-pal svg{width:16px;height:16px;flex:none}
 .sl-cols{display:flex;gap:6px;padding:0 4px;border-left:1px solid #e7ddd1;border-right:1px solid #e7ddd1}
-.sl-ic{display:flex;align-items:center;justify-content:center;border:1px solid #e7ddd1;background:#fff;border-radius:9px;height:30px;min-width:30px;padding:0 8px}
+.sl-ic{display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #e7ddd1;background:#fff;border-radius:10px;height:40px;min-width:40px;padding:0 11px}
 .sl-ok{background:#7a1f35!important;color:#fff!important;border-color:transparent!important;padding:0 12px}
-@media (max-width:720px){.sl-seg button span{display:none}}
+@media (max-width:640px){.sl-seg button span,.sl-ic span{display:none}.sl-seg button{padding:0 10px}}
+@media (max-width:720px){.sl-hint{display:none}.sl-cols{gap:4px}.sl-dot{width:22px;height:22px}}
 /* Kids */
 .kids-ck{display:flex;gap:10px;align-items:flex-start;background:var(--surface-2);border-radius:12px;padding:12px 14px;line-height:1.4}
 .kids-ck input{margin-top:3px}

@@ -136,8 +136,14 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - A aba Aula agora são as apresentações de slides (filtro por nível). Cada aula começa com um warm-up
   (música, cena de filme com link de busca no YouTube, jogo e pergunta), tem linha do tempo para a gramática e
   termina com atividades recomendadas do banco, que a professora manda como pacote. Desenho por cima do slide
-  (botão **Anotar** abre uma barra só: caneta, marca-texto e texto, 5 cores, desfazer, limpar e pronto; no texto, clique no slide e digite, clique num texto para editar).
-  **Lousa**: página em branco pautada para escrever e desenhar no meio da aula (fica salva por aula).
+  (botão **Anotar** abre uma barra acima do slide — em tela cheia ela flutua no alto: caneta, marca-texto, texto,
+  borracha, 5 cores, desfazer, limpar e pronto). **Texto**: toque no slide e escreva ali mesmo, já do tamanho e da cor
+  finais; a barrinha do texto tem A− / A+ (4 tamanhos), Apagar e OK. Tocar em outro lugar termina e já começa outro
+  texto (tocar fora de novo só termina); no teclado, Enter termina e Shift+Enter pula linha (no iPad o Enter pula
+  linha). Arrastar um texto muda de lugar; tocar nele corrige. O texto não sai pela direita nem fica cortado no alto.
+  **Borracha**: toque ou passe por cima do traço ou do texto. **Desfazer** volta cada mudança (inclusive o Limpar).
+  **Lousa**: páginas em branco pautadas (Lousa 1, 2, 3…, “+ Lousa nova”), salvas por aula; na aula ao vivo o aluno
+  vê a lousa junto.
   **Áudios gravados**: as aulas prontas em inglês têm as falas em mp3 com voz neural (Kokoro-82M, Apache-2.0) em
   `app/audio/<id>.json`, que tocam dentro da página e entram no Meet quando a professora compartilha a guia com
   "Compartilhar áudio da guia". Aulas novas: `node scripts/audios-lista.js` e

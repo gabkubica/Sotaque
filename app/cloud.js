@@ -135,7 +135,7 @@ async function cloudLoad(warm){
   const same=warm&&CLOUD.user?.id===user.id&&CLOUD.member?.app_id===m.app_id;
   CLOUD.user=user; CLOUD.member=m;
   if (same){ /* abriu com a cópia local: traz só o que mudou na nuvem enquanto o aparelho estava fechado */
-    if (await fetchChanges()){ if (CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) CLOUD.stale=true; else { DB=dbFromRecords(rowsNow()); CLOUD.snap=snapOf(); } }
+    if (await fetchChanges()){ if (CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select,[contenteditable]')) CLOUD.stale=true; else { DB=dbFromRecords(rowsNow()); CLOUD.snap=snapOf(); } }
   } else { DB=dbFromRecords(await fetchRows()); CLOUD.snap=snapOf(); }
   CLOUD.warm=false; snapPutSoon();
   if (m.role==='teacher'&&!DB.users.some(u=>u.id===m.app_id)){
@@ -150,7 +150,7 @@ async function cloudLoad(warm){
 }
 /* recarrega quando a aba volta a ficar visível (ex.: a professora vê a homework que o aluno acabou de entregar) */
 async function cloudRefresh(){
-  if (!CLOUD.member||CLOUD.warm||CLOUD.syncing||CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select')) return;
+  if (!CLOUD.member||CLOUD.warm||CLOUD.syncing||CLOUD.pending||S.modal||document.activeElement?.matches('input,textarea,select,[contenteditable]')) return;
   try {
     if (await fetchChanges()) CLOUD.stale=true;          /* mudou algo: aplica agora ou, se houver edição pendente, na próxima vez */
     if (!CLOUD.stale||CLOUD.pending||CLOUD.syncing) return; CLOUD.stale=false;
@@ -260,7 +260,7 @@ async function cloudConnect(warm){
   S.cloudLoading=false;
   if (/access_token|type=/.test(location.hash)) history.replaceState(null,'',location.pathname+'#inicio');
   if (S.me&&!/^#./.test(location.hash)) location.hash='inicio';
-  S.route=parseHash(); if (!warm||!(S.modal||document.activeElement?.matches('input,textarea,select'))) render();
+  S.route=parseHash(); if (!warm||!(S.modal||document.activeElement?.matches('input,textarea,select,[contenteditable]'))) render();
 }
 window.addEventListener('online',()=>{ if (CLOUD.warm){ clearTimeout(CLOUD.retryT); cloudConnect(true); } });
 document.addEventListener('visibilitychange',()=>{ if (document.visibilityState==='visible') cloudRefresh(); });

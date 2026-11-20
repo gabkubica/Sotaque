@@ -130,15 +130,21 @@ const SLI={pen:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4L1
   hl:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19h6M7 15l8-8 3 3-8 8H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
   tx:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6V4h14v2M12 4v16M9 20h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
   undo:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7L4 12l5 5M4 12h10a6 6 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -3)"/></svg>',
+  er:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4.5l5 5-8.5 8.5H7.5L4 14.5zM9 10l5 5M7.5 20H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   board:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21h6M12 17v4" stroke="currentColor" stroke-width="2"/></svg>'};
-function slPalette(){ const t=S.inkT==='hl'||S.inkT==='tx'? S.inkT : 'pen', c=S.inkC||INK_COLORS[0];
+function slPalette(){ const t=inkTool(), c=S.inkC||INK_COLORS[0];
+  const tip={tx:'Toque no slide para escrever. Arraste um texto para mover.',er:'Toque ou passe por cima do que quer apagar.'}[t];
   return `<div class="sl-pal" role="toolbar" aria-label="Anotar no slide">
-    <span class="sl-seg">${[['pen','Caneta'],['hl','Marca-texto'],['tx','Texto']].map(([k,l])=>`<button class="${t===k?'on':''}" data-act="sl-tool" data-t="${k}" aria-pressed="${t===k}" title="${k==='tx'? 'Texto: clique no slide e digite' : l}">${SLI[k]}<span>${l}</span></button>`).join('')}</span>
-    <span class="sl-cols">${INK_COLORS.map(x=>`<button class="sl-dot ${c===x?'on':''}" style="background:${x}" data-act="sl-color" data-c="${x}" aria-label="Cor"></button>`).join('')}</span>
-    <button class="sl-ic" data-act="sl-undo" title="Desfazer">${SLI.undo}</button><button class="sl-ic sl-txt" data-act="sl-clear" title="Apagar tudo deste slide">Limpar</button>
-    <button class="sl-ic sl-ok" data-act="sl-draw">Pronto</button></div>`; }
+    <span class="sl-seg">${[['pen','Caneta'],['hl','Marca-texto'],['tx','Texto'],['er','Borracha']].map(([k,l])=>`<button class="${t===k?'on':''}" data-act="sl-tool" data-t="${k}" aria-pressed="${t===k}" title="${l}">${SLI[k]}<span>${l}</span></button>`).join('')}</span>
+    <span class="sl-cols">${INK_COLORS.map(x=>`<button class="sl-dot ${c===x?'on':''}" style="background:${x}" data-act="sl-color" data-c="${x}" data-keep="1" aria-label="Cor"></button>`).join('')}</span>
+    <p class="sl-hint">${tip||''}</p><button class="sl-ic" data-act="sl-undo" title="Desfazer">${SLI.undo}<span>Desfazer</span></button><button class="sl-ic sl-txt" data-act="sl-clear" title="${S.sl?.board? 'Apagar a lousa toda' : 'Apagar tudo deste slide'}">Limpar</button>
+    <button class="sl-ic sl-ok" data-act="sl-draw" title="Parar de anotar">Pronto</button></div>`; }
 function slNavRest(P,list,s){ return `<button class="btn small" data-act="sl-board" title="Lousa: página em branco para escrever e desenhar">${SLI.board} Lousa</button><button class="btn small" data-act="sl-prev" ${P.i? '' : 'disabled'} aria-label="Slide anterior">←</button><span>${P.i+1} / ${list.length}</span>${['vocab','dialogo','pergunta'].includes(s.t)? `<button class="btn small" data-act="sl-rev">${P.rev? 'Esconder' : s.t==='pergunta'? 'Mostrar a resposta' : s.t==='dialogo'? 'Mostrar o texto' : 'Mostrar a tradução'}</button>` : ''}<button class="btn small primary" data-act="sl-next" ${P.i<list.length-1? '' : 'disabled'} aria-label="Próximo slide">→</button>`; }
+function slBoardNav(P){ const n=lousaN(P.id), bp=Math.min(P.bp||1,n);
+  return `${n>1? `<span class="sl-bpg"><button class="btn small" data-act="sl-bp" data-v="-1" ${bp>1?'':'disabled'} aria-label="Lousa anterior">‹</button><span>Lousa ${bp} de ${n}</span><button class="btn small" data-act="sl-bp" data-v="1" ${bp<n?'':'disabled'} aria-label="Próxima lousa">›</button></span>` : ''}<button class="btn small" data-act="sl-bp" data-v="new" title="Mais uma lousa em branco (esta fica guardada)">+ Lousa nova</button><button class="btn small primary" data-act="sl-board">← Voltar ao slide ${P.i+1}</button>`; }
 function viewSlidesPlay(id){
+  if (SLINK.ed) txClose(true);
   const d=slById(id); if (!d) return '<div class="panel"><p>Aula não encontrada.</p><a class="btn" href="#aula">Aulas</a></div>';
   const list=slidesParse(d.src); if (!S.sl||S.sl.id!==id) S.sl={id,i:0,rev:false,live:S.sl?.live&&S.sl.id===id};
   const P=S.sl; P.i=Math.max(0,Math.min(P.i,list.length-1)); const s=list[P.i]; if (!s) return '<div class="panel"><p>Esta aula ainda não tem slides.</p></div>';
@@ -150,8 +156,9 @@ function viewSlidesPlay(id){
       <label class="sl-stu">Aula para <select data-slstu="1"><option value="">escolha o aluno…</option>${students().map(u=>`<option value="${u.id}" ${slStudent()===u.id?'selected':''}>${esc(u.name)}</option>`).join('')}</select></label><button class="btn small ghost" data-act="sl-full">Tela cheia</button><a class="btn small ghost" href="#slides-pdf-${d.id}">Apostila (PDF)</a></div>
     ${S.slMsg&&S.slMsg.deck===d.id? `<p class="note sl-msg">${esc(S.slMsg.txt)}${S.slMsg.undo? ` <button class="link" data-act="sl-unauto">Desfazer</button>` : ''} <button class="link" data-act="sl-msgx" aria-label="Fechar aviso">✕</button></p>` : ''}
     ${P.live? `<p class="note sl-livenote">Aula ao vivo ligada. Peça para o aluno abrir o Sotaque: aparece “Entrar na aula ao vivo”. Os slides mudam junto no aparelho dele e o áudio toca lá.${ansList.length? ` Respostas neste slide: ${ansList.map(x=>`<b>${esc(x.name)}</b> ${LT[x.v]}`).join(' · ')}` : ''}</p>` : ''}
+    ${S.draw? slPalette() : ''}
     <div class="sl-stage" id="sl-stage">${P.board? `<div class="sl sl-lousa"><span class="sl-brand"><b>Sotaque</b> · © Gabriel Kubica · Todos os direitos reservados</span></div>` : slideHtml(s,{lang:d.lang,level:d.level,rev:P.rev,counts,key:d.id+':'+P.i,prof:ME()?.name})}
-      ${inkSvg(inkKey(),DB.ink?.[inkKey()],true)}${S.draw? slPalette() : ''}<div class="sl-nav"><button class="btn small sl-anot ${S.draw?'on':''}" data-act="sl-draw" title="Anotar no slide: caneta, marca-texto e texto">${SLI.pen} Anotar</button><button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button>${P.board? `<button class="btn small primary" data-act="sl-board">← Voltar ao slide ${P.i+1}</button>` : slNavRest(P,list,s)}</div></div>
+      ${inkSvg(inkKey(),DB.ink?.[inkKey()],true)}<div class="sl-nav"><button class="btn small sl-anot ${S.draw?'on':''}" data-act="sl-draw" title="Anotar no slide: caneta, marca-texto, texto e borracha">${SLI.pen} Anotar</button><button class="btn small sl-fsx" data-act="sl-full" title="Sair da tela cheia">✕</button>${P.board? slBoardNav(P) : slNavRest(P,list,s)}</div></div>
     ${s.notes.length? `<div class="sl-notes"><b>Notas (só você vê)</b>${s.notes.map(x=>`<p>${esc(x)}</p>`).join('')}</div>` : ''}
     <div class="sl-thumbs">${list.map((x,k)=>`<div role="button" tabindex="0" class="sl-th ${k===P.i?'on':''}" data-act="sl-go" data-k="${k}" aria-label="Slide ${k+1}"><span class="sl-mini" inert><span class="sl-scale">${slideHtml(x,{lang:d.lang,level:d.level,thumb:true})}</span></span><small>${k+1}. ${SL_TYPES[x.t]}</small></div>`).join('')}</div></div>`;
 }
@@ -211,12 +218,12 @@ function liveEnsure(){
   } catch {}
 }
 function liveSlide(){ const P=S.sl; if (!P?.live) return; const d=slById(P.id), list=slidesParse(d.src);
-  LIVE.send?.({k:'slide',title:d.title,lang:d.lang,level:d.level,i:P.i,n:list.length,slide:list[P.i],rev:P.rev,ink:DB.ink?.[d.id+':'+P.i]||[],from:ME().name.split(' ')[0]}); }
+  LIVE.send?.({k:'slide',title:d.title,lang:d.lang,level:d.level,i:P.i,n:list.length,slide:list[P.i],rev:P.rev,board:P.board? (P.bp||1) : 0,ink:DB.ink?.[inkKey()]||[],from:ME().name.split(' ')[0]}); }
 function liveOn(p){
   if (!p||!S.me) return;
   if (isT()){ if (p.k==='hello') liveSlide();
-    if (p.k==='ans'&&S.sl?.live){ (LIVE.ans[p.i] ||= {})[p.sid]={name:p.name,v:p.v}; if (S.route.name==='slidesPlay') render(); } return; }
-  if (p.k==='slide'){ const changed=!LIVE.last||LIVE.last.i!==p.i||LIVE.last.title!==p.title; LIVE.last=p; if (changed) ttsStop(); }
+    if (p.k==='ans'&&S.sl?.live){ (LIVE.ans[p.i] ||= {})[p.sid]={name:p.name,v:p.v}; if (S.route.name==='slidesPlay'&&!SLINK.ed&&!SLINK.draw) render(); } return; }
+  if (p.k==='slide'){ const changed=!LIVE.last||LIVE.last.i!==p.i||LIVE.last.title!==p.title||LIVE.last.board!==p.board; LIVE.last=p; if (changed) ttsStop(); }
   if (p.k==='end') LIVE.last=null;
   if (S.route.name==='aoVivo') render(); liveBadge();
 }
@@ -230,9 +237,9 @@ function viewLive(){
   const p=LIVE.last, me=ME();
   if (!p) return `<div class="panel" style="max-width:640px"><h1>Aula ao vivo</h1><p class="meta">Esperando ${aProf()} começar. Deixe esta página aberta: os slides aparecem aqui sozinhos, e o áudio toca no seu aparelho.</p></div>`;
   const pick=LIVE.mine[p.title+'|'+p.i];
-  return `<div class="sl-wrap"><div class="sl-top"><span class="live-dot"></span><b class="grow">${esc(p.title)}</b><span class="meta">${p.i+1} / ${p.n}</span></div>
-    <div class="sl-stage">${slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev,key:p.title+':'+p.i})}${inkSvg('',p.ink,false)}</div>
-    ${p.slide.t==='pergunta'&&!p.rev? `<p class="meta muted">${pick!=null? 'Resposta enviada. Dá para trocar até a professora mostrar a certa.' : 'Toque na sua resposta.'}</p>` : ''}</div>`;
+  return `<div class="sl-wrap"><div class="sl-top"><span class="live-dot"></span><b class="grow">${esc(p.title)}</b><span class="meta">${p.board? 'Lousa' : `${p.i+1} / ${p.n}`}</span></div>
+    <div class="sl-stage">${p.board? '<div class="sl sl-lousa"></div>' : slideHtml(p.slide,{lang:p.lang,level:p.level,rev:p.rev,pick,live:p.slide.t==='pergunta'&&!p.rev,key:p.title+':'+p.i})}${inkSvg('',p.ink,false)}</div>
+    ${!p.board&&p.slide.t==='pergunta'&&!p.rev? `<p class="meta muted">${pick!=null? 'Resposta enviada. Dá para trocar até a professora mostrar a certa.' : 'Toque na sua resposta.'}</p>` : ''}</div>`;
 }
 const SLIDE_ACT={
   'sl-next'(){ const n=slidesParse(slById(S.sl.id).src).length; if (S.sl.i<n-1){ S.sl.i++; S.sl.board=false; S.sl.rev=false; ttsStop(); render(); liveSlide(); } },
@@ -256,7 +263,7 @@ const SLIDE_ACT={
 };
 function onSlideInput(e){ const el=e.target; if (!el.dataset.sle||S.route.name!=='slidesEd') return; const d=slById(S.route.id); if (!d||d.seed) return;
   d[el.dataset.sle]=el.value; clearTimeout(S.slT); S.slT=setTimeout(()=>{ save(); const pv=document.getElementById('sl-prev'); if (pv) pv.innerHTML=slPrev(d); },350); }
-document.addEventListener('keydown',e=>{ if (S.route?.name!=='slidesPlay'||e.target.closest?.('input,textarea,select')||S.modal) return;
+document.addEventListener('keydown',e=>{ if (S.route?.name!=='slidesPlay'||e.target.closest?.('input,textarea,select,[contenteditable]')||S.modal) return;
   if (e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); SLIDE_ACT['sl-next'](); }
   if (e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); SLIDE_ACT['sl-prev'](); } });
 window.addEventListener('hashchange',()=>setTimeout(liveBadge,0));
@@ -266,60 +273,134 @@ setInterval(()=>{ liveEnsure(); liveBadge(); },2000);
 document.addEventListener('fullscreenchange',()=>{ if (!document.fullscreenElement) document.body.classList.remove('sl-fs'); });
 window.addEventListener('hashchange',()=>{ if (!/^#slides-[a-z0-9]+$/.test(location.hash)&&document.body.classList.contains('sl-fs')){ document.body.classList.remove('sl-fs'); document.exitFullscreen?.().catch(()=>{}); } });
 
-/* ---------- desenho por cima do slide (fica salvo à parte, não entra na apostila) ---------- */
-const inkKey=()=>S.sl.id+':'+(S.sl.board? 'lousa' : S.sl.i);
+/* ---------- anotar e lousa: desenho e texto por cima do slide (ficam salvos à parte, não entram na apostila) ----------
+   Texto: toque no slide e escreva ali mesmo, já do tamanho e da cor que vai ficar. Tocar em outro lugar termina e começa
+   outro texto; OK (ou tocar fora de novo) termina. Arrastar um texto muda de lugar; tocar nele corrige.
+   Borracha: toque ou passe por cima do traço ou do texto. Desfazer volta cada mudança desta aula.
+   Lousa: páginas em branco (Lousa 1, 2, 3…) por apresentação. */
+const lousaKey=(id,bp)=>id+':lousa'+(bp>1? ':'+bp : '');
+const inkKey=()=>S.sl.board? lousaKey(S.sl.id,S.sl.bp||1) : S.sl.id+':'+S.sl.i;
+function lousaN(id){ let n=Math.max(1,S.sl?.bp||1); const pre=id+':lousa:';
+  for (const k of Object.keys(DB.ink||{})) if (k.startsWith(pre)&&DB.ink[k]?.length) n=Math.max(n,+k.slice(pre.length)||1); return n; }
 const INK_COLORS=['#c0392b','#2b6cb0','#1f6440','#e0a020','#221c1e'];
+const TXS=[1.8,2.6,3.8,5.6];                       /* tamanhos do texto, em % da largura do slide (P, M, G, GG) */
+const txSize=st=>TXS[st.f??1]||2.6;
+const txMinY=f=>Math.ceil(TXS[f??1]*16/9*10*.75)+4;      /* texto grande no alto do slide não fica cortado */
+const inkTool=()=>['pen','hl','tx','er'].includes(S.inkT)? S.inkT : 'pen';
+const finePtr=()=>matchMedia('(pointer:fine)').matches;
 const inkPath=st=>`<polyline points="${st.p}" fill="none" stroke="${st.c}" stroke-opacity="${st.o||1}" stroke-width="${st.w||4}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
-/* textos digitados ficam numa camada HTML (o SVG estica e deformaria as letras) */
-const inkTx=(st,k,edit)=>`<span class="sl-tx no-i18n" style="left:${st.x/10}%;top:${st.y/10}%;color:${st.c}" ${edit? `data-tx="${k}"` : ''}>${esc(st.s)}</span>`;
-const inkSvg=(key,list,edit)=>{ const L=list||[];
-  return `<svg class="sl-ink ${edit&&S.draw?'on':''} ${edit&&S.draw&&S.inkT==='tx'?'tx':''}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${L.filter(st=>st.t!=='tx').map(inkPath).join('')}</svg>`
-    +(L.some(st=>st.t==='tx')? `<div class="sl-txl ${edit&&S.draw&&S.inkT==='tx'?'on':''}" ${edit? `data-inkl="${key}"` : ''}>${L.map((st,k)=>st.t==='tx'? inkTx(st,k,edit) : '').join('')}</div>` : ''); };
+/* textos ficam numa camada HTML (o SVG estica e deformaria as letras) */
+const inkTx=(st,k,edit)=>`<span class="sl-tx no-i18n" style="left:${st.x/10}%;top:${st.y/10}%;color:${st.c};font-size:${txSize(st)}cqw" ${edit? `data-tx="${k}"` : ''}>${esc(st.s)}</span>`;
+const inkSvg=(key,list,edit)=>{ const L=list||[], on=edit&&S.draw, t=on? ' t-'+inkTool() : '';
+  return `<svg class="sl-ink${on?' on':''}${t}" viewBox="0 0 1000 1000" preserveAspectRatio="none" ${edit? `data-ink="${key}"` : ''} aria-hidden="true">${L.filter(st=>st.t!=='tx').map(inkPath).join('')}</svg>`
+    +`<div class="sl-txl${on&&/tx|er/.test(t)?' on':''}${t}" ${edit? `data-inkl="${key}"` : ''}>${L.map((st,k)=>st.t==='tx'? inkTx(st,k,edit) : '').join('')}</div>`; };
+/* redesenha só a camada de anotações (sem refazer a tela toda) */
+function inkPaint(){ const st=document.getElementById('sl-stage'), sv=st?.querySelector('svg.sl-ink[data-ink]'); if (!sv) return;
+  st.querySelector('.sl-txl[data-inkl]')?.remove(); const k=inkKey(); sv.insertAdjacentHTML('afterend',inkSvg(k,DB.ink?.[k],true)); sv.remove(); }
+function slPalRefresh(){ const p=document.querySelector('.sl-wrap .sl-pal'); if (p) p.outerHTML=slPalette(); }
+/* desfazer: cópia de cada slide/lousa antes de cada mudança (vale enquanto a aula está aberta) */
+const INKH={};
+function inkPush(k){ const H=(INKH[k] ||= []); H.push(JSON.stringify(DB.ink?.[k]||[])); if (H.length>80) H.shift(); }
+function inkSet(k,L){ if (L.length) (DB.ink ||= {})[k]=L; else if (DB.ink) delete DB.ink[k]; save(); liveSlide(); }
+const SLINK={ed:null,drag:null,draw:null,er:null,tap:null};
+
+/* caixa de texto: escreve no lugar, com a letra do tamanho final */
+function txOpen(key,x,y,k){
+  const stage=document.getElementById('sl-stage'); if (!stage) return; txClose(true);
+  const old=k!=null? DB.ink?.[key]?.[k] : null, ed={key,x,y,old,c:old?.c||S.inkC||INK_COLORS[0],f:old? (old.f??1) : (S.inkF??1)};
+  const w=document.createElement('div'); w.className='sl-txed';
+  w.innerHTML=`<div class="sl-txbar" role="toolbar" aria-label="Texto"><button data-txb="-" title="Letra menor" aria-label="Letra menor">A−</button><button data-txb="+" title="Letra maior" aria-label="Letra maior">A+</button>${old? `<button data-txb="del" title="Apagar este texto">${SLI.trash}<span>Apagar</span></button>` : ''}<button data-txb="ok" class="ok" title="${finePtr()? 'Terminar (Enter) · nova linha: Shift+Enter' : 'Terminar'}">OK</button></div><div class="sl-txin no-i18n" data-ph="Escreva aqui…" spellcheck="false" autocapitalize="sentences"></div>`;
+  const el=w.querySelector('.sl-txin'); el.contentEditable='plaintext-only'; if (el.contentEditable!=='plaintext-only') el.contentEditable='true';
+  el.textContent=old?.s||''; Object.assign(ed,{w,el}); stage.appendChild(w); txStyle(ed); SLINK.ed=ed;
+  el.addEventListener('input',()=>txPlace(ed));
+  if (old) stage.querySelector(`.sl-txl [data-tx="${k}"]`)?.classList.add('editing');
+  el.addEventListener('keydown',e=>{ e.stopPropagation();
+    if (e.key==='Enter'&&!e.shiftKey&&finePtr()){ e.preventDefault(); txClose(true); }
+    else if (e.key==='Escape'){ e.preventDefault(); txClose(false); } });
+  el.addEventListener('paste',e=>{ if (el.contentEditable==='plaintext-only') return; e.preventDefault(); document.execCommand('insertText',false,e.clipboardData.getData('text/plain')); });
+  w.querySelector('.sl-txbar').addEventListener('pointerdown',e=>e.preventDefault());       /* não tira o teclado */
+  w.querySelector('.sl-txbar').addEventListener('click',e=>{ const b=e.target.closest('[data-txb]'); if (!b) return; const v=b.dataset.txb;
+    if (v==='ok') txClose(true);
+    else if (v==='del'){ el.textContent=''; txClose(true); }
+    else { ed.f=Math.max(0,Math.min(TXS.length-1,ed.f+(v==='+'? 1 : -1))); if (!ed.old) S.inkF=ed.f; txStyle(ed); el.focus(); } });
+  el.focus(); const R=document.createRange(); R.selectNodeContents(el); R.collapse(false); const sel=getSelection(); sel.removeAllRanges(); sel.addRange(R);
+}
+/* o texto não sai pela direita do slide (vai para a esquerda enquanto cresce) e a barrinha fica sempre visível */
+function txPlace(ed){ const st=document.getElementById('sl-stage'); if (!st||!ed.w.isConnected) return; const S0=st.getBoundingClientRect();
+  ed.w.style.left=ed.x/10+'%'; const over=ed.w.getBoundingClientRect().right-(S0.right-6);
+  if (over>0){ ed.x=Math.max(4,Math.round(ed.x-over/S0.width*1000)); ed.w.style.left=ed.x/10+'%'; }
+  ed.w.classList.remove('rt','low'); const bar=ed.w.querySelector('.sl-txbar');
+  if (bar.getBoundingClientRect().right>S0.right-4) ed.w.classList.add('rt');
+  if (bar.getBoundingClientRect().top<S0.top+4) ed.w.classList.add('low'); }
+function txStyle(ed){ ed.w.style.fontSize=TXS[ed.f]+'cqw'; ed.w.style.color=ed.c; ed.w.style.top=Math.max(ed.y,txMinY(ed.f))/10+'%'; txPlace(ed); ed.w.querySelector('[data-txb="-"]').disabled=ed.f<=0; ed.w.querySelector('[data-txb="+"]').disabled=ed.f>=TXS.length-1; }
+/* termina o texto; devolve true se ficou algum texto escrito */
+function txClose(ok){ const ed=SLINK.ed; if (!ed) return false; SLINK.ed=null;
+  const v=(ed.el.innerText||'').replace(/ /g,' ').replace(/^\n+|\s+$/g,''); ed.w.remove();
+  if (ok){ const L=[...(DB.ink?.[ed.key]||[])], i=ed.old? L.indexOf(ed.old) : -1;
+    if (i>=0){ const o=ed.old; if (!v){ inkPush(ed.key); L.splice(i,1); inkSet(ed.key,L); }
+      else if (v!==o.s||ed.c!==o.c||ed.f!==(o.f??1)||ed.x!==o.x){ inkPush(ed.key); L[i]={...o,s:v,c:ed.c,f:ed.f,x:ed.x,y:Math.max(o.y,txMinY(ed.f))}; inkSet(ed.key,L); } }
+    else if (v){ inkPush(ed.key); L.push({t:'tx',x:ed.x,y:Math.max(ed.y,txMinY(ed.f)),s:v,c:ed.c,f:ed.f}); inkSet(ed.key,L); } }
+  inkPaint(); return ok&&!!v; }
+
+/* borracha: apaga o traço ou o texto que o dedo/caneta tocar */
+const segDist=(px,py,ax,ay,bx,by)=>{ const dx=bx-ax, dy=by-ay, l=dx*dx+dy*dy, t=l? Math.max(0,Math.min(1,((px-ax)*dx+(py-ay)*dy)/l)) : 0; return Math.hypot(px-ax-t*dx,py-ay-t*dy); };
+function inkErase(e){ const E=SLINK.er, L=DB.ink?.[E.key]; if (!L?.length) return;
+  const r=E.r, x=e.clientX-r.left, y=e.clientY-r.top, sx=r.width/1000, sy=r.height/1000;
+  const hitTx=new Set([...document.querySelectorAll('#sl-stage .sl-tx[data-tx]')].filter(n=>{ const b=n.getBoundingClientRect(); return e.clientX>b.left-8&&e.clientX<b.right+8&&e.clientY>b.top-8&&e.clientY<b.bottom+8; }).map(n=>+n.dataset.tx));
+  const keep=L.filter((st,k)=>{ if (st.t==='tx') return !hitTx.has(k); const tol=12+(st.w||4)/2, P=st.p.split(' ').map(s=>s.split(',').map(Number));
+    for (let i=0;i<P.length;i++){ const a=P[i], b=P[i+1]||a; if (segDist(x,y,a[0]*sx,a[1]*sy,b[0]*sx,b[1]*sy)<tol) return false; } return true; });
+  if (keep.length!==L.length){ E.hit=true; DB.ink[E.key]=keep; inkPaint(); } }
+
+document.addEventListener('pointerdown',e=>{
+  if (SLINK.ed){ if (e.target.closest?.('.sl-txed')) return; if (e.target.closest?.('[data-keep]')){ e.preventDefault(); return; }
+    SLINK.tap=txClose(true)? 'next' : 'stop'; } else SLINK.tap=null;
+  const lay=e.target.closest?.('.sl-txl.on'), sv=e.target.closest?.('svg.sl-ink.on'); if (!lay&&!sv) return;
+  const stage=document.getElementById('sl-stage'), svg=stage?.querySelector('svg.sl-ink[data-ink]'); if (!svg) return;
+  e.preventDefault(); const r=stage.getBoundingClientRect(), key=svg.dataset.ink, t=inkTool();
+  const at=ev=>[Math.round((ev.clientX-r.left)/r.width*1000),Math.round((ev.clientY-r.top)/r.height*1000)];
+  if (t==='er'){ inkPush(key); SLINK.er={key,r,hit:false}; inkErase(e); return; }
+  if (t==='tx'){ const tx=e.target.closest('.sl-tx[data-tx]'); SLINK.drag={key,r,k:tx? +tx.dataset.tx : null,el:tx,p0:[e.clientX,e.clientY],at:at(e),moved:false,skip:!tx&&SLINK.tap==='stop'}; return; }
+  svg.setPointerCapture?.(e.pointerId);
+  const pt=ev=>at(ev).join(','), hl=t==='hl', st={c:S.inkC||INK_COLORS[0],w:hl? 22 : 4,o:hl? .35 : 1,p:pt(e)};
+  const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+  for (const [a,v] of [['fill','none'],['stroke',st.c],['stroke-width',st.w],['stroke-opacity',st.o],['stroke-linecap','round'],['stroke-linejoin','round'],['vector-effect','non-scaling-stroke'],['points',st.p]]) pl.setAttribute(a,v);
+  svg.appendChild(pl); SLINK.draw={pl,st,pt,key}; });
+document.addEventListener('pointermove',e=>{
+  if (SLINK.draw){ SLINK.draw.st.p+=' '+SLINK.draw.pt(e); SLINK.draw.pl.setAttribute('points',SLINK.draw.st.p); }
+  else if (SLINK.er) inkErase(e);
+  else if (SLINK.drag?.el){ const d=SLINK.drag, dx=e.clientX-d.p0[0], dy=e.clientY-d.p0[1];
+    if (!d.moved&&Math.hypot(dx,dy)>6){ d.moved=true; d.el.classList.add('moving'); }
+    if (d.moved) d.el.style.transform=`translate(${dx}px,${dy}px) translateY(-.6em)`; } });
+function inkUp(e){
+  if (SLINK.draw){ const {st,key}=SLINK.draw; SLINK.draw=null; if (st.p.split(' ').length<2) st.p+=' '+st.p; inkPush(key); inkSet(key,[...(DB.ink?.[key]||[]),st]); return; }
+  if (SLINK.er){ const E=SLINK.er; SLINK.er=null; if (E.hit) inkSet(E.key,DB.ink?.[E.key]||[]); else INKH[E.key]?.pop(); return; }
+  if (SLINK.drag){ const d=SLINK.drag; SLINK.drag=null; if (e.type==='pointercancel'){ inkPaint(); return; }
+    const st=d.k!=null? DB.ink?.[d.key]?.[d.k] : null;
+    if (d.moved&&st){ const L=[...DB.ink[d.key]], c=(v,a,b)=>Math.round(Math.max(a,Math.min(b,v)));
+      inkPush(d.key); L[d.k]={...st,x:c(st.x+(e.clientX-d.p0[0])/d.r.width*1000,0,960),y:c(st.y+(e.clientY-d.p0[1])/d.r.height*1000,txMinY(st.f),985)}; inkSet(d.key,L); inkPaint(); }
+    else if (st) txOpen(d.key,st.x,st.y,d.k);
+    else if (!d.skip) txOpen(d.key,Math.min(d.at[0],900),Math.max(d.at[1],20)); } }
+document.addEventListener('pointerup',inkUp); document.addEventListener('pointercancel',inkUp);
+
 Object.assign(SLIDE_ACT,{
-  'sl-draw'(){ S.draw=!S.draw; render(); },
+  'sl-draw'(){ txClose(true); S.draw=!S.draw; render(); },
   'sl-unauto'(){ slUnauto(); S.slStu=''; render(); toast('Aula desfeita'); },
   'sl-msgx'(){ S.slMsg=null; render(); },
-  'sl-board'(){ S.sl.board=!S.sl.board; if (S.sl.board&&!S.draw){ S.draw=true; S.inkT='tx'; } ttsStop(); render(); },
-  'sl-color'(el){ S.inkC=el.dataset.c; render(); },
-  'sl-undo'(){ const k=inkKey(), L=DB.ink?.[k]; if (L?.length){ L.pop(); save(); render(); liveSlide(); } },
-  'sl-clear'(){ const k=inkKey(); if (DB.ink?.[k]?.length&&confirm(S.sl.board? 'Apagar tudo o que está na lousa?' : 'Apagar os desenhos e textos deste slide?')){ delete DB.ink[k]; save(); render(); liveSlide(); } },
+  'sl-board'(){ txClose(true); S.sl.board=!S.sl.board; if (S.sl.board&&!S.draw){ S.draw=true; S.inkT=finePtr()? 'tx' : 'pen'; } ttsStop(); render(); liveSlide(); },
+  'sl-bp'(el){ txClose(true); const n=lousaN(S.sl.id), bp=S.sl.bp||1, v=el.dataset.v;
+    if (v==='new'){ if (bp===n&&!DB.ink?.[inkKey()]?.length){ toast('Esta lousa ainda está em branco'); return; } S.sl.bp=n+1; toast('Lousa '+(n+1)+' (em branco)'); }
+    else S.sl.bp=Math.max(1,Math.min(n,bp+(+v)));
+    render(); liveSlide(); },
+  'sl-tool'(el){ txClose(true); S.inkT=el.dataset.t; render(); },
+  'sl-color'(el){ S.inkC=el.dataset.c; if (SLINK.ed){ SLINK.ed.c=S.inkC; txStyle(SLINK.ed); SLINK.ed.el.focus(); } slPalRefresh(); },
+  'sl-undo'(){ txClose(true); const k=inkKey(), H=INKH[k];
+    if (H?.length) inkSet(k,JSON.parse(H.pop()));
+    else if (DB.ink?.[k]?.length) inkSet(k,DB.ink[k].slice(0,-1));
+    else { toast('Nada para desfazer aqui'); return; }
+    inkPaint(); },
+  'sl-clear'(){ txClose(true); const k=inkKey(); if (!DB.ink?.[k]?.length){ toast(S.sl.board? 'A lousa já está em branco' : 'Não há anotações neste slide'); return; }
+    inkPush(k); inkSet(k,[]); inkPaint(); toast((S.sl.board? 'Lousa apagada.' : 'Anotações apagadas.')+' Se foi sem querer, toque em Desfazer.'); },
 });
-let SLINK=null;
-/* ferramenta Texto: clique no slide abre uma caixa; Enter salva, Shift+Enter quebra a linha, Esc cancela.
-   Clicar num texto que já existe edita (apagar tudo e salvar remove o texto). */
-function inkTextBox(key,x,y,k){
-  const stage=document.getElementById('sl-stage'); if (!stage) return;
-  stage.querySelector('.sl-txin')?.remove();
-  const L=DB.ink?.[key]||[], old=k!=null? L[k] : null;
-  const ta=document.createElement('textarea'); ta.className='sl-txin'; ta.rows=1; ta.value=old?.s||''; ta.placeholder='Escreva aqui…';
-  ta.style.left=x/10+'%'; ta.style.top=y/10+'%'; ta.style.color=old?.c||S.inkC||INK_COLORS[0];
-  if (old) stage.querySelector(`[data-tx="${k}"]`)?.classList.add('editing');
-  let done=false;
-  const fit=()=>{ ta.style.height='auto'; ta.style.height=ta.scrollHeight+'px'; };
-  const finish=ok=>{ if (done) return; done=true; const v=ta.value.replace(/\s+$/,'');
-    if (ok){ const A=((DB.ink ||= {})[key] ||= []);
-      if (old){ if (v) old.s=v; else A.splice(k,1); } else if (v) A.push({t:'tx',x,y,s:v,c:S.inkC||INK_COLORS[0]});
-      if (!A.length) delete DB.ink[key];
-      if (v||old){ save(); liveSlide(); } }
-    render(); };
-  ta.addEventListener('input',fit);
-  ta.addEventListener('keydown',e=>{ e.stopPropagation(); if (e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); finish(true); } else if (e.key==='Escape'){ e.preventDefault(); finish(false); } });
-  ta.addEventListener('blur',()=>finish(true));
-  stage.appendChild(ta); fit(); ta.focus(); setTimeout(()=>{ ta.focus(); ta.setSelectionRange(ta.value.length,ta.value.length); },0);
-}
-document.addEventListener('pointerdown',e=>{
-  const tx=e.target.closest?.('.sl-txl.on [data-tx]');
-  if (tx){ e.preventDefault(); const lay=tx.closest('.sl-txl'), st=DB.ink?.[lay.dataset.inkl]?.[+tx.dataset.tx]; if (st) inkTextBox(lay.dataset.inkl,st.x,st.y,+tx.dataset.tx); return; }
-  const sv=e.target.closest?.('svg.sl-ink.on'); if (!sv) return; e.preventDefault();
-  if (S.inkT==='tx'){ const r=sv.getBoundingClientRect(); inkTextBox(sv.dataset.ink,Math.round((e.clientX-r.left)/r.width*1000),Math.round((e.clientY-r.top)/r.height*1000)); return; }
-  sv.setPointerCapture?.(e.pointerId);
-  const r=sv.getBoundingClientRect(), pt=ev=>`${Math.round((ev.clientX-r.left)/r.width*1000)},${Math.round((ev.clientY-r.top)/r.height*1000)}`;
-  const pl=document.createElementNS('http://www.w3.org/2000/svg','polyline'); const hl=S.inkT==='hl', st={c:S.inkC||INK_COLORS[0],w:hl? 22 : 4,o:hl? .35 : 1,p:pt(e)};
-  pl.setAttribute('fill','none'); pl.setAttribute('stroke',st.c); pl.setAttribute('stroke-width',st.w); pl.setAttribute('stroke-opacity',st.o); pl.setAttribute('stroke-linecap','round'); pl.setAttribute('stroke-linejoin','round'); pl.setAttribute('vector-effect','non-scaling-stroke'); pl.setAttribute('points',st.p); sv.appendChild(pl);
-  SLINK={sv,pl,st,pt,key:sv.dataset.ink}; });
-document.addEventListener('pointermove',e=>{ if (!SLINK) return; SLINK.st.p+=' '+SLINK.pt(e); SLINK.pl.setAttribute('points',SLINK.st.p); });
-const inkEnd=()=>{ if (!SLINK) return; const {st,key}=SLINK; SLINK=null; if (st.p.split(' ').length<2) st.p+=' '+st.p; ((DB.ink ||= {})[key] ||= []).push(st); save(); liveSlide(); };
-document.addEventListener('pointerup',inkEnd); document.addEventListener('pointercancel',inkEnd);
 
 /* apresentação mostrada para um aluno: fica lembrada (sugestão ao registrar a aula) e,
    se a aula dele está acontecendo agora e ainda não tem apresentação, já fica ligada ao histórico */
