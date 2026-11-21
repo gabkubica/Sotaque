@@ -114,6 +114,36 @@ function seedData(){
     prof:{pix:'professora@sotaque.app',avail:{1:[8,21],2:[8,21],3:[8,21],4:[8,21],5:[8,18],6:[9,12]}},
     prof2:{pix:'professor@sotaque.app',avail:{1:[14,22],2:[14,22],3:[14,22],4:[14,22],5:[14,20]}}}};
 }
+/* demonstração: segunda criança de inglês (Davi, 8 anos) com histórico, materiais ligados às aulas e caderno já começado.
+   Entra também em demonstrações já abertas antes (não mexe em nada que já existe). */
+function seedKidsDavi(){
+  if (REAL||!DB?.users||DB.users.some(u=>u.id==='s9')) return;
+  const T=now(), sid='s9', wd=3, h=17;
+  DB.users.push({id:sid,teacherId:'prof',name:'Davi Lima',email:'davi.pais@sotaque.app',pass:PASS,role:'student',lang:'EN',level:'Kids',slot:{wd,h,m:0},room:'https://meet.google.com/',palette:'ceu',scene:'bola',seed:8128,
+    kids:true,age:8,parent:'Renata Lima',phone:'(11) 97777-4321',place:'Casa da família · Pinheiros',obs:'Adora futebol, dinossauros e o espaço. Já lê palavras simples e gosta de jogos de tabuleiro.'});
+  const thisWeek=atTime(addDays(weekStart(T),(wd+6)%7),h), last=thisWeek<T-HOUR? thisWeek : addDays(thisWeek,-7);
+  const notes=['Primeira aula! Hello, how are you? Ele se apresentou: “My name is Davi. I’m eight.” Fizemos a capa do caderno com um dinossauro.',
+    'Sports: football, basketball, tennis. Jogamos o caça-palavras e ele achou todas as palavras sozinho!',
+    'Can and can’t com animais: “A fish can swim. A dog can’t fly.” Muitas risadas com a mímica.',
+    'Livrinho “Our day at the zoo”: leu as frases curtas comigo e ouviu a narração. Colou o leão no caderno.',
+    'Space! Planets, rocket, astronaut. Fez a cruzadinha com figuras e já quer saber qual é o próximo tema.'];
+  const mats={1:[{k:'kaula',t:'sports7',s:0,title:'Aula Kids: Sports'},{k:'caca',t:'sports',s:0,title:'Caça-palavras · Esportes'}],3:[{k:'livro',t:'0245',s:0,title:'Livrinho: Our day at the zoo'}],
+    4:[{k:'kaula',t:'space7',s:0,title:'Aula Kids: Space'},{k:'cruzada',t:'space',s:0,title:'Cruzadinha com figuras · Espaço'}]};
+  notes.forEach((note,i)=>{ const start=addDays(last,-7*(notes.length-1-i)), l={id:uid(),key:sid+'@'+dateKey(start),studentId:sid,start,dur:60,status:'realizada',note};
+    if (mats[i]) l.mats=mats[i]; DB.lessons.push(l); });
+  const u=DB.users.find(x=>x.id===sid); u.since=addDays(last,-7*(notes.length-1))-DAY;
+  DB.packages.push({id:uid(),studentId:sid,size:8,price:400,paid:true,createdAt:u.since,paidAt:u.since+DAY});
+  /* caderno: capa com dinossauro, página de apresentação, caça-palavras colado e o leão do livrinho */
+  const W=1000, H=1414, pg=(bg,items)=>{ const p={id:'cp'+uid(),sid,bg,strokes:[],items:items.map(it=>({id:'i'+uid(),r:0,...it}))}; (DB.cadp ||= {})[p.id]=p; return p.id; };
+  const pages=[
+    pg('capa',[{t:'emo',k:'t-rex',x:330,y:260,w:340,h:340,r:-6,hero:true}]),
+    pg('pautada',[{t:'text',txt:'Hello! My name is Davi.',x:130,y:150,w:760,h:72,fs:56,c:'#2b6cb0'},{t:'text',txt:'I’m eight. I like football!',x:130,y:262,w:760,h:72,fs:56,c:'#221c1e'},
+      {t:'emo',k:'soccer-ball',x:600,y:430,w:260,h:260,r:10},{t:'emo',k:'sauropod',x:140,y:520,w:300,h:300,r:-4},{t:'sticker',k:'good',x:640,y:1110,w:230,h:230,r:-8}]),
+    pg('branca',[{t:'act',kind:'caca',theme:'sports',seed:0,x:0,y:0,w:W,h:H},{t:'sticker',k:'super',x:760,y:40,w:200,h:200,r:8}]),
+    pg('quadriculada',[{t:'text',txt:'My favourite animal is the lion.',x:110,y:130,w:800,h:64,fs:48,c:'#a8351f'},{t:'emo',k:'lion',x:280,y:330,w:440,h:440,r:0},{t:'sticker',k:'star',x:120,y:1080,w:200,h:200,r:-10},{t:'sticker',k:'wow',x:680,y:1080,w:220,h:220,r:6}]),
+  ];
+  (DB.cad ||= {})[sid]={sid,cover:{pal:'ceu',pat:'dinos',title:'Davi’s English Notebook',label:'escolar',font:'andika',spine:true,name:true,sub:'2026'},pages};
+}
 /* aulas fixas: garante as próximas 8 semanas de cada aluno */
 function ensureLessons(){
   if (REAL&&!isT()) return;
@@ -253,7 +283,7 @@ function parseHash(){
 function viewAuth(){
   if (REAL&&S.cloudLoading) return `<div class="auth-load">${logo(48)}<p class="meta">Abrindo o Sotaque…</p></div>`;
   const {pk,seed}=(()=>{ const d=Math.floor((now()-new Date().getTimezoneOffset()*MIN)/DAY); return {pk:PKEYS[d%PKEYS.length],seed:d}; })();
-  const demo=[['professora@sotaque.app','Professora de inglês','agenda, alunos e pedidos de remarcação'],['professor@sotaque.app','Professor de francês','três alunos de francês'],['marina@sotaque.app','Aluna Marina','inglês, toda terça às 19h'],['beatriz@sotaque.app','Aluna Beatriz','francês, toda segunda às 19h'],['theo@sotaque.app','Aluno Theo','pediu para remarcar a próxima aula']];
+  const demo=[['professora@sotaque.app','Professora de inglês','agenda, alunos e pedidos de remarcação'],['professor@sotaque.app','Professor de francês','três alunos de francês'],['marina@sotaque.app','Aluna Marina','inglês, toda terça às 19h'],['beatriz@sotaque.app','Aluna Beatriz','francês, toda segunda às 19h'],['theo@sotaque.app','Aluno Theo','pediu para remarcar a próxima aula'],['lia.pais@sotaque.app','Pais da Lia (Kids)','6 anos, aula presencial aos sábados'],['davi.pais@sotaque.app','Pais do Davi (Kids)','8 anos, com materiais e caderno das aulas']];
   return `${themeBtn('auth-theme')}<div class="auth">
     <div class="auth-art">${quadro(pk,'conversa',seed,{w:800,h:1000})}</div>
     <div class="auth-box">
@@ -472,6 +502,14 @@ for (const [k,T] of Object.entries(TIPOS)){ QT[k]=T.label; QT_SHORT[k]=T.short; 
 const norm=s=>String(s??'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g,' ').trim().replace(/[.!?]+$/,'').trim();
 const words=q=>q.sentence.trim().split(/\s+/);
 /* embaralha sempre do mesmo jeito para a mesma questão */
+/* ordem das alternativas na tela: embaralhada de um jeito fixo por questão, para a certa não ficar quase sempre na A.
+   A resposta continua guardada pelo número original da alternativa (nada muda nas tarefas já feitas).
+   "Não sei" fica por último; questões com "all of the above"/"both" ficam na ordem escrita. */
+function optOrder(q){ const n=q.options?.length||0, idx=[...Array(n).keys()];
+  if (n<2||q.options.some(o=>/\b(all|none) of the above\b|^both\b|\ba and b\b|^todas|^nenhuma/i.test(String(o)))) return idx;
+  const tail=idx.filter(k=>q.options[k]==='Não sei'), body=idx.filter(k=>!tail.includes(k)), R=rng(hashStr((q.id||'')+'|op'));
+  for (let i=body.length-1;i>0;i--){ const j=Math.floor(R.r()*(i+1)); [body[i],body[j]]=[body[j],body[i]]; }
+  return body.concat(tail); }
 function shuffled(n,key){
   const R=rng(hashStr(key)), a=[...Array(n).keys()];
   for (let i=n-1;i>0;i--){ const j=Math.floor(R.r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
@@ -517,7 +555,7 @@ const gapParts=q=>{ const p=q.prompt.split('___'); return p.length>1? [p[0],p.sl
 function qAnswer(t,q,i){
   const a=t.answers[q.id], data=`data-task="${t.id}"`;
   let body='';
-  if (q.type==='mc') body=`<div class="opts-col ${q.options.every(o=>o.length<=18)? 'short' : ''}" role="radiogroup" aria-label="Questão ${i+1}">${q.options.map((o,k)=>`<label class="ans ${q.part&&o==='Não sei'? 'idk' : ''}"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${data} ${a===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`;
+  if (q.type==='mc') body=`<div class="opts-col ${q.options.every(o=>o.length<=18)? 'short' : ''}" role="radiogroup" aria-label="Questão ${i+1}">${optOrder(q).map((k,pos)=>{ const o=q.options[k]; return `<label class="ans ${q.part&&o==='Não sei'? 'idk' : ''}"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${data} ${a===k?'checked':''}><span class="lt">${LT[pos]}</span><span class="tx">${esc(o)}</span></label>`; }).join('')}</div>`;
   if (q.type==='tf') body=`<div class="tf-row" role="radiogroup" aria-label="Questão ${i+1}">${[[true,'Verdadeiro','V'],[false,'Falso','F']].map(([v,l,s])=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${v?1:0}" data-ans-tf="${q.id}" ${data} ${a===v?'checked':''}><span class="lt">${s}</span><span class="tx">${l}</span></label>`).join('')}</div>`;
   if (q.type==='gap'){ const [x,y]=gapParts(q); body=`<p class="gapline">${esc(x)}<input type="text" class="gapin" data-ans-gap="${q.id}" ${data} value="${esc(a||'')}" aria-label="Lacuna da questão ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false">${esc(y)}</p>`; }
   if (q.type==='match'){ const ord=matchOpts(q);
@@ -544,7 +582,7 @@ function qResult(t,q,i,mode){
   if ((t.kind==='nivel'||t.kind==='prova')&&q.type==='open'&&t.marks[q.id]==null) tag= mode==='hidden'? '' : `<span class="qtag wait">${t.kind==='nivel'? 'Escrita' : 'Escrita curta'}</span>`;
   const opt=(lt,txt,cls,side)=>`<div class="ans static ${cls}"><span class="lt">${lt}</span><span class="tx">${esc(txt)}</span>${side? `<span class="tag">${side}</span>` : ''}</div>`;
   if (q.type==='mc'||q.type==='tf'){
-    const list= q.type==='mc'? q.options.map((o,k)=>[k,LT[k],o]) : [[true,'V','Verdadeiro'],[false,'F','Falso']];
+    const list= q.type==='mc'? optOrder(q).map((k,pos)=>[k,LT[pos],q.options[k]]) : [[true,'V','Verdadeiro'],[false,'F','Falso']];
     const compact=mode==='teacher'&&q.type==='mc'&&isAnswered(t,q);
     body=`<div class="${q.type==='tf'?'tf-row':'opts-col'}">${list.map(([v,lt,txt])=>{
       if (compact&&v!==a&&v!==q.correct) return '';
@@ -1141,7 +1179,7 @@ function viewPrint(id){
   const tfL=FR? ['Vrai','Faux'] : ['True','False'];
   const line=(n=1)=>Array.from({length:n},()=>'<div class="pr-rule"></div>').join('');
   const qHtml=(q,i)=>{ let head=esc(qPrompt(q)), body='';
-    if (q.type==='mc') body=`<ul class="pr-opts">${q.options.map((o,k)=>`<li><span class="pr-box"></span>${LT[k]}) ${esc(o)}</li>`).join('')}</ul>`;
+    if (q.type==='mc') body=`<ul class="pr-opts">${optOrder(q).map((k,pos)=>`<li><span class="pr-box"></span>${LT[pos]}) ${esc(q.options[k])}</li>`).join('')}</ul>`;
     if (q.type==='tf') body=`<p class="pr-tf"><span class="pr-box"></span>${tfL[0]} <span class="pr-box" style="margin-left:22px"></span>${tfL[1]}</p>`;
     if (q.type==='gap'){ const [x,y]=gapParts(q); head=`${esc(x)}<span class="pr-gap"></span>${esc(y)}`; }
     if (q.type==='match'){ const ord=matchOpts(q);
@@ -1151,7 +1189,7 @@ function viewPrint(id){
     if (q.type==='open') body=line(q.words&&/1[0-9]{2}|[2-9][0-9]{2}/.test(String(q.words))? 9 : 5);
     return `<div class="pr-q"><p class="pr-qh"><b>${i+1}.</b> ${q.listen? (FR? 'Écoutez et répondez. ' : 'Listen and answer. ') : ''}${head}</p>${qImg(q,true)}${q.type==='dict'? `<p class="meta muted" style="margin:0 0 4px">(${FR? 'le professeur lit la phrase' : 'the teacher reads the sentence aloud'})</p>` : ''}${body}</div>`; };
   const ans=(q,i)=>{ let a='';
-    if (q.type==='mc') a=`${LT[q.correct]}) ${esc(q.options[q.correct])}`;
+    if (q.type==='mc') a=`${LT[optOrder(q).indexOf(q.correct)]}) ${esc(q.options[q.correct])}`;
     if (q.type==='tf') a=q.correct? tfL[0] : tfL[1];
     if (q.type==='gap') a=esc(q.answers.join(' / '));
     if (q.type==='match'){ const ord=matchOpts(q); a=q.pairs.map((p,k)=>`${k+1}–${LT[ord.findIndex(j=>norm(q.pairs[j][1])===norm(p[1]))]}`).join(' · '); }
@@ -1974,6 +2012,7 @@ function packsIdle(me){ if (PACK_IDLE) return; PACK_IDLE=true;
 /* ---------- render ---------- */
 function render(){
   const app=$('#app'), me=ME();
+  if (S.route?.name!=='caderno'||!me) window.cadUnmount?.();   /* o caderno fica fora do #app: fecha ao sair da conta ou da rota */
   if (!me){ app.innerHTML=viewAuth(); return; }
   const r=S.route; let main;
   const pk=Object.keys(PACKS).find(k=>PACKS[k].routes.includes(r.name));
@@ -2322,7 +2361,7 @@ window.addEventListener('hashchange',go);
 matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if (!lsGet(THEME_KEY)) render(); });
 if (REAL){ DB=null; } else { try { DB=JSON.parse(lsGet(KEY)); } catch { DB=null; } }
 if (REAL){ baseDB(); S.cloudLoading=true; }
-else if (!DB||!DB.users||!DB.settings){ DB=seedData(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
+else if (!DB||!DB.users||!DB.settings){ DB=seedData(); seedKidsDavi(); ensureLessons(); seedRequest(); seedTrail(); seedPlace(); ensureFlash(); seedFlashDemo(); seedAulas(); seedContAulas(); DB.contV=1; save(); }
 else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if (DB.bankV!==23){ DB.bank=DB.bank.filter(b=>b.mine).concat(seedBank()); DB.bankV=23; } DB.tasks=DB.tasks.filter(t=>user(t.studentId));
   if (DB.trailV!==TRAIL_V){ DB.conq=[]; DB.certs=[]; DB.cando={}; DB.tasks=DB.tasks.filter(t=>t.kind!=='prova'&&t.kind!=='nivel'); allStudents().forEach(u=>delete u.trail); seedTrail(); }
   if (!DB.placeV) seedPlace();
@@ -2330,7 +2369,7 @@ else { if (!DB.tasks) DB.tasks=seedTasks(); if (!DB.bank) DB.bank=seedBank(); if
   if (!DB.aulas) seedAulas();
   ensureFlash(); if (DB.contV!==1){ seedContAulas(); DB.contV=1; }
   if (!DB.pdfs) DB.pdfs=[];
-  ensureLessons(); save(); }
+  seedKidsDavi(); ensureLessons(); save(); }
 if (!REAL){ S.me=lsGet(ME_KEY); if (S.me&&!ME()) S.me=null; }
 go();
 if (REAL) cloudStart();

@@ -69,11 +69,11 @@ Object.assign(TIPOS,{
     blank:()=>({prompt:'Complete a tirinha.',strip:'',options:['','',''],correct:null}),
     mcEditor:true,
     valid:q=>!/_{3,}/.test(q.strip||'')? 'Ponha ___ num dos balões da tirinha.' : q.options.filter(o=>String(o).trim()).length<2? 'Escreva pelo menos 2 opções.' : q.correct==null||!String(q.options[q.correct]||'').trim()? 'Marque a opção certa.' : null,
-    answer:(t,q,i)=>`${tirinha(q.strip,{fill:Number.isInteger(t.answers[q.id])? q.options[t.answers[q.id]] : ''})}<div class="opts-col" role="radiogroup" aria-label="Questão ${i+1}">${q.options.map((o,k)=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${dt(t)} ${t.answers[q.id]===k?'checked':''}><span class="lt">${LT[k]}</span><span class="tx">${esc(o)}</span></label>`).join('')}</div>`,
+    answer:(t,q,i)=>`${tirinha(q.strip,{fill:Number.isInteger(t.answers[q.id])? q.options[t.answers[q.id]] : ''})}<div class="opts-col" role="radiogroup" aria-label="Questão ${i+1}">${optOrder(q).map((k,pos)=>`<label class="ans"><input type="radio" name="a-${q.id}" value="${k}" data-ans="${q.id}" ${dt(t)} ${t.answers[q.id]===k?'checked':''}><span class="lt">${LT[pos]}</span><span class="tx">${esc(q.options[k])}</span></label>`).join('')}</div>`,
     answered:(q,a)=>Number.isInteger(a), grade:(q,a)=>a===q.correct? 1 : 0,
     result:(t,q,a,g,mode)=>`${tirinha(q.strip,{fill:q.options[q.correct]})}${mode!=='key'&&a!==q.correct? `<p class="meta" style="margin:0">${Number.isInteger(a)? `Escolheu: <b>${esc(q.options[a])}</b> · ` : ''}Certa: <b>${esc(q.options[q.correct])}</b></p>` : ''}`,
-    print:q=>`${tirinha(q.strip)}<ul class="pr-opts">${q.options.map((o,k)=>`<li><span class="pr-box"></span>${LT[k]}) ${esc(o)}</li>`).join('')}</ul>`,
-    key:q=>`${LT[q.correct]}) ${esc(q.options[q.correct])}`,
+    print:q=>`${tirinha(q.strip)}<ul class="pr-opts">${optOrder(q).map((k,pos)=>`<li><span class="pr-box"></span>${LT[pos]}) ${esc(q.options[k])}</li>`).join('')}</ul>`,
+    key:q=>`${LT[optOrder(q).indexOf(q.correct)]}) ${esc(q.options[q.correct])}`,
     solve:q=>q.correct, wrong:q=>(q.correct+1)%q.options.length, said:(q,a)=>Number.isInteger(a)? esc(q.options[a]) : '—'},
 });
 TIPO_KEEP.comic=['strip','options','correct'];
