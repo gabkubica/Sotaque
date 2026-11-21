@@ -83,6 +83,10 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
 - Remarcação: o aluno sugere até 3 horários (até 24 h antes) e o professor confirma.
 - Tarefas com 6 tipos de questão: múltipla escolha, verdadeiro ou falso, completar a lacuna,
   ligar colunas, ordenar a frase e resposta escrita. As objetivas se corrigem sozinhas.
+- **Alternativas embaralhadas**: na múltipla escolha e nas tirinhas, a ordem das opções muda de forma fixa para cada
+  questão (antes a certa era a A em 62% das questões). A resposta fica guardada pelo número original da opção, então
+  tarefas antigas continuam certas; impressão e gabarito usam a mesma ordem. Em “ligue os pares”, respostas iguais
+  (ex.: “incontável” duas vezes) contam como certas e aparecem uma vez só na lista.
 - Banco de tarefas, separado por idioma, do A1 ao C1, com filtros por nível, tema e tipo:
   363 tarefas e cerca de 2.100 questões (inglês 222, francês 141), sendo 40 escutas com áudio
   (`banco.js`, `banco-fr.js`, `provas.js` e a ampliação em `banco-extra.js`).
@@ -191,7 +195,15 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   mustn’t), Jobs, Hotel problems (A2); Dreams and goals, Music in our lives (relative clauses), Phrasal verbs for travel
   (B1); Introverts and extroverts (prefixos negativos), Fast fashion (passiva para processos), Collocations with
   make/do/take/have (B2); Register: formal or informal?, Leadership styles (C1). 161 aulas no total.
-- **Banco de homeworks extras** (`homeworks.js`, carregado com o banco): 87 homeworks novas de A1 a C1, com o tema certo
+- **Lote 7 · inglês** (18 aulas, mais peso em A1 e C1): Countries and nationalities, Clothes and colours (I’m wearing,
+  cor antes da roupa), Feelings (I’m hungry, não “I have hungry”), Numbers and prices, A day in the life (o -s da 3ª pessoa)
+  (A1); Holiday stories (perguntas com did), Like or would like? (A2); May, might, could, Comparing: as… as e the more, the
+  better (B1); Annoying habits (be always + -ing, keep + -ing, will), Future in the past (was going to, was supposed to),
+  **Phonetics: stress shift** (PHOtograph → phoTOgrapher, a REcord / to reCORD), **Remote, hybrid or office?** (debate com
+  concessão) (B2); Discourse markers (mind you, as it happens), Needn’t have × didn’t need to, Emphasis (do/did, clefts,
+  on earth, whatsoever), **Overtourism** (debate com hedging), **Phonetics: fast speech** (elisão, assimilação, didja) (C1).
+  Todas com áudio Kokoro. 179 aulas no total.
+- **Banco de homeworks extras** (`homeworks.js`, carregado com o banco): 133 homeworks de A1 a C1 (87 + 46 do lote 7: uma para cada aula nova e 28 extras), com o tema certo
   (Escuta, Leitura, Gramática, Vocabulário, Escrita, Trabalho, Phrasal verbs, Expressões). As com áudio ou leitura ficam em
   `CONT_ATIV`; as interativas (tirinha, escolha no texto, transformação, ordem, cruzadinha, caça-palavras, ditado,
   corrigir o erro) em `CONT_TIPOS`. Cobrem os tópicos de gramática de cada nível, escuta (podcasts, entrevistas,
@@ -272,6 +284,9 @@ Cada navegador guarda os próprios dados: o que a professora faz não chega ao a
 Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 
 ### Kids
+- **Demonstração Kids**: duas crianças de inglês, Lia (6 anos, pais: lia.pais@sotaque.app) e **Davi** (8 anos,
+  davi.pais@sotaque.app), este com 5 aulas com resumo, materiais ligados (Aulas Kids, livrinho, caça-palavras,
+  cruzadinha) e caderno com capa e 3 páginas (`seedKidsDavi()`, entra também em demonstrações já abertas).
 - **Aluno Kids** (cadastro): criança com aula presencial; o e-mail é dos pais, que entram, veem as aulas, o resumo,
   os materiais e o caderno digital (só leitura). Campos: idade, responsável, WhatsApp, local e observações.
 - **Caderno digital** (`caderno.js`, rota `#caderno-<aluno>`): caneta com pressão da Apple Pencil (contorno pelo

@@ -10659,4 +10659,1178 @@ Hedging and softening
 Homework · Lead the way`]
 );
 
+/* ---------- lote 7 (inglês) · A1 ---------- */
+SLIDES_SEED.push(
+['EN','A1','Countries and nationalities: where are you from?',`# capa: Countries and nationalities | img:globo
+Where are you from? I’m from Brazil. I’m Brazilian.
+# sobre: Sobre esta aula
+ver: países e nacionalidades (Brazil → Brazilian, Japan → Japanese, Spain → Spanish); **Where are you from? / I’m from…**; perguntar sobre outras pessoas com **he, she, they**; letra maiúscula em nacionalidades e idiomas
+porque: “Where are you from?” é uma das primeiras perguntas de qualquer conversa com estrangeiros. E em inglês nacionalidades e idiomas sempre começam com letra maiúscula, ao contrário do português.
+meta: dizer de onde é e qual é a nacionalidade; perguntar de onde outras pessoas são; usar as terminações -ian, -ese, -ish
+nivel: Nível A1
+# aquecimento: Around the world
+pergunta: Which country would you like to visit?
+jogo: Fast nationalities | A professora diz um país e o aluno diz a nacionalidade o mais rápido possível: Brazil → Brazilian! Japan → Japanese!
+# tabela: Countries and nationalities
+Ending | Country | Nationality
+-ian / -an | Brazil, Italy, Mexico | Brazilian, Italian, Mexican
+-ese | Japan, China, Portugal | Japanese, Chinese, Portuguese
+-ish | Spain, England, Ireland | Spanish, English, Irish
+other | France, Greece, Thailand | French, Greek, Thai
+# frase: Listen and repeat
+Where are you from?
+I’m from Brazil. I’m Brazilian.
+Where is she from? She’s from Japan.
+Are they Spanish? No, they aren’t. They’re Mexican.
+nota: Atenção à sílaba forte: Ja**PAN**, mas Japa**NESE**; **I**taly, mas I**TA**lian; **CHI**na, mas Chi**NESE**.
+# dica: Cuidado!
+x: I’m from Brazilian.
+ok: I’m from Brazil. / I’m Brazilian.
+x: She is italian and speaks english.
+ok: She is Italian and speaks English.
+# dialogo: At a language school
+A: Hi! I’m Kenji. I’m from Japan.
+B: Nice to meet you, Kenji. I’m Paula.
+A: Where are you from, Paula?
+B: I’m from Brazil, from Recife.
+A: Cool! Is your teacher Brazilian too?
+B: No, she isn’t. She’s Irish.
+# exercicio: Practice 1
+escolha: I’m from [*Brazil/Brazilian]. I’m [*Brazilian/Brazil].
+escolha: Sofia is from Italy. She’s [*Italian/Italy/italian].
+escolha: [*Where/What/Who] are you from?
+escolha: Tom and Kate [*are/is/am] from England. They’re [*English/England].
+grupos: -ese: Japanese, Chinese, Portuguese / -ish: Spanish, English, Irish / -ian: Brazilian, Italian, Canadian
+# leitura: Our new classmates | img:globo
+tipo: School blog
+This month, we have three new students. **Ana** is from Portugal, from Lisbon. She’s Portuguese and she speaks Portuguese and French.
+**Li** is from China. He’s Chinese and he’s a cook. **Carlos and Elena** are from Mexico. They’re Mexican and they’re married.
+Welcome to the school, everybody!
+# exercicio: Practice 2
+Where is Ana from?
+*a) Portugal
+b) Brazil
+c) France
+Li is Chinese. (v)
+Carlos and Elena are Spanish. (f)
+reescreva: She is from Spain. | SPANISH | She ___ . | is Spanish/’s Spanish
+ditado: Where are you from? I’m from Brazil.
+# conversa: Your turn | img:globo
+Where are you from? Where are your parents from?
+Name three famous people and say their nationality.
+Do you have friends from other countries? Where are they from?
+# tarefas: Atividades recomendadas
+Countries and nationalities
+Verb to be
+Homework · Around the world`],
+
+['EN','A1','Clothes and colours: what are you wearing?',`# capa: Clothes and colours | img:camiseta
+I’m wearing a blue shirt and black jeans.
+# sobre: Sobre esta aula
+ver: roupas (shirt, T-shirt, jeans, dress, skirt, jacket, shoes, socks); cores; **I’m wearing…** para o que você está usando agora; **adjetivo antes do substantivo** (a red dress, não “a dress red”); **this / these** para roupas no singular e no plural
+porque: Falar de roupas aparece em compras, viagens e conversas do dia a dia. E duas armadilhas são muito comuns para brasileiros: a ordem da cor (a red dress) e palavras que estão sempre no plural (jeans, trousers, shorts).
+meta: descrever as roupas de uma pessoa; dizer o que está vestindo hoje; colocar a cor antes da roupa
+nivel: Nível A1
+# aquecimento: Look at me!
+pergunta: What’s your favourite colour? Do you wear it a lot?
+jogo: I spy | A professora diz: “I spy something blue!” e o aluno adivinha a roupa: “Your shirt!”
+# vocab: Clothes
+shirt | camisa | img:camisa
+T-shirt | camiseta | img:camiseta
+jeans | calça jeans | img:calca
+dress | vestido | img:vestido
+skirt | saia | img:saia
+jacket | jaqueta | img:jaqueta
+shoes | sapatos | img:sapato
+socks | meias | img:meias
+# explica: What are you wearing?
+Para o que você está usando **agora**: **I’m wearing…**
+> I’m wearing a white T-shirt and blue jeans.
+> She’s wearing a red dress.
+A cor vem **antes** da roupa:
+> a **black** jacket · **green** socks · an **orange** skirt
+# dica: Cuidado!
+x: She’s wearing a dress red.
+ok: She’s wearing a red dress.
+x: I like this jeans.
+ok: I like these jeans. (jeans, trousers e shorts são sempre plural)
+# exercicio: Practice 1
+escolha: He’s wearing a [*blue shirt/shirt blue].
+escolha: I love [*these/this] jeans!
+escolha: She [*’s wearing/wearing/wear] a black skirt today.
+escolha: My socks [*are/is] yellow.
+grupos: Always plural: jeans, trousers, shorts, socks / Singular: dress, skirt, jacket, shirt
+# imagem: Who is who? | img:vestido
+Describe the clothes in the picture. What colours can you see?
+Use: She’s wearing… / It’s… / They’re…
+# tirinha: Getting ready
+[armario]
+Mia (pensando): What can I wear to the party?
+Ana: Your red dress!
+---
+Mia (triste): It’s too small now.
+Ana: What about the black skirt and a white shirt?
+---
+Mia (feliz): Perfect! And my new shoes!
+# exercicio: Practice 2
+What does Mia want to wear first?
+a) a black skirt
+*b) a red dress
+c) new jeans
+The red dress is too small. (v)
+erro: My brother is wearing a {jacket green|green jacket}.
+reescreva: I’m wearing a shirt. It is white. | WHITE | I’m wearing ___ . | a white shirt
+ditado: She’s wearing a green jacket.
+# conversa: Fashion talk | img:camiseta
+What are you wearing today? Describe it.
+Describe what your teacher is wearing.
+What do you wear to work, to a party and at home?
+# tarefas: Atividades recomendadas
+Colours and clothes
+Clothes and things: picture games
+Homework · What are you wearing?`],
+
+['EN','A1','Feelings: how are you today?',`# capa: Feelings | img:feliz
+I’m happy, I’m tired, I’m hungry… and you?
+# sobre: Sobre esta aula
+ver: sentimentos e estados (happy, sad, tired, hungry, thirsty, bored, angry, worried, excited); **How are you? / How do you feel?**; **I’m + adjetivo** (e não “I have hungry”); **because** para explicar
+porque: Em português dizemos “estou com fome, com sede, com frio”. Em inglês é tudo com o verbo **to be**: I’m hungry, I’m thirsty, I’m cold. Esse é um dos erros mais comuns no começo.
+meta: dizer como se sente; perguntar como a outra pessoa está; dar o motivo com because
+nivel: Nível A1
+# aquecimento: How are you, really?
+pergunta: How are you today? Choose a word: great, good, OK, tired or bad.
+jogo: Show me! | A professora diz um sentimento e o aluno faz a cara: “happy!”, “angry!”, “surprised!”. Depois invertem.
+# vocab: Feelings
+happy | feliz | img:feliz
+sad | triste | img:triste
+tired | cansado | img:cansado
+bored | entediado | img:entediado
+angry | bravo | img:bravo
+worried | preocupado | img:preocupado
+excited | animado | img:animado
+surprised | surpreso | img:surpreso
+# explica: I’m hungry, I’m cold
+Fome, sede, frio, calor e medo usam **to be**:
+> I**’m** hungry. · She**’s** thirsty. · We**’re** cold. · He**’s** hot.
+> I**’m** scared of spiders.
+Para explicar: **because**
+> I’m tired **because** I work a lot.
+# dica: Cuidado!
+x: I have hungry.
+ok: I’m hungry.
+x: I’m boring in this class.
+ok: I’m bored. (boring = chato; bored = entediado)
+# dialogo: Monday morning
+A: Good morning! How are you?
+B: I’m OK, but I’m really tired.
+A: Why?
+B: Because my baby doesn’t sleep at night!
+A: Oh no! Do you want a coffee?
+B: Yes, please! I’m thirsty too.
+# exercicio: Practice 1
+escolha: I’m [*hungry/hunger]. Let’s have lunch!
+escolha: She [*is/has] cold. Close the window, please.
+escolha: This film is very long. I’m [*bored/boring].
+escolha: They’re happy [*because/so] it’s Friday.
+grupos: Good feelings: happy, excited, relaxed / Bad feelings: sad, angry, worried
+# leitura: Emoji messages | img:celular
+tipo: Messages
+**Leo:** I’m so excited! 😃 My sister is here from Canada.
+**Bia:** I’m worried 😟 I have a test tomorrow.
+**Sam:** I’m angry 😠 The bus is late again!
+**Mia:** I’m bored 😐 It’s raining and there’s nothing on TV.
+# exercicio: Practice 2
+Why is Bia worried?
+a) Her bus is late.
+*b) She has a test.
+c) It’s raining.
+Leo is sad. (f)
+Mia is bored. (v)
+erro: I {have|am} thirsty. Can I have some water?
+ditado: I’m tired because I work a lot.
+# conversa: How do you feel? | img:feliz
+How do you feel on Monday mornings? And on Friday evenings?
+What makes you happy? What makes you angry?
+When are you bored? When are you excited?
+# tarefas: Atividades recomendadas
+Feelings
+Verb to be
+Homework · How do you feel?`],
+
+['EN','A1','Numbers and prices: how much is it?',`# capa: Numbers and prices | img:presente
+How much is it? It’s twelve ninety-nine.
+# sobre: Sobre esta aula
+ver: números de 1 a 100 e as dezenas (twenty, thirty, forty…); **How much is it? / How much are they?**; como dizer preços em dólar, libra e real (£12.99 = twelve ninety-nine); fazer compras simples (Can I have…? Here you are.)
+porque: Números são usados o tempo todo: preços, telefone, idade, horários. Falar e, principalmente, **entender** preços rápido dá muita segurança numa viagem.
+meta: dizer e entender números até 100; perguntar e dizer preços; comprar algo numa loja ou num café
+nivel: Nível A1
+# aquecimento: Guess the price
+pergunta: How much is a coffee in your city?
+jogo: Higher or lower? | A professora pensa num preço (um café, um cinema, um tênis). O aluno chuta e ela responde “higher!” ou “lower!”.
+# tabela: Tens
+Number | Word | Number | Word
+10 | ten | 60 | sixty
+20 | twenty | 70 | seventy
+30 | thirty | 80 | eighty
+40 | forty | 90 | ninety
+50 | fifty | 100 | a hundred
+# explica: How much is it?
+**How much is** + uma coisa · **How much are** + várias:
+> How much **is** this T-shirt? It’s $15.
+> How much **are** these shoes? They’re £49.99.
+Preços: falamos os dois números separados:
+- $12.99 → **twelve ninety-nine** · £5.50 → **five fifty** · R$30 → **thirty reais**
+# dica: Cuidado!
+x: How much costs this?
+ok: How much is this? / How much does this cost?
+x: forty → “fourty”
+ok: forty (sem u!) · fourteen, mas forty
+# dialogo: At the market
+A: Hi! How much are the apples?
+B: They’re two dollars a kilo.
+A: OK. Can I have two kilos, please?
+B: Sure. Anything else?
+A: How much is this cheese?
+B: It’s six fifty. That’s ten fifty in total.
+# exercicio: Practice 1
+escolha: How much [*is/are] this bag?
+escolha: How much [*are/is] these socks?
+escolha: 40 = [*forty/fourty/fourteen]
+escolha: $9.99 = [*nine ninety-nine/nine and ninety-nine]
+“It’s seventeen fifty.” How much is it?
+a) $70.50
+*b) $17.50
+c) $7.15
+# texto: Café menu
+coffee ………… $2.50
+orange juice ………… $3.20
+cheese sandwich ………… $6.90
+chocolate cake ………… $4.75
+water ………… $1.80
+# exercicio: Practice 2 · The menu
+How much is a cheese sandwich?
+*a) six ninety
+b) sixty-nine
+c) six nineteen
+A coffee and a cake are $7.25. (v)
+reescreva: What is the price of the cake? | MUCH | How ___ ? | much is the cake
+ditado: How much are these shoes?
+# conversa: Shopping role-play | img:presente
+Use the menu: order food for two people and ask for the total.
+Say your phone number and your age.
+How much is a coffee, a bus ticket and a pizza in your city?
+# tarefas: Atividades recomendadas
+Numbers and age
+How much and how many
+Homework · How much is it?`],
+
+['EN','A1','A day in the life: he works, she studies',`# capa: A day in the life | img:relogio
+He gets up at six. She doesn’t work on Mondays.
+# sobre: Sobre esta aula
+ver: o **present simple** com he, she e it: o **-s** no verbo (works, gets up, watches); verbos irregulares **has, does, goes**; negativa com **doesn’t** e pergunta com **does**; a rotina de outras pessoas
+porque: O -s da terceira pessoa é o erro número um de quem fala inglês, mesmo em níveis avançados. Treinar cedo, com a rotina de pessoas reais, ajuda a fixar.
+meta: descrever a rotina de outra pessoa; usar o -s, doesn’t e does corretamente; fazer perguntas sobre o dia de alguém
+nivel: Nível A1
+# aquecimento: Guess the job
+pergunta: What time do you get up? And your partner or your friend?
+jogo: Who am I? | A professora descreve a rotina de uma profissão: “She gets up at 5. She makes bread.” O aluno adivinha: “a baker!”
+# tabela: He, she, it + -s
+Verb | He / she / it | Rule
+work, live, play | works, lives, plays | + s
+watch, go, do | watches, goes, does | + es
+study | studies | y → ies
+have | has | irregular
+# explica: Negatives and questions
+Na negativa e na pergunta, o -s vai para o **does**, e o verbo volta ao normal:
+> She **doesn’t work** on Mondays.
+Nunca “doesn’t works”: o -s já está no **does**.
+> **Does** he **live** in London? Yes, he **does**. / No, he **doesn’t**.
+> What time **does** she **get** up?
+# dica: Cuidado!
+x: My brother work in a bank.
+ok: My brother works in a bank.
+x: She doesn’t likes coffee.
+ok: She doesn’t like coffee.
+# linha: Tom’s day
+ponto: 0.08 | gets up at 6
+ponto: 0.3 | starts work at 8
+ponto: 0.55 | has lunch at 1
+ponto: 0.78 | goes to the gym
+agora: não
+eixo: 6 am | 11 pm
+O dia do Tom, enfermeiro em Londres. Conte com o **-s**: He gets up… He starts…
+# leitura: A day in the life of a baker | img:pao
+tipo: Magazine
+**Rosa** is a baker in Porto. She gets up at four o’clock every day, and she starts work at five. She makes bread, cakes and coffee for the first customers.
+At two o’clock, she goes home and has lunch with her daughter. She doesn’t work on Sundays: she goes to the beach with her family.
+Rosa loves her job, but she goes to bed very early: at nine!
+# exercicio: Practice 1
+escolha: Rosa [*gets/get] up at four o’clock.
+escolha: She [*doesn’t work/don’t work/doesn’t works] on Sundays.
+escolha: [*Does/Do/Is] she have lunch at home?
+escolha: Rosa [*goes/gos/go] to bed at nine.
+What time does Rosa start work?
+a) at four
+*b) at five
+c) at two
+grupos: + s: works, lives, plays / + es: watches, goes, does / y → ies: studies, flies, tries
+# exercicio: Practice 2
+erro: My sister {study|studies} English on Saturdays.
+erro: He doesn’t {drinks|drink} coffee.
+reescreva: I don’t work on Fridays. (She) | DOESN’T | She ___ on Fridays. | doesn’t work
+ordem: What time does he get up
+ditado: She goes to the gym after work.
+# conversa: Tell me about someone | img:relogio
+Describe the day of a person in your family: when does he or she get up, work and relax?
+Ask your teacher 5 questions with “does”: Does your husband cook? What time does…?
+Choose a famous person and imagine their routine.
+# tarefas: Atividades recomendadas
+Present simple · he, she, it
+Do and does: questions
+Homework · A day in the life`],
+);
+/* ---------- lote 7 (inglês) · A2 e B1 ---------- */
+SLIDES_SEED.push(
+['EN','A2','Holiday stories: did you have a good time?',`# capa: Holiday stories | img:mala
+Where did you go? Did you have a good time?
+# sobre: Sobre esta aula
+ver: perguntas no **past simple** com **did** (Where did you go? Did you like it?); respostas curtas (Yes, I did. / No, I didn’t.); verbos irregulares de viagem (went, took, ate, saw, stayed, flew); reagir à história do outro (Really? That sounds amazing!)
+porque: Contar e perguntar sobre as férias é uma conversa clássica. O erro mais comum é esquecer que, com **did**, o verbo volta para a forma normal: Did you **go**? (e não “Did you went?”).
+meta: perguntar sobre uma viagem passada; responder com respostas curtas e detalhes; contar uma história de férias com verbos irregulares
+nivel: Nível A2
+# aquecimento: Your best holiday
+pergunta: What was your best holiday ever? Where did you go?
+jogo: 20 questions | A professora pensa numa viagem que fez. O aluno descobre o lugar só com perguntas de sim ou não: “Did you go by plane? Did you see the sea?”
+# tabela: Holiday verbs
+Verb | Past | Example
+go | went | We went to Salvador.
+fly | flew | We flew from São Paulo.
+stay | stayed | We stayed in a small hotel.
+eat | ate | I ate acarajé every day.
+see / take | saw / took | I saw the sea and took lots of photos.
+# explica: Questions with did
+**Did** + sujeito + verbo **normal**:
+> **Did** you **have** a good time? Yes, I **did**!
+> **Where did** you **stay**? In a hostel.
+> **How did** you **get** there? By bus.
+Na negativa: **didn’t** + verbo normal: We **didn’t go** to the beach.
+# dica: Cuidado!
+x: Did you went to the beach?
+ok: Did you go to the beach?
+x: Where you stayed?
+ok: Where did you stay?
+# tirinha: Back from holiday
+[aviao]
+Leo: Hi, Ana! Did you have a good holiday?
+Ana (feliz): Yes, I did! I went to Chile.
+---
+Leo (surpreso): Wow! Did you see the mountains?
+Ana: Yes! And I ate amazing food.
+---
+Leo: Did you like the weather?
+Ana (triste): No, I didn’t. It was really cold!
+# exercicio: Practice 1
+escolha: [*Did you go/Did you went/You went] to the mountains?
+escolha: Where [*did you stay/you stayed/did you stayed]?
+escolha: We [*didn’t eat/didn’t ate/not ate] at the hotel.
+escolha: Did you like Chile? Yes, I [*did/liked/do].
+lacunas: Last summer we [flew] to Lisbon and [stayed] in a hotel near the river. We [saw] the castle and [took] hundreds of photos. || go, eat
+ordem: How did you get to the airport
+# leitura: A postcard from Bahia | img:mar
+tipo: Postcard
+Hi Grandma! We **arrived** in Salvador on Saturday. We **flew** from São Paulo and the flight **was** only two hours.
+We **stayed** in a lovely hotel near the beach. On Monday we **visited** the old town and **ate** acarajé. It **was** delicious, but very spicy!
+We **didn’t go** to Morro de São Paulo because it **rained**. See you next week! Love, Julia
+# exercicio: Practice 2
+How did Julia get to Salvador?
+a) by bus
+*b) by plane
+c) by car
+Did they go to Morro de São Paulo?
+a) Yes, they did.
+*b) No, they didn’t.
+The food was spicy. (v)
+erro: Did you {saw|see} the castle?
+reescreva: We went to the beach. (question) | DID | ___ to the beach? | Did you go
+ditado: Did you have a good time in Chile?
+# frase: Reacting to stories
+Really? That sounds amazing!
+Lucky you!
+Oh no! What a pity!
+What was the best part?
+I’d love to go there!
+# conversa: Tell me everything! | img:mala
+Tell me about your last holiday: where, when, who with, how, what you did.
+Ask your teacher 6 questions about her last trip.
+Was there a problem on any trip you took? What happened?
+# tarefas: Atividades recomendadas
+Past simple · questions and negatives
+Homework · My last holiday
+Homework · Did you have fun?`],
+
+['EN','A2','Like or would like? Wants and preferences',`# capa: Like or would like? | img:xicara
+I like coffee. / I’d like a coffee, please.
+# sobre: Sobre esta aula
+ver: a diferença entre **like** (gostar, em geral) e **would like** (querer, agora ou no futuro); **Would you like…?** para oferecer e convidar; **I’d like to + verbo**; **I’d prefer… / I’d rather…** para preferências
+porque: “Do you like coffee?” e “Would you like a coffee?” parecem iguais, mas uma é sobre gostos e a outra é uma oferta. Confundir as duas gera respostas estranhas, e “I want” no lugar de “I’d like” pode soar grosseiro no restaurante.
+meta: diferenciar gostos e desejos; oferecer e convidar com Would you like…?; pedir com educação usando I’d like
+nivel: Nível A2
+# aquecimento: Likes and wishes
+pergunta: What do you like doing on Saturdays? What would you like to do this Saturday?
+jogo: Yes or no? | A professora faz perguntas misturando like e would like. O aluno responde certo: “Do you like tea?” → “Yes, I do.” / “Would you like a tea?” → “Yes, please!”
+# tabela: Like or would like?
+Structure | Meaning | Example
+like / likes | gostar (sempre, em geral) | I like pizza. She likes dancing.
+would like (’d like) | querer (agora, educado) | I’d like a pizza, please.
+Would you like…? | oferta ou convite | Would you like some water?
+would like to + verb | desejo / plano | I’d like to visit Japan one day.
+# explica: Answers
+Para **Do you like…?**: Yes, I **do**. / No, I **don’t**.
+Para **Would you like…?**: Yes, **please**. / No, **thanks**. / I’d **love** to!
+> Would you like to come to the cinema? I’d love to!
+Depois de **like** usamos **-ing** para hobbies: I like **swimming**.
+Depois de **would like** usamos **to**: I’d like **to swim**.
+# dica: Cuidado!
+x: Would you like a coffee? Yes, I do.
+ok: Would you like a coffee? Yes, please.
+x: I want a water.
+ok: I’d like some water, please.
+# dialogo: At a friend’s house
+A: Come in! Would you like something to drink?
+B: Yes, please. I’d like some water.
+A: Sure. Do you like Brazilian music?
+B: I love it! Especially samba.
+A: Great! Would you like to come to a samba show on Friday?
+B: I’d love to!
+# exercicio: Practice 1
+escolha: [*Would you like/Do you like] a cup of tea? Yes, please.
+escolha: I [*like/’d like] reading. I read every night.
+escolha: I’d like [*to visit/visiting/visit] Paris one day.
+escolha: Do you like horror films? No, I [*don’t/wouldn’t/not].
+grupos: Likes (always): I like cats, She likes swimming, We like Italian food / Wants (now or future): I’d like a coffee, She’d like to travel, We’d like the bill
+# exercicio: Practice 2
+“Would you like to have dinner with us?” Best answer:
+a) Yes, I like.
+*b) I’d love to, thanks!
+c) Yes, I do.
+erro: Would you like {come|to come} to my party?
+reescreva: I want a sandwich. | LIKE | I ___ a sandwich, please. | would like/’d like
+reescreva: Do you want to dance? | WOULD | ___ to dance? | Would you like
+ditado: Would you like something to drink?
+# frase: Preferences
+I’d prefer tea, please.
+I’d rather stay at home tonight.
+Would you prefer the window or the aisle?
+Either is fine, thanks.
+nota: Depois de **I’d rather** o verbo vem sem to: I’d rather **stay**.
+# conversa: Invitations | img:xicara
+Invite your teacher to 3 different things. She will accept or say no politely.
+Tell me 3 things you like and 3 things you’d like to do this year.
+You’re a waiter. Take my order: “What would you like…?”
+# tarefas: Atividades recomendadas
+Would like and want
+Like, love, hate + -ing
+Homework · I’d love to!`],
+
+['EN','B1','May, might, could: maybe!',`# capa: May, might, could | img:nuvem
+It might rain. She may be late. It could be anything!
+# sobre: Sobre esta aula
+ver: **may, might, could** para possibilidade no presente e no futuro; **might not / may not** (e por que “couldn’t” é diferente); comparar com **will** e **definitely / probably**; falar de planos ainda não decididos
+porque: Brasileiros usam muito “maybe” para tudo. Com may, might e could a fala fica mais natural e precisa, e entender o grau de certeza do outro evita mal-entendidos (ex.: “I might come” não é uma promessa).
+meta: falar de possibilidades com may, might e could; usar might not para possibilidade negativa; mostrar diferentes graus de certeza
+nivel: Nível B1
+# aquecimento: What’s in the box?
+pergunta: What are your plans for the weekend? Are you sure?
+jogo: Mystery box | A professora descreve um objeto escondido: “It’s small and it’s in my bag.” O aluno chuta: “It might be your phone! It could be a key!”
+# linha: How sure are you?
+ponto: 0.1 | won’t
+ponto: 0.4 | might / may / could
+ponto: 0.65 | will probably
+ponto: 0.92 | will
+agora: não
+eixo: 0% | 100%
+Do “com certeza não” ao “com certeza sim”: **may, might e could** ficam no meio, mais ou menos 50%.
+# explica: The rules
+Modal + verbo **sem to**, igual para todas as pessoas:
+> It **might rain** later. · She **may be** in a meeting. · It **could be** true.
+Negativa de possibilidade: **might not / may not**
+> I **might not** go to the party.
+= talvez eu não vá
+**Couldn’t** é diferente: quer dizer “impossível”:
+> That **couldn’t be** Tom. He’s in Japan!
+# dica: Cuidado!
+x: Maybe I will might go.
+ok: I might go. / Maybe I’ll go.
+x: She mights come later.
+ok: She might come later.
+# exercicio: Practice 1
+escolha: Take an umbrella. It [*might/mights/might to] rain.
+escolha: I’m not sure. I [*may not/don’t may/may don’t] have time.
+escolha: That [*couldn’t/might not] be Ana. She’s on holiday in Bali! (impossível)
+escolha: Where’s Sam? He [*could be/could is/can be] in the garden.
+grupos: Possible: might, may, could, maybe / Impossible: couldn’t, can’t / Certain: will definitely, must
+# imagem: What might be happening? | img:tempestade
+Look at the picture. What might happen next?
+Use: It might… / They could… / Maybe…
+# leitura: Weather or not? | img:nuvem
+tipo: Group chat
+**Bia:** Beach tomorrow? ☀️
+**Leo:** I’m not sure. The forecast says it **might** rain in the afternoon.
+**Bia:** We **could** go early and come back at lunchtime!
+**Leo:** Good idea. But I **may not** wake up early 😅
+**Bia:** I’ll call you at 7. No excuses!
+# exercicio: Practice 2
+Why isn’t Leo sure about the beach?
+a) He has to work.
+*b) It might rain.
+c) He doesn’t like the beach.
+Bia suggests going early. (v)
+erro: I might {to visit|visit} my parents this weekend.
+reescreva: Perhaps she is at home. | MIGHT | She ___ home. | might be at/may be at
+ditado: It might rain this afternoon.
+# conversa: Maybe, maybe not | img:nuvem
+Tell me 3 things you might do this weekend and 1 thing you might not do.
+Where might you be in 5 years? What might change in your life?
+Look around the room: what could be in my bag?
+# tarefas: Atividades recomendadas
+Might, may and could
+Picture talk: what might be happening?
+Homework · Maybe, maybe not`],
+
+['EN','B1','Comparing: as… as and the more, the better',`# capa: As… as and the more, the better | img:balao
+It’s not as expensive as I thought. The sooner, the better!
+# sobre: Sobre esta aula
+ver: **as + adjetivo + as** para igualdade (as tall as); **not as… as** para comparar de um jeito mais suave; **the same as / different from / similar to**; **the + comparativo, the + comparativo** (the more you practise, the easier it gets)
+porque: Além de -er e more, o inglês tem jeitos muito naturais de comparar. “It’s not as good as the book” soa mais educado que “It’s worse”, e “the sooner, the better” é usado o tempo todo.
+meta: comparar com as… as e not as… as; descrever semelhanças e diferenças; usar the more…, the more… em frases e expressões
+nivel: Nível B1
+# aquecimento: Film or book?
+pergunta: Can you think of a film that is as good as the book?
+jogo: Compare us! | Comparem aluno e professora: “I’m not as tall as you.” “You’re as busy as me.” Quem fizer mais frases verdadeiras ganha.
+# tabela: Ways to compare
+Structure | Example
+as + adj + as | My sister is as tall as me.
+not as + adj + as | The film is not as good as the book.
+the same as | My phone is the same as yours.
+different from / similar to | Portuguese is similar to Spanish.
+# explica: The more…, the better
+**The** + comparativo …, **the** + comparativo … = quanto mais…, mais…
+> **The more** you practise, **the easier** it gets.
+> **The older** I get, **the happier** I am.
+Expressões curtas: **The sooner, the better.** · **The more, the merrier.** (quanto mais gente, melhor)
+# dica: Cuidado!
+x: He is so tall as his father.
+ok: He is as tall as his father.
+x: More you study, more you learn.
+ok: The more you study, the more you learn.
+# dialogo: Choosing a phone
+A: Which phone should I buy, this one or the new model?
+B: This one is not as fast as the new one, but it’s much cheaper.
+A: Is the camera the same?
+B: It’s similar to the new one. Honestly, it’s almost as good.
+A: OK. The cheaper, the better!
+# exercicio: Practice 1
+escolha: My car is [*as old as/as older as/so old as] yours.
+escolha: The beach was not [*as crowded as/as crowded than] last year.
+escolha: [*The more/More/The most] I sleep, the more tired I feel!
+escolha: Your bag is the same [*as/than/like] mine.
+lacunas: [The] earlier we leave, [the] less traffic we’ll have. Rio is [different] from São Paulo, but [similar] to Salvador. || as, than
+# leitura: City or countryside? | img:balao
+tipo: Opinion
+I moved from São Paulo to a small town last year. Life here is **not as exciting as** in the city, but it’s **much calmer**. Rent is **not as expensive as** in São Paulo, and the air is **cleaner**.
+Of course, it’s **different from** what I was used to. There aren’t **as many** restaurants, and the internet isn’t **as fast**.
+But I’ve learned one thing: **the less** I rush, **the happier** I am.
+# exercicio: Practice 2
+Which is true about the small town?
+a) It’s as exciting as São Paulo.
+*b) It’s calmer and cheaper.
+c) The internet is faster.
+The writer is happier now. (v)
+reescreva: Ana is taller than Bia. | AS | Bia is not ___ Ana. | as tall as
+reescreva: If you practise more, it gets easier. | THE | ___ practise, the easier it gets. | The more you
+ditado: The more you read, the more you learn.
+# conversa: Compare and decide | img:balao
+Compare your city with another city you know, using as… as and not as… as.
+Is your life now the same as 10 years ago? What’s different?
+Finish: The more I…, the more I… · The older I get, the…
+# tarefas: Atividades recomendadas
+As…as and not as…as
+Comparatives and superlatives
+Homework · The more, the merrier`],
+);
+/* ---------- lote 7 (inglês) · B2 ---------- */
+SLIDES_SEED.push(
+['EN','B2','Annoying habits: he’s always leaving his socks!',`# capa: Annoying habits | img:meias
+He’s always leaving his socks on the floor!
+# sobre: Sobre esta aula
+ver: **be always + -ing** para reclamar de hábitos irritantes; **will / won’t** para hábitos e comportamentos típicos (She’ll talk for hours); **would** e **used to** para hábitos do passado; **keep + -ing**; vocabulário de manias (pet peeves)
+porque: Normalmente “always” vem com o present simple. Mas com o **continuous** ele vira uma **reclamação**, e quem não conhece essa nuance perde o tom da conversa. É uma estrutura muito usada por nativos.
+meta: reclamar de hábitos com be always + -ing e keep + -ing; descrever comportamentos típicos com will e would; falar de manias com humor
+nivel: Nível B2
+# aquecimento: Pet peeves
+pergunta: What’s your biggest pet peeve? What annoys you on public transport?
+jogo: Annoying or not? | A professora lê hábitos (chewing loudly, being late, replying “k”). O aluno dá uma nota de 0 a 10 de irritação e explica.
+# tabela: Talking about habits
+Structure | Use | Example
+present simple + always | fato neutro | He always gets up at 6.
+be always + -ing | reclamação | He’s always leaving the door open!
+keep + -ing | repete e irrita | She keeps interrupting me.
+will / won’t | comportamento típico | He’ll spend hours on his phone.
+would (past) | hábito passado | My dad would sing in the car.
+# explica: Neutral or annoyed?
+O mesmo hábito, dois tons. **Neutro**, até carinhoso:
+> She **always calls** me on Sundays.
+**Reclamação**:
+> She**’s always calling** me at work!
+**Will** com ênfase também reclama: He **WILL** leave the lights on! (e não adianta pedir)
+# dica: Cuidado!
+x: He always is complaining.
+ok: He’s always complaining.
+x: She keeps to interrupt me.
+ok: She keeps interrupting me.
+# tirinha: Flatmates
+[sofa]
+Tom (bravo): You’re always leaving your dishes in the sink!
+Sam: Sorry! I’ll wash them later.
+---
+Tom (bravo): You always say that. And you keep eating my yogurts!
+---
+Sam (pensando): Well… you’re always singing in the shower at 6 am!
+Tom (surpreso): Fair enough.
+# exercicio: Practice 1
+escolha: My neighbour [*is always playing/always is playing/always plays] loud music at night! (reclamação)
+escolha: Why do you keep [*checking/to check/check] your phone?
+escolha: When I was a child, my grandma [*would/will] tell us stories every night.
+escolha: He [*will/is] sit in front of the TV for hours if you let him.
+grupos: Neutral: She always calls on Sundays, He usually takes the bus, They often travel / Complaint: She’s always calling me at work, He keeps losing his keys, They’re always arguing
+# leitura: Office pet peeves | img:meias
+tipo: Survey
+A survey of 2,000 office workers revealed the habits that drive colleagues crazy. Top of the list: people who **are always eating** smelly food at their desks.
+In second place: colleagues who **keep replying all** to emails. Others mentioned people who **will talk** loudly on the phone and managers who **are always scheduling** meetings that could have been emails.
+Interestingly, 40% admitted that they **do** at least one of these things themselves.
+# exercicio: Practice 2
+What is the most annoying habit in the survey?
+*a) eating smelly food at the desk
+b) replying all to emails
+c) long meetings
+Most people admitted having one of these habits. (f)
+erro: She keeps {to lose|losing} her keys. It drives me crazy!
+reescreva: He interrupts me again and again. | KEEPS | He ___ me. | keeps interrupting
+reescreva: She complains all the time and it’s annoying. | ALWAYS | She’s ___ ! | always complaining
+ditado: He’s always leaving his socks on the floor.
+# conversa: Confessions | img:meias
+Describe someone with an annoying habit (without names!) using be always + -ing and keep + -ing.
+What habits did your family have when you were a child? Use would.
+Confess: what annoying habit do you have?
+# tarefas: Atividades recomendadas
+Used to and would
+Present simple or continuous?
+Homework · Pet peeves`],
+
+['EN','B2','Future in the past: I was going to call you!',`# capa: Future in the past | img:relogio
+I was going to call you, but… · I knew it would be fun.
+# sobre: Sobre esta aula
+ver: **was / were going to** para planos que não aconteceram; **would** para o futuro visto do passado (I knew it would rain); **was about to** (estava prestes a); **was supposed to** (era para…); desculpas e mudanças de planos
+porque: Explicar planos que mudaram é muito comum (“Eu ia te ligar…”). Em português usamos o “ia”, e o inglês tem estruturas específicas para isso. Sem elas, a frase fica no presente e perde o sentido.
+meta: falar de planos que não deram certo; contar o que alguém achava que ia acontecer; dar desculpas naturais com was going to e was supposed to
+nivel: Nível B2
+# aquecimento: Change of plans
+pergunta: Tell me about a plan that didn’t happen. What were you going to do?
+jogo: Excuses, excuses | A professora diz algo que o aluno não fez (“You didn’t send the email!”). O aluno inventa a desculpa: “I was going to send it, but…”
+# linha: Looking forward from the past
+ponto: 0.25 | I thought…
+faixa: 0.25-0.6 | …it would be easy
+ponto: 0.6 | it wasn’t!
+agora: 0.85
+O **futuro no passado**: do ponto de vista de um momento passado, olhamos para frente. Depois, a realidade pode ter sido diferente.
+# tabela: Future in the past
+Structure | Use | Example
+was going to | plano que mudou | I was going to call you, but my phone died.
+would | previsão vista do passado | I knew you would love it.
+was about to | prestes a | I was about to leave when she arrived.
+was supposed to | era para / combinado | We were supposed to meet at 8.
+# dica: Cuidado!
+x: I will call you, but I forgot.
+ok: I was going to call you, but I forgot.
+x: I knew it will be difficult.
+ok: I knew it would be difficult.
+# dialogo: Sorry I’m late
+A: Where were you? You were supposed to be here at seven!
+B: I know, I’m so sorry. I was about to leave when my boss called.
+A: You could have sent a message.
+B: I was going to, but my battery died.
+A: Well, I knew you would have a good excuse!
+# exercicio: Practice 1
+escolha: I [*was going to/am going to/will] buy the tickets, but they sold out.
+escolha: She told me she [*would/will] be late.
+escolha: We [*were about to/were going about to/are about to] start dinner when the lights went out.
+escolha: The train [*was supposed to/supposed to/was suppose to] arrive at 9, but it was late.
+grupos: Plans that changed: was going to, was supposed to, meant to / Predictions from the past: would, knew it would, thought it would
+# leitura: The trip that never happened | img:aviao
+tipo: Personal story
+In 2019, my best friend and I **were going to** travel around Asia for three months. We **were supposed to** leave in April 2020. We had the tickets, the backpacks and a very detailed plan.
+Of course, we had no idea what **would** happen. We **were about to** book the last hostel when the borders closed.
+We finally went in 2023. It wasn’t the trip we **were going to** have; it was shorter, but somehow it was even better.
+# exercicio: Practice 2
+When were they supposed to leave?
+a) in 2019
+*b) in April 2020
+c) in 2023
+The trip in 2023 was longer than the original plan. (f)
+erro: I thought the test {will|would} be easy, but it was a nightmare.
+reescreva: I planned to email you, but I forgot. | GOING | I ___ you, but I forgot. | was going to email
+reescreva: We had agreed to meet at noon. | SUPPOSED | We ___ at noon. | were supposed to meet
+ditado: I was about to leave when you called.
+# conversa: What were you going to do? | img:relogio
+Tell me about a plan you had as a teenager that never happened.
+When did you think something would be terrible and it was fine (or the opposite)?
+Make excuses: why didn’t you go to the gym last week?
+# tarefas: Atividades recomendadas
+Future in the past
+Narrative tenses
+Homework · Change of plans`],
+
+['EN','B2','Phonetics: stress shift in word families',`# capa: Stress shift | img:disco
+PHOtograph · phoTOgrapher · photoGRAPHic
+# sobre: Sobre esta aula
+ver: como a **sílaba forte muda** dentro da mesma família de palavras (PHOtograph → phoTOgrapher); sufixos que puxam a sílaba forte (-ic, -tion, -ity, -ian); sufixos que não mudam nada (-ful, -ness, -ment); substantivos × verbos com duas sílabas (a REcord / to reCORD)
+porque: Quem lê bem muitas vezes erra a sílaba forte de palavras longas, porque aprendeu a palavra base e só acrescentou o sufixo. Mudar a sílaba forte errada pode tornar a palavra irreconhecível para um nativo.
+meta: prever a sílaba forte com sufixos comuns; pronunciar famílias de palavras corretamente; diferenciar substantivo e verbo pela sílaba forte
+nivel: Nível B2 · fonética
+# aquecimento: Same word?
+pergunta: Can you say these words? photograph, photographer, photographic
+jogo: Clap the stress | A professora fala uma palavra e o aluno bate palma na sílaba forte: eCOnomy, ecoNOmic, eCOnomist.
+# tabela: Suffixes that move the stress
+Suffix | Stress falls on… | Example
+-ic / -ical | the syllable before | PHOto → photoGRAPHic · eCOnomy → ecoNOmic
+-tion / -sion | the syllable before | EDucate → eduCAtion · deCIDE → deCIsion
+-ity | the syllable before | PUblic → puBLIcity · REal → reALity
+-ian | the syllable before | MUsic → muSIcian · POlitics → poliTIcian
+# explica: Suffixes that don’t change
+Sufixos “neutros” não mexem na sílaba forte:
+- **HO**pe → **HO**peful · **HAP**py → **HAP**piness
+- em**PLOY** → em**PLOY**ment · **COM**fort → **COM**fortable
+Dica: com -ic, -tion, -ity e -ian, a sílaba forte é sempre **a que vem antes do sufixo**.
+# vocab: Listen: word families
+photograph | PHO-to-graph
+photographer | pho-TO-gra-pher
+photographic | pho-to-GRA-phic
+economy | e-CO-no-my
+economic | e-co-NO-mic
+politics | PO-li-tics
+political | po-LI-ti-cal
+politician | po-li-TI-cian
+# exercicio: Practice 1
+Where is the stress in “musician”?
+a) MUsician
+*b) muSIcian
+c) musiCIAN
+Where is the stress in “economic”?
+a) eCOnomic
+*b) ecoNOmic
+c) economIC
+grupos: Stress moves: photographic, political, education, reality / Stress stays: hopeful, happiness, employment, comfortable
+# explica: Nouns and verbs
+Em várias palavras de duas sílabas, o **substantivo** tem a força no começo e o **verbo** no fim:
+- a **RE**cord / to re**CORD** · a **PRE**sent / to pre**SENT**
+- an **OB**ject / to ob**JECT** · a **CON**flict / to con**FLICT**
+> I want to record a new record.
+# exercicio: Practice 2
+“They will reCORD the song.” Here, record is…
+*a) a verb
+b) a noun
+“She got a nice PREsent.” Here, present is…
+a) a verb
+*b) a noun
+Where is the stress in “photographer”?
+a) PHOtographer
+*b) phoTOgrapher
+c) photoGRAPHer
+ditado: The photographer took a photograph of the politician.
+# conversa: Practise! | img:disco
+Read the four word families in the table aloud and clap the stress.
+Make sentences with: economy, economic, economist.
+Say one sentence with record (noun) and record (verb).
+# tarefas: Atividades recomendadas
+Word stress
+Suffixes
+Homework · Stress shift`],
+
+['EN','B2','Remote, hybrid or office? A debate',`# capa: Remote, hybrid or office? | img:celular
+Should we ever go back to the office?
+# sobre: Sobre esta aula
+ver: vocabulário do trabalho remoto (commute, burnout, work-life balance, productivity, face-to-face); estrutura de argumento (**claim + reason + example**); expressões para concordar e discordar com educação; **concessão** (Admittedly…, That said…, Even so…)
+porque: Esse é um dos debates mais comuns no mundo do trabalho hoje, em reuniões, entrevistas e conversas com colegas. Saber defender uma opinião, reconhecer o outro lado e responder sem agressividade é essencial no nível B2.
+meta: defender uma posição com motivos e exemplos; reconhecer argumentos contrários com concessão; discordar educadamente
+nivel: Nível B2 · debate
+# aquecimento: Your ideal week
+pergunta: How many days a week would you like to work from home? Why?
+pergunta: What do you miss (or not miss) about the office?
+# vocab: Work vocabulary
+commute | trajeto casa–trabalho | img:onibus
+burnout | esgotamento
+work-life balance | equilíbrio vida–trabalho
+productivity | produtividade
+face-to-face | presencial | img:conversa
+isolated | isolado
+flexible hours | horário flexível | img:relogio
+# tabela: Arguments
+Remote | Hybrid | Office
+no commute | best of both worlds | easier teamwork
+more focus | flexibility | clear routine
+can feel isolated | hard to coordinate | long commutes
+# explica: Building an argument
+**Claim** → **reason** → **example**:
+> **I believe** hybrid work is the best option **because** it combines focus and teamwork. **For instance**, my team meets on Tuesdays to plan and works from home the rest of the week.
+**Concessão** (reconhecer o outro lado):
+> **Admittedly**, the office is better for new employees. **That said**, most tasks don’t need it.
+# leitura: The return-to-office war | img:cidade
+tipo: Business news
+Several big companies have ordered employees back to the office five days a week, claiming that innovation suffers when people work apart. Critics point out that many workers **quit** after these announcements, and that the best talent now chooses **flexible** employers.
+Research is mixed: some studies show that remote workers are **more productive** at individual tasks, while others suggest that **face-to-face** contact helps junior staff learn faster. Most experts agree on one thing: one size doesn’t fit all.
+# exercicio: Practice 1
+Why did some companies order employees back?
+a) to save money
+*b) because they think innovation suffers
+c) because of new laws
+According to research, remote work is always more productive. (f)
+escolha: [*Admittedly/Despite/Although of], working from home can be lonely.
+escolha: I see your point. [*That said/In spite/However that], I still prefer the office.
+lacunas: Long [commutes] can lead to stress and even [burnout]. A good [work-life] balance is essential. || productivity, isolated
+# frase: Agreeing and disagreeing politely
+I see your point, but…
+That’s true to some extent. However…
+I’m not sure I agree with that.
+I couldn’t agree more!
+Fair enough, but have you considered…?
+# exercicio: Practice 2
+Which is the most polite way to disagree?
+a) You’re wrong.
+*b) I see your point, but I’m not sure I agree.
+c) That’s stupid.
+erro: {Despite|Although} the commute is long, I enjoy going to the office.
+reescreva: It’s true that remote work is lonely. But it saves time. | ADMITTEDLY | ___ remote work is lonely, but it saves time. | Admittedly,
+ditado: Admittedly, working from home can feel isolated.
+# conversa: The debate | img:celular
+Motion: “Companies should let employees choose where they work.” Choose a side and give 3 arguments.
+Answer the strongest argument of the other side using a concession.
+What would your ideal working week look like? Be specific.
+# tarefas: Atividades recomendadas
+Reading · Working from home
+Homework · Remote work: pros and cons
+Homework · Office or home?`],
+);
+/* ---------- lote 7 (inglês) · C1 ---------- */
+SLIDES_SEED.push(
+['EN','C1','Discourse markers: mind you, as it happens…',`# capa: Discourse markers | img:conversa
+Mind you… · As it happens… · Come to think of it…
+# sobre: Sobre esta aula
+ver: marcadores do inglês falado que organizam a conversa: corrigir ou ressalvar (**mind you**, **having said that**), coincidência (**as it happens**), lembrança (**come to think of it**), voltar ao assunto (**anyway**, **where was I?**), sinceridade (**to be honest**, **frankly**); posição e entonação
+porque: No nível C1, o que separa uma fala “correta” de uma fala natural são justamente essas palavrinhas. Elas mostram a atitude de quem fala, ligam as ideias e dão tempo para pensar, sem o “é…” ou o “tipo” do português.
+meta: usar marcadores para ressalvar, mudar de assunto e mostrar atitude; entender a função deles numa conversa rápida; soar mais natural sem exagerar
+nivel: Nível C1
+# aquecimento: Fillers
+pergunta: Which words do you use in Portuguese to gain time or change the subject? (tipo, então, enfim…)
+jogo: Story chain | A professora começa uma história e o aluno continua, usando um marcador sorteado a cada frase: anyway, mind you, as it happens…
+# tabela: What they do
+Marker | Function | Example
+mind you | ressalva | It was cheap. Mind you, it was far.
+as it happens | coincidência | As it happens, I know her.
+come to think of it | lembrança | Come to think of it, I owe you!
+having said that | contraponto | It’s pricey. Having said that, it’s worth it.
+anyway | voltar ao assunto | Anyway, where was I?
+# explica: Position and tone
+A maioria vem **no começo** da frase, seguida de uma pausa:
+> Mind you, he did apologise.
+**Mind you** e **having said that** podem vir no fim, como um comentário:
+> She’s a bit bossy. She’s brilliant at her job, mind you.
+**Frankly** e **to be honest** avisam que vem uma opinião sincera (às vezes negativa):
+> To be honest, I didn’t enjoy the film.
+# dica: Cuidado!
+x: Mind you, I loved the hotel. It was perfect. (sem contraste)
+ok: I loved the hotel. Mind you, it wasn’t cheap. (mind you = ressalva)
+x: Actually I live in Lisbon. (querendo dizer “atualmente”)
+ok: Currently I live in Lisbon. · “You’re Brazilian, right?” “Actually, I’m Portuguese.” (actually = na verdade)
+# dialogo: Catching up
+A: How was the conference?
+B: Pretty boring, to be honest. Mind you, the food was amazing.
+A: Did you meet anyone from the Lisbon office?
+B: As it happens, I sat next to their director. Come to think of it, she mentioned you!
+A: Really? Anyway, are you free for lunch?
+# exercicio: Practice 1
+escolha: The flat is tiny. [*Mind you/As it happens], it’s right in the centre.
+escolha: “Do you know a good dentist?” “[*As it happens/Mind you], my sister is one.”
+escolha: [*Come to think of it/Having said that], I never gave you back your book!
+escolha: The course is expensive. [*Having said that/Come to think of it], it’s the best in the country.
+grupos: Contrast: mind you, having said that, that said / Coincidence or fact: as it happens, actually, in fact / Changing topic: anyway, by the way, speaking of which
+# leitura: In defence of “anyway” | img:conversa
+tipo: Language column
+Linguists used to dismiss words like **anyway** and **mind you** as “fillers”. Recent research suggests the opposite: they are some of the most **hard-working** words in the language. They signal that the speaker is about to qualify a statement, return to the main point or close a topic.
+Learners who avoid them often sound abrupt or overly formal, even when their grammar is perfect. On the other hand, overusing them (“anyway, anyway, so, anyway”) can make a speaker sound nervous. The trick is variety and timing.
+# exercicio: Practice 2
+What does the article say about discourse markers?
+a) They are fillers with no meaning.
+*b) They have important functions in conversation.
+c) Learners should avoid them.
+Overusing discourse markers can make you sound nervous. (v)
+erro: The hotel was cheap. {As it happens|Mind you}, it was miles from the beach.
+reescreva: The film was long. However, it was really good. | MIND | The film was long. ___ , it was really good. | Mind you
+ditado: Come to think of it, I haven’t seen her for ages.
+# conversa: Natural conversation | img:conversa
+Tell me about a trip, using at least 5 different discourse markers.
+Give an opinion and then qualify it with “mind you” or “having said that”.
+Talk about a coincidence in your life starting with “As it happens…”.
+# tarefas: Atividades recomendadas
+Discourse markers
+Hedging and softening
+Homework · Mind you…`],
+
+['EN','C1','Needn’t have or didn’t need to?',`# capa: Needn’t have or didn’t need to? | img:chuva
+I needn’t have brought an umbrella!
+# sobre: Sobre esta aula
+ver: **didn’t need to** (não era necessário, e provavelmente não fiz) × **needn’t have + particípio** (fiz, mas não era necessário); **must have / can’t have / might have** para deduções sobre o passado; **should have / was supposed to** para obrigações não cumpridas
+porque: A diferença entre needn’t have e didn’t need to é um clássico de provas avançadas e de conversas de nativos. E mostra um controle fino de tempo e sentido que caracteriza o nível C1.
+meta: diferenciar needn’t have e didn’t need to; fazer deduções sobre o passado com modal perfect; falar de esforço desnecessário e de arrependimento com precisão
+nivel: Nível C1
+# aquecimento: Wasted effort
+pergunta: Tell me about a time you prepared for something that never happened.
+jogo: Did you or didn’t you? | A professora conta situações (“I studied all night, but the exam was cancelled”). O aluno diz se a pessoa fez ou não fez a coisa desnecessária.
+# tabela: Necessity in the past
+Structure | Did you do it? | Example
+didn’t need to + verb | provavelmente não | I didn’t need to cook, so I relaxed.
+needn’t have + participle | sim (e foi à toa) | I needn’t have cooked: they’d already eaten!
+didn’t have to + verb | provavelmente não | We didn’t have to pay. It was free.
+# explica: Deductions about the past
+**must have** (tenho certeza que sim) · **can’t / couldn’t have** (impossível) · **might / may / could have** (talvez):
+> The streets are wet. It **must have rained**.
+> She **can’t have forgotten**; I reminded her twice.
+> He **might have missed** the train.
+# dica: Cuidado!
+x: I needn’t have to go. (estrutura misturada)
+ok: I needn’t have gone. / I didn’t need to go.
+x: She must forgot.
+ok: She must have forgotten.
+# tirinha: The umbrella
+[chuva]
+Mia (pensando): Should I take an umbrella? The forecast says rain.
+Leo: Take it, just in case!
+---
+Mia (feliz): Sunny all day! I needn’t have brought it.
+---
+Leo (surpreso): And I didn’t need to wear a coat. I left it at home!
+Mia: Lucky you!
+# exercicio: Practice 1
+escolha: The taxi was already paid, so I [*didn’t need to/needn’t have] pay. I just got out. (não paguei)
+escolha: I [*needn’t have/didn’t need to] bought so much food. Half the guests didn’t come! (comprei à toa)
+escolha: The lights are off. They [*must have gone/must go/must have go] out.
+escolha: She [*can’t have seen/mustn’t have seen] us. She was in Paris.
+grupos: Did it (unnecessarily): needn’t have worried, needn’t have hurried / Probably didn’t do it: didn’t need to worry, didn’t have to hurry
+# leitura: Overpacking | img:mala
+tipo: Travel blog
+On my first trip to Japan, I packed for every possible disaster. I **needn’t have taken** a hairdryer: every hotel had one. I **needn’t have brought** three guidebooks either; my phone did everything.
+On the other hand, I **didn’t need to** worry about getting lost. The trains were so clear that I never took a wrong turn. The one thing I **should have packed**, comfortable shoes, was the one thing I forgot. I **must have walked** 20 kilometres a day.
+# exercicio: Practice 2
+Did the writer take a hairdryer?
+*a) Yes, but it was unnecessary.
+b) No, because it wasn’t necessary.
+The writer forgot to pack comfortable shoes. (v)
+erro: She must {forgot|have forgotten} our meeting.
+reescreva: It wasn’t necessary for us to hurry, but we did. | NEEDN’T | We ___ . | needn’t have hurried
+reescreva: I’m sure he forgot the meeting. | MUST | He ___ the meeting. | must have forgotten
+ditado: I needn’t have worried about the exam.
+# conversa: Looking back | img:mala
+Tell me 3 things you needn’t have done last year (and why).
+Talk about something you didn’t need to do because someone else did it.
+Speculate: why might the last person who called you have called?
+# tarefas: Atividades recomendadas
+Needn’t have and didn’t need to
+Modals of deduction in the past
+Homework · Needless worries`],
+
+['EN','C1','Emphasis: I do like it, what I need is…',`# capa: Emphasis | img:microfone
+I do understand. · What I need is time. · The very best.
+# sobre: Sobre esta aula
+ver: **do / does / did** enfático (I **do** like it); **what**-clefts (What I need is…); **it**-clefts (It was Ana who…); intensificadores (**the very**, **at all**, **whatsoever**, **on earth**, **ever**); a ênfase na voz
+porque: Em português, a ênfase vem muito pela entonação e por “é que”. Em inglês, existem estruturas próprias, e saber usá-las deixa a fala mais expressiva e convincente em reuniões, apresentações e discussões.
+meta: enfatizar com do/does/did; reorganizar frases com what e it para dar foco; intensificar perguntas e negativas
+nivel: Nível C1
+# aquecimento: Convince me!
+pergunta: When was the last time you really needed to convince someone? How did you do it?
+jogo: Contradict me | A professora diz frases falsas sobre o aluno: “You don’t like coffee.” O aluno corrige com ênfase: “I DO like coffee!”
+# tabela: Ways to emphasise
+Structure | Example
+do / does / did + verb | I did call you! Twice!
+What + clause + is/was | What I love about Rio is the light.
+It is/was + focus + that/who | It was Ana who found the mistake.
+the very + noun/superlative | That’s the very thing I wanted.
+at all / whatsoever | I have no idea whatsoever.
+# explica: Do, does, did
+Usamos **do/does/did** + verbo para **contradizer** ou **reforçar**:
+> “You never listen!” “I **do** listen!”
+> She **does** work hard, I promise.
+> Well, you **did** say you would help.
+Com imperativo, fica mais caloroso: **Do** sit down! **Do** come again!
+# explica: Question intensifiers
+**on earth / ever** reforçam perguntas: What **on earth** happened? Why **ever** did you say that?
+**at all / whatsoever** reforçam negativas: I don’t mind **at all**. There’s no evidence **whatsoever**.
+**the very**: This is **the very** best pizza in town. He left **the very** next day.
+# dica: Cuidado!
+x: I do liked the film.
+ok: I did like the film.
+x: What I need it is a holiday.
+ok: What I need is a holiday.
+# exercicio: Practice 1
+escolha: “You didn’t lock the door!” “I [*did lock/locked do/do locked] it!”
+escolha: [*What/That/Which] I really want is a quiet weekend.
+escolha: It was my sister [*who/what/which] told me the news.
+escolha: What [*on earth/at all/whatsoever] are you doing?
+grupos: Questions: on earth, ever / Negatives: at all, whatsoever / Nouns and superlatives: the very
+# leitura: The power of “what” | img:microfone
+tipo: Speechwriting tips
+Great speakers rarely say “We need more investment.” Instead, they say: “**What** this city needs **is** investment.” The structure creates a short pause and makes the audience wait for the key word.
+**It**-clefts work in a similar way: “**It’s** not the money **that** worries me; **it’s** the time.” And a well-placed **do** can turn a defensive answer into a confident one: “We **do** take this problem seriously.”
+Used once or twice, these structures are powerful. Used in every sentence, they sound like a sales pitch.
+# exercicio: Practice 2
+According to the text, what-clefts…
+*a) make the audience wait for the key information.
+b) should be used in every sentence.
+c) are too informal for speeches.
+reescreva: I need a long holiday. | WHAT | ___ a long holiday. | What I need is
+reescreva: Ana found the solution. | WHO | It ___ the solution. | was Ana who found
+erro: I {do loved|did love} that concert, honestly.
+ditado: What I love about this city is the light.
+# conversa: Make your point | img:microfone
+Contradict 3 things I say about you using do, does or did.
+Tell me 3 things you love about your job using “What I love… is…”.
+Prepare a 1-minute speech about a cause you believe in, with at least 4 emphatic structures.
+# tarefas: Atividades recomendadas
+Emphasis with do and did
+Cleft sentences
+Homework · I do believe…`],
+
+['EN','C1','Overtourism: should cities limit visitors?',`# capa: Overtourism | img:cidade
+Too many tourists? Should cities say no?
+# sobre: Sobre esta aula
+ver: vocabulário de turismo e cidades (overtourism, tourist tax, short-term rentals, footfall, cap, gentrification); **hedging** em textos de opinião (it could be argued, arguably, to some extent); estruturar um texto argumentativo; propor soluções com **condicionais** e **should**
+porque: Turismo em excesso é tema de notícias, provas (IELTS, Cambridge) e conversas de viagem. Discutir um problema complexo com nuance, sem respostas simples, é exatamente o que se espera de um falante C1.
+meta: discutir causas e consequências do turismo em excesso; usar hedging para opiniões equilibradas; propor e avaliar soluções
+nivel: Nível C1 · debate
+# aquecimento: Tourist or traveller?
+pergunta: Have you ever visited a place that was too crowded? How did it feel?
+pergunta: Would you pay a fee to enter a city like Venice?
+# vocab: Key vocabulary
+overtourism | turismo em excesso | img:cidade
+tourist tax | taxa turística
+short-term rentals | aluguéis de temporada | img:casa
+footfall | fluxo de pessoas
+visitor cap | limite de visitantes
+gentrification | gentrificação
+livelihood | sustento
+# leitura: Venice charges at the gate | img:cidade
+tipo: News analysis
+In 2024, Venice became the first city in the world to charge day-trippers an entry fee on busy days. Supporters argue that the fee **could** reduce crowding and fund maintenance. Critics claim it turns the city into a **theme park** and does little to address the real problem: residents leaving because of rising rents and **short-term rentals**.
+Other cities have tried different measures: Amsterdam has stopped new hotels and is moving cruise ships away from the centre, Barcelona plans to phase out tourist flats, and Kyoto has closed some private alleys to visitors. **Arguably**, no single measure works on its own.
+# exercicio: Practice 1
+What do critics say about the Venice fee?
+a) It is too expensive.
+*b) It doesn’t solve the real problem.
+c) It brings too many tourists.
+According to the text, one measure is enough to solve overtourism. (f)
+lacunas: Many locals depend on tourism for their [livelihood], but rising rents caused by [short-term] rentals are pushing them out. Some cities have introduced a visitor [cap]. || footfall, theme
+# tabela: Hedging your opinion
+Too strong | More balanced (C1)
+Tourism destroys cities. | It could be argued that tourism damages some cities.
+The tax doesn’t work. | The tax arguably has a limited effect.
+Everyone hates tourists. | Many residents seem to feel overwhelmed.
+This is the solution. | This may be part of the solution.
+# explica: Proposing solutions
+**If** cities **limited** rentals, rents **might fall**.
+Cities **should** consider… / It **would make sense to**…
+**Rather than** banning tourists, councils **could** spread them across the year.
+Ressalva: **This would only work if**… / **The risk is that**…
+# exercicio: Practice 2
+Which sentence is the most balanced?
+a) Tourists ruin everything.
+*b) Tourism may contribute to rising rents in some areas.
+c) Tourism never causes problems.
+escolha: [*Arguably/Argue/Arguing], the fee is more symbolic than practical.
+reescreva: Tourism damages historic centres. | ARGUED | It could ___ tourism damages historic centres. | be argued that
+erro: {Instead|Rather than/Instead of} banning cruise ships, the city could limit their number.
+ditado: It could be argued that the tax is only part of the solution.
+# conversa: The city council | img:cidade
+You’re on the city council of a popular destination. Propose 3 measures and predict their consequences.
+Argue against your own proposal for one minute. What are its weaknesses?
+Is tourism good or bad for your city? Give a balanced answer.
+# tarefas: Atividades recomendadas
+Hedging and softening
+Writing · Essay connectors
+Homework · Too many tourists`],
+
+['EN','C1','Phonetics: fast speech, elision and assimilation',`# capa: Fast speech | img:fones
+“Nexdoor” · “handbag” → “hambag” · “Didja?”
+# sobre: Sobre esta aula
+ver: **elisão** (sons que somem: next door → nex door); **assimilação** (sons que mudam: handbag → hambag); **junção com you** (did you → didja); **reduções** (gonna, wanna); entender sem precisar imitar tudo
+porque: No C1, o problema não é mais falar, e sim **entender** nativos falando rápido em séries, reuniões e podcasts. Conhecer essas regras transforma “não entendi nada” em “ah, é isso!”.
+meta: reconhecer elisão, assimilação e junção de sons; entender frases rápidas; usar as formas mais naturais na própria fala, com moderação
+nivel: Nível C1 · fonética
+# aquecimento: Did you catch that?
+pergunta: Which English accent or speaker is the hardest for you to understand? Why?
+jogo: Decode me | A professora fala frases bem rápido (“Whaddaya wanna do?”). O aluno escreve o que entendeu e depois comparam com a forma completa.
+# tabela: What happens in fast speech
+Process | What happens | Example
+elision | /t/ or /d/ disappears | next door → “nex door” · last night → “las night”
+assimilation | /n/ → /m/ before p, b, m | handbag → “hambag” · ten pounds → “tem pounds”
+assimilation | /t/ → /p/, /d/ → /b/ | that man → “thap man” · good boy → “goob boy”
+coalescence | t + you, d + you | don’t you → “donchu” · did you → “didja”
+# explica: Why it happens
+Na fala rápida, a boca **economiza movimento**:
+- /t/ e /d/ entre duas consoantes quase **somem**: most people, I don’t know, old man
+- o som se **adapta** ao próximo: o /n/ de ten vira /m/ antes do /p/ de pounds
+- t/d + **you** viram **ch** / **j**: what you → “whatchu”, would you → “wouldja”
+Você não precisa imitar tudo, mas precisa **reconhecer** para entender.
+# vocab: Listen: fast forms
+next door | nex door
+last night | las night
+handbag | hambag
+ten pounds | tem pounds
+did you | didja
+don’t you | donchu
+want to | wanna
+going to | gonna
+# exercicio: Practice 1
+In “last night”, which sound usually disappears?
+*a) the t in last
+b) the n in night
+c) the s in last
+“Ten pounds” often sounds like…
+a) “ten bounds”
+*b) “tem pounds”
+c) “tem bounds”
+What does “Whatchu doing?” mean?
+*a) What are you doing?
+b) What did you do?
+grupos: Elision: next door, last night, most people / Assimilation: handbag, ten pounds, good boy / Coalescence: did you, don’t you, would you
+# frase: Decode these sentences
+I don’t know what you want.
+Did you see the last match?
+Would you like to go next week?
+Most people don’t want to wait.
+# exercicio: Practice 2
+“I dunno whatchu want.” = ?
+*a) I don’t know what you want.
+b) I didn’t know what you wanted.
+“Didja get the tickets?” = ?
+a) Do you get the tickets?
+*b) Did you get the tickets?
+ditado: Would you like to go next week?
+ditado: Most people don’t want to wait.
+# conversa: Practise! | img:fones
+Read the four sentences in “Decode these” twice: first carefully, then fast and natural.
+Your teacher will say 5 fast sentences. Write the full forms.
+Find a 30-second clip from your favourite series and identify 3 examples of fast speech.
+# tarefas: Atividades recomendadas
+Discourse markers
+Homework · Feel the rhythm
+Homework · Fast speech`],
+);
 var SLIDES_LOADED=true;

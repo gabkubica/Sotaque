@@ -682,3 +682,483 @@ Weak writing: vague statements, repetition, “I think” in every sentence`),
     SEQ('Hook: a striking fact or story\nThesis: your clear position\nArguments with evidence\nCounterargument and rebuttal\nCall to action','Put the structure of an op-ed in order.'),
     'Write an op-ed (200–250 words) for a local newspaper about a problem in your city. Include a hook, three arguments, a counterargument and a call to action.']}
 );
+/* ===================== lote 7 · homeworks das aulas novas ===================== */
+CONT_ATIV.push(
+  {l:'EN',lv:'A1',tp:'Escuta',t:'Homework · Around the world',i:'Lição de casa: ouça quatro alunos de uma escola de idiomas em Londres e responda.',a:`Hello! I'm Yuki. I'm from Japan, from Osaka. I'm Japanese and I'm a nurse.
+Hi, my name's Pedro. I'm from Portugal, but my mother is Brazilian. I speak Portuguese and a little English.
+Hello, everybody. I'm Amira. I'm from Egypt. I'm Egyptian. I'm a student, and I'm twenty-two.
+Hi! We're Tom and Kate. We aren't English, we're Irish! We're from Dublin, and we're teachers.`,q:[
+    ['Where is Yuki from?',['China','Japan','Thailand'],1],['What is Yuki’s job?',['a nurse','a teacher','a student'],0],
+    ['Where is Pedro’s mother from?',['Portugal','Spain','Brazil'],2],['How old is Amira?',['twelve','twenty-two','twenty'],1],
+    TF('Tom and Kate are English.',false),TF('Tom and Kate are teachers.',true),
+    GAP('Amira is from Egypt. She’s ___ .','Egyptian'),GAP('Yuki is from Japan. She’s ___ .','Japanese'),
+    'Write about you and two friends or family members: name, country, nationality and job (6 sentences).']},
+  {l:'EN',lv:'A1',tp:'Escuta',t:'Homework · How much is it?',i:'Lição de casa: ouça a Lucy numa loja de presentes e responda.',a:`Shop assistant: Hello! Can I help you?
+Lucy: Yes, please. How much is this mug?
+Shop assistant: It's eight ninety-nine.
+Lucy: And how much are these postcards?
+Shop assistant: They're one fifty each, or five pounds for four.
+Lucy: OK, I'd like the mug and four postcards, please.
+Shop assistant: That's thirteen ninety-nine, please.
+Lucy: Here you are. Twenty pounds.
+Shop assistant: Thank you. Here's your change: six pounds and one penny.`,q:[
+    ['How much is the mug?',['£8.99','£9.99','£8.19'],0],['How much is one postcard?',['£1.15','£1.50','£5'],1],
+    ['How many postcards does Lucy buy?',['two','three','four'],2],['How much is the total?',['£13.99','£14.99','£30.99'],0],
+    TF('Lucy pays with a twenty-pound note.',true),TF('Her change is six pounds and one penny.',true),
+    GAP('How much ___ these postcards?','are'),GAP('How much ___ this mug?','is'),
+    'Write a short dialogue in a shop: ask about the price of 3 things and buy one of them.']},
+  {l:'EN',lv:'A1',tp:'Leitura',t:'Homework · A day in the life',i:'Read the text and answer.\n\nKai is a firefighter in Vancouver, Canada. He works three days a week, but his days are very long. He gets up at five o’clock, has a big breakfast and goes to the fire station by bike. He starts work at seven. At the station, he cleans the fire engine and checks the equipment. When there is a fire, he goes with his team very fast! He has lunch and dinner at the station with his colleagues. Kai doesn’t work on Fridays. On his days off, he plays ice hockey and watches films with his daughter.',q:[
+    ['What is Kai’s job?',['a doctor','a firefighter','a police officer'],1],['How many days a week does he work?',['three','five','seven'],0],
+    ['How does he go to work?',['by car','by bus','by bike'],2],['What time does he start work?',['at five','at six','at seven'],2],
+    TF('Kai has lunch at home.',false),TF('He plays ice hockey on his days off.',true),
+    GAP('Kai ___ (get) up at five o’clock.','gets'),GAP('He doesn’t ___ (work) on Fridays.','work'),
+    'Write about the day of a person you know (6–8 sentences). Remember the -s: he works, she goes…']},
+  {l:'EN',lv:'A2',tp:'Escuta',t:'Homework · Did you have fun?',i:'Lição de casa: ouça a conversa da Rosie com o Dan sobre as férias e responda.',a:`Rosie: Hi Dan! You look tired. Did you have a good holiday?
+Dan: Hi Rosie! Yes, it was great, but I didn't sleep much. We went to Scotland.
+Rosie: Scotland! Did you go to Edinburgh?
+Dan: Yes, we stayed there for three days. Then we took a train to the Highlands.
+Rosie: Did you see the Loch Ness monster?
+Dan: Ha ha, no, we didn't! But we saw lots of deer, and we climbed a mountain.
+Rosie: Was the weather OK?
+Dan: It rained every day! But we didn't care. The food was amazing and the people were really friendly.`,q:[
+    ['Where did Dan go on holiday?',['Ireland','Scotland','Wales'],1],['How long did they stay in Edinburgh?',['two days','three days','a week'],1],
+    ['How did they get to the Highlands?',['by car','by bus','by train'],2],['What did they see in the Highlands?',['the Loch Ness monster','lots of deer','a castle'],1],
+    TF('The weather was sunny.',false),TF('Dan liked the food.',true),
+    GAP('Did you ___ (have) a good holiday?','have'),GAP('We ___ (not / see) the monster.','didn’t see|did not see'),
+    'Write 6 questions with “did” to ask a friend about a trip, and then write your own answers about your last holiday.']},
+  {l:'EN',lv:'B1',tp:'Leitura',t:'Homework · The more, the merrier',i:'Read the text and answer.\n\nAre big families happier? A recent survey asked 3,000 parents in the UK to compare their lives before and after having children. Parents with three or more children said their homes were not as quiet as before, and that they were not as rich as their friends with one child. However, they also said that, the more children they had, the more help they got: older children often looked after the younger ones. Parents of only children said their lives were as busy as before, but they worried more. One father said: “The bigger the family, the louder the dinner table, but it’s also the funniest.” Experts warn that every family is different from the next, so there is no perfect number.',q:[
+    ['How many parents answered the survey?',['300','3,000','30,000'],1],
+    ['What did parents with three or more children say?',['Their homes were as quiet as before.','They got more help from older children.','They were richer than their friends.'],1],
+    ['Parents of only children said they…',['worried more.','had more free time.','were less busy.'],0],
+    TF('The experts say three children is the perfect number.',false),TF('The father thinks big family dinners are noisy but fun.',true),
+    GAP('My house is not as big ___ yours.','as'),GAP('The bigger the family, the ___ (loud) the dinner table.','louder'),
+    ['“The more, the merrier” means…',['more people make it more fun','more money makes you happy','more work is better'],0],
+    'Compare your life now with your life 5 years ago (100 words). Use as… as, not as… as and at least one “the more…, the more…”.']},
+  {l:'EN',lv:'B2',tp:'Escuta',t:'Homework · Pet peeves',i:'Lição de casa: ouça um trecho de podcast sobre manias que irritam e responda.',a:`Welcome back to Small Annoyances, the podcast about the little things that drive us crazy. This week, we asked listeners about their flatmates. Sarah from Leeds says her flatmate is always borrowing her clothes without asking, and he keeps leaving wet towels on the sofa. Raj from Bristol complains about a colleague who will reply all to every single email, even when the message is just "thanks". And my favourite: Jo from Glasgow says her husband would always hum the same song when they were dating. Now he's always whistling it. She says it's cute. Sometimes. So, what's your pet peeve? Send us a voice message!`,q:[
+    ['What is the podcast about?',['big problems at work','small annoying habits','how to find a flatmate'],1],
+    ['What does Sarah’s flatmate keep doing?',['leaving wet towels on the sofa','singing in the shower','eating her food'],0],
+    ['What does Raj’s colleague do?',['arrives late','replies all to every email','talks loudly on the phone'],1],
+    ['What did Jo’s husband do when they were dating?',['He would hum the same song.','He would whistle.','He would call her every night.'],0],
+    TF('Jo finds her husband’s habit completely unbearable.',false),
+    GAP('He keeps ___ (leave) wet towels on the sofa.','leaving'),GAP('She’s always ___ (borrow) my clothes!','borrowing'),
+    ['“He will reply all to every email” shows…',['a typical (annoying) habit','a future plan','a promise'],0],
+    'Write about two pet peeves (120 words): one at home and one at work or school. Use be always + -ing, keep + -ing and will.']},
+  {l:'EN',lv:'B2',tp:'Leitura',t:'Homework · Office or home?',i:'Read the text and answer.\n\nWhen the pandemic forced millions of people to work from home, many predicted the death of the office. Five years later, the picture is more complicated. Most large companies now follow a hybrid model, with two or three days in the office. Supporters say it offers the best of both worlds: quiet, focused work at home and collaboration face to face. Critics argue that hybrid often combines the worst of both: people commute to the office only to spend the day on video calls with colleagues who stayed at home. Admittedly, there is no single answer. What seems clear is that flexibility has become one of the main reasons people choose, or leave, a job.',q:[
+    ['What did many people predict during the pandemic?',['that offices would disappear','that everyone would move to the city','that video calls would end'],0],
+    ['How many days in the office do most hybrid companies require?',['one','two or three','five'],1],
+    ['What is the critics’ main complaint about hybrid work?',['It is too expensive.','People commute only to make video calls.','Nobody uses the office.'],1],
+    TF('The writer says hybrid work is clearly the best model.',false),TF('Flexibility influences people’s job decisions.',true),
+    GAP('___ , there is no single answer. (concessão)','Admittedly'),GAP('It offers the best of both ___ .','worlds'),
+    ['“The worst of both” means…',['the negative sides of the two options','the two worst companies','the most difficult jobs'],0],
+    'Write an opinion paragraph (150 words): Should companies let employees choose where they work? Use claim + reason + example and one concession (Admittedly… / That said…).']},
+  {l:'EN',lv:'C1',tp:'Escuta',t:'Homework · Too many tourists',i:'Lição de casa: ouça um trecho de um debate de rádio sobre turismo em excesso e responda.',a:`Presenter: Joining me are Marta, a tour guide in Lisbon, and Professor Hughes, an urban geographer. Marta, is tourism ruining the city?
+Marta: Ruining is a strong word. Tourism pays my rent, and that of thousands of others. That said, I've seen whole streets in the old town where nobody actually lives any more. Every flat is a short-term rental.
+Professor Hughes: And that's the crux of it. It could be argued that the problem isn't tourists as such, but housing. When a flat earns three times more from visitors than from a local family, the market does the rest.
+Presenter: So would a tourist tax help?
+Professor Hughes: Arguably, only if the money goes back into housing. Otherwise it's largely symbolic.
+Marta: I'd add that spreading visitors across the year and across neighbourhoods would make a real difference.`,q:[
+    ['What is Marta’s job?',['a hotel manager','a tour guide','a city councillor'],1],
+    ['According to Marta, what has happened in parts of the old town?',['Streets are empty of residents.','Shops have closed.','Prices have fallen.'],0],
+    ['What does Professor Hughes see as the core problem?',['tourists’ behaviour','housing and short-term rentals','air pollution'],1],
+    ['When would a tourist tax help, according to the professor?',['if it is very high','if the money goes into housing','if it applies all year'],1],
+    TF('Marta thinks tourism is completely negative for Lisbon.',false),TF('Marta suggests spreading visitors across the year.',true),
+    GAP('It could be ___ that the problem isn’t tourists as such.','argued'),GAP('___ , only if the money goes back into housing.','Arguably'),
+    'Write a balanced essay (220–250 words): “Cities should limit the number of tourists.” Use hedging (it could be argued, arguably, to some extent) and propose two realistic measures.']}
+);
+
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · What are you wearing?',i:'Lição de casa: roupas, cores e I’m wearing.',q:[
+    SORT(`Always plural: jeans, trousers, shorts, sunglasses
+One thing: dress, skirt, jacket, hat`),
+    PICK('Today I’m [*wearing/wear] a [*red T-shirt/T-shirt red] and black jeans. I love [*these/this] jeans!'),
+    FIX('She’s wearing a {dress blue|blue dress}.'),FIX('My shoes {is|are} new.'),
+    COMIC(`[armario]
+Ana: What are you wearing to the party?
+Leo: ___
+---
+Ana (feliz): Cool! I’m wearing my green dress.`,['My black jacket and white shirt.','Yes, I am.','I wear every day.'],0),
+    ['___ you wearing a hat today?',['Are','Is','Do'],0],
+    'What are you wearing today? Describe 5 clothes with their colours. Then describe the clothes of a person in your family.']},
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · How do you feel?',i:'Lição de casa: sentimentos com to be e because.',q:[
+    PICK('I’m [*hungry/hunger]. Let’s eat! She [*is/has] thirsty. We’re [*bored/boring] because the film is long.'),
+    SORT(`Good: happy, excited, relaxed
+Bad: sad, angry, worried
+Body: hungry, thirsty, tired`),
+    FIX('I {have|am} cold. Can you close the window?'),FIX('He’s tired {so|because} he works a lot.'),
+    COMIC(`[cansado]
+Mia: Hi Sam! How are you?
+Sam: ___
+---
+Mia: Oh no! Go to bed early tonight.`,['I’m really tired.','I’m fine, thanks!','Yes, I do.'],0),
+    TF('“I’m boring” and “I’m bored” mean the same.',false),
+    'Write 6 sentences: how do you feel on Monday morning, Friday night, on your birthday, at the dentist, in a traffic jam and on holiday? Use because.']},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · I’d love to!',i:'Lição de casa: like ou would like? Convites e pedidos.',q:[
+    PICK('[*Would you like/Do you like] a cup of tea? — Yes, please. I [*like/’d like] swimming, I go every week. I’d like [*to visit/visiting] Japan one day.'),
+    COMIC(`[ingresso]
+Leo: Would you like to come to the cinema on Saturday?
+Ana: ___
+---
+Leo (feliz): Great! I’ll buy the tickets.`,['I’d love to!','Yes, I like.','Yes, I do.'],0),
+    KWT('I want a coffee.','LIKE','I ___ a coffee, please.','would like/’d like'),
+    KWT('Do you want to dance?','WOULD','___ to dance?','Would you like'),
+    FIX('Would you like {come|to come} with us?'),
+    SORT(`Likes (always): I like cats, She likes jazz, They like running
+Wants (now or future): I’d like a table for two, She’d like to travel, We’d like the bill`),
+    'Write 3 invitations to friends (Would you like to…?) and their answers: one yes, one “I’d love to, but…”, one polite no.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Maybe, maybe not',i:'Lição de casa: may, might e could para possibilidade.',q:[
+    PICK('Take a jacket. It [*might/mights/might to] get cold. I [*may not/don’t may] be home tonight. That [*can’t/might not] be Leo. He’s in Japan!'),
+    KWT('Perhaps she is in a meeting.','MIGHT','She ___ a meeting.','might be in'),
+    KWT('Maybe we won’t go to the party.','MAY','We ___ to the party.','may not go'),
+    KWT('It’s possible that the train is late.','COULD','The train ___ late.','could be'),
+    FIX('He might {to call|call} you later.'),
+    SORT(`Possible: might, may, could
+Impossible: can’t, couldn’t
+Certain: will definitely, must`),
+    'Write about your plans for next year (100 words): 3 things you will do, 3 things you might do and 2 things you might not do.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · Change of plans',i:'Lição de casa: futuro no passado.',q:[
+    PICK('I [*was going to/am going to] call you, but my phone died. She said she [*would/will] help us. We [*were about to/were about] leave when it started to rain.'),
+    KWT('We had agreed to meet at eight.','SUPPOSED','We ___ at eight.','were supposed to meet'),
+    KWT('I planned to buy the tickets, but they sold out.','GOING','I ___ the tickets, but they sold out.','was going to buy'),
+    KWT('She was just going to leave when he arrived.','ABOUT','She ___ when he arrived.','was about to leave'),
+    FIX('I knew the exam {will|would} be difficult.'),
+    SEQ('We were going to travel in April.\nThen the flights were cancelled.\nWe were about to give up.\nFinally, we went in September.','Put the story in order.'),
+    'Write about a plan that didn’t happen (120 words). Use was going to, was supposed to, was about to and would.']},
+  {l:'EN',lv:'B2',tp:'Pronúncia',t:'Homework · Stress shift',i:'Lição de casa: a sílaba forte que muda nas famílias de palavras.',q:[
+    ['Where is the stress in “photographer”?',['PHO-to-gra-pher','pho-TO-gra-pher','pho-to-GRA-pher'],1],
+    ['Where is the stress in “economic”?',['e-CO-no-mic','e-co-NO-mic','E-co-no-mic'],1],
+    ['Where is the stress in “politician”?',['po-li-TI-cian','PO-li-ti-cian','po-LI-ti-cian'],0],
+    ['Where is the stress in “reality”?',['RE-a-li-ty','re-A-li-ty','re-a-LI-ty'],1],
+    SORT(`Stress moves: photographic, education, musician, democratic
+Stress stays: hopeful, happiness, employment, comfortable`),
+    ['“They want to reCORD a song.” Here, record is…',['a verb','a noun'],0],
+    DIT('The photographer took a photograph of the politician.'),
+    'Write 5 sentences, each with two words from the same family (e.g., economy / economic). Read them aloud and record yourself.']},
+  {l:'EN',lv:'C1',tp:'Expressões',t:'Homework · Mind you…',i:'Lição de casa: marcadores do discurso no inglês falado.',q:[
+    PICK('The flat is tiny. [*Mind you/As it happens], it’s right in the centre. “Do you know a good plumber?” “[*As it happens/Mind you], my brother is one.” [*Come to think of it/Having said that], I never paid you back!'),
+    SORT(`Contrast: mind you, having said that, that said
+Coincidence or fact: as it happens, actually, in fact
+Changing topic: anyway, by the way, speaking of which`),
+    FIX('{Actually|Currently} I live in Lisbon, but I’m moving next year.'),
+    COMIC(`[conversa]
+Bia: How was the new restaurant?
+Leo: The food was amazing.
+---
+Leo: ___
+Bia (surpreso): Really? How much?`,['Mind you, it wasn’t cheap.','As it happens, it was cheap.','Anyway, the food was amazing.'],0),
+    KWT('The hotel was great. However, it was far from the beach.','MIND','The hotel was great. ___ , it was far from the beach.','Mind you'),
+    'Write a short anecdote (150 words) about a trip or a day out, as if you were telling a friend, with at least 6 different discourse markers.']},
+  {l:'EN',lv:'C1',tp:'Gramática',t:'Homework · Needless worries',i:'Lição de casa: needn’t have, didn’t need to e deduções no passado.',q:[
+    PICK('I [*needn’t have/didn’t need to] bought so much food: half the guests didn’t come. The meeting was cancelled, so I [*didn’t need to/needn’t have] go. The lights are off; they [*must have/must] gone out.'),
+    KWT('It wasn’t necessary for us to hurry, but we did.','NEEDN’T','We ___ .','needn’t have hurried/need not have hurried'),
+    KWT('I’m sure she forgot the meeting.','MUST','She ___ the meeting.','must have forgotten'),
+    KWT('It’s impossible that he saw us; he was in Paris.','CAN’T','He ___ us; he was in Paris.','can’t have seen/cannot have seen'),
+    FIX('She must {forgot|have forgotten} my birthday.'),
+    SORT(`Did it, unnecessarily: needn’t have worried, needn’t have cooked
+Probably didn’t do it: didn’t need to worry, didn’t have to cook`),
+    'Write about a time you prepared too much for something (150 words). Use needn’t have, didn’t need to, must have and might have.']},
+  {l:'EN',lv:'C1',tp:'Gramática',t:'Homework · I do believe…',i:'Lição de casa: ênfase com do/did, clefts e intensificadores.',q:[
+    KWT('I need a long holiday.','WHAT','___ a long holiday.','What I need is'),
+    KWT('My sister found the solution.','WHO','It ___ the solution.','was my sister who found'),
+    KWT('I called you yesterday, I promise!','DID','I ___ yesterday, I promise!','did call you'),
+    KWT('I don’t mind at all.','LEAST','I don’t ___ .','mind in the least'),
+    PICK('What [*on earth/at all] are you doing? There’s no evidence [*whatsoever/on earth]. That’s [*the very/the most very] thing I wanted.'),
+    FIX('I {do loved|did love} that concert.'),
+    'Write a short speech (150 words) defending a cause you care about. Use at least two clefts (What…is… / It is… that…), emphatic do and one intensifier.']},
+  {l:'EN',lv:'C1',tp:'Pronúncia',t:'Homework · Fast speech',i:'Lição de casa: entender a fala rápida (elisão, assimilação e junções).',q:[
+    DIT('I don’t know what you want.'),DIT('Did you see the last match?'),DIT('Most people don’t want to wait.'),
+    ['“Didja get the tickets?” means…',['Did you get the tickets?','Do you get the tickets?','Did they get the tickets?'],0],
+    ['In “ten pounds”, the n often sounds like…',['m','ng','d'],0],
+    SORT(`Elision (a sound disappears): next door, last night, most people
+Assimilation (a sound changes): handbag, ten pounds, good boy
+Coalescence (t/d + you): did you, don’t you, would you`),
+    'Choose a 30-second clip of a series or podcast. Write down 5 examples of fast speech you hear and their full forms.']}
+);
+/* ===================== lote 7 · homeworks extras (A1 a C1) ===================== */
+CONT_ATIV.push(
+  /* ---------- A1 ---------- */
+  {l:'EN',lv:'A1',tp:'Leitura',t:'Homework · The new neighbour',i:'Read the text and answer.\n\nHi! I’m Sara, your new neighbour in flat 4. I’m from Chile, but I live here now with my husband, Mark, and our two children, Lucas and Ema. Lucas is seven and Ema is four. We’ve got a dog, too: his name is Bolt and he’s very friendly! Our flat is small, but there’s a nice balcony with lots of plants. Mark is a chef and I’m a teacher. Please come and say hello. Our door is the blue one!',q:[
+    ['Where is Sara from?',['Spain','Chile','Mexico'],1],['How many children has she got?',['one','two','three'],1],
+    ['How old is Ema?',['four','seven','fourteen'],0],['What is Mark’s job?',['a teacher','a doctor','a chef'],2],
+    TF('Bolt is a cat.',false),TF('There’s a balcony in Sara’s flat.',true),
+    GAP('We’ve ___ a dog.','got'),GAP('There ___ a nice balcony.','is|’s'),
+    'Write a message to a new neighbour (6 sentences): who you are, your family, your home and your pets.']},
+  {l:'EN',lv:'A1',tp:'Escuta',t:'Homework · At the market',i:'Lição de casa: ouça a conversa na feira e responda.',a:`Seller: Good morning! What would you like?
+Ben: Good morning. Can I have some tomatoes, please?
+Seller: Sure. How many?
+Ben: Six, please. And a kilo of apples.
+Seller: Red or green?
+Ben: Green, please. Have you got any bananas?
+Seller: Sorry, no bananas today. We've got lovely oranges.
+Ben: OK, four oranges, please. How much is that?
+Seller: That's seven pounds, please.`,q:[
+    ['How many tomatoes does Ben want?',['four','six','ten'],1],['What colour apples does he buy?',['red','green','yellow'],1],
+    ['What fruit is not available?',['oranges','apples','bananas'],2],['How much does he pay?',['£7','£11','£4'],0],
+    TF('Ben buys four oranges.',true),TF('The seller has got bananas today.',false),
+    GAP('Can I ___ some tomatoes, please?','have'),GAP('Have you got ___ bananas?','any'),
+    'Write your shopping list for the weekend (8 items with quantities) and a short dialogue at a market.']},
+  {l:'EN',lv:'A1',tp:'Escuta',t:'Homework · Can you spell that?',i:'Lição de casa: ouça a ligação para uma academia e responda.',a:`Receptionist: City Gym, good afternoon.
+Man: Hello. I'd like to book a swimming class, please.
+Receptionist: Of course. What's your name?
+Man: It's Daniel Okafor.
+Receptionist: Can you spell your surname, please?
+Man: Yes. O-K-A-F-O-R.
+Receptionist: Thank you. And your phone number?
+Man: It's oh-seven-nine-four-three, two-six-one, five-eight-eight.
+Receptionist: Great. The class is on Tuesday at six thirty.
+Man: Perfect. Thank you!`,q:[
+    ['What does Daniel want to book?',['a yoga class','a swimming class','a tennis class'],1],
+    ['How do you spell his surname?',['OKAFOR','OCAFOR','OKAFFOR'],0],
+    ['When is the class?',['Tuesday at 6:30','Thursday at 6:30','Tuesday at 7:30'],0],
+    TF('Daniel calls a gym.',true),['His phone number starts with…',['07943','07934','09743'],0],
+    GAP('Can you ___ your surname, please?','spell'),GAP('I’d ___ to book a class.','like'),
+    'Write your name, email and phone number as you would say them in English (for example: “oh-seven…”, “at”, “dot”).']},
+  /* ---------- A2 ---------- */
+  {l:'EN',lv:'A2',tp:'Leitura',t:'Homework · A walk in the mountains',i:'Read the text and answer.\n\nLast summer, Nina and her brother went hiking in the mountains near their town. It was a beautiful morning and the sun was shining. They were walking along a narrow path when they heard a strange noise. Nina stopped. Something was moving in the trees! Her brother was very scared, but Nina took out her phone and waited. Suddenly, a big brown deer jumped onto the path. It looked at them for a few seconds and then ran away. Nina didn’t take a photo because her hands were shaking, but they still talk about it every day.',q:[
+    ['Where did Nina and her brother go?',['to the beach','to the mountains','to a park'],1],
+    ['What was the weather like?',['rainy','sunny','cloudy'],1],
+    ['What were they doing when they heard the noise?',['eating lunch','walking along a path','taking photos'],1],
+    ['What animal did they see?',['a bear','a dog','a deer'],2],
+    TF('Nina took a great photo of the animal.',false),TF('Her brother was scared.',true),
+    GAP('The sun ___ (shine) when they started.','was shining'),GAP('They ___ (hear) a strange noise.','heard'),
+    'Write a short story (80–100 words) about a surprise during a trip. Use the past continuous (I was walking…) and the past simple (when I saw…).']},
+  {l:'EN',lv:'A2',tp:'Escuta',t:'Homework · Lost and found',i:'Lição de casa: ouça o diálogo no balcão de achados e perdidos e responda.',a:`Officer: Hello, can I help you?
+Woman: Yes, I think I left my bag on the train this morning.
+Officer: What does it look like?
+Woman: It's a small black backpack with a red key ring.
+Officer: Let me check… Is this one yours?
+Woman: No, that one isn't mine. Mine is smaller.
+Officer: What about this one?
+Woman: Yes! That's mine! Thank you so much.
+Officer: Can you tell me what's inside, please?
+Woman: My laptop, a blue umbrella and my sister's book. The book is hers, not mine!`,q:[
+    ['Where did the woman lose her bag?',['on a bus','on a train','in a café'],1],
+    ['What does her bag look like?',['a big red backpack','a small black backpack','a small blue bag'],1],
+    ['Was the first bag hers?',['Yes, it was.','No, it wasn’t.'],1],
+    ['Whose book is in the bag?',['the officer’s','her sister’s','her friend’s'],1],
+    TF('There is an umbrella in the bag.',true),
+    GAP('That one isn’t ___ . Mine is smaller.','mine'),GAP('The book is ___ (her sister), not mine.','hers'),
+    'Describe something you lost once: what it looked like, where you lost it and whether you found it (80 words). Use mine, yours, his, hers.']},
+  {l:'EN',lv:'A2',tp:'Escuta',t:'Homework · Weekend plans',i:'Lição de casa: ouça a conversa sobre o fim de semana e responda.',a:`Jess: So, what are you going to do this weekend, Paulo?
+Paulo: I'm going to visit my grandparents on Saturday. They live in the countryside.
+Jess: Nice! Are you going to drive?
+Paulo: No, I'm going to take the bus. It's cheaper. What about you?
+Jess: I'm going to paint my bedroom. It's a horrible colour!
+Paulo: What colour is it going to be?
+Jess: Light green, I think. And on Sunday I'm going to relax and watch a film.
+Paulo: Sounds perfect. I'm not going to do much on Sunday. Can I help you paint?
+Jess: Really? Thanks! I'll make lunch.`,q:[
+    ['Who is Paulo going to visit?',['his parents','his grandparents','his sister'],1],
+    ['How is he going to travel?',['by car','by train','by bus'],2],
+    ['What is Jess going to do on Saturday?',['paint her bedroom','watch a film','visit friends'],0],
+    ['What colour is the bedroom going to be?',['light blue','light green','white'],1],
+    TF('Jess is going to make lunch for Paulo.',true),
+    GAP('What ___ you going to do this weekend?','are'),GAP('I’m going ___ take the bus.','to'),
+    'Write about your plans for next weekend (6–8 sentences) with going to.']},
+  {l:'EN',lv:'A2',tp:'Leitura',t:'Homework · Healthy habits',i:'Read the text and answer.\n\nDoctors say that small habits can make a big difference to our health. Most people should sleep seven to nine hours a night, but many adults usually sleep less than six. Experts also say we should drink water regularly and walk at least 30 minutes a day. You don’t have to go to the gym: you can take the stairs, get off the bus one stop early or walk to the supermarket. Another important habit is eating more vegetables. People who often cook at home usually eat better than people who always eat fast food. And finally: never look at your phone just before you sleep!',q:[
+    ['How many hours should most people sleep?',['five to six','seven to nine','ten'],1],
+    ['How long should we walk every day?',['at least 30 minutes','one hour','ten minutes'],0],
+    ['According to the text, people who cook at home…',['usually eat better','spend more money','never eat fast food'],0],
+    TF('You have to go to the gym to be healthy.',false),TF('It’s a bad idea to look at your phone before sleeping.',true),
+    GAP('Many adults ___ (usually / sleep) less than six hours.','usually sleep'),GAP('You ___ go to the gym. (não é obrigatório)','don’t have to|do not have to'),
+    'Write about your habits (100 words): what do you always, usually, sometimes and never do? What should you change?']},
+  /* ---------- B1 ---------- */
+  {l:'EN',lv:'B1',tp:'Leitura',t:'Homework · The job offer',i:'Read the email and answer.\n\nDear Ms Ferreira,\nThank you for attending the interview last Thursday. We are pleased to offer you the position of Marketing Assistant at Greenway Foods. The position is full-time, and you would start on 3 March. Your salary would be £28,000 per year, and you would be entitled to 25 days of holiday. As discussed, you would be able to work from home on Fridays. Please could you confirm whether you accept this offer by the end of next week? If you have any questions, do not hesitate to contact me.\nKind regards,\nPeter Lowe, HR Manager',q:[
+    ['What position is offered?',['Marketing Manager','Marketing Assistant','HR Assistant'],1],
+    ['When would she start?',['next Thursday','on 3 March','at the end of next week'],1],
+    ['How many days of holiday would she get?',['20','25','28'],1],
+    ['When could she work from home?',['on Mondays','on Fridays','never'],1],
+    TF('The job is part-time.',false),TF('She must answer by the end of next week.',true),
+    GAP('We are ___ to offer you the position.','pleased'),GAP('Do not ___ to contact me.','hesitate'),
+    'Write a reply (100–120 words): accept the offer, thank Peter and ask two questions about your first day.']},
+  {l:'EN',lv:'B1',tp:'Escuta',t:'Homework · Gap year',i:'Lição de casa: ouça o trecho de podcast sobre um ano sabático e responda.',a:`Today on Life Choices I'm talking to Hannah, who took a gap year before university. Hannah, what did you do?
+Well, first I worked in a café for six months to save money. Then I travelled around South America for four months. I've never been so far from home!
+Was it difficult?
+At the beginning, yes. I'd never travelled alone before, and my Spanish was terrible. But I've made friends in five different countries, and I still talk to them every week.
+Would you recommend it?
+Definitely, but plan your budget. I ran out of money in Peru and had to work in a hostel for three weeks. It was actually one of the best experiences of the trip!`,q:[
+    ['What did Hannah do first?',['She travelled.','She worked in a café.','She studied Spanish.'],1],
+    ['How long did she travel?',['four months','six months','a year'],0],
+    ['Why was it difficult at the beginning?',['She was ill.','She had never travelled alone.','She didn’t like the food.'],1],
+    ['What happened in Peru?',['She lost her passport.','She ran out of money.','She met her boyfriend.'],1],
+    TF('Hannah still talks to the friends she made.',true),TF('She hated working in the hostel.',false),
+    GAP('I’ve never ___ so far from home!','been'),GAP('I ___ out of money in Peru.','ran'),
+    'Would you like to take a gap year? Write 120 words: where would you go, what would you do and what might be difficult?']},
+  {l:'EN',lv:'B1',tp:'Leitura',t:'Homework · The robbery',i:'Read the news story and answer.\n\nA jewellery shop in the city centre was robbed on Tuesday night. When the owner, Mr Davies, arrived on Wednesday morning, he saw that someone had broken the back window. The thieves had taken watches and rings worth £40,000, but they had left the most expensive necklace in the safe. Police believe the robbers had visited the shop as customers before the robbery, because they knew exactly where the cameras were. A neighbour said she had heard a noise at about 2 am, but she had thought it was a cat. The police have asked anyone with information to contact them.',q:[
+    ['When did the robbery happen?',['on Tuesday night','on Wednesday morning','on Monday'],0],
+    ['How did the thieves get in?',['through the front door','through the back window','through the roof'],1],
+    ['What did the thieves NOT take?',['watches','rings','the most expensive necklace'],2],
+    ['Why do police think the robbers had visited before?',['They knew where the cameras were.','A customer recognised them.','They left a note.'],0],
+    TF('The neighbour called the police at 2 am.',false),
+    GAP('Someone ___ (break) the back window before he arrived.','had broken'),GAP('She ___ (think) it was a cat.','had thought|thought'),
+    'Write a short news story (120 words) about a strange event in your city. Use the past simple and the past perfect.']},
+  /* ---------- B2 ---------- */
+  {l:'EN',lv:'B2',tp:'Escuta',t:'Homework · The four-day week trial',i:'Lição de casa: ouça a reportagem de rádio e responda.',a:`Six months ago, sixty-one companies in the UK agreed to test a four-day working week, with no reduction in pay. The results are now in. Of the sixty-one companies, fifty-six have decided to continue with the new schedule, and eighteen have made it permanent. Employees reported less stress and better sleep, while sick days fell by almost two thirds. Crucially, most managers said productivity stayed the same or even improved. Not everyone is convinced, though. Critics point out that the trial mostly involved office jobs, and that hospitals or schools would find it far harder to cut a working day without hiring more staff.`,q:[
+    ['How many companies took part?',['18','56','61'],2],
+    ['How many have made the change permanent?',['18','56','60'],0],
+    ['What happened to sick days?',['They rose.','They fell by almost two thirds.','They stayed the same.'],1],
+    ['What do most managers say about productivity?',['It fell sharply.','It stayed the same or improved.','It is impossible to measure.'],1],
+    TF('Workers had their pay reduced during the trial.',false),
+    ['What is the critics’ main point?',['The trial was too short.','Some sectors would find it much harder.','Employees didn’t like it.'],1],
+    GAP('There was no ___ in pay.','reduction'),GAP('Productivity stayed the same or even ___ .','improved'),
+    'Would a four-day week work in your job or in your country? Write 150 words with arguments for and against.']},
+  {l:'EN',lv:'B2',tp:'Leitura',t:'Homework · Sleep science',i:'Read the text and answer.\n\nFor decades, sleep was treated as wasted time. Now scientists see it as one of the pillars of health, alongside diet and exercise. During deep sleep, the brain clears away waste products that build up during the day, and memories are transferred from short-term to long-term storage. People who regularly sleep fewer than six hours are more likely to catch colds, put on weight and make poor decisions. Yet many of us sacrifice sleep to work longer or scroll through our phones. Experts suggest a few simple rules: keep the same schedule, even at weekends; avoid caffeine after lunch; and keep the bedroom cool, dark and free of screens.',q:[
+    ['How was sleep seen for decades?',['as wasted time','as a medical treatment','as a luxury'],0],
+    ['What happens to memories during deep sleep?',['They are deleted.','They move to long-term storage.','They become dreams.'],1],
+    ['People who sleep fewer than six hours are more likely to…',['catch colds','sleep better at weekends','drink more coffee'],0],
+    TF('Experts recommend sleeping in at weekends.',false),TF('The bedroom should be cool and dark.',true),
+    GAP('The brain clears away waste products that ___ up during the day.','build'),GAP('Many of us ___ sleep to work longer.','sacrifice'),
+    ['“Pillars of health” means…',['the most important parts of health','medicines','the hours of sleep'],0],
+    'Describe your sleep habits and what you could change (150 words). Use should, could and it’s worth + -ing.']},
+  /* ---------- C1 ---------- */
+  {l:'EN',lv:'C1',tp:'Escuta',t:'Homework · Lecture: the myth of multitasking',i:'Lição de casa: ouça o trecho de uma palestra e responda.',a:`Let's start with an uncomfortable truth: for most tasks, multitasking is a myth. What we call multitasking is, in reality, task-switching, and every switch carries a cost. Studies suggest that it can take more than twenty minutes to fully regain concentration after an interruption. Students who check messages while studying not only take longer to finish, but also remember less of what they read. The exceptions are revealing: we can combine tasks when one of them is automatic, such as walking while talking. So, rather than trying to do everything at once, the evidence points towards what researchers call "deep work": blocks of time devoted to a single, demanding task, with notifications switched off.`,q:[
+    ['According to the lecturer, multitasking is really…',['task-switching','a skill we can train','impossible for everyone'],0],
+    ['How long can it take to regain concentration?',['a few seconds','about five minutes','more than twenty minutes'],2],
+    ['Students who check messages while studying…',['finish faster','remember less','learn more vocabulary'],1],
+    ['When can we combine tasks?',['when one is automatic','when both are easy','never'],0],
+    TF('The lecturer recommends switching notifications off.',true),
+    GAP('Every switch ___ a cost.','carries|has'),GAP('The evidence points ___ “deep work”.','towards|toward'),
+    'Write a short guide (200 words) for students on how to study with fewer distractions, using evidence from the lecture and hedging language.']},
+  {l:'EN',lv:'C1',tp:'Escuta',t:'Homework · Podcast: less is more',i:'Lição de casa: ouça o trecho de podcast sobre minimalismo e responda.',a:`Host: My guest today, Leila, owns exactly one hundred things. Leila, why?
+Leila: It started as an experiment. I'd moved flats four times in five years, and every time I was packing boxes of things I hadn't touched since the last move. So I asked myself: what if I only kept what I actually use?
+Host: And was it liberating, or just inconvenient?
+Leila: Both, to be honest. I'd be lying if I said I never missed anything. But on balance, I spend less, I clean less and I make decisions faster. Mind you, I'm not saying everyone should count their possessions. The number is arbitrary; the point is to ask why you own what you own.`,q:[
+    ['How did Leila’s experiment start?',['She lost her job.','She had moved flats many times.','She read a book about it.'],1],
+    ['What did she notice when packing?',['She had too few boxes.','She had things she never used.','Her things were broken.'],1],
+    ['How does she describe the experience?',['completely liberating','both liberating and inconvenient','a total failure'],1],
+    ['What is her main point?',['Everyone should own 100 things.','We should question why we own things.','Moving house is stressful.'],1],
+    TF('Leila says she never misses anything.',false),
+    GAP('I’d be ___ if I said I never missed anything.','lying'),GAP('On ___ , I spend less and clean less.','balance'),
+    'Could you live with 100 things? Write a reflective paragraph (200 words) weighing the pros and cons, with at least two discourse markers.']}
+);
+
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  /* ---------- A1 ---------- */
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · My weekend',i:'Lição de casa: present simple no fim de semana.',q:[
+    PICK('On Saturdays I [*get up/gets up] late. My brother [*plays/play] football. We [*don’t/doesn’t] work on Sundays. [*Does/Do] your sister go to the cinema?'),
+    SORT(`play: football, the guitar, video games
+go: to the cinema, swimming, shopping
+watch: TV, films, a match`),
+    FIX('My mother {cook|cooks} lunch on Sundays.'),FIX('He doesn’t {likes|like} football.'),
+    SEQ('I get up at nine.\nI have breakfast in the garden.\nI go to the park with my dog.\nIn the evening, I watch a film.','Put Laura’s Saturday in order.'),
+    'Write about your weekend (6–8 sentences) and the weekend of a friend (he/she + -s).']},
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · In my bag',i:'Lição de casa: a/an, this/these e plurais.',q:[
+    SORT(`a: book, phone, pen, key
+an: umbrella, apple, orange, egg`),
+    PICK('There’s [*an/a] umbrella in my bag. [*These/This] keys are mine. I’ve got two [*boxes/boxs] of chocolates and three [*watches/watchs].'),
+    FIX('I’ve got {a|an} orange and a banana.'),FIX('Look at {this|these} glasses! They’re beautiful.'),
+    ['What’s the plural of “child”?',['childs','children','childrens'],1],
+    ['What’s the plural of “woman”?',['womans','women','womens'],1],
+    'What’s in your bag right now? Write 8 things with a, an or numbers (two keys, a phone…).']},
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · Where is it?',i:'Lição de casa: preposições de lugar e there is / there are.',q:[
+    PICK('The cat is [*under/at] the table. There [*are/is] two books on the shelf. My keys are [*in/on] my bag. There [*isn’t/aren’t] a TV in my bedroom.'),
+    COMIC(`[sofa]
+Mia: Where’s my phone?
+Leo: ___
+---
+Mia (feliz): Oh, yes! Thank you!`,['It’s on the sofa, next to you.','They’re on the sofa.','It’s a phone.'],0),
+    FIX('There {is|are} three chairs in the kitchen.'),
+    SORT(`There is: a sofa, a lamp, an armchair
+There are: two windows, some plants, three cushions`),
+    'Describe your living room (6–8 sentences) with there is, there are and in, on, under, next to, between.']},
+  /* ---------- A2 ---------- */
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · The best day ever',i:'Lição de casa: superlativos.',q:[
+    PICK('It was [*the best/the better/the most good] day of my life! Everest is [*the highest/the most high] mountain in the world. This is [*the most beautiful/the beautifullest] beach I know.'),
+    SORT(`-est: the tallest, the cheapest, the biggest
+most: the most expensive, the most interesting, the most famous
+irregular: the best, the worst, the furthest`),
+    KWT('No city in Brazil is bigger than São Paulo.','BIGGEST','São Paulo is ___ in Brazil.','the biggest city'),
+    FIX('It’s the {most cheap|cheapest} restaurant in town.'),
+    ['What’s the superlative of “bad”?',['the baddest','the worst','the most bad'],1],
+    'Write about the best day of your life and the worst trip you’ve had (100 words), with at least 5 superlatives.']},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · Rules at work',i:'Lição de casa: must, mustn’t, have to e don’t have to.',q:[
+    PICK('You [*mustn’t/don’t have to] smoke in the office. It’s forbidden! We [*don’t have to/mustn’t] wear a suit on Fridays. It’s optional. Nurses [*have to/has to] work at night sometimes.'),
+    SORT(`Obligation: must, have to, need to
+Prohibition: mustn’t, can’t, not allowed to
+No obligation: don’t have to, don’t need to`),
+    FIX('She {have to|has to} start work at seven.'),FIX('You {don’t have to|mustn’t} park here. It’s for ambulances only.'),
+    COMIC(`[relogio]
+Boss: Welcome to your first day!
+Sam: Thanks! Do I have to wear a uniform?
+---
+Boss: ___
+Sam (feliz): Great, I like this T-shirt!`,['No, you don’t have to. Wear what you like.','No, you mustn’t wear clothes.','Yes, you mustn’t.'],0),
+    'Write the rules of your job, school or home (8 sentences) with must, mustn’t, have to and don’t have to.']},
+  /* ---------- B1 ---------- */
+  {l:'EN',lv:'B1',tp:'Escrita',t:'Homework · Noisy neighbours',i:'Lição de casa: reclamar por escrito, com educação.',q:[
+    PICK('I’m writing [*to complain about/for complain] the noise. I would be grateful [*if you could/if you can to] keep the music down after 11 pm. I [*look forward to hearing/look forward to hear] from you.'),
+    SEQ('Dear Mr Patel,\nI’m writing about the noise from your flat at night.\nOn Monday and Wednesday, the music continued until 2 am.\nI would be grateful if you could keep it down after 11 pm.\nThank you for your understanding.\nBest regards, Ana','Put the email in order.'),
+    FIX('I would be grateful if you {will|could} help.'),
+    SORT(`Polite: I’m afraid…, I would be grateful if…, Could you possibly…?
+Rude: Stop it now!, You’re terrible neighbours, This is unacceptable and stupid`),
+    KWT('Please reply soon.','FORWARD','I ___ from you.','look forward to hearing'),
+    'Write an email to a neighbour (120 words) about a problem (noise, parking, rubbish). Be polite but clear.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Life online',i:'Lição de casa: present perfect ou past simple; for e since.',q:[
+    PICK('I [*’ve had/had] this phone for two years. I [*bought/have bought] it in 2024. She [*’s never used/never used] TikTok. [*Have you ever posted/Did you ever post] a video?'),
+    KWT('I started using Instagram in 2018.','SINCE','I ___ 2018.','have used Instagram since/’ve used Instagram since/have been using Instagram since/’ve been using Instagram since'),
+    KWT('My last post was three months ago.','POSTED','I ___ for three months.','haven’t posted anything/have not posted anything/haven’t posted'),
+    FIX('I {have seen|saw} that video yesterday.'),
+    SORT(`for: two years, a long time, ages
+since: 2019, Monday, I was a child`),
+    'Write about your life online (120 words): what apps you have used, for how long, and something memorable that happened.']},
+  {l:'EN',lv:'B1',tp:'Phrasal verbs',t:'Homework · Tidy up!',i:'Lição de casa: phrasal verbs da casa e do dia a dia.',q:[
+    PICK('Please [*turn off/turn down] the lights when you leave. We’ve [*run out of/run away] milk. Can you [*put away/put on] your toys? It’s time to [*get rid of/get on] these old clothes.'),
+    SORT(`Tidying: tidy up, put away, throw away
+Machines: turn on, turn off, plug in
+Problems: run out of, break down, give up`),
+    FIX('The washing machine broke {up|down} again.'),
+    KWT('There’s no coffee left.','RUN','We’ve ___ coffee.','run out of'),
+    CLOZE('On Sunday I [tidied] up my room, [threw] away old magazines and [put] my winter clothes away.','took, gave'),
+    'Describe your cleaning routine at home (100 words) using at least 6 phrasal verbs.']},
+  /* ---------- B2 ---------- */
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · Unless you hurry',i:'Lição de casa: unless, as long as, provided that e in case.',q:[
+    PICK('We’ll miss the train [*unless/if] we hurry. You can borrow my car [*as long as/unless] you bring it back by Sunday. Take an umbrella [*in case/if] it rains.'),
+    KWT('If you don’t book now, there won’t be any seats.','UNLESS','There won’t be any seats ___ now.','unless you book'),
+    KWT('You can come, but only if you’re quiet.','PROVIDED','You can come ___ quiet.','provided that you are/provided you are/provided that you’re/provided you’re'),
+    KWT('I’ll take some snacks because we might get hungry.','CASE','I’ll take some snacks ___ hungry.','in case we get'),
+    FIX('I’ll help you {unless|as long as} you help me later.'),
+    'Write the rules for lending something to a friend (120 words) using unless, as long as, provided that and in case.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · He denied it',i:'Lição de casa: verbos de relato (advise, suggest, refuse, admit, deny).',q:[
+    KWT('“I didn’t take the money,” he said.','DENIED','He ___ the money.','denied taking/denied having taken'),
+    KWT('“Why don’t we go by train?” she said.','SUGGESTED','She ___ by train.','suggested going/suggested that we go/suggested that we should go'),
+    KWT('“I won’t sign the contract,” said the manager.','REFUSED','The manager ___ the contract.','refused to sign'),
+    KWT('“You should see a doctor,” my friend told me.','ADVISED','My friend ___ a doctor.','advised me to see'),
+    KWT('“Yes, I broke the window,” said Tom.','ADMITTED','Tom ___ the window.','admitted breaking/admitted having broken/admitted that he had broken/admitted that he broke'),
+    SORT(`+ -ing: deny, admit, suggest
++ to: refuse, agree, promise
++ object + to: advise, warn, remind`),
+    'Report a conversation or argument you had recently (150 words) using at least 5 different reporting verbs.']},
+  {l:'EN',lv:'B2',tp:'Expressões',t:'Homework · Idioms at work',i:'Lição de casa: expressões idiomáticas do trabalho.',q:[
+    SORT(`Communication: keep someone in the loop, be on the same page, touch base
+Quality: cut corners, go the extra mile, think outside the box`),
+    PICK('Please keep me [*in the loop/on the loop]. We need to make sure everyone is [*on the same page/in the same page]. Don’t [*cut corners/cut edges]: safety comes first.'),
+    ['“Can you give me a ballpark figure?” means…',['an approximate number','an exact price','a sports result'],0],
+    ['“Let’s touch base next week” means…',['let’s talk briefly next week','let’s play baseball','let’s finish the project'],0],
+    FIX('She always goes the extra {kilometre|mile} for her clients.'),
+    'Write an email to a colleague (120 words) about a project, using at least 5 idioms from this homework.']},
+  /* ---------- C1 ---------- */
+  {l:'EN',lv:'C1',tp:'Expressões',t:'Homework · The art of understatement',i:'Lição de casa: understatement, o jeito britânico de suavizar.',q:[
+    SORT(`Understatement: not bad at all, a bit of a problem, I wouldn’t say no
+Overstatement: the best thing ever, an absolute disaster, I’m dying to`),
+    ['A British colleague says your proposal is “not without its challenges”. She probably means…',['It has serious problems.','It is perfect.','It is easy.'],0],
+    ['“I wouldn’t say no to a coffee” means…',['I’d like a coffee.','I don’t want coffee.','I never drink coffee.'],0],
+    PICK('The traffic was [*a bit of a nightmare/a bit of nightmare]. Her presentation was [*not bad at all/not at all bad thing]: everyone loved it.'),
+    KWT('The meeting was quite long, honestly.','RATHER','The meeting was ___ , honestly.','rather long'),
+    FIX('It’s {a little bit of|a bit of a} problem, to be honest.'),
+    'Rewrite a very enthusiastic or very negative review (of a film, hotel or restaurant) in a British understated style (150 words).']},
+  {l:'EN',lv:'C1',tp:'Gramática',t:'Homework · It’s essential that he be…',i:'Lição de casa: o subjuntivo e estruturas formais.',q:[
+    PICK('It is essential that every employee [*be/is] informed. The doctor recommended that she [*rest/rests] for a week. If I [*were/was] you, I would accept the offer. I’d rather you [*didn’t/don’t] tell anyone.'),
+    KWT('The committee wants all members to attend.','INSISTS','The committee ___ attend.','insists that all members/insists all members'),
+    KWT('You should leave early, I suggest.','SUGGEST','I ___ early.','suggest that you leave/suggest you leave'),
+    KWT('It’s time for us to go home.','HIGH','It’s ___ home.','high time we went'),
+    FIX('It is vital that the report {is sent|be sent} today.'),
+    'Write a formal memo (150 words) about new office rules using at least 4 subjunctive or formal structures (it is essential that…, we recommend that…).']},
+  {l:'EN',lv:'C1',tp:'Escrita',t:'Homework · The rebuttal',i:'Lição de casa: responder a um argumento contrário com elegância.',q:[
+    SORT(`Acknowledge: Admittedly…, It is true that…, Granted…
+Rebut: However this overlooks…, That said…, Even so…
+Conclude: On balance…, All things considered…, Ultimately…`),
+    SEQ('Opponents argue that public transport should not be free.\nAdmittedly, free fares would cost the city millions.\nHowever, this overlooks the savings from less traffic and pollution.\nOn balance, the benefits clearly outweigh the costs.','Put the rebuttal paragraph in order.'),
+    KWT('It is true that the plan is expensive, but it is necessary.','GRANTED','___ , the plan is necessary.','Granted, the plan is expensive/Granted the plan is expensive'),
+    FIX('{In my opinion I think|In my view} the proposal is flawed.'),
+    PICK('This argument [*overlooks/oversees] a key point. [*On balance/In balance], the evidence supports the change.'),
+    'Choose a controversial topic. Write a paragraph (200 words) that presents the opposing view fairly and then rebuts it.']}
+);
