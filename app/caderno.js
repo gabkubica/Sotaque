@@ -26,7 +26,7 @@ const CAD_FONTS={andika:['Andika','Andika, Figtree, sans-serif'],display:['Diver
 const CAD_TITLES=['My English Notebook','My English Book','English is fun!','Super English','My Book of Words','English with Teacher'];
 const CAD_HEROES=['unicorn','t-rex','sauropod','cat','dog','rabbit','panda','fox','penguin','butterfly','rocket','soccer-ball','crown','rainbow','teddy-bear','dragon','castle','woman-fairy','robot','astronaut','dolphin','octopus','strawberry','balloon'];
 const cadEmo=(n,x,y,s,rot=0,op=1)=>{ const e=typeof EMOJI!=='undefined'&&EMOJI[n]; return e? `<g transform="rotate(${rot} ${x+s/2} ${y+s/2})" opacity="${op}"><svg x="${x}" y="${y}" width="${s}" height="${s}" viewBox="0 0 ${e[0]} ${e[1]}">${e[2]}</svg></g>` : ''; };
-const CD={sid:null,pi:0,cam:{x:0,y:0,z:1},tool:'pen',color:'#221c1e',size:1,penSeen:false,finger:true,sel:null,hist:{},fut:{},ptr:new Map(),act:null,gest:null,ro:false,raf:0,saveT:0,el:null};
+const CD={sid:null,pi:0,cam:{x:0,y:0,z:1},tool:'pen',color:'#221c1e',size:1,penSeen:false,finger:lsGet('sotaque:cad-dedo')!=='0',sel:null,hist:{},fut:{},ptr:new Map(),act:null,gest:null,ro:false,raf:0,saveT:0,el:null};
 const CD_PATH=new WeakMap(), CD_BOX=new WeakMap();
 
 /* ---------- dados ---------- */
@@ -83,7 +83,14 @@ function cadPaintInk(){ const p=cadPage(); if (!p||!CD.el) return; const ctx=cad
   for (const pass of ['hl','pen']) for (const st of p.strokes){ if (st.t!==pass) continue; const b=cadBox(st); if (b[2]<vx0||b[0]>vx1||b[3]<vy0||b[1]>vy1) continue; cadFill(ctx,st,cadPath(st)); } }
 function cadPaintLive(extra){ const ctx=cadCtx(CD.el.live), st=CD.act?.st; if (!st) return;
   const s= extra&&extra.length? {...st,pts:st.pts.concat(extra)} : st; cadFill(ctx,s,new Path2D(cadOutline(s,false))); }
-function cadWorld(){ const {x,y,z}=CD.cam; CD.el.world.style.transform=`translate(${-x*z}px,${-y*z}px) scale(${z})`; cadUi(); }
+function cadWorld(){ const {x,y,z}=CD.cam; CD.el.world.style.transform=`translate(${-x*z}px,${-y*z}px) scale(${z})`; cadUi(); cadRail(); }
+/* página ampliada: barra de rolagem na lateral, para descer e subir com um dedo só */
+function cadRail(){ const r=CD.el?.rail; if (!r) return; const vh=CD.el.view.clientHeight/CD.cam.z, show=vh<CAD_H-4; r.hidden=!show; if (!show) return;
+  const H=r.clientHeight, th=Math.max(44,H*vh/CAD_H), t=Math.max(0,Math.min(1,CD.cam.y/(CAD_H-vh))); r.firstElementChild.style.cssText=`height:${th}px;top:${(H-th)*t}px`; }
+function cadRailDown(e){ e.preventDefault(); e.stopPropagation(); const r=CD.el.rail; try { r.setPointerCapture(e.pointerId); } catch {} cadMoving(true);
+  const go=ev=>{ const b=r.getBoundingClientRect(), vh=CD.el.view.clientHeight/CD.cam.z, th=Math.max(44,b.height*vh/CAD_H), t=Math.max(0,Math.min(1,(ev.clientY-b.top-th/2)/(b.height-th))); CD.cam.y=t*(CAD_H-vh); cadClamp(); cadRedraw(); };
+  const up=()=>{ r.removeEventListener('pointermove',go); r.removeEventListener('pointerup',up); r.removeEventListener('pointercancel',up); cadMoving(false); cadPaintInk(); };
+  go(e); r.addEventListener('pointermove',go); r.addEventListener('pointerup',up); r.addEventListener('pointercancel',up); }
 function cadPaintAll(){ if (!CD.el) return; cadPageDom(); cadWorld(); cadPaintInk(); cadCtx(CD.el.live); }
 function cadRedraw(){ if (CD.raf) return; CD.raf=requestAnimationFrame(()=>{ CD.raf=0; cadWorld(); if (CD.gest||CD.wheelT) cadPaintInkFast(); else cadPaintInk(); }); }
 
@@ -91,6 +98,8 @@ function cadRedraw(){ if (CD.raf) return; CD.raf=requestAnimationFrame(()=>{ CD.
 function cadFit(mode){ const v=CD.el.view, vw=v.clientWidth, vh=v.clientHeight;
   const z= mode==='page'? Math.min(vw/(CAD_W+60),vh/(CAD_H+60)) : Math.min(vw/(CAD_W+40),vh/(CAD_H*0.42));
   CD.cam.z=z; CD.cam.x=(CAD_W-vw/z)/2; CD.cam.y= mode==='page'? (CAD_H-vh/z)/2 : -20/z; cadClamp(); }
+const cadFitZ=()=>{ const v=CD.el.view; return Math.min(v.clientWidth/(CAD_W+60),v.clientHeight/(CAD_H+60)); };
+const cadZoomed=()=>CD.cam.z>cadFitZ()*1.06;
 function cadClamp(){ const v=CD.el.view, vw=v.clientWidth/CD.cam.z, vh=v.clientHeight/CD.cam.z, m=60/CD.cam.z;
   CD.cam.x= vw>=CAD_W+2*m? (CAD_W-vw)/2 : Math.max(-m,Math.min(CAD_W-vw+m,CD.cam.x));
   CD.cam.y= vh>=CAD_H+2*m? (CAD_H-vh)/2 : Math.max(-m,Math.min(CAD_H-vh+m,CD.cam.y)); }
@@ -166,7 +175,7 @@ function cadItemInsert(it){ CD.el.world.querySelector('.cd-items')?.insertAdjace
 function cadItemStyle(it){ const n=CD.el.world.querySelector(`[data-it="${it.id}"]`); if (!n) return; n.style.left=it.x+'px'; n.style.top=it.y+'px'; n.style.width=it.w+'px'; if (it.t!=='text') n.style.height=it.h+'px'; else n.firstElementChild.style.fontSize=(it.fs||44)+'px'; n.style.transform=`rotate(${it.r||0}deg)`; }
 /* moldura de seleção (em pixels da tela, para os botões terem sempre o mesmo tamanho) */
 function cadUi(){ const ui=CD.el?.ui; if (!ui) return; const it=CD.sel&&cadItem(CD.sel);
-  if (!it||CD.ro||CD.tool!=='move'){ if (CD.uiKey){ ui.innerHTML=''; CD.uiKey=''; } return; }
+  if (!it||CD.ro){ if (CD.uiKey){ ui.innerHTML=''; CD.uiKey=''; } return; }   /* a figura escolhida mostra a moldura e os botões com qualquer ferramenta */
   const L=cadLocked(it), key=it.id+'|'+L+'|'+it.t;
   if (CD.uiKey!==key){ CD.uiKey=key;
     const ab=(k,ic,l)=>`<button type="button" data-cd="${k}" aria-label="${l}"><i>${ic}</i><span>${l}</span></button>`;
@@ -179,14 +188,14 @@ function cadUi(){ const ui=CD.el?.ui; if (!ui) return; const it=CD.sel&&cadItem(
   let top=cy+r+20; if (top+bh>vh-8) top=cy-r-20-bh; top=Math.max(8,Math.min(vh-bh-8,top));
   bar.style.left=Math.max(8,Math.min(vw-bw-8,cx-bw/2))+'px'; bar.style.top=top+'px'; }
 /* terminar de mexer: volta para a ferramenta de antes (normalmente a caneta) */
-function cadSelDone(){ CD.sel=null; if (CD.tool==='move'&&(CD.tempMove||CD.prevTool)){ CD.tool=CD.prevTool||'pen'; } CD.tempMove=false; CD.prevTool=null; cadUi(); cadBar(); }
+function cadSelDone(){ CD.sel=null; cadUi(); cadBar(); }
 function cadSelScale(k){ const it=cadItem(CD.sel); if (!it||cadLocked(it)) return; cadPush(cadPage()); const cx=it.x+it.w/2, cy=it.y+it.h/2;
   if (it.t==='text'){ it.fs=Math.max(14,Math.min(220,(it.fs||44)*k)); it.w=Math.max(80,Math.min(CAD_W,it.w*k)); } else { it.w=Math.max(40,Math.min(2*CAD_W,it.w*k)); it.h=Math.max(40,Math.min(2*CAD_H,it.h*k)); }
   it.x=cx-it.w/2; it.y=cy-it.h/2; cadItemStyle(it); cadMeasure(it); cadSave(); cadUi(); }
 function cadAdd(it){ const p=cadPage(); cadPush(p); const v=CD.el.view, sh=CD.el.sheet.classList.contains('on')? CD.el.sheet.offsetHeight : 0, vh=Math.max(160,v.clientHeight-sh);
   const n=CD.addN=((CD.addN||0)+1)%6, [cx,cy]=cadToPage(v.clientWidth/2+(n-2.5)*34,vh/2+(n%3-1)*26);   /* várias figurinhas seguidas não ficam empilhadas */
   it.id='i'+uid(); it.x ??= Math.max(10,Math.min(CAD_W-it.w-10,cx-it.w/2)); it.y ??= Math.max(10,Math.min(CAD_H-it.h-10,cy-it.h/2)); it.r ??= 0;
-  p.items.push(it); cadItemInsert(it); if (CD.tool!=='move'){ CD.prevTool=CD.tool; CD.tempMove=true; } CD.tool='move'; CD.sel=it.id; cadSave(); cadUi(); cadBar(); }
+  p.items.push(it); cadItemInsert(it); CD.sel=it.id; cadSave(); cadUi(); cadBar(); }   /* entra escolhida: dá para arrastar na hora, sem trocar de ferramenta */
 
 /* ---------- texto ---------- */
 function cadTextEdit(it){ const v=CD.el.view; CD.el.ui.innerHTML=''; v.querySelector('.cd-tin')?.blur();
@@ -200,19 +209,23 @@ function cadTextEdit(it){ const v=CD.el.view; CD.el.ui.innerHTML=''; v.querySele
   v.appendChild(ta); fit(); ta.focus(); }
 
 /* ---------- entrada: caneta, dedo, mouse ---------- */
-const cadFingerDraws=()=>CD.finger&&!CD.penSeen;
-function cadDown(e){ if (!CD.el||e.target.closest('.cd-tin,.cd-acts')) return; const L=cadLocal(e); cadPal(false);
+const cadFingerDraws=()=>CD.finger;   /* o dedo escreve até a professora escolher “Dedo só move” (não muda sozinho) */
+function cadDown(e){ if (!CD.el||e.target.closest('.cd-tin,.cd-acts,.cd-rail')) return; const L=cadLocal(e); cadPal(false);
   const sp=e.target.closest?.('[data-say]'); if (sp&&CD.tool!=='eraser'&&CD.tool!=='move'&&typeof kidsSay==='function'){ e.preventDefault(); kidsSay(sp.getAttribute('data-say')); return; }
   if (e.target.closest('.cd-h')){ cadHandleDown(e,e.target.closest('.cd-h').dataset.h); return; }
   e.preventDefault(); try { CD.el.view.setPointerCapture(e.pointerId); } catch {}
   CD.ptr.set(e.pointerId,{x:L[0],y:L[1],type:e.pointerType,t:performance.now()});
-  if (e.pointerType==='pen'){ CD.penT=performance.now(); if (CD.gest&&!CD.gest.item){ CD.gest=null; cadPaintInk(); } if (!CD.penSeen){ CD.penSeen=true; cadBar(); toast('Caneta detectada: agora o dedo só move e dá zoom na página.'); } }
+  if (e.pointerType==='pen'){ CD.penT=performance.now(); if (CD.gest&&!CD.gest.item){ CD.gest=null; cadPaintInk(); } if (!CD.penSeen){ CD.penSeen=true; if (CD.finger&&!lsGet('sotaque:cad-caneta')){ lsSet('sotaque:cad-caneta','1'); toast('Usando a caneta? Se a mão encostar e riscar, toque em “Dedo escreve” (na barra das ferramentas) para o dedo só mover a página.'); } } }
   if (e.pointerType==='touch'&&(CD.act?.pen||(e.width>70&&e.height>70)||(CD.penSeen&&performance.now()-(CD.penT||0)<300))){ CD.ptr.delete(e.pointerId); return; }
   const touches=[...CD.ptr.values()].filter(p=>p.type==='touch');
   if (e.pointerType==='touch'){
     if (CD.act?.pen) return;                       // palma da mão enquanto a caneta escreve
     if (touches.length>=2){ if (CD.act&&!CD.act.pen&&CD.act.kind==='draw'&&performance.now()-CD.act.t0>350){ CD.ptr.delete(e.pointerId); return; } cadCancelTouchAct(); cadGestStart(); return; }
-    if (CD.ro||!cadFingerDraws()&&CD.tool!=='move'){ CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}}; if (!CD.ro){ const hit=cadItemAt(...cadToPage(L[0],L[1])); if (hit) cadLpStart(e.pointerId,L,hit); } return; } }
+    if (CD.ro||!cadFingerDraws()&&CD.tool!=='move'){
+      if (!CD.ro){ const [px,py]=cadToPage(L[0],L[1]), sel=CD.sel&&cadItem(CD.sel);   /* dedo só move: arrasta a figura escolhida; um toque escolhe outra */
+        if (sel&&cadItemAt(px,py,true)===sel&&!cadLocked(sel)){ cadPush(cadPage()); CD.act={kind:'drag',id:e.pointerId,pen:false,it:sel,ox:px-sel.x,oy:py-sel.y,moved:false,t:performance.now()}; return; }
+        const hit=cadItemAt(px,py); CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam},tapIt:hit||null}; if (hit) cadLpStart(e.pointerId,L,hit); return; }
+      CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}}; return; } }
   if (e.pointerType==='mouse'&&e.button!==0){ CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}}; return; }
   if (CD.ro){ CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}}; return; }
   cadToolDown(e,L); }
@@ -224,7 +237,6 @@ function cadLongPress(){ const lp=CD.lp; CD.lp=null; if (!lp||!CD.el) return; co
   if (a?.kind==='draw'&&a.id===lp.id){ CD.act=null; cadCtx(CD.el.live); }
   else if (g?.pan&&g.id===lp.id){ CD.gest=null; cadMoving(false); }
   else return;
-  if (CD.tool!=='move'){ CD.prevTool=CD.tool; CD.tempMove=true; CD.tool='move'; }
   CD.sel=it.id; navigator.vibrate?.(12);
   if (!cadLocked(it)){ const [px,py]=cadToPage(P.x,P.y); cadPush(p); CD.act={kind:'drag',id:lp.id,pen:P.type==='pen',it,ox:px-it.x,oy:py-it.y,moved:false,t:performance.now(),lp:true}; }
   cadBar(); cadUi(); }
@@ -233,17 +245,24 @@ function cadCancelTouchAct(){ const a=CD.act; if (!a||a.pen) return;
   else if (a.kind==='erase'&&a.changed){ const p=cadPage(), s=CD.hist[p.id]?.pop(); if (s){ p.strokes=s.strokes; } CD.act=null; cadPaintInk(); }
   else CD.act=null; }
 function cadToolDown(e,L){ const [px,py]=cadToPage(L[0],L[1]), p=cadPage(), pen=e.pointerType==='pen';
+  /* com uma figura escolhida: arrastar em cima dela move (com qualquer ferramenta); tocar fora só tira a seleção */
+  const sel=CD.sel&&cadItem(CD.sel);
+  if (sel&&CD.tool!=='move'){ const hit=cadItemAt(px,py,true);
+    if (hit===sel&&!cadLocked(sel)){ cadPush(p); CD.act={kind:'drag',id:e.pointerId,pen,it:sel,ox:px-sel.x,oy:py-sel.y,moved:false,t:performance.now()}; return; }
+    CD.sel=null; cadUi(); cadBar(); CD.act={kind:'none',id:e.pointerId}; return; }
   if (CD.tool==='pen'||CD.tool==='hl'){ const pr=pen&&e.pressure>0? e.pressure : .5;
     CD.act={kind:'draw',id:e.pointerId,pen,t0:performance.now(),st:{t:CD.tool,c:CD.tool==='hl'&&CD.color==='#221c1e'? '#f6d32d' : CD.color,w:CAD_SIZES[CD.tool][CD.size],pr:pen? 1 : 0,pts:[+px.toFixed(1),+py.toFixed(1),+pr.toFixed(2)]}};
-    const hit=cadItemAt(px,py); if (hit) cadLpStart(e.pointerId,L,hit);
+    const hit=cadItemAt(px,py); if (hit){ CD.act.tapIt=hit; cadLpStart(e.pointerId,L,hit); }   /* um toque rápido numa figurinha escolhe a figurinha */
     cadPaintLive(); return; }
-  if (CD.tool==='eraser'){ cadPush(p); CD.act={kind:'erase',id:e.pointerId,pen,changed:false}; cadErase(px,py); return; }
-  if (CD.tool==='text'){ const open=CD.el.view.querySelector('.cd-tin'); if (open){ open.blur(); return; } const hit=cadItemAt(px,py); if (hit&&hit.t==='text'){ CD.sel=hit.id; cadTextEdit(hit); return; }
+  if (CD.tool==='eraser'){ cadPush(p); CD.act={kind:'erase',id:e.pointerId,pen,changed:false,tapIt:cadItemAt(px,py),t0:performance.now()}; cadErase(px,py); return; }
+  if (CD.tool==='text'){ const open=CD.el.view.querySelector('.cd-tin'); if (open){ open.blur(); return; } const hit=cadItemAt(px,py);
+    if (hit&&hit.t==='text'){ CD.sel=hit.id; cadUi(); cadTextEdit(hit); return; }
+    if (hit){ CD.sel=hit.id; cadUi(); cadBar(); return; }
     cadPush(p); const fs=[34,48,72][CD.size], it={id:'i'+uid(),t:'text',txt:'',x:Math.max(24,Math.min(CAD_W-300,px)),y:Math.max(10,Math.min(CAD_H-fs*1.4,py-fs*.7)),w:Math.min(560,CAD_W-24-Math.max(24,Math.min(CAD_W-300,px))),h:fs*1.3,r:0,fs,c:CD.color}; p.items.push(it); CD.sel=it.id; cadPageDom(); cadTextEdit(it); return; }
   if (CD.tool==='move'){ const hit=cadItemAt(px,py);
-    if (!hit){ const had=CD.sel; CD.sel=null; cadUi(); CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam},desel:!!had};
+    if (!hit){ const had=CD.sel; CD.sel=null; cadUi(); if (had) cadBar(); CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}};
       const lk=cadItemAt(px,py,true); if (lk) cadLpStart(e.pointerId,L,lk); return; }
-    CD.sel=hit.id; cadPush(p); CD.act={kind:'drag',id:e.pointerId,pen,it:hit,ox:px-hit.x,oy:py-hit.y,moved:false,t:performance.now()}; cadUi(); } }
+    CD.sel=hit.id; cadPush(p); CD.act={kind:'drag',id:e.pointerId,pen,it:hit,ox:px-hit.x,oy:py-hit.y,moved:false,t:performance.now()}; cadUi(); cadBar(); } }
 function cadMove(e){ if (!CD.el) return; const P=CD.ptr.get(e.pointerId); if (!P) return; const L=cadLocal(e); P.x=L[0]; P.y=L[1];
   const g=CD.gest;
   if (g?.pinch){ cadGestMove(); return; }
@@ -263,18 +282,21 @@ function cadMove(e){ if (!CD.el) return; const P=CD.ptr.get(e.pointerId); if (!P
     it.x=cx-it.w/2; it.y=cy-it.h/2; cadItemStyle(it); cadUi(); return; }
   if (a.kind==='rot'){ const it=a.it, cx=it.x+it.w/2, cy=it.y+it.h/2, [px,py]=cadToPage(L[0],L[1]); let r=Math.atan2(py-cy,px-cx)*180/Math.PI+90; for (const s of [0,90,180,270,360,-90]) if (Math.abs(r-s)<4) r=s; it.r=Math.round(r); cadItemStyle(it); cadUi(); } }
 function cadUp(e){ if (!CD.el) return; const P=CD.ptr.get(e.pointerId); CD.ptr.delete(e.pointerId); if (CD.lp?.id===e.pointerId) cadLpStop();
-  const g=CD.gest; if (g?.pinch){ if ([...CD.ptr.values()].filter(p=>p.type==='touch').length<2){ if (g.item){ cadSave(); } CD.gest=null; cadMoving(false); cadPaintInk(); } return; }
-  if (g?.pan&&g.id===e.pointerId){ CD.gest=null; if (g.moved){ cadMoving(false); cadPaintInk(); }
-    else if (CD.tool==='move'&&g.desel&&CD.tempMove) cadSelDone();   /* tocar fora depois de mexer: volta a escrever */
+  const g=CD.gest; if (g?.pinch){ if ([...CD.ptr.values()].filter(p=>p.type==='touch').length<2){ if (g.item){ cadSave(); } CD.gest=null; cadMoving(false); cadPaintInk(); cadBar(); } return; }
+  if (g?.pan&&g.id===e.pointerId){ CD.gest=null; if (g.moved){ cadMoving(false); cadPaintInk(); cadBar(); }
+    else if (g.tapIt&&!CD.ro){ CD.sel=g.tapIt.id; cadUi(); cadBar(); }
+    else if (CD.sel&&CD.tool!=='move'){ CD.sel=null; cadUi(); cadBar(); }
     return; }
   const a=CD.act; if (!a||a.id!==e.pointerId) return; CD.act=null; const p=cadPage();
   if (a.kind==='draw'){ if (CD.liveRaf){ cancelAnimationFrame(CD.liveRaf); CD.liveRaf=0; } if (a.pen) CD.penT=performance.now(); if (e.type==='pointercancel'&&a.st.pts.length<9){ cadCtx(CD.el.live); return; }
+    if (a.tapIt&&performance.now()-a.t0<450){ const P=a.st.pts; let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9; for (let i=0;i<P.length;i+=3){ x0=Math.min(x0,P[i]); x1=Math.max(x1,P[i]); y0=Math.min(y0,P[i+1]); y1=Math.max(y1,P[i+1]); }
+      if (Math.max(x1-x0,y1-y0)<12/CD.cam.z){ cadCtx(CD.el.live); CD.sel=a.tapIt.id; cadUi(); cadBar(); return; } }
     if (a.st.pts.length===3) a.st.pts.push(a.st.pts[0]+.4,a.st.pts[1]+.4,a.st.pts[2]); // um ponto vira bolinha
     cadPush(p); p.strokes.push(a.st); cadCtx(CD.el.live);
     if (a.st.t==='hl') cadPaintInk(); else { const ctx=CD.el.ink.getContext('2d'); cadFill(ctx,a.st,cadPath(a.st)); }
     cadSave(); return; }
-  if (a.kind==='erase'){ if (!a.changed) CD.hist[p.id]?.pop(); else cadSave(); return; }
-  if (a.kind==='drag'){ if (!a.moved){ CD.hist[p.id]?.pop(); const it=a.it; if (it.t==='text'&&performance.now()-a.t<300&&CD.lastTap===it.id){ cadTextEdit(it); } CD.lastTap=it.id; setTimeout(()=>{ if (CD.lastTap===it.id) CD.lastTap=null; },450); }
+  if (a.kind==='erase'){ if (!a.changed){ CD.hist[p.id]?.pop(); if (a.tapIt&&performance.now()-a.t0<450){ CD.sel=a.tapIt.id; cadUi(); cadBar(); } } else cadSave(); return; }
+  if (a.kind==='drag'){ if (!a.moved){ CD.hist[p.id]?.pop(); const it=a.it; if (it.t==='text'&&(CD.tool==='text'||performance.now()-a.t<300&&CD.lastTap===it.id)){ cadTextEdit(it); } CD.lastTap=it.id; setTimeout(()=>{ if (CD.lastTap===it.id) CD.lastTap=null; },450); }
     else cadSave(); cadUi(); return; }
   if (a.kind==='rs'||a.kind==='rot'){ cadMeasure(a.it); cadSave(); cadUi(); } }
 function cadErase(px,py){ const p=cadPage(), r=14/CD.cam.z+6, a=CD.act; let hit=false;
@@ -285,8 +307,8 @@ function cadErase(px,py){ const p=cadPage(), r=14/CD.cam.z+6, a=CD.act; let hit=
 /* dois dedos: zoom e mover (ou girar/aumentar a figurinha selecionada) */
 function cadGestStart(){ const T=[...CD.ptr.entries()].filter(([,p])=>p.type==='touch').slice(0,2); const [a,b]=T.map(([,p])=>p);
   const mx=(a.x+b.x)/2, my=(a.y+b.y)/2, d=Math.hypot(a.x-b.x,a.y-b.y), ang=Math.atan2(b.y-a.y,b.x-a.x);
-  const it=CD.tool==='move'&&CD.sel&&cadItem(CD.sel); let onItem=false;
-  if (it){ const [pa]=[cadToPage(a.x,a.y)], [pb]=[cadToPage(b.x,b.y)]; onItem=cadItemAt(...pa)===it||cadItemAt(...pb)===it; }
+  const it=CD.sel&&cadItem(CD.sel); let onItem=false;
+  if (it&&!cadLocked(it)){ const [pa]=[cadToPage(a.x,a.y)], [pb]=[cadToPage(b.x,b.y)]; onItem=cadItemAt(...pa)===it||cadItemAt(...pb)===it; }
   if (onItem){ cadPush(cadPage()); CD.gest={pinch:true,item:it,ids:T.map(([k])=>k),d,ang,w0:it.w,h0:it.h,fs0:it.fs||44,r0:it.r||0,cx:it.x+it.w/2,cy:it.y+it.h/2}; return; }
   CD.gest={pinch:true,ids:T.map(([k])=>k),mx,my,d,z0:CD.cam.z,px:CD.cam.x+mx/CD.cam.z,py:CD.cam.y+my/CD.cam.z}; cadMoving(true); }
 function cadGestMove(){ const g=CD.gest, a=CD.ptr.get(g.ids[0]), b=CD.ptr.get(g.ids[1]); if (!a||!b) return;
@@ -303,7 +325,7 @@ function cadHandleDown(e,h){ e.preventDefault(); e.stopPropagation(); const it=c
   CD.act={kind:h,id:e.pointerId,pen:e.pointerType==='pen',it,d0:Math.max(10,Math.hypot(px-cx,py-cy)),w0:it.w,h0:it.h,fs0:it.fs||44}; }
 function cadWheel(e){ if (!CD.el) return; e.preventDefault(); const [sx,sy]=cadLocal(e);
   if (e.ctrlKey||e.metaKey) cadZoomAt(sx,sy,CD.cam.z*Math.exp(-e.deltaY*.01)); else { CD.cam.x+=e.deltaX/CD.cam.z; CD.cam.y+=e.deltaY/CD.cam.z; cadClamp(); }
-  if (!CD.wheelT) cadMoving(true); clearTimeout(CD.wheelT); CD.wheelT=setTimeout(()=>{ CD.wheelT=0; cadMoving(false); cadPaintInk(); },160);
+  if (!CD.wheelT) cadMoving(true); clearTimeout(CD.wheelT); CD.wheelT=setTimeout(()=>{ CD.wheelT=0; cadMoving(false); cadPaintInk(); cadBar(); },160);
   cadRedraw(); }
 
 /* ---------- barra de ferramentas ---------- */
@@ -322,16 +344,18 @@ const CDI={pen:'<svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z" fill
 function cadBar(){ const bar=CD.el?.bar; if (!bar) return; const s=user(CD.sid), P=cadPages(CD.sid), p=cadPage(), H=CD.hist[p?.id]||[], F=CD.fut[p?.id]||[];
   const tb=(k,l)=>`<button class="cd-b ${CD.tool===k?'on':''}" data-cd="tool" data-v="${k}" aria-pressed="${CD.tool===k}" title="${l}">${CDI[k]}<span>${l}</span></button>`;
   const cur=CD.tool==='hl'&&CD.color==='#221c1e'? '#f6d32d' : CD.color;
+  const zoomed=CD.el.view.clientWidth? cadZoomed() : false;
   bar.innerHTML=`<div class="cd-row">
     <button class="cd-b cd-back" data-cd="close" title="Fechar o caderno">←<span>${esc((s?.name||'').split(' ')[0])}</span></button>
     ${CD.ro? '' : `<div class="cd-grp"><button class="cd-b" data-cd="undo" ${H.length? '' : 'disabled'} title="Desfazer">${CDI.undo}<span>Desfazer</span></button><button class="cd-b" data-cd="redo" ${F.length? '' : 'disabled'} title="Refazer">${CDI.redo}<span>Refazer</span></button></div>`}
     <span class="cd-sp"></span>
-    ${CD.ro? '' : `<button class="cd-b" data-cd="cover" title="Personalizar a capa">${CDI.cover}<span>Capa</span></button>
-    <button class="cd-b ${CD.penSeen? '' : CD.finger? 'on' : ''}" data-cd="finger" title="${CD.penSeen? 'Com a caneta, o dedo só move a página' : CD.finger? 'O dedo escreve (toque para o dedo só mover)' : 'O dedo só move (toque para o dedo escrever)'}">${CDI.finger}<span>${CD.penSeen? 'Caneta' : CD.finger? 'Dedo escreve' : 'Dedo move'}</span></button>
-    <button class="cd-b cd-ins" data-cd="insert" title="Inserir figurinha, atividade ou foto">${CDI.plus}<span>Inserir</span></button>`}
-    <button class="cd-b" data-cd="fit" title="Ver a página inteira / a largura">${CDI.fit}<span>Ajustar</span></button>
+    <button class="cd-b" data-cd="help" title="Como usar o caderno"><b class="cd-q">?</b><span>Ajuda</span></button>
+    ${CD.ro? '' : `<button class="cd-b" data-cd="cover" title="Personalizar a capa">${CDI.cover}<span>Capa</span></button>`}
+    <button class="cd-b ${zoomed? 'on' : ''}" data-cd="fit" title="${zoomed? 'Voltar a ver a página inteira' : 'Ampliar a página (ou use dois dedos)'}">${CDI.fit}<span>${zoomed? 'Página inteira' : 'Ampliar'}</span></button>
+    ${CD.ro? '' : `<button class="cd-b cd-ins" data-cd="insert" title="Inserir figurinha, prêmio, atividade ou foto">${CDI.plus}<span>Inserir</span></button>`}
     <span class="cd-flag" id="cd-flag">${CD.ro? 'Só para ver' : 'Salvo'}</span></div>`;
-  CD.el.dock.innerHTML= CD.ro? '' : `${tb('pen','Caneta')}${tb('hl','Marca-texto')}${tb('eraser','Borracha')}${tb('text','Texto')}${tb('move','Mover')}<button class="cd-b cd-cur" data-cd="pal" title="Cor e espessura"><i style="--c:${cur};--s:${[10,16,24][CD.size]}px"></i><span>Cor</span></button>`;
+  CD.el.dock.innerHTML= CD.ro? '' : `${tb('pen','Caneta')}${tb('hl','Marca-texto')}${tb('eraser','Borracha')}${tb('text','Texto')}${tb('move','Mover')}<button class="cd-b cd-cur" data-cd="pal" title="Cor e espessura"><i style="--c:${cur};--s:${[10,16,24][CD.size]}px"></i><span>Cor</span></button>
+    <span class="cd-dsep"></span><button class="cd-b cd-finger ${CD.finger? 'on' : ''}" data-cd="finger" aria-pressed="${CD.finger}" title="${CD.finger? 'O dedo escreve. Toque para o dedo só mover a página (para usar com a Apple Pencil).' : 'O dedo só move a página. Toque para o dedo voltar a escrever.'}">${CDI.finger}<span>${CD.finger? 'Dedo escreve' : 'Dedo move'}</span></button>`;
   CD.el.dock.hidden=!!CD.ro;
   CD.el.pager.innerHTML=`<button class="cd-b" data-cd="prev" ${CD.pi? '' : 'disabled'} aria-label="Página anterior">‹</button><button class="cd-b cd-pn" data-cd="pages" title="Ver todas as páginas">${CD.pi? `Página ${CD.pi} <small>de ${P.length-1}</small>` : 'Capa'}</button><button class="cd-b" data-cd="next" ${CD.pi<P.length-1? '' : 'disabled'} aria-label="Próxima página">›</button>${CD.ro? '' : `<button class="cd-b" data-cd="newpage" title="Nova página depois desta" aria-label="Nova página">${CDI.plus}</button>`}`; }
 function cadPal(open){ let el=CD.el.root.querySelector('.cd-pal2'); if (!open){ el?.remove(); return; }
@@ -341,6 +365,19 @@ function cadPal(open){ let el=CD.el.root.querySelector('.cd-pal2'); if (!open){ 
   const btn=CD.el.dock.querySelector('[data-cd=pal]'); if (!btn) return; const b=btn.getBoundingClientRect(), W=el.offsetWidth, Hh=el.offsetHeight, vert=getComputedStyle(CD.el.dock).flexDirection==='column';
   if (vert){ el.style.left=(b.right+10)+'px'; el.style.top=Math.max(8,Math.min(window.innerHeight-Hh-8,b.top+b.height/2-Hh/2))+'px'; }
   else { el.style.left=Math.max(8,Math.min(window.innerWidth-W-8,b.left+b.width/2-W/2))+'px'; el.style.top=Math.max(8,b.top-Hh-10)+'px'; } }
+/* como usar: abre sozinho na primeira vez, e no botão ? */
+function cadHelp(){ const tip=(ic,t,d)=>`<li><span class="cd-hi">${ic}</span><div><b>${t}</b><p>${d}</p></div></li>`;
+  if (CD.ro){ cadSheet(`<div class="cd-tabs"><b class="cd-ht">Como ver o caderno</b><button class="cd-ok" data-cd="sheetx">Entendi</button></div><ul class="cd-help">
+    ${tip('📄','Páginas','Use ‹ e › embaixo para passar as páginas. Toque em “Página 1 de 3” para ver todas de uma vez.')}
+    ${tip('🔍','Ver de perto','Toque em <b>Ampliar</b> (ou afaste dois dedos) e arraste a barra do lado direito para descer. <b>Página inteira</b> volta a mostrar tudo.')}
+    ${tip('🔈','Ouvir','Nas atividades com 🔈, toque no alto-falante para ouvir a palavra.')}</ul>`); return; }
+  cadSheet(`<div class="cd-tabs"><b class="cd-ht">Como usar o caderno</b><button class="cd-ok" data-cd="sheetx">Entendi</button></div><ul class="cd-help">
+    ${tip('✏️','Escrever e desenhar','Escolha Caneta ou Marca-texto e escreva com o dedo ou com a Apple Pencil. Se a mão encostar e riscar, toque em <b>Dedo escreve</b>: o dedo passa a só mover a página.')}
+    ${tip('👆','Mexer em figurinhas e textos','<b>Toque uma vez</b> na figurinha para escolher. Depois é só <b>arrastar</b> para mudar de lugar, ou usar Maior, Menor, Girar e Apagar. Com dois dedos sobre ela, gira e aumenta. Toque fora para terminar.')}
+    ${tip('🔒','Atividades coladas','Ficam travadas: a criança escreve por cima sem mexer a folha. Para mudar a folha de lugar, escolha <b>Mover</b>, segure o dedo sobre ela e toque em Destravar.')}
+    ${tip('🔍','Ver de perto','Toque em <b>Ampliar</b> (ou afaste dois dedos). Para descer, arraste a barra do lado direito (ou use dois dedos). <b>Página inteira</b> volta a mostrar tudo.')}
+    ${tip('📄','Páginas','Use ‹ e › embaixo. Toque em “Página 1 de 3” para ver todas, trocar o fundo ou apagar; + cria uma página nova.')}
+    ${tip('↶','Errou?','<b>Desfazer</b> volta qualquer coisa: traço, figurinha, até página apagada.')}</ul>`); }
 function cadSheet(html){ CD.el.sheet.innerHTML=html? `<div class="cd-sheet-in">${html}</div>` : ''; CD.el.sheet.classList.toggle('on',!!html); }
 const CAD_STK=['gato','cachorro','passaro','coelho','peixes','cavalo','vaca','macaco','rato','maca','banana','sorvete','bolo','pizza','sol','arvore','flor','nuvem','balao','bola','bicicleta','presente','coracao','carro','onibus','aviao','trem','casa','livro','lapis','mochila','chapeu','camiseta','sapato','oculos','violao','feliz','triste','surpreso','bravo'];
 const CAD_EMO={
@@ -397,13 +434,13 @@ function cadSvgInner(p){ return cadBgSvg(p)+p.items.map(it=>{ const cx=it.x+it.w
   +['hl','pen'].map(t=>p.strokes.filter(s=>s.t===t).map(s=>`<path d="${cadOutline(s)}" fill="${s.c}" ${t==='hl'? 'opacity=".38"' : ''}/>`).join('')).join(''); }
 
 /* ---------- ações da barra ---------- */
-function cadGo(i){ const n=cadPages(CD.sid).length; CD.pi=Math.max(0,Math.min(n-1,i)); CD.sel=null; if (CD.tempMove){ CD.tool=CD.prevTool||'pen'; CD.tempMove=false; CD.prevTool=null; } cadSheet(''); cadPal(false); cadFit(CD.pi? 'width' : 'page'); cadPaintAll(); cadBar(); cadWarm(); }
+function cadGo(i){ const n=cadPages(CD.sid).length; CD.pi=Math.max(0,Math.min(n-1,i)); CD.sel=null; cadSheet(''); cadPal(false); cadFit('page'); cadPaintAll(); cadBar(); cadWarm(); }
 /* prepara as páginas vizinhas com o aparelho parado (a atividade colada já fica pronta quando a professora vira a página) */
 function cadWarm(){ const go=()=>{ if (!CD.el) return; const P=cadPages(CD.sid); for (const k of [CD.pi+1,CD.pi-1]) for (const it of P[k]?.items||[]) if (it.t==='act'&&typeof kidsSheetSvg==='function') kidsSheetSvg(it.kind,it.theme,{seed:it.seed}); };
   (window.requestIdleCallback||(f=>setTimeout(f,300)))(go,{timeout:1500}); }
 const CAD_ACT={
   close(){ location.hash= isT()? 'aluno-'+CD.sid : 'inicio'; },
-  tool(el){ if (CD.tool===el.dataset.v&&['pen','hl','text'].includes(CD.tool)){ cadPal(!CD.el.root.querySelector('.cd-pal2')); return; } cadPal(false); CD.tool=el.dataset.v; CD.tempMove=false; CD.prevTool=null; if (CD.tool!=='move'){ CD.sel=null; cadUi(); } cadBar(); },
+  tool(el){ if (CD.tool===el.dataset.v&&['pen','hl','text'].includes(CD.tool)){ cadPal(!CD.el.root.querySelector('.cd-pal2')); return; } cadPal(false); CD.tool=el.dataset.v; if (CD.tool!=='move'){ CD.sel=null; cadUi(); } cadBar(); },
   pal(){ cadPal(!CD.el.root.querySelector('.cd-pal2')); },
   color(el){ CD.color=el.dataset.v; const it=CD.sel&&cadItem(CD.sel); if (it&&it.t==='text'){ cadPush(cadPage()); it.c=CD.color; cadSave(); cadPageDom(); } if (CD.tool==='eraser'||CD.tool==='move'&&!it) CD.tool='pen'; cadBar(); cadPal(true); },
   size(el){ CD.size=+el.dataset.v; cadBar(); cadPal(false); },
@@ -433,8 +470,9 @@ const CAD_ACT={
   cfile(el){ const f=kfileById(el.dataset.v); cadSheet(''); toast('Abrindo o material…'); kfilePages(f).then(D=>{ if (D.n===1) return kfilePageImg(f,0,1400).then(src=>CAD_ACT.cfpage({dataset:{f:f.id,i:0,src}}));
     cadSheet(`<div class="cd-tabs"><b>${esc(f.name)}: toque numa página</b><button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div><div class="cd-pgrid">${[...Array(D.n)].map((_,i)=>`<button class="cd-pthumb" data-cd="cfpage" data-f="${f.id}" data-i="${i}"><span class="kf-ph">${i+1}</span><small>Página ${i+1}</small></button>`).join('')}</div>`); }).catch(()=>toast('Não encontrei este arquivo.')); },
   cfpage(el){ const f=kfileById(el.dataset.f); cadSheet(''); (el.dataset.src? Promise.resolve(el.dataset.src) : kfilePageImg(f,+el.dataset.i,1400)).then(src=>{ const im=new Image(); im.onload=()=>{ const k=Math.min(900/im.width,1300/im.height), data=src.startsWith('blob:')? kfToData(im) : src; cadAdd({t:'img',src:data,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:(CAD_H-im.height*k)/2}); if (isT()) kidsUse(CD.sid,{k:'file',t:f.id},true); }; im.src=src; }); },
-  finger(){ if (CD.penSeen){ CD.penSeen=false; CD.finger=true; toast('O dedo voltou a escrever.'); } else CD.finger=!CD.finger; cadBar(); },
-  fit(){ cadFit(Math.abs(CD.cam.z-Math.min(CD.el.view.clientWidth/(CAD_W+60),CD.el.view.clientHeight/(CAD_H+60)))<.01? 'width' : 'page'); cadPaintAll(); },
+  finger(){ CD.finger=!CD.finger; lsSet('sotaque:cad-dedo',CD.finger? '1' : '0'); toast(CD.finger? 'O dedo escreve. Para mover a página, use dois dedos.' : 'O dedo só move a página. Escreva com a caneta.'); cadBar(); },
+  fit(){ cadFit(cadZoomed()? 'page' : 'width'); cadPaintAll(); cadBar(); },
+  help(){ cadHelp(); },
   insert(){ cadInsertSheet(CD.figTab||'bichos'); }, itab(el){ cadInsertSheet(el.dataset.v); },
   igroup(el){ const g=el.dataset.v; cadInsertSheet(g==='fig'? CD.figTab||'bichos' : g==='ativ'? CD.ativTab||'act' : 'photo'); },
   /* figura selecionada */
@@ -461,15 +499,16 @@ function cadPhoto(file){ const img=new Image(), url=URL.createObjectURL(file);
 
 /* ---------- montar e desmontar ---------- */
 function cadMount(sid,ro){ if (CD.el&&CD.sid===sid) return; cadUnmount(); cadOf(sid);
-  Object.assign(CD,{sid,pi:Math.min(1,cadPages(sid).length-1),ro:!!ro,sel:null,act:null,gest:null,tempMove:false,prevTool:null}); CD.ptr.clear();
+  Object.assign(CD,{sid,pi:Math.min(1,cadPages(sid).length-1),ro:!!ro,sel:null,act:null,gest:null}); CD.ptr.clear();
   const root=document.createElement('div'); root.className='cd'; root.id='cd';
-  root.innerHTML=`<div class="cd-bar"></div><div class="cd-view"><div class="cd-world"></div><canvas class="cd-ink"></canvas><canvas class="cd-live"></canvas><div class="cd-ui"></div></div><div class="cd-dock" role="toolbar" aria-label="Ferramentas"></div><div class="cd-pager" role="navigation" aria-label="Páginas"></div><div class="cd-sheet"></div>`;
+  root.innerHTML=`<div class="cd-bar"></div><div class="cd-view"><div class="cd-world"></div><canvas class="cd-ink"></canvas><canvas class="cd-live"></canvas><div class="cd-ui"></div><div class="cd-rail" hidden aria-hidden="true"><i></i></div></div><div class="cd-dock" role="toolbar" aria-label="Ferramentas"></div><div class="cd-pager" role="navigation" aria-label="Páginas"></div><div class="cd-sheet"></div>`;
   document.body.appendChild(root); document.body.classList.add('cd-on');
   const q=s=>root.querySelector(s);
-  CD.el={root,bar:q('.cd-bar'),view:q('.cd-view'),world:q('.cd-world'),ink:q('.cd-ink'),live:q('.cd-live'),ui:q('.cd-ui'),sheet:q('.cd-sheet'),dock:q('.cd-dock'),pager:q('.cd-pager')}; CD.uiKey='';
+  CD.el={root,rail:q('.cd-rail'),bar:q('.cd-bar'),view:q('.cd-view'),world:q('.cd-world'),ink:q('.cd-ink'),live:q('.cd-live'),ui:q('.cd-ui'),sheet:q('.cd-sheet'),dock:q('.cd-dock'),pager:q('.cd-pager')}; CD.uiKey='';
   try { CD.el.live.getContext('2d',{desynchronized:true}); } catch {}
   const v=CD.el.view;
   v.addEventListener('pointerdown',cadDown); v.addEventListener('pointermove',cadMove); v.addEventListener('pointerup',cadUp); v.addEventListener('pointercancel',cadUp); v.addEventListener('lostpointercapture',e=>{ if (CD.ptr.has(e.pointerId)) cadUp(e); });
+  CD.el.rail.addEventListener('pointerdown',cadRailDown);
   v.addEventListener('wheel',cadWheel,{passive:false}); v.addEventListener('contextmenu',e=>e.preventDefault());
   root.addEventListener('click',e=>{ const b=e.target.closest('[data-cd]'); if (b&&!b.disabled) CAD_ACT[b.dataset.cd]?.(b); });
   root.addEventListener('change',e=>{ if (e.target.dataset.cdfile&&e.target.files[0]) cadPhoto(e.target.files[0]); });
@@ -478,9 +517,9 @@ function cadMount(sid,ro){ if (CD.el&&CD.sid===sid) return; cadUnmount(); cadOf(
   CD.onGesture=e=>e.preventDefault(); document.addEventListener('gesturestart',CD.onGesture);
   CD.onKey=e=>{ if (e.target.closest?.('input,textarea')) return; if ((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); cadUndo(e.shiftKey); } if ((e.key==='Delete'||e.key==='Backspace')&&CD.sel) CAD_ACT.sdel(); if (e.key==='Escape'&&CD.sel) cadSelDone(); };
   document.addEventListener('keydown',CD.onKey);
-  cadBar(); requestAnimationFrame(()=>{ cadFit(CD.pi? 'width' : 'page'); cadPaintAll(); }); if (typeof kidsAudioLoad==='function') kidsAudioLoad();
+  cadBar(); requestAnimationFrame(()=>{ cadFit('page'); cadPaintAll(); cadBar(); }); if (typeof kidsAudioLoad==='function') kidsAudioLoad();
   if (document.fonts?.load) document.fonts.load('700 40px Andika').then(()=>cadPageDom()).catch(()=>{});
-  if (!ro&&!lsGet('sotaque:cad-dica')){ lsSet('sotaque:cad-dica','1'); setTimeout(()=>toast('Dica: segure o dedo (ou a caneta) sobre uma figurinha para mexer nela.'),900); } }
+  if (!ro&&!lsGet('sotaque:cad-ajuda')){ lsSet('sotaque:cad-ajuda','1'); setTimeout(()=>{ if (CD.el) cadHelp(); },700); } }
 function cadUnmount(){ if (!CD.el) return; clearTimeout(CD.saveT); save(); window.removeEventListener('resize',CD.onResize); document.removeEventListener('gesturestart',CD.onGesture); document.removeEventListener('keydown',CD.onKey);
   CD.el.root.remove(); CD.el=null; CD.sid=null; document.body.classList.remove('cd-on'); }
 /* rota #caderno-<aluno>: o caderno ocupa a tela; a página do Sotaque fica por baixo */

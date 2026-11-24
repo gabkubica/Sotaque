@@ -295,13 +295,14 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   capa com cor, padrão e título. Com caneta, a palma e o dedo não riscam (o dedo move e dá zoom); sem caneta, o dedo
   escreve e dois dedos movem/dão zoom. Fica fora do `#app` (os re-renders não apagam nada). Dados: `DB.cad` e
   `DB.cadp` (registros `cad` e `cadp` na nuvem, com `student_id` da criança).
-- **Mexer no caderno**: ferramentas grandes numa barra própria (embaixo; à esquerda com o iPad deitado), páginas com
-  ‹ “Página N de M” › + logo acima. Com a caneta, **segurar o dedo/caneta numa figurinha** seleciona e já arrasta; um
-  toque rápido continua escrevendo. A figura escolhida ganha uma barra de botões grandes: Menor, Maior, Girar, Editar
-  (texto), Duplicar, Frente, Travar, Apagar e **Pronto** (volta para a caneta). As atividades coladas vêm **travadas**:
-  arrastar por cima move a página, não a folha; segurar mostra “🔒 Travada” com Destravar. **Inserir** tem 3 abas
-  (Figurinhas e prêmios · Atividades · Foto) e fica aberto para colocar várias figurinhas seguidas; cada uma entra na
-  folha visível, sem cair uma em cima da outra. Delete apaga e Esc termina no teclado.
+- **Mexer no caderno** (refeito para ficar simples): o **dedo sempre escreve**, até a professora tocar em “Dedo escreve”
+  na barra das ferramentas (vira “Dedo move”, para usar só a Apple Pencil); a escolha fica guardada no aparelho e não muda
+  sozinha. As páginas abrem **inteiras**; “Ampliar” aproxima e mostra uma **barra de rolagem** do lado para descer com um
+  dedo; “Página inteira” volta. **Tocar numa figurinha ou texto escolhe** (com qualquer ferramenta); a figura escolhida
+  mostra a moldura e os botões grandes (Menor, Maior, Girar, Editar, Duplicar, Frente, Travar, Apagar, Pronto) e
+  **arrastar em cima dela move**; tocar fora termina. Arrastar começando numa figurinha não escolhida desenha por cima.
+  Atividades coladas vêm travadas (para mexer: Mover, segurar e Destravar). Botão **Ajuda** com as dicas (abre sozinho na
+  primeira vez; os pais veem a versão “Como ver o caderno”). Delete apaga e Esc termina no teclado.
 - **Materiais para imprimir** (`kids.js`, aba **Kids** dentro da Biblioteca): 42 tipos × 22 temas, separados por idade
   (3–4 anos sem leitura, 5–6 letras, 7–8 palavras, 9–10 frases), gerados em SVG A4 com as ilustrações do **Fluent Emoji**
   (Microsoft, licença MIT; subconjunto de 296 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e
