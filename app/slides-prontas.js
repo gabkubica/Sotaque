@@ -8732,9 +8732,10 @@ pont | [ɔ̃] ponte
 temps | [ɑ̃] tempo
 # explica: Nasale ou pas ?
 Se depois do **n / m** vem uma **vogal** ou outro **n / m**, a vogal **não** é nasal:
-> **bon** [bɔ̃] × **bonne** [bɔn]
-> **an** [ɑ̃] × **année** [ane]
-> **fin** [fɛ̃] × **fine** [fin]
+- **bon** [bɔ̃] × **bonne** [bɔn]
+- **an** [ɑ̃] × **année** [ane]
+- **fin** [fɛ̃] × **fine** [fin]
+> Bon, bonne. An, année. Fin, fine.
 Isso explica muitos masculinos × femininos: brésili**en** × brésili**enne**.
 # tabela: Les liaisons
 Obligatoire | Interdite
@@ -11832,5 +11833,1334 @@ Find a 30-second clip from your favourite series and identify 3 examples of fast
 Discourse markers
 Homework · Feel the rhythm
 Homework · Fast speech`],
+);
+/* ---------- lote 8 (inglês) · A1 a B1 ---------- */
+SLIDES_SEED.push(
+['EN','A1','On a video call: what are you doing?',`# capa: On a video call | img:celular
+Hi! What are you doing? I’m cooking dinner!
+# dialogo: Mum is calling!
+A: Hi, sweetheart! Can you see me?
+B: Yes! Hi, Mum! I’m in the kitchen. I’m cooking dinner.
+A: Mmm! What are you making?
+B: Pasta. And Leo is watching TV in the living room.
+A: Is it raining there?
+B: No, it isn’t. The sun is shining!
+# pergunta: What do you notice?
+Look at the dialogue: I’m cooking, Leo is watching, the sun is shining. These sentences are about…
+*things happening now
+things we do every day
+things in the past
+nota: Deixe o aluno descobrir sozinho antes de explicar: am/is/are + verbo com -ing = agora, neste momento.
+# explica: Am, is, are + -ing
+Para o que está acontecendo **agora**:
+> I**’m cooking** dinner.
+> She**’s working** from home today.
+> They**’re playing** in the garden.
+Pergunta: **Are** you **watching** TV? Yes, I am. / No, I’m not.
+Negativa: It **isn’t raining**.
+# tabela: The -ing spelling
+Verb | -ing | Rule
+cook, watch, read | cooking, watching, reading | + ing
+make, write, dance | making, writing, dancing | sem o e final
+run, swim, sit | running, swimming, sitting | dobra a última letra
+# imagem: Who is doing what? | img:sofa
+Look at the picture. What are they doing?
+Use: He’s… / She’s… / They’re… + -ing
+# exercicio: Practice 1
+escolha: I [*’m cooking/cook/cooking] dinner now.
+escolha: Look! The baby [*is sleeping/sleeps/sleeping].
+escolha: [*Are/Is/Do] you watching this film?
+escolha: We [*aren’t working/not working/don’t working] today. It’s Sunday!
+grupos: + ing: reading, watching, playing / no e: making, writing, dancing / double letter: running, swimming, sitting
+# tirinha: Bad timing
+[celular]
+Ana: Hi, Tom! Can you talk?
+Tom (bravo): Not now! I’m running for the bus!
+---
+Ana (pensando): And now? What are you doing?
+Tom (feliz): I’m sitting on the bus. I can talk now!
+# exercicio: Practice 2
+What is Tom doing in the first picture?
+a) He’s sitting on the bus.
+*b) He’s running for the bus.
+c) He’s watching TV.
+erro: She’s {writeing|writing} an email.
+reescreva: He plays football. (now) | IS | He ___ football now. | is playing/’s playing
+ditado: What are you doing? I’m cooking dinner.
+# conversa: Video call role-play | img:celular
+Call your teacher! She says what she is doing, and you guess the room: kitchen, bedroom, garden…
+What are you doing now? What is your family doing now?
+Mime an action. The teacher guesses: “You’re swimming!”
+# tarefas: Atividades recomendadas
+Present continuous
+Picture vocabulary: things
+Homework · Live from my house`],
+
+['EN','A1','Breakfast around the world',`# capa: Breakfast around the world | img:xicara
+What do you have for breakfast?
+# sobre: Sobre esta aula
+ver: comidas e bebidas do café da manhã; **I have / I don’t have** e **he has / she doesn’t have**; **a / an / some** (an egg, some bread); **like / doesn’t like**; países e costumes
+porque: Café da manhã é um assunto simples, do dia a dia, e cheio de curiosidades culturais. Com ele treinamos o present simple, a terceira pessoa e os contáveis e incontáveis de um jeito leve.
+meta: dizer o que come e bebe de manhã; descrever o café da manhã de outra pessoa; usar a, an e some
+nivel: Nível A1
+# pergunta: Whose breakfast is it?
+Rice, grilled fish, miso soup and green tea. Where is this breakfast from?
+*Japan
+Brazil
+England
+# pergunta: Whose breakfast is it?
+Eggs, bacon, sausages, beans and toast. Where is this breakfast from?
+Japan
+*England
+Mexico
+# vocab: Breakfast words
+bread | pão | img:pao
+eggs | ovos | img:ovo
+cheese | queijo | img:queijo
+fruit | fruta | img:banana
+juice | suco | img:suco
+coffee with milk | café com leite | img:xicara
+cereal | cereal
+toast | torrada
+# explica: A, an or some?
+Uma coisa que dá para contar: **a / an**
+> a banana · an egg · an apple
+Coisas que não contamos (ou várias): **some**
+> some bread · some coffee · some eggs
+Com he e she: I **have** → she **has**; I **don’t** → he **doesn’t**
+> She **has** some fruit, but she **doesn’t have** coffee.
+# leitura: Three breakfasts | img:xicara
+tipo: Blog
+**Kenji, Tokyo:** I have rice, fish and miso soup. I drink green tea. I don’t like coffee.
+**Fernanda, Recife:** I have tapioca with cheese, some fruit and coffee with milk. I love papaya!
+**Oliver, London:** I usually have toast and a cup of tea. On Sundays, I have a big English breakfast with my family.
+# exercicio: Practice 1
+What does Kenji drink?
+a) coffee
+*b) green tea
+c) juice
+Fernanda has tapioca with cheese. (v)
+Oliver has a big breakfast every day. (f)
+escolha: I have [*an/a/some] egg and [*some/a/an] bread.
+escolha: Oliver [*has/have/haves] toast in the morning.
+escolha: Kenji [*doesn’t like/don’t like/doesn’t likes] coffee.
+# exercicio: Practice 2
+grupos: a / an: banana, egg, apple, orange / some: bread, milk, coffee, cheese
+erro: My sister {have|has} cereal for breakfast.
+reescreva: I eat eggs in the morning. (she) | EATS | She ___ in the morning. | eats eggs
+ditado: I have some bread and a coffee with milk.
+# conversa: Your breakfast | img:pao
+What do you have for breakfast on weekdays? And on Sundays?
+What does your partner, friend or child have for breakfast?
+Create the perfect breakfast menu for a hotel: 5 items with a, an or some.
+# tarefas: Atividades recomendadas
+Food and drinks
+Countable and uncountable nouns
+Homework · Good morning, world!`],
+
+['EN','A2','Escape room: find the key!',`# capa: Escape room | img:chave
+You have 20 minutes. Find the key and get out!
+# texto: The mission
+You’re locked in an old house with your team. The door is locked.
+To open it, you need **the gold key**. But the key is hidden!
+Read each clue carefully. Every clue uses **a preposition**: in, on, under, behind, next to, between, in front of.
+Answer correctly to get the next clue. Ready? The clock is ticking…
+nota: Cronometre de verdade (20 minutos). A cada pista certa, o aluno “abre” o próximo slide. Se errar, a professora pode dar uma dica em inglês.
+# tabela: Your tools: prepositions
+Preposition | Example
+in / on / under | in the box · on the table · under the bed
+behind / in front of | behind the door · in front of the TV
+next to / between | next to the lamp · between the books
+opposite | opposite the window
+# pergunta: Clue 1
+“Go to the room where people cook. Look on top of the thing that keeps food cold.” Where do you go?
+*on the fridge in the kitchen
+in the oven in the bathroom
+under the sofa in the living room
+# pergunta: Clue 2
+On the fridge, you find a note: “I’m not in front of the clock. I’m not under it. I’m on the opposite side of the wall.” Where is the next clue?
+in front of the clock
+*behind the clock
+next to the clock
+# pergunta: Clue 3
+Behind the clock: “Between two blue books, there’s a red one. Open it.” Which book do you open?
+the blue book on the left
+*the red book in the middle
+the blue book on the right
+# pergunta: Final clue
+In the red book: “The key is in the place where you sit to watch TV… but not on it.” Where is the key?
+*under the sofa cushion
+on the TV
+behind the bed
+nota: Final: a chave estava embaixo da almofada do sofá! Comemore e peça para o aluno recontar o caminho no past simple: “First, we went to the kitchen…”
+# explica: Tell the story
+Para recontar a fuga, use o **past simple** e **sequência**:
+> First, we went to the kitchen.
+> Then we looked behind the clock.
+> After that, we found the red book.
+> Finally, we opened the door!
+# exercicio: Practice
+escolha: The cat is sleeping [*under/in/between] the bed.
+escolha: The lamp is [*between/next/opposite] the sofa and the chair.
+escolha: The car is [*in front of/in front/front of] the house.
+lacunas: [First], we read the note. [Then] we looked behind the clock. [Finally], we found the key! || before, under
+ordem: The key was under the sofa cushion
+ditado: The key is behind the clock in the kitchen.
+# conversa: Your escape room | img:chave
+Hide an object in your room (or imagine it). Write 3 clues with prepositions. The teacher solves them!
+Retell our escape: First… Then… After that… Finally…
+Have you ever done a real escape room? Would you like to?
+# tarefas: Atividades recomendadas
+Prepositions: where is it?
+Past simple · questions and negatives
+Homework · Where’s the treasure?`],
+
+['EN','A2','A weekend in New York: plans on a budget',`# capa: A weekend in New York | img:cidade
+You have $500. Plan the perfect weekend!
+# sobre: Sobre esta aula
+ver: **going to** para planos já decididos e **will** para decisões na hora (I’ll take the subway); preços e números grandes; vocabulário de cidade e viagem; negociar planos (Why don’t we…? Let’s…)
+porque: Planejar uma viagem é um jeito real de usar o futuro. E, com um orçamento limitado, o aluno precisa negociar, comparar e decidir em inglês, como numa viagem de verdade.
+meta: fazer planos com going to; decidir na hora com will; sugerir e negociar com a professora
+nivel: Nível A2 · aula-projeto
+# texto: Your challenge
+You and your teacher are going to spend **Saturday and Sunday** in New York.
+You have **$500 for two people**, and the hotel is already paid.
+Choose activities, food and transport. You must agree on **every** choice!
+Rule: one free activity per day is **mandatory**.
+# tabela: Prices
+Activity | Price (per person)
+Statue of Liberty ferry | $25
+Broadway show | $120
+Top of the Rock | $40
+Central Park bike rental | $15 · free walk
+Pizza slice / steak dinner | $5 / $70
+# explica: Going to or will?
+**Going to**: plano decidido antes
+> We**’re going to** see a show on Saturday. (já compramos)
+**Will**: decisão na hora
+> It’s raining! OK, I**’ll** take a taxi.
+Sugestões: **Let’s** walk! · **Why don’t we** rent bikes? · **Shall we** eat pizza?
+# dialogo: Planning
+A: So, what are we going to do on Saturday?
+B: Let’s go to the Statue of Liberty in the morning.
+A: Good idea. And in the evening? A Broadway show?
+B: Hmm, it’s $240 for two. Why don’t we walk in Times Square instead? It’s free.
+A: OK, but I’ll pay for dinner!
+# exercicio: Practice 1
+escolha: We [*’re going to/will] visit Central Park on Sunday. We booked the bikes!
+escolha: “The museum is closed!” “OK, I [*’ll/’m going to] check another one.”
+escolha: [*Why don’t we/Why we don’t] take the subway?
+escolha: “It’s cold!” “I [*’ll lend/’m going to lend] you my jacket.”
+lacunas: We’re going to [spend] two days in New York. The show is [expensive], so we’ll walk in Times Square [instead]. || cheap, buy
+# conversa: Plan it! | img:cidade
+Plan Saturday and Sunday together with the $500. Write the plan: “On Saturday morning, we’re going to…”
+Your teacher will give you a problem (rain, a closed museum…). Decide on the spot with will.
+Present your final plan and the total cost.
+nota: Problemas para lançar no meio: chove no sábado à tarde; o ingresso do Broadway esgotou; o metrô está em greve no domingo. O aluno decide com will.
+# frase: Useful phrases
+Let’s go to Central Park.
+Why don’t we rent bikes?
+That’s too expensive for us.
+OK, I’ll book the tickets.
+How much is it altogether?
+# tarefas: Atividades recomendadas
+Going to · plans
+Will or going to? Choose and explain
+Homework · The New York plan`],
+
+['EN','B1','The perfect flatmate: rules and compromises',`# capa: The perfect flatmate | img:sofa
+Can we agree on the house rules?
+# tirinha: Day one
+[sofa]
+Mia (bravo): Who left the dishes in the sink?
+Sam: Oh, me. I’ll wash them tomorrow.
+---
+Mia (bravo): Tomorrow? We’re not allowed to leave dishes overnight!
+Sam (surpreso): Says who? We don’t have any rules!
+---
+Mia (pensando): Then we should write some.
+Sam: Fine. But I get to choose the music.
+# pergunta: Poll: the worst flatmate habit
+Which habit would annoy you most?
+leaving dirty dishes
+playing loud music at night
+inviting friends without asking
+eating your food
+nota: Enquete sem resposta certa. Peça para o aluno justificar: “It would drive me crazy because…”
+# tabela: Talking about rules
+Meaning | Structure | Example
+obrigação | have to / must | We have to clean the bathroom every week.
+proibição | not be allowed to / mustn’t | You’re not allowed to smoke inside.
+permissão | can / be allowed to | Guests can stay at weekends.
+dar permissão | let someone + verbo | My landlord lets us have pets.
+conselho | should / ought to | We should split the bills equally.
+# explica: Let vs allow
+**let** + pessoa + verbo **sem to**:
+> She **lets me use** her car.
+**allow** + pessoa + **to** + verbo / **be allowed to**:
+> She **allows me to use** her car. · I**’m allowed to use** her car.
+Cuidado: não existe “I’m let to”.
+# texto: Our house rules (draft)
+1. Dishes **have to** be washed the same day.
+2. Guests **are allowed to** stay at weekends, but not on weekdays.
+3. We **mustn’t** play music after 11 pm.
+4. We **should** buy cleaning products together.
+5. Nobody **is allowed to** eat other people’s food without asking.
+# exercicio: Practice 1
+escolha: My parents never [*let me/let me to/allowed me] stay out late.
+escolha: You’re not [*allowed to/allowed/let to] park here.
+escolha: We [*have to/must to/has to] pay the rent on the 1st.
+escolha: You [*shouldn’t/don’t have to] leave food out. It attracts insects. (conselho)
+reescreva: The landlord doesn’t allow pets. | LET | The landlord ___ have pets. | doesn’t let us/does not let us
+reescreva: Smoking inside is forbidden. | ALLOWED | You ___ smoke inside. | aren’t allowed to/are not allowed to/’re not allowed to
+erro: My flatmate lets me {to borrow|borrow} his bike.
+ditado: Guests are allowed to stay at weekends.
+# conversa: Negotiation | img:sofa
+You and your teacher are new flatmates. Each person gets a secret card (see the teacher’s notes). Agree on 5 house rules.
+Use: I’d prefer if… · How about…? · OK, as long as… · That’s a deal!
+What was the best (or worst) place you’ve ever lived in? Why?
+nota: Cartão do aluno: você trabalha de casa e precisa de silêncio das 9h às 17h; adora cozinhar. Cartão da professora: você recebe amigos com frequência e toca violão à noite. Negociem!
+# tarefas: Atividades recomendadas
+Should, must, have to
+Make, let and get
+Homework · Flatmate rules`],
+
+['EN','B1','Scam or not? Staying safe online',`# capa: Scam or not? | img:celular
+“Congratulations! You’ve won a new iPhone!”
+# pergunta: Scam or not? 1
+SMS: “Your package is waiting. Pay $1.99 for delivery here: bit.ly/xyz”. What do you think?
+*It must be a scam.
+It can’t be a scam.
+nota: Peça para o aluno justificar com must / might / can’t. Sinais: link encurtado, valor baixo, urgência, você não esperava pacote.
+# pergunta: Scam or not? 2
+Email from your bank, with your full name, asking you to call the number on the back of your card. What do you think?
+It must be a scam.
+*It might be real, but check first.
+# pergunta: Scam or not? 3
+A friend on WhatsApp: “Hi, it’s me, I changed my number. Can you transfer R$800 for me today? I’ll pay you back tomorrow!”
+*It must be a scam.
+It can’t be a scam.
+# explica: How sure are you?
+**must be** = tenho quase certeza que sim
+> This **must be** a scam: banks never ask for passwords.
+**might / could be** = talvez
+> It **might be** real. Let’s check.
+**can’t be** = tenho quase certeza que não
+> It **can’t be** my sister. She’s on a plane right now.
+# dica: Cuidado!
+x: It mustn’t be true. (para dedução)
+ok: It can’t be true.
+x: It must to be a scam.
+ok: It must be a scam.
+# leitura: The five signs of a scam | img:celular
+tipo: Consumer guide
+Scammers are getting smarter, but most scams still share five signs. First, **urgency**: “Pay in the next hour or lose your account!” Second, a **message you weren’t expecting**, often with a prize. Third, a **strange link** or an unknown number. Fourth, a request for **passwords, codes or transfers**. And finally, **emotion**: fear, excitement or pity.
+If a message has two or more of these signs, stop. Don’t click, don’t reply, and call the person or company using a number you already know.
+# exercicio: Practice 1
+Which is NOT one of the five signs?
+a) urgency
+*b) good grammar
+c) a strange link
+What should you do if you see two signs?
+*a) Stop and call the company with a number you know.
+b) Click the link to check.
+c) Reply and ask questions.
+escolha: Banks never ask for codes. This [*must/can’t] be a scam.
+escolha: I don’t know this number. It [*might/must] be my new dentist, or it [*might/can’t] be a scam.
+escolha: That [*can’t/mustn’t] be Paulo’s message. He doesn’t use WhatsApp.
+# frase: Staying safe
+Never share your passwords or codes.
+Check the link before you click.
+If it sounds too good to be true, it probably is.
+Call the company on a number you trust.
+# exercicio: Practice 2
+reescreva: I’m sure it’s a scam. | MUST | It ___ a scam. | must be
+reescreva: It’s impossible that this is my bank. | CAN’T | This ___ my bank. | can’t be/cannot be
+ditado: If it sounds too good to be true, it probably is.
+# conversa: Real stories | img:celular
+Have you (or someone you know) ever received a scam message? What happened?
+Write a fake scam message. Your teacher will find the five signs.
+What advice would you give an older relative about online safety?
+# tarefas: Atividades recomendadas
+Might, may and could
+Technology
+Homework · Is it a scam?`],
+);
+/* ---------- lote 8 (inglês) · B2 e C1 ---------- */
+SLIDES_SEED.push(
+['EN','B2','Failed inventions: what went wrong?',`# capa: Failed inventions | img:lampada
+Great idea. Terrible timing. What went wrong?
+# imagem: Would you buy it? | img:bicicleta
+1985: a small electric tricycle. You sit very low, almost on the road. Top speed: 24 km/h. No roof.
+Would you buy one? Why (not)?
+nota: É o Sinclair C5. Deixe o aluno opinar antes de ler a história.
+# leitura: Three famous flops | img:lampada
+tipo: Business history
+**The Sinclair C5 (1985).** It was launched as the future of city transport, but drivers felt unsafe sitting so low in traffic. Only around 14,000 were sold, and production was stopped the same year.
+**New Coke (1985).** Coca-Cola changed its famous recipe after taste tests. Fans were furious, and the original drink was brought back just 79 days later.
+**Google Glass (2013).** The smart glasses were praised by engineers, but people were worried about being filmed without permission. The consumer version was dropped in 2015.
+# exercicio: Practice 1 · The facts
+Why did people feel unsafe in the Sinclair C5?
+*a) They sat very low in traffic.
+b) It was too fast.
+c) It had no brakes.
+How long did New Coke last?
+a) 79 weeks
+*b) 79 days
+c) 7 years
+Google Glass failed mainly because of privacy worries. (v)
+# explica: Passive: what was done
+Para falar do produto e do que **foi feito** com ele:
+> It **was launched** in 1985. · Production **was stopped**.
+> The recipe **had been tested** before the launch.
+> The glasses **were being sold** for $1,500.
+Quem fez importa menos que o que aconteceu, por isso o passivo é tão comum em textos de negócios.
+# explica: Should have: judging the past
+Crítica com o benefício da dúvida:
+> They **should have tested** it on real roads.
+> Coca-Cola **shouldn’t have changed** a recipe people loved.
+> Google **could have explained** the privacy rules better.
+> If they had listened to users, it **might have worked**.
+# exercicio: Practice 2
+escolha: The product [*was launched/launched/has launch] in 1985.
+escolha: They [*should have asked/should asked/should have ask] real customers.
+escolha: The original recipe [*was brought/brought/was bring] back.
+reescreva: It was a mistake to change the recipe. | SHOULDN’T | They ___ the recipe. | shouldn’t have changed/should not have changed
+reescreva: Engineers designed the glasses in California. | WERE | The glasses ___ in California. | were designed
+erro: The car {was stop|was stopped} after only a few months.
+# conversa: The rescue meeting | img:lampada
+You’re a consultant. Choose one of the three products and present a rescue plan: what should have been done differently?
+Think of a product you bought that disappointed you. What went wrong?
+Invent a product that will fail in 2035. Why will it fail?
+# tarefas: Atividades recomendadas
+Passive voice
+Should have and shouldn’t have
+Homework · Flop!`],
+
+['EN','B2','Customer service: calming an angry customer',`# capa: Customer service | img:celular
+“This is the third time I’m calling!”
+# dialogo: The call
+A: I ordered a sofa three weeks ago and it still hasn’t arrived!
+B: I’m really sorry to hear that. May I have your order number?
+A: It’s 4471. This is the third time I’m calling!
+B: I completely understand your frustration. Let me check what happened.
+B: I’m afraid the delivery was sent to the wrong warehouse.
+A: Unbelievable. So what are you going to do about it?
+# pergunta: What would you say next?
+The customer asks: “So what are you going to do about it?” Choose the best answer.
+That’s not my department.
+Calm down, please.
+*I’ll arrange a delivery for tomorrow and refund the delivery fee.
+nota: Discuta por que as outras são ruins: “Calm down” irrita mais; “not my department” passa o problema adiante.
+# tabela: The LAST method
+Step | What to do | Language
+Listen | deixe a pessoa falar | I see. · Go on.
+Apologise | peça desculpas, sem culpar ninguém | I’m really sorry about this.
+Solve | ofereça uma solução concreta | What I can do is… · I’ll make sure that…
+Thank | agradeça a paciência | Thank you for your patience.
+# explica: Softening the bad news
+Notícia ruim, dita com cuidado:
+> **I’m afraid** the item is out of stock.
+> **Unfortunately**, we can’t refund the full amount.
+> **It seems that** the order was delayed.
+> **Would it help if** I sent a replacement?
+# pergunta: What would you say next?
+The customer says: “I want to speak to your manager!” Choose the best answer.
+*Of course. While I transfer you, may I explain what I can do right now?
+No, you can’t.
+My manager is busy.
+# dica: Cuidado!
+x: Calm down, sir.
+ok: I understand this is frustrating.
+x: It’s not my fault.
+ok: I’m sorry this happened. Let me fix it.
+# exercicio: Practice
+escolha: [*I’m afraid/I’m scared] we don’t have it in blue.
+escolha: [*Would it help if/Would it help when] I called you tomorrow?
+escolha: What I can do [*is/it is/are] send a new one today.
+reescreva: You didn’t receive it because we sent it to the wrong address. | SEEMS | It ___ to the wrong address. | seems that we sent it/seems we sent it/seems the order was sent
+reescreva: We can’t give you a refund. | AFRAID | I’m ___ give you a refund. | afraid we can’t/afraid that we can’t/afraid we cannot
+ditado: I completely understand your frustration.
+# conversa: Role-play cards | img:celular
+You work at a hotel reception. The teacher is an angry guest (see the teacher’s notes). Use LAST.
+Now switch: you’re the angry customer, and the teacher must calm you down.
+Tell me about the best (or worst) customer service you’ve ever had.
+nota: Hóspede 1: o quarto tem cheiro de cigarro e não há outro quarto livre. Hóspede 2: cobraram o frigobar sem ele ter usado. Hóspede 3: o voo atrasou e ele perdeu o check-in tardio.
+# tarefas: Atividades recomendadas
+Complaining politely
+Politeness in English
+Homework · Sorry for the trouble`],
+
+['EN','B2','A silent story: telling it from pictures',`# capa: A silent story | img:trem
+No words. Just pictures. You tell the story.
+# sobre: Sobre esta aula
+ver: contar uma história só a partir de imagens; **tempos narrativos** (past simple para a sequência, past continuous para o cenário, past perfect para o que veio antes); **conectores de tempo** (as soon as, by the time, meanwhile, eventually); mudar o final
+porque: Narrar é uma das habilidades mais cobradas em conversas e provas. Sem um texto para copiar, o aluno precisa construir a história sozinho, escolhendo os tempos verbais certos.
+meta: narrar uma sequência de imagens com os três tempos do passado; usar conectores para ligar os fatos; criar finais alternativos
+nivel: Nível B2
+# imagem: Picture 1 | img:trem
+A crowded train station, early morning. A woman with a red suitcase is running.
+What was happening? How did she feel? Use the past continuous for the scene.
+# imagem: Picture 2 | img:mala
+On the train, she opens the suitcase. It isn’t hers! Inside: men’s clothes and an old camera.
+What had happened? Use the past perfect.
+# imagem: Picture 3 | img:camera
+She looks at the photos on the camera. They show her own house, twenty years ago.
+What do you think happened next?
+nota: Deixe o aluno contar as três imagens sem interromper. Anote os erros de tempo verbal e corrija depois, juntos.
+# linha: The order of events
+ponto: 0.1 | had taken the wrong suitcase
+faixa: 0.25-0.45 | was running for the train
+ponto: 0.6 | opened the suitcase
+ponto: 0.8 | saw the photos
+agora: não
+eixo: earlier | later
+O **past perfect** volta ao que aconteceu **antes** do ponto principal da história.
+# tabela: Linking events
+Linker | Meaning | Example
+as soon as | logo que | As soon as she sat down, she opened it.
+by the time | quando (já) | By the time she noticed, the train had left.
+meanwhile | enquanto isso | Meanwhile, a man was looking for his case.
+eventually | no fim | Eventually, she found the owner.
+# exercicio: Practice
+escolha: She [*was running/ran/had run] for the train when she dropped her ticket.
+escolha: By the time she noticed, the train [*had left/left/was leaving].
+escolha: [*As soon as/Meanwhile] she opened the case, she knew it wasn’t hers.
+escolha: She realised she [*had taken/took/was taking] the wrong suitcase.
+lacunas: [Meanwhile], an old man [was searching] the station for his red suitcase. [Eventually], they met at the lost property office. || as soon, searched
+ditado: By the time she noticed, the train had already left.
+# conversa: Your version | img:trem
+Tell the whole story in two minutes, using at least four linkers.
+Change the ending: what if the man in the photos was her father?
+Tell a true story about a mix-up or a lost object.
+# tarefas: Atividades recomendadas
+Narrative tenses
+Past continuous or past simple?
+Homework · The red suitcase`],
+
+['EN','C1','Thought experiments: suppose you could…',`# capa: Thought experiments | img:lampada
+Suppose you could… Were you to… What if…?
+# sobre: Sobre esta aula
+ver: estruturas hipotéticas avançadas (**suppose / supposing**, **were to**, **should you**, **but for**, **what if**, **imagine if**); discutir dilemas filosóficos famosos; justificar e mudar de opinião com elegância
+porque: Experimentos mentais obrigam a pensar em voz alta, com hipóteses e contra-argumentos. É o tipo de conversa em que o nível C1 aparece: frases longas, nuance e estruturas formais de hipótese.
+meta: usar estruturas hipotéticas variadas; defender uma posição e reconsiderar; reformular argumentos com precisão
+nivel: Nível C1 · discussão
+# pergunta: The trolley problem
+A runaway trolley will kill five people. Were you to pull a lever, it would switch tracks and kill one person instead. Would you pull it?
+Yes, I would pull it.
+No, I wouldn’t.
+I’m not sure.
+nota: Proposto por Philippa Foot (1967). Depois do voto, mude a versão: e se, em vez de puxar a alavanca, fosse preciso empurrar uma pessoa da ponte? Por que muita gente muda de ideia?
+# pergunta: The Ship of Theseus
+Suppose every plank of a ship were replaced, one by one, over many years. Would it still be the same ship?
+Yes, it would.
+No, it wouldn’t.
+It depends.
+nota: Clássico de Plutarco. Versão moderna: e se as tábuas velhas fossem usadas para montar outro navio? Qual seria o “verdadeiro”?
+# pergunta: The experience machine
+Imagine a machine that could give you a perfect, happy life, but none of it would be real. Would you plug in for life?
+Yes, I would.
+No, I wouldn’t.
+nota: Proposto por Robert Nozick (1974). A maioria diz não. Por quê? O que valorizamos além da felicidade?
+# tabela: Ways to hypothesise
+Structure | Example
+Suppose / Supposing (that) + past | Suppose you won the lottery, what would you do?
+were to + verb | Were you to pull the lever, one person would die.
+Should + subject + verb | Should you change your mind, let me know.
+But for + noun | But for the lever, five people would die.
+What if / Imagine if + past | What if nobody had invented money?
+# explica: Changing your mind gracefully
+> **I take your point**, but I’m not entirely convinced.
+> **On second thoughts**, I might have been too quick to answer.
+> **That’s a fair challenge**. Let me put it another way.
+> **I’d go along with that, up to a point.**
+# exercicio: Practice
+escolha: [*Were you to/If you were to/Should you to] pull the lever, five people would survive.
+escolha: [*But for/Except/Without of] your help, I would have failed.
+escolha: [*Should/Would/Had] you need anything, just call me.
+reescreva: If you changed every part, would it be the same car? | SUPPOSE | ___ every part, would it be the same car? | Suppose you changed/Supposing you changed
+reescreva: If it hadn’t been for the map, we would have got lost. | BUT | ___ the map, we would have got lost. | But for
+reescreva: If you have any questions, contact me. | SHOULD | ___ any questions, contact me. | Should you have
+ditado: Were you to plug in, none of your experiences would be real.
+# conversa: Your turn | img:lampada
+Choose one experiment and argue the opposite of what you voted.
+Invent your own thought experiment and test it on your teacher.
+Which experiment says the most about human nature? Why?
+# tarefas: Atividades recomendadas
+Inversion
+Third and mixed conditionals
+Homework · Thought experiments`],
+
+['EN','C1','Speeches that changed history',`# capa: Speeches that changed history | img:microfone
+Why do some words stay with us for centuries?
+# texto: Gettysburg, 1863
+**Four score and seven years ago** our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.
+…that this nation, under God, shall have a new birth of freedom—and that **government of the people, by the people, for the people**, shall not perish from the earth.
+— Abraham Lincoln (domínio público)
+nota: O discurso inteiro tem menos de 300 palavras e durou uns dois minutos. Pergunte: por que um discurso tão curto ficou tão famoso?
+# tabela: Rhetorical devices
+Device | What it is | Example
+tricolon | três partes | of the people, by the people, for the people
+anaphora | repetir o começo | We shall fight on the beaches, we shall fight…
+antithesis | opostos lado a lado | one small step for a man, one giant leap for mankind
+chiasmus | inverter a ordem | Ask not what your country can do for you…
+# pergunta: Name the device
+“Ask not what your country can do for you; ask what you can do for your country.” (John F. Kennedy, 1961)
+anaphora
+*chiasmus
+tricolon
+# pergunta: Name the device
+“Veni, vidi, vici.” (I came, I saw, I conquered.)
+*tricolon
+antithesis
+rhetorical question
+# explica: Why they work
+O ouvido gosta de **padrões**: três itens soam completos, a repetição cria ritmo, o contraste esclarece e a **pergunta retórica** faz a plateia responder por dentro.
+- Frases **curtas** no ponto alto (“We choose to go to the Moon.”)
+- Palavras **concretas** em vez de abstratas (beaches, hills, streets)
+- **Pausas** antes da palavra-chave
+Um ou dois recursos por parágrafo: mais que isso soa artificial.
+# exercicio: Practice
+Which sentence uses antithesis?
+*a) We will not be remembered for what we said, but for what we did.
+b) We will work, we will fight, we will win.
+c) Isn’t it time for change?
+Which sentence is a tricolon?
+a) Is this the future we want?
+*b) Faster, cheaper, cleaner.
+c) Not for us, but for them.
+escolha: “Education, education, education” is an example of [*repetition/antithesis/chiasmus].
+reescreva: We need to be brave and we need to be honest. | NOT ONLY | We need ___ brave, but also honest. | not only to be
+ditado: Government of the people, by the people, for the people.
+# conversa: Your speech | img:microfone
+Write a one-minute speech for a cause you care about. Use at least one tricolon, one antithesis and one rhetorical question.
+Deliver it. Your teacher will identify the devices.
+Which speech (in any language) has moved you? Why?
+# tarefas: Atividades recomendadas
+Presentations
+Inversion for emphasis
+Homework · Words that move`],
+
+['EN','C1','Plain English: cutting the jargon',`# capa: Plain English | img:lapis
+Going forward, let’s leverage synergies… or just say what you mean?
+# texto: Before
+**To:** All staff
+Going forward, we are looking to leverage cross-functional synergies in order to facilitate the optimisation of our customer-facing processes. With a view to enhancing operational efficiencies, it has been decided that a realignment of resources will be implemented at this moment in time.
+nota: Peça para o aluno resumir o e-mail em uma frase simples antes de mostrar o “After”. Muita gente não consegue: esse é o problema!
+# texto: After
+**To:** All staff
+From next month, the sales and support teams will work together, so customers get faster answers.
+To make this work, two people from support will join the sales team.
+# tabela: Jargon → plain English
+Jargon | Plain English
+going forward / at this moment in time | from now on / now
+leverage / utilise | use
+facilitate the optimisation of | improve
+with a view to | to
+it has been decided that | we have decided
+# explica: Four rules for clear writing
+1. **Use verbs, not nouns**: “make a decision” → **decide**; “the implementation of” → **implement**
+2. **Active, not passive** (quando quem faz importa): “It was decided” → **We decided**
+3. **Short sentences**: uma ideia por frase, média de 15 a 20 palavras
+4. **Concrete words**: “resources” → **two people from support**
+Simples não é informal: é respeitar o tempo de quem lê.
+# exercicio: Practice
+Which is the plainest version of “We are in receipt of your correspondence”?
+*a) We have received your letter.
+b) Your correspondence has been received by us.
+c) We acknowledge receipt of your correspondence.
+reescreva: We will undertake a review of the policy. | REVIEW | We will ___ . | review the policy
+reescreva: A decision was made by the board to close the office. | DECIDED | The board ___ the office. | decided to close
+reescreva: In the event that you require assistance, contact us. | IF | ___ help, contact us. | If you need
+grupos: Jargon: leverage, going forward, synergy, utilise / Plain: use, from now on, teamwork, help
+ditado: We have decided to close the office in March.
+# conversa: Editing workshop | img:lapis
+Bring a real email or text from your work (in English or Portuguese). Rewrite it in plain English together.
+Which jargon words annoy you most at work? Why do people use them?
+Explain your job in plain English to a 10-year-old.
+# tarefas: Atividades recomendadas
+Nominalisation
+Formal business writing
+Homework · Say it simply`],
+);
+/* ---------- lote 8 (francês) · A1 e A2 ---------- */
+SLIDES_SEED.push(
+['FR','A1','Bonjour ! Se présenter',`# capa: Bonjour ! | img:conversa
+Je m’appelle… Je suis… J’habite à…
+# dialogo: Premier jour à l’école de langues
+A: Bonjour ! Je m’appelle Claire. Et vous ?
+B: Bonjour ! Je m’appelle Rafael. Je suis brésilien.
+A: Enchantée ! Vous habitez à Lyon ?
+B: Oui, j’habite à Lyon depuis un mois. Je suis ingénieur.
+A: Moi, je suis professeure de français. Bienvenue !
+B: Merci beaucoup !
+# pergunta: Qu’est-ce que vous remarquez ?
+Claire dit « Et vous ? », pas « Et toi ? ». Pourquoi ?
+*Ils ne se connaissent pas : on utilise vous.
+Rafael est un enfant.
+Claire parle à plusieurs personnes.
+nota: Explique em português: tu = amigos, família, crianças; vous = desconhecidos, trabalho, e também “vocês”. Na dúvida, vous!
+# tabela: Être et s’appeler
+Sujet | être | s’appeler
+je | suis | m’appelle
+tu | es | t’appelles
+il / elle | est | s’appelle
+nous | sommes | nous appelons
+vous | êtes | vous appelez
+# explica: Masculin ou féminin ?
+A nacionalidade e a profissão mudam no feminino:
+> Il est brésilien. Elle est brésilienne.
+> Il est français. Elle est française.
+> Il est étudiant. Elle est étudiante.
+Atenção: em francês, nacionalidade se escreve com **letra minúscula** (brésilien), mas o povo com maiúscula (les Brésiliens).
+# vocab: Pour se présenter
+Bonjour ! | Bom dia! / Olá!
+Enchanté(e) ! | Muito prazer!
+Je m’appelle… | Meu nome é…
+J’habite à… | Moro em…
+Je suis… | Eu sou…
+Comment ça va ? | Tudo bem?
+Au revoir ! | Tchau!
+# exercicio: Exercice 1
+escolha: Je [*suis/es/est] brésilienne.
+escolha: Vous [*êtes/est/sommes] professeur ?
+escolha: Elle [*s’appelle/m’appelle/t’appelles] Marie.
+escolha: Il est français et elle est [*française/français/francaise].
+grupos: Tu: avec un ami, avec un enfant, avec ta sœur / Vous: avec un client, avec un inconnu, avec le directeur
+# exercicio: Exercice 2
+Rafael habite à Lyon depuis…
+a) un an
+*b) un mois
+c) une semaine
+Claire est ingénieure. (f)
+erro: Je {suis appelle|m’appelle} Paulo.
+reescreva: Il est italien. (elle) | ITALIENNE | Elle ___ . | est italienne
+ditado: Bonjour ! Je m’appelle Claire et j’habite à Lyon.
+# conversa: À vous ! | img:conversa
+Présentez-vous : nom, nationalité, ville, profession.
+Jouez la scène : premier jour dans une entreprise à Paris. Tu ou vous ?
+Présentez une personne célèbre sans dire son nom. La professeure devine !
+# tarefas: Atividades recomendadas
+Se présenter
+Les nationalités
+Devoirs · Enchanté !`],
+
+['FR','A1','Ma famille',`# capa: Ma famille | img:casa
+Voici ma mère, mon père et mes deux frères.
+# imagem: La photo de famille | img:casa
+Regardez la photo. Qui est-ce ? Combien de personnes il y a ?
+Utilisez : C’est… / Ce sont… / Il y a…
+nota: Peça para o aluno mostrar uma foto de família de verdade, se quiser. É o melhor material desta aula.
+# vocab: La famille
+la mère | a mãe
+le père | o pai
+le frère | o irmão
+la sœur | a irmã
+les grands-parents | os avós
+le fils / la fille | o filho / a filha
+le mari / la femme | o marido / a esposa
+le cousin / la cousine | o primo / a prima
+# tabela: Mon, ma, mes
+ | masculin | féminin | pluriel
+je | mon père | ma mère | mes parents
+tu | ton frère | ta sœur | tes cousins
+il / elle | son fils | sa fille | ses enfants
+# explica: Mon amie ?
+Antes de palavra feminina que começa com **vogal**, usamos **mon / ton / son** (para soar melhor):
+> **mon** amie · **ton** école · **son** histoire
+**Son / sa** concordam com a **coisa**, não com o dono:
+> Paul aime **sa** mère. · Marie aime **son** père.
+# tirinha: Qui est-ce ?
+[casa]
+Mia: C’est qui sur la photo ?
+Leo (feliz): C’est ma sœur, Julie. Elle a vingt ans.
+---
+Mia: Et le garçon ?
+Leo: C’est mon cousin Hugo. Il a un chien !
+---
+Mia (surpreso): Il est où, le chien ?
+Leo (feliz): Sous la table !
+# exercicio: Exercice
+escolha: C’est [*ma/mon/mes] mère.
+escolha: Voici [*mes/ma/mon] grands-parents.
+escolha: Paul adore [*sa/son/ses] sœur.
+escolha: J’ai [*une/un] sœur et [*deux/deus] frères.
+escolha: Elle [*a/est] vingt ans.
+grupos: mon: père, frère, amie, école / ma: mère, sœur, cousine, famille / mes: parents, enfants, cousins
+erro: J’{ai|suis} trente ans.
+ditado: Voici mon père, ma mère et mes deux frères.
+# conversa: Votre famille | img:casa
+Parlez de votre famille : combien de personnes ? Comment s’appellent-ils ? Quel âge ont-ils ?
+Dessinez votre arbre généalogique et présentez-le.
+Jeu : la professeure décrit une famille célèbre. Devinez !
+# tarefas: Atividades recomendadas
+La famille
+Être et avoir
+Devoirs · Ma famille et moi`],
+
+['FR','A1','Ma journée : les verbes pronominaux',`# capa: Ma journée | img:relogio
+Je me lève à sept heures, je me douche et je pars !
+# sobre: Sobre esta aula
+ver: verbos pronominais da rotina (**se lever, se doucher, s’habiller, se coucher**); a posição do **me / te / se**; as horas (**à sept heures et demie**); conectores **d’abord, ensuite, puis, enfin**
+porque: Em português também temos verbos assim (eu me levanto), mas em francês eles são muito mais usados e o pronome muda com a pessoa. Falar da rotina é uma das primeiras conversas reais.
+meta: contar a própria rotina; perguntar a hora de alguém fazer algo; usar d’abord, ensuite, puis e enfin
+nivel: Nível A1
+# texto: L’agenda de Léa, boulangère à Paris
+4 h 00 : Léa se lève.
+4 h 30 : elle se douche et s’habille.
+5 h 00 : elle commence à travailler.
+13 h 00 : elle déjeune avec ses collègues.
+21 h 00 : elle se couche. Elle est fatiguée !
+# tabela: Se lever
+Sujet | se lever
+je | me lève
+tu | te lèves
+il / elle | se lève
+nous | nous levons
+vous | vous levez
+ils / elles | se lèvent
+# explica: Quelle heure est-il ?
+Para dizer a que horas: **à** + hora
+> Je me lève **à sept heures**.
+> Il se couche **à onze heures et demie**.
+> On déjeune **à midi**. · Elle part **à huit heures moins le quart**.
+Para contar a sequência: **d’abord**, **ensuite**, **puis**, **enfin**.
+# exercicio: Exercice 1
+À quelle heure Léa se lève ?
+*a) à quatre heures
+b) à cinq heures
+c) à neuf heures
+Léa se couche à vingt et une heures. (v)
+escolha: Je [*me/te/se] lève tôt.
+escolha: Vous [*vous/nous/se] couchez à quelle heure ?
+escolha: Ils [*se/me/nous] douchent le matin.
+escolha: Nous [*nous habillons/se habillons/nous habille] vite.
+# frase: Ma routine
+D’abord, je me lève à sept heures.
+Ensuite, je me douche et je m’habille.
+Puis je prends un café.
+Enfin, je pars au travail.
+# exercicio: Exercice 2
+erro: Le soir, je {couche|me couche} à onze heures.
+reescreva: Je me lève à six heures. (elle) | SE | Elle ___ à six heures. | se lève
+ordem: Je me couche à onze heures
+ditado: D’abord, je me lève et ensuite je me douche.
+# conversa: Et vous ? | img:relogio
+Racontez votre journée avec d’abord, ensuite, puis, enfin.
+Posez 5 questions à la professeure : « À quelle heure vous vous levez ? »
+Comparez la journée de Léa avec la vôtre.
+# tarefas: Atividades recomendadas
+Quelle heure est-il ?
+Les verbes en -er
+Devoirs · Ma journée de rêve`],
+
+['FR','A2','Chez le médecin : j’ai mal à la tête',`# capa: Chez le médecin | img:preocupado
+Qu’est-ce qui ne va pas ? J’ai mal à la gorge…
+# aquecimento: Vous êtes malade ?
+pergunta: Qu’est-ce que vous faites quand vous avez un rhume ?
+jogo: Mime | L’élève mime un problème (mal à la tête, mal au dos, de la fièvre). La professeure devine : « Vous avez mal au dos ! »
+# tabela: Avoir mal à…
+à + le = au | à + la = à la | à + l’ = à l’ | à + les = aux
+mal au dos | mal à la tête | mal à l’oreille | mal aux dents
+mal au ventre | mal à la gorge | mal à l’œil | mal aux pieds
+# vocab: Les symptômes
+J’ai de la fièvre. | Estou com febre.
+Je tousse. | Estou tossindo.
+J’ai le nez qui coule. | Estou com o nariz escorrendo.
+J’ai un rhume. | Estou resfriado.
+Je suis fatigué(e). | Estou cansado(a).
+une ordonnance | uma receita
+un comprimé | um comprimido
+la pharmacie | a farmácia
+# dialogo: La consultation
+A: Bonjour, qu’est-ce qui ne va pas ?
+B: J’ai mal à la gorge et j’ai de la fièvre depuis hier.
+A: Vous toussez ?
+B: Oui, un peu, surtout la nuit.
+A: Ce n’est pas grave. Prenez ces comprimés trois fois par jour et reposez-vous.
+B: Merci, docteur. Je dois aller à la pharmacie ?
+# explica: Les conseils du médecin
+O médico usa o **imperativo** (sem o sujeito):
+> **Prenez** ce médicament. · **Buvez** beaucoup d’eau. · **Restez** au lit.
+Com verbos pronominais, o pronome vai **depois**: **Reposez-vous !** · **Couchez-vous tôt !**
+Também: **Il faut** + infinitivo: Il faut boire beaucoup d’eau.
+# exercicio: Exercice
+escolha: J’ai mal [*au/à la/aux] dos.
+escolha: Il a mal [*aux/au/à la] dents.
+escolha: Elle a mal [*à la/au/à l’] tête.
+escolha: [*Buvez/Vous buvez] beaucoup d’eau ! (conseil)
+escolha: Reposez-[*vous/nous/te] !
+lacunas: J’ai un [rhume] : je [tousse] et j’ai de la [fièvre]. || gorge, pharmacie
+Le patient a de la fièvre depuis hier. (v)
+ditado: J’ai mal à la gorge et j’ai de la fièvre.
+# conversa: Jeu de rôle | img:preocupado
+Vous êtes chez le médecin. Expliquez vos symptômes (voir la carte de la professeure).
+Maintenant, vous êtes le médecin : donnez trois conseils à l’impératif.
+Quels sont vos remèdes de grand-mère ? (chá, mel, limão…)
+nota: Cartas para a professora: 1) dor de barriga depois de comer frutos do mar; 2) dor nas costas de tanto trabalhar no computador; 3) gripe com febre e tosse há três dias.
+# tarefas: Atividades recomendadas
+Chez le médecin
+L’impératif
+Devoirs · Docteur, j’ai mal !`],
+
+['FR','A2','Phonétique : u ou ou ? (tu / tout)',`# capa: u ou ou ? | img:fones
+tu · tout · rue · roue · dessus · dessous
+# sobre: Sobre esta aula
+ver: a diferença entre o som **[y]** (u: tu, rue, dessus) e o som **[u]** (ou: tout, roue, dessous); pares mínimos; como fazer o [y] com a boca do “i” e os lábios do “u”; ditado de palavras que mudam de sentido
+porque: O som [y] não existe em português, então brasileiros costumam falar “tout” no lugar de “tu”. Isso muda o sentido: **dessus** (em cima) × **dessous** (embaixo), **rue** (rua) × **roue** (roda).
+meta: ouvir a diferença entre [y] e [u]; pronunciar o [y]; não confundir palavras parecidas
+nivel: Nível A2 · fonética
+# explica: Comment faire le son [y] ?
+1. Diga **“i”**, com a língua na frente e os dentes quase fechados.
+2. Sem mexer a língua, **arredonde os lábios** como para assobiar.
+3. Pronto: é o **u** de **tu**!
+Já o **ou** de **tout** é o nosso “u” do português.
+nota: Truque: peça para o aluno dizer “iiii” e ir fechando os lábios até virar “uuu” sem mexer a língua. O som do meio é o [y].
+# vocab: Écoutez : [y] ou [u] ?
+tu | você
+tout | tudo
+rue | rua
+roue | roda
+dessus | em cima
+dessous | embaixo
+vu | visto
+vous | vocês / o senhor
+# pergunta: Qu’est-ce que vous entendez ?
+« Le prix n’est pas sur la boîte, il est écrit dessous. » Où est le prix ?
+*Embaixo da caixa.
+Em cima da caixa.
+nota: Dessus e dessous são advérbios (em cima / embaixo, sem complemento). Com complemento, o francês usa sur e sous: sur la table, sous la table.
+# frase: Répétez
+Tu as vu la rue ?
+Vous avez tout vu ?
+La roue est dans la rue.
+As-tu vu le tutu de tulle de Lili d’Honolulu ?
+# exercicio: Exercice 1
+grupos: Son [y] comme tu: rue, vu, dessus, lune, sucre / Son [u] comme tout: roue, vous, dessous, loup, sourire
+escolha: Ne mets pas la boîte dessous, mets-la [*dessus/dessous] ! (em cima)
+escolha: La [*rue/roue] est fermée : prenez une autre route. (rua)
+escolha: J’ai [*tout/tu] mangé ! (tudo)
+# exercicio: Exercice 2
+ditado: Tu as vu la rue ?
+ditado: Vous avez tout vu ?
+ditado: La roue de mon vélo est cassée.
+# conversa: Entraînement | img:fones
+Lisez les paires de mots : la professeure dit si c’est [y] ou [u].
+Inventez une phrase avec trois mots en [y] et deux en [u].
+Quels autres sons du français sont difficiles pour vous ?
+# tarefas: Atividades recomendadas
+Les sons du français
+Les voyelles nasales
+Devoirs · Tu ou tout ?`],
+
+['FR','A2','Chercher un appartement à Paris',`# capa: Chercher un appartement | img:chave
+T2, 35 m², 950 € c.c., métro à 2 minutes…
+# texto: Petite annonce
+**À louer – Paris 11e**
+T2 lumineux, 35 m², 3e étage avec ascenseur.
+Cuisine équipée, salle de bains avec douche.
+Métro à 2 minutes. Libre le 1er mars.
+**950 € c.c.** (charges comprises).
+nota: Explique as abreviações: T2 = 2 cômodos principais (sala + quarto); m² = metros quadrados; c.c. = condomínio/contas incluídos; 11e = 11º distrito (arrondissement).
+# tabela: Le vocabulaire des annonces
+Annonce | Ça veut dire
+T1 / T2 / T3 | nombre de pièces principales
+c.c. / charges comprises | les charges sont incluses
+meublé | avec les meubles
+lumineux | avec beaucoup de lumière
+le loyer / la caution | o aluguel / o depósito
+# explica: Comparer les appartements
+**plus** / **moins** / **aussi** + adjetivo + **que**:
+> Cet appartement est **plus grand que** l’autre.
+> Il est **moins cher que** le T3.
+> Le quartier est **aussi calme que** le mien.
+Irregular: **bon → meilleur** (Le prix est **meilleur**.)
+# dialogo: Au téléphone avec l’agence
+A: Bonjour, j’appelle pour l’annonce du T2 dans le 11e.
+B: Oui, il est toujours disponible. Vous voulez le visiter ?
+A: Oui ! Le loyer, c’est charges comprises ?
+B: Oui, 950 euros par mois, charges comprises.
+A: Et il y a une machine à laver ?
+B: Oui, dans la cuisine. Samedi à 10 heures, ça vous va ?
+# exercicio: Exercice
+Combien coûte l’appartement par mois ?
+*a) 950 €, charges comprises
+b) 950 € plus les charges
+c) 590 €
+L’appartement est au rez-de-chaussée. (f)
+escolha: Le T3 est [*plus grand que/plus grand de/plus grande que] le T2.
+escolha: Ce studio est [*moins/aussi/plus] cher que l’autre : il coûte 700 €, l’autre 900 €.
+escolha: Le prix est [*meilleur/plus bon/mieux].
+escolha: Un appartement [*meublé/lumineux] a déjà des meubles.
+lacunas: Je cherche un [T2] près du métro. Le [loyer] doit être de 900 euros maximum, [charges] comprises. || meublé, caution
+ditado: Le loyer est de neuf cent cinquante euros, charges comprises.
+# conversa: À la recherche du logement idéal | img:chave
+Lisez deux annonces (voir les notes) et comparez-les : lequel choisissez-vous ?
+Appelez l’agence pour poser 4 questions.
+Décrivez votre logement actuel et comparez-le avec l’appartement de l’annonce.
+nota: Anúncio B: Paris 15e, T3 de 52 m², 1 400 € + 120 € de charges, 5e étage sans ascenseur, avec balcon, libre tout de suite.
+# tarefas: Atividades recomendadas
+Le logement
+Comparatif et superlatif
+Devoirs · Mon nouvel appart`],
+);
+/* ---------- lote 8 (francês) · B1 a C1 ---------- */
+SLIDES_SEED.push(
+['FR','B1','Si j’étais… : le conditionnel présent',`# capa: Si j’étais… | img:balao
+Si j’étais un animal, je serais un chat.
+# aquecimento: Le portrait chinois
+jogo: Le portrait chinois | Jeu très connu en France. La professeure commence : « Si j’étais une couleur, je serais le vert, parce que j’adore la nature. » L’élève continue avec un animal, une ville, un plat, une saison…
+pergunta: Si vous pouviez vivre dans une autre ville, laquelle choisiriez-vous ?
+# tabela: Former le conditionnel
+Verbe | Radical (= futur) | Conditionnel
+parler | parler- | je parlerais
+être | ser- | je serais
+avoir | aur- | j’aurais
+aller / faire | ir- / fer- | j’irais / je ferais
+pouvoir / vouloir | pourr- / voudr- | je pourrais / je voudrais
+# explica: Les terminaisons
+Radical do **futur** + terminações do **imparfait**:
+> je parler**ais** · tu parler**ais** · il parler**ait**
+> nous parler**ions** · vous parler**iez** · ils parler**aient**
+Hipótese: **Si + imparfait**, **conditionnel**:
+> **Si** j’**avais** le temps, j’**apprendrais** le piano.
+# dica: Attention !
+x: Si j’aurais de l’argent, je voyagerais.
+ok: Si j’avais de l’argent, je voyagerais.
+x: Je voudrai un café. (futur)
+ok: Je voudrais un café, s’il vous plaît. (politesse)
+# explica: Le conditionnel de politesse
+Para pedir com educação, o conditionnel suaviza:
+> **Je voudrais** réserver une table.
+> **Pourriez-vous** m’aider ?
+> **Ça vous dérangerait** de fermer la fenêtre ?
+> **Vous auriez** l’heure, s’il vous plaît ?
+# exercicio: Exercice 1
+escolha: Si j’étais riche, j’[*achèterais/achèterai/achetais] une maison à la mer.
+escolha: Si nous avions une voiture, nous [*irions/allerions/irons] à la campagne.
+escolha: [*Pourriez-vous/Pourrez-vous] m’aider, s’il vous plaît ? (conditionnel de politesse)
+escolha: Si tu [*venais/viendrais] ce soir, on ferait une fête.
+grupos: Politesse: je voudrais, pourriez-vous, vous auriez / Hypothèse: si j’avais, je ferais, nous irions
+# leitura: Et si on changeait de vie ? | img:balao
+tipo: Magazine
+Nous avons demandé à nos lecteurs : « Que feriez-vous si vous ne deviez plus travailler ? » **Sophie**, 34 ans, partirait faire le tour du monde en voilier. **Karim**, 52 ans, ouvrirait une petite librairie à Bordeaux. Quant à **Lucie**, 27 ans, elle ne changerait presque rien : « Je garderais mon travail, mais je travaillerais trois jours par semaine. »
+# exercicio: Exercice 2
+Que ferait Karim ?
+a) Il ferait le tour du monde.
+*b) Il ouvrirait une librairie.
+c) Il garderait son travail.
+Lucie changerait complètement de vie. (f)
+reescreva: Je n’ai pas le temps, donc je ne fais pas de sport. | SI | ___ le temps, je ferais du sport. | Si j’avais
+erro: Si je {serais|étais} toi, j’accepterais.
+ditado: Si j’avais plus de temps, j’apprendrais le piano.
+# conversa: Et vous ? | img:balao
+Faites votre portrait chinois complet (5 catégories) et justifiez.
+Que feriez-vous si vous ne deviez plus travailler ?
+Demandez trois services à la professeure avec le conditionnel de politesse.
+# tarefas: Atividades recomendadas
+Le conditionnel présent
+Les hypothèses avec si
+Devoirs · Si j’étais…`],
+
+['FR','B1','Qui, que, où, dont : les pronoms relatifs',`# capa: Qui, que, où, dont | img:lupa
+C’est un objet qui… C’est une ville où…
+# aquecimento: Devinettes
+jogo: Qu’est-ce que c’est ? | La professeure : « C’est un objet qu’on utilise tous les jours et dont on ne peut plus se passer. » (le téléphone !) L’élève invente la suivante.
+# tabela: Quel pronom ?
+Pronom | Remplace | Exemple
+qui | le sujet | J’ai une amie **qui** habite à Québec.
+que / qu’ | le complément direct | Le film **que** j’ai vu était génial.
+où | un lieu ou un moment | La ville **où** je suis né. · Le jour **où** on s’est rencontrés.
+dont | un complément avec de | Le livre **dont** je parle. (parler **de**)
+# explica: Le truc de « dont »
+Use **dont** quando o verbo ou a expressão pede **de**:
+- parler **de** → le projet **dont** je parle
+- avoir besoin **de** → l’outil **dont** j’ai besoin
+- être fier **de** → le travail **dont** je suis fier
+Dica para qui/que: depois de **que** vem um sujeito; depois de **qui** vem um verbo.
+# exercicio: Exercice 1
+escolha: C’est la personne [*qui/que/dont] m’a aidé.
+escolha: C’est la personne [*que/qui/où] j’ai rencontrée hier.
+escolha: Paris est la ville [*où/que/dont] j’ai fait mes études.
+escolha: Voici le livre [*dont/que/qui] tout le monde parle.
+escolha: C’est un outil [*dont/que/où] j’ai besoin.
+grupos: qui: qui habite, qui travaille, qui m’a aidé / que: que j’aime, que tu as vu, qu’on utilise / dont: dont je parle, dont j’ai besoin, dont il est fier
+# leitura: Un objet culte | img:lupa
+tipo: Blog
+La marinière est un vêtement **que** tout le monde connaît. Au départ, c’était un pull **qui** était porté par les marins bretons. Ses 21 rayures, **dont** l’origine reste mystérieuse, représenteraient les victoires de Napoléon : c’est une légende. La mode l’a adoptée dans les années 1910, l’époque **où** Coco Chanel a commencé à s’en inspirer.
+nota: A lenda das 21 listras ligadas às vitórias de Napoleão é popular, mas não tem prova histórica. O decreto de 1858 da Marinha francesa definiu o modelo das listras.
+# exercicio: Exercice 2
+Qui portait la marinière au départ ?
+a) Coco Chanel
+*b) Les marins bretons
+c) Napoléon
+L’histoire des 21 rayures est une légende. (v)
+reescreva: J’ai besoin de ce livre. C’est ce livre. | DONT | C’est le livre ___ besoin. | dont j’ai
+reescreva: Je suis né dans cette ville. C’est cette ville. | OÙ | C’est la ville ___ né. | où je suis
+erro: C’est le collègue {que|qui} travaille avec moi.
+ditado: Voici le livre dont je t’ai parlé.
+# conversa: À vous ! | img:lupa
+Inventez trois devinettes avec qui, que, où et dont. La professeure devine.
+Décrivez un objet culte de votre pays avec au moins quatre pronoms relatifs.
+Parlez d’une personne qui a changé votre vie.
+# tarefas: Atividades recomendadas
+Les pronoms relatifs
+Celui, celle, ceux et celles
+Devoirs · L’objet mystère`],
+
+['FR','B1','L’entretien d’embauche',`# capa: L’entretien d’embauche | img:camisa
+Parlez-moi de vous…
+# sobre: Sobre esta aula
+ver: as perguntas clássicas de uma entrevista na França; falar da experiência com **passé composé** e **imparfait**; **depuis / pendant / il y a**; qualidades e pontos a melhorar; o registro formal (vouvoiement)
+porque: Uma entrevista em francês exige falar de si com clareza e no registro certo. Os tempos do passado e as palavras de tempo (depuis, pendant) são exatamente o que mais aparece nessas respostas.
+meta: responder às perguntas mais comuns; contar a experiência profissional com os tempos certos; fazer boas perguntas no fim
+nivel: Nível B1 · travail
+# vocab: Le vocabulaire de l’emploi
+le poste | a vaga / o cargo
+un CV | um currículo
+une lettre de motivation | uma carta de apresentação
+un stage | um estágio
+les compétences | as competências
+le salaire | o salário
+un CDI / un CDD | contrato fixo / temporário
+# tabela: Depuis, pendant, il y a
+Mot | Sens | Exemple
+depuis | começou e continua | Je travaille chez Danone depuis 2022.
+pendant | duração acabada | J’ai fait un stage pendant six mois.
+il y a | há (tempo atrás) | J’ai terminé mes études il y a trois ans.
+# dialogo: L’entretien
+A: Bonjour, asseyez-vous. Parlez-moi un peu de vous.
+B: Je suis ingénieure et je travaille dans la logistique depuis cinq ans.
+A: Pourquoi voulez-vous quitter votre poste actuel ?
+B: J’aimerais travailler dans une entreprise internationale et utiliser mon français.
+A: Quel est votre point faible ?
+B: Je suis parfois trop perfectionniste, mais j’apprends à déléguer.
+# explica: Raconter son parcours
+**Passé composé** para fatos e etapas:
+> J’**ai travaillé** trois ans à São Paulo. · J’**ai géré** une équipe de six personnes.
+**Imparfait** para o contexto:
+> Quand j’**étais** étudiante, je **faisais** des traductions.
+No fim, faça uma pergunta: **Quelles seraient mes responsabilités ?** · **Comment se passe l’intégration ?**
+# exercicio: Exercice
+escolha: Je travaille ici [*depuis/pendant/il y a] trois ans.
+escolha: J’ai fait un stage [*pendant/depuis/il y a] quatre mois.
+escolha: J’ai obtenu mon diplôme [*il y a/depuis/pendant] deux ans.
+escolha: Quand j’[*étais/ai été] jeune, je voulais être pilote.
+escolha: L’année dernière, j’[*ai géré/gérais] un projet important. (fato pontual)
+Quelle est la meilleure réponse à « Pourquoi voulez-vous ce poste ? »
+a) Pour le salaire.
+*b) Parce que vos projets correspondent à mon expérience en logistique.
+c) Je ne sais pas.
+ditado: Je travaille dans la logistique depuis cinq ans.
+# conversa: Simulation d’entretien | img:camisa
+Préparez votre « pitch » de 1 minute : formation, expérience, objectif.
+Simulation : la professeure est la recruteuse (voir l’annonce dans les notes).
+Préparez deux questions à poser à la fin de l’entretien.
+nota: Vaga: “Chargé(e) de projet international, Lyon, CDI. Expérience de 3 ans, anglais et portugais appréciés.” Perguntas extras: “Où vous voyez-vous dans cinq ans ?” “Pourquoi devrions-nous vous choisir ?”
+# tarefas: Atividades recomendadas
+Un entretien d’embauche
+Le travail
+Devoirs · Mon entretien`],
+
+['FR','B2','Si j’avais su… : le conditionnel passé',`# capa: Si j’avais su… | img:relogio
+Si j’avais su, je ne serais pas venu !
+# aquecimento: Une réplique culte
+filme: La Guerre des boutons (1962) | Le petit Gibus dit : « Si j’aurais su, j’aurais pas venu ! » La phrase est fausse, mais toute la France la connaît. Pouvez-vous la corriger ? | busca: La Guerre des boutons si j'aurais su
+pergunta: Avez-vous un regret amusant ? « Si j’avais su… »
+nota: Forma correta: « Si j’avais su, je ne serais pas venu. » O erro do menino (aurais depois de si; avoir no lugar de être com venir) é justamente o que vamos estudar.
+# linha: Une hypothèse sur le passé
+ponto: 0.3 | je n’ai pas su
+ponto: 0.6 | je suis venu
+agora: 0.9
+eixo: hier | aujourd’hui
+**Si** + **plus-que-parfait** (o que não aconteceu) → **conditionnel passé** (a consequência que não aconteceu).
+# tabela: Former les deux temps
+Temps | Formation | Exemple
+plus-que-parfait | avoir/être à l’imparfait + participe | j’avais su · j’étais venu
+conditionnel passé | avoir/être au conditionnel + participe | j’aurais dit · je serais parti
+# explica: Les règles d’or
+1. **Jamais** conditionnel depois de **si**: Si j’**avais** su… (nunca « si j’aurais su »)
+2. Os verbos com **être** continuam com être: je **serais** venu, elle **serait** partie.
+3. O conditionnel passé sozinho também expressa **arrependimento** e **crítica**:
+> J’**aurais dû** l’appeler. · Tu **aurais pu** me prévenir !
+# exercicio: Exercice 1
+escolha: Si j’[*avais su/aurais su], je serais resté à la maison.
+escolha: S’il avait plu, nous [*serions restés/aurions restés/serions resté] à l’intérieur.
+escolha: Elle [*aurait dû/devrait] partir plus tôt. Maintenant, elle a raté le train.
+escolha: Si tu m’avais appelé, je [*serais venu/viendrais/étais venu].
+reescreva: Je n’ai pas révisé, alors j’ai raté l’examen. | AVAIS | Si j’___ , je n’aurais pas raté l’examen. | avais révisé
+reescreva: C’était une erreur de ne pas l’appeler. | DÛ | J’___ l’appeler. | aurais dû
+# leitura: Lettre à moi-même à 20 ans | img:relogio
+tipo: Témoignage
+Si j’avais su que la vie passait si vite, j’aurais voyagé davantage et je me serais moins inquiétée pour des détails. J’aurais dû écouter ma grand-mère, qui me répétait de parler toutes les langues possibles. Et si je n’avais pas raté ce train pour Lisbonne en 2009, je n’aurais jamais rencontré l’homme qui partage ma vie aujourd’hui. Comme quoi, certains regrets n’en sont pas vraiment.
+# exercicio: Exercice 2
+Qu’est-ce que l’autrice aurait fait différemment ?
+*a) Elle aurait voyagé davantage.
+b) Elle aurait pris le train pour Lisbonne.
+c) Elle n’aurait pas appris de langues.
+Rater le train a finalement été une bonne chose. (v)
+erro: Si j’{aurais|avais} eu le temps, je t’aurais aidé.
+ditado: Si j’avais su, je ne serais pas venu.
+# conversa: Regrets et hypothèses | img:relogio
+Écrivez une « lettre à vous-même » à 20 ans avec cinq phrases au conditionnel passé.
+Racontez un « petit hasard » qui a changé votre vie : « Si je n’avais pas…, je n’aurais jamais… »
+Critiquez gentiment une décision historique : « Ils auraient dû… »
+# tarefas: Atividades recomendadas
+Le conditionnel passé
+Le plus-que-parfait
+Devoirs · Si j’avais su…`],
+
+['FR','B2','Un français, plusieurs francophonies',`# capa: La francophonie | img:globo
+Septante ? Nonante ? Un char ? Bienvenue dans la francophonie !
+# sobre: Sobre esta aula
+ver: o francês no mundo (mais de 320 milhões de falantes, em todos os continentes); diferenças de vocabulário entre **França, Québec, Bélgica, Suíça e África**; números (septante, nonante); refeições (déjeuner, dîner, souper); atitude: nenhuma variante é “errada”
+porque: Muito do francês que o aluno vai ouvir em séries, viagens e no trabalho não é o de Paris. Conhecer as variantes evita mal-entendidos e mostra respeito pela diversidade da língua.
+meta: reconhecer palavras de diferentes países francófonos; entender números e refeições nas variantes; discutir língua e identidade
+nivel: Nível B2 · culture
+# pergunta: Quiz : combien de francophones ?
+Combien de personnes parlent français dans le monde (environ) ?
+80 millions
+150 millions
+*plus de 320 millions
+nota: Segundo a Organisation internationale de la Francophonie (OIF), cerca de 321 milhões em 2022, e a maioria vive na África.
+# tabela: Un mot, plusieurs pays
+France | Québec | Belgique / Suisse
+70 · 90 : soixante-dix, quatre-vingt-dix | soixante-dix, quatre-vingt-dix | septante, nonante
+le petit-déjeuner, le déjeuner, le dîner | le déjeuner, le dîner, le souper | le déjeuner, le dîner, le souper
+faire du shopping | magasiner | faire les magasins
+une voiture | un char | une voiture
+mon téléphone portable | mon cell | mon GSM (Belgique) · mon natel (Suisse)
+# explica: Et en Afrique ?
+A maior parte dos francófonos vive na África, onde o francês ganhou palavras próprias:
+- **une essencerie** (Senegal): um posto de gasolina
+- **un maquis** (Costa do Marfim): restaurante popular ao ar livre
+- **un taxi-brousse**: táxi coletivo entre cidades
+Os dicionários franceses incluem a cada ano mais palavras vindas da francofonia.
+# exercicio: Exercice
+Un Québécois vous invite à « souper ». C’est quel repas ?
+a) le petit-déjeuner
+b) le déjeuner
+*c) le repas du soir
+À Bruxelles, « nonante » veut dire…
+*a) 90
+b) 19
+c) 9
+escolha: Au Québec, on peut dire « [*magasiner/shopper] » pour « faire du shopping ».
+escolha: En Belgique, un téléphone portable, c’est un [*GSM/char].
+grupos: Québec: char, magasiner, souper / Belgique et Suisse: septante, nonante, GSM / Afrique de l’Ouest: essencerie, maquis
+# leitura: « Ma langue, ma maison » | img:globo
+tipo: Tribune
+« Quand je suis arrivée à Paris, on se moquait de mon accent québécois. Aujourd’hui, je le revendique. Le français n’appartient pas à la France : il appartient à tous ceux qui le parlent, de Dakar à Montréal. Chaque accent raconte une histoire, et c’est cette diversité qui fait la richesse de notre langue. »
+# exercicio: Exercice 2
+Quelle est l’idée principale de la tribune ?
+a) L’accent parisien est le seul correct.
+*b) Le français appartient à tous ceux qui le parlent.
+c) Il faut perdre son accent.
+reescreva: Je suis fière de mon accent. | REVENDIQUE | Mon accent, je le ___ . | revendique
+ditado: Le français appartient à tous ceux qui le parlent.
+# conversa: Débat | img:globo
+Existe-t-il un français « correct » ? Donnez votre avis avec des exemples.
+Et le portugais ? Comparez le portugais du Brésil, du Portugal et d’Angola.
+Quelle variante du français aimeriez-vous apprendre ? Pourquoi ?
+# tarefas: Atividades recomendadas
+La francophonie
+Argot et verlan
+Devoirs · Le tour du monde en français`],
+
+['FR','C1','Le passé simple : la langue des contes',`# capa: Le passé simple | img:livro
+Il était une fois… Elle partit aussitôt.
+# sobre: Sobre esta aula
+ver: o **passé simple**, tempo do relato escrito (contos, romances, biografias); as formas irregulares (**fit, eut, fut, vint, prit**); passé simple × passé composé; um conto de Perrault (domínio público)
+porque: Quase ninguém fala no passé simple, mas ele está em todo livro em francês. Quem não reconhece “il fit” ou “elle eut” trava na leitura. No C1, ler literatura com fluência é essencial.
+meta: reconhecer o passé simple e os irregulares mais comuns; entender um texto literário; transformar passé simple em passé composé e vice-versa
+nivel: Nível C1 · littérature
+# texto: Le Petit Chaperon rouge (Charles Perrault, 1697)
+Il était une fois une petite fille de village, la plus jolie qu’on eût su voir ; sa mère en était folle, et sa mère-grand plus folle encore. Cette bonne femme lui **fit** faire un petit chaperon rouge, qui lui seyait si bien que partout on l’appelait le Petit Chaperon rouge.
+Le Petit Chaperon rouge **partit** aussitôt pour aller chez sa mère-grand, qui demeurait dans un autre village. En passant dans un bois, elle **rencontra** compère le Loup, qui **eut** bien envie de la manger.
+nota: Texto original em domínio público (ortografia modernizada). “Seyait” vem de seoir (cair bem); “demeurait” = habitait.
+# tabela: Les terminaisons
+-er (parler) | -ir / -re (partir, prendre) | irréguliers fréquents
+il parla | il partit · il prit | il fut (être) · il eut (avoir)
+ils parlèrent | ils partirent · ils prirent | il fit (faire) · il vint (venir)
+elle rencontra | elle répondit | il dit · il vit (voir) · il mit (mettre)
+# explica: Passé simple ou passé composé ?
+O **passé simple** é do **relato escrito**, distante do presente: contos, romances, biografias.
+O **passé composé** é da **fala** e do texto ligado ao presente: cartas, conversas, notícias do dia.
+> Écrit littéraire : Victor Hugo **naquit** en 1802.
+> À l’oral : Victor Hugo **est né** en 1802.
+O **imparfait** continua igual nos dois casos para o cenário: Il **était** une fois…
+# exercicio: Exercice 1
+Dans le texte, « elle rencontra » correspond à…
+*a) elle a rencontré
+b) elle rencontrait
+c) elle rencontrera
+« Il eut envie » vient du verbe…
+a) être
+*b) avoir
+c) aller
+grupos: être: il fut, ils furent / avoir: il eut, ils eurent / faire: il fit, ils firent / venir: il vint, ils vinrent
+escolha: Napoléon [*naquit/naissa/naît] en 1769. (récit écrit)
+# exercicio: Exercice 2
+reescreva: Il a pris son chapeau et il est sorti. | PRIT | Il ___ et il sortit. | prit son chapeau
+« Ils vinrent » vient du verbe…
+a) voir
+*b) venir
+c) vendre
+erro: Ils {partèrent|partirent} à l’aube.
+ditado: Le Petit Chaperon rouge partit aussitôt chez sa mère-grand.
+# conversa: Racontez ! | img:livro
+Continuez l’histoire du Petit Chaperon rouge à l’écrit, au passé simple (5 phrases).
+Racontez la même suite à l’oral, au passé composé. Qu’est-ce qui change ?
+Quel conte de votre enfance aimeriez-vous réécrire ? Pourquoi ?
+# tarefas: Atividades recomendadas
+Le passé simple
+Les temps du récit
+Devoirs · Il était une fois…`],
+
+['FR','C1','Le registre soutenu : écrire à l’administration',`# capa: Le registre soutenu | img:envelope
+Je vous saurais gré de bien vouloir…
+# sobre: Sobre esta aula
+ver: a estrutura da carta formal francesa; fórmulas de abertura, pedido e despedida (**Je me permets de…**, **Je vous saurais gré de…**, **Veuillez agréer…**); **nominalisation**; **subjonctif** depois de afin que, bien que; vocabulário administrativo
+porque: A França é famosa pela burocracia, e uma carta bem escrita resolve muita coisa: prefeitura, banco, universidade, imobiliária. O registro soutenu tem fórmulas fixas que soam estranhas para brasileiros, mas são obrigatórias.
+meta: escrever uma carta formal completa; passar frases do registro courant para o soutenu; usar as fórmulas de cortesia corretas
+nivel: Nível C1 · écrit
+# texto: Une lettre type
+Madame, Monsieur,
+**Je me permets de vous écrire afin de** solliciter le renouvellement de mon titre de séjour, qui expire le 15 mars.
+**Vous trouverez ci-joint** les justificatifs demandés. **Je vous saurais gré de bien vouloir** m’indiquer la date d’un rendez-vous.
+**Dans l’attente de votre réponse, je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.**
+# tabela: Du courant au soutenu
+Courant | Soutenu
+Je vous écris pour… | Je me permets de vous écrire afin de…
+Est-ce que vous pouvez… ? | Je vous saurais gré de bien vouloir…
+Je vous envoie les papiers. | Vous trouverez ci-joint les justificatifs.
+Merci, j’attends votre réponse. | Dans l’attente de votre réponse…
+# explica: Trois outils du soutenu
+**Nominalisation**: « parce que mon contrat a été renouvelé » → **suite au renouvellement de mon contrat**
+**Subjonctif** depois de **afin que / bien que / pour que**:
+> **afin que** vous **puissiez** traiter ma demande · **bien que** j’**aie** envoyé le dossier
+**Conditionnel** de cortesia: Je **souhaiterais** obtenir… · **Pourriez-vous**…
+# exercicio: Exercice 1
+Quelle formule convient à la fin d’une lettre formelle ?
+a) Bisous et à bientôt !
+*b) Je vous prie d’agréer l’expression de mes salutations distinguées.
+c) Merci et salut.
+escolha: Je vous écris afin que vous [*puissiez/pouvez/pourrez] traiter mon dossier.
+escolha: Bien que j’[*aie/ai/avais] envoyé tous les documents, ma demande est incomplète.
+escolha: Vous trouverez [*ci-joint/ci-joints/ci-jointe] les justificatifs. (antes do substantivo, fica invariável)
+grupos: Soutenu: je vous saurais gré, ci-joint, afin de / Courant: est-ce que vous pouvez, je vous envoie, pour
+# exercicio: Exercice 2
+reescreva: Je vous écris parce que je veux changer d’adresse. | AFIN | Je me permets de vous écrire ___ changer d’adresse. | afin de
+reescreva: Parce que mon loyer a augmenté, je ne peux plus payer. | SUITE | ___ de mon loyer, je ne suis plus en mesure de payer. | Suite à l’augmentation
+erro: Je vous {saurai|saurais} gré de bien vouloir me répondre.
+ditado: Je vous saurais gré de bien vouloir m’indiquer la date d’un rendez-vous.
+# conversa: Atelier d’écriture | img:envelope
+Écrivez une lettre formelle à votre banque pour contester des frais (150 mots).
+Transformez un e-mail courant que vous avez déjà écrit en registre soutenu.
+Le registre soutenu est-il une forme de respect ou une barrière ? Discutez.
+# tarefas: Atividades recomendadas
+Les formules de la lettre formelle
+Le registre soutenu
+Devoirs · Madame, Monsieur,`],
 );
 var SLIDES_LOADED=true;

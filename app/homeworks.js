@@ -1162,3 +1162,348 @@ Conclude: On balance…, All things considered…, Ultimately…`),
     PICK('This argument [*overlooks/oversees] a key point. [*On balance/In balance], the evidence supports the change.'),
     'Choose a controversial topic. Write a paragraph (200 words) that presents the opposing view fairly and then rebuts it.']}
 );
+/* ===================== lote 8 · homeworks (inglês) ===================== */
+CONT_ATIV.push(
+  {l:'EN',lv:'A1',tp:'Leitura',t:'Homework · Good morning, world!',i:'Read the text and answer.\n\nIn Turkey, breakfast is a big meal. People have bread, white cheese, olives, tomatoes, cucumbers and eggs, and they drink black tea in small glasses. In Mexico, a popular breakfast is chilaquiles: tortilla chips with red or green salsa, cheese and sometimes an egg. In Germany, many people have bread rolls with cheese, ham or jam, and a cup of coffee. And in Brazil? Bread with butter, fruit and coffee with milk!',q:[
+    ['What do people drink in Turkey?',['coffee with milk','black tea','orange juice'],1],
+    ['What are chilaquiles?',['tortilla chips with salsa','bread rolls with jam','rice and fish'],0],
+    ['Where do people have bread rolls with ham or jam?',['Mexico','Turkey','Germany'],2],
+    TF('Breakfast is a small meal in Turkey.',false),TF('In Mexico, chilaquiles sometimes have an egg.',true),
+    GAP('In Turkey, they have ___ egg and some olives. (a/an)','an'),GAP('In Germany, many people ___ (have) coffee.','have'),
+    'Describe your perfect breakfast and the breakfast of someone in your family (6 sentences). Use a, an, some, has and doesn’t have.']},
+  {l:'EN',lv:'A2',tp:'Escuta',t:'Homework · Where’s the treasure?',i:'Lição de casa: ouça as instruções da caça ao tesouro e responda.',a:`Welcome to the treasure hunt! Listen carefully. First, go to the kitchen. Look under the table. There's a small box. Don't open it! Take it to the living room and put it on the sofa. Then go to the garden. Walk past the big tree and stop in front of the blue door. Behind the door, there's a red bucket. The treasure is in the bucket, between two old shoes. Good luck!`,q:[
+    ['Where is the small box?',['on the table','under the table','next to the table'],1],
+    ['Where do you put the box?',['on the sofa','in the garden','behind the door'],0],
+    ['What colour is the door?',['red','green','blue'],2],
+    ['Where is the treasure?',['in the red bucket','under the tree','on the sofa'],0],
+    TF('You must open the small box.',false),
+    GAP('Stop in ___ of the blue door.','front'),GAP('The treasure is ___ two old shoes.','between'),
+    'Write a treasure hunt in your house (6–8 instructions) using imperatives and at least 5 prepositions.']},
+  {l:'EN',lv:'B1',tp:'Leitura',t:'Homework · Is it a scam?',i:'Read the email and answer.\n\nSubject: URGENT – Your account will be closed today!!\nDear Customer,\nWe detected unusual activity in your account. To avoid permanent closure, you must confirm your details within 2 hours. Click here: secure-banking-verify.co\nYou will need your card number, password and the code we send by SMS.\nThank you for your cooperation,\nCustomer Security Team',q:[
+    ['What does the email want you to do?',['visit the bank','click a link and give your details','call your manager'],1],
+    ['Which sign of a scam is in the subject line?',['urgency','good news','a prize'],0],
+    ['What information do they ask for?',['only your name','your card number, password and SMS code','your address'],1],
+    TF('The email uses your real name.',false),TF('Banks normally ask for passwords by email.',false),
+    GAP('This ___ be a real bank: banks never ask for codes. (dedução)','can’t|cannot'),
+    GAP('If it sounds too good to be true, it probably ___ .','is'),
+    'Write advice for an older relative (100–120 words): how to recognise a scam message and what to do. Use must, might, can’t and imperatives.']},
+  {l:'EN',lv:'B2',tp:'Escuta',t:'Homework · Flop!',i:'Lição de casa: ouça o trecho de podcast sobre um fracasso famoso e responda.',a:`Welcome back to Brand Disasters. Today: Crystal Pepsi. In 1992, Pepsi launched a cola that was completely clear, like water. The idea was that clear meant pure and healthy. At first, sales were excellent, because everybody wanted to try it. But people were confused: it looked like water but tasted like cola, and many said the flavour wasn't quite right. Within two years, it had disappeared from the shelves. Looking back, marketing experts say Pepsi should have tested the idea with more consumers, and perhaps it shouldn't have promised health benefits that a soft drink couldn't deliver. Interestingly, it was brought back for short periods in the 2010s, mostly for nostalgia.`,q:[
+    ['When was Crystal Pepsi launched?',['1982','1992','2012'],1],
+    ['Why was it clear?',['to look pure and healthy','to save money','because of a mistake'],0],
+    ['What happened at first?',['Sales were excellent.','Nobody bought it.','It was banned.'],0],
+    ['Why were people confused?',['It tasted like water.','It looked like water but tasted like cola.','It was very expensive.'],1],
+    TF('According to experts, Pepsi should have tested it with more consumers.',true),
+    GAP('Within two years, it ___ (disappear) from the shelves.','had disappeared'),
+    GAP('It ___ (bring) back in the 2010s. (passiva)','was brought'),
+    'Choose a product that failed (or invent one). Write a short report (150 words): what happened, what should have been done and what you would do now.']},
+  {l:'EN',lv:'A2',tp:'Escuta',t:'Homework · A message from the dentist',i:'Lição de casa: ouça a mensagem de voz e responda.',a:`Hello, this is Sarah from Bright Smile Dental Clinic, calling for Mr Costa. I'm afraid Dr Lee is ill on Thursday, so we need to change your appointment. We can offer you Friday at a quarter past nine in the morning, or Monday at four thirty in the afternoon. Please call us back on 020 7946 0321 before Wednesday evening. And remember to bring your new insurance card. Thank you, and have a nice day!`,q:[
+    ['Why does Sarah call?',['to cancel the clinic','to change an appointment','to ask for money'],1],
+    ['What is the problem with Thursday?',['The clinic is closed.','Dr Lee is ill.','Mr Costa is travelling.'],1],
+    ['What time is the Friday appointment?',['9:15','9:45','4:30'],0],
+    ['When should Mr Costa call back?',['before Wednesday evening','on Friday','after Monday'],0],
+    TF('Mr Costa needs to bring his insurance card.',true),
+    GAP('I’m ___ Dr Lee is ill on Thursday.','afraid'),GAP('Please call us ___ before Wednesday.','back'),
+    'Leave a voice message (written) to change an appointment: who you are, the problem and two new times.']},
+  {l:'EN',lv:'B1',tp:'Leitura',t:'Homework · The hidden cost of free apps',i:'Read the text and answer.\n\nMost of the apps on your phone are free. But are they really? Many free apps make money by collecting information about you: where you go, what you buy and even how long you look at a post. This data is used to show you personalised adverts, and it is sometimes sold to other companies. Some experts say that if you aren’t paying for the product, you are the product. That doesn’t mean you should delete everything. But it’s worth checking the permissions of each app: does a torch app really need your location and your contacts?',q:[
+    ['How do many free apps make money?',['by selling phones','by collecting and using your data','by charging every month'],1],
+    ['What is the data used for?',['personalised adverts','phone repairs','free calls'],0],
+    ['What does the writer suggest?',['deleting all apps','checking app permissions','never using the internet'],1],
+    TF('The writer thinks you should delete all free apps.',false),
+    GAP('If you aren’t paying for the product, you ___ the product.','are'),
+    GAP('It’s ___ checking the permissions of each app.','worth'),
+    ['A torch app asking for your contacts is…',['suspicious','normal','necessary'],0],
+    'Check three apps on your phone. Write about their permissions (100 words): which ones surprised you and what you will change.']},
+  {l:'EN',lv:'B2',tp:'Escuta',t:'Homework · Interview: a night nurse',i:'Lição de casa: ouça a entrevista com uma enfermeira do turno da noite e responda.',a:`Interviewer: Joanna, you've worked night shifts for twelve years. How do you cope?
+Joanna: Routine is everything. I sleep from nine in the morning until four in the afternoon, with blackout curtains and my phone switched off. My family knows not to call unless it's an emergency.
+Interviewer: What's the hardest part?
+Joanna: Probably the social side. You miss birthdays and weekends, and your friends stop inviting you. But the night is also when patients feel most alone, so you get to know them in a way the day staff don't.
+Interviewer: Would you go back to days?
+Joanna: I've thought about it. Maybe in a few years. For now, I'd miss the quiet and the team spirit.`,q:[
+    ['How long has Joanna worked nights?',['two years','ten years','twelve years'],2],
+    ['When does she sleep?',['from 9 pm to 4 am','from 9 am to 4 pm','from midnight to 8 am'],1],
+    ['What is the hardest part for her?',['the patients','the social side','the salary'],1],
+    ['Why is night work special, according to her?',['Patients feel most alone at night.','It is better paid.','There is less work.'],0],
+    TF('Joanna has decided to go back to day shifts next month.',false),
+    GAP('How do you ___ ? (lidar com a situação)','cope'),GAP('I sleep with ___ curtains.','blackout'),
+    'Would you work night shifts? Write 150 words about the advantages and disadvantages, using a range of linkers.']},
+  {l:'EN',lv:'C1',tp:'Leitura',t:'Homework · The case for boredom',i:'Read the text and answer.\n\nWe have all but eliminated boredom. Every queue, every bus ride and every advert break is now filled by a glance at our phones. Yet a growing body of research suggests that boredom, far from being a waste of time, may be a catalyst for creativity. In one well-known study, participants who first completed a deliberately dull task went on to produce more creative ideas than those who had not. The theory is that an unstimulated mind starts to wander, and mind-wandering is where unexpected connections are made. None of this means we should seek out tedium for its own sake. But perhaps, the next time we reach for our phones in a queue, we might pause and let our minds drift.',q:[
+    ['According to the text, how have we “eliminated” boredom?',['by working more','by filling every gap with our phones','by travelling more'],1],
+    ['What did the study suggest?',['Boring tasks make people less creative.','A dull task first can lead to more creative ideas.','Phones improve creativity.'],1],
+    ['Why might boredom help creativity?',['Because the mind wanders and makes connections.','Because people sleep more.','Because it reduces stress.'],0],
+    TF('The writer recommends seeking out boredom for its own sake.',false),
+    GAP('Boredom, far ___ being a waste of time, may help creativity.','from'),
+    GAP('We have all ___ eliminated boredom. (quase)','but'),
+    ['“A catalyst for creativity” means something that…',['triggers or speeds up creativity','destroys creativity','measures creativity'],0],
+    'Write a reflective essay (200–250 words): “Is boredom good for us?” Refer to the text and to your own experience.']}
+);
+
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'EN',lv:'A1',tp:'Gramática',t:'Homework · Live from my house',i:'Lição de casa: present continuous (o que está acontecendo agora).',q:[
+    PICK('I [*’m writing/write/writing] my homework now. My cat [*is sleeping/sleeps/sleeping] on the sofa. My parents [*are watching/is watching/watching] TV.'),
+    SORT(`+ ing: reading, playing, cooking
+no e: making, writing, dancing
+double letter: running, swimming, sitting`),
+    FIX('She’s {danceing|dancing} in the kitchen.'),FIX('They {is|are} playing football.'),
+    COMIC(`[celular]
+Ana: Hi, Leo! What are you doing?
+Leo: ___
+---
+Ana (feliz): Mmm! Can I come for dinner?`,['I’m cooking pasta.','I cook every day.','Yes, I am.'],0),
+    ['___ it raining now?',['Is','Are','Does'],0],
+    'Imagine you’re on a video call. Describe what you and 3 people in your house are doing right now (6 sentences).']},
+  {l:'EN',lv:'A2',tp:'Gramática',t:'Homework · The New York plan',i:'Lição de casa: going to (planos) e will (decisões na hora).',q:[
+    PICK('We [*’re going to/will] visit the museum tomorrow: we bought the tickets. “The shop is closed!” “OK, I [*’ll/’m going to] try the other one.” [*Why don’t we/Why we don’t] take a taxi?'),
+    COMIC(`[cidade]
+Mia: It’s raining! We can’t walk in Central Park.
+Sam: ___
+---
+Mia (feliz): Good idea. I love museums!`,['OK, let’s go to a museum instead.','I’m going to walk in the park.','It rains every day.'],0),
+    KWT('Our plan is to see a show on Saturday.','GOING','We ___ a show on Saturday.','’re going to see/are going to see'),
+    KWT('I can carry your bag. (decisão agora)','I’LL','___ your bag.','I’ll carry'),
+    SEQ('We’re going to have breakfast at the hotel.\nThen we’re going to take the ferry to the Statue of Liberty.\nIn the afternoon, we’re going to rent bikes in Central Park.\nIn the evening, we’re going to eat pizza in Brooklyn.','Put the plan in order.'),
+    'Plan a weekend in a city you love with $300 (100 words): what you’re going to do, how much it costs and one decision you make on the spot with will.']},
+  {l:'EN',lv:'B1',tp:'Gramática',t:'Homework · Flatmate rules',i:'Lição de casa: let, allow, be allowed to, have to, should.',q:[
+    PICK('My landlord [*lets us/lets us to/allows us] have a cat. We’re not [*allowed to/allowed/let to] smoke inside. You [*should/must to] buy a bigger fridge. Guests [*can/are let] stay at weekends.'),
+    KWT('The landlord doesn’t permit parties.','ALLOWED','We ___ have parties.','aren’t allowed to/are not allowed to/’re not allowed to'),
+    KWT('My parents allowed me to stay out late.','LET','My parents ___ out late.','let me stay'),
+    FIX('She doesn’t let me {to use|use} her laptop.'),
+    SORT(`Obligation: have to, must, need to
+Prohibition: not allowed to, mustn’t, can’t
+Permission: can, be allowed to, let`),
+    'Write 6 house rules for your ideal shared flat and explain why each one is important (120 words).']},
+  {l:'EN',lv:'B2',tp:'Trabalho',t:'Homework · Sorry for the trouble',i:'Lição de casa: atendimento ao cliente e notícias ruins com educação.',q:[
+    SEQ('Listen: let the customer explain the problem.\nApologise: say sorry without blaming anyone.\nSolve: offer a concrete solution.\nThank: thank the customer for their patience.','Put the LAST steps in order.'),
+    PICK('[*I’m afraid/I’m scared] the item is out of stock. [*Would it help if/Would it help when] I sent a replacement? What I can do [*is/it is] refund the delivery fee.'),
+    KWT('We can’t deliver on Sunday.','AFRAID','I’m ___ on Sunday.','afraid we can’t deliver/afraid we cannot deliver/afraid that we can’t deliver'),
+    KWT('The order was delayed, apparently.','SEEMS','It ___ delayed.','seems that the order was/seems the order was'),
+    COMIC(`[celular]
+Tom (bravo): This is the third time I’m calling!
+Ana: ___
+---
+Tom (pensando): OK… what can you do?`,['I completely understand your frustration.','Calm down, please.','It’s not my fault.'],0),
+    'Reply to this complaint (150 words): “I booked a double room and got a single. Nobody helped me.” Use LAST and softening language.']},
+  {l:'EN',lv:'B2',tp:'Gramática',t:'Homework · The red suitcase',i:'Lição de casa: tempos narrativos e conectores.',q:[
+    PICK('She [*was waiting/waited/had waited] for the train when she saw him. By the time she arrived, the train [*had left/left/was leaving]. [*As soon as/Meanwhile] she sat down, she opened the case.'),
+    CLOZE('[Meanwhile], an old man [was looking] for his suitcase. [Eventually], he [found] the station manager.','as soon as, looked'),
+    SEQ('She grabbed the wrong suitcase.\nShe ran for the train.\nShe opened the suitcase on the train.\nShe found an old camera.\nShe recognised her own house in the photos.','Put the events in order.'),
+    KWT('She took the wrong suitcase before she got on the train.','HAD','When she got on the train, she ___ the wrong suitcase.','had taken'),
+    FIX('By the time we arrived, the film {started|had started}.'),
+    'Finish the story of the red suitcase (180 words) using past simple, past continuous, past perfect and at least four linkers.']},
+  {l:'EN',lv:'C1',tp:'Gramática',t:'Homework · Thought experiments',i:'Lição de casa: estruturas hipotéticas avançadas.',q:[
+    KWT('If you pulled the lever, five people would survive.','WERE','___ the lever, five people would survive.','Were you to pull'),
+    KWT('If it hadn’t been for your advice, I would have quit.','BUT','___ your advice, I would have quit.','But for'),
+    KWT('If you need help, call me.','SHOULD','___ help, call me.','Should you need'),
+    KWT('What would you do if you lost your job?','SUPPOSE','___ your job, what would you do?','Suppose you lost/Supposing you lost'),
+    PICK('[*Were/Was] we to accept, the deal would change everything. [*Had/Would] I known, I would have called. [*Imagine if/Imagine that if] nobody had invented the internet.'),
+    'Invent your own thought experiment (200 words): describe the scenario with at least four hypothetical structures and argue for one answer.']},
+  {l:'EN',lv:'C1',tp:'Escrita',t:'Homework · Words that move',i:'Lição de casa: recursos retóricos.',q:[
+    SORT(`Tricolon: veni vidi vici, faster cheaper cleaner, of the people by the people for the people
+Antithesis: one small step for a man one giant leap for mankind, not for us but for them
+Rhetorical question: who among us would say no, is this the future we want`),
+    ['“Ask not what your country can do for you; ask what you can do for your country” is an example of…',['chiasmus','tricolon','understatement'],0],
+    ['“We shall fight on the beaches, we shall fight on the landing grounds” uses…',['anaphora','antithesis','chiasmus'],0],
+    KWT('We must be brave and we must be honest.','NOT ONLY','We must ___ brave, but also honest.','not only be'),
+    PICK('Good speeches use [*concrete/abstract] words, [*short/long] sentences at the climax and [*one or two/as many as possible] devices per paragraph.'),
+    'Write a one-minute speech (150–180 words) for a cause you believe in, with a tricolon, an antithesis and a rhetorical question.']},
+  {l:'EN',lv:'C1',tp:'Escrita',t:'Homework · Say it simply',i:'Lição de casa: plain English, sem jargão.',q:[
+    KWT('We will conduct an investigation into the incident.','INVESTIGATE','We will ___ .','investigate the incident'),
+    KWT('Payment must be made by Friday.','PAY','You ___ by Friday.','must pay/need to pay/have to pay'),
+    KWT('In the event that the meeting is cancelled, we will inform you.','IF','___ cancelled, we will tell you.','If the meeting is'),
+    KWT('We are in receipt of your application.','RECEIVED','We ___ application.','have received your/’ve received your'),
+    SORT(`Jargon: leverage, going forward, synergy, at this moment in time
+Plain: use, from now on, teamwork, now`),
+    FIX('We need to {utilise|use} the new software.'),
+    'Find a real piece of jargon-heavy text (an email, a policy, a contract). Rewrite it in plain English and explain three changes (200 words).']},
+  {l:'EN',lv:'A1',tp:'Vocabulário',t:'Homework · My favourite room',i:'Lição de casa: there is / there are e adjetivos.',q:[
+    PICK('There [*is/are] a big sofa in my living room. There [*are/is] two windows. There [*isn’t/aren’t] a TV. It’s a [*small room/room small].'),
+    SORT(`Kitchen: fridge, cooker, sink
+Bedroom: bed, wardrobe, pillow
+Bathroom: shower, mirror, towel`),
+    FIX('There {is|are} three chairs in the kitchen.'),
+    ['What’s the opposite of “big”?',['small','long','new'],0],
+    TF('We say “a room big” in English.',false),
+    'Describe your favourite room (6–8 sentences): what there is, colours, size and why you like it.']},
+  {l:'EN',lv:'B2',tp:'Phrasal verbs',t:'Homework · Problems? Sort them out!',i:'Lição de casa: phrasal verbs para problemas no trabalho.',q:[
+    SORT(`Problems appear: come up, crop up, break down
+Solving: sort out, deal with, figure out
+Delaying: put off, hold up, push back`),
+    PICK('Something urgent has [*come up/come down], so I can’t join the call. Let’s [*sort out/sort up] the budget first. We had to [*put off/put on] the meeting until Friday.'),
+    KWT('We postponed the launch.','PUT','We ___ the launch.','put off'),
+    KWT('Who will handle the complaint?','DEAL','Who will ___ the complaint?','deal with'),
+    FIX('The printer broke {up|down} again.'),
+    'Write an email to your team (150 words) about a problem that came up this week and how you sorted it out, with at least 6 phrasal verbs.']}
+);
+/* ===================== lote 8 · devoirs (français) ===================== */
+CONT_ATIV.push(
+  {l:'FR',lv:'A1',tp:'Escuta',t:'Devoirs · Ma famille et moi',i:'Devoirs : écoutez Hugo parler de sa famille et répondez.',a:`Bonjour ! Je m'appelle Hugo, j'ai vingt-cinq ans et j'habite à Nantes. Dans ma famille, nous sommes cinq. Mon père s'appelle Marc, il est médecin. Ma mère s'appelle Sylvie, elle est professeure de musique. J'ai une sœur, Inès, qui a dix-neuf ans, et un petit frère, Théo. Il a huit ans et il adore le football. Nous avons aussi un chat, Caramel. Il est très paresseux !`,q:[
+    ['Où habite Hugo ?',['à Paris','à Nantes','à Lyon'],1],['Quel âge a Hugo ?',['vingt et un ans','vingt-cinq ans','dix-neuf ans'],1],
+    ['Quelle est la profession de sa mère ?',['médecin','professeure de musique','ingénieure'],1],['Qui adore le football ?',['Théo','Inès','Marc'],0],
+    TF('Dans la famille, ils sont cinq.',true),TF('Le chat est très actif.',false),
+    GAP('___ sœur s’appelle Inès. (mon / ma / mes)','Ma'),GAP('Théo ___ huit ans.','a'),
+    'Présentez votre famille en 6 phrases : noms, âges, professions et un détail amusant.']},
+  {l:'FR',lv:'A2',tp:'Escuta',t:'Devoirs · Docteur, j’ai mal !',i:'Devoirs : écoutez la consultation et répondez.',a:`Médecin : Bonjour, madame. Qu'est-ce qui ne va pas ?
+Patiente : Bonjour, docteur. J'ai mal au dos depuis une semaine. Je travaille toute la journée devant l'ordinateur.
+Médecin : Vous avez de la fièvre ?
+Patiente : Non, pas de fièvre. Mais je dors mal.
+Médecin : Bon. Ce n'est pas grave. Faites des pauses toutes les heures, marchez un peu et prenez ce médicament le soir pendant cinq jours. Et achetez une bonne chaise !
+Patiente : Merci, docteur.`,q:[
+    ['Où la patiente a-t-elle mal ?',['à la tête','au dos','au ventre'],1],['Depuis quand ?',['depuis hier','depuis une semaine','depuis un mois'],1],
+    ['Elle a de la fièvre ?',['Oui','Non'],1],['Combien de jours doit-elle prendre le médicament ?',['trois','cinq','sept'],1],
+    TF('Le médecin conseille de faire des pauses.',true),TF('Le médecin pense que c’est grave.',false),
+    GAP('___ des pauses toutes les heures ! (faire, impératif)','Faites'),GAP('J’ai mal ___ dos.','au'),
+    'Écrivez un dialogue chez le médecin (8 répliques) : vos symptômes et trois conseils à l’impératif.']},
+  {l:'FR',lv:'A2',tp:'Leitura',t:'Devoirs · Mon nouvel appart',i:'Devoirs : lisez les deux annonces et répondez.\n\nAnnonce A – Lyon 7e. Studio meublé de 22 m², 2e étage sans ascenseur, cuisine équipée, près de l’université. 620 € charges comprises. Libre tout de suite.\nAnnonce B – Lyon 3e. T2 lumineux de 40 m², 5e étage avec ascenseur et balcon, non meublé. 780 € + 60 € de charges. Libre le 1er avril.',q:[
+    ['Quel appartement est meublé ?',['A','B','les deux'],0],['Quel appartement a un balcon ?',['A','B'],1],
+    ['Combien coûte le T2 au total par mois ?',['780 €','840 €','620 €'],1],
+    TF('Le studio est libre le 1er avril.',false),TF('L’annonce B est au cinquième étage.',true),
+    GAP('Le T2 est ___ grand que le studio. (comparatif +)','plus'),GAP('Le studio est ___ cher que le T2. (comparatif −)','moins'),
+    'Vous êtes étudiant(e). Quel appartement choisissez-vous ? Comparez les deux annonces en 80 mots (plus… que, moins… que, aussi… que).']},
+  {l:'FR',lv:'B1',tp:'Escuta',t:'Devoirs · Mon entretien',i:'Devoirs : écoutez l’entretien et répondez.',a:`Recruteuse : Bonjour, Monsieur Alves. Parlez-moi de votre parcours.
+Candidat : J'ai fait des études de commerce à Porto Alegre, puis j'ai travaillé pendant quatre ans dans une entreprise d'exportation. Depuis 2023, je suis responsable des clients européens.
+Recruteuse : Pourquoi souhaitez-vous venir en France ?
+Candidat : Ma femme est française et nous voulons vivre à Bordeaux. Et je parle français depuis l'enfance : ma grand-mère était belge.
+Recruteuse : Quelles sont vos qualités ?
+Candidat : Je suis organisé et je m'adapte facilement. Il y a deux ans, j'ai géré un projet avec des équipes dans trois pays.`,q:[
+    ['Où le candidat a-t-il fait ses études ?',['à Bordeaux','à Porto Alegre','à Bruxelles'],1],
+    ['Combien de temps a-t-il travaillé dans l’exportation avant 2023 ?',['deux ans','quatre ans','six ans'],1],
+    ['Pourquoi veut-il vivre en France ?',['pour le salaire','parce que sa femme est française','pour étudier'],1],
+    ['Pourquoi parle-t-il français depuis l’enfance ?',['Sa grand-mère était belge.','Il a habité à Paris.','Son père est professeur.'],0],
+    TF('Il est responsable des clients européens depuis 2023.',true),
+    GAP('J’ai travaillé ___ quatre ans dans l’exportation. (depuis / pendant / il y a)','pendant'),
+    GAP('___ deux ans, j’ai géré un projet international.','Il y a'),
+    'Préparez vos réponses (120 mots) à : « Parlez-moi de vous » et « Quelles sont vos qualités ? ». Utilisez depuis, pendant et il y a.']},
+  {l:'FR',lv:'B2',tp:'Leitura',t:'Devoirs · Le tour du monde en français',i:'Devoirs : lisez le texte et répondez.\n\nÀ Montréal, on ne fait pas du shopping : on magasine. Et le soir, on soupe. À Bruxelles, on compte « septante, quatre-vingt, nonante » et on range son GSM dans sa poche. À Dakar, on fait le plein à l’essencerie avant de prendre la route. Ces différences ne sont pas des erreurs : ce sont les couleurs d’une langue parlée par plus de 320 millions de personnes sur les cinq continents. Aujourd’hui, la majorité des francophones vivent en Afrique, et ce sont souvent eux qui inventent les mots de demain.',q:[
+    ['À Montréal, « souper », c’est…',['le repas du soir','le petit-déjeuner','le déjeuner'],0],
+    ['Qu’est-ce qu’un GSM en Belgique ?',['une voiture','un téléphone portable','un magasin'],1],
+    ['Où sont la plupart des francophones aujourd’hui ?',['en France','en Afrique','au Canada'],1],
+    TF('Le texte présente les variantes comme des erreurs.',false),
+    GAP('À Dakar, on fait le plein à l’___ .','essencerie'),
+    GAP('Le français est parlé ___ plus de 320 millions de personnes.','par'),
+    ['« Les couleurs d’une langue » signifie…',['sa diversité','ses règles','son alphabet'],0],
+    'Comparez le français et le portugais dans le monde (150 mots) : variantes, accents et attitudes. Donnez votre avis avec des connecteurs.']},
+  {l:'FR',lv:'C1',tp:'Leitura',t:'Devoirs · Il était une fois…',i:'Devoirs : lisez le conte et répondez.\n\nIl était une fois un pêcheur qui vivait seul au bord de la mer. Un matin d’hiver, il trouva dans son filet une perle d’une beauté si rare qu’il n’osa la vendre. Il la cacha sous son lit et ne dit rien à personne. Les années passèrent ; le pêcheur devint vieux et pauvre, mais il garda toujours son secret. Le jour de sa mort, une enfant du village vint lui apporter du pain. Il lui donna la perle, sourit, et ferma les yeux. On raconte que l’enfant fit construire, avec cette perle, la première école du village.',q:[
+    ['Que trouva le pêcheur dans son filet ?',['un trésor d’or','une perle','une lettre'],1],
+    ['Que fit-il de la perle ?',['Il la vendit.','Il la cacha.','Il la jeta à la mer.'],1],
+    ['« Il devint vieux » : « devint » vient du verbe…',['devoir','devenir','deviner'],1],
+    ['Que fit l’enfant avec la perle, selon la légende ?',['Elle construisit une école.','Elle acheta un bateau.','Elle la garda.'],0],
+    TF('Le pêcheur raconta son secret à tout le village.',false),
+    GAP('Un matin, il ___ (trouver, passé simple) une perle.','trouva'),
+    GAP('Une enfant ___ (venir, passé simple) lui apporter du pain.','vint'),
+    'Écrivez un conte court (200 mots) au passé simple et à l’imparfait, avec une fin surprenante.']},
+  {l:'FR',lv:'A1',tp:'Escuta',t:'Devoirs · À la boulangerie',i:'Devoirs : écoutez le dialogue et répondez.',a:`Boulangère : Bonjour, madame ! Vous désirez ?
+Cliente : Bonjour ! Une baguette, s'il vous plaît.
+Boulangère : Une baguette tradition ou normale ?
+Cliente : Une tradition. Et deux croissants.
+Boulangère : Voilà. Autre chose ?
+Cliente : Oui, un pain au chocolat. C'est combien ?
+Boulangère : Alors, ça fait quatre euros quarante.
+Cliente : Voilà cinq euros.
+Boulangère : Et soixante centimes. Merci, bonne journée !`,q:[
+    ['Quelle baguette achète la cliente ?',['normale','tradition','complète'],1],['Combien de croissants ?',['un','deux','trois'],1],
+    ['Combien coûte le total ?',['4,40 €','4,60 €','5 €'],0],['Combien de monnaie reçoit-elle ?',['40 centimes','60 centimes','1 euro'],1],
+    TF('La cliente achète aussi un pain au chocolat.',true),
+    GAP('Une baguette, s’il vous ___ .','plaît'),GAP('C’est ___ ?','combien'),
+    'Écrivez votre dialogue à la boulangerie (6 répliques) : commandez trois choses et payez.']},
+  {l:'FR',lv:'A2',tp:'Leitura',t:'Devoirs · Le week-end de Chloé',i:'Devoirs : lisez le message et répondez.\n\nSalut Emma ! Ce week-end, je suis allée à Annecy avec Paul. Nous sommes partis samedi matin en train. Il a fait très beau ! Nous avons loué des vélos et nous avons fait le tour du lac. Le soir, nous avons mangé une fondue dans un petit restaurant. Dimanche, je suis montée en haut de la montagne, mais Paul est resté à l’hôtel : il était fatigué ! Nous sommes rentrés dimanche soir. Et toi, qu’est-ce que tu as fait ? Bises, Chloé',q:[
+    ['Comment sont-ils partis à Annecy ?',['en voiture','en train','en avion'],1],['Qu’ont-ils loué ?',['des vélos','une voiture','un bateau'],0],
+    ['Qu’ont-ils mangé le soir ?',['une pizza','une fondue','des crêpes'],1],
+    TF('Paul est monté en haut de la montagne.',false),TF('Il a fait beau.',true),
+    GAP('Nous ___ partis samedi matin. (être / avoir)','sommes'),GAP('Nous ___ loué des vélos. (être / avoir)','avons'),
+    'Répondez à Chloé (80 mots) : racontez votre week-end au passé composé, avec au moins trois verbes avec être.']},
+  {l:'FR',lv:'B1',tp:'Escuta',t:'Devoirs · Anti-gaspi',i:'Devoirs : écoutez la chronique radio et répondez.',a:`En France, chaque habitant jette environ trente kilos de nourriture par an, dont sept kilos d'aliments encore emballés. Pour lutter contre ce gaspillage, de nouvelles applications permettent aux boulangeries et aux supermarchés de vendre leurs invendus à prix réduit en fin de journée. Depuis 2016, une loi interdit aussi aux grandes surfaces de jeter de la nourriture encore consommable : elles doivent la donner à des associations. Et chez soi ? Les spécialistes conseillent de faire une liste avant les courses, de bien lire les dates et de cuisiner les restes.`,q:[
+    ['Combien de nourriture un Français jette-t-il par an, environ ?',['trois kilos','trente kilos','trois cents kilos'],1],
+    ['À quoi servent les nouvelles applications ?',['à vendre les invendus moins cher','à livrer des repas','à compter les calories'],0],
+    ['Que doivent faire les grandes surfaces depuis 2016 ?',['jeter moins d’emballages','donner la nourriture consommable à des associations','fermer le dimanche'],1],
+    TF('Les spécialistes conseillent de faire une liste avant les courses.',true),
+    GAP('Il faut lutter ___ le gaspillage.','contre'),GAP('On peut cuisiner les ___ . (o que sobrou)','restes'),
+    'Quels gestes anti-gaspi faites-vous déjà ? Lesquels pourriez-vous adopter ? (120 mots)']},
+  {l:'FR',lv:'C1',tp:'Escuta',t:'Devoirs · Conférence : la sieste au travail',i:'Devoirs : écoutez l’extrait de conférence et répondez.',a:`La sieste a mauvaise réputation dans le monde du travail : elle serait le signe d'une certaine paresse. Pourtant, les études convergent. Une sieste courte, de dix à vingt minutes, améliorerait la vigilance et la mémoire, sans provoquer cette sensation d'engourdissement que l'on éprouve après un sommeil plus long. Certaines entreprises, au Japon comme en Europe, ont d'ailleurs aménagé des salles de repos. Encore faut-il que la culture de l'entreprise le permette : à quoi bon installer un fauteuil si personne n'ose s'y asseoir ? Le véritable obstacle, en somme, n'est pas biologique mais social.`,q:[
+    ['Quelle est la durée idéale de la sieste selon la conférencière ?',['dix à vingt minutes','une heure','deux heures'],0],
+    ['Quel effet a une sieste plus longue ?',['une meilleure mémoire','une sensation d’engourdissement','plus de créativité'],1],
+    ['Quel est le véritable obstacle, selon elle ?',['biologique','social','économique'],1],
+    TF('La conférencière pense que la sieste est un signe de paresse.',false),
+    GAP('___ faut-il que la culture de l’entreprise le permette.','Encore'),
+    GAP('À quoi ___ installer un fauteuil si personne n’ose s’y asseoir ?','bon'),
+    ['« Les études convergent » signifie qu’elles…',['arrivent aux mêmes conclusions','se contredisent','sont rares'],0],
+    'Rédigez une note (200 mots) à votre direction pour proposer (ou refuser) une salle de sieste, dans un registre soutenu.']}
+);
+
+if (typeof CONT_TIPOS!=='undefined') CONT_TIPOS.push(
+  {l:'FR',lv:'A1',tp:'Gramática',t:'Devoirs · Enchanté !',i:'Devoirs : se présenter, être, s’appeler, tu ou vous.',q:[
+    PICK('Je [*m’appelle/suis appelle] Lucas. Je [*suis/es] brésilien. Vous [*êtes/est] professeur ? Elle [*s’appelle/t’appelles] Marie.'),
+    SORT(`Tu: avec un ami, avec un enfant, avec ton frère
+Vous: avec un client, avec un inconnu, avec la directrice`),
+    FIX('Elle est {brésilien|brésilienne}.'),FIX('Nous {sont|sommes} étudiants.'),
+    COMIC(`[conversa]
+Ana: Bonjour ! Je m’appelle Ana. Et vous ?
+Leo: ___
+---
+Ana (feliz): Enchantée, Léo !`,['Je m’appelle Léo. Je suis français.','Je suis appelle Léo.','Vous êtes Léo ?'],0),
+    'Présentez-vous en 6 phrases : nom, nationalité, ville, profession, âge et une chose que vous aimez.']},
+  {l:'FR',lv:'A1',tp:'Gramática',t:'Devoirs · Ma journée de rêve',i:'Devoirs : les verbes pronominaux et l’heure.',q:[
+    PICK('Je [*me/te/se] lève à dix heures. Tu [*te/me/se] couches tard ? Nous [*nous/se] promenons au parc. Ils [*se/nous] reposent l’après-midi.'),
+    SEQ('D’abord, je me lève à dix heures.\nEnsuite, je prends un grand petit-déjeuner.\nPuis je me promène au bord de la mer.\nEnfin, je me couche à minuit.','Remettez la journée de rêve dans l’ordre.'),
+    FIX('Le dimanche, je {lève|me lève} tard.'),
+    ['« Huit heures moins le quart », c’est…',['7 h 45','8 h 15','8 h 45'],0],
+    ['« Elle se douche » : quel est l’infinitif ?',['se doucher','douche','doucher se'],0],
+    'Décrivez votre journée de rêve (8 phrases) avec au moins 5 verbes pronominaux et des heures.']},
+  {l:'FR',lv:'A2',tp:'Pronúncia',t:'Devoirs · Tu ou tout ?',i:'Devoirs : les sons [y] (tu) et [u] (tout).',q:[
+    DIT('Tu as vu la rue ?'),DIT('Vous avez tout vu ?'),DIT('La roue de mon vélo est cassée.'),
+    SORT(`Son [y] comme tu: rue, vu, lune, sucre, plume
+Son [u] comme tout: roue, vous, loup, sourire, poule`),
+    ['« Dessus » veut dire…',['em cima','embaixo','dentro'],0],
+    ['Dans quel mot entendez-vous le son [y] ?',['jupe','journée','soupe'],0],
+    'Écrivez 6 phrases avec des mots en [y] et en [u]. Lisez-les à voix haute et enregistrez-vous.']},
+  {l:'FR',lv:'B1',tp:'Gramática',t:'Devoirs · Si j’étais…',i:'Devoirs : le conditionnel présent (hypothèse et politesse).',q:[
+    PICK('Si j’[*avais/aurais] le temps, je [*ferais/faisais] du yoga. Nous [*irions/allerions] au Japon si nous gagnions au loto. [*Pourriez-vous/Pourrez-vous] m’aider ?'),
+    KWT('Je n’ai pas d’argent, donc je ne voyage pas.','SI','___ de l’argent, je voyagerais.','Si j’avais'),
+    KWT('Je veux un café. (poli)','VOUDRAIS','Je ___ , s’il vous plaît.','voudrais un café'),
+    FIX('Si je {serais|étais} riche, j’achèterais une maison.'),
+    SORT(`Politesse: je voudrais, pourriez-vous, ça vous dérangerait
+Hypothèse: si j’avais, je ferais, nous irions`),
+    'Écrivez votre portrait chinois (8 phrases) : « Si j’étais un animal / une ville / un plat…, je serais…, parce que… »']},
+  {l:'FR',lv:'B1',tp:'Gramática',t:'Devoirs · L’objet mystère',i:'Devoirs : les pronoms relatifs qui, que, où, dont.',q:[
+    PICK('C’est un objet [*qui/que] sonne le matin. C’est un objet [*que/qui] on utilise pour écrire. C’est la ville [*où/que] je suis né. C’est le livre [*dont/que] je t’ai parlé.'),
+    KWT('J’ai besoin de ce document. C’est ce document.','DONT','C’est le document ___ besoin.','dont j’ai'),
+    KWT('J’ai passé mes vacances dans ce village. C’est ce village.','OÙ','C’est le village ___ mes vacances.','où j’ai passé'),
+    FIX('Voici l’amie {que|qui} habite à Montréal.'),
+    SORT(`qui: qui sonne, qui habite, qui m’a aidé
+que: que j’aime, que tu as vu, qu’on utilise
+dont: dont je parle, dont j’ai besoin, dont il est fier`),
+    'Écrivez 5 devinettes sur des objets ou des lieux avec qui, que, où et dont. Ajoutez les réponses à la fin.']},
+  {l:'FR',lv:'B2',tp:'Gramática',t:'Devoirs · Si j’avais su…',i:'Devoirs : le plus-que-parfait et le conditionnel passé.',q:[
+    KWT('Je n’ai pas su la vérité, alors je suis venu.','AVAIS','Si j’___ , je ne serais pas venu.','avais su la vérité'),
+    KWT('C’était une erreur de ne pas réserver.','DÛ','Nous ___ réserver.','aurions dû'),
+    KWT('Il a plu, donc nous sommes restés à la maison.','PLU','S’il n’avait ___ , nous serions sortis.','pas plu'),
+    PICK('Si tu m’avais prévenu, je [*serais venu/viendrais/étais venu]. Elle [*aurait pu/pourrait] gagner si elle s’était entraînée. Si nous [*étions partis/serions partis] plus tôt, nous aurions eu le train.'),
+    FIX('Si j’{aurais|avais} su, je ne serais pas venu.'),
+    'Racontez un petit hasard qui a changé votre vie (180 mots) : « Si je n’avais pas…, je n’aurais jamais… ».']},
+  {l:'FR',lv:'C1',tp:'Escrita',t:'Devoirs · Madame, Monsieur,',i:'Devoirs : la lettre formelle et le registre soutenu.',q:[
+    SEQ('Madame, Monsieur,\nJe me permets de vous écrire afin de contester des frais bancaires.\nVous trouverez ci-joint une copie de mon relevé.\nJe vous saurais gré de bien vouloir procéder au remboursement.\nDans l’attente de votre réponse, je vous prie d’agréer l’expression de mes salutations distinguées.','Remettez la lettre dans l’ordre.'),
+    KWT('Je vous écris pour demander un rendez-vous.','AFIN','Je me permets de vous écrire ___ un rendez-vous.','afin de solliciter/afin de demander'),
+    KWT('Est-ce que vous pouvez me répondre vite ?','GRÉ','Je vous saurais ___ me répondre rapidement.','gré de bien vouloir/gré de'),
+    PICK('Afin que vous [*puissiez/pouvez] traiter ma demande, je joins mon dossier. Bien que j’[*aie/ai] envoyé les documents, je n’ai reçu aucune réponse.'),
+    FIX('Je vous {saurai|saurais} gré de bien vouloir me répondre.'),
+    'Écrivez une lettre formelle (180 mots) à votre propriétaire pour signaler un problème dans votre logement et demander une intervention.']},
+  {l:'FR',lv:'A2',tp:'Expressões',t:'Devoirs · Au restaurant',i:'Devoirs : commander, demander l’addition et réclamer poliment.',q:[
+    COMIC(`[pizza]
+Serveur: Vous avez choisi ?
+Mia: ___
+---
+Serveur (feliz): Très bien. Et comme boisson ?`,['Oui, je vais prendre le plat du jour.','Oui, je prends l’addition.','Non, merci, au revoir.'],0),
+    PICK('Je [*voudrais/voudrai] une table pour deux. [*L’addition/La note], s’il vous plaît. Excusez-moi, ce n’est pas ce que j’ai [*commandé/commander].'),
+    SORT(`Entrée: soupe à l’oignon, salade de chèvre chaud
+Plat: steak frites, poulet basquaise
+Dessert: crème brûlée, tarte aux pommes`),
+    FIX('Je vais {prends|prendre} une salade.'),
+    'Écrivez un dialogue au restaurant (10 répliques) avec une petite réclamation polie.']},
+  {l:'FR',lv:'B2',tp:'Gramática',t:'Devoirs · Malgré tout',i:'Devoirs : bien que, malgré, pourtant, même si.',q:[
+    PICK('[*Bien qu’/Malgré qu’] il pleuve, nous sortons. [*Malgré/Bien que] la pluie, le concert a eu lieu. Il est riche ; [*pourtant/malgré], il vit simplement.'),
+    KWT('Il fait froid, mais nous allons à la plage.','BIEN QUE','___ froid, nous allons à la plage.','Bien qu’il fasse'),
+    KWT('Il était fatigué, mais il a terminé le marathon.','MALGRÉ','___ , il a terminé le marathon.','Malgré sa fatigue/Malgré la fatigue'),
+    FIX('Bien qu’elle {est|soit} malade, elle travaille.'),
+    SORT(`+ subjonctif: bien que, quoique
++ nom: malgré, en dépit de
++ indicatif: même si, pourtant`),
+    'Écrivez un paragraphe argumentatif (180 mots) sur le télétravail avec bien que, malgré, pourtant et même si.']}
+);

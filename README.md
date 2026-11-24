@@ -203,7 +203,21 @@ O estilo fica em `app/app.css` e o código principal em `app/main.js`.
   concessão) (B2); Discourse markers (mind you, as it happens), Needn’t have × didn’t need to, Emphasis (do/did, clefts,
   on earth, whatsoever), **Overtourism** (debate com hedging), **Phonetics: fast speech** (elisão, assimilação, didja) (C1).
   Todas com áudio Kokoro. 179 aulas no total.
-- **Banco de homeworks extras** (`homeworks.js`, carregado com o banco): 133 homeworks de A1 a C1 (87 + 46 do lote 7: uma para cada aula nova e 28 extras), com o tema certo
+- **Lote 8 · inglês e francês** (25 aulas, cada uma com um roteiro diferente). **Inglês**: On a video call (present
+  continuous descoberto a partir do diálogo), Breakfast around the world (quiz de culturas) (A1); **Escape room** (pistas
+  com preposições, cronometrado), **A weekend in New York** (aula-projeto com orçamento de US$ 500 e imprevistos) (A2);
+  **The perfect flatmate** (negociação com cartas secretas), **Scam or not?** (golpes reais com must/might/can’t) (B1);
+  **Failed inventions** (Sinclair C5, New Coke, Google Glass), **Customer service** (método LAST e escolhas que mudam a
+  conversa), **A silent story** (narrar só a partir de imagens) (B2); **Thought experiments** (bonde, navio de Teseu,
+  máquina de experiências), **Speeches that changed history** (recursos retóricos em Lincoln e Kennedy), **Plain English**
+  (oficina de edição) (C1). **Francês**: Bonjour ! Se présenter, Ma famille, Ma journée (verbes pronominaux) (A1);
+  Chez le médecin, **Phonétique : u ou ou ?** (tu × tout), Chercher un appartement à Paris (annonces) (A2); **Si j’étais…**
+  (portrait chinois), Qui, que, où, dont, L’entretien d’embauche (B1); **Si j’avais su…** (a frase de *La Guerre des
+  boutons*), **Un français, plusieurs francophonies** (Québec, Belgique, Suisse, Afrique) (B2); **Le passé simple** (Perrault,
+  domínio público), **Le registre soutenu** (carta à administração) (C1). 204 aulas no total.
+- **Áudio em francês**: as aulas de francês (as 8 antigas e as 13 novas) agora têm voz neural Kokoro (`ff_siwis`, a única
+  voz francesa do modelo; a segunda pessoa dos diálogos fala um pouco mais rápido). `scripts/audios.py` já trata EN e FR.
+- **Banco de homeworks extras** (`homeworks.js`, carregado com o banco): 170 homeworks e devoirs de A1 a C1 (87 + 46 do lote 7 + 37 do lote 8: uma para cada aula nova, em inglês e francês, e 12 extras), com o tema certo
   (Escuta, Leitura, Gramática, Vocabulário, Escrita, Trabalho, Phrasal verbs, Expressões). As com áudio ou leitura ficam em
   `CONT_ATIV`; as interativas (tirinha, escolha no texto, transformação, ordem, cruzadinha, caça-palavras, ditado,
   corrigir o erro) em `CONT_TIPOS`. Cobrem os tópicos de gramática de cada nível, escuta (podcasts, entrevistas,

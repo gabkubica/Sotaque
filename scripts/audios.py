@@ -3,13 +3,15 @@
 
    Precisa (fora do repositório): pip install kokoro-onnx soundfile; ffmpeg;
    o modelo kokoro-q8.onnx (pacote npm kokoro-q8-shards, as 6 partes juntadas) e voices.npz
-   (as vozes .bin do pacote npm kokoro-local-runtime). Francês fica com a voz do navegador.
+   (as vozes .bin do pacote npm kokoro-local-runtime; a francesa ff_siwis vem do pacote npm kokoro-js:
+   junte-a ao voices.npz com o formato (510, 1, 256)). Inglês e francês.
 
    node scripts/audios-lista.js > /tmp/lista.json
    python scripts/audios.py /tmp/lista.json --model kokoro-q8.onnx --voices voices.npz --cache /tmp/clips
 """
 import argparse, base64, json, os, subprocess, tempfile
-VOZ = {('EN', 0): ('af_heart', 'en-us'), ('EN', 1): ('am_michael', 'en-us')}
+VOZ = {('EN', 0): ('af_heart', 'en-us'), ('EN', 1): ('am_michael', 'en-us'),
+       ('FR', 0): ('ff_siwis', 'fr-fr'), ('FR', 1): ('ff_siwis', 'fr-fr', 1.05)}   # Kokoro só tem uma voz francesa: a 2ª pessoa fala um pouco mais rápido
 ap = argparse.ArgumentParser(); ap.add_argument('lista'); ap.add_argument('--model'); ap.add_argument('--voices'); ap.add_argument('--cache', default='clips')
 ap.add_argument('--out', default=os.path.join(os.path.dirname(__file__), '..', 'app', 'audio')); A = ap.parse_args()
 os.makedirs(A.cache, exist_ok=True); os.makedirs(A.out, exist_ok=True)
@@ -24,7 +26,7 @@ for d in aulas:
             if tts is None:
                 from kokoro_onnx import Kokoro; import soundfile as sf
                 tts = Kokoro(A.model, A.voices)
-            wav, sr = tts.create(c['text'], voice=v[0], speed=0.95, lang=v[1])
+            wav, sr = tts.create(c['text'], voice=v[0], speed=v[2] if len(v) > 2 else 0.95, lang=v[1])
             with tempfile.NamedTemporaryFile(suffix='.wav') as w:
                 sf.write(w.name, wav, sr)
                 subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', w.name, '-ac', '1', '-ar', '24000', '-b:a', '40k', mp3], check=True)
