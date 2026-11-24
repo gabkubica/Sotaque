@@ -350,7 +350,13 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   opostos, sentimentos, Simon says (comandos), comida saudável, onde vive o animal, roupa e tempo, letrinhas, números por
   extenso, monte o rosto, jogo da velha, roleta, fantoches de dedo, marcador de página, plural, preposições (in/on/under),
   que horas são, dias da semana, estações, alfabeto, leia e desenhe, entrevista, diário, o que está errado, adjetivos.
-  91 tipos no total.
+- **Mais 15 atividades** (`kids-extra.js`): 3–6 anos: I spy (cena para encontrar e contar), trilha pontilhada até o
+  objetivo (pré-escrita), mais ou menos, o que é? (zoom em um pedaço da figura), cartas de movimento (“Hop like a
+  kangaroo!”); 5–8: contas com figuras, complete a outra metade (simetria), bata palmas nas sílabas; 7–10: código
+  secreto com símbolos, história com figuras (rebus), mapa com coordenadas (A–E, 1–5, com mapas para brincar em dupla),
+  receita para numerar os passos (salada de frutas, sanduíche, pizza), complete os balões (cumprimentos, loja, festa),
+  comparativos (bigger, faster, taller) e cartão-postal. As que têm resposta trazem o gabarito discreto no rodapé.
+  107 tipos no total.
 - **Filtros da aba Kids**: abas Atividades · Aulas Kids · Livrinhos · Meus materiais, idade, busca (rimas, relógio,
   bingo…), tipo (vocabulário, escrever e traçar, jogos, músicas, arte e prêmios, ler e entender), “Só com áudio” e tema.
 - **Aulas Kids** (slides de apresentação, rota `#kaula-<id>`): 69 aulas prontas (cada tema em 3 idades + Hello,

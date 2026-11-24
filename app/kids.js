@@ -55,7 +55,7 @@ function kPage(th,title,sub,body,o={}){ const T=KIDS_THEMES[th]||{ic:o.ic||'star
   return `<svg class="kp-svg" viewBox="0 0 1000 1414" xmlns="http://www.w3.org/2000/svg"><rect width="1000" height="1414" fill="#fff"/>
     ${o.noHead? '' : `<rect x="36" y="32" width="928" height="168" rx="40" fill="${c}"/>
       <circle cx="878" cy="116" r="74" fill="#fff" opacity=".7"/>${kE(ic,818,56,120)}
-      ${kT(78,114,title,{s:title.length>28? 40 : title.length>19? 46 : 58})}${kT(80,160,sub,{s:23,b:false,c:'#6a5e61',f:KFS})}`}
+      ${kT(78,114,title,{s:title.length>28? 40 : title.length>19? 46 : 58})}${kT(80,160,sub,{s:Math.min(23,Math.floor(716/(.475*[...sub].length))),b:false,c:'#6a5e61',f:KFS})}`}
     ${o.name===false||o.noHead? '' : `<text x="560" y="244" font-family="${KFS}" font-size="22" fill="#6a5e61">Name:</text><line x1="632" y1="248" x2="958" y2="248" stroke="#a99fa3" stroke-width="2"/>`}
     ${body}${kT(500,1394,'Sotaque Kids · ilustrações Fluent Emoji (Microsoft, MIT) · © Gabriel Kubica',{s:14,b:false,c:'#b2a7aa',a:'middle',f:KFS})}</svg>`; }
 const kShuf=(a,R)=>{ a=a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(R.r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
@@ -204,7 +204,8 @@ const KIDS_SHEETS={
     return kPage(th,'What’s missing?','Escreva a letra que falta em cada palavra',b); }),
   circule:S0('Circule a palavra certa','ler',['a7'],'6 figuras com 3 palavras cada.',(th,R)=>{ const all=KIDS_THEMES[th].w, W=kW(th,6,R); let b='';
     W.forEach(([w,n],i)=>{ const x=60+(i%2)*450, y=280+Math.floor(i/2)*360, op=kShuf([w,...kShuf(all.filter(z=>z[0]!==w),R).slice(0,2).map(z=>z[0])],R);
-      b+=kBox(x+15,y,410,320,i)+kE(n,x+140,y+15,170)+op.map((o,j)=>kT(x+85+j*135,y+275,o,{s:o.length>8? 24 : o.length>5? 30 : 36,a:'middle'})).join(''); });
+      const tl=op.reduce((a,o)=>a+o.length,0), sz=Math.min(34,Math.floor(340/(.56*tl))), ws=op.map(o=>.56*sz*o.length), gap=(380-ws.reduce((a,c)=>a+c,0))/2; let cx=x+30;
+      b+=kBox(x+15,y,410,320,i)+kE(n,x+140,y+15,170)+op.map((o,j)=>{ const t=kT(cx+ws[j]/2,y+275,o,{s:sz,a:'middle'}); cx+=ws[j]+gap; return t; }).join(''); });
     return kPage(th,'Circle the word','Olhe a figura e circule a palavra certa',b); }),
   caca:S0('Caça-palavras','jogo',['a7','a9'],'Grade com as palavras do tema (→ e ↓).',(th,R)=>{ const W=kW(th,9,R).filter(([w])=>!/[\s-]/.test(w)&&w.length<=10).slice(0,8), N=11, G=[...Array(N)].map(()=>Array(N).fill('')), placed=[];
     for (const [w,n] of W){ const u=w.toUpperCase(); for (let t=0;t<300;t++){ const h=R.r()<.55, r=Math.floor(R.r()*(h? N : N-u.length+1)), c=Math.floor(R.r()*(h? N-u.length+1 : N));

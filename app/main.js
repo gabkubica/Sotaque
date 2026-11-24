@@ -1986,7 +1986,7 @@ function lazyWatch(){ const els=[...document.querySelectorAll('[data-lz]:not([da
    e as aulas prontas em slides (~270 KB de texto). A abertura do app fica bem mais leve. */
 const PACK_SRC=(()=>{ try { const u=new URL(document.currentScript.src); return {base:new URL('.',u).href,v:u.search}; } catch { return {base:window.APP_BASE||'',v:''}; } })();
 const PACKS={
-  kids:{js:['vendor/perfect-freehand.js','vendor/emoji-kids.js','kids.js','kids-mais.js','kids-livros.js','kids-arquivos.js','kids-aulas.js','caderno.js'],
+  kids:{js:['vendor/perfect-freehand.js','vendor/emoji-kids.js','kids.js','kids-mais.js','kids-livros.js','kids-arquivos.js','kids-aulas.js','kids-extra.js','caderno.js'],
     ready:()=>typeof KIDS_ACT!=='undefined', after:()=>Object.assign(ACT,KIDS_ACT), nome:'a parte Kids',
     routes:['kids','kidsSheet','livro','kaula','kfile','caderno']},
   aulas:{js:['slides-prontas.js'], ready:()=>typeof SLIDES_LOADED!=='undefined', after:()=>{}, nome:'as aulas',
