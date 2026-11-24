@@ -317,6 +317,14 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   **arrastar em cima dela move**; tocar fora termina. Arrastar começando numa figurinha não escolhida desenha por cima.
   Atividades coladas vêm travadas (para mexer: Mover, segurar e Destravar). Botão **Ajuda** com as dicas (abre sozinho na
   primeira vez; os pais veem a versão “Como ver o caderno”). Delete apaga e Esc termina no teclado.
+  Ajustes depois de uma aula simulada: figurinhas novas entram num **espaço livre** da parte visível (lado a lado, sem
+  cobrir outras figurinhas nem o que foi escrito); **atividade, página de livro ou material** vão para uma **página nova**
+  quando a página atual já tem algo; ao **girar o iPad** (ou mudar o tamanho da tela) a página volta a caber; uma figura
+  não sai mais da página (metade fica sempre dentro); toque com margem de ~14 px (figurinha pequena ou girada é fácil de
+  escolher); com a ferramenta Texto, tocar em qualquer lugar (até em cima de uma figurinha) cria texto e, ao terminar,
+  volta para a caneta; tocar num texto já escolhido abre a edição; com a página inteira na tela, dois dedos não a
+  deslocam; a imagem dos traços para o zoom fica pronta com o aparelho parado. No celular, a barra de páginas e as
+  ferramentas cabem na tela.
 - **Materiais para imprimir** (`kids.js`, aba **Kids** dentro da Biblioteca): 42 tipos × 22 temas, separados por idade
   (3–4 anos sem leitura, 5–6 letras, 7–8 palavras, 9–10 frases), gerados em SVG A4 com as ilustrações do **Fluent Emoji**
   (Microsoft, licença MIT; subconjunto de 296 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e

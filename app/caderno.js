@@ -71,6 +71,8 @@ function cadCtx(cv){ const d=cadCanvasFit(cv), z=CD.cam.z*d, ctx=cv.getContext('
 const CDK={cv:null,arr:null,len:-1,scale:0};
 function cadInkCache(rescale){ const p=cadPage(); if (!p) return null; CDK.cv ||= document.createElement('canvas');
   const d=Math.min(window.devicePixelRatio||1,3), sc=Math.min(CD.cam.z*d,2.4,4096/CAD_H);   /* limite de memória do iPad */
+  if (CDK.arr===p.strokes&&p.strokes.length>CDK.len&&!(rescale&&Math.abs(CDK.scale-sc)>.2*sc)){   /* só traços novos: desenha por cima, sem refazer tudo */
+    const ctx=CDK.cv.getContext('2d'); ctx.setTransform(CDK.scale,0,0,CDK.scale,0,0); for (const st of p.strokes.slice(CDK.len)) cadFill(ctx,st,cadPath(st)); CDK.len=p.strokes.length; return CDK.cv; }
   if (CDK.arr!==p.strokes||CDK.len!==p.strokes.length||(rescale&&Math.abs(CDK.scale-sc)>.2*sc)){ const c=CDK.cv; c.width=Math.ceil(CAD_W*sc); c.height=Math.ceil(CAD_H*sc);
     const ctx=c.getContext('2d'); ctx.setTransform(sc,0,0,sc,0,0); ctx.clearRect(0,0,CAD_W,CAD_H);
     for (const pass of ['hl','pen']) for (const st of p.strokes) if (st.t===pass) cadFill(ctx,st,cadPath(st));
@@ -78,7 +80,9 @@ function cadInkCache(rescale){ const p=cadPage(); if (!p) return null; CDK.cv ||
   return CDK.cv; }
 function cadPaintInkFast(){ const p=cadPage(); if (!p||!CD.el) return; const ctx=cadCtx(CD.el.ink); if (p.strokes.length) ctx.drawImage(cadInkCache(false),0,0,CAD_W,CAD_H); }
 function cadMoving(on){ CD.el?.view.classList.toggle('cd-moving',!!on); if (on) cadInkCache(true); }
-function cadPaintInk(){ const p=cadPage(); if (!p||!CD.el) return; const ctx=cadCtx(CD.el.ink);
+/* deixa a imagem dos traços pronta com o aparelho parado: a primeira pinça ou arrastada não engasga */
+function cadWarmInk(){ clearTimeout(CD.inkWarmT); CD.inkWarmT=setTimeout(()=>(window.requestIdleCallback||(f=>setTimeout(f,0)))(()=>{ if (CD.el&&!CD.gest&&!CD.act&&cadPage()?.strokes.length) cadInkCache(true); },{timeout:1500}),500); }
+function cadPaintInk(){ const p=cadPage(); if (!p||!CD.el) return; const ctx=cadCtx(CD.el.ink); cadWarmInk();
   const vx0=CD.cam.x, vy0=CD.cam.y, vx1=vx0+CD.el.view.clientWidth/CD.cam.z, vy1=vy0+CD.el.view.clientHeight/CD.cam.z;
   for (const pass of ['hl','pen']) for (const st of p.strokes){ if (st.t!==pass) continue; const b=cadBox(st); if (b[2]<vx0||b[0]>vx1||b[3]<vy0||b[1]>vy1) continue; cadFill(ctx,st,cadPath(st)); } }
 function cadPaintLive(extra){ const ctx=cadCtx(CD.el.live), st=CD.act?.st; if (!st) return;
@@ -95,16 +99,16 @@ function cadPaintAll(){ if (!CD.el) return; cadPageDom(); cadWorld(); cadPaintIn
 function cadRedraw(){ if (CD.raf) return; CD.raf=requestAnimationFrame(()=>{ CD.raf=0; cadWorld(); if (CD.gest||CD.wheelT) cadPaintInkFast(); else cadPaintInk(); }); }
 
 /* ---------- câmera (zoom e posição) ---------- */
-function cadFit(mode){ const v=CD.el.view, vw=v.clientWidth, vh=v.clientHeight;
+function cadFit(mode){ const v=CD.el.view, vw=v.clientWidth, vh=v.clientHeight; CD.fitMode=mode;
   const z= mode==='page'? Math.min(vw/(CAD_W+60),vh/(CAD_H+60)) : Math.min(vw/(CAD_W+40),vh/(CAD_H*0.42));
   CD.cam.z=z; CD.cam.x=(CAD_W-vw/z)/2; CD.cam.y= mode==='page'? (CAD_H-vh/z)/2 : -20/z; cadClamp(); }
 const cadFitZ=()=>{ const v=CD.el.view; return Math.min(v.clientWidth/(CAD_W+60),v.clientHeight/(CAD_H+60)); };
 const cadZoomed=()=>CD.cam.z>cadFitZ()*1.06;
 function cadClamp(){ const v=CD.el.view, vw=v.clientWidth/CD.cam.z, vh=v.clientHeight/CD.cam.z, m=60/CD.cam.z;
-  CD.cam.x= vw>=CAD_W+2*m? (CAD_W-vw)/2 : Math.max(-m,Math.min(CAD_W-vw+m,CD.cam.x));
-  CD.cam.y= vh>=CAD_H+2*m? (CAD_H-vh)/2 : Math.max(-m,Math.min(CAD_H-vh+m,CD.cam.y)); }
+  CD.cam.x= vw>=CAD_W? (CAD_W-vw)/2 : Math.max(-m,Math.min(CAD_W-vw+m,CD.cam.x));   /* a página inteira cabe: fica centralizada, não “foge” */
+  CD.cam.y= vh>=CAD_H? (CAD_H-vh)/2 : Math.max(-m,Math.min(CAD_H-vh+m,CD.cam.y)); }
 function cadZoomAt(sx,sy,nz){ const v=CD.el.view, fit=Math.min(v.clientWidth/(CAD_W+60),v.clientHeight/(CAD_H+60));
-  nz=Math.max(fit*.8,Math.min(fit*6,nz)); const px=CD.cam.x+sx/CD.cam.z, py=CD.cam.y+sy/CD.cam.z; CD.cam.z=nz; CD.cam.x=px-sx/nz; CD.cam.y=py-sy/nz; cadClamp(); }
+  CD.fitMode=null; nz=Math.max(fit*.8,Math.min(fit*6,nz)); const px=CD.cam.x+sx/CD.cam.z, py=CD.cam.y+sy/CD.cam.z; CD.cam.z=nz; CD.cam.x=px-sx/nz; CD.cam.y=py-sy/nz; cadClamp(); }
 const cadLocal=e=>{ const r=CD.el.view.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top]; };
 const cadToPage=(sx,sy)=>[CD.cam.x+sx/CD.cam.z, CD.cam.y+sy/CD.cam.z];
 
@@ -167,17 +171,17 @@ function cadPageDom(){ const p=cadPage(); if (!p) return; CD.el.world.innerHTML=
 const cadItem=id=>cadPage()?.items.find(i=>i.id===id);
 /* atividades coladas ficam travadas: o dedo arrasta a página por cima delas em vez de pegar a folha inteira */
 const cadLocked=it=>it.lock??(it.t==='act');
-function cadItemAt(px,py,withLocked){ const p=cadPage(); for (let i=p.items.length-1;i>=0;i--){ const it=p.items[i]; if (!withLocked&&cadLocked(it)) continue; const cx=it.x+it.w/2, cy=it.y+it.h/2, a=-(it.r||0)*Math.PI/180;
-    const dx=px-cx, dy=py-cy, lx=dx*Math.cos(a)-dy*Math.sin(a), ly=dx*Math.sin(a)+dy*Math.cos(a); if (Math.abs(lx)<=it.w/2+6&&Math.abs(ly)<=it.h/2+6) return it; } return null; }
+function cadItemAt(px,py,withLocked){ const p=cadPage(), pad=Math.max(6,14/CD.cam.z); for (let i=p.items.length-1;i>=0;i--){   /* margem de ~14 px na tela: figurinha pequena também é fácil de acertar com o dedo */ const it=p.items[i]; if (!withLocked&&cadLocked(it)) continue; const cx=it.x+it.w/2, cy=it.y+it.h/2, a=-(it.r||0)*Math.PI/180;
+    const dx=px-cx, dy=py-cy, lx=dx*Math.cos(a)-dy*Math.sin(a), ly=dx*Math.sin(a)+dy*Math.cos(a); if (Math.abs(lx)<=it.w/2+pad&&Math.abs(ly)<=it.h/2+pad) return it; } return null; }
 const cadItemNode=id=>CD.el.world.querySelector(`[data-it="${id}"]`);
 function cadMeasure(it){ if (it.t!=='text') return; const n=cadItemNode(it.id); if (n) it.h=n.offsetHeight; }
 function cadItemInsert(it){ CD.el.world.querySelector('.cd-items')?.insertAdjacentHTML('beforeend',cadItemDom(it)); cadMeasure(it); }
 function cadItemStyle(it){ const n=CD.el.world.querySelector(`[data-it="${it.id}"]`); if (!n) return; n.style.left=it.x+'px'; n.style.top=it.y+'px'; n.style.width=it.w+'px'; if (it.t!=='text') n.style.height=it.h+'px'; else n.firstElementChild.style.fontSize=(it.fs||44)+'px'; n.style.transform=`rotate(${it.r||0}deg)`; }
 /* moldura de seleção (em pixels da tela, para os botões terem sempre o mesmo tamanho) */
 function cadUi(){ const ui=CD.el?.ui; if (!ui) return; const it=CD.sel&&cadItem(CD.sel);
-  if (!it||CD.ro){ if (CD.uiKey){ ui.innerHTML=''; CD.uiKey=''; } return; }   /* a figura escolhida mostra a moldura e os botões com qualquer ferramenta */
+  if (!it||CD.ro||CD.el.view.querySelector('.cd-tin')){ if (CD.uiKey||ui.firstChild){ ui.innerHTML=''; CD.uiKey=''; } return; }   /* a figura escolhida mostra a moldura e os botões com qualquer ferramenta (menos enquanto digita) */
   const L=cadLocked(it), key=it.id+'|'+L+'|'+it.t;
-  if (CD.uiKey!==key){ CD.uiKey=key;
+  if (CD.uiKey!==key||!ui.firstElementChild){ CD.uiKey=key;
     const ab=(k,ic,l)=>`<button type="button" data-cd="${k}" aria-label="${l}"><i>${ic}</i><span>${l}</span></button>`;
     ui.innerHTML=`<div class="cd-sel ${L? 'lk' : ''}">${L? '' : '<span class="cd-h cd-rot" data-h="rot" aria-label="Girar arrastando">⟳</span><span class="cd-h cd-rs" data-h="rs" aria-label="Mudar o tamanho arrastando">⤡</span>'}</div>
       <div class="cd-acts" role="toolbar" aria-label="Figura selecionada">${L? `<b class="cd-lk">🔒 Travada</b>${ab('slock','🔓','Destravar')}${ab('sdel','✕','Apagar')}${ab('sdone','✓','Pronto')}`
@@ -192,18 +196,30 @@ function cadSelDone(){ CD.sel=null; cadUi(); cadBar(); }
 function cadSelScale(k){ const it=cadItem(CD.sel); if (!it||cadLocked(it)) return; cadPush(cadPage()); const cx=it.x+it.w/2, cy=it.y+it.h/2;
   if (it.t==='text'){ it.fs=Math.max(14,Math.min(220,(it.fs||44)*k)); it.w=Math.max(80,Math.min(CAD_W,it.w*k)); } else { it.w=Math.max(40,Math.min(2*CAD_W,it.w*k)); it.h=Math.max(40,Math.min(2*CAD_H,it.h*k)); }
   it.x=cx-it.w/2; it.y=cy-it.h/2; cadItemStyle(it); cadMeasure(it); cadSave(); cadUi(); }
-function cadAdd(it){ const p=cadPage(); cadPush(p); const v=CD.el.view, sh=CD.el.sheet.classList.contains('on')? CD.el.sheet.offsetHeight : 0, vh=Math.max(160,v.clientHeight-sh);
-  const n=CD.addN=((CD.addN||0)+1)%6, [cx,cy]=cadToPage(v.clientWidth/2+(n-2.5)*34,vh/2+(n%3-1)*26);   /* várias figurinhas seguidas não ficam empilhadas */
-  it.id='i'+uid(); it.x ??= Math.max(10,Math.min(CAD_W-it.w-10,cx-it.w/2)); it.y ??= Math.max(10,Math.min(CAD_H-it.h-10,cy-it.h/2)); it.r ??= 0;
+function cadAdd(it){ const p=cadPage(); cadPush(p);
+  it.id='i'+uid(); if (it.x==null||it.y==null){ const [x,y]=cadFreeSpot(p,it.w,it.h); it.x ??= x; it.y ??= y; } it.r ??= 0;
   p.items.push(it); cadItemInsert(it); CD.sel=it.id; cadSave(); cadUi(); cadBar(); }   /* entra escolhida: dá para arrastar na hora, sem trocar de ferramenta */
 
+/* lugar livre na parte da página que está na tela (acima da folha de Inserir): não cobre outras figurinhas nem o que foi escrito */
+function cadFreeSpot(p,w,h){ const v=CD.el.view, z=CD.cam.z, sh=CD.el.sheet.classList.contains('on')? CD.el.sheet.offsetHeight : 0;
+  const x0=Math.max(16,CD.cam.x+8/z), y0=Math.max(16,CD.cam.y+8/z), x1=Math.min(CAD_W-16,CD.cam.x+(v.clientWidth-8)/z), y1=Math.min(CAD_H-16,CD.cam.y+Math.max(160,v.clientHeight-sh-8)/z);
+  const obs=p.items.filter(i=>i.t!=='act'&&!i.hero).map(i=>[i.x,i.y,i.x+i.w,i.y+i.h,1]).concat(p.strokes.slice(-60).map(st=>[...cadBox(st),.5]));
+  const ov=(a,b)=>Math.max(0,Math.min(a[2],b[2])-Math.max(a[0],b[0]))*Math.max(0,Math.min(a[3],b[3])-Math.max(a[1],b[1]));
+  let best=null; const sx=Math.max(40,w/3), sy=Math.max(40,h/3);
+  for (let y=y0; y<=Math.max(y0,y1-h); y+=sy) for (let x=x0; x<=Math.max(x0,x1-w); x+=sx){ const r=[x,y,x+w,y+h]; let sc=0; for (const o of obs) sc+=ov(r,o)*o[4]; if (!best||sc<best[0]-1) best=[sc,x,y]; if (sc===0) return [Math.round(x),Math.round(y)]; }
+  const n=CD.addN=((CD.addN||0)+1)%6; return best? [Math.round(best[1]+(best[0]? n*24 : 0)),Math.round(best[2]+(best[0]? n*18 : 0))] : [CAD_W/2-w/2,CAD_H/2-h/2]; }
+/* atividade, página de livro ou de material: se a página já tem algo, vai para uma página nova logo depois desta */
+function cadRoomPage(){ const p=cadPage(); if (p&&p.bg!=='capa'&&!p.strokes.length&&!p.items.some(i=>!i.hero)) return false;
+  const c=cadOf(CD.sid), np=cadNewPage(CD.sid,'branca'); c.pages.splice(CD.pi+1,0,np.id); cadGo(CD.pi+1); return true; }
+
 /* ---------- texto ---------- */
-function cadTextEdit(it){ const v=CD.el.view; CD.el.ui.innerHTML=''; v.querySelector('.cd-tin')?.blur();
+function cadTextEdit(it){ const v=CD.el.view; CD.el.ui.innerHTML=''; CD.uiKey=''; v.querySelector('.cd-tin')?.blur();
   const z=CD.cam.z, ta=document.createElement('textarea'); ta.className='cd-tin'; ta.value=it.txt||''; ta.placeholder='Escreva aqui…';
   Object.assign(ta.style,{left:(it.x-CD.cam.x)*z+'px',top:(it.y-CD.cam.y)*z+'px',width:Math.max(it.w,260)*z+'px',fontSize:Math.max(16,(it.fs||44)*z)+'px',color:it.c||'#221c1e'});
   const n=CD.el.world.querySelector(`[data-it="${it.id}"]`); if (n) n.style.visibility='hidden';
   let done=false; const fit=()=>{ ta.style.height='auto'; ta.style.height=ta.scrollHeight+'px'; };
   const end=()=>{ if (done) return; done=true; const p=cadPage(), v2=ta.value.replace(/\s+$/,''); if (ta.isConnected) ta.remove();
+    if (CD.textBack&&CD.tool==='text'){ CD.tool=CD.textBack; cadBar(); } CD.textBack=null;   /* terminou o texto novo: volta a escrever com a caneta */
     if (!v2){ p.items=p.items.filter(x=>x.id!==it.id); CD.sel=null; } else if (v2!==it.txt){ it.txt=v2; } cadSave(); cadPaintAll(); };
   ta.addEventListener('input',fit); ta.addEventListener('blur',end); ta.addEventListener('keydown',e=>{ e.stopPropagation(); if (e.key==='Escape') ta.blur(); });
   v.appendChild(ta); fit(); ta.focus(); }
@@ -256,9 +272,8 @@ function cadToolDown(e,L){ const [px,py]=cadToPage(L[0],L[1]), p=cadPage(), pen=
     cadPaintLive(); return; }
   if (CD.tool==='eraser'){ cadPush(p); CD.act={kind:'erase',id:e.pointerId,pen,changed:false,tapIt:cadItemAt(px,py),t0:performance.now()}; cadErase(px,py); return; }
   if (CD.tool==='text'){ const open=CD.el.view.querySelector('.cd-tin'); if (open){ open.blur(); return; } const hit=cadItemAt(px,py);
-    if (hit&&hit.t==='text'){ CD.sel=hit.id; cadUi(); cadTextEdit(hit); return; }
-    if (hit){ CD.sel=hit.id; cadUi(); cadBar(); return; }
-    cadPush(p); const fs=[34,48,72][CD.size], it={id:'i'+uid(),t:'text',txt:'',x:Math.max(24,Math.min(CAD_W-300,px)),y:Math.max(10,Math.min(CAD_H-fs*1.4,py-fs*.7)),w:Math.min(560,CAD_W-24-Math.max(24,Math.min(CAD_W-300,px))),h:fs*1.3,r:0,fs,c:CD.color}; p.items.push(it); CD.sel=it.id; cadPageDom(); cadTextEdit(it); return; }
+    if (hit&&hit.t==='text'){ CD.sel=hit.id; cadUi(); cadTextEdit(hit); return; }   /* tocar fora de um texto (até em cima de uma figurinha) cria um texto novo ali */
+    cadPush(p); const fs=[34,48,72][CD.size], it={id:'i'+uid(),t:'text',txt:'',x:Math.max(24,Math.min(CAD_W-300,px)),y:Math.max(10,Math.min(CAD_H-fs*1.4,py-fs*.7)),w:Math.min(560,CAD_W-24-Math.max(24,Math.min(CAD_W-300,px))),h:fs*1.3,r:0,fs,c:CD.color}; CD.textBack=CD.prevTextTool||'pen'; p.items.push(it); CD.sel=it.id; cadPageDom(); cadTextEdit(it); return; }
   if (CD.tool==='move'){ const hit=cadItemAt(px,py);
     if (!hit){ const had=CD.sel; CD.sel=null; cadUi(); if (had) cadBar(); CD.gest={pan:true,id:e.pointerId,x:L[0],y:L[1],cam:{...CD.cam}};
       const lk=cadItemAt(px,py,true); if (lk) cadLpStart(e.pointerId,L,lk); return; }
@@ -276,7 +291,7 @@ function cadMove(e){ if (!CD.el) return; const P=CD.ptr.get(e.pointerId); if (!P
     const pred=(e.getPredictedEvents?.()||[]).slice(0,2).flatMap(ev=>{ const [lx,ly]=cadLocal(ev), [px,py]=cadToPage(lx,ly); return [px,py,a.pen&&ev.pressure>0? ev.pressure : .5]; });
     if (a.pen) CD.penT=performance.now(); CD.livePred=pred; if (!CD.liveRaf) CD.liveRaf=requestAnimationFrame(()=>{ CD.liveRaf=0; if (CD.act?.kind==='draw') cadPaintLive(CD.livePred); }); return; }
   if (a.kind==='erase'){ const evs=e.getCoalescedEvents?.()||[e]; for (const ev of evs.length? evs : [e]){ const [lx,ly]=cadLocal(ev); cadErase(...cadToPage(lx,ly)); } return; }
-  if (a.kind==='drag'){ const [px,py]=cadToPage(L[0],L[1]); a.it.x=px-a.ox; a.it.y=py-a.oy; a.moved=true; cadItemStyle(a.it); cadUi(); return; }
+  if (a.kind==='drag'){ const [px,py]=cadToPage(L[0],L[1]), it=a.it; it.x=Math.max(-it.w/2,Math.min(CAD_W-it.w/2,px-a.ox)); it.y=Math.max(-it.h/2,Math.min(CAD_H-it.h/2,py-a.oy)); a.moved=true; cadItemStyle(it); cadUi(); return; }   /* pelo menos metade fica na página */
   if (a.kind==='rs'){ const it=a.it, cx=it.x+it.w/2, cy=it.y+it.h/2, [px,py]=cadToPage(L[0],L[1]), d=Math.hypot(px-cx,py-cy), k=Math.max(.15,d/a.d0);
     if (it.t==='text'){ it.fs=Math.max(14,Math.min(220,a.fs0*k)); it.w=Math.max(80,a.w0*k); } else { it.w=Math.max(40,a.w0*k); it.h=Math.max(40,a.h0*k); }
     it.x=cx-it.w/2; it.y=cy-it.h/2; cadItemStyle(it); cadUi(); return; }
@@ -296,7 +311,7 @@ function cadUp(e){ if (!CD.el) return; const P=CD.ptr.get(e.pointerId); CD.ptr.d
     if (a.st.t==='hl') cadPaintInk(); else { const ctx=CD.el.ink.getContext('2d'); cadFill(ctx,a.st,cadPath(a.st)); }
     cadSave(); return; }
   if (a.kind==='erase'){ if (!a.changed){ CD.hist[p.id]?.pop(); if (a.tapIt&&performance.now()-a.t0<450){ CD.sel=a.tapIt.id; cadUi(); cadBar(); } } else cadSave(); return; }
-  if (a.kind==='drag'){ if (!a.moved){ CD.hist[p.id]?.pop(); const it=a.it; if (it.t==='text'&&(CD.tool==='text'||performance.now()-a.t<300&&CD.lastTap===it.id)){ cadTextEdit(it); } CD.lastTap=it.id; setTimeout(()=>{ if (CD.lastTap===it.id) CD.lastTap=null; },450); }
+  if (a.kind==='drag'){ if (!a.moved){ CD.hist[p.id]?.pop(); const it=a.it; if (it.t==='text'&&!cadLocked(it)){ cadTextEdit(it); }   /* tocar de novo num texto escolhido: edita */ CD.lastTap=it.id; setTimeout(()=>{ if (CD.lastTap===it.id) CD.lastTap=null; },450); }
     else cadSave(); cadUi(); return; }
   if (a.kind==='rs'||a.kind==='rot'){ cadMeasure(a.it); cadSave(); cadUi(); } }
 function cadErase(px,py){ const p=cadPage(), r=14/CD.cam.z+6, a=CD.act; let hit=false;
@@ -317,7 +332,7 @@ function cadGestMove(){ const g=CD.gest, a=CD.ptr.get(g.ids[0]), b=CD.ptr.get(g.
     if (it.t==='text'){ it.fs=Math.max(14,Math.min(220,g.fs0*k)); it.w=Math.max(80,g.w0*k); } else { it.w=Math.max(40,g.w0*k); it.h=Math.max(40,g.h0*k); }
     it.r=Math.round(g.r0+(ang-g.ang)*180/Math.PI); it.x=g.cx-it.w/2; it.y=g.cy-it.h/2; cadItemStyle(it); cadUi(); return; }
   const v=CD.el.view, fit=Math.min(v.clientWidth/(CAD_W+60),v.clientHeight/(CAD_H+60));
-  const z=Math.max(fit*.8,Math.min(fit*6,g.z0*d/g.d)); CD.cam.z=z; CD.cam.x=g.px-mx/z; CD.cam.y=g.py-my/z; cadClamp(); cadRedraw(); }
+  const z=Math.max(fit*.8,Math.min(fit*6,g.z0*d/g.d)); CD.cam.z=z; CD.fitMode=null; CD.cam.x=g.px-mx/z; CD.cam.y=g.py-my/z; cadClamp(); cadRedraw(); }
 function cadHandleDown(e,h){ e.preventDefault(); e.stopPropagation(); const it=cadItem(CD.sel); if (!it) return; const p=cadPage();
 
   try { CD.el.view.setPointerCapture(e.pointerId); } catch {} const L=cadLocal(e); CD.ptr.set(e.pointerId,{x:L[0],y:L[1],type:e.pointerType,t:performance.now()});
@@ -355,7 +370,7 @@ function cadBar(){ const bar=CD.el?.bar; if (!bar) return; const s=user(CD.sid),
     ${CD.ro? '' : `<button class="cd-b cd-ins" data-cd="insert" title="Inserir figurinha, prêmio, atividade ou foto">${CDI.plus}<span>Inserir</span></button>`}
     <span class="cd-flag" id="cd-flag">${CD.ro? 'Só para ver' : 'Salvo'}</span></div>`;
   CD.el.dock.innerHTML= CD.ro? '' : `${tb('pen','Caneta')}${tb('hl','Marca-texto')}${tb('eraser','Borracha')}${tb('text','Texto')}${tb('move','Mover')}<button class="cd-b cd-cur" data-cd="pal" title="Cor e espessura"><i style="--c:${cur};--s:${[10,16,24][CD.size]}px"></i><span>Cor</span></button>
-    <span class="cd-dsep"></span><button class="cd-b cd-finger ${CD.finger? 'on' : ''}" data-cd="finger" aria-pressed="${CD.finger}" title="${CD.finger? 'O dedo escreve. Toque para o dedo só mover a página (para usar com a Apple Pencil).' : 'O dedo só move a página. Toque para o dedo voltar a escrever.'}">${CDI.finger}<span>${CD.finger? 'Dedo escreve' : 'Dedo move'}</span></button>`;
+    <span class="cd-dsep"></span><button class="cd-b cd-finger ${CD.finger? 'on' : ''}" data-cd="finger" aria-pressed="${CD.finger}" title="${CD.finger? 'O dedo escreve. Toque para o dedo só mover a página (para usar com a Apple Pencil).' : 'O dedo só move a página. Toque para o dedo voltar a escrever.'}">${CDI.finger}<span><i class="cd-l">${CD.finger? 'Dedo escreve' : 'Dedo move'}</i><i class="cd-s">${CD.finger? 'Dedo ✓' : 'Só move'}</i></span></button>`;
   CD.el.dock.hidden=!!CD.ro;
   CD.el.pager.innerHTML=`<button class="cd-b" data-cd="prev" ${CD.pi? '' : 'disabled'} aria-label="Página anterior">‹</button><button class="cd-b cd-pn" data-cd="pages" title="Ver todas as páginas">${CD.pi? `Página ${CD.pi} <small>de ${P.length-1}</small>` : 'Capa'}</button><button class="cd-b" data-cd="next" ${CD.pi<P.length-1? '' : 'disabled'} aria-label="Próxima página">›</button>${CD.ro? '' : `<button class="cd-b" data-cd="newpage" title="Nova página depois desta" aria-label="Nova página">${CDI.plus}</button>`}`; }
 function cadPal(open){ let el=CD.el.root.querySelector('.cd-pal2'); if (!open){ el?.remove(); return; }
@@ -440,7 +455,7 @@ function cadWarm(){ const go=()=>{ if (!CD.el) return; const P=cadPages(CD.sid);
   (window.requestIdleCallback||(f=>setTimeout(f,300)))(go,{timeout:1500}); }
 const CAD_ACT={
   close(){ location.hash= isT()? 'aluno-'+CD.sid : 'inicio'; },
-  tool(el){ if (CD.tool===el.dataset.v&&['pen','hl','text'].includes(CD.tool)){ cadPal(!CD.el.root.querySelector('.cd-pal2')); return; } cadPal(false); CD.tool=el.dataset.v; if (CD.tool!=='move'){ CD.sel=null; cadUi(); } cadBar(); },
+  tool(el){ if (CD.tool===el.dataset.v&&['pen','hl','text'].includes(CD.tool)){ cadPal(!CD.el.root.querySelector('.cd-pal2')); return; } cadPal(false); if (el.dataset.v==='text'&&CD.tool!=='text') CD.prevTextTool=CD.tool; CD.tool=el.dataset.v; if (CD.tool!=='move'){ CD.sel=null; cadUi(); } cadBar(); },
   pal(){ cadPal(!CD.el.root.querySelector('.cd-pal2')); },
   color(el){ CD.color=el.dataset.v; const it=CD.sel&&cadItem(CD.sel); if (it&&it.t==='text'){ cadPush(cadPage()); it.c=CD.color; cadSave(); cadPageDom(); } if (CD.tool==='eraser'||CD.tool==='move'&&!it) CD.tool='pen'; cadBar(); cadPal(true); },
   size(el){ CD.size=+el.dataset.v; cadBar(); cadPal(false); },
@@ -466,10 +481,10 @@ const CAD_ACT={
     const ids=P.map((_,k)=>{ const pg=cadNewPage(CD.sid,'branca'); pg.items.push({id:'i'+uid(),t:'act',kind:'kdeck',theme:d.id,seed:k,x:0,y:0,w:CAD_W,h:CAD_H,r:0}); return pg.id; });
     c.pages.splice(at,0,...ids); if (isT()) kidsUse(CD.sid,{k:'kaula',t:d.id},true); cadSave(); cadGo(at); toast(`${P.length} páginas coladas`); },
   cbook(el){ S.cbook=el.dataset.v; if (!S.cbook){ cadInsertSheet('livro'); return; } kbookLoad(S.cbook).then(()=>cadInsertSheet('livro')).catch(()=>toast('Não consegui abrir o livro.')); },
-  cbpage(el){ const b=kbookById(S.cbook), p=KBOOK[S.cbook].p[+el.dataset.v]; cadSheet(''); const im=new Image(); im.onload=()=>{ const k=Math.min(860/im.width,700/im.height); cadAdd({t:'img',src:'data:image/jpeg;base64,'+p.i,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:60}); if (p.t) cadAdd({t:'text',txt:p.t,w:860,h:120,x:70,y:im.height*k+90,fs:44,c:'#221c1e'}); if (isT()) kidsUse(CD.sid,{k:'livro',t:S.cbook},true); }; im.src='data:image/jpeg;base64,'+p.i; },
+  cbpage(el){ const b=kbookById(S.cbook), p=KBOOK[S.cbook].p[+el.dataset.v]; cadSheet(''); cadRoomPage(); const im=new Image(); im.onload=()=>{ const k=Math.min(860/im.width,700/im.height); cadAdd({t:'img',src:'data:image/jpeg;base64,'+p.i,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:60}); if (p.t) cadAdd({t:'text',txt:p.t,w:860,h:120,x:70,y:im.height*k+90,fs:44,c:'#221c1e'}); if (isT()) kidsUse(CD.sid,{k:'livro',t:S.cbook},true); }; im.src='data:image/jpeg;base64,'+p.i; },
   cfile(el){ const f=kfileById(el.dataset.v); cadSheet(''); toast('Abrindo o material…'); kfilePages(f).then(D=>{ if (D.n===1) return kfilePageImg(f,0,1400).then(src=>CAD_ACT.cfpage({dataset:{f:f.id,i:0,src}}));
     cadSheet(`<div class="cd-tabs"><b>${esc(f.name)}: toque numa página</b><button class="cd-x" data-cd="sheetx" aria-label="Fechar">✕</button></div><div class="cd-pgrid">${[...Array(D.n)].map((_,i)=>`<button class="cd-pthumb" data-cd="cfpage" data-f="${f.id}" data-i="${i}"><span class="kf-ph">${i+1}</span><small>Página ${i+1}</small></button>`).join('')}</div>`); }).catch(()=>toast('Não encontrei este arquivo.')); },
-  cfpage(el){ const f=kfileById(el.dataset.f); cadSheet(''); (el.dataset.src? Promise.resolve(el.dataset.src) : kfilePageImg(f,+el.dataset.i,1400)).then(src=>{ const im=new Image(); im.onload=()=>{ const k=Math.min(900/im.width,1300/im.height), data=src.startsWith('blob:')? kfToData(im) : src; cadAdd({t:'img',src:data,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:(CAD_H-im.height*k)/2}); if (isT()) kidsUse(CD.sid,{k:'file',t:f.id},true); }; im.src=src; }); },
+  cfpage(el){ const f=kfileById(el.dataset.f); cadSheet(''); cadRoomPage(); (el.dataset.src? Promise.resolve(el.dataset.src) : kfilePageImg(f,+el.dataset.i,1400)).then(src=>{ const im=new Image(); im.onload=()=>{ const k=Math.min(900/im.width,1300/im.height), data=src.startsWith('blob:')? kfToData(im) : src; cadAdd({t:'img',src:data,w:im.width*k,h:im.height*k,x:(CAD_W-im.width*k)/2,y:(CAD_H-im.height*k)/2}); if (isT()) kidsUse(CD.sid,{k:'file',t:f.id},true); }; im.src=src; }); },
   finger(){ CD.finger=!CD.finger; lsSet('sotaque:cad-dedo',CD.finger? '1' : '0'); toast(CD.finger? 'O dedo escreve. Para mover a página, use dois dedos.' : 'O dedo só move a página. Escreva com a caneta.'); cadBar(); },
   fit(){ cadFit(cadZoomed()? 'page' : 'width'); cadPaintAll(); cadBar(); },
   help(){ cadHelp(); },
@@ -488,7 +503,7 @@ const CAD_ACT={
   sdone(){ cadSelDone(); },
   kth(el){ S.kth=el.dataset.v; cadInsertSheet('act'); },
   addstk(el){ cadAdd({t:'sticker',k:el.dataset.v,w:220,h:220,r:Math.round(Math.random()*16-8)}); cadAddedFx(el); },
-  addact(el){ cadSheet(''); const seed=Math.floor(Math.random()*999); cadAdd({t:'act',kind:el.dataset.k,theme:el.dataset.t,seed,w:900,h:1272,x:50,y:70}); cadSelDone(); if (isT()&&typeof kidsUse==='function') kidsUse(CD.sid,{k:el.dataset.k,t:el.dataset.t,s:seed},true); toast('Atividade colada e ligada à aula. Já dá para escrever por cima! (Para mudar de lugar, segure o dedo sobre ela.)'); },
+  addact(el){ cadSheet(''); const nova=cadRoomPage(), seed=Math.floor(Math.random()*999); cadAdd({t:'act',kind:el.dataset.k,theme:el.dataset.t,seed,w:900,h:1272,x:50,y:70}); cadSelDone(); if (isT()&&typeof kidsUse==='function') kidsUse(CD.sid,{k:el.dataset.k,t:el.dataset.t,s:seed},true); toast(`Atividade colada${nova? ' numa página nova' : ''} e ligada à aula. Já dá para escrever por cima!`); },
 };
 function cadAddedFx(el){ el.classList.remove('cd-added'); void el.offsetWidth; el.classList.add('cd-added'); }
 function cadPhoto(file){ const img=new Image(), url=URL.createObjectURL(file);
@@ -513,7 +528,7 @@ function cadMount(sid,ro){ if (CD.el&&CD.sid===sid) return; cadUnmount(); cadOf(
   root.addEventListener('click',e=>{ const b=e.target.closest('[data-cd]'); if (b&&!b.disabled) CAD_ACT[b.dataset.cd]?.(b); });
   root.addEventListener('change',e=>{ if (e.target.dataset.cdfile&&e.target.files[0]) cadPhoto(e.target.files[0]); });
   root.addEventListener('input',e=>{ if (e.target.dataset.cdtitle!=null){ cadOf(CD.sid).cover.title=e.target.value; cadSave(); cadPageDom(); } if (e.target.dataset.cdsub!=null){ cadOf(CD.sid).cover.sub=e.target.value; cadSave(); cadPageDom(); } });
-  CD.onResize=()=>{ cadClamp(); cadPaintAll(); }; window.addEventListener('resize',CD.onResize);
+  CD.onResize=()=>{ if (CD.fitMode) cadFit(CD.fitMode); else cadClamp(); cadPaintAll(); cadBar(); };   /* girou o iPad: a página volta a caber na tela */ window.addEventListener('resize',CD.onResize);
   CD.onGesture=e=>e.preventDefault(); document.addEventListener('gesturestart',CD.onGesture);
   CD.onKey=e=>{ if (e.target.closest?.('input,textarea')) return; if ((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); cadUndo(e.shiftKey); } if ((e.key==='Delete'||e.key==='Backspace')&&CD.sel) CAD_ACT.sdel(); if (e.key==='Escape'&&CD.sel) cadSelDone(); };
   document.addEventListener('keydown',CD.onKey);
