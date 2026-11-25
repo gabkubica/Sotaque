@@ -103,7 +103,7 @@ Object.assign(KIDS_SHEETS,{
         +`<rect x="250" y="${y+88}" width="150" height="46" rx="12" fill="#e6f6e8"/>${kT(325,y+120,'Yes, '+(kPl(q)? 'they are.' : 'it is.'),{s:20,a:'middle',f:KFS,c:'#1f8a4c'})}<rect x="420" y="${y+88}" width="170" height="46" rx="12" fill="#fde7ea"/>${kT(505,y+120,'No, '+(kPl(q)? 'they aren’t.' : 'it isn’t.'),{s:20,a:'middle',f:KFS,c:'#b03a5b'})}${kAns(610,y+125,300)}`; });
     return kPage(th,'Look and answer','Olhe, circule Yes ou No e escreva a resposta. Se for No, escreva o nome certo!',b); }),
   cena:S0('Olhe a cena e responda','ler',['a7','a9'],'Uma sala com coisas espalhadas: where, how many, what.',(th,R)=>{ const S=kScene(R,60,270,880,560); let b=S.g;
-    const Q=[...S.placed.slice(0,3).map(p=>[`Where is the ${kName(p.t)}?`,`It’s ${p.r} the ${p.f}.`]),[`How many flowers are there?`,`There are ${NUMW[S.flowers]} flowers.`],[`Is there a window in the room?`,`Yes, there is.`],[`What’s on the ${S.placed[3].f}?`,`There’s a ${kName(S.placed[3].t)}.`]];
+    const Q=[...S.placed.slice(0,3).map(p=>[`Where is the ${kName(p.t)}?`,`It’s ${p.r} the ${p.f}.`]),[`How many flowers are there?`,`There are ${NUMW[S.flowers]} flowers.`],[`Is there a window in the room?`,`Yes, there is.`],[`What’s on the ${S.placed[3].f}?`,`There’s ${article(kName(S.placed[3].t))} ${kName(S.placed[3].t)}.`]];
     Q.forEach(([q],i)=>{ const y=900+i*76; b+=kQ(60,y,i+1,q,{s:28})+kAns(560,y+2,380); });
     b+=kT(60,1372,'Respostas: '+Q.map(([,a],i)=>`${i+1}. ${a}`).join(' '),{s:12,b:false,c:'#b2a7aa',f:KFS});
     return kPage('','Look and answer','Olhe a sala e responda com frases (on, under, next to · There are…)',b,{ic:'couch-and-lamp'}); }),

@@ -327,7 +327,7 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   ferramentas cabem na tela.
 - **Materiais para imprimir** (`kids.js`, aba **Kids** dentro da Biblioteca): 42 tipos × 22 temas, separados por idade
   (3–4 anos sem leitura, 5–6 letras, 7–8 palavras, 9–10 frases), gerados em SVG A4 com as ilustrações do **Fluent Emoji**
-  (Microsoft, licença MIT; subconjunto de 296 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e
+  (Microsoft, licença MIT; subconjunto de 452 figuras em `vendor/emoji-kids.js`) em versão colorida, contorno (colorir) e
   sombra. Inclui: ligue à sombra, encontre o igual, pré-escrita, big and small, quebra-cabeça, máscaras, primeira letra,
   pinte pela bolinha, cruzadinha, desembaralhe, monte a frase, leitura com V/F, pesquisa “Do you like…?”, cartões e mais.
   “Ligar à aula” e “Colar no caderno” guardam o material em `lesson.mats` (histórico e próxima aula).
@@ -339,7 +339,7 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 - **Meus materiais**: a professora envia PDFs e imagens (até 25 MB). A lista vai em `DB.kfiles` (registro `kfile`);
   o arquivo fica no aparelho (IndexedDB) e, no Sotaque com login, na nuvem em pedaços (`kblob`, fora do carregamento
   inicial e baixados só quando abertos). Imprimir, ligar à aula e colar qualquer página no caderno.
-- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.558 falas com voz neural, inclusive nas Aulas Kids: cada fala é um mp3 pequeno em `audio/k/`, baixado só quando tocada; índice em `audio/kids-idx.json`);
+- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.847 falas com voz neural, inclusive nas Aulas Kids: cada fala é um mp3 pequeno em `audio/k/`, baixado só quando tocada; índice em `audio/kids-idx.json`);
   funciona na tela, no caderno digital (a criança toca e ouve) e some na impressão. O índice vai com o `?v=` da
   publicação (o aparelho não fica com o índice velho) e, se faltar o mp3, o aparelho lê com uma voz em inglês
   escolhida de propósito (não a voz padrão, que no Brasil costuma ser em português). Atividades de escuta:
@@ -358,10 +358,18 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
   secreto com símbolos, história com figuras (rebus), mapa com coordenadas (A–E, 1–5, com mapas para brincar em dupla),
   receita para numerar os passos (salada de frutas, sanduíche, pizza), complete os balões (cumprimentos, loja, festa),
   comparativos (bigger, faster, taller) e cartão-postal. As que têm resposta trazem o gabarito discreto no rodapé.
-  107 tipos no total.
+  107 tipos até aqui.
+- **Mais 15 atividades** (`kids-novas.js`): sons dos bichos (ouça e ligue), cartão de alinhavo, quadro de 10 (ten
+  frames), sudoku com figuras (4×4, solução única), medir com blocos (lápis, giz, cobra, trem, lagarta), vogais curtas
+  (cat, bed, pig, dog, sun), quem usa? (profissões e ferramentas), em que cômodo?, o que eles estão fazendo? (-ing,
+  circular ou escrever), Guess who? (has got), quem-me-quer (fortune teller com desafios do tema), meses do ano (com
+  datas do Brasil), carta para o Papai Noel, horário da escola (matérias) e a corrida (ordinais). 122 tipos no total.
+- **8 temas novos** (30 no total): Aves, Profissões, A cidade, Na cozinha, Na praia, Acampamento, Contos de fadas e
+  Natal, valendo para todas as atividades e com 3 Aulas Kids cada (93 aulas). Plural irregular (knives, snowmen,
+  reindeer) e “are” nas frases com plural (The chopsticks are…).
 - **Filtros da aba Kids**: abas Atividades · Aulas Kids · Livrinhos · Meus materiais, idade, busca (rimas, relógio,
   bingo…), tipo (vocabulário, escrever e traçar, jogos, músicas, arte e prêmios, ler e entender), “Só com áudio” e tema.
-- **Aulas Kids** (slides de apresentação, rota `#kaula-<id>`): 69 aulas prontas (cada tema em 3 idades + Hello,
+- **Aulas Kids** (slides de apresentação, rota `#kaula-<id>`): 93 aulas prontas (cada tema em 3 idades + Hello,
   cores, números, formas e ABC), com capa, vocabulário com áudio, “point to…”, sombra, frase modelo, música, jogo,
   atividade e tchau. Apresentar em tela cheia, imprimir, ligar à aula e **colar a aula toda (ou só uma página) no
   caderno digital** (no caderno: Inserir → Aulas Kids).

@@ -4,7 +4,7 @@
      sem esperar a rede (abrir de novo fica instantâneo). Versões antigas do mesmo arquivo são apagadas.
    - Áudios, livrinhos e imagens: ficam num cache à parte, que NÃO é apagado a cada atualização do app
      (antes, cada publicação fazia o aparelho baixar tudo de novo). */
-const CACHE = 'sotaque-v46';
+const CACHE = 'sotaque-v47';
 const MEDIA = 'sotaque-media-1';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== MEDIA).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
