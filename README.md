@@ -339,8 +339,10 @@ Próximo passo para uso real: login e banco de dados na nuvem (ex.: Supabase).
 - **Meus materiais**: a professora envia PDFs e imagens (até 25 MB). A lista vai em `DB.kfiles` (registro `kfile`);
   o arquivo fica no aparelho (IndexedDB) e, no Sotaque com login, na nuvem em pedaços (`kblob`, fora do carregamento
   inicial e baixados só quando abertos). Imprimir, ligar à aula e colar qualquer página no caderno.
-- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.539 falas com voz neural, inclusive nas Aulas Kids: cada fala é um mp3 pequeno em `audio/k/`, baixado só quando tocada; índice em `audio/kids-idx.json`);
-  funciona na tela, no caderno digital (a criança toca e ouve) e some na impressão. Atividades de escuta:
+- **Áudio nas atividades**: o 🔈 nas folhas toca a palavra/frase (1.558 falas com voz neural, inclusive nas Aulas Kids: cada fala é um mp3 pequeno em `audio/k/`, baixado só quando tocada; índice em `audio/kids-idx.json`);
+  funciona na tela, no caderno digital (a criança toca e ouve) e some na impressão. O índice vai com o `?v=` da
+  publicação (o aparelho não fica com o índice velho) e, se faltar o mp3, o aparelho lê com uma voz em inglês
+  escolhida de propósito (não a voz padrão, que no Brasil costuma ser em português). Atividades de escuta:
   Listen and circle, Listen and colour, Listen and number (com o roteiro da professora no rodapé).
 - **Atividades mais completas** (`kids-mais.js`): Look and answer (Is it…? Yes, it is), cena da sala com perguntas
   (where/how many), jogo dos erros, ficha do animal com leitura e perguntas (16 animais), charadas, Can or can’t,

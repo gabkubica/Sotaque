@@ -8,12 +8,22 @@
 /* cada fala é um mp3 pequeno (audio/k/<id>.mp3), baixado só quando a criança toca; o índice (texto → id) é leve */
 let KAUD=null, KAUDP=null, KAUDEL=null;
 const KAUD_BASE=(()=>{ try { return new URL('audio/',document.currentScript.src).href; } catch { return 'audio/'; } })();
-function kidsAudioLoad(){ if (KAUD) return Promise.resolve(KAUD); return KAUDP ||= fetch(KAUD_BASE+'kids-idx.json').then(r=>r.ok? r.json() : {}).then(j=>KAUD=j).catch(()=>{ KAUDP=null; return {}; }); }
+/* o índice vai com o ?v= da publicação: depois de cada atualização o aparelho busca o índice novo
+   (antes, a cópia guardada ficava velha e as falas novas caíam na voz do aparelho, às vezes em português) */
+const KAUD_Q=(()=>{ try { return new URL(document.currentScript.src).search; } catch { return ''; } })();
+/* sem o mp3, quem lê é o aparelho: escolhe uma voz em inglês de verdade (só u.lang não basta no iPad e em
+   vários Androids, que leem com a voz padrão em português) */
+function kidsVoice(){ if (typeof speechSynthesis==='undefined') return null; const best=['en-US','en-GB','en-AU','en-CA'];
+  const vs=speechSynthesis.getVoices().filter(v=>/^en([-_]|$)/i.test(v.lang)); if (!vs.length) return null;
+  const rank=v=>{ const i=best.indexOf(v.lang.replace('_','-')); return (i<0? 9 : i)+(v.localService? 0 : .5); };
+  return vs.sort((a,b)=>rank(a)-rank(b))[0]; }
+function kidsAudioLoad(){ if (typeof speechSynthesis!=='undefined') speechSynthesis.getVoices();
+  if (KAUD) return Promise.resolve(KAUD); return KAUDP ||= fetch(KAUD_BASE+'kids-idx.json'+KAUD_Q).then(r=>r.ok? r.json() : {}).then(j=>KAUD=j).catch(()=>{ KAUDP=null; return {}; }); }
 function kidsSay(text){ const parts=String(text).split('|').map(x=>x.trim()).filter(Boolean); if (!parts.length) return;
   const go=A=>{ if (typeof ttsStop==='function') ttsStop(); KAUDEL ||= new Audio(); let i=0;
     const next=()=>{ if (i>=parts.length) return; const p=parts[i++], id=A[p.toLowerCase()];
       if (id){ KAUDEL.src=KAUD_BASE+'k/'+id+'.mp3'; KAUDEL.onended=()=>setTimeout(next,90); KAUDEL.play().catch(()=>{}); }
-      else if (typeof speechSynthesis!=='undefined'){ const u=new SpeechSynthesisUtterance(p); u.lang='en-US'; u.rate=.85; u.onend=()=>setTimeout(next,60); speechSynthesis.speak(u); } };
+      else if (typeof speechSynthesis!=='undefined'){ const u=new SpeechSynthesisUtterance(p), v=kidsVoice(); u.lang=v? v.lang : 'en-US'; if (v) u.voice=v; u.rate=.85; u.onend=()=>setTimeout(next,60); speechSynthesis.speak(u); } };
     next(); };
   if (KAUD) go(KAUD); else kidsAudioLoad().then(go); }   /* com o índice já carregado, toca no mesmo toque (o iPad exige) */
 kidsAudioLoad();

@@ -4,7 +4,7 @@
      sem esperar a rede (abrir de novo fica instantâneo). Versões antigas do mesmo arquivo são apagadas.
    - Áudios, livrinhos e imagens: ficam num cache à parte, que NÃO é apagado a cada atualização do app
      (antes, cada publicação fazia o aparelho baixar tudo de novo). */
-const CACHE = 'sotaque-v45';
+const CACHE = 'sotaque-v46';
 const MEDIA = 'sotaque-media-1';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== MEDIA).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
@@ -52,6 +52,7 @@ self.addEventListener('fetch', e => {
   const req = e.request, u = new URL(req.url);
   if (req.method !== 'GET' || u.origin !== location.origin || req.headers.has('range')) return;
   if (FIXO.test(u.pathname)) e.respondWith(cacheFirst(MEDIA, req).catch(() => fetch(req)));
+  else if (/\/audio\/kids-idx\.json$/.test(u.pathname) && /[?&]v=\d/.test(u.search)) e.respondWith(versioned(req).catch(() => fetch(req)));   // índice das falas Kids: um por publicação
   else if (MIDIA.test(u.pathname)) e.respondWith(staleWhileRevalidate(MEDIA, req, e).catch(() => fetch(req)));
   else if (/[?&]v=\d/.test(u.search) && /\.(?:js|css)$/.test(u.pathname)) e.respondWith(versioned(req).catch(() => caches.match(req, { ignoreSearch: true })));
   else e.respondWith(networkFirst(req));
